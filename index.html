@@ -36,7 +36,62 @@
             margin: 0 auto;
             padding: 0 15px;
         }
-        
+        </section> <!-- Cierre de la sección hero -->
+        <!-- Sección del Medidor de Huella de Carbono -->
+<section class="carbon-meter">
+  <div class="container">
+    <h2>Nuestro Impacto Ambiental</h2>
+    <div class="stats">
+      <div class="stat-card">
+        <h3 id="clientes-count">0</h3>
+        <p>Clientes conscientes</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="promedio-co2">0.0</h3>
+        <p>Ton CO₂ promedio</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="total-co2">0.0</h3>
+        <p>Total reducido</p>
+      </div>
+    </div>
+    <p class="note">Actualizado automáticamente desde nuestra base de datos</p>
+  </div>
+</section>
+
+<script>
+// Script para procesar el CSV
+async function loadCarbonData() {
+  try {
+    const response = await fetch('data/huella-carbono.csv');
+    const data = await response.text();
+    const rows = data.split('\n').slice(1);
+    
+    let totalClientes = 0;
+    let totalCO2 = 0;
+    
+    rows.forEach(row => {
+      const [cliente, co2] = row.split(',');
+      if (cliente && co2) {
+        totalClientes++;
+        totalCO2 += parseFloat(co2);
+      }
+    });
+    
+    const promedioCO2 = totalClientes > 0 ? (totalCO2 / totalClientes).toFixed(1) : 0;
+    
+    // Actualizar el DOM
+    document.getElementById('clientes-count').textContent = totalClientes;
+    document.getElementById('promedio-co2').textContent = promedioCO2;
+    document.getElementById('total-co2').textContent = totalCO2.toFixed(1);
+    
+  } catch (error) {
+    console.error('Error cargando datos:', error);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadCarbonData);
+</script>
         .btn {
             display: inline-block;
             padding: 12px 30px;
