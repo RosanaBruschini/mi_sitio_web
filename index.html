@@ -303,7 +303,7 @@
             color: var(--primary);
         }
         
-        /* Impact Logrado Section - MODIFICADA */
+        /* Impacto Positivo Section - MODIFICADA */
         .impact-logrado {
             padding: 80px 0;
             background: #f0f7f0;
@@ -359,10 +359,21 @@
             margin: 20px 0;
             color: var(--text-dark);
             max-width: 500px;
+            background: #f5f9f5;
+            padding: 15px;
+            border-radius: 8px;
         }
         
         .impact-equivalent strong {
             color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .impact-explanation {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-top: 10px;
+            font-style: italic;
         }
         
         .progress-container {
@@ -380,9 +391,8 @@
             height: 100%;
             background: linear-gradient(90deg, #4caf50, #2e7d32);
             border-radius: 12px;
-            width: 0;
+            width: 63%;
             position: relative;
-            transition: width 1.5s ease-in-out;
         }
         
         .progress-label {
@@ -946,7 +956,7 @@
                         <div>Clientes Satisfechos</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-value" id="totalTrees">125</div>
+                        <div class="stat-value" id="totalTrees">153</div>
                         <div>Árboles Equivalentes</div>
                     </div>
                 </div>
@@ -1013,16 +1023,19 @@
                 </div>
                 
                 <div class="impact-content">
-                    <div class="impact-value" id="impactValue">125</div>
+                    <div class="impact-value" id="impactValue">153</div>
                     <div class="impact-unit">árboles equivalentes</div>
                     
                     <div class="impact-equivalent">
-                        Equivalente a <strong>7.5 ton</strong> de CO₂ reducidas gracias a las empresas que trabajan con nosotros
+                        Equivalente a <strong>9.2 ton</strong> de CO₂ reducidas gracias a las empresas que trabajan con nosotros
+                        <div class="impact-explanation">
+                            (Cálculo: 1 árbol absorbe aproximadamente 0.06 toneladas de CO₂ al año)
+                        </div>
                     </div>
                     
                     <div class="progress-container">
-                        <div class="progress-bar" id="progressBar" style="width: 63%">
-                            <span class="progress-label">63% de la meta anual</span>
+                        <div class="progress-bar">
+                            <span class="progress-label">77% de la meta anual</span>
                         </div>
                     </div>
                     
@@ -1290,7 +1303,7 @@
                 'diagnóstico': '¡Claro! Puedes solicitar tu diagnóstico gratuito haciendo clic en el botón "Solicitá tu diagnóstico gratuito" en nuestra página principal.',
                 'agendar': '¡Perfecto! Para agendar una cita, primero dime la fecha que te vendría bien (ejemplo: 15/07/2024).',
                 'gracias': '¡De nada! ¿Hay algo más en lo que pueda ayudarte?',
-                'impacto': 'Gracias a nuestros clientes, hemos logrado un impacto positivo equivalente a 125 árboles salvados. Este valor se actualiza periódicamente con los resultados de las empresas que trabajan con nosotros.',
+                'impacto': 'El impacto positivo se mide en árboles equivalentes. Cada árbol representa la capacidad de absorber CO₂ de la atmósfera. Actualmente hemos logrado el equivalente a 153 árboles salvados, que representan una reducción de 9.2 ton de CO₂.',
                 'default': 'Gracias por tu mensaje. Un miembro de nuestro equipo te responderá pronto. ¿Hay algo más en lo que pueda ayudarte?'
             };
             
@@ -1331,7 +1344,7 @@
             if (userMessage.includes('servicio')) return responses['servicios'];
             if (userMessage.includes('contact')) return responses['contacto'];
             if (userMessage.includes('diagnóstico') || userMessage.includes('diagnostico')) return responses['diagnóstico'];
-            if (userMessage.includes('impacto') || userMessage.includes('arbol')) return responses['impacto'];
+            if (userMessage.includes('impacto') || userMessage.includes('arbol') || userMessage.includes('co2')) return responses['impacto'];
             if (userMessage.includes('gracias')) return responses['gracias'];
             
             return responses['default'];
@@ -1356,26 +1369,6 @@
                 sendMessage.click();
             }
         });
-        
-        // Simulate impact data update (in a real scenario this would come from a backend)
-        function updateImpactData() {
-            // Simulate data growth
-            const currentTrees = parseInt(document.getElementById('impactValue').textContent);
-            const newTrees = currentTrees + Math.floor(Math.random() * 5);
-            
-            // Update impact value
-            document.getElementById('impactValue').textContent = newTrees;
-            document.getElementById('totalTrees').textContent = newTrees;
-            
-            // Update progress bar
-            const progressPercentage = Math.min((newTrees / 200) * 100, 100);
-            const progressBar = document.getElementById('progressBar');
-            progressBar.style.width = progressPercentage + '%';
-            progressBar.querySelector('.progress-label').textContent = Math.round(progressPercentage) + '% de la meta anual';
-        }
-        
-        // Update impact data every 5 seconds (simulation)
-        setInterval(updateImpactData, 5000);
     </script>
 </body>
 </html>
