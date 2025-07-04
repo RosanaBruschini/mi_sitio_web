@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impacta Verde - Consultoría en Sostenibilidad Corporativa</title>
+    <!-- Favicon con logo circular con flecha -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%232e7d32'/><path d='M70 50L40 65V35z' fill='%23fff'/></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* Estilos existentes (mantenidos) */
         :root {
@@ -303,13 +303,13 @@
             color: var(--primary);
         }
         
-        /* Carbon Footprint Section */
-        .carbon-footprint {
+        /* Impact Logrado Section - MODIFICADA */
+        .impact-logrado {
             padding: 80px 0;
             background: #f0f7f0;
         }
         
-        .carbon-container {
+        .impact-container {
             max-width: 800px;
             margin: 0 auto;
             background: white;
@@ -318,121 +318,71 @@
             overflow: hidden;
         }
         
-        .carbon-header {
+        .impact-header {
             background: var(--primary);
             color: white;
             text-align: center;
             padding: 25px;
         }
         
-        .carbon-header h2 {
+        .impact-header h2 {
             font-size: 2rem;
             margin-bottom: 10px;
         }
         
-        .carbon-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            padding: 30px;
-        }
-        
-        @media (max-width: 768px) {
-            .carbon-content {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .calculator-form {
-            padding: 20px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--text-dark);
-        }
-        
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .form-group input:focus,
-        .form-group select:focus {
-            border-color: var(--primary);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
-        }
-        
-        .carbon-results {
-            background: #f9fbf9;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
+        .impact-content {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            text-align: center;
         }
         
-        .result-title {
-            color: var(--text-dark);
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        
-        .footprint-value {
-            font-size: 3.5rem;
+        .impact-value {
+            font-size: 4.5rem;
             font-weight: 800;
             color: var(--primary);
-            margin: 10px 0;
+            margin: 20px 0;
             position: relative;
             display: inline-block;
         }
         
-        .footprint-unit {
-            font-size: 1.2rem;
+        .impact-unit {
+            font-size: 1.5rem;
             font-weight: 500;
             color: var(--text-light);
             margin-left: 5px;
         }
         
-        .footprint-equivalent {
-            font-size: 1.1rem;
+        .impact-equivalent {
+            font-size: 1.2rem;
             margin: 20px 0;
             color: var(--text-dark);
+            max-width: 500px;
         }
         
-        .footprint-equivalent strong {
+        .impact-equivalent strong {
             color: var(--primary);
         }
         
         .progress-container {
             background: #e9ecef;
-            height: 16px;
-            border-radius: 8px;
+            height: 24px;
+            border-radius: 12px;
             overflow: hidden;
             margin: 20px 0;
             position: relative;
+            width: 80%;
+            max-width: 600px;
         }
         
         .progress-bar {
             height: 100%;
             background: linear-gradient(90deg, #4caf50, #2e7d32);
-            border-radius: 8px;
+            border-radius: 12px;
             width: 0;
-            transition: width 1.5s ease-in-out;
             position: relative;
+            transition: width 1.5s ease-in-out;
         }
         
         .progress-label {
@@ -441,7 +391,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             color: white;
-            font-size: 0.8rem;
+            font-size: 1rem;
             font-weight: 600;
             z-index: 2;
         }
@@ -449,16 +399,20 @@
         .progress-markers {
             display: flex;
             justify-content: space-between;
+            width: 80%;
+            max-width: 600px;
             margin-top: 5px;
             font-size: 0.85rem;
             color: var(--text-light);
         }
         
-        .carbon-comparison {
+        .impact-comparison {
             display: flex;
             justify-content: space-around;
             margin-top: 30px;
             flex-wrap: wrap;
+            width: 100%;
+            max-width: 600px;
         }
         
         .comparison-item {
@@ -746,64 +700,6 @@
             cursor: pointer;
         }
         
-        /* Appointment calendar styles */
-        .calendar-container {
-            padding: 10px;
-            background: #f9f9f9;
-            border-radius: 10px;
-            margin-top: 10px;
-        }
-        
-        .calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
-        }
-        
-        .calendar-day {
-            text-align: center;
-            padding: 5px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        .calendar-day:hover {
-            background: #e9f5e9;
-        }
-        
-        .calendar-day.selected {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .time-slots {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 5px;
-            margin-top: 10px;
-        }
-        
-        .time-slot {
-            padding: 8px;
-            background: #e9f5e9;
-            border-radius: 5px;
-            text-align: center;
-            cursor: pointer;
-            font-size: 0.85rem;
-        }
-        
-        .time-slot:hover, .time-slot.selected {
-            background: var(--primary);
-            color: white;
-        }
-        
         /* Footer */
         footer {
             background: #222;
@@ -937,6 +833,10 @@
             .mobile-menu-btn {
                 display: block;
             }
+            
+            .impact-value {
+                font-size: 3.5rem;
+            }
         }
         
         @media (max-width: 576px) {
@@ -955,6 +855,14 @@
             .chatbot-container {
                 width: 90%;
                 right: 5%;
+            }
+            
+            .impact-value {
+                font-size: 3rem;
+            }
+            
+            .impact-comparison {
+                flex-direction: column;
             }
         }
     </style>
@@ -1000,7 +908,7 @@
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#huella">Huella de Carbono</a></li>
+                    <li><a href="#impacto">Impacto Positivo</a></li>
                     <li><a href="#partner">Partner</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
@@ -1038,8 +946,8 @@
                         <div>Clientes Satisfechos</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-value">98%</div>
-                        <div>Reducción Huella</div>
+                        <div class="stat-value" id="totalTrees">125</div>
+                        <div>Árboles Equivalentes</div>
                     </div>
                 </div>
             </div>
@@ -1090,78 +998,52 @@
         </div>
     </section>
 
-    <!-- Carbon Footprint Section -->
-    <section id="huella" class="carbon-footprint">
+    <!-- Impacto Positivo Section - MODIFICADA -->
+    <section id="impacto" class="impact-logrado">
         <div class="container">
             <div class="section-title">
-                <h2>Calculadora de Huella de Carbono</h2>
-                <p>Descubre el impacto ambiental de tus actividades y cómo reducirlo</p>
+                <h2>Impacto Positivo Acumulado</h2>
+                <p>Gracias a nuestros clientes hemos logrado un impacto ambiental positivo equivalente</p>
             </div>
             
-            <div class="carbon-container">
-                <div class="carbon-header">
-                    <h2><i class="fas fa-leaf"></i> Medidor de Impacto Ambiental</h2>
-                    <p>Calcula tu huella de carbono en minutos</p>
+            <div class="impact-container">
+                <div class="impact-header">
+                    <h2><i class="fas fa-seedling"></i> Nuestra Contribución Ambiental</h2>
+                    <p>La reducción de huella de carbono se traduce en árboles equivalentes salvados</p>
                 </div>
                 
-                <div class="carbon-content">
-                    <div class="calculator-form">
-                        <div class="form-group">
-                            <label for="transport"><i class="fas fa-car"></i> Transporte (km semanales)</label>
-                            <input type="number" id="transport" min="0" value="50">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="energy"><i class="fas fa-bolt"></i> Consumo energético (kWh/mes)</label>
-                            <input type="number" id="energy" min="0" value="200">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="diet"><i class="fas fa-utensils"></i> Tipo de dieta</label>
-                            <select id="diet">
-                                <option value="vegana">Vegana</option>
-                                <option value="vegetariana">Vegetariana</option>
-                                <option value="omnivora" selected>Omnívora</option>
-                                <option value="carnivora">Carnívora</option>
-                            </select>
-                        </div>
-                        
-                        <button id="calculateBtn" class="btn">Calcular Huella</button>
+                <div class="impact-content">
+                    <div class="impact-value" id="impactValue">125</div>
+                    <div class="impact-unit">árboles equivalentes</div>
+                    
+                    <div class="impact-equivalent">
+                        Equivalente a <strong>7.5 ton</strong> de CO₂ reducidas gracias a las empresas que trabajan con nosotros
                     </div>
                     
-                    <div class="carbon-results">
-                        <h3 class="result-title">Tu Huella de Carbono Anual</h3>
-                        <div class="footprint-value">2.8<span class="footprint-unit">ton CO₂</span></div>
-                        
-                        <div class="progress-container">
-                            <div class="progress-bar" id="progressBar" style="width: 56%">
-                                <span class="progress-label">56%</span>
-                            </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progressBar" style="width: 63%">
+                            <span class="progress-label">63% de la meta anual</span>
                         </div>
-                        
-                        <div class="progress-markers">
-                            <span>Bajo</span>
-                            <span>Medio</span>
-                            <span>Alto</span>
+                    </div>
+                    
+                    <div class="progress-markers">
+                        <span>0</span>
+                        <span>100</span>
+                        <span>200</span>
+                    </div>
+                    
+                    <div class="impact-comparison">
+                        <div class="comparison-item">
+                            <div class="comparison-value">15</div>
+                            <div class="comparison-label">Empresas</div>
                         </div>
-                        
-                        <div class="footprint-equivalent">
-                            Equivalente a <strong>45 árboles</strong> necesarios para compensar
+                        <div class="comparison-item">
+                            <div class="comparison-value">8</div>
+                            <div class="comparison-label">Sectores</div>
                         </div>
-                        
-                        <div class="carbon-comparison">
-                            <div class="comparison-item">
-                                <div class="comparison-value">2,800</div>
-                                <div class="comparison-label">km en auto</div>
-                            </div>
-                            <div class="comparison-item">
-                                <div class="comparison-value">6,720</div>
-                                <div class="comparison-label">kWh energía</div>
-                            </div>
-                            <div class="comparison-item">
-                                <div class="comparison-value">1.5</div>
-                                <div class="comparison-label">vuelos</div>
-                            </div>
+                        <div class="comparison-item">
+                            <div class="comparison-value">98%</div>
+                            <div class="comparison-label">Reducción promedio</div>
                         </div>
                     </div>
                 </div>
@@ -1324,8 +1206,8 @@
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
                         <li><a href="#servicios">Servicios</a></li>
-                        <li><a href="#huella">Huella de Carbono</a></li>
-                        <li><a href="#partner">Tu Partner Sustentable</a></li>
+                        <li><a href="#impacto">Impacto Positivo</a></li>
+                        <li><a href="#partner">Partner</a></li>
                         <li><a href="#contacto">Contacto</a></li>
                     </ul>
                 </div>
@@ -1408,6 +1290,7 @@
                 'diagnóstico': '¡Claro! Puedes solicitar tu diagnóstico gratuito haciendo clic en el botón "Solicitá tu diagnóstico gratuito" en nuestra página principal.',
                 'agendar': '¡Perfecto! Para agendar una cita, primero dime la fecha que te vendría bien (ejemplo: 15/07/2024).',
                 'gracias': '¡De nada! ¿Hay algo más en lo que pueda ayudarte?',
+                'impacto': 'Gracias a nuestros clientes, hemos logrado un impacto positivo equivalente a 125 árboles salvados. Este valor se actualiza periódicamente con los resultados de las empresas que trabajan con nosotros.',
                 'default': 'Gracias por tu mensaje. Un miembro de nuestro equipo te responderá pronto. ¿Hay algo más en lo que pueda ayudarte?'
             };
             
@@ -1448,6 +1331,7 @@
             if (userMessage.includes('servicio')) return responses['servicios'];
             if (userMessage.includes('contact')) return responses['contacto'];
             if (userMessage.includes('diagnóstico') || userMessage.includes('diagnostico')) return responses['diagnóstico'];
+            if (userMessage.includes('impacto') || userMessage.includes('arbol')) return responses['impacto'];
             if (userMessage.includes('gracias')) return responses['gracias'];
             
             return responses['default'];
@@ -1473,46 +1357,25 @@
             }
         });
         
-        // Carbon Footprint Calculator
-        const calculateBtn = document.getElementById('calculateBtn');
-        const progressBar = document.getElementById('progressBar');
-        
-        calculateBtn.addEventListener('click', () => {
-            const transport = parseFloat(document.getElementById('transport').value) || 0;
-            const energy = parseFloat(document.getElementById('energy').value) || 0;
-            const diet = document.getElementById('diet').value;
+        // Simulate impact data update (in a real scenario this would come from a backend)
+        function updateImpactData() {
+            // Simulate data growth
+            const currentTrees = parseInt(document.getElementById('impactValue').textContent);
+            const newTrees = currentTrees + Math.floor(Math.random() * 5);
             
-            // Calculate footprint (simplified)
-            let footprint = 0;
-            footprint += transport * 0.05;
-            footprint += energy * 0.001;
+            // Update impact value
+            document.getElementById('impactValue').textContent = newTrees;
+            document.getElementById('totalTrees').textContent = newTrees;
             
-            if (diet === 'vegana') footprint += 1.0;
-            else if (diet === 'vegetariana') footprint += 1.5;
-            else if (diet === 'omnivora') footprint += 2.0;
-            else if (diet === 'carnivora') footprint += 3.0;
-            
-            // Calculate progress percentage (0-100)
-            const progressPercentage = Math.min(footprint / 5 * 100, 100);
-            
-            // Update UI
-            document.querySelector('.footprint-value').innerHTML = footprint.toFixed(1) + '<span class="footprint-unit">ton CO₂</span>';
+            // Update progress bar
+            const progressPercentage = Math.min((newTrees / 200) * 100, 100);
+            const progressBar = document.getElementById('progressBar');
             progressBar.style.width = progressPercentage + '%';
-            progressBar.querySelector('.progress-label').textContent = Math.round(progressPercentage) + '%';
-            
-            // Update equivalent trees
-            const trees = Math.round(footprint * 16);
-            document.querySelector('.footprint-equivalent').innerHTML = 
-                'Equivalente a <strong>' + trees + ' árboles</strong> necesarios para compensar';
-            
-            // Update comparisons
-            document.querySelectorAll('.comparison-value')[0].textContent = Math.round(footprint * 1000);
-            document.querySelectorAll('.comparison-value')[1].textContent = Math.round(footprint * 2400);
-            document.querySelectorAll('.comparison-value')[2].textContent = (footprint / 2).toFixed(1);
-        });
+            progressBar.querySelector('.progress-label').textContent = Math.round(progressPercentage) + '% de la meta anual';
+        }
         
-        // Initialize calculator with default values
-        calculateBtn.click();
+        // Update impact data every 5 seconds (simulation)
+        setInterval(updateImpactData, 5000);
     </script>
 </body>
 </html>
