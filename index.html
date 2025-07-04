@@ -3,12 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impacta Verde - Consultoría en Sostenibilidad Corporativa</title>
-    <!-- Favicon con logo circular con flecha -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%232e7d32'/><path d='M70 50L40 65V35z' fill='%23fff'/></svg>">
+    <title>Impacta Verde - Consultoría en Sostenibilidad</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Estilos existentes (mantenidos) */
         :root {
             --primary: #2e7d32;
             --primary-dark: #1b5e20;
@@ -303,19 +300,20 @@
             color: var(--primary);
         }
         
-        /* Impacto Positivo Section - MODIFICADA */
+        /* Impacto Positivo Section - REDISEÑADA */
         .impact-logrado {
             padding: 80px 0;
             background: #f0f7f0;
         }
         
         .impact-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             background: white;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             overflow: hidden;
+            position: relative;
         }
         
         .impact-header {
@@ -338,42 +336,73 @@
             text-align: center;
         }
         
+        .impact-numbers {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .impact-card {
+            background: #f5f9f5;
+            border-radius: 12px;
+            padding: 30px 40px;
+            min-width: 300px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .impact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
         .impact-value {
             font-size: 4.5rem;
             font-weight: 800;
             color: var(--primary);
-            margin: 20px 0;
-            position: relative;
-            display: inline-block;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
         }
         
         .impact-unit {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 500;
-            color: var(--text-light);
-            margin-left: 5px;
+            color: var(--text-dark);
+        }
+        
+        .trees-card {
+            border-top: 5px solid #4caf50;
+        }
+        
+        .co2-card {
+            border-top: 5px solid #2e7d32;
+        }
+        
+        .impact-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
         }
         
         .impact-equivalent {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin: 20px 0;
             color: var(--text-dark);
-            max-width: 500px;
-            background: #f5f9f5;
+            max-width: 600px;
             padding: 15px;
             border-radius: 8px;
+            background: #e8f5e9;
+            font-weight: 500;
         }
         
         .impact-equivalent strong {
             color: var(--primary);
             font-weight: 600;
-        }
-        
-        .impact-explanation {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            margin-top: 10px;
-            font-style: italic;
         }
         
         .progress-container {
@@ -602,114 +631,6 @@
             background: var(--primary-dark);
         }
         
-        /* Chatbot */
-        .chatbot-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            cursor: pointer;
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
-        
-        .chatbot-btn:hover {
-            transform: scale(1.1);
-            background: var(--primary-dark);
-        }
-        
-        .chatbot-container {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 350px;
-            height: 450px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            z-index: 100;
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-        }
-        
-        .chatbot-header {
-            background: var(--primary);
-            color: white;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .chatbot-header h3 {
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .chatbot-messages {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        .message {
-            max-width: 80%;
-            padding: 10px 15px;
-            border-radius: 15px;
-            font-size: 0.95rem;
-        }
-        
-        .message.bot {
-            background: #f0f7f0;
-            align-self: flex-start;
-            border-bottom-left-radius: 5px;
-        }
-        
-        .message.user {
-            background: var(--primary);
-            color: white;
-            align-self: flex-end;
-            border-bottom-right-radius: 5px;
-        }
-        
-        .chatbot-input {
-            padding: 15px;
-            display: flex;
-            gap: 10px;
-            border-top: 1px solid #eee;
-        }
-        
-        .chatbot-input input {
-            flex: 1;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-        }
-        
-        .chatbot-input button {
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 20px;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-        
         /* Footer */
         footer {
             background: #222;
@@ -847,6 +768,15 @@
             .impact-value {
                 font-size: 3.5rem;
             }
+            
+            .impact-numbers {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .impact-card {
+                min-width: 250px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -862,11 +792,6 @@
                 flex-direction: column;
             }
             
-            .chatbot-container {
-                width: 90%;
-                right: 5%;
-            }
-            
             .impact-value {
                 font-size: 3rem;
             }
@@ -875,31 +800,35 @@
                 flex-direction: column;
             }
         }
+        
+        /* Animaciones para la sección de impacto */
+        .impact-card {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .impact-icon {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
     </style>
 </head>
 <body>
-    <!-- Chatbot Button -->
-    <div class="chatbot-btn" id="chatbotBtn">
-        <i class="fas fa-comment-alt"></i>
-    </div>
-    
-    <!-- Chatbot Container -->
-    <div class="chatbot-container" id="chatbotContainer">
-        <div class="chatbot-header">
-            <h3><i class="fas fa-leaf"></i> EcoAsistente</h3>
-            <i class="fas fa-times" id="closeChatbot"></i>
-        </div>
-        <div class="chatbot-messages" id="chatMessages">
-            <div class="message bot">
-                ¡Hola! Soy EcoAsistente de Impacta Verde. ¿En qué puedo ayudarte?
-            </div>
-        </div>
-        <div class="chatbot-input">
-            <input type="text" id="userInput" placeholder="Escribe tu mensaje...">
-            <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
-        </div>
-    </div>
-    
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -957,7 +886,7 @@
                     </div>
                     <div class="stat-item">
                         <div class="stat-value" id="totalTrees">153</div>
-                        <div>Árboles Equivalentes</div>
+                        <div>Árboles Salvados</div>
                     </div>
                 </div>
             </div>
@@ -1008,27 +937,42 @@
         </div>
     </section>
 
-    <!-- Impacto Positivo Section - MODIFICADA -->
+    <!-- Impacto Positivo Section - REDISEÑADA -->
     <section id="impacto" class="impact-logrado">
         <div class="container">
             <div class="section-title">
                 <h2>Impacto Positivo Acumulado</h2>
-                <p>Gracias a nuestros clientes hemos logrado un impacto ambiental positivo equivalente</p>
+                <p>Gracias a nuestros clientes hemos logrado un impacto ambiental positivo</p>
             </div>
             
             <div class="impact-container">
                 <div class="impact-header">
                     <h2><i class="fas fa-seedling"></i> Nuestra Contribución Ambiental</h2>
-                    <p>La reducción de huella de carbono se traduce en árboles equivalentes salvados</p>
+                    <p>La reducción de huella de carbono se traduce en árboles salvados</p>
                 </div>
                 
                 <div class="impact-content">
-                    <div class="impact-value" id="impactValue">153</div>
-                    <div class="impact-unit">árboles equivalentes</div>
+                    <div class="impact-numbers">
+                        <div class="impact-card trees-card">
+                            <div class="impact-value">
+                                <i class="fas fa-tree impact-icon"></i>
+                                153
+                            </div>
+                            <div class="impact-unit">árboles salvados</div>
+                        </div>
+                        
+                        <div class="impact-card co2-card">
+                            <div class="impact-value">
+                                <i class="fas fa-cloud impact-icon"></i>
+                                9.2
+                            </div>
+                            <div class="impact-unit">toneladas de CO₂ reducidas</div>
+                        </div>
+                    </div>
                     
                     <div class="impact-equivalent">
-                        Equivalente a <strong>9.2 ton</strong> de CO₂ reducidas gracias a las empresas que trabajan con nosotros
-                        <div class="impact-explanation">
+                        <strong>Equivalencia:</strong> Esto representa 9.2 toneladas de CO₂ evitadas, equivalente a la absorción anual de 153 árboles
+                        <div style="font-size: 0.9rem; margin-top: 8px;">
                             (Cálculo: 1 árbol absorbe aproximadamente 0.06 toneladas de CO₂ al año)
                         </div>
                     </div>
@@ -1241,134 +1185,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navMenu = document.querySelector('nav ul');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                navMenu.classList.remove('active');
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Chatbot functionality with appointment scheduling
-        const chatbotBtn = document.getElementById('chatbotBtn');
-        const chatbotContainer = document.getElementById('chatbotContainer');
-        const closeChatbot = document.getElementById('closeChatbot');
-        const chatMessages = document.getElementById('chatMessages');
-        const userInput = document.getElementById('userInput');
-        const sendMessage = document.getElementById('sendMessage');
-        
-        chatbotBtn.addEventListener('click', () => {
-            chatbotContainer.style.display = 'flex';
-        });
-        
-        closeChatbot.addEventListener('click', () => {
-            chatbotContainer.style.display = 'none';
-        });
-        
-        function addMessage(text, isUser) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message');
-            messageDiv.classList.add(isUser ? 'user' : 'bot');
-            messageDiv.textContent = text;
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-        
-        // Appointment scheduling states
-        let appointmentStep = 0;
-        let appointmentDate = null;
-        let appointmentTime = null;
-        
-        function botResponse(userMessage) {
-            // Simple chatbot responses with appointment scheduling
-            const responses = {
-                'hola': '¡Hola! Soy EcoAsistente, tu asistente de sostenibilidad. ¿En qué puedo ayudarte hoy?',
-                'servicios': 'Ofrecemos: Formación y Talleres, Comunicación y Estrategia, Medición de Impacto, y Soluciones Tecnológicas. ¿Te interesa alguno en particular?',
-                'contacto': 'Puedes contactarnos por email: impactaverde@gmail.com o a través del formulario en nuestra sección de Contacto.',
-                'diagnóstico': '¡Claro! Puedes solicitar tu diagnóstico gratuito haciendo clic en el botón "Solicitá tu diagnóstico gratuito" en nuestra página principal.',
-                'agendar': '¡Perfecto! Para agendar una cita, primero dime la fecha que te vendría bien (ejemplo: 15/07/2024).',
-                'gracias': '¡De nada! ¿Hay algo más en lo que pueda ayudarte?',
-                'impacto': 'El impacto positivo se mide en árboles equivalentes. Cada árbol representa la capacidad de absorber CO₂ de la atmósfera. Actualmente hemos logrado el equivalente a 153 árboles salvados, que representan una reducción de 9.2 ton de CO₂.',
-                'default': 'Gracias por tu mensaje. Un miembro de nuestro equipo te responderá pronto. ¿Hay algo más en lo que pueda ayudarte?'
-            };
-            
-            userMessage = userMessage.toLowerCase();
-            
-            // Appointment scheduling flow
-            if (appointmentStep === 1) {
-                if (userMessage.match(/\d{1,2}\/\d{1,2}\/\d{4}/)) {
-                    appointmentDate = userMessage;
-                    appointmentStep = 2;
-                    addMessage('Fecha seleccionada: ' + appointmentDate + '. Ahora, ¿a qué hora te vendría bien? (Por ejemplo: 10:00, 14:30, etc.)', false);
-                    return;
-                } else {
-                    addMessage('Por favor, ingresa la fecha en formato DD/MM/AAAA. Por ejemplo: 20/07/2024', false);
-                    return;
-                }
-            }
-            
-            if (appointmentStep === 2) {
-                if (userMessage.match(/\d{1,2}:\d{2}/)) {
-                    appointmentTime = userMessage;
-                    appointmentStep = 0;
-                    addMessage('¡Perfecto! Tu cita ha sido agendada para el ' + appointmentDate + ' a las ' + appointmentTime + '. Te enviaremos un correo de confirmación. ¿Hay algo más en lo que pueda ayudarte?', false);
-                    return;
-                } else {
-                    addMessage('Por favor, ingresa la hora en formato HH:MM (por ejemplo: 14:30).', false);
-                    return;
-                }
-            }
-            
-            if (userMessage.includes('agendar') || userMessage.includes('cita')) {
-                appointmentStep = 1;
-                addMessage(responses['agendar'], false);
-                return;
-            }
-            
-            if (userMessage.includes('hola')) return responses['hola'];
-            if (userMessage.includes('servicio')) return responses['servicios'];
-            if (userMessage.includes('contact')) return responses['contacto'];
-            if (userMessage.includes('diagnóstico') || userMessage.includes('diagnostico')) return responses['diagnóstico'];
-            if (userMessage.includes('impacto') || userMessage.includes('arbol') || userMessage.includes('co2')) return responses['impacto'];
-            if (userMessage.includes('gracias')) return responses['gracias'];
-            
-            return responses['default'];
-        }
-        
-        sendMessage.addEventListener('click', () => {
-            const message = userInput.value.trim();
-            if (message) {
-                addMessage(message, true);
-                userInput.value = '';
-                
-                // Simulate bot thinking
-                setTimeout(() => {
-                    const response = botResponse(message);
-                    addMessage(response, false);
-                }, 1000);
-            }
-        });
-        
-        userInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage.click();
-            }
-        });
-    </script>
 </body>
 </html>
