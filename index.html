@@ -8,7 +8,6 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%232e7d32'/><path d='M70 50L40 65V35z' fill='%23fff'/></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Estilos anteriores (mantenidos) */
         :root {
             --primary: #2e7d32;
             --primary-dark: #1b5e20;
@@ -16,6 +15,8 @@
             --light: #f5f9f5;
             --dark: #333;
             --accent: #4caf50;
+            --sello-light: #4caf50;
+            --sello-medium: #388e3c;
             --text-dark: #2c3e50;
             --text-light: #7f8c8d;
         }
@@ -303,9 +304,9 @@
             color: var(--primary);
         }
         
-        /* Sección del Sello Digital */
+        /* Sección del Sello Digital - ACTUALIZADA */
         .sello-section {
-            background: linear-gradient(135deg, #2e7d32, #1b5e20);
+            background: linear-gradient(135deg, var(--sello-light), var(--sello-medium));
             padding: 80px 0;
             color: white;
             text-align: center;
@@ -362,7 +363,7 @@
             flex: 1;
         }
         
-        /* Impacto Positivo Section - REDISEÑADA */
+        /* Impacto Positivo Section */
         .impact-logrado {
             padding: 80px 0;
             background: #f0f7f0;
@@ -1226,7 +1227,7 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services Section - ACTUALIZADA -->
     <section id="servicios" class="services">
         <div class="container">
             <div class="section-title">
@@ -1267,24 +1268,24 @@
                     <p>Herramientas digitales para reducir consumo de recursos y optimizar procesos. Ahorros medibles que ayudan a mantenerse dentro de los topes MiPyME 2025.</p>
                 </div>
                 
-                <!-- Nueva categoría para ONGs y fundaciones -->
+                <!-- Categoría actualizada -->
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-hands-helping"></i>
                     </div>
-                    <h3>Impacto Social y Ambiental para ONGs</h3>
-                    <p>Soluciones especializadas para fundaciones, asociaciones civiles y cooperativas: medición de impacto, estrategias de sostenibilidad y acceso a financiamiento verde.</p>
+                    <h3>Impacto Social y Ambiental para Organizaciones del sector público y social</h3>
+                    <p>Soluciones especializadas para instituciones públicas, fundaciones y asociaciones civiles: medición de impacto, estrategias de sostenibilidad y acceso a financiamiento verde.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección del Sello Digital -->
+    <!-- Sección del Sello Digital - ACTUALIZADA -->
     <section id="sello" class="sello-section">
         <div class="container">
             <div class="section-title">
                 <h2 style="color: white;">Sello Digital de Compromiso con la Sostenibilidad</h2>
-                <p>Distinción exclusiva para organizaciones que demuestran un compromiso real con el medio ambiente</p>
+                <p style="color: rgba(255, 255, 255, 0.9);">Distinción para organizaciones que demuestran un compromiso real con el medio ambiente</p>
             </div>
             
             <div class="sello-content">
@@ -1293,7 +1294,7 @@
                         <i class="fas fa-leaf"></i>
                     </div>
                     <h3>Tu Certificación de Impacto Positivo</h3>
-                    <p>Este sello digital reconoce oficialmente tu compromiso con prácticas sostenibles y te permite:</p>
+                    <p style="color: rgba(255, 255, 255, 0.95);">Este sello digital reconoce tu compromiso con prácticas sostenibles y te permite:</p>
                     
                     <div class="sello-features">
                         <div class="sello-feature">
@@ -1310,7 +1311,7 @@
                         </div>
                     </div>
                     
-                    <p style="margin-top: 25px; font-weight: 500;">Obtén tu sello digital al completar nuestro diagnóstico de sostenibilidad</p>
+                    <p style="margin-top: 25px; font-weight: 500; color: rgba(255, 255, 255, 0.95);">Obtén tu sello digital al completar nuestro diagnóstico de sostenibilidad</p>
                     <a href="#contacto" class="btn btn-light" style="margin-top: 15px;">Solicitar mi sello</a>
                 </div>
             </div>
@@ -1557,7 +1558,7 @@
                         <li><a href="#servicios">Comunicación y Estrategia</a></li>
                         <li><a href="#servicios">Diagnóstico MiPyME Sostenible</a></li>
                         <li><a href="#servicios">Soluciones Tecnológicas</a></li>
-                        <li><a href="#servicios">Impacto Social para ONGs</a></li>
+                        <li><a href="#servicios">Impacto Social para Organizaciones</a></li>
                     </ul>
                 </div>
             </div>
@@ -1652,9 +1653,9 @@
                           '📢 Comunicación y Estrategia de Marca Sostenible\n' +
                           '📊 Diagnóstico MiPyME Sostenible\n' +
                           '💻 Soluciones Tecnológicas Sostenibles\n' +
-                          '🤝 Impacto Social para ONGs\n\n' +
+                          '🤝 Impacto Social para Organizaciones\n\n' +
                           '¿Te gustaría conocer más sobre alguno en particular?',
-                    quickReplies: ['Formación', 'Comunicación', 'Diagnóstico', 'Tecnología', 'ONGs']
+                    quickReplies: ['Formación', 'Comunicación', 'Diagnóstico', 'Tecnología', 'Organizaciones']
                 },
                 'contacto': {
                     text: 'Puedes contactarnos de las siguientes formas:\n\n' +
@@ -1669,8 +1670,8 @@
                 'sello': {
                     text: 'Nuestro Sello Digital de Compromiso con la Sostenibilidad se obtiene al completar nuestro diagnóstico básico. Este sello certifica tu compromiso ambiental y te ayuda a acceder a beneficios.'
                 },
-                'ongs': {
-                    text: 'Ofrecemos servicios especializados para fundaciones, ONGs y asociaciones civiles, incluyendo medición de impacto social, estrategias de sostenibilidad y acceso a financiamiento verde.'
+                'organizaciones': {
+                    text: 'Ofrecemos servicios especializados para instituciones públicas, fundaciones y asociaciones civiles, incluyendo medición de impacto social, estrategias de sostenibilidad y acceso a financiamiento verde.'
                 },
                 'agendar': {
                     text: '¡Perfecto! Para agendar una cita, por favor dime la fecha que te vendría bien (ejemplo: 15/07/2024).',
@@ -1737,8 +1738,8 @@
             if (userMessage.includes('sello') || userMessage.includes('certificación')) 
                 return responses['sello'];
             
-            if (userMessage.includes('ong') || userMessage.includes('fundación') || userMessage.includes('asociación civil')) 
-                return responses['ongs'];
+            if (userMessage.includes('organizacion') || userMessage.includes('sector público') || userMessage.includes('asociación civil')) 
+                return responses['organizaciones'];
             
             if (userMessage.includes('agendar') || userMessage.includes('cita') || userMessage.includes('reunión')) 
                 return responses['agendar'];
