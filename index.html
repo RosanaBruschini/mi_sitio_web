@@ -303,6 +303,65 @@
             color: var(--primary);
         }
         
+        /* Sección del Sello Digital */
+        .sello-section {
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .sello-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .sello-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 600px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .sello-image {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 25px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid var(--secondary);
+            animation: pulse 2s infinite;
+        }
+        
+        .sello-image i {
+            font-size: 4rem;
+            color: var(--primary);
+        }
+        
+        .sello-features {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .sello-feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
+            border-radius: 8px;
+            min-width: 200px;
+            flex: 1;
+        }
+        
         /* Impacto Positivo Section - REDISEÑADA */
         .impact-logrado {
             padding: 80px 0;
@@ -780,6 +839,10 @@
             .impact-card {
                 min-width: 250px;
             }
+            
+            .sello-features {
+                flex-direction: column;
+            }
         }
         
         @media (max-width: 576px) {
@@ -802,6 +865,10 @@
             .impact-comparison {
                 flex-direction: column;
             }
+            
+            .sello-box {
+                padding: 25px;
+            }
         }
         
         /* Animaciones para la sección de impacto */
@@ -820,13 +887,13 @@
             }
         }
         
-        .impact-icon {
+        .impact-icon, .sello-image {
             animation: pulse 2s infinite;
         }
         
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
 
@@ -1094,7 +1161,6 @@
         </div>
     </div>
 
-    <!-- Resto del código HTML (mantenido) -->
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -1113,7 +1179,8 @@
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#impacto">Impacto Positivo</a></li>
+                    <li><a href="#sello">Sello Digital</a></li>
+                    <li><a href="#impacto">Impacto</a></li>
                     <li><a href="#partner">Partner</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
@@ -1124,8 +1191,8 @@
     <!-- Hero Section -->
     <section id="inicio" class="hero">
         <div class="container">
-            <h1>Transformá tu empresa con tecnología, innovación y sostenibilidad.</h1>
-            <p>Medimos, diseñamos y ejecutamos soluciones simples y de alto impacto para que tu institución genere valor mientras reduce su huella ambiental.</p>
+            <h1>Transformá tu organización con tecnología, innovación y sostenibilidad.</h1>
+            <p>Medimos, diseñamos y ejecutamos soluciones simples y de alto impacto para que tu empresa o institución genere valor mientras reduce su huella ambiental.</p>
             <a href="#contacto" class="btn">Solicitá tu diagnóstico gratuito</a>
         </div>
     </section>
@@ -1164,7 +1231,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Nuestros Servicios</h2>
-                <p>Soluciones integrales para la sostenibilidad empresarial</p>
+                <p>Soluciones integrales para la sostenibilidad organizacional</p>
             </div>
             
             <div class="services-grid">
@@ -1189,7 +1256,7 @@
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <h3>Diagnóstico MiPyME Sostenible</h3>
-                    <p>Diagnóstico básico para identificar oportunidades de mejora ambiental y ahorro de costos. Con el diagnóstico se obtiene el Sello digital de Compromiso con la Sostenibilidad, clave para mantener el Certificado MiPyME y acceder a beneficios.</p>
+                    <p>Diagnóstico básico para identificar oportunidades de mejora ambiental y ahorro de costos. Con el diagnóstico se obtiene el Sello digital de Compromiso con la Sostenibilidad.</p>
                 </div>
                 
                 <div class="service-card">
@@ -1199,11 +1266,58 @@
                     <h3>Soluciones Tecnológicas Sostenibles</h3>
                     <p>Herramientas digitales para reducir consumo de recursos y optimizar procesos. Ahorros medibles que ayudan a mantenerse dentro de los topes MiPyME 2025.</p>
                 </div>
+                
+                <!-- Nueva categoría para ONGs y fundaciones -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Impacto Social y Ambiental para ONGs</h3>
+                    <p>Soluciones especializadas para fundaciones, asociaciones civiles y cooperativas: medición de impacto, estrategias de sostenibilidad y acceso a financiamiento verde.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Impacto Positivo Section - REDISEÑADA -->
+    <!-- Sección del Sello Digital -->
+    <section id="sello" class="sello-section">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">Sello Digital de Compromiso con la Sostenibilidad</h2>
+                <p>Distinción exclusiva para organizaciones que demuestran un compromiso real con el medio ambiente</p>
+            </div>
+            
+            <div class="sello-content">
+                <div class="sello-box">
+                    <div class="sello-image">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Tu Certificación de Impacto Positivo</h3>
+                    <p>Este sello digital reconoce oficialmente tu compromiso con prácticas sostenibles y te permite:</p>
+                    
+                    <div class="sello-features">
+                        <div class="sello-feature">
+                            <i class="fas fa-check-circle"></i> Demostrar tu compromiso ambiental
+                        </div>
+                        <div class="sello-feature">
+                            <i class="fas fa-check-circle"></i> Acceder a beneficios fiscales
+                        </div>
+                        <div class="sello-feature">
+                            <i class="fas fa-check-circle"></i> Mejorar tu posicionamiento
+                        </div>
+                        <div class="sello-feature">
+                            <i class="fas fa-check-circle"></i> Atraer nuevos clientes
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 25px; font-weight: 500;">Obtén tu sello digital al completar nuestro diagnóstico de sostenibilidad</p>
+                    <a href="#contacto" class="btn btn-light" style="margin-top: 15px;">Solicitar mi sello</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impacto Positivo Section -->
     <section id="impacto" class="impact-logrado">
         <div class="container">
             <div class="section-title">
@@ -1429,7 +1543,8 @@
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
                         <li><a href="#servicios">Servicios</a></li>
-                        <li><a href="#impacto">Impacto Positivo</a></li>
+                        <li><a href="#sello">Sello Digital</a></li>
+                        <li><a href="#impacto">Impacto</a></li>
                         <li><a href="#partner">Partner</a></li>
                         <li><a href="#contacto">Contacto</a></li>
                     </ul>
@@ -1442,6 +1557,7 @@
                         <li><a href="#servicios">Comunicación y Estrategia</a></li>
                         <li><a href="#servicios">Diagnóstico MiPyME Sostenible</a></li>
                         <li><a href="#servicios">Soluciones Tecnológicas</a></li>
+                        <li><a href="#servicios">Impacto Social para ONGs</a></li>
                     </ul>
                 </div>
             </div>
@@ -1535,9 +1651,10 @@
                           '🌿 Formación y Talleres\n' +
                           '📢 Comunicación y Estrategia de Marca Sostenible\n' +
                           '📊 Diagnóstico MiPyME Sostenible\n' +
-                          '💻 Soluciones Tecnológicas Sostenibles\n\n' +
+                          '💻 Soluciones Tecnológicas Sostenibles\n' +
+                          '🤝 Impacto Social para ONGs\n\n' +
                           '¿Te gustaría conocer más sobre alguno en particular?',
-                    quickReplies: ['Formación', 'Comunicación', 'Diagnóstico', 'Tecnología']
+                    quickReplies: ['Formación', 'Comunicación', 'Diagnóstico', 'Tecnología', 'ONGs']
                 },
                 'contacto': {
                     text: 'Puedes contactarnos de las siguientes formas:\n\n' +
@@ -1548,6 +1665,12 @@
                 },
                 'diagnóstico': {
                     text: '¡Claro! Puedes solicitar tu diagnóstico gratuito haciendo clic en el botón "Solicitá tu diagnóstico gratuito" en nuestra página principal o visitando la sección de contacto.'
+                },
+                'sello': {
+                    text: 'Nuestro Sello Digital de Compromiso con la Sostenibilidad se obtiene al completar nuestro diagnóstico básico. Este sello certifica tu compromiso ambiental y te ayuda a acceder a beneficios.'
+                },
+                'ongs': {
+                    text: 'Ofrecemos servicios especializados para fundaciones, ONGs y asociaciones civiles, incluyendo medición de impacto social, estrategias de sostenibilidad y acceso a financiamiento verde.'
                 },
                 'agendar': {
                     text: '¡Perfecto! Para agendar una cita, por favor dime la fecha que te vendría bien (ejemplo: 15/07/2024).',
@@ -1610,6 +1733,12 @@
             
             if (userMessage.includes('diagnóstico') || userMessage.includes('diagnostico')) 
                 return responses['diagnóstico'];
+            
+            if (userMessage.includes('sello') || userMessage.includes('certificación')) 
+                return responses['sello'];
+            
+            if (userMessage.includes('ong') || userMessage.includes('fundación') || userMessage.includes('asociación civil')) 
+                return responses['ongs'];
             
             if (userMessage.includes('agendar') || userMessage.includes('cita') || userMessage.includes('reunión')) 
                 return responses['agendar'];
