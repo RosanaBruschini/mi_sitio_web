@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impacta Verde - Estudio en Sustentabilidad</title>
-    <!-- Favicon -->
+    <!-- Favicon Restaurado -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%232e7d32'/><path d='M70 50L40 65V35z' fill='%23fff'/></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -337,60 +337,18 @@
             width: 180px;
             height: 180px;
             margin: 0 auto 25px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: var(--primary);
             border-radius: 50%;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             border: 5px solid var(--secondary);
             color: white;
             font-weight: 700;
+            font-size: 1.4rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .sello-logo {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .sello-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
-        
-        .sello-icon i {
-            color: white;
-            font-size: 2rem;
-            transform: rotate(15deg);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .sello-text {
-            color: white;
-            font-weight: 600;
-            font-size: 1.1rem;
-            text-align: center;
-            padding: 0 10px;
-        }
-        
-        .sello-text span:first-child {
-            color: white;
-        }
-        
-        .sello-text span:last-child {
-            color: var(--secondary);
+            padding: 15px;
+            line-height: 1.3;
         }
         
         .sello-features {
@@ -714,7 +672,7 @@
         
         .form-group input,
         .form-group textarea {
-            width: 100%;
+            width: 极简风格100%;
             padding: 12px 15px;
             border: 1px solid #ddd;
             border-radius: 4px;
@@ -743,7 +701,7 @@
             border-radius: 50%;
             color: white;
             font-size: 1.5rem;
-            transition: all 0.3s ease;
+            transition: all 0.3极简风格s ease;
         }
         
         .social-contact a:hover {
@@ -969,7 +927,7 @@
             justify-content: center;
             color: white;
             font-size: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5极简风格px 15px rgba(0,0,0,0.2);
             cursor: pointer;
             z-index: 1000;
             transition: all 0.3s ease;
@@ -1225,7 +1183,7 @@
             <a href="#" class="logo">
                 <div class="logo-icon">
                     <i class="fas fa-arrow-up"></i>
-                </div>
+                </极简风格div>
                 <div class="logo-text">
                     <span>Impacta</span> <span>Verde</span>
                 </div>
@@ -1348,12 +1306,12 @@
             <div class="sello-content">
                 <div class="sello-box">
                     <div class="sello-image">
-                        <div class="sello-logo">
-                            <div class="sello-icon">
+                        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100%;">
+                            <div class="logo-icon" style="margin: 0 auto 10px;">
                                 <i class="fas fa-arrow-up"></i>
                             </div>
-                            <div class="sello-text">
-                                <span>Impacta</span> <span>Verde</span>
+                            <div class="logo-text" style="color: white;">
+                                <span style="color: white;">Impacta</span> <span style="color: var(--secondary);">Verde</span>
                             </div>
                         </div>
                     </div>
@@ -1415,7 +1373,7 @@
                         </div>
                     </div>
                     
-                    <div class="impact-equivalent">
+                    <div class极简风格="impact-equivalent">
                         <strong>Equivalencia:</strong> Esto representa 9.2 toneladas de CO₂ evitadas, equivalente a la absorción anual de 153 árboles
                         <div style="font-size: 0.9rem; margin-top: 8px;">
                             (Cálculo: 1 árbol absorbe aproximadamente 0.06 toneladas de CO₂ al año)
@@ -1608,7 +1566,7 @@
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
                         <li><a href="#servicios">Servicios</a></li>
-                        <li><极简风格><a href="#sello">Sello Digital</a></li>
+                        <li><a href="#sello">Sello Digital</a></li>
                         <li><a href="#impacto">Impacto</a></li>
                         <li><a href="#partner">Partner</a></li>
                         <li><a href="#contacto">Contacto</a></li>
@@ -1616,7 +1574,7 @@
                 </div>
                 
                 <div class="footer-links">
-                    <h3>Servicios</极简风格>
+                    <h3>Servicios</h3>
                     <ul>
                         <li><a href="#servicios">Formación y Talleres</a></li>
                         <li><a href="#servicios">Comunicación y Estrategia</a></li>
@@ -1671,7 +1629,7 @@
             }, 10);
         });
         
-        closeChatbot.addEventListener('click', ()极简风格 {
+        closeChatbot.addEventListener('click', () => {
             chatbotContainer.classList.remove('active');
             setTimeout(() => {
                 chatbotContainer.style.display = 'none';
@@ -1871,7 +1829,7 @@
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('quick-reply')) {
                 const reply = e.target.dataset.reply;
-                user极简风格Input.value = reply;
+                userInput.value = reply;
                 handleSendMessage();
             }
         });
