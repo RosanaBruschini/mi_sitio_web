@@ -1,1682 +1,1805 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impacta Verde - Estudio en Sustentabilidad</title>
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%232e7d32'/><path d='M70 50L40 65V35z' fill='%23fff'/></svg>">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #2e7d32;
-            --primary-dark: #1b5e20;
-            --secondary: #ff9800;
-            --light: #f5f9f5;
-            --dark: #333;
-            --accent: #4caf50;
-            --sello-light: #4caf50;
-            --sello-medium: #388e3c;
-            --text-dark: #2c3e50;
-            --text-light: #7f8c8d;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            color: var(--text-dark);
-            line-height: 1.6;
-            background-color: #f9f9f9;
-        }
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin: 10px 5px;
-            border: none;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        .btn-secondary {
-            background: var(--secondary);
-        }
-        .btn-secondary:hover {
-            background: #e68a00;
-        }
-        .btn-light {
-            background: white;
-            color: var(--primary);
-        }
-        /* Header */
-        header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-        }
-        .logo-icon i {
-            color: white;
-            font-size: 1.8rem;
-            transform: rotate(45deg);
-        }
-        .logo-text {
-            font-weight: 700;
-        }
-        .logo-text span:first-child {
-            color: var(--text-dark);
-        }
-        .logo-text span:last-child {
-            color: var(--primary);
-        }
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        nav ul li {
-            margin-left: 25px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        nav ul li a:hover {
-            color: var(--primary);
-        }
-        nav ul li a::after {
-            content: "";
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: all 0.3s ease;
-        }
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark);
-        }
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-            color: white;
-            text-align: center;
-            padding: 180px 0 100px;
-            margin-top: 0;
-        }
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            line-height: 1.3;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-        }
-        /* Stats Section */
-        .stats {
-            background: var(--light);
-            padding: 60px 0;
-            text-align: center;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            max-width: 600px;
-            margin: 30px auto;
-        }
-        .stat-item {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-        .stat-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        .stat-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        .mission-text {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .mission-text h3 {
-            color: var(--primary);
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
-        .mission-text p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-        /* Services Section */
-        .services {
-            padding: 80px 0;
-            background: white;
-        }
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .section-title h2 {
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        .section-title p {
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .service-card {
-            text-align: center;
-            padding: 40px 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            background: white;
-        }
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        .service-icon {
-            font-size: 3.5rem;
-            color: var(--primary);
-            margin-bottom: 25px;
-        }
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-        /* Sección del Sello Digital - ACTUALIZADA */
-        .sello-section {
-            background: #f0f7f0; /* Fondo claro similar a partner */
-            padding: 80px 0;
-            color: var(--text-dark);
-            text-align: center;
-        }
-        .sello-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .sello-box {
-            background: white;
-            border-radius: 15px;
-            padding: 40px;
-            margin: 40px auto;
-            max-width: 600px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-        }
-        .sello-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-        }
-        .sello-image {
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 25px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 5px solid var(--secondary);
-            color: white;
-            font-weight: 700;
-            font-size: 1.4rem;
-            text-align: center;
-            padding: 15px;
-            line-height: 1.3;
-        }
-        .sello-features {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .sello-feature {
-            background: #e8f5e9;
-            padding: 15px 20px;
-            border-radius: 8px;
-            min-width: 200px;
-            flex: 1;
-            transition: all 0.3s ease;
-        }
-        .sello-feature:hover {
-            background: #d0ebd2;
-            transform: translateY(-3px);
-        }
-        .sello-feature i {
-            color: var(--primary);
-            margin-right: 8px;
-        }
-        /* Impacto Positivo Section */
-        .impact-logrado {
-            padding: 80px 0;
-            background: #f0f7f0;
-        }
-        .impact-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            overflow: hidden;
-            position: relative;
-        }
-        .impact-header {
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 25px;
-        }
-        .impact-header h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        .impact-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 30px;
-            text-align: center;
-        }
-        .impact-numbers {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-        .impact-card {
-            background: #f5f9f5;
-            border-radius: 12px;
-            padding: 30px 40px;
-            min-width: 300px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        .impact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        .impact-value {
-            font-size: 4.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin: 15px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-        .impact-unit {
-            font-size: 1.4rem;
-            font-weight: 500;
-            color: var(--text-dark);
-        }
-        .trees-card {
-            border-top: 5px solid #4caf50;
-        }
-        .co2-card {
-            border-top: 5px solid #2e7d32;
-        }
-        .impact-icon {
-            font-size: 3.5rem;
-            color: var(--primary);
-        }
-        .impact-equivalent {
-            font-size: 1.1rem;
-            margin: 20px 0;
-            color: var(--text-dark);
-            max-width: 600px;
-            padding: 15px;
-            border-radius: 8px;
-            background: #e8f5e9;
-            font-weight: 500;
-        }
-        .impact-equivalent strong {
-            color: var(--primary);
-            font-weight: 600;
-        }
-        .progress-container {
-            background: #e9ecef;
-            height: 24px;
-            border-radius: 12px;
-            overflow: hidden;
-            margin: 20px 0;
-            position: relative;
-            width: 80%;
-            max-width: 600px;
-        }
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, #4caf50, #2e7d32);
-            border-radius: 12px;
-            width: 63%;
-            position: relative;
-        }
-        .progress-label {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            z-index: 2;
-        }
-        .progress-markers {
-            display: flex;
-            justify-content: space-between;
-            width: 80%;
-            max-width: 600px;
-            margin-top: 5px;
-            font-size: 0.85rem;
-            color: var(--text-light);
-        }
-        .impact-comparison {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 30px;
-            flex-wrap: wrap;
-            width: 100%;
-            max-width: 600px;
-        }
-        .comparison-item {
-            text-align: center;
-            padding: 15px;
-            background: #e8f5e9;
-            border-radius: 8px;
-            margin: 5px;
-            flex: 1;
-            min-width: 120px;
-        }
-        .comparison-value {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 5px 0;
-        }
-        .comparison-label {
-            font-size: 0.85rem;
-            color: var(--text-dark);
-        }
-        /* Partner Section */
-        .partner {
-            background: #f0f7f0;
-            padding: 80px 0;
-            color: var(--text-dark);
-        }
-        .partner-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-        .benefit-item {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        .benefit-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        .benefit-item i {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-        /* Testimonials */
-        .testimonials {
-            padding: 80px 0;
-            background: var(--light);
-            text-align: center;
-        }
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .testimonial-card {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            text-align: left;
-            position: relative;
-        }
-        .testimonial-card::before {
-            content: """;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 5rem;
-            color: var(--primary);
-            opacity: 0.1;
-            font-family: Georgia, serif;
-            line-height: 1;
-        }
-        .client-logo {
-            width: 80px;
-            height: 80px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-        }
-        /* Contact Section */
-        .contact {
-            padding: 80px 0;
-            background: white;
-        }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-        .contact-form {
-            background: var(--light);
-            padding: 30px;
-            border-radius: 8px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
-        }
-        .social-contact {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-            justify-content: center;
-        }
-        .social-contact a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            border-radius: 50%;
-            color: white;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        .social-contact a:hover {
-            transform: translateY(-5px);
-            background: var(--primary-dark);
-        }
-        /* Footer */
-        footer {
-            background: #222;
-            color: white;
-            padding: 60px 0 30px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        .footer-info h3 {
-            color: var(--secondary);
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-        .contact-info p {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        .contact-info i {
-            margin-right: 10px;
-            width: 20px;
-            color: var(--secondary);
-        }
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .social-links a:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
-        }
-        .footer-links h3 {
-            color: var(--secondary);
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-        .footer-links ul {
-            list-style: none;
-        }
-        .footer-links ul li {
-            margin-bottom: 10px;
-        }
-        .footer-links ul li a {
-            color: #ddd;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .footer-links ul li a:hover {
-            color: var(--secondary);
-            padding-left: 5px;
-        }
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.6);
-        }
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-        }
-        @media (max-width: 768px) {
-            .hero {
-                padding: 150px 0 80px;
-            }
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            .hero p {
-                font-size: 1rem;
-            }
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                padding: 20px 0;
-                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-            }
-            nav ul.active {
-                display: flex;
-            }
-            nav ul li {
-                margin: 12px 0;
-                text-align: center;
-            }
-            .mobile-menu-btn {
-                display: block;
-            }
-            .impact-value {
-                font-size: 3.5rem;
-            }
-            .impact-numbers {
-                flex-direction: column;
-                gap: 20px;
-            }
-            .impact-card {
-                min-width: 250px;
-            }
-            .sello-features {
-                flex-direction: column;
-            }
-        }
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 1.6rem;
-            }
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            .cta-buttons {
-                flex-direction: column;
-            }
-            .impact-value {
-                font-size: 3rem;
-            }
-            .impact-comparison {
-                flex-direction: column;
-            }
-            .sello-box {
-                padding: 25px;
-            }
-        }
-        /* Animaciones para la sección de impacto */
-        .impact-card {
-            animation: fadeInUp 0.8s ease-out;
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .impact-icon, .sello-image {
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-        /* Chatbot Mejorado */
-        .chatbot-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            animation: pulse-chat 2s infinite;
-        }
-        .chatbot-btn:hover {
-            transform: scale(1.1);
-            background: var(--primary-dark);
-        }
-        @keyframes pulse-chat {
-            0% {
-                box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
-            }
-            50% {
-                box-shadow: 0 5px 20px rgba(46, 125, 50, 0.6);
-            }
-            100% {
-                box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
-            }
-        }
-        .chatbot-container {
-            position: fixed;
-            bottom: 110px;
-            right: 30px;
-            width: 380px;
-            height: 500px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            z-index: 1000;
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        .chatbot-container.active {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        .chatbot-header {
-            background: var(--primary);
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .chatbot-header h3 {
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-        }
-        .chatbot-header .close-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .chatbot-header .close-btn:hover {
-            transform: rotate(90deg);
-        }
-        .chatbot-messages {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            background: #f9fbf9;
-        }
-        .message {
-            max-width: 85%;
-            padding: 12px 16px;
-            border-radius: 18px;
-            font-size: 0.95rem;
-            line-height: 1.4;
-            position: relative;
-            animation: messageAppear 0.3s ease-out;
-        }
-        @keyframes messageAppear {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .message.bot {
-            background: white;
-            align-self: flex-start;
-            border-bottom-left-radius: 5px;
-            border: 1px solid #e0e0e0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .message.bot::before {
-            content: "EcoAsistente";
-            position: absolute;
-            top: -18px;
-            left: 0;
-            font-size: 0.75rem;
-            color: #7f8c8d;
-            font-weight: 500;
-        }
-        .message.user {
-            background: var(--primary);
-            color: white;
-            align-self: flex-end;
-            border-bottom-right-radius: 5px;
-        }
-        .chatbot-input-container {
-            padding: 15px;
-            display: flex;
-            gap: 10px;
-            border-top: 1px solid #eee;
-            background: white;
-        }
-        .chatbot-input {
-            flex: 1;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 25px;
-            font-size: 1rem;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-        .chatbot-input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
-        }
-        .chatbot-send-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            padding: 12px 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .chatbot-send-btn:hover {
-            background: var(--primary-dark);
-        }
-        .typing-indicator {
-            display: none;
-            align-self: flex-start;
-            background: white;
-            padding: 12px 16px;
-            border-radius: 18px;
-            border: 1px solid #e0e0e0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .typing-indicator span {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: #7f8c8d;
-            border-radius: 50%;
-            margin: 0 2px;
-            animation: typing 1.4s infinite ease-in-out;
-        }
-        .typing-indicator span:nth-child(1) {
-            animation-delay: 0s;
-        }
-        .typing-indicator span:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        .typing-indicator span:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-        @keyframes typing {
-            0%, 60%, 100% {
-                transform: translateY(0);
-            }
-            30% {
-                transform: translateY(-5px);
-            }
-        }
-        .quick-replies {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 10px;
-        }
-        .quick-reply {
-            background: #e8f5e9;
-            color: var(--primary);
-            border: none;
-            border-radius: 20px;
-            padding: 8px 15px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .quick-reply:hover {
-            background: #d0ebd2;
-        }
-        
-        /* Logo en sección sello (nuevo) */
-        .sello-image {
-            flex-direction: column;
-            color: inherit;
-            font-weight: normal;
-            font-size: initial;
-        }
-        .sello-image .sello-logo {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .sello-image .sello-logo-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
-        .sello-image .sello-logo-icon i {
-            color: white;
-            font-size: 1.8rem;
-            transform: rotate(45deg);
-        }
-        .sello-image .sello-logo-text {
-            font-weight: 700;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 0.9rem;
-            line-height: 1.2;
-        }
-        .sello-image .sello-logo-text span:first-child {
-            color: var(--text-dark);
-        }
-        .sello-image .sello-logo-text span:last-child {
-            color: var(--primary);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impacta Verde - Estudio en Sustentabilidad</title>
+  
+  <!-- Favicon actualizado con hoja verde -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --primary-dark: #1b5e20;
+      --secondary: #ff9800;
+      --light: #f5f9f5;
+      --dark: #333;
+      --accent: #4caf50;
+      --sello-light: #4caf50;
+      --sello-medium: #388e3c;
+      --text-dark: #2c3e50;
+      --text-light: #7f8c8d;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      color: var(--text-dark);
+      line-height: 1.6;
+      background-color: #f9f9f9;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin: 10px 5px;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    
+    .btn-secondary {
+      background: var(--secondary);
+    }
+    
+    .btn-secondary:hover {
+      background: #e68a00;
+    }
+    
+    .btn-light {
+      background: white;
+      color: var(--primary);
+    }
+    
+    /* Header */
+    header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+    }
+    
+    .logo-icon i {
+      color: white;
+      font-size: 1.8rem;
+      transform: rotate(45deg);
+    }
+    
+    .logo-text {
+      font-weight: 700;
+    }
+    
+    .logo-text span:first-child {
+      color: var(--text-dark);
+    }
+    
+    .logo-text span:last-child {
+      color: var(--primary);
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav ul li {
+      margin-left: 25px;
+    }
+    
+    nav ul li a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    nav ul li a:hover {
+      color: var(--primary);
+    }
+    
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: all 0.3s ease;
+    }
+    
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--dark);
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 180px 0 100px;
+      margin-top: 0;
+    }
+    
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      line-height: 1.3;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+    
+    /* Stats Section */
+    .stats {
+      background: var(--light);
+      padding: 60px 0;
+      text-align: center;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      max-width: 600px;
+      margin: 30px auto;
+    }
+    
+    .stat-item {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .stat-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+    
+    .mission-text {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .mission-text h3 {
+      color: var(--primary);
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    
+    .mission-text p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+    
+    /* Services Section */
+    .services {
+      padding: 80px 0;
+      background: white;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    
+    .section-title p {
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .service-card {
+      text-align: center;
+      padding: 40px 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      background: white;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .service-icon {
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 25px;
+    }
+    
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+    
+    /* Sección del Sello Digital - ACTUALIZADA */
+    .sello-section {
+      background: #f0f7f0; /* Fondo claro similar a partner */
+      padding: 80px 0;
+      color: var(--text-dark);
+      text-align: center;
+    }
+    
+    .sello-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .sello-box {
+      background: white;
+      border-radius: 15px;
+      padding: 40px;
+      margin: 40px auto;
+      max-width: 600px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+    
+    .sello-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    }
+    
+    .sello-image {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 25px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 5px solid var(--secondary);
+      color: white;
+      font-weight: 700;
+      font-size: 1.4rem;
+      text-align: center;
+      padding: 15px;
+      line-height: 1.3;
+    }
+    
+    .sello-features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .sello-feature {
+      background: #e8f5e9;
+      padding: 15px 20px;
+      border-radius: 8px;
+      min-width: 200px;
+      flex: 1;
+      transition: all 0.3s ease;
+    }
+    
+    .sello-feature:hover {
+      background: #d0ebd2;
+      transform: translateY(-3px);
+    }
+    
+    .sello-feature i {
+      color: var(--primary);
+      margin-right: 8px;
+    }
+    
+    /* Impacto Positivo Section */
+    .impact-logrado {
+      padding: 80px 0;
+      background: #f0f7f0;
+    }
+    
+    .impact-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .impact-header {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+    
+    .impact-header h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    
+    .impact-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+      text-align: center;
+    }
+    
+    .impact-numbers {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    
+    .impact-card {
+      background: #f5f9f5;
+      border-radius: 12px;
+      padding: 30px 40px;
+      min-width: 300px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .impact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .impact-value {
+      font-size: 4.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .impact-unit {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+    
+    .trees-card {
+      border-top: 5px solid #4caf50;
+    }
+    
+    .co2-card {
+      border-top: 5px solid #2e7d32;
+    }
+    
+    .impact-icon {
+      font-size: 3.5rem;
+      color: var(--primary);
+    }
+    
+    .impact-equivalent {
+      font-size: 1.1rem;
+      margin: 20px 0;
+      color: var(--text-dark);
+      max-width: 600px;
+      padding: 15px;
+      border-radius: 8px;
+      background: #e8f5e9;
+      font-weight: 500;
+    }
+    
+    .impact-equivalent strong {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    
+    .progress-container {
+      background: #e9ecef;
+      height: 24px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 20px 0;
+      position: relative;
+      width: 80%;
+      max-width: 600px;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #4caf50, #2e7d32);
+      border-radius: 12px;
+      width: 63%;
+      position: relative;
+    }
+    
+    .progress-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      z-index: 2;
+    }
+    
+    .progress-markers {
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      max-width: 600px;
+      margin-top: 5px;
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+    
+    .impact-comparison {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 600px;
+    }
+    
+    .comparison-item {
+      text-align: center;
+      padding: 15px;
+      background: #e8f5e9;
+      border-radius: 8px;
+      margin: 5px;
+      flex: 1;
+      min-width: 120px;
+    }
+    
+    .comparison-value {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 5px 0;
+    }
+    
+    .comparison-label {
+      font-size: 0.85rem;
+      color: var(--text-dark);
+    }
+    
+    /* Partner Section */
+    .partner {
+      background: #f0f7f0;
+      padding: 80px 0;
+      color: var(--text-dark);
+    }
+    
+    .partner-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    
+    .benefit-item {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .benefit-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .benefit-item i {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+    
+    /* Testimonials */
+    .testimonials {
+      padding: 80px 0;
+      background: var(--light);
+      text-align: center;
+    }
+    
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .testimonial-card {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      text-align: left;
+      position: relative;
+    }
+    
+    .testimonial-card::before {
+      content: """;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 5rem;
+      color: var(--primary);
+      opacity: 0.1;
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    
+    .client-logo {
+      width: 80px;
+      height: 80px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    
+    /* Contact Section */
+    .contact {
+      padding: 80px 0;
+      background: white;
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+    
+    .contact-form {
+      background: var(--light);
+      padding: 30px;
+      border-radius: 8px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    
+    .form-group textarea {
+      height: 150px;
+      resize: vertical;
+    }
+    
+    .social-contact {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+    
+    .social-contact a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-contact a:hover {
+      transform: translateY(-5px);
+      background: var(--primary-dark);
+    }
+    
+    /* Footer */
+    footer {
+      background: #222;
+      color: white;
+      padding: 60px 0 30px;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-info h3 {
+      color: var(--secondary);
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+    
+    .contact-info p {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .contact-info i {
+      margin-right: 10px;
+      width: 20px;
+      color: var(--secondary);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+    }
+    
+    .footer-links h3 {
+      color: var(--secondary);
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links ul li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links ul li a {
+      color: #ddd;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links ul li a:hover {
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero {
+        padding: 150px 0 80px;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+      }
+      nav ul.active {
+        display: flex;
+      }
+      nav ul li {
+        margin: 12px 0;
+        text-align: center;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .impact-value {
+        font-size: 3.5rem;
+      }
+      .impact-numbers {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .impact-card {
+        min-width: 250px;
+      }
+      .sello-features {
+        flex-direction: column;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+      .cta-buttons {
+        flex-direction: column;
+      }
+      .impact-value {
+        font-size: 3rem;
+      }
+      .impact-comparison {
+        flex-direction: column;
+      }
+      .sello-box {
+        padding: 25px;
+      }
+    }
+    
+    /* Animaciones para la sección de impacto */
+    .impact-card {
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .impact-icon, .sello-image {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    
+    /* Chatbot Mejorado */
+    .chatbot-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 70px;
+      height: 70px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      animation: pulse-chat 2s infinite;
+    }
+    
+    .chatbot-btn:hover {
+      transform: scale(1.1);
+      background: var(--primary-dark);
+    }
+    
+    @keyframes pulse-chat {
+      0% {
+        box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
+      }
+      50% {
+        box-shadow: 0 5px 20px rgba(46, 125, 50, 0.6);
+      }
+      100% {
+        box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
+      }
+    }
+    
+    .chatbot-container {
+      position: fixed;
+      bottom: 110px;
+      right: 30px;
+      width: 380px;
+      height: 500px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      z-index: 1000;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .chatbot-container.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .chatbot-header {
+      background: var(--primary);
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .chatbot-header h3 {
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+    }
+    
+    .chatbot-header .close-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .chatbot-header .close-btn:hover {
+      transform: rotate(90deg);
+    }
+    
+    .chatbot-messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      background: #f9fbf9;
+    }
+    
+    .message {
+      max-width: 85%;
+      padding: 12px 16px;
+      border-radius: 18px;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      position: relative;
+      animation: messageAppear 0.3s ease-out;
+    }
+    
+    @keyframes messageAppear {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .message.bot {
+      background: white;
+      align-self: flex-start;
+      border-bottom-left-radius: 5px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    .message.bot::before {
+      content: "EcoAsistente";
+      position: absolute;
+      top: -18px;
+      left: 0;
+      font-size: 0.75rem;
+      color: #7f8c8d;
+      font-weight: 500;
+    }
+    
+    .message.user {
+      background: var(--primary);
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 5px;
+    }
+    
+    .chatbot-input-container {
+      padding: 15px;
+      display: flex;
+      gap: 10px;
+      border-top: 1px solid #eee;
+      background: white;
+    }
+    
+    .chatbot-input {
+      flex: 1;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 25px;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    
+    .chatbot-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+    }
+    
+    .chatbot-send-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .chatbot-send-btn:hover {
+      background: var(--primary-dark);
+    }
+    
+    .typing-indicator {
+      display: none;
+      align-self: flex-start;
+      background: white;
+      padding: 12px 16px;
+      border-radius: 18px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    .typing-indicator span {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #7f8c8d;
+      border-radius: 50%;
+      margin: 0 2px;
+      animation: typing 1.4s infinite ease-in-out;
+    }
+    
+    .typing-indicator span:nth-child(1) {
+      animation-delay: 0s;
+    }
+    
+    .typing-indicator span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    
+    .typing-indicator span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    
+    @keyframes typing {
+      0%, 60%, 100% {
+        transform: translateY(0);
+      }
+      30% {
+        transform: translateY(-5px);
+      }
+    }
+    
+    .quick-replies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    
+    .quick-reply {
+      background: #e8f5e9;
+      color: var(--primary);
+      border: none;
+      border-radius: 20px;
+      padding: 8px 15px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .quick-reply:hover {
+      background: #d0ebd2;
+    }
+    
+    /* Estilo adicional para el nuevo logo en la sección sello */
+    .sello-image .leaf-logo {
+      font-size: 5rem;
+      color: white;
+      animation: leafPulse 2s infinite;
+    }
+    
+    .sello-name {
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1.8rem;
+      margin-top: 15px;
+      letter-spacing: 1px;
+    }
+    
+    @keyframes leafPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
 </head>
 <body>
-    <!-- Chatbot Button -->
-    <div class="chatbot-btn" id="chatbotBtn">
-        <i class="fas fa-comments"></i>
+  <!-- Chatbot Button -->
+  <div class="chatbot-btn" id="chatbotBtn">
+    <i class="fas fa-comments"></i>
+  </div>
+  
+  <!-- Chatbot Container -->
+  <div class="chatbot-container" id="chatbotContainer">
+    <div class="chatbot-header">
+      <h3><i class="fas fa-leaf"></i> EcoAsistente</h3>
+      <button class="close-btn" id="closeChatbot">
+        <i class="fas fa-times"></i>
+      </button>
     </div>
-
-    <!-- Chatbot Container -->
-    <div class="chatbot-container" id="chatbotContainer">
-        <div class="chatbot-header">
-            <h3><i class="fas fa-leaf"></i> EcoAsistente</h3>
-            <button class="close-btn" id="closeChatbot">
-                <i class="fas fa-times"></i>
-            </button>
+    <div class="chatbot-messages" id="chatMessages">
+      <div class="message bot">
+        ¡Hola! Soy EcoAsistente de Impacta Verde. ¿En qué puedo ayudarte hoy?
+        <div class="quick-replies">
+          <button class="quick-reply" data-reply="servicios">Servicios</button>
+          <button class="quick-reply" data-reply="agendar">Agendar cita</button>
+          <button class="quick-reply" data-reply="contacto">Contacto</button>
         </div>
-        <div class="chatbot-messages" id="chatMessages">
-            <div class="message bot">
-                ¡Hola! Soy EcoAsistente de Impacta Verde. ¿En qué puedo ayudarte hoy?
-                <div class="quick-replies">
-                    <button class="quick-reply" data-reply="servicios">Servicios</button>
-                    <button class="quick-reply" data-reply="agendar">Agendar cita</button>
-                    <button class="quick-reply" data-reply="contacto">Contacto</button>
-                </div>
-            </div>
-        </div>
-        <div class="typing-indicator" id="typingIndicator">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="chatbot-input-container">
-            <input type="text" id="userInput" class="chatbot-input" placeholder="Escribe tu mensaje...">
-            <button id="sendMessage" class="chatbot-send-btn">
-                <i class="fas fa-paper-plane"></i>
-            </button>
-        </div>
+      </div>
     </div>
-
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <a href="#" class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-arrow-up"></i>
-                </div>
-                <div class="logo-text">
-                    <span>Impacta</span>
-                    <span>Verde</span>
-                </div>
-            </a>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav>
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#sello">Sello Digital</a></li>
-                    <li><a href="#impacto">Impacto</a></li>
-                    <li><a href="#partner">Partner</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-            </nav>
+    <div class="typing-indicator" id="typingIndicator">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="chatbot-input-container">
+      <input type="text" id="userInput" class="chatbot-input" placeholder="Escribe tu mensaje...">
+      <button id="sendMessage" class="chatbot-send-btn">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <i class="fas fa-arrow-up"></i>
         </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="container">
-            <h1>Transformá tu organización con tecnología, innovación y sostenibilidad.</h1>
-            <p>Medimos, diseñamos y ejecutamos soluciones simples y de alto impacto para que tu empresa o institución genere valor mientras reduce su huella ambiental.</p>
-            <a href="#contacto" class="btn">Solicitá tu diagnóstico gratuito</a>
+        <div class="logo-text">
+          <span>Impacta</span>
+          <span>Verde</span>
         </div>
-    </section>
-
-    <!-- Stats and Mission Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="section-title">
-                <h2>Impulsando un Futuro Sostenible</h2>
-            </div>
-            <div class="mission-text">
-                <h3>Nuestra Misión: Transformación Ecológica con Propósito</h3>
-                <p>Revolucionamos empresas mediante la convergencia estratégica de tecnología de vanguardia, innovación disruptiva y sostenibilidad operacional. Convertimos tus desafíos ambientales en ventajas competitivas mientras construimos valor a largo plazo.</p>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-value">2025</div>
-                        <div>Fundación</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">11+</div>
-                        <div>Clientes Satisfechos</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="totalTrees">153</div>
-                        <div>Árboles Salvados</div>
-                    </div>
-                </div>
-            </div>
+      </a>
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#sello">Sello Digital</a></li>
+          <li><a href="#impacto">Impacto</a></li>
+          <li><a href="#partner">Partner</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Hero Section -->
+  <section id="inicio" class="hero">
+    <div class="container">
+      <h1>Transformá tu organización con tecnología, innovación y sostenibilidad.</h1>
+      <p>Medimos, diseñamos y ejecutamos soluciones simples y de alto impacto para que tu empresa o institución genere valor mientras reduce su huella ambiental.</p>
+      <a href="#contacto" class="btn">Solicitá tu diagnóstico gratuito</a>
+    </div>
+  </section>
+  
+  <!-- Stats and Mission Section -->
+  <section class="stats">
+    <div class="container">
+      <div class="section-title">
+        <h2>Impulsando un Futuro Sostenible</h2>
+      </div>
+      <div class="mission-text">
+        <h3>Nuestra Misión: Transformación Ecológica con Propósito</h3>
+        <p>Revolucionamos empresas mediante la convergencia estratégica de tecnología de vanguardia, innovación disruptiva y sostenibilidad operacional. Convertimos tus desafíos ambientales en ventajas competitivas mientras construimos valor a largo plazo.</p>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-value">2025</div>
+            <div>Fundación</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">11+</div>
+            <div>Clientes Satisfechos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="totalTrees">153</div>
+            <div>Árboles Salvados</div>
+          </div>
         </div>
-    </section>
-
-    <!-- Services Section - ACTUALIZADA -->
-    <section id="servicios" class="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nuestros Servicios</h2>
-                <p>Soluciones integrales para la sostenibilidad organizacional</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                    </div>
-                    <h3>Formación y Talleres</h3>
-                    <p>Capacitaciones prácticas para equipos: optimización de costos, economía circular aplicada y cumplimiento normativo (MiPyME 2025).</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3>Comunicación y Estrategia de Marca Sostenible</h3>
-                    <p>Desarrollo del "Sello MiPyME Sostenible" para diferenciación de mercado y acceso a beneficios fiscales. Posicionamiento responsable con impacto comercial.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Diagnóstico MiPyME Sostenible</h3>
-                    <p>Diagnóstico básico para identificar oportunidades de mejora ambiental y ahorro de costos. Con el diagnóstico se obtiene el Sello digital de Compromiso con la Sostenibilidad.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Soluciones Tecnológicas Sostenibles</h3>
-                    <p>Herramientas digitales para reducir consumo de recursos y optimizar procesos. Ahorros medibles que ayudan a mantenerse dentro de los topes MiPyME 2025.</p>
-                </div>
-                <!-- Categoría actualizada -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
-                    <h3>Impacto Social y Ambiental para Organizaciones del sector público y social</h3>
-                    <p>Soluciones especializadas para instituciones públicas, fundaciones y asociaciones civiles: medición de impacto, estrategias de sostenibilidad y acceso a financiamiento verde.</p>
-                </div>
-            </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Services Section - ACTUALIZADA -->
+  <section id="servicios" class="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Nuestros Servicios</h2>
+        <p>Soluciones integrales para la sostenibilidad organizacional</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-chalkboard-teacher"></i>
+          </div>
+          <h3>Formación y Talleres</h3>
+          <p>Capacitaciones prácticas para equipos: optimización de costos, economía circular aplicada y cumplimiento normativo (MiPyME 2025).</p>
         </div>
-    </section>
-
-    <!-- Sección del Sello Digital - ACTUALIZADA -->
-    <section id="sello" class="sello-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Sello Digital de Compromiso con la Sostenibilidad</h2>
-                <p>Distinción para organizaciones que demuestran un compromiso real con el medio ambiente</p>
-            </div>
-            <div class="sello-content">
-                <div class="sello-box">
-                    <!-- Logo modificado para replicar el de la cabecera -->
-                    <div class="sello-image">
-                        <div class="sello-logo">
-                            <div class="sello-logo-icon">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="sello-logo-text">
-                                <span>Impacta</span>
-                                <span>Verde</span>
-                            </div>
-                        </div>
-                    </div>
-                    <h3>Tu Certificación de Impacto Positivo</h3>
-                    <p>Este sello digital reconoce tu compromiso con prácticas sostenibles y te permite:</p>
-                    <div class="sello-features">
-                        <div class="sello-feature">
-                            <i class="fas fa-check-circle"></i> Demostrar tu compromiso ambiental
-                        </div>
-                        <div class="sello-feature">
-                            <i class="fas fa-check-circle"></i> Acceder a beneficios fiscales
-                        </div>
-                        <div class="sello-feature">
-                            <i class="fas fa-check-circle"></i> Mejorar tu posicionamiento
-                        </div>
-                        <div class="sello-feature">
-                            <i class="fas fa-check-circle"></i> Atraer nuevos clientes
-                        </div>
-                    </div>
-                    <p style="margin-top: 25px; font-weight: 500;">Obtén tu sello digital al completar nuestro diagnóstico de sostenibilidad</p>
-                    <a href="#contacto" class="btn" style="margin-top: 15px;">Solicitar mi sello</a>
-                </div>
-            </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <h3>Comunicación y Estrategia de Marca Sostenible</h3>
+          <p>Desarrollo del "Sello MiPyME Sostenible" para diferenciación de mercado y acceso a beneficios fiscales. Posicionamiento responsable con impacto comercial.</p>
         </div>
-    </section>
-
-    <!-- Impacto Positivo Section -->
-    <section id="impacto" class="impact-logrado">
-        <div class="container">
-            <div class="section-title">
-                <h2>Impacto Positivo Acumulado</h2>
-                <p>Gracias a nuestros clientes hemos logrado un impacto ambiental positivo</p>
-            </div>
-            <div class="impact-container">
-                <div class="impact-header">
-                    <h2><i class="fas fa-seedling"></i> Nuestra Contribución Ambiental</h2>
-                    <p>La reducción de huella de carbono se traduce en árboles salvados</p>
-                </div>
-                <div class="impact-content">
-                    <div class="impact-numbers">
-                        <div class="impact-card trees-card">
-                            <div class="impact-value">
-                                <i class="fas fa-tree impact-icon"></i> 153
-                            </div>
-                            <div class="impact-unit">árboles salvados</div>
-                        </div>
-                        <div class="impact-card co2-card">
-                            <div class="impact-value">
-                                <i class="fas fa-cloud impact-icon"></i> 9.2
-                            </div>
-                            <div class="impact-unit">toneladas de CO₂ reducidas</div>
-                        </div>
-                    </div>
-                    <div class="impact-equivalent">
-                        <strong>Equivalencia:</strong> Esto representa 9.2 toneladas de CO₂ evitadas, equivalente a la absorción anual de 153 árboles
-                        <div style="font-size: 0.9rem; margin-top: 8px;">
-                            (Cálculo: 1 árbol absorbe aproximadamente 0.06 toneladas de CO₂ al año)
-                        </div>
-                    </div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <span class="progress-label">77% de la meta anual</span>
-                        </div>
-                    </div>
-                    <div class="progress-markers">
-                        <span>0</span>
-                        <span>100</span>
-                        <span>200</span>
-                    </div>
-                    <div class="impact-comparison">
-                        <div class="comparison-item">
-                            <div class="comparison-value">15</div>
-                            <div class="comparison-label">Empresas</div>
-                        </div>
-                        <div class="comparison-item">
-                            <div class="comparison-value">8</div>
-                            <div class="comparison-label">Sectores</div>
-                        </div>
-                        <div class="comparison-item">
-                            <div class="comparison-value">98%</div>
-                            <div class="comparison-label">Reducción promedio</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Diagnóstico MiPyME Sostenible</h3>
+          <p>Diagnóstico básico para identificar oportunidades de mejora ambiental y ahorro de costos. Con el diagnóstico se obtiene el Sello digital de Compromiso con la Sostenibilidad.</p>
         </div>
-    </section>
-
-    <!-- Partner Section -->
-    <section id="partner" class="partner">
-        <div class="container">
-            <div class="section-title">
-                <h2 style="color: var(--text-dark);">Somos un estudio creativo para la transformación sustentable</h2>
-                <p style="color: var(--text-dark);">Acompañamos a empresas y organizaciones a diseñar y escalar modelos más sostenibles, incorporando estrategias basadas en datos, tecnología y valor ambiental.</p>
-            </div>
-            <div class="section-title">
-                <h3 style="color: var(--primary);">Tu Partner Sustentable</h3>
-                <p style="color: var(--text-dark);">Generamos para tu organización:</p>
-            </div>
-            <div class="benefits-grid">
-                <div class="benefit-item">
-                    <i class="fas fa-leaf"></i>
-                    <h4>Disminución de la huella ambiental</h4>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-file-contract"></i>
-                    <h4>Cumplimiento normativo y RSE</h4>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-chart-line"></i>
-                    <h4>Mejor posicionamiento frente a clientes e inversores</h4>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-users"></i>
-                    <h4>Equipos más motivados y conscientes</h4>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-money-bill-wave"></i>
-                    <h4>Reducción de costos a largo plazo</h4>
-                </div>
-            </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h3>Soluciones Tecnológicas Sostenibles</h3>
+          <p>Herramientas digitales para reducir consumo de recursos y optimizar procesos. Ahorros medibles que ayudan a mantenerse dentro de los topes MiPyME 2025.</p>
         </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>Lo que dicen nuestros clientes</h2>
-                <p>Experiencias reales de organizaciones que transformaron su impacto ambiental</p>
-            </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="client-logo">
-                        <i class="fas fa-arrow-up"></i>
-                    </div>
-                    <p>"Impacta Verde nos ayudó a reducir nuestra huella de carbono en un 40% durante el primer año de implementación. Su enfoque basado en datos fue clave para nuestro éxito."</p>
-                    <p><strong>María Rodríguez</strong><br>Directora de Sostenibilidad</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="client-logo">
-                        <i class="fas fa-arrow-up"></i>
-                    </div>
-                    <p>"Las soluciones tecnológicas personalizadas que desarrollaron para nosotros nos permitieron optimizar nuestro consumo energético y reducir costos operativos significativamente."</p>
-                    <p><strong>Carlos Gómez</strong><br>Gerente de Operaciones</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="client-logo">
-                        <i class="fas fa-arrow-up"></i>
-                    </div>
-                    <p>"Los talleres de formación transformaron la cultura de nuestra empresa. Hoy nuestros equipos son más conscientes y proponen soluciones sostenibles desde sus áreas."</p>
-                    <p><strong>Laura Fernández</strong><br>Directora de RRHH</p>
-                </div>
-            </div>
+        <!-- Categoría actualizada -->
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-hands-helping"></i>
+          </div>
+          <h3>Impacto Social y Ambiental para Organizaciones del sector público y social</h3>
+          <p>Soluciones especializadas para instituciones públicas, fundaciones y asociaciones civiles: medición de impacto, estrategias de sostenibilidad y acceso a financiamiento verde.</p>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contacto" class="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contacto</h2>
-                <p>Estamos listos para ayudarte en tu transición sostenible</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Sección del Sello Digital - ACTUALIZADA -->
+  <section id="sello" class="sello-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Sello Digital de Compromiso con la Sostenibilidad</h2>
+        <p>Distinción para organizaciones que demuestran un compromiso real con el medio ambiente</p>
+      </div>
+      <div class="sello-content">
+        <div class="sello-box">
+          <!-- Logo actualizado con hoja y nombre -->
+          <div class="sello-image">
+            <i class="fas fa-leaf leaf-logo"></i>
+          </div>
+          <div class="sello-name">Impacta Verde</div>
+          <h3>Tu Certificación de Impacto Positivo</h3>
+          <p>Este sello digital reconoce tu compromiso con prácticas sostenibles y te permite:</p>
+          <div class="sello-features">
+            <div class="sello-feature">
+              <i class="fas fa-check-circle"></i> Demostrar tu compromiso ambiental
             </div>
-            <div class="contact-grid">
-                <div class="contact-form">
-                    <h3>Envíanos un mensaje</h3>
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Nombre y Apellido</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Correo Electrónico</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Mensaje</label>
-                            <textarea id="message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-secondary">Enviar Mensaje</button>
-                    </form>
-                </div>
-                <div class="contact-info">
-                    <h3>Información de Contacto</h3>
-                    <p><i class="fas fa-envelope"></i> impactaverde@gmail.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</p>
-                    <div class="social-contact">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                    <div style="margin-top: 30px;">
-                        <h3>Horario de Atención</h3>
-                        <p>Lunes a Viernes: 9:00 - 18:00</p>
-                        <p>Sábados: 10:00 - 14:00</p>
-                    </div>
-                </div>
+            <div class="sello-feature">
+              <i class="fas fa-check-circle"></i> Acceder a beneficios fiscales
             </div>
+            <div class="sello-feature">
+              <i class="fas fa-check-circle"></i> Mejorar tu posicionamiento
+            </div>
+            <div class="sello-feature">
+              <i class="fas fa-check-circle"></i> Atraer nuevos clientes
+            </div>
+          </div>
+          <p style="margin-top: 25px; font-weight: 500;">Obtén tu sello digital al completar nuestro diagnóstico de sostenibilidad</p>
+          <a href="#contacto" class="btn" style="margin-top: 15px;">Solicitar mi sello</a>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-info">
-                    <h3>Impacta Verde</h3>
-                    <p>Consultoría en negocios sostenibles</p>
-                    <div class="contact-info">
-                        <p><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</p>
-                        <p><i class="fas fa-envelope"></i> impactaverde@gmail.com</p>
-                    </div>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h3>Enlaces Rápidos</h3>
-                    <ul>
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#servicios">Servicios</a></li>
-                        <li><a href="#sello">Sello Digital</a></li>
-                        <li><a href="#impacto">Impacto</a></li>
-                        <li><a href="#partner">Partner</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h3>Servicios</h3>
-                    <ul>
-                        <li><a href="#servicios">Formación y Talleres</a></li>
-                        <li><a href="#servicios">Comunicación y Estrategia</a></li>
-                        <li><a href="#servicios">Diagnóstico MiPyME Sostenible</a></li>
-                        <li><a href="#servicios">Soluciones Tecnológicas</a></li>
-                        <li><a href="#servicios">Impacto Social para Organizaciones</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Impacta Verde. Todos los derechos reservados.</p>
-            </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Impacto Positivo Section -->
+  <section id="impacto" class="impact-logrado">
+    <div class="container">
+      <div class="section-title">
+        <h2>Impacto Positivo Acumulado</h2>
+        <p>Gracias a nuestros clientes hemos logrado un impacto ambiental positivo</p>
+      </div>
+      <div class="impact-container">
+        <div class="impact-header">
+          <h2><i class="fas fa-seedling"></i> Nuestra Contribución Ambiental</h2>
+          <p>La reducción de huella de carbono se traduce en árboles salvados</p>
         </div>
-    </footer>
-
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navMenu = document.querySelector('nav ul');
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+        <div class="impact-content">
+          <div class="impact-numbers">
+            <div class="impact-card trees-card">
+              <div class="impact-value">
+                <i class="fas fa-tree impact-icon"></i> 153
+              </div>
+              <div class="impact-unit">árboles salvados</div>
+            </div>
+            <div class="impact-card co2-card">
+              <div class="impact-value">
+                <i class="fas fa-cloud impact-icon"></i> 9.2
+              </div>
+              <div class="impact-unit">toneladas de CO₂ reducidas</div>
+            </div>
+          </div>
+          <div class="impact-equivalent">
+            <strong>Equivalencia:</strong> Esto representa 9.2 toneladas de CO₂ evitadas, equivalente a la absorción anual de 153 árboles
+            <div style="font-size: 0.9rem; margin-top: 8px;">
+              (Cálculo: 1 árbol absorbe aproximadamente 0.06 toneladas de CO₂ al año)
+            </div>
+          </div>
+          <div class="progress-container">
+            <div class="progress-bar">
+              <span class="progress-label">77% de la meta anual</span>
+            </div>
+          </div>
+          <div class="progress-markers">
+            <span>0</span>
+            <span>100</span>
+            <span>200</span>
+          </div>
+          <div class="impact-comparison">
+            <div class="comparison-item">
+              <div class="comparison-value">15</div>
+              <div class="comparison-label">Empresas</div>
+            </div>
+            <div class="comparison-item">
+              <div class="comparison-value">8</div>
+              <div class="comparison-label">Sectores</div>
+            </div>
+            <div class="comparison-item">
+              <div class="comparison-value">98%</div>
+              <div class="comparison-label">Reducción promedio</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Partner Section -->
+  <section id="partner" class="partner">
+    <div class="container">
+      <div class="section-title">
+        <h2 style="color: var(--text-dark);">Somos un estudio creativo para la transformación sustentable</h2>
+        <p style="color: var(--text-dark);">Acompañamos a empresas y organizaciones a diseñar y escalar modelos más sostenibles, incorporando estrategias basadas en datos, tecnología y valor ambiental.</p>
+      </div>
+      <div class="section-title">
+        <h3 style="color: var(--primary);">Tu Partner Sustentable</h3>
+        <p style="color: var(--text-dark);">Generamos para tu organización:</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <i class="fas fa-leaf"></i>
+          <h4>Disminución de la huella ambiental</h4>
+        </div>
+        <div class="benefit-item">
+          <i class="fas fa-file-contract"></i>
+          <h4>Cumplimiento normativo y RSE</h4>
+        </div>
+        <div class="benefit-item">
+          <i class="fas fa-chart-line"></i>
+          <h4>Mejor posicionamiento frente a clientes e inversores</h4>
+        </div>
+        <div class="benefit-item">
+          <i class="fas fa-users"></i>
+          <h4>Equipos más motivados y conscientes</h4>
+        </div>
+        <div class="benefit-item">
+          <i class="fas fa-money-bill-wave"></i>
+          <h4>Reducción de costos a largo plazo</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>Lo que dicen nuestros clientes</h2>
+        <p>Experiencias reales de organizaciones que transformaron su impacto ambiental</p>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="client-logo">
+            <i class="fas fa-arrow-up"></i>
+          </div>
+          <p>"Impacta Verde nos ayudó a reducir nuestra huella de carbono en un 40% durante el primer año de implementación. Su enfoque basado en datos fue clave para nuestro éxito."</p>
+          <p><strong>María Rodríguez</strong><br>Directora de Sostenibilidad</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="client-logo">
+            <i class="fas fa-arrow-up"></i>
+          </div>
+          <p>"Las soluciones tecnológicas personalizadas que desarrollaron para nosotros nos permitieron optimizar nuestro consumo energético y reducir costos operativos significativamente."</p>
+          <p><strong>Carlos Gómez</strong><br>Gerente de Operaciones</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="client-logo">
+            <i class="fas fa-arrow-up"></i>
+          </div>
+          <p>"Los talleres de formación transformaron la cultura de nuestra empresa. Hoy nuestros equipos son más conscientes y proponen soluciones sostenibles desde sus áreas."</p>
+          <p><strong>Laura Fernández</strong><br>Directora de RRHH</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contacto" class="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contacto</h2>
+        <p>Estamos listos para ayudarte en tu transición sostenible</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-form">
+          <h3>Envíanos un mensaje</h3>
+          <form>
+            <div class="form-group">
+              <label for="name">Nombre y Apellido</label>
+              <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Correo Electrónico</label>
+              <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Mensaje</label>
+              <textarea id="message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-secondary">Enviar Mensaje</button>
+          </form>
+        </div>
+        <div class="contact-info">
+          <h3>Información de Contacto</h3>
+          <p><i class="fas fa-envelope"></i> impactaverde@gmail.com</p>
+          <p><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</p>
+          <div class="social-contact">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+          <div style="margin-top: 30px;">
+            <h3>Horario de Atención</h3>
+            <p>Lunes a Viernes: 9:00 - 18:00</p>
+            <p>Sábados: 10:00 - 14:00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-info">
+          <h3>Impacta Verde</h3>
+          <p>Consultoría en negocios sostenibles</p>
+          <div class="contact-info">
+            <p><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</p>
+            <p><i class="fas fa-envelope"></i> impactaverde@gmail.com</p>
+          </div>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h3>Enlaces Rápidos</h3>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#sello">Sello Digital</a></li>
+            <li><a href="#impacto">Impacto</a></li>
+            <li><a href="#partner">Partner</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h3>Servicios</h3>
+          <ul>
+            <li><a href="#servicios">Formación y Talleres</a></li>
+            <li><a href="#servicios">Comunicación y Estrategia</a></li>
+            <li><a href="#servicios">Diagnóstico MiPyME Sostenible</a></li>
+            <li><a href="#servicios">Soluciones Tecnológicas</a></li>
+            <li><a href="#servicios">Impacto Social para Organizaciones</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 Impacta Verde. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.querySelector('nav ul');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        navMenu.classList.remove('active');
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
         });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                navMenu.classList.remove('active');
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+      });
+    });
+    
+    // Chatbot mejorado
+    const chatbotBtn = document.getElementById('chatbotBtn');
+    const chatbotContainer = document.getElementById('chatbotContainer');
+    const closeChatbot = document.getElementById('closeChatbot');
+    const chatMessages = document.getElementById('chatMessages');
+    const userInput = document.getElementById('userInput');
+    const sendMessage = document.getElementById('sendMessage');
+    const typingIndicator = document.getElementById('typingIndicator');
+    
+    chatbotBtn.addEventListener('click', () => {
+      chatbotContainer.style.display = 'flex';
+      setTimeout(() => {
+        chatbotContainer.classList.add('active');
+      }, 10);
+    });
+    
+    closeChatbot.addEventListener('click', () => {
+      chatbotContainer.classList.remove('active');
+      setTimeout(() => {
+        chatbotContainer.style.display = 'none';
+      }, 300);
+    });
+    
+    // Función para agregar mensajes al chat
+    function addMessage(text, isUser) {
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('message');
+      messageDiv.classList.add(isUser ? 'user' : 'bot');
+      messageDiv.textContent = text;
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    // Función para mostrar el indicador de "escribiendo"
+    function showTypingIndicator() {
+      typingIndicator.style.display = 'flex';
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    // Función para ocultar el indicador de "escribiendo"
+    function hideTypingIndicator() {
+      typingIndicator.style.display = 'none';
+    }
+    
+    // Estados de agendamiento
+    let appointmentStep = 0;
+    let appointmentDate = null;
+    let appointmentTime = null;
+    
+    // Respuestas del bot
+    function botResponse(userMessage) {
+      const responses = {
+        'hola': {
+          text: '¡Hola! Soy EcoAsistente de Impacta Verde. ¿En qué puedo ayudarte hoy?',
+          quickReplies: ['servicios', 'agendar', 'contacto']
+        },
+        'servicios': {
+          text: 'Ofrecemos los siguientes servicios:\n\n' +
+                ' Formación y Talleres\n' +
+                ' Comunicación y Estrategia de Marca Sostenible\n' +
+                ' Diagnóstico MiPyME Sostenible\n' +
+                ' Soluciones Tecnológicas Sostenibles\n' +
+                ' Impacto Social para Organizaciones\n\n' +
+                '¿Te gustaría conocer más sobre alguno en particular?',
+          quickReplies: ['Formación', 'Comunicación', 'Diagnóstico', 'Tecnología', 'Organizaciones']
+        },
+        'contacto': {
+          text: 'Puedes contactarnos de las siguientes formas:\n\n' +
+                ' Email: impactaverde@gmail.com\n' +
+                ' Dirección: Buenos Aires, Argentina\n' +
+                ' WhatsApp: +54 11 1234-5678\n\n' +
+                'También puedes completar el formulario de contacto en nuestra página.'
+        },
+        'diagnóstico': {
+          text: '¡Claro! Puedes solicitar tu diagnóstico gratuito haciendo clic en el botón "Solicitá tu diagnóstico gratuito" en nuestra página principal o visitando la sección de contacto.'
+        },
+        'sello': {
+          text: 'Nuestro Sello Digital de Compromiso con la Sostenibilidad se obtiene al completar nuestro diagnóstico básico. Este sello certifica tu compromiso ambiental y te ayuda a acceder a beneficios.'
+        },
+        'organizaciones': {
+          text: 'Ofrecemos servicios especializados para instituciones públicas, fundaciones y asociaciones civiles, incluyendo medición de impacto social, estrategias de sostenibilidad y acceso a financiamiento verde.'
+        },
+        'agendar': {
+          text: '¡Perfecto! Para agendar una cita, por favor dime la fecha que te vendría bien (ejemplo: 15/07/2024).',
+          step: 1
+        },
+        'gracias': {
+          text: '¡De nada! Estoy aquí para ayudarte. ¿Hay algo más en lo que pueda asistirte?'
+        },
+        'impacto': {
+          text: 'En Impacta Verde hemos logrado un impacto positivo equivalente a:\n\n' +
+                ' 153 árboles salvados\n' +
+                ' 9.2 toneladas de CO₂ reducidas\n\n' +
+                'Esto gracias al trabajo con más de 15 empresas en 8 sectores diferentes.'
+        },
+        'default': {
+          text: 'Gracias por tu mensaje. Un miembro de nuestro equipo te responderá pronto. ¿Hay algo más en lo que pueda ayudarte?'
+        }
+      };
+      
+      userMessage = userMessage.toLowerCase();
+      
+      // Manejo de agendamiento de citas
+      if (appointmentStep === 1) {
+        if (userMessage.match(/\d{1,2}\/\d{1,2}\/\d{4}/)) {
+          appointmentDate = userMessage;
+          appointmentStep = 2;
+          return { text: 'Fecha seleccionada: ' + appointmentDate + '. Ahora, ¿a qué hora te vendría bien? (Por ejemplo: 10:00, 14:30, etc.)' };
+        } else {
+          return { text: 'Por favor, ingresa la fecha en formato DD/MM/AAAA. Por ejemplo: 20/07/2024' };
+        }
+      }
+      
+      if (appointmentStep === 2) {
+        if (userMessage.match(/\d{1,2}:\d{2}/)) {
+          appointmentTime = userMessage;
+          appointmentStep = 0;
+          return { text: '¡Perfecto! Tu cita ha sido agendada para el ' + appointmentDate + ' a las ' + appointmentTime + '. Te enviaremos un correo de confirmación. ¿Hay algo más en lo que pueda ayudarte?' };
+        } else {
+          return { text: 'Por favor, ingresa la hora en formato HH:MM (por ejemplo: 14:30).' };
+        }
+      }
+      
+      // Respuestas directas
+      if (userMessage.includes('hola') || userMessage.includes('buenas')) return responses['hola'];
+      if (userMessage.includes('servicio') || userMessage.includes('servicios')) return responses['servicios'];
+      if (userMessage.includes('contact') || userMessage.includes('contacto') || userMessage.includes('email')) return responses['contacto'];
+      if (userMessage.includes('diagnóstico') || userMessage.includes('diagnostico')) return responses['diagnóstico'];
+      if (userMessage.includes('sello') || userMessage.includes('certificación')) return responses['sello'];
+      if (userMessage.includes('organizacion') || userMessage.includes('sector público') || userMessage.includes('asociación civil')) return responses['organizaciones'];
+      if (userMessage.includes('agendar') || userMessage.includes('cita') || userMessage.includes('reunión')) return responses['agendar'];
+      if (userMessage.includes('impacto') || userMessage.includes('arbol') || userMessage.includes('co2')) return responses['impacto'];
+      if (userMessage.includes('gracias')) return responses['gracias'];
+      
+      return responses['default'];
+    }
+    
+    // Manejar el envío de mensajes
+    function handleSendMessage() {
+      const message = userInput.value.trim();
+      if (message) {
+        addMessage(message, true);
+        userInput.value = '';
+        
+        // Simular que el bot está escribiendo
+        showTypingIndicator();
+        
+        setTimeout(() => {
+          hideTypingIndicator();
+          const response = botResponse(message);
+          addMessage(response.text, false);
+          
+          // Agregar respuestas rápidas si existen
+          if (response.quickReplies) {
+            const quickRepliesContainer = document.createElement('div');
+            quickRepliesContainer.classList.add('quick-replies');
+            
+            response.quickReplies.forEach(reply => {
+              const button = document.createElement('button');
+              button.classList.add('quick-reply');
+              button.textContent = reply;
+              button.dataset.reply = reply.toLowerCase();
+              quickRepliesContainer.appendChild(button);
             });
-        });
-
-        // Chatbot mejorado
-        const chatbotBtn = document.getElementById('chatbotBtn');
-        const chatbotContainer = document.getElementById('chatbotContainer');
-        const closeChatbot = document.getElementById('closeChatbot');
-        const chatMessages = document.getElementById('chatMessages');
-        const userInput = document.getElementById('userInput');
-        const sendMessage = document.getElementById('sendMessage');
-        const typingIndicator = document.getElementById('typingIndicator');
-
-        chatbotBtn.addEventListener('click', () => {
-            chatbotContainer.style.display = 'flex';
-            setTimeout(() => {
-                chatbotContainer.classList.add('active');
-            }, 10);
-        });
-
-        closeChatbot.addEventListener('click', () => {
-            chatbotContainer.classList.remove('active');
-            setTimeout(() => {
-                chatbotContainer.style.display = 'none';
-            }, 300);
-        });
-
-        // Función para agregar mensajes al chat
-        function addMessage(text, isUser) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message');
-            messageDiv.classList.add(isUser ? 'user' : 'bot');
-            messageDiv.textContent = text;
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        // Función para mostrar el indicador de "escribiendo"
-        function showTypingIndicator() {
-            typingIndicator.style.display = 'flex';
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        // Función para ocultar el indicador de "escribiendo"
-        function hideTypingIndicator() {
-            typingIndicator.style.display = 'none';
-        }
-
-        // Estados de agendamiento
-        let appointmentStep = 0;
-        let appointmentDate = null;
-        let appointmentTime = null;
-
-        // Respuestas del bot
-        function botResponse(userMessage) {
-            const responses = {
-                'hola': {
-                    text: '¡Hola! Soy EcoAsistente de Impacta Verde. ¿En qué puedo ayudarte hoy?',
-                    quickReplies: ['servicios', 'agendar', 'contacto']
-                },
-                'servicios': {
-                    text: 'Ofrecemos los siguientes servicios:\n\n' +
-                        ' Formación y Talleres\n' +
-                        ' Comunicación y Estrategia de Marca Sostenible\n' +
-                        ' Diagnóstico MiPyME Sostenible\n' +
-                        ' Soluciones Tecnológicas Sostenibles\n' +
-                        ' Impacto Social para Organizaciones\n\n' +
-                        '¿Te gustaría conocer más sobre alguno en particular?',
-                    quickReplies: ['Formación', 'Comunicación', 'Diagnóstico', 'Tecnología', 'Organizaciones']
-                },
-                'contacto': {
-                    text: 'Puedes contactarnos de las siguientes formas:\n\n' +
-                        ' Email: impactaverde@gmail.com\n' +
-                        ' Dirección: Buenos Aires, Argentina\n' +
-                        ' WhatsApp: +54 11 1234-5678\n\n' +
-                        'También puedes completar el formulario de contacto en nuestra página.'
-                },
-                'diagnóstico': {
-                    text: '¡Claro! Puedes solicitar tu diagnóstico gratuito haciendo clic en el botón "Solicitá tu diagnóstico gratuito" en nuestra página principal o visitando la sección de contacto.'
-                },
-                'sello': {
-                    text: 'Nuestro Sello Digital de Compromiso con la Sostenibilidad se obtiene al completar nuestro diagnóstico básico. Este sello certifica tu compromiso ambiental y te ayuda a acceder a beneficios.'
-                },
-                'organizaciones': {
-                    text: 'Ofrecemos servicios especializados para instituciones públicas, fundaciones y asociaciones civiles, incluyendo medición de impacto social, estrategias de sostenibilidad y acceso a financiamiento verde.'
-                },
-                'agendar': {
-                    text: '¡Perfecto! Para agendar una cita, por favor dime la fecha que te vendría bien (ejemplo: 15/07/2024).',
-                    step: 1
-                },
-                'gracias': {
-                    text: '¡De nada! Estoy aquí para ayudarte. ¿Hay algo más en lo que pueda asistirte?'
-                },
-                'impacto': {
-                    text: 'En Impacta Verde hemos logrado un impacto positivo equivalente a:\n\n' +
-                        ' 153 árboles salvados\n' +
-                        ' 9.2 toneladas de CO₂ reducidas\n\n' +
-                        'Esto gracias al trabajo con más de 15 empresas en 8 sectores diferentes.'
-                },
-                'default': {
-                    text: 'Gracias por tu mensaje. Un miembro de nuestro equipo te responderá pronto. ¿Hay algo más en lo que pueda ayudarte?'
-                }
-            };
-
-            userMessage = userMessage.toLowerCase();
-
-            // Manejo de agendamiento de citas
-            if (appointmentStep === 1) {
-                if (userMessage.match(/\d{1,2}\/\d{1,2}\/\d{4}/)) {
-                    appointmentDate = userMessage;
-                    appointmentStep = 2;
-                    return { text: 'Fecha seleccionada: ' + appointmentDate + '. Ahora, ¿a qué hora te vendría bien? (Por ejemplo: 10:00, 14:30, etc.)' };
-                } else {
-                    return { text: 'Por favor, ingresa la fecha en formato DD/MM/AAAA. Por ejemplo: 20/07/2024' };
-                }
-            }
-
-            if (appointmentStep === 2) {
-                if (userMessage.match(/\d{1,2}:\d{2}/)) {
-                    appointmentTime = userMessage;
-                    appointmentStep = 0;
-                    return { text: '¡Perfecto! Tu cita ha sido agendada para el ' + appointmentDate + ' a las ' + appointmentTime + '. Te enviaremos un correo de confirmación. ¿Hay algo más en lo que pueda ayudarte?' };
-                } else {
-                    return { text: 'Por favor, ingresa la hora en formato HH:MM (por ejemplo: 14:30).' };
-                }
-            }
-
-            // Respuestas directas
-            if (userMessage.includes('hola') || userMessage.includes('buenas')) return responses['hola'];
-            if (userMessage.includes('servicio') || userMessage.includes('servicios')) return responses['servicios'];
-            if (userMessage.includes('contact') || userMessage.includes('contacto') || userMessage.includes('email')) return responses['contacto'];
-            if (userMessage.includes('diagnóstico') || userMessage.includes('diagnostico')) return responses['diagnóstico'];
-            if (userMessage.includes('sello') || userMessage.includes('certificación')) return responses['sello'];
-            if (userMessage.includes('organizacion') || userMessage.includes('sector público') || userMessage.includes('asociación civil')) return responses['organizaciones'];
-            if (userMessage.includes('agendar') || userMessage.includes('cita') || userMessage.includes('reunión')) return responses['agendar'];
-            if (userMessage.includes('impacto') || userMessage.includes('arbol') || userMessage.includes('co2')) return responses['impacto'];
-            if (userMessage.includes('gracias')) return responses['gracias'];
-
-            return responses['default'];
-        }
-
-        // Manejar el envío de mensajes
-        function handleSendMessage() {
-            const message = userInput.value.trim();
-            if (message) {
-                addMessage(message, true);
-                userInput.value = '';
-
-                // Simular que el bot está escribiendo
-                showTypingIndicator();
-
-                setTimeout(() => {
-                    hideTypingIndicator();
-                    const response = botResponse(message);
-                    addMessage(response.text, false);
-
-                    // Agregar respuestas rápidas si existen
-                    if (response.quickReplies) {
-                        const quickRepliesContainer = document.createElement('div');
-                        quickRepliesContainer.classList.add('quick-replies');
-                        response.quickReplies.forEach(reply => {
-                            const button = document.createElement('button');
-                            button.classList.add('quick-reply');
-                            button.textContent = reply;
-                            button.dataset.reply = reply.toLowerCase();
-                            quickRepliesContainer.appendChild(button);
-                        });
-                        const lastMessage = chatMessages.lastChild;
-                        lastMessage.appendChild(quickRepliesContainer);
-                    }
-
-                    // Actualizar el paso de agendamiento si es necesario
-                    if (response.step) {
-                        appointmentStep = response.step;
-                    }
-                }, 1500);
-            }
-        }
-
-        // Enviar mensaje al hacer clic en el botón
-        sendMessage.addEventListener('click', handleSendMessage);
-
-        // Enviar mensaje al presionar Enter
-        userInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                handleSendMessage();
-            }
-        });
-
-        // Manejar respuestas rápidas
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('quick-reply')) {
-                const reply = e.target.dataset.reply;
-                userInput.value = reply;
-                handleSendMessage();
-            }
-        });
-    </script>
+            
+            const lastMessage = chatMessages.lastChild;
+            lastMessage.appendChild(quickRepliesContainer);
+          }
+          
+          // Actualizar el paso de agendamiento si es necesario
+          if (response.step) {
+            appointmentStep = response.step;
+          }
+        }, 1500);
+      }
+    }
+    
+    // Enviar mensaje al hacer clic en el botón
+    sendMessage.addEventListener('click', handleSendMessage);
+    
+    // Enviar mensaje al presionar Enter
+    userInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        handleSendMessage();
+      }
+    });
+    
+    // Manejar respuestas rápidas
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('quick-reply')) {
+        const reply = e.target.dataset.reply;
+        userInput.value = reply;
+        handleSendMessage();
+      }
+    });
+  </script>
 </body>
 </html>
