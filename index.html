@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impacta Verde - Estudio en Sustentabilidad</title>
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%232e7d32'/><path d='M70 50L40 65V35z' fill='%23fff'/></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -304,7 +306,7 @@
         
         /* Sección del Sello Digital - ACTUALIZADA */
         .sello-section {
-            background: #f0f7f0;
+            background: #f0f7f0; /* Fondo claro similar a partner */
             padding: 80px 0;
             color: var(--text-dark);
             text-align: center;
@@ -332,80 +334,63 @@
         }
         
         .sello-image {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             margin: 0 auto 25px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 50%;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            border: 5px solid var(--secondary);
+            color: white;
+            font-weight: 700;
+            text-align: center;
             position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .sello-logo {
-            width: 100%;
-            height: 100%;
-            position: relative;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
         
-        .sello-circle {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: var(--primary);
-            border: 5px solid var(--secondary);
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-        
-        .sello-arrow {
-            position: relative;
-            z-index: 2;
-            transform: rotate(15deg);
+        .sello-icon {
             width: 60px;
-            height: 80px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
         }
         
-        .sello-arrow::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-bottom: 30px solid white;
-        }
-        
-        .sello-arrow::after {
-            content: "";
-            position: absolute;
-            top: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 10px;
-            height: 55px;
-            background: white;
+        .sello-icon i {
+            color: white;
+            font-size: 2rem;
+            transform: rotate(15deg);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         
         .sello-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, 50%);
             color: white;
-            font-weight: bold;
-            font-size: 1rem;
+            font-weight: 600;
+            font-size: 1.1rem;
             text-align: center;
-            z-index: 3;
-            width: 100%;
-            margin-top: 40px;
+            padding: 0 10px;
+        }
+        
+        .sello-text span:first-child {
+            color: white;
+        }
+        
+        .sello-text span:last-child {
+            color: var(--secondary);
         }
         
         .sello-features {
@@ -1364,9 +1349,12 @@
                 <div class="sello-box">
                     <div class="sello-image">
                         <div class="sello-logo">
-                            <div class="sello-circle"></div>
-                            <div class="sello-arrow"></div>
-                            <div class="sello-text">Impacta Verde</div>
+                            <div class="sello-icon">
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                            <div class="sello-text">
+                                <span>Impacta</span> <span>Verde</span>
+                            </div>
                         </div>
                     </div>
                     <h3>Tu Certificación de Impacto Positivo</h3>
@@ -1620,7 +1608,7 @@
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
                         <li><a href="#servicios">Servicios</a></li>
-                        <li><a href="#sello">Sello Digital</a></li>
+                        <li><极简风格><a href="#sello">Sello Digital</a></li>
                         <li><a href="#impacto">Impacto</a></li>
                         <li><a href="#partner">Partner</a></li>
                         <li><a href="#contacto">Contacto</a></li>
@@ -1628,7 +1616,7 @@
                 </div>
                 
                 <div class="footer-links">
-                    <h3>Servicios</h3>
+                    <h3>Servicios</极简风格>
                     <ul>
                         <li><a href="#servicios">Formación y Talleres</a></li>
                         <li><a href="#servicios">Comunicación y Estrategia</a></li>
@@ -1683,7 +1671,7 @@
             }, 10);
         });
         
-        closeChatbot.addEventListener('click', () => {
+        closeChatbot.addEventListener('click', ()极简风格 {
             chatbotContainer.classList.remove('active');
             setTimeout(() => {
                 chatbotContainer.style.display = 'none';
@@ -1883,7 +1871,7 @@
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('quick-reply')) {
                 const reply = e.target.dataset.reply;
-                userInput.value = reply;
+                user极简风格Input.value = reply;
                 handleSendMessage();
             }
         });
