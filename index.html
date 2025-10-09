@@ -2069,7 +2069,7 @@
     </div>
   </section>
   
-<!-- Contacto Simplificado -->
+<!-- Contacto Simplificado - FORMULARIO AMPLIADO -->
 <section id="contacto" class="contact">
   <div class="container">
     <div class="section-title">
@@ -2111,30 +2111,11 @@
           <button type="submit" class="btn btn-secondary">Solicitar diagnóstico gratuito</button>
         </form>
       </div>
-      
-      <div class="contact-info">
-        <h3>Contacto directo</h3>
-        <p><i class="fas fa-envelope"></i> impactaverde@gmail.com</p>
-        <p><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</p>
-        
-        <div class="social-contact">
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-tiktok"></i></a>
-          <a href="#"><i class="fab fa-whatsapp"></i></a>
-        </div>
-        
-        <div style="margin-top: 30px; padding-top: 25px; border-top: 1px solid #e0e0e0;">
-          <h4>Horarios de atención</h4>
-          <p>Lunes a Viernes: 9:00 - 18:00 hs</p>
-          <p>Respondemos consultas en menos de 24 horas</p>
-        </div>
-      </div>
     </div>
   </div>
 </section>
   
-<!-- Footer -->
+<!-- Footer AMPLIADO con información de contacto -->
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -2151,6 +2132,21 @@
           <a href="#"><i class="fab fa-tiktok"></i></a>
         </div>
       </div>
+      
+      <!-- NUEVA SECCIÓN: Información de contacto -->
+      <div class="footer-contact-info">
+        <h3>Contacto directo</h3>
+        <div class="contact-details">
+          <p><i class="fas fa-envelope"></i> impactaverde@gmail.com</p>
+          <p><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</p>
+          <div class="business-hours">
+            <h4>Horarios de atención</h4>
+            <p>Lunes a Viernes: 9:00 - 18:00 hs</p>
+            <p>Respondemos consultas en menos de 24 horas</p>
+          </div>
+        </div>
+      </div>
+      
       <div class="footer-links">
         <h3>Enlaces Rápidos</h3>
         <ul>
@@ -2177,6 +2173,7 @@
 </footer>
 
 <style>
+/* ESTILOS PARA LA SECCIÓN DE CONTACTO MODIFICADA */
 .contact {
   padding: 80px 0;
   background: white;
@@ -2184,89 +2181,60 @@
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr; /* SOLO FORMULARIO - OCUPA TODO EL ANCHO */
   gap: 40px;
-  max-width: 1000px;
+  max-width: 900px; /* ANCHO MÁXIMO DEL FORMULARIO */
   margin: 0 auto;
 }
 
 .contact-form {
   background: var(--light);
-  padding: 40px;
+  padding: 50px; /* MÁS ESPACIOSO */
   border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .contact-form h3 {
   color: var(--primary);
-  margin-bottom: 25px;
-  font-size: 1.4rem;
+  margin-bottom: 30px;
+  font-size: 1.6rem;
+  text-align: center;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 8px;
-  font-weight: 500;
+  margin-bottom: 10px;
+  font-weight: 600;
   color: var(--text-dark);
+  font-size: 1.1rem;
 }
 
 .form-group input, .form-group textarea, .form-group select {
   width: 100%;
-  padding: 12px 15px;
+  padding: 15px;
   border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-family: inherit;
-}
-
-.form-group textarea {
-  height: 120px;
-  resize: vertical;
-}
-
-.contact-info {
-  padding: 20px;
-}
-
-.contact-info h3 {
-  color: var(--primary);
-  margin-bottom: 20px;
-  font-size: 1.4rem;
-}
-
-.contact-info p {
-  margin-bottom: 15px;
+  border-radius: 6px;
   font-size: 1.1rem;
-  color: var(--text-dark);
-}
-
-.social-contact {
-  display: flex;
-  gap: 15px;
-  margin: 25px 0;
-}
-
-.social-contact a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  background: var(--primary);
-  border-radius: 50%;
-  color: white;
-  font-size: 1.3rem;
+  font-family: inherit;
   transition: all 0.3s ease;
 }
 
-.social-contact a:hover {
-  transform: translateY(-5px);
-  background: var(--primary-dark);
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+  outline: none;
 }
 
+.form-group textarea {
+  height: 140px;
+  resize: vertical;
+}
+
+/* ESTILOS PARA EL FOOTER AMPLIADO */
 footer {
   background: #222;
   color: white;
@@ -2276,7 +2244,7 @@ footer {
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  gap: 40px;
   margin-bottom: 40px;
 }
 
@@ -2301,6 +2269,49 @@ footer {
   margin-right: 10px;
   width: 20px;
   color: var(--secondary);
+}
+
+/* NUEVA SECCIÓN DE CONTACTO EN EL FOOTER */
+.footer-contact-info {
+  padding: 10px;
+}
+
+.footer-contact-info h3 {
+  color: var(--secondary);
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.contact-details p {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  color: #ddd;
+}
+
+.contact-details i {
+  margin-right: 10px;
+  width: 20px;
+  color: var(--secondary);
+}
+
+.business-hours {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.business-hours h4 {
+  color: var(--secondary);
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.business-hours p {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: #bbb;
 }
 
 .social-links {
@@ -2369,29 +2380,13 @@ footer {
   .contact-form {
     padding: 30px;
   }
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
 }
 </style>
-  
-  <script>
-    // Mobile Menu Toggle
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navMenu = document.querySelector('nav ul');
-    
-    mobileMenuBtn.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-    });
-    
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        navMenu.classList.remove('active');
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-    
     // Chatbot mejorado
     const chatbotBtn = document.getElementById('chatbotBtn');
     const chatbotContainer = document.getElementById('chatbotContainer');
