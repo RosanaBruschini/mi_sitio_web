@@ -1278,15 +1278,14 @@
         <i class="fas fa-bars"></i>
       </button>
       <nav>
-        <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#sello">Sello Digital</a></li>
-          <li><a href="#impacto">Impacto</a></li>
-          <li><a href="#partner">Partner</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </nav>
+  <ul>
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#sello-impacto">Sello</a></li> <!-- Cambiado de #sello a #sello-impacto -->
+    <li><a href="#partner">Partner</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
     </div>
   </header>
   
@@ -1427,16 +1426,18 @@
     </div>
   </section>
   
-  <!-- Sección del Sello Digital - ACTUALIZADA -->
-  <section id="sello" class="sello-section">
-    <div class="container">
-      <div class="section-title">
-        <h2>Sello Digital de Compromiso con la Sostenibilidad</h2>
-        <p>Distinción para organizaciones que demuestran un compromiso real con el medio ambiente</p>
-      </div>
-      <div class="sello-content">
+  <!-- Sección Integrada: Sello Digital + Impacto Positivo -->
+<section id="sello-impacto" class="sello-impacto-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Sello Digital de Sustentabilidad</h2>
+      <p>Certificá tu compromiso ambiental y sumate a nuestro impacto positivo acumulado</p>
+    </div>
+    
+    <div class="sello-impacto-grid">
+      <!-- Columna izquierda: Sello Digital -->
+      <div class="sello-column">
         <div class="sello-box">
-          <!-- Logo actualizado con hoja y nombre dentro del círculo -->
           <div class="sello-logo-container">
             <div class="sello-background-pattern"></div>
             <i class="fas fa-leaf leaf-icon"></i>
@@ -1446,90 +1447,322 @@
               <span class="sello-name-bottom">VERDE</span>
             </div>
           </div>
-          <h3>Tu Certificación de Impacto Positivo</h3>
+          <h3>Tu Distintivo de Compromiso Real</h3>
           <p>Este sello digital reconoce tu compromiso con prácticas sostenibles y te permite:</p>
           <div class="sello-features">
             <div class="sello-feature">
               <i class="fas fa-check-circle"></i> Demostrar tu compromiso ambiental
             </div>
             <div class="sello-feature">
-              <i class="fas fa-check-circle"></i> Acceder a beneficios fiscales
+              <i class="fas fa-check-circle"></i> Diferenciarte de la competencia
             </div>
             <div class="sello-feature">
-              <i class="fas fa-check-circle"></i> Mejorar tu posicionamiento
+              <i class="fas fa-check-circle"></i> Atraer clientes conscientes
             </div>
             <div class="sello-feature">
-              <i class="fas fa-check-circle"></i> Atraer nuevos clientes
+              <i class="fas fa-check-circle"></i> Acceder a beneficios exclusivos
             </div>
           </div>
           <p style="margin-top: 25px; font-weight: 500;">Obtén tu sello digital al completar nuestro diagnóstico de sostenibilidad</p>
           <a href="#contacto" class="btn" style="margin-top: 15px;">Solicitar mi sello</a>
         </div>
       </div>
+      
+      <!-- Columna derecha: Impacto Positivo -->
+      <div class="impacto-column">
+        <div class="impacto-box">
+          <div class="impacto-header">
+            <h3><i class="fas fa-seedling"></i> Impacto Positivo Generado</h3>
+            <p>Resultados acumulados gracias a empresas como la tuya</p>
+          </div>
+          
+          <div class="impacto-numbers">
+            <div class="impacto-card trees-card">
+              <div class="impacto-value">
+                <i class="fas fa-tree impacto-icon"></i> 153
+              </div>
+              <div class="impacto-unit">árboles salvados</div>
+              <div class="impacto-desc">Equivalente a la absorción anual de CO₂</div>
+            </div>
+            
+            <div class="impacto-card co2-card">
+              <div class="impacto-value">
+                <i class="fas fa-cloud impacto-icon"></i> 9.2
+              </div>
+              <div class="impacto-unit">toneladas de CO₂</div>
+              <div class="impacto-desc">Reducción acumulada en emisiones</div>
+            </div>
+          </div>
+          
+          <div class="impacto-progress">
+            <div class="progress-container">
+              <div class="progress-bar">
+                <span class="progress-label">77% de la meta anual</span>
+              </div>
+            </div>
+            <div class="progress-markers">
+              <span>0</span>
+              <span>100</span>
+              <span>200 árboles</span>
+            </div>
+          </div>
+          
+          <div class="impacto-stats">
+            <div class="stat-item">
+              <div class="stat-number">15</div>
+              <div class="stat-label">Empresas</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">8</div>
+              <div class="stat-label">Sectores</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">98%</div>
+              <div class="stat-label">Reducción promedio</div>
+            </div>
+          </div>
+          
+          <div class="impacto-cta">
+            <p><strong>Sumate a esta red de impacto positivo</strong></p>
+            <a href="#contacto" class="btn btn-secondary">Medir mi huella</a>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<style>
+/* Estilos para la sección integrada */
+.sello-impacto-section {
+  background: #f0f7f0;
+  padding: 80px 0;
+}
+
+.sello-impacto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Columna Sello (izquierda) */
+.sello-column {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sello-box {
+  background: white;
+  border-radius: 15px;
+  padding: 40px;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.sello-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+/* Columna Impacto (derecha) */
+.impacto-column {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.impacto-box {
+  background: white;
+  border-radius: 15px;
+  padding: 40px;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.impacto-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.impacto-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.impacto-header h3 {
+  color: var(--primary);
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.impacto-numbers {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.impacto-card {
+  flex: 1;
+  text-align: center;
+  padding: 25px 20px;
+  border-radius: 12px;
+  background: #f5f9f5;
+  transition: all 0.3s ease;
+}
+
+.impacto-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.trees-card {
+  border-top: 5px solid #4caf50;
+}
+
+.co2-card {
+  border-top: 5px solid #2e7d32;
+}
+
+.impacto-value {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.impacto-unit {
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 5px;
+}
+
+.impacto-desc {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.impacto-icon {
+  font-size: 2.5rem;
+  color: var(--primary);
+}
+
+.impacto-progress {
+  margin: 30px 0;
+}
+
+.progress-container {
+  background: #e9ecef;
+  height: 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 15px 0;
+  position: relative;
+  width: 100%;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #2e7d32);
+  border-radius: 12px;
+  width: 77%;
+  position: relative;
+}
+
+.progress-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.progress-markers {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.impacto-stats {
+  display: flex;
+  justify-content: space-around;
+  margin: 25px 0;
+  padding: 20px;
+  background: #e8f5e9;
+  border-radius: 8px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+.impacto-cta {
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.impacto-cta p {
+  margin-bottom: 15px;
+  color: var(--text-dark);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .sello-impacto-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
   
-  <!-- Impacto Positivo Section -->
-  <section id="impacto" class="impact-logrado">
-    <div class="container">
-      <div class="section-title">
-        <h2>Impacto Positivo Acumulado</h2>
-        <p>Gracias a nuestros clientes hemos logrado un impacto ambiental positivo</p>
-      </div>
-      <div class="impact-container">
-        <div class="impact-header">
-          <h2><i class="fas fa-seedling"></i> Nuestra Contribución Ambiental</h2>
-          <p>La reducción de huella de carbono se traduce en árboles salvados</p>
-        </div>
-        <div class="impact-content">
-          <div class="impact-numbers">
-            <div class="impact-card trees-card">
-              <div class="impact-value">
-                <i class="fas fa-tree impact-icon"></i> 153
-              </div>
-              <div class="impact-unit">árboles salvados</div>
-            </div>
-            <div class="impact-card co2-card">
-              <div class="impact-value">
-                <i class="fas fa-cloud impact-icon"></i> 9.2
-              </div>
-              <div class="impact-unit">toneladas de CO₂ reducidas</div>
-            </div>
-          </div>
-          <div class="impact-equivalent">
-            <strong>Equivalencia:</strong> Esto representa 9.2 toneladas de CO₂ evitadas, equivalente a la absorción anual de 153 árboles
-            <div style="font-size: 0.9rem; margin-top: 8px;">
-              (Cálculo: 1 árbol absorbe aproximadamente 0.06 toneladas de CO₂ al año)
-            </div>
-          </div>
-          <div class="progress-container">
-            <div class="progress-bar">
-              <span class="progress-label">77% de la meta anual</span>
-            </div>
-          </div>
-          <div class="progress-markers">
-            <span>0</span>
-            <span>100</span>
-            <span>200</span>
-          </div>
-          <div class="impact-comparison">
-            <div class="comparison-item">
-              <div class="comparison-value">15</div>
-              <div class="comparison-label">Empresas</div>
-            </div>
-            <div class="comparison-item">
-              <div class="comparison-value">8</div>
-              <div class="comparison-label">Sectores</div>
-            </div>
-            <div class="comparison-item">
-              <div class="comparison-value">98%</div>
-              <div class="comparison-label">Reducción promedio</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  .sello-column, .impacto-column {
+    justify-content: center;
+  }
+  
+  .impacto-numbers {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sello-box, .impacto-box {
+    padding: 25px;
+  }
+  
+  .impacto-value {
+    font-size: 2.5rem;
+  }
+  
+  .impacto-stats {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+</style>
   
 <!-- Nuestro Diferenciador -->
 <section id="partner" class="partner">
