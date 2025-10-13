@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Impacta Verde - Estudio de Marcas Sustentables</title>
   
+  <!-- Favicon actualizado con hoja verde -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,6 +17,8 @@
       --light: #f5f9f5;
       --dark: #333;
       --accent: #4caf50;
+      --sello-light: #4caf50;
+      --sello-medium: #388e3c;
       --text-dark: #2c3e50;
       --text-light: #7f8c8d;
     }
@@ -58,6 +61,19 @@
       background: var(--primary-dark);
       transform: translateY(-3px);
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    
+    .btn-secondary {
+      background: var(--secondary);
+    }
+    
+    .btn-secondary:hover {
+      background: #e68a00;
+    }
+    
+    .btn-light {
+      background: white;
+      color: var(--primary);
     }
     
     /* Header */
@@ -182,6 +198,65 @@
       text-shadow: 0 1px 3px rgba(0,0,0,0.5);
     }
     
+    /* Stats Section */
+    .stats {
+      background: var(--light);
+      padding: 60px 0;
+      text-align: center;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      max-width: 600px;
+      margin: 30px auto;
+    }
+    
+    .stat-item {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .stat-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+    
+    .mission-text {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .mission-text h3 {
+      color: var(--primary);
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    
+    .mission-text p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+    
+    /* Services Section */
+    .services {
+      padding: 80px 0;
+      background: white;
+    }
+    
     .section-title {
       text-align: center;
       margin-bottom: 50px;
@@ -199,78 +274,12 @@
       margin: 0 auto;
     }
     
-    /* Misión y Resultados */
-    .mision-resultados {
-      padding: 80px 0;
-      background: var(--light);
-      text-align: center;
-    }
-
-    .mision-content h2 {
-      color: var(--primary);
-      font-size: 2.2rem;
-      margin-bottom: 25px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.3;
-    }
-
-    .mision-content p {
-      font-size: 1.2rem;
-      color: var(--text-dark);
-      max-width: 900px;
-      margin: 0 auto 50px;
-      line-height: 1.7;
-    }
-
-    .resultados-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .resultado-item {
-      background: white;
-      padding: 30px 25px;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-      transition: all 0.3s ease;
-      border-top: 4px solid var(--primary);
-    }
-
-    .resultado-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-    }
-
-    .resultado-valor {
-      font-size: 2.8rem;
-      font-weight: 800;
-      color: var(--primary);
-      margin-bottom: 8px;
-    }
-
-    .resultado-label {
-      font-size: 1.1rem;
-      color: var(--text-dark);
-      font-weight: 500;
-    }
-
-    /* Services Section */
-    .services {
-      padding: 80px 0;
-      background: white;
-    }
-
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
     }
-
+    
     .service-card {
       text-align: center;
       padding: 40px 30px;
@@ -279,94 +288,692 @@
       transition: all 0.3s ease;
       background: white;
     }
-
+    
     .service-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     }
-
+    
     .service-icon {
       font-size: 3.5rem;
       color: var(--primary);
       margin-bottom: 25px;
     }
-
+    
     .service-card h3 {
       font-size: 1.5rem;
       margin-bottom: 15px;
       color: var(--primary);
     }
-
-    /* Aumentar tipografía gris en toda la sección de servicios */
-    .service-card p {
-      color: #2d3748;
-      font-size: 1.1rem;
-      line-height: 1.5;
-    }
-
-    .service-card ul li {
-      color: #2d3748;
-      font-size: 1.1rem;
-    }
-
-    .service-card div[style*="background: #f0f7f0"] {
-      color: #2d3748 !important;
-      font-size: 1.1rem !important;
-    }
-
-    /* Sello + Impacto Section */
-    .sello-impacto-section {
+    
+    /* Sección del Sello Digital - ACTUALIZADA */
+    .sello-section {
       background: #f0f7f0;
       padding: 80px 0;
+      color: var(--text-dark);
+      text-align: center;
     }
-
-    .sello-impacto-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: start;
-      max-width: 1200px;
+    
+    .sello-content {
+      max-width: 800px;
       margin: 0 auto;
+      padding: 0 20px;
     }
-
-    .sello-column {
-      display: flex;
-      justify-content: flex-end;
-    }
-
+    
     .sello-box {
       background: white;
       border-radius: 15px;
       padding: 40px;
-      max-width: 500px;
+      margin: 40px auto;
+      max-width: 600px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
       transition: all 0.3s ease;
     }
-
+    
     .sello-box:hover {
       transform: translateY(-5px);
       box-shadow: 0 15px 40px rgba(0,0,0,0.12);
     }
-
-    .impacto-column {
-      display: flex;
-      justify-content: flex-start;
-    }
-
-    .impacto-box {
+    
+    /* Nuevos estilos para el logo del sello - TAMAÑOS AJUSTADOS */
+    .sello-logo-container {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 25px;
       background: white;
-      border-radius: 15px;
-      padding: 40px;
-      max-width: 500px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 8px solid var(--primary);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .leaf-icon {
+      font-size: 4.5rem;
+      color: var(--primary);
+      margin-bottom: 5px;
+      animation: leafPulse 2s infinite;
+      z-index: 2;
+    }
+    
+    .sello-name {
+      color: var(--primary);
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.2;
+      z-index: 2;
+      text-transform: uppercase;
+    }
+    
+    .sello-name-top {
+      font-size: 1.5rem;
+    }
+    
+    .sello-name-bottom {
+      font-size: 1.3rem;
+    }
+    
+    .sello-name-separator {
+      height: 3px;
+      width: 70%;
+      background: var(--primary);
+      margin: 3px auto;
+      border-radius: 2px;
+    }
+    
+    .sello-background-pattern {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 30% 30%, rgba(46, 125, 50, 0.08) 0%, transparent 20%),
+        radial-gradient(circle at 70% 70%, rgba(46, 125, 50, 0.08) 0%, transparent 20%),
+        radial-gradient(circle at 50% 20%, rgba(46, 125, 50, 0.08) 0%, transparent 20%),
+        radial-gradient(circle at 20% 50%, rgba(46, 125, 50, 0.08) 0%, transparent 20%);
+      z-index: 1;
+    }
+    
+    @keyframes leafPulse {
+      0% { transform: scale(1) rotate(-5deg); }
+      50% { transform: scale(1.1) rotate(5deg); }
+      100% { transform: scale(1) rotate(-5deg); }
+    }
+    
+    /* Animación para el texto */
+    @keyframes textGlow {
+      0% { text-shadow: 0 0 0 rgba(46, 125, 50, 0.3); }
+      50% { text-shadow: 0 0 10px rgba(46, 125, 50, 0.5); }
+      100% { text-shadow: 0 0 0 rgba(46, 125, 50, 0.3); }
+    }
+    
+    .sello-name span {
+      animation: textGlow 3s infinite;
+    }
+    
+    .sello-name-top {
+      animation-delay: 0.2s;
+    }
+    
+    .sello-name-bottom {
+      animation-delay: 0.4s;
+    }
+    
+    .sello-features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .sello-feature {
+      background: #e8f5e9;
+      padding: 15px 20px;
+      border-radius: 8px;
+      min-width: 200px;
+      flex: 1;
       transition: all 0.3s ease;
     }
-
-    .impacto-box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    
+    .sello-feature:hover {
+      background: #d0ebd2;
+      transform: translateY(-3px);
     }
-
+    
+    .sello-feature i {
+      color: var(--primary);
+      margin-right: 8px;
+    }
+    
+    /* Impacto Positivo Section */
+    .impact-logrado {
+      padding: 80px 0;
+      background: #f0f7f0;
+    }
+    
+    .impact-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .impact-header {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+    
+    .impact-header h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    
+    .impact-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+      text-align: center;
+    }
+    
+    .impact-numbers {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    
+    .impact-card {
+      background: #f5f9f5;
+      border-radius: 12px;
+      padding: 30px 40px;
+      min-width: 300px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .impact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .impact-value {
+      font-size: 4.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .impact-unit {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+    
+    .trees-card {
+      border-top: 5px solid #4caf50;
+    }
+    
+    .co2-card {
+      border-top: 5px solid #2e7d32;
+    }
+    
+    .impact-icon {
+      font-size: 3.5rem;
+      color: var(--primary);
+    }
+    
+    .impact-equivalent {
+      font-size: 1.1rem;
+      margin: 20px 0;
+      color: var(--text-dark);
+      max-width: 600px;
+      padding: 15px;
+      border-radius: 8px;
+      background: #e8f5e9;
+      font-weight: 500;
+    }
+    
+    .impact-equivalent strong {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    
+    .progress-container {
+      background: #e9ecef;
+      height: 24px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 20px 0;
+      position: relative;
+      width: 80%;
+      max-width: 600px;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #4caf50, #2e7d32);
+      border-radius: 12px;
+      width: 63%;
+      position: relative;
+    }
+    
+    .progress-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      z-index: 2;
+    }
+    
+    .progress-markers {
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      max-width: 600px;
+      margin-top: 5px;
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+    
+    .impact-comparison {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 600px;
+    }
+    
+    .comparison-item {
+      text-align: center;
+      padding: 15px;
+      background: #e8f5e9;
+      border-radius: 8px;
+      margin: 5px;
+      flex: 1;
+      min-width: 120px;
+    }
+    
+    .comparison-value {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 5px 0;
+    }
+    
+    .comparison-label {
+      font-size: 0.85rem;
+      color: var(--text-dark);
+    }
+    
+    /* Nuestra metodología Section */
+    .partner {
+      background: #f0f7f0;
+      padding: 80px 0;
+      color: var(--text-dark);
+    }
+    
+    .partner-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    
+    .benefit-item {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .benefit-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .benefit-item i {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+    
+    /* Testimonials */
+    .testimonials {
+      padding: 80px 0;
+      background: var(--light);
+      text-align: center;
+    }
+    
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .testimonial-card {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      text-align: left;
+      position: relative;
+    }
+    
+    .testimonial-card::before {
+      content: """;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 5rem;
+      color: var(--primary);
+      opacity: 0.1;
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    
+    .client-logo {
+      width: 80px;
+      height: 80px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    
+    /* Contact Section */
+    .contact {
+      padding: 80px 0;
+      background: white;
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+    
+    .contact-form {
+      background: var(--light);
+      padding: 30px;
+      border-radius: 8px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    
+    .form-group textarea {
+      height: 150px;
+      resize: vertical;
+    }
+    
+    .social-contact {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+    
+    .social-contact a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-contact a:hover {
+      transform: translateY(-5px);
+      background: var(--primary-dark);
+    }
+    
+    /* Footer */
+    footer {
+      background: #222;
+      color: white;
+      padding: 60px 0 30px;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-info h3 {
+      color: var(--secondary);
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+    
+    .contact-info p {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .contact-info i {
+      margin-right: 10px;
+      width: 20px;
+      color: var(--secondary);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+    }
+    
+    .footer-links h3 {
+      color: var(--secondary);
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links ul li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links ul li a {
+      color: #ddd;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links ul li a:hover {
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero {
+        padding: 150px 0 80px;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+      }
+      nav ul.active {
+        display: flex;
+      }
+      nav ul li {
+        margin: 12px 0;
+        text-align: center;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .impact-value {
+        font-size: 3.5rem;
+      }
+      .impact-numbers {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .impact-card {
+        min-width: 250px;
+      }
+      .sello-features {
+        flex-direction: column;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+      .cta-buttons {
+        flex-direction: column;
+      }
+      .impact-value {
+        font-size: 3rem;
+      }
+      .impact-comparison {
+        flex-direction: column;
+      }
+      .sello-box {
+        padding: 25px;
+      }
+    }
+    
+    /* Animaciones para la sección de impacto */
+    .impact-card {
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .impact-icon {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    
     /* Chatbot Mejorado */
     .chatbot-btn {
       position: fixed;
@@ -616,94 +1223,6 @@
     .quick-reply:hover {
       background: #d0ebd2;
     }
-
-    /* Responsive */
-    @media (max-width: 1200px) {
-      .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 992px) {
-      .sello-impacto-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-      
-      .sello-column, .impacto-column {
-        justify-content: center;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        padding: 150px 0 80px;
-      }
-      
-      .hero h1 {
-        font-size: 1.8rem;
-      }
-      
-      .hero p {
-        font-size: 1rem;
-      }
-      
-      nav ul {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: white;
-        flex-direction: column;
-        padding: 20px 0;
-        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-      }
-      
-      nav ul.active {
-        display: flex;
-      }
-      
-      nav ul li {
-        margin: 12px 0;
-        text-align: center;
-      }
-      
-      .mobile-menu-btn {
-        display: block;
-      }
-      
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .mision-content h2 {
-        font-size: 1.8rem;
-      }
-      
-      .mision-content p {
-        font-size: 1.1rem;
-      }
-      
-      .resultados-grid {
-        grid-template-columns: 1fr;
-        max-width: 300px;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .hero h1 {
-        font-size: 1.6rem;
-      }
-      
-      .section-title h2 {
-        font-size: 1.8rem;
-      }
-      
-      .sello-box, .impacto-box {
-        padding: 25px;
-      }
-    }
   </style>
 </head>
 <body>
@@ -724,1904 +1243,4 @@
       <div class="message bot">
         ¡Hola! Soy EcoAsistente de Impacta Verde. ¿En qué puedo ayudarte hoy?
         <div class="quick-replies">
-          <button class="quick-reply" data-reply="servicios">Servicios</button>
-          <button class="quick-reply" data-reply="agendar">Agendar cita</button>
-          <button class="quick-reply" data-reply="contacto">Contacto</button>
-        </div>
-      </div>
-    </div>
-    <div class="typing-indicator" id="typingIndicator">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="chatbot-input-container">
-      <input type="text" id="userInput" class="chatbot-input" placeholder="Escribe tu mensaje...">
-      <button id="sendMessage" class="chatbot-send-btn">
-        <i class="fas fa-paper-plane"></i>
-      </button>
-    </div>
-  </div>
-
-  <!-- Header -->
-  <header>
-    <div class="container header-container">
-      <a href="#" class="logo">
-        <div class="logo-icon">
-          <i class="fas fa-arrow-up"></i>
-        </div>
-        <div class="logo-text">
-          <span>Impacta</span>
-          <span>Verde</span>
-        </div>
-      </a>
-      <button class="mobile-menu-btn">
-        <i class="fas fa-bars"></i>
-      </button>
-      <nav>
-        <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#sello-impacto">Sello</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-  
-  <!-- Hero Section - TEXTO OPTIMIZADO -->
-  <section id="inicio" class="hero">
-    <div class="container">
-      <h1>Potenciamos marcas hacia un modelo más sustentable</h1>
-      <p>Marca + Mejora de Procesos + Medición de impacto + Sello Digital sustentable + Comunicación.</p>
-      <a href="#contacto" class="btn">Solicitá tu diagnóstico gratuito</a>
-    </div>
-  </section>
-  
-  <!-- Misión y Resultados - TEXTO OPTIMIZADO Y TIPOGRAFÍA MEJORADA -->
-  <section id="mision" class="mision-resultados">
-    <div class="container">
-      <div class="mision-content">
-        <p class="mision-texto-principal">Acompañamos a empresas y emprendimientos en su transición hacia la sustentabilidad, integrando estrategias de comunicación, innovación en productos y mejora de procesos. Evaluamos el impacto ambiental y promovemos acciones concretas para reducir la huella de carbono. A través del <strong>Sello Digital de Sustentabilidad</strong>, reconocemos a las marcas que asumen un compromiso real con un cambio positivo y duradero.</p>
-      </div>
-      
-      <div class="resultados-grid">
-        <div class="resultado-item">
-          <div class="resultado-valor">11+</div>
-          <div class="resultado-label">Marcas Potenciadas</div>
-        </div>
-        <div class="resultado-item">
-          <div class="resultado-valor">153</div>
-          <div class="resultado-label">Árboles Equivalentes</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="servicios" class="services">
-    <div class="container">
-      <div class="section-title">
-        <h2>Nuestros Servicios</h2>
-        <p style="color: #2d3748; font-size: 1.25rem;">Integramos diseño, procesos y comunicación para una sustentabilidad real y medible</p>
-      </div>
-      <div class="services-grid">
-        <!-- Pilar 1: Gestión de Marca Sustentable (PRIMERO) -->
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-certificate"></i>
-          </div>
-          <h3>Gestión de Marca Sustentable</h3>
-          <p><strong>Posicionamos tu marca como referente en sustentabilidad</strong></p>
-          <ul style="text-align: left; margin-top: 15px; list-style: none; padding-left: 0;">
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Estrategia de marca sustentable
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Sello Digital de Sustentabilidad
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Gestión de reputación verde
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Alineación con ODS y estándares
-            </li>
-          </ul>
-          <div style="margin-top: 20px; padding: 15px; background: #f0f7f0; border-radius: 8px; font-size: 1.05rem; color: #2d3748;">
-            <strong>Resultado:</strong> "Marca posicionada como líder en sustentabilidad del sector"
-          </div>
-        </div>
-
-        <!-- Pilar 2: Rediseño Sustentable -->
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-sync-alt"></i>
-          </div>
-          <h3>Rediseño Sustentable</h3>
-          <p><strong>Transformamos tus productos desde su esencia</strong></p>
-          <ul style="text-align: left; margin-top: 15px; list-style: none; padding-left: 0;">
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Análisis y mejora de productos existentes
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Diseño de nuevas líneas circulares
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Optimización de procesos productivos
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Selección de materiales sustentables
-            </li>
-          </ul>
-          <div style="margin-top: 20px; padding: 15px; background: #f0f7f0; border-radius: 8px; font-size: 1.05rem; color: #2d3748;">
-            <strong>Case study:</strong> "Cómo rediseñamos [producto] reduciendo un 40% el desperdicio"
-          </div>
-        </div>
-
-        <!-- Pilar 3: Gestión Circular -->
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-recycle"></i>
-          </div>
-          <h3>Gestión Circular</h3>
-          <p><strong>Implementamos economía circular aplicada</strong></p>
-          <ul style="text-align: left; margin-top: 15px; list-style: none; padding-left: 0;">
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Planes de economía circular práctica
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Estrategias de reducción de desperdicios
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Optimización de cadena y procesos
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Mediciones de impacto reales
-            </li>
-          </ul>
-          <div style="margin-top: 20px; padding: 15px; background: #f0f7f0; border-radius: 8px; font-size: 1.05rem; color: #2d3748;">
-            <strong>Ejemplo:</strong> "Sistema circular implementado en taller de [industria]"
-          </div>
-        </div>
-
-        <!-- Pilar 4: Comunicación Estratégica -->
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-bullhorn"></i>
-          </div>
-          <h3>Comunicación Integral</h3>
-          <p><strong>Contamos tu historia sustentable sin greenwashing</strong></p>
-          <ul style="text-align: left; margin-top: 15px; list-style: none; padding-left: 0;">
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Storytelling de la marca
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Comunicación verde integrada a la marca
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Posicionamiento de marca 
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Estrategias de contenido creativo
-            </li>
-          </ul>
-          <div style="margin-top: 20px; padding: 15px; background: #f0f7f0; border-radius: 8px; font-size: 1.05rem; color: #2d3748;">
-            <strong>Ejemplo:</strong> "Campaña que aumentó 30% engagement mostrando procesos reales"
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Aquí continúan las demás secciones de tu página (Sello, Impacto, Testimonials, Contacto, Footer) -->
-  <!-- ... resto de tu contenido ... -->
-
-<script>
-  // Chatbot mejorado
-  const chatbotBtn = document.getElementById('chatbotBtn');
-  const chatbotContainer = document.getElementById('chatbotContainer');
-  const closeChatbot = document.getElementById('closeChatbot');
-  const chatMessages = document.getElementById('chatMessages');
-  const userInput = document.getElementById('userInput');
-  const sendMessage = document.getElementById('sendMessage');
-  const typingIndicator = document.getElementById('typingIndicator');
-  
-  chatbotBtn.addEventListener('click', () => {
-    chatbotContainer.style.display = 'flex';
-    setTimeout(() => {
-      chatbotContainer.classList.add('active');
-    }, 10);
-  });
-  
-  closeChatbot.addEventListener('click', () => {
-    chatbotContainer.classList.remove('active');
-    setTimeout(() => {
-      chatbotContainer.style.display = 'none';
-    }, 300);
-  });
-  
-  // Función para agregar mensajes al chat
-  function addMessage(text, isUser) {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message');
-    messageDiv.classList.add(isUser ? 'user' : 'bot');
-    messageDiv.textContent = text;
-    chatMessages.appendChild(messageDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-  
-  // Función para mostrar el indicador de "escribiendo"
-  function showTypingIndicator() {
-    typingIndicator.style.display = 'flex';
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-  
-  // Función para ocultar el indicador de "escribiendo"
-  function hideTypingIndicator() {
-    typingIndicator.style.display = 'none';
-  }
-  
-  // Estados de agendamiento
-  let appointmentStep = 0;
-  let appointmentDate = null;
-  let appointmentTime = null;
-  
-  // Respuestas del bot
-  function botResponse(userMessage) {
-    const responses = {
-      'hola': {
-        text: '¡Hola! Soy EcoAsistente de Impacta Verde. ¿En qué puedo ayudarte hoy?',
-        quickReplies: ['servicios', 'agendar', 'contacto']
-      },
-      'servicios': {
-        text: 'Ofrecemos los siguientes servicios:\n\n' +
-              ' Formación y Talleres\n' +
-              ' Comunicación y Estrategia de Marca Sostenible\n' +
-              ' Diagnóstico MiPyME Sostenible\n' +
-             
-
-<style>
-/* Estilos para Hero Section */
-.hero {
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-  color: white;
-  text-align: center;
-  padding: 180px 0 100px;
-  margin-top: 0;
-}
-
-.hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 25px;
-  line-height: 1.3;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  font-weight: 700;
-}
-
-.hero p {
-  font-size: 1.3rem; /* Texto más grande */
-  margin-bottom: 35px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-  line-height: 1.6;
-  font-weight: 400;
-}
-
-.btn {
-  display: inline-block;
-  padding: 15px 35px;
-  background: var(--primary);
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
-  font-size: 1.1rem;
-}
-
-.btn:hover {
-  background: var(--primary-dark);
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-/* Estilos para Misión y Resultados */
-.mision-resultados {
-  padding: 80px 0;
-  background: var(--light);
-  text-align: center;
-}
-
-.mision-content h2 {
-  color: var(--primary);
-  font-size: 2.3rem; /* Un poco más grande */
-  margin-bottom: 30px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.3;
-  font-weight: 700;
-}
-
-.mision-texto-principal {
-  font-size: 1.5rem !important; /* 4 PUNTOS MÁS GRANDE (de 1.1rem a 1.5rem) */
-  color: #1a202c !important; /* GRIS 4 PUNTOS MÁS OSCURO (de #7f8c8d a #1a202c) */
-  max-width: 1000px;
-  margin: 0 auto 50px !important;
-  line-height: 1.7;
-  font-weight: 500;
-}
-
-.mision-texto-principal strong {
-  color: var(--primary);
-  font-weight: 700;
-}
-
-.resultados-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 40px;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.resultado-item {
-  background: white;
-  padding: 35px 30px;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  border-top: 4px solid var(--primary);
-}
-
-.resultado-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-}
-
-.resultado-valor {
-  font-size: 3rem;
-  font-weight: 800;
-  color: var(--primary);
-  margin-bottom: 10px;
-  line-height: 1;
-}
-
-.resultado-label {
-  font-size: 1.2rem;
-  color: #1a202c; /* Gris más oscuro */
-  font-weight: 600;
-}
-
-/* Responsive */
-@media (max-width: 992px) {
-  .hero h1 {
-    font-size: 2.3rem;
-  }
-  
-  .hero p {
-    font-size: 1.2rem;
-  }
-  
-  .mision-content h2 {
-    font-size: 2rem;
-  }
-  
-  .mision-texto-principal {
-    font-size: 1.3rem !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero {
-    padding: 150px 0 80px;
-  }
-  
-  .hero h1 {
-    font-size: 1.9rem;
-  }
-  
-  .hero p {
-    font-size: 1.1rem;
-  }
-  
-  .mision-resultados {
-    padding: 60px 0;
-  }
-  
-  .mision-content h2 {
-    font-size: 1.8rem;
-  }
-  
-  .mision-texto-principal {
-    font-size: 1.2rem !important;
-  }
-  
-  .resultados-grid {
-    grid-template-columns: 1fr;
-    max-width: 300px;
-    gap: 25px;
-  }
-  
-  .resultado-item {
-    padding: 30px 25px;
-  }
-  
-  .resultado-valor {
-    font-size: 2.5rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .hero h1 {
-    font-size: 1.7rem;
-  }
-  
-  .hero p {
-    font-size: 1rem;
-  }
-  
-  .mision-content h2 {
-    font-size: 1.6rem;
-  }
-  
-  .mision-texto-principal {
-    font-size: 1.1rem !important;
-  }
-  
-  .resultado-valor {
-    font-size: 2.2rem;
-  }
-  
-  .resultado-label {
-    font-size: 1.1rem;
-  }
-}
-  
-</style>
-  
-  <!-- Services Section -->
-  <section id="servicios" class="services">
-    <div class="container">
-      <div class="section-title">
-        <h2>Nuestros Servicios</h2>
-        <p style="color: #2d3748; font-size: 1.25rem;">Integramos diseño, procesos y comunicación para una sustentabilidad real y medible</p>
-      </div>
-      <div class="services-grid">
-        <!-- Pilar 1: Gestión de Marca Sustentable (PRIMERO) -->
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-certificate"></i>
-          </div>
-          <h3>Gestión de Marca Sustentable</h3>
-          <p><strong>Posicionamos tu marca como referente en sustentabilidad</strong></p>
-          <ul style="text-align: left; margin-top: 15px; list-style: none; padding-left: 0;">
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Estrategia de marca sustentable
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Sello Digital de Sustentabilidad
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Gestión de reputación verde
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Alineación con ODS y estándares
-            </li>
-          </ul>
-          <div style="margin-top: 20px; padding: 15px; background: #f0f7f0; border-radius: 8px; font-size: 1.05rem; color: #2d3748;">
-            <strong>Resultado:</strong> "Marca posicionada como líder en sustentabilidad del sector"
-          </div>
-        </div>
-
-        <!-- Pilar 2: Rediseño Sustentable -->
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-sync-alt"></i>
-          </div>
-          <h3>Rediseño Sustentable</h3>
-          <p><strong>Transformamos tus productos desde su esencia</strong></p>
-          <ul style="text-align: left; margin-top: 15px; list-style: none; padding-left: 0;">
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Análisis y mejora de productos existentes
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Diseño de nuevas líneas circulares
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Optimización de procesos productivos
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Selección de materiales sustentables
-            </li>
-          </ul>
-          <div style="margin-top: 20px; padding: 15px; background: #f0f7f0; border-radius: 8px; font-size: 1.05rem; color: #2d3748;">
-            <strong>Case study:</strong> "Cómo rediseñamos [producto] reduciendo un 40% el desperdicio"
-          </div>
-        </div>
-
-        <!-- Pilar 3: Gestión Circular -->
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-recycle"></i>
-          </div>
-          <h3>Gestión Circular</h3>
-          <p><strong>Implementamos economía circular aplicada</strong></p>
-          <ul style="text-align: left; margin-top: 15px; list-style: none; padding-left: 0;">
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Planes de economía circular práctica
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Estrategias de reducción de desperdicios
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Optimización de cadena y procesos
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Mediciones de impacto reales
-            </li>
-          </ul>
-          <div style="margin-top: 20px; padding: 15px; background: #f0f7f0; border-radius: 8px; font-size: 1.05rem; color: #2d3748;">
-            <strong>Ejemplo:</strong> "Sistema circular implementado en taller de [industria]"
-          </div>
-        </div>
-
-        <!-- Pilar 4: Comunicación Estratégica -->
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-bullhorn"></i>
-          </div>
-          <h3>Comunicación Integral</h3>
-          <p><strong>Contamos tu historia sustentable sin greenwashing</strong></p>
-          <ul style="text-align: left; margin-top: 15px; list-style: none; padding-left: 0;">
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Storytelling de la marca
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Comunicación verde integrada a la marca
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Posicionamiento de marca 
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-              <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-              Estrategias de contenido creativo
-            </li>
-          </ul>
-          <div style="margin-top: 20px; padding: 15px; background: #f0f7f0; border-radius: 8px; font-size: 1.05rem; color: #2d3748;">
-            <strong>Ejemplo:</strong> "Campaña que aumentó 30% engagement mostrando procesos reales"
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-    <!-- Sección Sello Digital - MEJORADA -->
-  <section id="sello" class="sello-section">
-    <div class="container">
-      <div class="section-title">
-        <h2>Sello Digital de Sustentabilidad</h2>
-        <p>Certificá tu compromiso ambiental y diferenciate en el mercado</p>
-      </div>
-      
-      <div class="sello-content">
-        <div class="sello-box">
-          <div class="sello-hero">
-            <div class="sello-logo-container">
-              <div class="sello-glow-effect"></div>
-              <div class="sello-background-pattern"></div>
-              <i class="fas fa-leaf leaf-icon"></i>
-              <div class="sello-name">
-                <span class="sello-name-top">IMPACTA</span>
-                <div class="sello-name-separator"></div>
-                <span class="sello-name-bottom">VERDE</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="sello-text-content">
-            <h3>Tu Distintivo de Compromiso Real</h3>
-            <p class="sello-main-description">Este sello digital reconoce tu compromiso con prácticas sostenibles y te permite destacar en el mercado como una empresa responsable.</p>
-            
-            <div class="sello-benefits">
-              <div class="benefit-item">
-                <i class="fas fa-check-circle"></i>
-                <div>
-                  <h4>Demostrar compromiso ambiental</h4>
-                  <p class="benefit-description">Validá tus prácticas sostenibles ante clientes y stakeholders</p>
-                </div>
-              </div>
-              
-              <div class="benefit-item">
-                <i class="fas fa-check-circle"></i>
-                <div>
-                  <h4>Diferenciarte de la competencia</h4>
-                  <p class="benefit-description">Destacá como empresa responsable en tu sector</p>
-                </div>
-              </div>
-              
-              <div class="benefit-item">
-                <i class="fas fa-check-circle"></i>
-                <div>
-                  <h4>Atraer clientes conscientes</h4>
-                  <p class="benefit-description">Conectá con consumidores que valoran la sustentabilidad</p>
-                </div>
-              </div>
-              
-              <div class="benefit-item">
-                <i class="fas fa-check-circle"></i>
-                <div>
-                  <h4>Acceder a beneficios exclusivos</h4>
-                  <p class="benefit-description">Obtené ventajas en nuestra red de empresas sostenibles</p>
-                </div>
-              </div>
-            </div>
-            
-            <div class="sello-cta">
-              <p class="cta-text"><strong>Obtén tu sello digital al completar nuestro diagnóstico de sostenibilidad</strong></p>
-              <a href="#contacto" class="btn btn-sello">Solicitar mi sello</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección Impacto Positivo - MEJORADA -->
-  <section id="impacto" class="impacto-section">
-    <div class="container">
-      <div class="section-title">
-        <h2>Impacto Positivo Generado</h2>
-        <p>Resultados acumulados gracias a empresas comprometidas como la tuya</p>
-      </div>
-      
-      <div class="impacto-content">
-        <div class="impacto-grid">
-          <!-- Impacto Principal -->
-          <div class="impacto-principal">
-            <div class="impacto-card card-3d">
-              <div class="impacto-icon">
-                <i class="fas fa-tree"></i>
-              </div>
-              <div class="impacto-value">153</div>
-              <div class="impacto-unit">árboles salvados</div>
-              <div class="impacto-desc">Equivalente a la absorción anual de CO₂</div>
-            </div>
-            
-            <div class="impacto-card card-3d">
-              <div class="impacto-icon">
-                <i class="fas fa-cloud"></i>
-              </div>
-              <div class="impacto-value">9.2</div>
-              <div class="impacto-unit">toneladas de CO₂</div>
-              <div class="impacto-desc">Reducción acumulada en emisiones</div>
-            </div>
-          </div>
-          
-          <!-- Progreso -->
-          <div class="impacto-progreso card-3d">
-            <h4>Progreso hacia nuestra meta anual</h4>
-            <div class="progress-container">
-              <div class="progress-bar">
-                <span class="progress-label">77% completado</span>
-              </div>
-            </div>
-            <div class="progress-markers">
-              <span>0</span>
-              <span>100</span>
-              <span>200 árboles</span>
-            </div>
-          </div>
-          
-          <!-- Estadísticas -->
-          <div class="impacto-stats">
-            <div class="stat-card card-3d">
-              <div class="stat-number">15</div>
-              <div class="stat-label">Empresas</div>
-              <div class="stat-desc">participando activamente</div>
-            </div>
-            
-            <div class="stat-card card-3d">
-              <div class="stat-number">8</div>
-              <div class="stat-label">Sectores</div>
-              <div class="stat-desc">diferentes impactados</div>
-            </div>
-            
-            <div class="stat-card card-3d">
-              <div class="stat-number">98%</div>
-              <div class="stat-label">Reducción</div>
-              <div class="stat-desc">promedio en huella</div>
-            </div>
-          </div>
-          
-          <!-- CTA -->
-          <div class="impacto-cta">
-            <div class="cta-content">
-              <h4>Sumate a esta red de impacto positivo</h4>
-              <p>Tu empresa puede ser la próxima en generar un cambio real</p>
-              <a href="#contacto" class="btn btn-secondary">Medir mi huella</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<style>
-/* Estilos MEJORADOS para la sección Sello Digital */
-.sello-section {
-  background: #f0f7f0;
-  padding: 80px 0;
-}
-
-.sello-content {
-  max-width: 1000px; /* MÁS ANCHO */
-  margin: 0 auto;
-}
-
-.sello-box {
-  background: white;
-  border-radius: 25px;
-  padding: 60px 50px; /* MÁS ESPACIOSO */
-  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.sello-box::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
-}
-
-.sello-hero {
-  margin-bottom: 40px;
-}
-
-.sello-logo-container {
-  width: 280px; /* MÁS ANCHO */
-  height: 280px; /* MÁS ALTO */
-  margin: 0 auto 30px;
-  background: white;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 12px solid var(--primary);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 15px 35px rgba(46, 125, 50, 0.25);
-  transition: all 0.5s ease;
-}
-
-.sello-logo-container:hover {
-  transform: scale(1.05);
-  box-shadow: 0 20px 45px rgba(46, 125, 50, 0.35);
-}
-
-.sello-glow-effect {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, rgba(46, 125, 50, 0.1) 0%, transparent 70%);
-  animation: glowPulse 3s ease-in-out infinite;
-  z-index: 1;
-}
-
-@keyframes glowPulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 0.8; }
-}
-
-.leaf-icon {
-  font-size: 6.5rem; /* MÁS GRANDE */
-  color: var(--primary);
-  margin-bottom: 15px;
-  animation: leafPulse 3s infinite;
-  z-index: 2;
-  position: relative;
-}
-
-.sello-name {
-  color: var(--primary);
-  font-weight: 900;
-  text-align: center;
-  line-height: 1.2;
-  z-index: 2;
-  text-transform: uppercase;
-  position: relative;
-}
-
-.sello-name-top {
-  font-size: 2.2rem; /* MÁS GRANDE */
-  letter-spacing: 1px;
-}
-
-.sello-name-bottom {
-  font-size: 1.8rem; /* MÁS GRANDE */
-  letter-spacing: 1px;
-}
-
-.sello-name-separator {
-  height: 5px;
-  width: 85%;
-  background: var(--primary);
-  margin: 10px auto;
-  border-radius: 3px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.sello-background-pattern {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 30% 30%, rgba(46, 125, 50, 0.15) 0%, transparent 25%),
-    radial-gradient(circle at 70% 70%, rgba(46, 125, 50, 0.15) 0%, transparent 25%),
-    radial-gradient(circle at 50% 20%, rgba(46, 125, 50, 0.15) 0%, transparent 25%),
-    radial-gradient(circle at 20% 50%, rgba(46, 125, 50, 0.15) 0%, transparent 25%);
-  z-index: 1;
-}
-
-.sello-text-content h3 {
-  color: var(--primary);
-  font-size: 2rem; /* MÁS GRANDE */
-  margin-bottom: 25px;
-  font-weight: 700;
-}
-
-.sello-main-description {
-  font-size: 1.3rem; /* 3 PUNTOS MÁS GRANDE */
-  color: #2d3748; /* GRIS MÁS OSCURO */
-  margin-bottom: 40px;
-  line-height: 1.7;
-  font-weight: 500;
-}
-
-.sello-benefits {
-  text-align: left;
-  margin: 50px 0;
-}
-
-.benefit-item {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 30px;
-  padding: 25px;
-  background: linear-gradient(135deg, #f8fdf8, #f0f7f0);
-  border-radius: 15px;
-  transition: all 0.4s ease;
-  border: 1px solid #e8f5e9;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.benefit-item:hover {
-  background: linear-gradient(135deg, #e8f5e9, #e0f2e0);
-  transform: translateX(15px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-.benefit-item i {
-  color: var(--primary);
-  font-size: 1.8rem; /* MÁS GRANDE */
-  margin-right: 25px;
-  margin-top: 5px;
-  flex-shrink: 0;
-  transition: all 0.3s ease;
-}
-
-.benefit-item:hover i {
-  transform: scale(1.2);
-}
-
-.benefit-item h4 {
-  color: var(--primary);
-  margin-bottom: 12px;
-  font-size: 1.4rem; /* MÁS GRANDE */
-  font-weight: 600;
-}
-
-.benefit-description {
-  color: #2d3748; /* GRIS MÁS OSCURO - 3 PUNTOS MÁS OSCURO */
-  margin: 0;
-  line-height: 1.6;
-  font-size: 1.1rem; /* 3 PUNTOS MÁS GRANDE */
-  font-weight: 500;
-}
-
-.sello-cta {
-  margin-top: 50px;
-  padding-top: 40px;
-  border-top: 3px solid #e8f5e9;
-}
-
-.cta-text {
-  font-size: 1.4rem; /* MÁS GRANDE */
-  margin-bottom: 25px;
-  color: #2d3748; /* GRIS MÁS OSCURO */
-  font-weight: 600;
-}
-
-.btn-sello {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  padding: 16px 45px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
-  transition: all 0.3s ease;
-}
-
-.btn-sello:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.4);
-}
-
-  <!-- Sección Impacto Positivo - TIPOGRAFÍA MEJORADA -->
-  <section id="impacto" class="impacto-section">
-    <div class="container">
-      <div class="section-title">
-        <h2>Impacto Positivo Generado</h2>
-        <p class="impacto-subtitle">Resultados acumulados gracias a empresas comprometidas como la tuya</p>
-      </div>
-      
-      <div class="impacto-content">
-        <div class="impacto-grid">
-          <!-- Impacto Principal -->
-          <div class="impacto-principal">
-            <div class="impacto-card card-3d">
-              <div class="impacto-icon">
-                <i class="fas fa-tree"></i>
-              </div>
-              <div class="impacto-value">153</div>
-              <div class="impacto-unit">árboles salvados</div>
-              <div class="impacto-desc">Equivalente a la absorción anual de CO₂</div>
-            </div>
-            
-            <div class="impacto-card card-3d">
-              <div class="impacto-icon">
-                <i class="fas fa-cloud"></i>
-              </div>
-              <div class="impacto-value">9.2</div>
-              <div class="impacto-unit">toneladas de CO₂</div>
-              <div class="impacto-desc">Reducción acumulada en emisiones</div>
-            </div>
-          </div>
-          
-          <!-- Progreso -->
-          <div class="impacto-progreso card-3d">
-            <h4 class="progreso-title">Progreso hacia nuestra meta anual</h4>
-            <div class="progress-container">
-              <div class="progress-bar">
-                <span class="progress-label">77% completado</span>
-              </div>
-            </div>
-            <div class="progress-markers">
-              <span class="marker-text">0</span>
-              <span class="marker-text">100</span>
-              <span class="marker-text">200 árboles</span>
-            </div>
-          </div>
-          
-          <!-- Estadísticas -->
-          <div class="impacto-stats">
-            <div class="stat-card card-3d">
-              <div class="stat-number">15</div>
-              <div class="stat-label">Empresas</div>
-              <div class="stat-desc">participando activamente</div>
-            </div>
-            
-            <div class="stat-card card-3d">
-              <div class="stat-number">8</div>
-              <div class="stat-label">Sectores</div>
-              <div class="stat-desc">diferentes impactados</div>
-            </div>
-            
-            <div class="stat-card card-3d">
-              <div class="stat-number">98%</div>
-              <div class="stat-label">Reducción</div>
-              <div class="stat-desc">promedio en huella</div>
-            </div>
-          </div>
-          
-          <!-- CTA -->
-          <div class="impacto-cta">
-            <div class="cta-content">
-              <h4 class="cta-title">Sumate a esta red de impacto positivo</h4>
-              <p class="cta-subtitle">Tu empresa puede ser la próxima en generar un cambio real</p>
-              <a href="#contacto" class="btn btn-secondary">Medir mi huella</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<style>
-/* Estilos MEJORADOS para la sección Impacto Positivo - TIPOGRAFÍA AGRANDADA Y OSCURECIDA */
-.impacto-section {
-  background: #f8fdf8;
-  padding: 80px 0;
-}
-
-.impacto-subtitle {
-  font-size: 1.3rem !important; /* 3 PUNTOS MÁS GRANDE */
-  color: #2d3748 !important; /* GRIS MÁS OSCURO */
-  font-weight: 500;
-}
-
-.impacto-content {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.impacto-grid {
-  display: grid;
-  gap: 40px;
-}
-
-.impacto-principal {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 35px;
-  margin-bottom: 40px;
-}
-
-/* EFECTO 3D PARA TODAS LAS TARJETAS */
-.card-3d {
-  background: linear-gradient(145deg, #ffffff, #f5f9f5);
-  border-radius: 20px;
-  box-shadow: 8px 8px 20px rgba(0,0,0,0.08),
-              -4px -4px 15px rgba(255,255,255,0.8);
-  border: 1px solid rgba(255,255,255,0.5);
-  transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.card-3d::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  transform: scaleX(0);
-  transition: transform 0.4s ease;
-}
-
-.card-3d:hover::before {
-  transform: scaleX(1);
-}
-
-.card-3d:hover {
-  transform: translateY(-8px) rotateX(2deg);
-  box-shadow: 12px 15px 30px rgba(0,0,0,0.12),
-              -6px -6px 20px rgba(255,255,255,0.9);
-}
-
-.impacto-card {
-  padding: 45px 35px;
-  text-align: center;
-  border-top: 6px solid var(--primary);
-}
-
-.impacto-icon {
-  font-size: 4rem;
-  color: var(--primary);
-  margin-bottom: 25px;
-  transition: all 0.3s ease;
-}
-
-.impacto-card:hover .impacto-icon {
-  transform: scale(1.1) rotate(5deg);
-}
-
-.impacto-value {
-  font-size: 4.5rem; /* MÁS GRANDE */
-  font-weight: 900;
-  color: var(--primary);
-  margin-bottom: 15px;
-  line-height: 1;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-}
-
-.impacto-unit {
-  font-size: 1.5rem; /* 3 PUNTOS MÁS GRANDE */
-  font-weight: 700;
-  color: #1a202c !important; /* GRIS MUCHO MÁS OSCURO - 3 PUNTOS MÁS OSCURO */
-  margin-bottom: 12px;
-}
-
-.impacto-desc {
-  color: #2d3748 !important; /* GRIS MÁS OSCURO - 3 PUNTOS MÁS OSCURO */
-  font-size: 1.2rem; /* 3 PUNTOS MÁS GRANDE */
-  font-weight: 500;
-  line-height: 1.4;
-}
-
-.impacto-progreso {
-  padding: 40px 35px;
-  text-align: center;
-}
-
-.progreso-title {
-  color: var(--primary);
-  margin-bottom: 30px;
-  font-size: 1.5rem; /* 3 PUNTOS MÁS GRANDE */
-  font-weight: 600;
-  color: #1a202c !important; /* GRIS MÁS OSCURO */
-}
-
-.progress-container {
-  background: #e9ecef;
-  height: 35px;
-  border-radius: 18px;
-  overflow: hidden;
-  margin: 25px 0;
-  position: relative;
-  max-width: 650px;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: inset 3px 3px 8px rgba(0,0,0,0.1);
-}
-
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, #4caf50, #2e7d32, #1b5e20);
-  border-radius: 18px;
-  width: 77%;
-  position: relative;
-  transition: width 1s ease-in-out;
-  box-shadow: 2px 0 10px rgba(46, 125, 50, 0.3);
-}
-
-.progress-label {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 1.1rem; /* 3 PUNTOS MÁS GRANDE */
-  font-weight: 700;
-  z-index: 2;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-}
-
-.progress-markers {
-  display: flex;
-  justify-content: space-between;
-  max-width: 650px;
-  margin: 15px auto 0;
-}
-
-.marker-text {
-  font-size: 1rem; /* 3 PUNTOS MÁS GRANDE */
-  color: #1a202c !important; /* GRIS MUCHO MÁS OSCURO - 3 PUNTOS MÁS OSCURO */
-  font-weight: 600;
-}
-
-.impacto-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
-  margin: 40px 0;
-}
-
-.stat-card {
-  padding: 35px 25px;
-  text-align: center;
-}
-
-.stat-number {
-  font-size: 3.5rem; /* MÁS GRANDE */
-  font-weight: 900;
-  color: var(--primary);
-  margin-bottom: 15px;
-  line-height: 1;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-}
-
-.stat-label {
-  font-size: 1.3rem; /* 3 PUNTOS MÁS GRANDE */
-  font-weight: 700;
-  color: #1a202c !important; /* GRIS MUCHO MÁS OSCURO - 3 PUNTOS MÁS OSCURO */
-  margin-bottom: 8px;
-}
-
-.stat-desc {
-  color: #2d3748 !important; /* GRIS MÁS OSCURO - 3 PUNTOS MÁS OSCURO */
-  font-size: 1.1rem; /* 3 PUNTOS MÁS GRANDE */
-  font-weight: 500;
-}
-
-.impacto-cta {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  color: white;
-  padding: 60px 50px;
-  border-radius: 25px;
-  text-align: center;
-  margin-top: 40px;
-  box-shadow: 0 15px 35px rgba(46, 125, 50, 0.25);
-}
-
-.cta-title {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: white;
-  font-weight: 700;
-}
-
-.cta-subtitle {
-  font-size: 1.3rem; /* 3 PUNTOS MÁS GRANDE */
-  margin-bottom: 30px;
-  opacity: 0.95;
-  font-weight: 500;
-  color: rgba(255,255,255,0.95) !important;
-}
-
-.btn-secondary {
-  background: white;
-  color: var(--primary);
-  font-weight: 700;
-  padding: 18px 40px;
-  font-size: 1.2rem; /* 3 PUNTOS MÁS GRANDE */
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-}
-
-.btn-secondary:hover {
-  background: #f8f9fa;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .impacto-value {
-    font-size: 3.5rem;
-  }
-  
-  .impacto-unit {
-    font-size: 1.3rem;
-  }
-  
-  .impacto-desc {
-    font-size: 1.1rem;
-  }
-  
-  .impacto-card {
-    padding: 35px 25px;
-  }
-  
-  .impacto-cta {
-    padding: 40px 30px;
-  }
-  
-  .progreso-title {
-    font-size: 1.3rem;
-  }
-  
-  .stat-label {
-    font-size: 1.2rem;
-  }
-  
-  .stat-desc {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .impacto-section {
-    padding: 60px 0;
-  }
-  
-  .impacto-principal {
-    grid-template-columns: 1fr;
-  }
-  
-  .impacto-stats {
-    grid-template-columns: 1fr;
-  }
-  
-  .impacto-subtitle {
-    font-size: 1.2rem !important;
-  }
-  
-  .cta-subtitle {
-    font-size: 1.2rem;
-  }
-}
-</style>
-  <!-- Testimonials Section -->
-  <section class="testimonials">
-    <div class="container">
-      <div class="section-title">
-        <h2>Lo que dicen nuestros clientes</h2>
-        <p>Experiencias reales de organizaciones que transformaron su impacto ambiental</p>
-      </div>
-      <div class="testimonial-grid">
-        <div class="testimonial-card">
-          <div class="client-logo">
-            <i class="fas fa-arrow-up"></i>
-          </div>
-          <p>"Impacta Verde nos ayudó a reducir nuestra huella de carbono en un 40% durante el primer año de implementación. Su enfoque basado en datos fue clave para nuestro éxito."</p>
-          <p><strong>María Rodríguez</strong><br>Directora de Sostenibilidad</p>
-        </div>
-        <div class="testimonial-card">
-          <div class="client-logo">
-            <i class="fas fa-arrow-up"></i>
-          </div>
-          <p>"Las soluciones tecnológicas personalizadas que desarrollaron para nosotros nos permitieron optimizar nuestro consumo energético y reducir costos operativos significativamente."</p>
-          <p><strong>Carlos Gómez</strong><br>Gerente de Operaciones</p>
-        </div>
-        <div class="testimonial-card">
-          <div class="client-logo">
-            <i class="fas fa-arrow-up"></i>
-          </div>
-          <p>"Los talleres de formación transformaron la cultura de nuestra empresa. Hoy nuestros equipos son más conscientes y proponen soluciones sostenibles desde sus áreas."</p>
-          <p><strong>Laura Fernández</strong><br>Directora de RRHH</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-<!-- Contacto Simplificado - FORMULARIO AMPLIADO -->
-<section id="contacto" class="contact">
-  <div class="container">
-    <div class="section-title">
-      <h2>¿Listo para transformar tu marca?</h2>
-      <p style="color: #2d3748; font-size: 1.25rem;">Completá el formulario y te contactamos en menos de 24 horas</p>
-    </div>
-    
-    <div class="contact-grid">
-      <div class="contact-form">
-        <h3>Solicitá tu diagnóstico inicial sin costo</h3>
-        <form>
-          <div class="form-group">
-            <label for="name">Nombre y Apellido</label>
-            <input type="text" id="name" required placeholder="Ej. María López">
-          </div>
-          <div class="form-group">
-            <label for="email">Correo Electrónico</label>
-            <input type="email" id="email" required placeholder="Ej. maria@empresa.com">
-          </div>
-          <div class="form-group">
-            <label for="company">Empresa o Proyecto</label>
-            <input type="text" id="company" required placeholder="Nombre de tu empresa o proyecto">
-          </div>
-          <div class="form-group">
-            <label for="service">¿Qué servicio te interesa más?</label>
-            <select id="service" style="padding: 12px 15px; width: 100%; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
-              <option value="">Seleccioná una opción</option>
-              <option value="marca">Gestión de Marca Sustentable</option>
-              <option value="rediseno">Rediseño Sustentable</option>
-              <option value="circular">Gestión Circular</option>
-              <option value="comunicacion">Comunicación Integral</option>
-              <option value="multiple">Varios servicios</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Contanos brevemente sobre tu proyecto</label>
-            <textarea id="message" placeholder="¿En qué etapa estás? ¿Qué objetivos tenés?" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-secondary">Solicitar diagnóstico gratuito</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-  
-<!-- Footer AMPLIADO con información de contacto -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-info">
-        <h3>Impacta Verde</h3>
-        <p>Estudio de Sustentabilidad para Productos y Marcas</p>
-        <div class="contact-info">
-          <p><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</p>
-          <p><i class="fas fa-envelope"></i> impactaverde@gmail.com</p>
-        </div>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-tiktok"></i></a>
-        </div>
-      </div>
-      
-      <!-- NUEVA SECCIÓN: Información de contacto -->
-      <div class="footer-contact-info">
-        <h3>Contacto directo</h3>
-        <div class="contact-details">
-          <p><i class="fas fa-envelope"></i> impactaverde@gmail.com</p>
-          <p><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</p>
-          <div class="business-hours">
-            <h4>Horarios de atención</h4>
-            <p>Lunes a Viernes: 9:00 - 18:00 hs</p>
-            <p>Respondemos consultas en menos de 24 horas</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="footer-links">
-        <h3>Enlaces Rápidos</h3>
-        <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#sello-impacto">Sello</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </div>
-      <div class="footer-links">
-        <h3>Servicios</h3>
-        <ul>
-          <li><a href="#servicios">Gestión de Marca Sustentable</a></li>
-          <li><a href="#servicios">Rediseño Sustentable</a></li>
-          <li><a href="#servicios">Gestión Circular</a></li>
-          <li><a href="#servicios">Comunicación Integral</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="copyright">
-      <p>&copy; 2025 Impacta Verde. Todos los derechos reservados.</p>
-    </div>
-  </div>
-</footer>
-
-<style>
-/* ESTILOS PARA LA SECCIÓN DE CONTACTO MODIFICADA */
-.contact {
-  padding: 80px 0;
-  background: white;
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr; /* SOLO FORMULARIO - OCUPA TODO EL ANCHO */
-  gap: 40px;
-  max-width: 900px; /* ANCHO MÁXIMO DEL FORMULARIO */
-  margin: 0 auto;
-}
-
-.contact-form {
-  background: var(--light);
-  padding: 50px; /* MÁS ESPACIOSO */
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
-
-.contact-form h3 {
-  color: var(--primary);
-  margin-bottom: 30px;
-  font-size: 1.6rem;
-  text-align: center;
-}
-
-.form-group {
-  margin-bottom: 25px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: 600;
-  color: var(--text-dark);
-  font-size: 1.1rem;
-}
-
-.form-group input, .form-group textarea, .form-group select {
-  width: 100%;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 1.1rem;
-  font-family: inherit;
-  transition: all 0.3s ease;
-}
-
-.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
-  outline: none;
-}
-
-.form-group textarea {
-  height: 140px;
-  resize: vertical;
-}
-
-/* ESTILOS PARA EL FOOTER AMPLIADO */
-footer {
-  background: #222;
-  color: white;
-  padding: 60px 0 30px;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
-  margin-bottom: 40px;
-}
-
-.footer-info h3 {
-  color: var(--secondary);
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-}
-
-.footer-info p {
-  margin-bottom: 15px;
-  color: #ddd;
-}
-
-.contact-info p {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.contact-info i {
-  margin-right: 10px;
-  width: 20px;
-  color: var(--secondary);
-}
-
-/* NUEVA SECCIÓN DE CONTACTO EN EL FOOTER */
-.footer-contact-info {
-  padding: 10px;
-}
-
-.footer-contact-info h3 {
-  color: var(--secondary);
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-}
-
-.contact-details p {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-  font-size: 1.1rem;
-  color: #ddd;
-}
-
-.contact-details i {
-  margin-right: 10px;
-  width: 20px;
-  color: var(--secondary);
-}
-
-.business-hours {
-  margin-top: 25px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.2);
-}
-
-.business-hours h4 {
-  color: var(--secondary);
-  margin-bottom: 15px;
-  font-size: 1.2rem;
-}
-
-.business-hours p {
-  margin-bottom: 8px;
-  font-size: 1rem;
-  color: #bbb;
-}
-
-.social-links {
-  display: flex;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.social-links a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 50%;
-  color: white;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.social-links a:hover {
-  background: var(--secondary);
-  transform: translateY(-3px);
-}
-
-.footer-links h3 {
-  color: var(--secondary);
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-}
-
-.footer-links ul {
-  list-style: none;
-}
-
-.footer-links ul li {
-  margin-bottom: 10px;
-}
-
-.footer-links ul li a {
-  color: #ddd;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.footer-links ul li a:hover {
-  color: var(--secondary);
-  padding-left: 5px;
-}
-
-.copyright {
-  text-align: center;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  font-size: 0.9rem;
-  color: rgba(255,255,255,0.6);
-}
-
-@media (max-width: 768px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  
-  .contact-form {
-    padding: 30px;
-  }
-  
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-}
-</style>
-    // Chatbot mejorado
-    const chatbotBtn = document.getElementById('chatbotBtn');
-    const chatbotContainer = document.getElementById('chatbotContainer');
-    const closeChatbot = document.getElementById('closeChatbot');
-    const chatMessages = document.getElementById('chatMessages');
-    const userInput = document.getElementById('userInput');
-    const sendMessage = document.getElementById('sendMessage');
-    const typingIndicator = document.getElementById('typingIndicator');
-    
-    chatbotBtn.addEventListener('click', () => {
-      chatbotContainer.style.display = 'flex';
-      setTimeout(() => {
-        chatbotContainer.classList.add('active');
-      }, 10);
-    });
-    
-    closeChatbot.addEventListener('click', () => {
-      chatbotContainer.classList.remove('active');
-      setTimeout(() => {
-        chatbotContainer.style.display = 'none';
-      }, 300);
-    });
-    
-    // Función para agregar mensajes al chat
-    function addMessage(text, isUser) {
-      const messageDiv = document.createElement('div');
-      messageDiv.classList.add('message');
-      messageDiv.classList.add(isUser ? 'user' : 'bot');
-      messageDiv.textContent = text;
-      chatMessages.appendChild(messageDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-    
-    // Función para mostrar el indicador de "escribiendo"
-    function showTypingIndicator() {
-      typingIndicator.style.display = 'flex';
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-    
-    // Función para ocultar el indicador de "escribiendo"
-    function hideTypingIndicator() {
-      typingIndicator.style.display = 'none';
-    }
-    
-    // Estados de agendamiento
-    let appointmentStep = 0;
-    let appointmentDate = null;
-    let appointmentTime = null;
-    
-    // Respuestas del bot
-    function botResponse(userMessage) {
-      const responses = {
-        'hola': {
-          text: '¡Hola! Soy EcoAsistente de Impacta Verde. ¿En qué puedo ayudarte hoy?',
-          quickReplies: ['servicios', 'agendar', 'contacto']
-        },
-        'servicios': {
-          text: 'Ofrecemos los siguientes servicios:\n\n' +
-                ' Formación y Talleres\n' +
-                ' Comunicación y Estrategia de Marca Sostenible\n' +
-                ' Diagnóstico MiPyME Sostenible\n' +
-                ' Soluciones Tecnológicas Sostenibles\n' +
-                ' Impacto Social para Organizaciones\n\n' +
-                '¿Te gustaría conocer más sobre alguno en particular?',
-          quickReplies: ['Formación', 'Comunicación', 'Diagnóstico', 'Tecnología', 'Organizaciones']
-        },
-        'contacto': {
-          text: 'Puedes contactarnos de las siguientes formas:\n\n' +
-                ' Email: impactaverde@gmail.com\n' +
-                ' Dirección: Buenos Aires, Argentina\n' +
-                ' WhatsApp: +54 11 1234-5678\n\n' +
-                'También puedes completar el formulario de contacto en nuestra página.'
-        },
-        'diagnóstico': {
-          text: '¡Claro! Puedes solicitar tu diagnóstico gratuito haciendo clic en el botón "Solicitá tu diagnóstico gratuito" en nuestra página principal o visitando la sección de contacto.'
-        },
-        'sello': {
-          text: 'Nuestro Sello Digital de Compromiso con la Sostenibilidad se obtiene al completar nuestro diagnóstico básico. Este sello certifica tu compromiso ambiental y te ayuda a acceder a beneficios.'
-        },
-        'organizaciones': {
-          text: 'Ofrecemos servicios especializados para instituciones públicas, fundaciones y asociaciones civiles, incluyendo medición de impacto social, estrategias de sostenibilidad y acceso a financiamiento verde.'
-        },
-        'agendar': {
-          text: '¡Perfecto! Para agendar una cita, por favor dime la fecha que te vendría bien (ejemplo: 15/07/2024).',
-          step: 1
-        },
-        'gracias': {
-          text: '¡De nada! Estoy aquí para ayudarte. ¿Hay algo más en lo que pueda asistirte?'
-        },
-        'impacto': {
-          text: 'En Impacta Verde hemos logrado un impacto positivo equivalente a:\n\n' +
-                ' 153 árboles salvados\n' +
-                ' 9.2 toneladas de CO₂ reducidas\n\n' +
-                'Esto gracias al trabajo con más de 15 empresas en 8 sectores diferentes.'
-        },
-        'default': {
-          text: 'Gracias por tu mensaje. Un miembro de nuestro equipo te responderá pronto. ¿Hay algo más en lo que pueda ayudarte?'
-        }
-      };
-      
-      userMessage = userMessage.toLowerCase();
-      
-      // Manejo de agendamiento de citas
-      if (appointmentStep === 1) {
-        if (userMessage.match(/\d{1,2}\/\d{1,2}\/\d{4}/)) {
-          appointmentDate = userMessage;
-          appointmentStep = 2;
-          return { text: 'Fecha seleccionada: ' + appointmentDate + '. Ahora, ¿a qué hora te vendría bien? (Por ejemplo: 10:00, 14:30, etc.)' };
-        } else {
-          return { text: 'Por favor, ingresa la fecha en formato DD/MM/AAAA. Por ejemplo: 20/07/2024' };
-        }
-      }
-      
-      if (appointmentStep === 2) {
-        if (userMessage.match(/\d{1,2}:\d{2}/)) {
-          appointmentTime = userMessage;
-          appointmentStep = 0;
-          return { text: '¡Perfecto! Tu cita ha sido agendada para el ' + appointmentDate + ' a las ' + appointmentTime + '. Te enviaremos un correo de confirmación. ¿Hay algo más en lo que pueda ayudarte?' };
-        } else {
-          return { text: 'Por favor, ingresa la hora en formato HH:MM (por ejemplo: 14:30).' };
-        }
-      }
-      
-      // Respuestas directas
-      if (userMessage.includes('hola') || userMessage.includes('buenas')) return responses['hola'];
-      if (userMessage.includes('servicio') || userMessage.includes('servicios')) return responses['servicios'];
-      if (userMessage.includes('contact') || userMessage.includes('contacto') || userMessage.includes('email')) return responses['contacto'];
-      if (userMessage.includes('diagnóstico') || userMessage.includes('diagnostico')) return responses['diagnóstico'];
-      if (userMessage.includes('sello') || userMessage.includes('certificación')) return responses['sello'];
-      if (userMessage.includes('organizacion') || userMessage.includes('sector público') || userMessage.includes('asociación civil')) return responses['organizaciones'];
-      if (userMessage.includes('agendar') || userMessage.includes('cita') || userMessage.includes('reunión')) return responses['agendar'];
-      if (userMessage.includes('impacto') || userMessage.includes('arbol') || userMessage.includes('co2')) return responses['impacto'];
-      if (userMessage.includes('gracias')) return responses['gracias'];
-      
-      return responses['default'];
-    }
-    
-    // Manejar el envío de mensajes
-    function handleSendMessage() {
-      const message = userInput.value.trim();
-      if (message) {
-        addMessage(message, true);
-        userInput.value = '';
-        
-        // Simular que el bot está escribiendo
-        showTypingIndicator();
-        
-        setTimeout(() => {
-          hideTypingIndicator();
-          const response = botResponse(message);
-          addMessage(response.text, false);
-          
-          // Agregar respuestas rápidas si existen
-          if (response.quickReplies) {
-            const quickRepliesContainer = document.createElement('div');
-            quickRepliesContainer.classList.add('quick-replies');
-            
-            response.quickReplies.forEach(reply => {
-              const button = document.createElement('button');
-              button.classList.add('quick-reply');
-              button.textContent = reply;
-              button.dataset.reply = reply.toLowerCase();
-              quickRepliesContainer.appendChild(button);
-            });
-            
-            const lastMessage = chatMessages.lastChild;
-            lastMessage.appendChild(quickRepliesContainer);
-          }
-          
-          // Actualizar el paso de agendamiento si es necesario
-          if (response.step) {
-            appointmentStep = response.step;
-          }
-        }, 1500);
-      }
-    }
-    
-    // Enviar mensaje al hacer clic en el botón
-    sendMessage.addEventListener('click', handleSendMessage);
-    
-    // Enviar mensaje al presionar Enter
-    userInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        handleSendMessage();
-      }
-    });
-    
-    // Manejar respuestas rápidas
-    document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('quick-reply')) {
-        const reply = e.target.dataset.reply;
-        userInput.value = reply;
-        handleSendMessage();
-      }
-    });
-  </script>
-</body>
-</html>
+          <button class="quick-re
