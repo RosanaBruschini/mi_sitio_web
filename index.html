@@ -1261,6 +1261,721 @@
       </button>
     </div>
   </div>
+  esto seria lo que debo eliminar? o faltaria algo mas?  <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impacta Verde - Estudio de Marcas Sustentables</title>
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --primary-dark: #1b5e20;
+      --secondary: #ff9800;
+      --light: #f5f9f5;
+      --dark: #333;
+      --accent: #4caf50;
+      --text-dark: #2c3e50;
+      --text-light: #7f8c8d;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      color: var(--text-dark);
+      line-height: 1.6;
+      background-color: #f9f9f9;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin: 10px 5px;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    
+    /* Header */
+    header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+    }
+    
+    .logo-icon i {
+      color: white;
+      font-size: 1.8rem;
+      transform: rotate(45deg);
+    }
+    
+    .logo-text {
+      font-weight: 700;
+    }
+    
+    .logo-text span:first-child {
+      color: var(--text-dark);
+    }
+    
+    .logo-text span:last-child {
+      color: var(--primary);
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav ul li {
+      margin-left: 25px;
+    }
+    
+    nav ul li a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    nav ul li a:hover {
+      color: var(--primary);
+    }
+    
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: all 0.3s ease;
+    }
+    
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--dark);
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 180px 0 100px;
+      margin-top: 0;
+    }
+    
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      line-height: 1.3;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    
+    .section-title p {
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Misión y Resultados */
+    .mision-resultados {
+      padding: 80px 0;
+      background: var(--light);
+      text-align: center;
+    }
+
+    .mision-content h2 {
+      color: var(--primary);
+      font-size: 2.2rem;
+      margin-bottom: 25px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.3;
+    }
+
+    .mision-content p {
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      max-width: 900px;
+      margin: 0 auto 50px;
+      line-height: 1.7;
+    }
+
+    .resultados-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .resultado-item {
+      background: white;
+      padding: 30px 25px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      border-top: 4px solid var(--primary);
+    }
+
+    .resultado-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
+
+    .resultado-valor {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .resultado-label {
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    /* Services Section */
+    .services {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      text-align: center;
+      padding: 40px 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .service-icon {
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 25px;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+
+    /* Aumentar tipografía gris en toda la sección de servicios */
+    .service-card p {
+      color: #2d3748;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    .service-card ul li {
+      color: #2d3748;
+      font-size: 1.1rem;
+    }
+
+    .service-card div[style*="background: #f0f7f0"] {
+      color: #2d3748 !important;
+      font-size: 1.1rem !important;
+    }
+
+    /* Sello + Impacto Section */
+    .sello-impacto-section {
+      background: #f0f7f0;
+      padding: 80px 0;
+    }
+
+    .sello-impacto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .sello-column {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .sello-box {
+      background: white;
+      border-radius: 15px;
+      padding: 40px;
+      max-width: 500px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+
+    .sello-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    }
+
+    .impacto-column {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .impacto-box {
+      background: white;
+      border-radius: 15px;
+      padding: 40px;
+      max-width: 500px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+
+    .impacto-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .sello-impacto-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      
+      .sello-column, .impacto-column {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 150px 0 80px;
+      }
+      
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+      }
+      
+      nav ul.active {
+        display: flex;
+      }
+      
+      nav ul li {
+        margin: 12px 0;
+        text-align: center;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .mision-content h2 {
+        font-size: 1.8rem;
+      }
+      
+      .mision-content p {
+        font-size: 1.1rem;
+      }
+      
+      .resultados-grid {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+      
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+      
+      .sello-box, .impacto-box {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <i class="fas fa-arrow-up"></i>
+        </div>
+        <div class="logo-text">
+          <span>Impacta</span>
+          <span>Verde</span>
+        </div>
+      </a>
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#sello-impacto">Sello</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+   <!-- Hero Section - TEXTO OPTIMIZADO -->
+  <section id="inicio" class="hero">
+    <div class="container">
+      <h1>Potenciamos marcas hacia un modelo más sustentable</h1>
+      <p>Marca + Producto + Comunicación + Procesos + Medición de impacto + Sello Digital sustentable.</p>
+      <a href="#contacto" class="btn">Solicitá tu diagnóstico gratuito</a>
+    </div>
+  </section>
+  
+<!-- Misión y Resultados - TEXTO OPTIMIZADO Y TIPOGRAFÍA MEJORADA -->
+<section id="mision" class="mision-resultados">
+  <div class="container">
+    <div class="mision-content">
+      <p class="mision-texto-principal">Acompañamos a empresas y emprendimientos en su transición hacia la sustentabilidad, integrando estrategias de comunicación, innovación en productos y mejora de procesos. Evaluamos el impacto ambiental y promovemos acciones concretas para reducir la huella de carbono. A través del <strong>Sello Digital de Sustentabilidad</strong>, reconocemos a las marcas que asumen un compromiso real con un cambio positivo y duradero.</p>
+    </div>
+    
+    <div class="resultados-grid">
+      <div class="resultado-item">
+        <div class="resultado-valor">11+</div>
+        <div class="resultado-label">Marcas Potenciadas</div>
+      </div>
+      <div class="resultado-item">
+        <div class="resultado-valor">153</div>
+        <div class="resultado-label">Árboles Equivalentes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Estilos para Hero Section */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 180px 0 100px;
+  margin-top: 0;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 25px;
+  line-height: 1.3;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 1.3rem; /* Texto más grande */
+  margin-bottom: 35px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.btn {
+  display: inline-block;
+  padding: 15px 35px;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Estilos para Misión y Resultados */
+.mision-resultados {
+  padding: 80px 0;
+  background: var(--light);
+  text-align: center;
+}
+
+.mision-content h2 {
+  color: var(--primary);
+  font-size: 2.3rem; /* Un poco más grande */
+  margin-bottom: 30px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.mision-texto-principal {
+  font-size: 1.5rem !important; /* 4 PUNTOS MÁS GRANDE (de 1.1rem a 1.5rem) */
+  color: #1a202c !important; /* GRIS 4 PUNTOS MÁS OSCURO (de #7f8c8d a #1a202c) */
+  max-width: 1000px;
+  margin: 0 auto 50px !important;
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+.mision-texto-principal strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.resultados-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.resultado-item {
+  background: white;
+  padding: 35px 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  border-top: 4px solid var(--primary);
+}
+
+.resultado-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.resultado-valor {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+.resultado-label {
+  font-size: 1.2rem;
+  color: #1a202c; /* Gris más oscuro */
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .hero h1 {
+    font-size: 2.3rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+  }
+  
+  .mision-content h2 {
+    font-size: 2rem;
+  }
+  
+  .mision-texto-principal {
+    font-size: 1.3rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 150px 0 80px;
+  }
+  
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+  
+  .hero p {
+    font-size: 1.1rem;
+  }
+  
+  .mision-resultados {
+    padding: 60px 0;
+  }
+  
+  .mision-content h2 {
+    font-size: 1.8rem;
+  }
+  
+  .mision-texto-principal {
+    font-size: 1.2rem !important;
+  }
+  
+  .resultados-grid {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+    gap: 25px;
+  }
+  
+  .resultado-item {
+    padding: 30px 25px;
+  }
+  
+  .resultado-valor {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  .mision-content h2 {
+    font-size: 1.6rem;
+  }
+  
+  .mision-texto-principal {
+    font-size: 1.1rem !important;
+  }
+  
+  .resultado-valor {
+    font-size: 2.2rem;
+  }
+  
+  .resultado-label {
+    font-size: 1.1rem;
+  }
+}
   
 </style>
   
