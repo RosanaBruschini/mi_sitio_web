@@ -131,12 +131,12 @@
     }
     
     nav ul li a {
-      text-decoration: none;
-      color: var(--text-dark);
-      font-weight: 500;
-      transition: all 0.3s ease;
-      position: relative;
-      font-size: 1.2rem; /* Agrandado +5 puntos */
+     text-decoration: none;
+     color: var(--text-dark);
+     font-weight: 500;
+     transition: all 0.3s ease;
+     position: relative;
+     font-size: 1.5rem; /* Agrandado +5 puntos más */
     }
     
     nav ul li a:hover {
@@ -637,12 +637,12 @@
     .impacto-cta {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      padding: 60px 50px;
+      padding: 40px 50px; /* Reducido de 60px a 40px en vertical */
       border-radius: 25px;
       text-align: center;
       margin-top: 40px;
       box-shadow: 0 15px 35px rgba(46, 125, 50, 0.25);
-    }
+   }
 
     .cta-title {
       font-size: 2rem;
@@ -1329,7 +1329,7 @@
     
     <div class="container">
       <h1>Potenciamos marcas hacia un modelo más sustentable</h1>
-      <p style="font-size: 1.9rem; font-weight: bold;">Marca + Mejora de Procesos + Medición de impacto + Sello Digital sustentable + Comunicación.</p>
+      <p style="font-size: 1.9rem; font-weight: bold; color: #ff9800;">Marca + Mejora de Procesos + Medición de impacto + Sello Digital sustentable + Comunicación.</p>
       <a href="#contacto" class="btn" style="font-size: 1.3rem;">Solicitá tu diagnóstico gratuito</a>
     </div>
   </section>
@@ -1541,9 +1541,8 @@
     <div class="section-title" style="text-align: center;">
       <h2 style="font-size: 2.7rem;">Impacto Positivo Generado</h2>
       <p class="impacto-subtitle" style="font-size: 1.5rem;">Resultados acumulados gracias a empresas comprometidas como la tuya</p>
-    </div>
-
-    
+      <br><br>
+   </div>
       
       <div class="impacto-content">
         <div class="impacto-grid">
@@ -1608,7 +1607,7 @@
             <div class="cta-content">
               <h4 class="cta-title">Sumate a esta red de impacto positivo</h4>
               <p class="cta-subtitle">Tu empresa puede ser la próxima en generar un cambio real</p>
-              <a href="#contacto" class="btn btn-secondary">Medir mi huella</a>
+              <a href="#contacto" class="btn btn-secondary" style="font-size: 1.2rem;">Medir mi huella</a>
             </div>
           </div>
         </div>
@@ -1616,84 +1615,86 @@
     </div>
   </section>
 
-  <!-- Testimonials Section -->
-  <section class="testimonials">
-    <div class="container">
-      <div class="section-title">
-        <h2>Lo que dicen nuestros clientes</h2>
-        <p>Experiencias reales de organizaciones que transformaron su impacto ambiental</p>
+ <!-- Testimonials Section -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-title" style="text-align: center;">
+      <h2 style="font-size: 2.7rem;">Lo que dicen nuestros clientes</h2>
+      <p style="font-size: 1.5rem;">Experiencias reales de organizaciones que transformaron su impacto ambiental</p>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="client-logo">
+          <i class="fas fa-arrow-up"></i>
+        </div>
+        <p style="font-size: 1.3rem;">"Impacta Verde nos ayudó a reducir nuestra huella de carbono en un 40% durante el primer año de implementación. Su enfoque basado en datos fue clave para nuestro éxito."</p>
+        <p style="font-size: 1.2rem;"><strong>María Rodríguez</strong><br>Directora de Sostenibilidad</p>
       </div>
-      <div class="testimonial-grid">
-        <div class="testimonial-card">
-          <div class="client-logo">
-            <i class="fas fa-arrow-up"></i>
-          </div>
-          <p>"Impacta Verde nos ayudó a reducir nuestra huella de carbono en un 40% durante el primer año de implementación. Su enfoque basado en datos fue clave para nuestro éxito."</p>
-          <p><strong>María Rodríguez</strong><br>Directora de Sostenibilidad</p>
+      <div class="testimonial-card">
+        <div class="client-logo">
+          <i class="fas fa-arrow-up"></i>
         </div>
-        <div class="testimonial-card">
-          <div class="client-logo">
-            <i class="fas fa-arrow-up"></i>
-          </div>
-          <p>"Las soluciones tecnológicas personalizadas que desarrollaron para nosotros nos permitieron optimizar nuestro consumo energético y reducir costos operativos significativamente."</p>
-          <p><strong>Carlos Gómez</strong><br>Gerente de Operaciones</p>
+        <p style="font-size: 1.3rem;">"Las soluciones tecnológicas personalizadas que desarrollaron para nosotros nos permitieron optimizar nuestro consumo energético y reducir costos operativos significativamente."</p>
+        <p style="font-size: 1.2rem;"><strong>Carlos Gómez</strong><br>Gerente de Operaciones</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="client-logo">
+          <i class="fas fa-arrow-up"></i>
         </div>
-        <div class="testimonial-card">
-          <div class="client-logo">
-            <i class="fas fa-arrow-up"></i>
-          </div>
-          <p>"Los talleres de formación transformaron la cultura de nuestra empresa. Hoy nuestros equipos son más conscientes y proponen soluciones sostenibles desde sus áreas."</p>
-          <p><strong>Laura Fernández</strong><br>Directora de RRHH</p>
-        </div>
+        <p style="font-size: 1.3rem;">"Los talleres de formación transformaron la cultura de nuestra empresa. Hoy nuestros equipos son más conscientes y proponen soluciones sostenibles desde sus áreas."</p>
+        <p style="font-size: 1.2rem;"><strong>Laura Fernández</strong><br>Directora de RRHH</p>
       </div>
     </div>
-  </section>
-  
-  <!-- Contacto -->
-  <section id="contacto" class="contact">
-    <div class="container">
-      <div class="section-title">
-        <h2>¿Listo para transformar tu marca?</h2>
-        <p style="color: #2d3748; font-size: 1.25rem;">Completá el formulario y te contactamos en menos de 24 horas</p>
-      </div>
+  </div>
+</section>
       
-      <div class="contact-grid">
-        <div class="contact-form">
-          <h3>Solicitá tu diagnóstico inicial sin costo</h3>
-          <form>
-            <div class="form-group">
-              <label for="name">Nombre y Apellido</label>
-              <input type="text" id="name" required placeholder="Ej. María López">
-            </div>
-            <div class="form-group">
-              <label for="email">Correo Electrónico</label>
-              <input type="email" id="email" required placeholder="Ej. maria@empresa.com">
-            </div>
-            <div class="form-group">
-              <label for="company">Empresa o Proyecto</label>
-              <input type="text" id="company" required placeholder="Nombre de tu empresa o proyecto">
-            </div>
-            <div class="form-group">
-              <label for="service">¿Qué servicio te interesa más?</label>
-              <select id="service" style="padding: 12px 15px; width: 100%; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
-                <option value="">Seleccioná una opción</option>
-                <option value="marca">Gestión de Marca Sustentable</option>
-                <option value="rediseno">Rediseño Sustentable</option>
-                <option value="circular">Gestión Circular</option>
-                <option value="comunicacion">Comunicación Integral</option>
-                <option value="multiple">Varios servicios</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">Contanos brevemente sobre tu proyecto</label>
-              <textarea id="message" placeholder="¿En qué etapa estás? ¿Qué objetivos tenés?" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-secondary">Solicitar diagnóstico gratuito</button>
-          </form>
-        </div>
+ <!-- Contacto -->
+<section id="contacto" class="contact">
+  <div class="container">
+    <div class="section-title" style="text-align: center;">
+      <h2 style="font-size: 2.7rem;">¿Listo para transformar tu marca?</h2>
+      <p style="color: #2d3748; font-size: 1.5rem;">Completá el formulario y te contactamos en menos de 24 horas</p>
+    </div>
+    
+    <div class="contact-grid">
+      <div class="contact-form">
+        <h3 style="font-size: 1.8rem;">Solicitá tu diagnóstico inicial sin costo</h3>
+        <form>
+          <div class="form-group">
+            <label for="name" style="font-size: 1.2rem;">Nombre y Apellido</label>
+            <input type="text" id="name" required placeholder="Ej. María López" style="font-size: 1.2rem;">
+          </div>
+          <div class="form-group">
+            <label for="email" style="font-size: 1.2rem;">Correo Electrónico</label>
+            <input type="email" id="email" required placeholder="Ej. maria@empresa.com" style="font-size: 1.2rem;">
+          </div>
+          <div class="form-group">
+            <label for="company" style="font-size: 1.2rem;">Empresa o Proyecto</label>
+            <input type="text" id="company" required placeholder="Nombre de tu empresa o proyecto" style="font-size: 1.2rem;">
+          </div>
+          <div class="form-group">
+            <label for="service" style="font-size: 1.2rem;">¿Qué servicio te interesa más?</label>
+            <select id="service" style="padding: 12px 15px; width: 100%; border: 1px solid #ddd; border-radius: 4px; font-size: 1.2rem;">
+              <option value="">Seleccioná una opción</option>
+              <option value="marca">Gestión de Marca Sustentable</option>
+              <option value="rediseno">Optimización de Procesos</option>
+              <option value="circular">Gestión Circular</option>
+              <option value="comunicacion">Comunicación Integral</option>
+              <option value="multiple">Varios servicios</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message" style="font-size: 1.2rem;">Contanos brevemente sobre tu proyecto</label>
+            <textarea id="message" placeholder="¿En qué etapa estás? ¿Qué objetivos tenés?" required style="font-size: 1.2rem;"></textarea>
+          </div>
+          <div style="text-align: right;">
+            <button type="submit" class="btn btn-secondary" style="font-size: 1.2rem;">Solicitar diagnóstico gratuito</button>
+          </div>
+        </form>
       </div>
     </div>
-  </section>
+  </div>
+</section>
   
   <!-- Footer -->
   <footer>
@@ -1740,7 +1741,7 @@
           <h3>Servicios</h3>
           <ul>
             <li><a href="#servicios">Gestión de Marca Sustentable</a></li>
-            <li><a href="#servicios">Rediseño Sustentable</a></li>
+            <li><a href="#servicios">Optimización de Procesos</a></li>
             <li><a href="#servicios">Gestión Circular</a></li>
             <li><a href="#servicios">Comunicación Integral</a></li>
           </ul>
@@ -1812,7 +1813,7 @@
         'servicios': {
           text: 'Ofrecemos los siguientes servicios:\n\n' +
                 '• Gestión de Marca Sustentable\n' +
-                '• Rediseño Sustentable\n' +
+                '• Optimización de Procesos\n' +
                 '• Gestión Circular\n' +
                 '• Comunicación Integral\n\n' +
                 '¿Te gustaría conocer más sobre alguno en particular?',
