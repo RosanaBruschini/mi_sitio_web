@@ -1390,7 +1390,7 @@ footer > .container {
     </div>
   </header>
   
-     <!-- Hero Section - Estilo Nodus Mejorado -->
+    <!-- Hero Section - Estilo Nodus Mejorado -->
 <section id="inicio" class="hero">
   <div class="container" style="display: grid; grid-template-columns: 50% 50%; align-items: center; gap: 60px; min-height: 80vh;">
     
@@ -1403,151 +1403,81 @@ footer > .container {
       <a href="#contacto" class="btn" style="font-size: 1.2rem; background: #ffd54f; color: #1b5e20; padding: 15px 35px; font-weight: 600;">Hablemos</a>
     </div>
     
-   <!-- Columna Gráficos - Animación Secuencial -->
-<div class="hero-graphics">
-  <div style="position: relative; height: 450px; width: 450px; margin: 0 auto;">
-    
-    <!-- Contenedor de íconos -->
-    <div id="animated-icons" style="position: relative; height: 100%; width: 100%;">
-      
-      <!-- Íconos individuales (inicialmente ocultos) -->
-      <!-- Tecnología -->
-      <div class="icon-item" data-step="1" style="position: absolute; top: 15%; left: 50%; transform: translateX(-50%); opacity: 0;">
-        <i class="fas fa-laptop-code" style="font-size: 2.5rem; color: #26c6da;"></i>
-      </div>
-      
-      <!-- Comunicación -->
-      <div class="icon-item" data-step="2" style="position: absolute; top: 30%; right: 15%; opacity: 0;">
-        <i class="fas fa-bullhorn" style="font-size: 2.5rem; color: #f48fb1;"></i>
-      </div>
-      
-      <!-- Medición -->
-      <div class="icon-item" data-step="3" style="position: absolute; bottom: 30%; right: 15%; opacity: 0;">
-        <i class="fas fa-chart-line" style="font-size: 2.5rem; color: #4caf50;"></i>
-      </div>
-      
-      <!-- Procesos -->
-      <div class="icon-item" data-step="4" style="position: absolute; bottom: 15%; left: 50%; transform: translateX(-50%); opacity: 0;">
-        <i class="fas fa-cogs" style="font-size: 2.5rem; color: #ff9800;"></i>
-      </div>
-      
-      <!-- Marca -->
-      <div class="icon-item" data-step="5" style="position: absolute; bottom: 30%; left: 15%; opacity: 0;">
-        <i class="fas fa-certificate" style="font-size: 2.5rem; color: #9c27b0;"></i>
-      </div>
-      
-      <!-- Sello -->
-      <div class="icon-item" data-step="6" style="position: absolute; top: 30%; left: 15%; opacity: 0;">
-        <i class="fas fa-leaf" style="font-size: 2.5rem; color: #00bcd4;"></i>
-      </div>
-      
-      <!-- Círculo conectivo (oculto inicialmente) -->
-      <div id="connecting-circle" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; border: 2px solid rgba(255,255,255,0); border-radius: 50%; opacity: 0;"></div>
-      
-      <!-- Logo central (oculto inicialmente) -->
-      <div id="central-logo" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 100px; background: #ffd54f; border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
-        <div style="background: #1b5e20; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-          <i class="fas fa-arrow-up" style="font-size: 1.8rem; color: #ffd54f; transform: rotate(45deg);"></i>
+    <!-- Columna Gráficos - Versión Simple y Funcional -->
+    <div class="hero-graphics">
+      <div style="position: relative; height: 450px; width: 450px; margin: 0 auto;">
+        
+        <!-- Círculo conectivo siempre visible -->
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 350px; height: 350px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%;"></div>
+        
+        <!-- Logo central siempre visible -->
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 100px; background: #ffd54f; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10; box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
+          <div style="background: #1b5e20; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-arrow-up" style="font-size: 1.8rem; color: #ffd54f; transform: rotate(45deg);"></i>
+          </div>
         </div>
+        
+        <!-- Íconos con animación secuencial CSS puro -->
+        <!-- Tecnología -->
+        <div class="floating-icon" style="position: absolute; top: 15%; left: 50%; transform: translateX(-50%);">
+          <i class="fas fa-laptop-code" style="font-size: 2.2rem; color: #26c6da;"></i>
+        </div>
+        
+        <!-- Comunicación -->
+        <div class="floating-icon" style="position: absolute; top: 30%; right: 15%;">
+          <i class="fas fa-bullhorn" style="font-size: 2.2rem; color: #f48fb1;"></i>
+        </div>
+        
+        <!-- Medición -->
+        <div class="floating-icon" style="position: absolute; bottom: 30%; right: 15%;">
+          <i class="fas fa-chart-line" style="font-size: 2.2rem; color: #4caf50;"></i>
+        </div>
+        
+        <!-- Procesos -->
+        <div class="floating-icon" style="position: absolute; bottom: 15%; left: 50%; transform: translateX(-50%);">
+          <i class="fas fa-cogs" style="font-size: 2.2rem; color: #ff9800;"></i>
+        </div>
+        
+        <!-- Marca -->
+        <div class="floating-icon" style="position: absolute; bottom: 30%; left: 15%;">
+          <i class="fas fa-certificate" style="font-size: 2.2rem; color: #9c27b0;"></i>
+        </div>
+        
+        <!-- Sello -->
+        <div class="floating-icon" style="position: absolute; top: 30%; left: 15%;">
+          <i class="fas fa-leaf" style="font-size: 2.2rem; color: #00bcd4;"></i>
+        </div>
+        
       </div>
-      
     </div>
+    
   </div>
-</div>
+</section>
 
 <style>
-/* Animaciones para la secuencia */
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.8); }
-  to { opacity: 1; transform: scale(1); }
+.hero {
+  background: linear-gradient(135deg, #00c853 0%, #00e676 100%);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
 }
 
-@keyframes fadeOut {
-  from { opacity: 1; transform: scale(1); }
-  to { opacity: 0; transform: scale(0.8); }
+/* Animaciones de flotación suave para los íconos */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
-@keyframes pulseCircle {
-  0% { border-color: rgba(255,255,255,0); transform: translate(-50%, -50%) scale(0.8); }
-  50% { border-color: rgba(255,255,255,0.6); transform: translate(-50%, -50%) scale(1.1); }
-  100% { border-color: rgba(255,255,255,0.3); transform: translate(-50%, -50%) scale(1); }
+.floating-icon {
+  animation: float 3s ease-in-out infinite;
 }
 
-.icon-item {
-  transition: all 0.8s ease;
-  animation-duration: 0.8s;
-  animation-fill-mode: both;
-}
-
-.icon-item.visible {
-  animation-name: fadeIn;
-}
-
-.icon-item.hidden {
-  animation-name: fadeOut;
-}
-
-#connecting-circle.visible {
-  animation: pulseCircle 2s ease-out;
-  opacity: 1;
-}
-
-#central-logo.visible {
-  animation: fadeIn 1s ease-out;
-  opacity: 1;
-}
-</style>
-
-<script>
-// Animación secuencial
-function startIconAnimation() {
-  const icons = document.querySelectorAll('.icon-item');
-  const circle = document.getElementById('connecting-circle');
-  const logo = document.getElementById('central-logo');
-  
-  let step = 0;
-  const totalSteps = 8; // 6 íconos + círculo + logo
-  
-  function nextStep() {
-    // Ocultar todos los íconos del paso anterior
-    icons.forEach(icon => {
-      if (parseInt(icon.dataset.step) === step) {
-        icon.classList.remove('visible');
-        icon.classList.add('hidden');
-      }
-    });
-    
-    step++;
-    if (step > totalSteps) step = 1; // Reiniciar
-    
-    // Mostrar elementos del paso actual
-    if (step <= 6) {
-      // Mostrar íconos secuencialmente
-      icons.forEach(icon => {
-        if (parseInt(icon.dataset.step) === step) {
-          icon.classList.remove('hidden');
-          icon.classList.add('visible');
-        }
-      });
-    } else if (step === 7) {
-      // Mostrar círculo conectivo
-      circle.classList.add('visible');
-    } else if (step === 8) {
-      // Mostrar logo central
-      logo.classList.add('visible');
-    }
-    
-    // Siguiente paso en 1.5 segundos
-    setTimeout(nextStep, 1500);
-  }
-  
-  // Iniciar animación
-  nextStep();
-}
-
-// Iniciar cuando la página cargue
-document.addEventListener('DOMContentLoaded', startIconAnimation);
-</script>
+.floating-icon:nth-child(1) { animation-delay: 0s; }
+.floating-icon:nth-child(2) { animation-delay: 0.5s; }
+.floating-icon:nth-child(3) { animation-delay: 1s; }
+.floating-icon:nth-child(4) { animation-delay: 1.5s; }
+.floating-icon:nth-child(5) { animation-delay: 2s; }
+.floating-icon:nth-child(6) { animation-delay: 2.5s; }
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -1562,8 +1492,11 @@ document.addEventListener('DOMContentLoaded', startIconAnimation);
     font-size: 2.2rem !important;
   }
   .hero-graphics div[style*="position: relative"] {
-    height: 400px !important;
-    width: 400px !important;
+    height: 350px !important;
+    width: 350px !important;
+  }
+  .floating-icon i {
+    font-size: 1.8rem !important;
   }
 }
 </style>
