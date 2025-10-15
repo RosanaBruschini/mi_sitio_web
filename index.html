@@ -168,45 +168,140 @@ nav ul li a:hover::after {
       color: var(--dark);
     }
     
- /* Hero Section - Fondo Verde Oscuro */
+/* Hero Section - Fondo con imagen y overlay verde */
 .hero {
-  background: linear-gradient(135deg, #00c853 0%, #00e676 100%) !important;
-  padding: 100px 0 !important;
+  background: 
+    linear-gradient(rgba(44, 62, 47, 0.9), rgba(44, 62, 47, 0.95)),
+    url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+  padding: 120px 0 !important;
   position: relative !important;
   overflow: hidden !important;
 }
 
-/* Animaciones para los círculos - Colores vibrantes */
-@keyframes pulse {
-  0% { transform: translate(-50%, -50%) scale(1); }
-  50% { transform: translate(-50%, -50%) scale(1.1); }
-  100% { transform: translate(-50%, -50%) scale(1); }
+/* Contenedor principal del contenido */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-@keyframes orbit1 {
-  0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+/* Título principal - MUY GRANDE */
+.hero-title {
+  font-size: 3.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  margin-bottom: 40px !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes orbit2 {
-  0% { transform: rotate(0deg) translateX(120px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+/* Grid para los servicios */
+.hero-services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin: 50px 0;
 }
 
-@keyframes orbit3 {
-  0% { transform: rotate(0deg) translateX(80px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(80px) rotate(-360deg); }
+/* Cada item de servicio */
+.service-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@keyframes orbit4 {
-  0% { transform: rotate(0deg) translateX(90px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(90px) rotate(-360deg); }
+/* CÍRCULOS al estilo Nodus */
+.service-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
 }
 
-/* Responsive para el hero */
+.service-circle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+.service-circle svg {
+  width: 40px;
+  height: 40px;
+  fill: white;
+}
+
+/* Texto de los servicios */
+.service-text {
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  color: white;
+}
+
+/* Botón Hablemos con efecto glassmorphism */
+.cta-button {
+  background: rgba(255, 193, 7, 0.9) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  padding: 15px 40px !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  border-radius: 50px !important;
+  transition: all 0.3s ease !important;
+  margin-top: 30px;
+}
+
+.cta-button:hover {
+  background: rgba(255, 193, 7, 1) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .hero {
-    padding: 80px 0;
+    padding: 80px 0 !important;
+    background-attachment: scroll !important;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem !important;
+  }
+  
+  .hero-services {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .service-circle {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .service-circle svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-services {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .hero-title {
+    font-size: 2rem !important;
   }
 }
     
@@ -1392,111 +1487,208 @@ footer > .container {
   
     <!-- Hero Section - Estilo Nodus Mejorado -->
 <section id="inicio" class="hero">
-  <div class="container" style="display: grid; grid-template-columns: 50% 50%; align-items: center; gap: 60px; min-height: 80vh;">
+  <div class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80vh; text-align: center;">
     
-    <!-- Columna Texto -->
+    <!-- Título Principal - MUY GRANDE -->
     <div class="hero-text">
-      <h1 style="font-size: 2.8rem; color: #ffffff; margin-bottom: 25px; line-height: 1.2; font-weight: 700;">Hacemos tu empresa más eficiente, sustentable y competitiva.</h1>
-      <div style="margin: 30px 0;">
-        <p style="font-size: 1.4rem; color: #e8f5e9; font-weight: 500; line-height: 1.6;">Marca + Procesos + Tecnología + Medición de impacto + Sello Digital de Sustentabilidad + Comunicación.</p>
-      </div>
-      <a href="#contacto" class="btn" style="font-size: 1.2rem; background: #ffd54f; color: #1b5e20; padding: 15px 35px; font-weight: 600;">Hablemos</a>
+      <h1 class="hero-title">Hacemos tu empresa más eficiente, sustentable y competitiva.</h1>
     </div>
     
-    <!-- Columna Gráficos - Versión Simple y Funcional -->
-    <div class="hero-graphics">
-      <div style="position: relative; height: 450px; width: 450px; margin: 0 auto;">
-        
-        <!-- Círculo conectivo siempre visible -->
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 350px; height: 350px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%;"></div>
-        
-        <!-- Logo central siempre visible -->
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 100px; background: #ffd54f; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10; box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
-          <div style="background: #1b5e20; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-            <i class="fas fa-arrow-up" style="font-size: 1.8rem; color: #ffd54f; transform: rotate(45deg);"></i>
-          </div>
+    <!-- Servicios en círculos estilo Nodus -->
+    <div class="hero-services">
+      <!-- Marca -->
+      <div class="service-item">
+        <div class="service-circle">
+          <i class="fas fa-certificate" style="font-size: 2.2rem; color: #ffffff;"></i>
         </div>
-        
-        <!-- Íconos con animación secuencial CSS puro -->
-        <!-- Tecnología -->
-        <div class="floating-icon" style="position: absolute; top: 15%; left: 50%; transform: translateX(-50%);">
-          <i class="fas fa-laptop-code" style="font-size: 2.2rem; color: #26c6da;"></i>
+        <div class="service-text">Marca</div>
+      </div>
+      
+      <!-- Procesos -->
+      <div class="service-item">
+        <div class="service-circle">
+          <i class="fas fa-cogs" style="font-size: 2.2rem; color: #ffffff;"></i>
         </div>
-        
-        <!-- Comunicación -->
-        <div class="floating-icon" style="position: absolute; top: 30%; right: 15%;">
-          <i class="fas fa-bullhorn" style="font-size: 2.2rem; color: #f48fb1;"></i>
+        <div class="service-text">Procesos</div>
+      </div>
+      
+      <!-- Tecnología -->
+      <div class="service-item">
+        <div class="service-circle">
+          <i class="fas fa-laptop-code" style="font-size: 2.2rem; color: #ffffff;"></i>
         </div>
-        
-        <!-- Medición -->
-        <div class="floating-icon" style="position: absolute; bottom: 30%; right: 15%;">
-          <i class="fas fa-chart-line" style="font-size: 2.2rem; color: #4caf50;"></i>
+        <div class="service-text">Tecnología</div>
+      </div>
+      
+      <!-- Medición -->
+      <div class="service-item">
+        <div class="service-circle">
+          <i class="fas fa-chart-line" style="font-size: 2.2rem; color: #ffffff;"></i>
         </div>
-        
-        <!-- Procesos -->
-        <div class="floating-icon" style="position: absolute; bottom: 15%; left: 50%; transform: translateX(-50%);">
-          <i class="fas fa-cogs" style="font-size: 2.2rem; color: #ff9800;"></i>
+        <div class="service-text">Medición</div>
+      </div>
+      
+      <!-- Sello -->
+      <div class="service-item">
+        <div class="service-circle">
+          <i class="fas fa-leaf" style="font-size: 2.2rem; color: #ffffff;"></i>
         </div>
-        
-        <!-- Marca -->
-        <div class="floating-icon" style="position: absolute; bottom: 30%; left: 15%;">
-          <i class="fas fa-certificate" style="font-size: 2.2rem; color: #9c27b0;"></i>
+        <div class="service-text">Sello</div>
+      </div>
+      
+      <!-- Comunicación -->
+      <div class="service-item">
+        <div class="service-circle">
+          <i class="fas fa-bullhorn" style="font-size: 2.2rem; color: #ffffff;"></i>
         </div>
-        
-        <!-- Sello -->
-        <div class="floating-icon" style="position: absolute; top: 30%; left: 15%;">
-          <i class="fas fa-leaf" style="font-size: 2.2rem; color: #00bcd4;"></i>
-        </div>
-        
+        <div class="service-text">Comunicación</div>
       </div>
     </div>
+    
+    <!-- Botón CTA -->
+    <a href="#contacto" class="cta-button">Hablemos</a>
     
   </div>
 </section>
 
 <style>
+/* Hero Section - Fondo con imagen y overlay verde */
 .hero {
-  background: linear-gradient(135deg, #00c853 0%, #00e676 100%);
-  padding: 100px 0;
-  position: relative;
-  overflow: hidden;
+  background: 
+    linear-gradient(rgba(44, 62, 47, 0.9), rgba(44, 62, 47, 0.95)),
+    url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  padding: 100px 0 !important;
+  position: relative !important;
+  overflow: hidden !important;
 }
 
-/* Animaciones de flotación suave para los íconos */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+/* Título principal - MUY GRANDE */
+.hero-title {
+  font-size: 3.2rem !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  margin-bottom: 50px !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  max-width: 900px;
 }
 
-.floating-icon {
-  animation: float 3s ease-in-out infinite;
+/* Grid para los servicios */
+.hero-services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin: 50px 0;
+  max-width: 800px;
 }
 
-.floating-icon:nth-child(1) { animation-delay: 0s; }
-.floating-icon:nth-child(2) { animation-delay: 0.5s; }
-.floating-icon:nth-child(3) { animation-delay: 1s; }
-.floating-icon:nth-child(4) { animation-delay: 1.5s; }
-.floating-icon:nth-child(5) { animation-delay: 2s; }
-.floating-icon:nth-child(6) { animation-delay: 2.5s; }
+/* Cada item de servicio */
+.service-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* CÍRCULOS al estilo Nodus */
+.service-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.service-circle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+/* Texto de los servicios */
+.service-text {
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  color: white;
+}
+
+/* Botón Hablemos con efecto glassmorphism */
+.cta-button {
+  background: rgba(255, 193, 7, 0.9) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  padding: 15px 40px !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  border-radius: 50px !important;
+  transition: all 0.3s ease !important;
+  margin-top: 30px;
+  color: #1b5e20 !important;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.cta-button:hover {
+  background: rgba(255, 193, 7, 1) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  color: #1b5e20 !important;
+}
 
 /* Responsive */
 @media (max-width: 768px) {
   .hero {
-    padding: 80px 0;
+    padding: 80px 0 !important;
   }
-  .container[style*="grid-template-columns"] {
-    grid-template-columns: 1fr !important;
-    gap: 40px !important;
-  }
-  .hero-text h1 {
+  
+  .hero-title {
     font-size: 2.2rem !important;
+    margin-bottom: 40px !important;
   }
-  .hero-graphics div[style*="position: relative"] {
-    height: 350px !important;
-    width: 350px !important;
+  
+  .hero-services {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
   }
-  .floating-icon i {
+  
+  .service-circle {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .service-circle i {
     font-size: 1.8rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-services {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem !important;
+  }
+  
+  .service-circle {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .service-circle i {
+    font-size: 1.6rem !important;
+  }
+  
+  .service-text {
+    font-size: 1rem !important;
   }
 }
 </style>
