@@ -168,15 +168,15 @@ nav ul li a:hover::after {
       color: var(--dark);
     }
     
-  /* Hero Section - Estilo Moderno */
+ /* Hero Section - Fondo Verde Oscuro */
 .hero {
-  background: linear-gradient(135deg, #f8fdf8 0%, #ffffff 100%);
+  background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
   padding: 100px 0;
   position: relative;
   overflow: hidden;
 }
 
-/* Animaciones para los círculos */
+/* Animaciones para los círculos - Colores vibrantes */
 @keyframes pulse {
   0% { transform: translate(-50%, -50%) scale(1); }
   50% { transform: translate(-50%, -50%) scale(1.1); }
@@ -1390,40 +1390,40 @@ footer > .container {
     </div>
   </header>
   
-     <!-- Hero Section - Estilo Nodus -->
+     <!-- Hero Section - Fondo Verde Oscuro -->
 <section id="inicio" class="hero">
   <div class="container" style="display: grid; grid-template-columns: 55% 45%; align-items: center; gap: 60px; min-height: 70vh;">
     <!-- Columna Texto -->
     <div class="hero-text">
-      <h1 style="font-size: 2.8rem; color: #1b5e20; margin-bottom: 25px; line-height: 1.2; font-weight: 700;">Hacemos tu empresa más eficiente, sustentable y competitiva.</h1>
+      <h1 style="font-size: 2.8rem; color: #ffffff; margin-bottom: 25px; line-height: 1.2; font-weight: 700;">Hacemos tu empresa más eficiente, sustentable y competitiva.</h1>
       <div style="margin: 30px 0;">
-        <p style="font-size: 1.4rem; color: #2e7d32; font-weight: 500; line-height: 1.6;">Marca + Procesos + Tecnología + Medición de impacto + Sello Digital de Sustentabilidad + Comunicación.</p>
+        <p style="font-size: 1.4rem; color: #e0e0e0; font-weight: 500; line-height: 1.6;">Marca + Procesos + Tecnología + Medición de impacto + Sello Digital de Sustentabilidad + Comunicación.</p>
       </div>
-      <a href="#contacto" class="btn" style="font-size: 1.2rem; background: #ff9800; padding: 15px 35px;">Hablemos</a>
+      <a href="#contacto" class="btn" style="font-size: 1.2rem; background: #ffd54f; color: #1b5e20; padding: 15px 35px; font-weight: 600;">Hablemos</a>
     </div>
     
     <!-- Columna Iconos Animados -->
     <div class="hero-graphics">
       <div style="position: relative; height: 400px;">
         <!-- Círculo principal central -->
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: 120px; background: #2e7d32; border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: pulse 3s infinite;">
-          <i class="fas fa-leaf" style="font-size: 3rem; color: white;"></i>
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: 120px; background: #ffd54f; border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: pulse 3s infinite;">
+          <i class="fas fa-leaf" style="font-size: 3rem; color: #1b5e20;"></i>
         </div>
         
         <!-- Círculos orbitantes -->
-        <div style="position: absolute; top: 30%; left: 30%; width: 80px; height: 80px; background: #4caf50; border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: orbit1 8s infinite linear;">
+        <div style="position: absolute; top: 30%; left: 30%; width: 80px; height: 80px; background: #26c6da; border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: orbit1 8s infinite linear;">
           <i class="fas fa-chart-line" style="font-size: 1.8rem; color: white;"></i>
         </div>
         
-        <div style="position: absolute; top: 60%; left: 70%; width: 80px; height: 80px; background: #66bb6a; border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: orbit2 10s infinite linear;">
+        <div style="position: absolute; top: 60%; left: 70%; width: 80px; height: 80px; background: #f48fb1; border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: orbit2 10s infinite linear;">
           <i class="fas fa-recycle" style="font-size: 1.8rem; color: white;"></i>
         </div>
         
-        <div style="position: absolute; top: 20%; left: 65%; width: 70px; height: 70px; background: #81c784; border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: orbit3 12s infinite linear;">
+        <div style="position: absolute; top: 20%; left: 65%; width: 70px; height: 70px; background: #4caf50; border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: orbit3 12s infinite linear;">
           <i class="fas fa-certificate" style="font-size: 1.5rem; color: white;"></i>
         </div>
         
-        <div style="position: absolute; top: 70%; left: 25%; width: 70px; height: 70px; background: #a5d6a7; border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: orbit4 9s infinite linear;">
+        <div style="position: absolute; top: 70%; left: 25%; width: 70px; height: 70px; background: #81c784; border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: orbit4 9s infinite linear;">
           <i class="fas fa-bullhorn" style="font-size: 1.5rem; color: white;"></i>
         </div>
       </div>
@@ -1433,8 +1433,8 @@ footer > .container {
 
 <style>
 .hero {
-  background: linear-gradient(135deg, #f8fdf8 0%, #ffffff 100%);
-  padding: 80px 0;
+  background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+  padding: 100px 0;
   position: relative;
   overflow: hidden;
 }
@@ -1468,11 +1468,13 @@ footer > .container {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .hero {
+    padding: 80px 0;
+  }
   .container[style*="grid-template-columns"] {
     grid-template-columns: 1fr !important;
     gap: 40px !important;
   }
-  
   .hero-text h1 {
     font-size: 2.2rem !important;
   }
