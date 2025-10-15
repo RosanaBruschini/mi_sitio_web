@@ -1496,7 +1496,6 @@ footer > .container {
     </div>
   </header>
   
-  <!-- Hero Section - Estilo Nodus Mejorado -->
 <!-- Hero Section - Estilo Nodus Mejorado -->
 <section id="inicio" class="hero">
   <div class="container" style="display: grid; grid-template-columns: 50% 50%; align-items: center; gap: 60px; min-height: 80vh;">
@@ -1527,13 +1526,12 @@ footer > .container {
           </div>
         </div>
         
-        <!-- Íconos con colores específicos -->
+        <!-- Íconos SIN TEXTO y con rotación -->
         <!-- Tecnología - TURQUESA -->
         <div class="static-icon" style="--icon-position: 0deg; --icon-color: #26c6da;">
           <div class="icon-circle">
             <i class="fas fa-laptop-code"></i>
           </div>
-          <div class="icon-label">Tecnología</div>
         </div>
         
         <!-- Comunicación - ROSA -->
@@ -1541,7 +1539,6 @@ footer > .container {
           <div class="icon-circle">
             <i class="fas fa-bullhorn"></i>
           </div>
-          <div class="icon-label">Comunicación</div>
         </div>
         
         <!-- Medición - AMARILLO -->
@@ -1549,7 +1546,6 @@ footer > .container {
           <div class="icon-circle">
             <i class="fas fa-chart-line"></i>
           </div>
-          <div class="icon-label">Medición</div>
         </div>
         
         <!-- Procesos - NARANJA -->
@@ -1557,7 +1553,6 @@ footer > .container {
           <div class="icon-circle">
             <i class="fas fa-cogs"></i>
           </div>
-          <div class="icon-label">Procesos</div>
         </div>
         
         <!-- Marca - TURQUESA OSCURO -->
@@ -1565,7 +1560,6 @@ footer > .container {
           <div class="icon-circle">
             <i class="fas fa-certificate"></i>
           </div>
-          <div class="icon-label">Marca</div>
         </div>
         
         <!-- Sello - VERDE AGUA -->
@@ -1573,7 +1567,6 @@ footer > .container {
           <div class="icon-circle">
             <i class="fas fa-leaf"></i>
           </div>
-          <div class="icon-label">Sello</div>
         </div>
         
       </div>
@@ -1604,6 +1597,11 @@ footer > .container {
 /* Efecto de zoom cuando aparece el logo */
 .graphic-container.logo-visible {
   transform: scale(1.08);
+}
+
+/* Estado de rotación */
+.graphic-container.rotating .static-icon {
+  animation: iconRotate 12s linear infinite !important;
 }
 
 /* Círculo de fondo sutil */
@@ -1675,7 +1673,6 @@ footer > .container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 8px;
   transition: all 0.3s ease;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
@@ -1689,15 +1686,6 @@ footer > .container {
   color: var(--icon-color);
   font-size: 2rem;
   filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
-}
-
-/* Etiquetas de los iconos */
-.icon-label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: white;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-  white-space: nowrap;
 }
 
 /* Animaciones */
@@ -1727,6 +1715,16 @@ footer > .container {
   100% { 
     opacity: 1; 
     transform: translate(-50%, -50%) scale(1) rotate(45deg);
+  }
+}
+
+/* Nueva animación de rotación de iconos */
+@keyframes iconRotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(var(--icon-position)) translateX(200px) rotate(calc(-1 * var(--icon-position)));
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(calc(var(--icon-position) + 360deg)) translateX(200px) rotate(calc(-1 * var(--icon-position) - 360deg));
   }
 }
 
@@ -1848,14 +1846,10 @@ footer > .container {
   .icon-circle i {
     font-size: 1.5rem;
   }
-  
-  .icon-label {
-    font-size: 0.8rem;
-  }
 }
 </style>
 
-<!-- JavaScript para el efecto de aparición/desaparición -->
+<!-- JavaScript para el efecto de aparición/desaparición y rotación -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const graphicContainer = document.querySelector('.graphic-container');
@@ -1885,8 +1879,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // Ciclo automático cada 4 segundos
+  function startRotation() {
+    graphicContainer.classList.add('rotating');
+  }
+  
+  function stopRotation() {
+    graphicContainer.classList.remove('rotating');
+  }
+  
+  function toggleRotation() {
+    if (graphicContainer.classList.contains('rotating')) {
+      stopRotation();
+      // Esperar 8 segundos antes de volver a rotar
+      setTimeout(startRotation, 8000);
+    } else {
+      startRotation();
+      // Rotar por 15 segundos
+      setTimeout(stopRotation, 15000);
+    }
+  }
+  
+  // Ciclo automático logo cada 4 segundos
   setInterval(toggleLogo, 4000);
+  
+  // Ciclo de rotación cada 25 segundos (15s rotación + 8s pausa + 2s margen)
+  setTimeout(() => {
+    startRotation();
+    setInterval(toggleRotation, 23000);
+  }, 2000);
   
   // Mostrar logo al hacer hover
   graphicContainer.addEventListener('mouseenter', function() {
@@ -1902,6 +1922,112 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(showLogo, 1000);
 });
 </script>
+
+  <!-- Misión y Resultados -->
+<section class="mision-resultados">
+  <div class="container">
+    <div class="mision-content">
+      <h2>Acompañamos a empresas y emprendimientos en su transición hacia la sustentabilidad integral</h2>
+      <p>Integramos diseño, procesos, tecnología y comunicación para crear estrategias de sustentabilidad reales, medibles y auténticas que generen valor tanto para el negocio como para el planeta.</p>
+      
+      <div class="resultados-grid">
+        <div class="resultado-item">
+          <div class="resultado-valor">+40%</div>
+          <div class="resultado-label">Eficiencia operativa</div>
+        </div>
+        <div class="resultado-item">
+          <div class="resultado-valor">-35%</div>
+          <div class="resultado-label">Huella de carbono</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Misión y Resultados */
+<section class="mision-resultados">
+  <div class="container">
+    <div class="mision-content">
+     <h2>Acompañamos empresas y emprendimientos en la transición hacia la sustentabilidad real</h2>
+     <p>Integrando procesos, comunicación, innovación y mejora continua. Otorgamos el Sello Digital de Sustentabilidad como reconocimiento al compromiso tangible con el impacto ambiental positivo, midiendo huella de carbono y ofreciendo herramientas de transparencia para construir marcas más responsables.</p>
+      
+      
+      <div class="resultados-grid">
+        <div class="resultado-item">
+          <div class="resultado-valor">+40%</div>
+          <div class="resultado-label">Eficiencia operativa</div>
+        </div>
+        <div class="resultado-item">
+          <div class="resultado-valor">-35%</div>
+          <div class="resultado-label">Huella de carbono</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Misión y Resultados */
+.mision-resultados {
+  padding: 80px 0;
+  background: var(--light);
+  text-align: center;
+}
+
+.mision-content h2 {
+  color: var(--primary);
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.3;
+}
+
+.mision-content p {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  max-width: 900px;
+  margin: 0 auto 50px;
+  line-height: 1.7;
+}
+
+.resultados-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.resultado-item {
+  background: white;
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  border-top: 4px solid var(--primary);
+}
+
+.resultado-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.resultado-valor {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.resultado-label {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+</style>
   <!-- Services Section -->
   <section id="servicios" class="services">
     <div class="container">
