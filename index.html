@@ -168,140 +168,151 @@ nav ul li a:hover::after {
       color: var(--dark);
     }
     
-/* Hero Section - Fondo con imagen y overlay verde */
+/* ===== HERO SECTION ===== */
 .hero {
-  background: 
-    linear-gradient(rgba(44, 62, 47, 0.9), rgba(44, 62, 47, 0.95)),
-    url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-attachment: fixed !important;
-  padding: 120px 0 !important;
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-/* Contenedor principal del contenido */
-.hero-content {
+  background: linear-gradient(135deg, #00c853 0%, #00e676 100%);
+  padding: 100px 0;
   position: relative;
-  z-index: 2;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  overflow: hidden;
 }
 
-/* Título principal - MUY GRANDE */
-.hero-title {
-  font-size: 3.5rem !important;
-  font-weight: 800 !important;
-  line-height: 1.1 !important;
-  margin-bottom: 40px !important;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Grid para los servicios */
-.hero-services {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin: 50px 0;
-}
-
-/* Cada item de servicio */
-.service-item {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* CÍRCULOS al estilo Nodus */
-.service-circle {
-  width: 100px;
-  height: 100px;
+/* Círculos de iconos estilo Nodus MEJORADOS */
+.icon-circle {
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 255, 255, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.service-circle:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-5px);
+.icon-circle:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.15);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
-.service-circle svg {
-  width: 40px;
-  height: 40px;
-  fill: white;
-}
-
-/* Texto de los servicios */
-.service-text {
-  font-size: 1.1rem !important;
-  font-weight: 600 !important;
+.icon-circle i {
   color: white;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
 
-/* Botón Hablemos con efecto glassmorphism */
-.cta-button {
-  background: rgba(255, 193, 7, 0.9) !important;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  padding: 15px 40px !important;
-  font-size: 1.2rem !important;
-  font-weight: 700 !important;
-  border-radius: 50px !important;
-  transition: all 0.3s ease !important;
-  margin-top: 30px;
+/* Animación de órbita para economía circular */
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(var(--orbit-size)) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(var(--orbit-size)) rotate(-360deg);
+  }
 }
 
-.cta-button:hover {
-  background: rgba(255, 193, 7, 1) !important;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+@keyframes rotate {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .hero {
-    padding: 80px 0 !important;
-    background-attachment: scroll !important;
+.orbit-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  animation: orbit 25s linear infinite;
+  animation-delay: var(--orbit-delay);
+}
+
+/* Efectos de flotación adicional */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.orbit-icon .icon-circle {
+  animation: float 4s ease-in-out infinite;
+}
+
+.orbit-icon:nth-child(1) .icon-circle { animation-delay: 0s; }
+.orbit-icon:nth-child(2) .icon-circle { animation-delay: 0.8s; }
+.orbit-icon:nth-child(3) .icon-circle { animation-delay: 1.6s; }
+.orbit-icon:nth-child(4) .icon-circle { animation-delay: 2.4s; }
+.orbit-icon:nth-child(5) .icon-circle { animation-delay: 3.2s; }
+.orbit-icon:nth-child(6) .icon-circle { animation-delay: 4s; }
+
+/* Responsive Hero */
+@media (max-width: 1200px) {
+  .container[style*="grid-template-columns"] {
+    gap: 40px !important;
   }
   
-  .hero-title {
+  .hero-text h1 {
+    font-size: 3rem !important;
+  }
+  
+  .hero-graphics div[style*="position: relative"] {
+    height: 450px !important;
+    width: 450px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 0;
+  }
+  
+  .container[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 50px !important;
+    text-align: center;
+  }
+  
+  .hero-text h1 {
     font-size: 2.5rem !important;
   }
   
-  .hero-services {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+  .hero-text p {
+    font-size: 1.3rem !important;
   }
   
-  .service-circle {
-    width: 80px;
-    height: 80px;
+  .hero-graphics div[style*="position: relative"] {
+    height: 380px !important;
+    width: 380px !important;
   }
   
-  .service-circle svg {
-    width: 30px;
-    height: 30px;
+  .icon-circle {
+    width: 75px;
+    height: 75px;
+  }
+  
+  .icon-circle i {
+    font-size: 2.2rem !important;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-services {
-    grid-template-columns: 1fr;
-    gap: 15px;
+  .hero-text h1 {
+    font-size: 2rem !important;
   }
   
-  .hero-title {
-    font-size: 2rem !important;
+  .hero-text p {
+    font-size: 1.1rem !important;
+  }
+  
+  .hero-graphics div[style*="position: relative"] {
+    height: 320px !important;
+    width: 320px !important;
+  }
+  
+  .icon-circle {
+    width: 65px;
+    height: 65px;
+  }
+  
+  .icon-circle i {
+    font-size: 1.8rem !important;
   }
 }
     
@@ -1487,212 +1498,228 @@ footer > .container {
   
     <!-- Hero Section - Estilo Nodus Mejorado -->
 <section id="inicio" class="hero">
-  <div class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80vh; text-align: center;">
+  <div class="container" style="display: grid; grid-template-columns: 50% 50%; align-items: center; gap: 60px; min-height: 80vh;">
     
-    <!-- Título Principal - MUY GRANDE -->
+    <!-- Columna Texto - MÁS GRANDE como Nodus -->
     <div class="hero-text">
-      <h1 class="hero-title">Hacemos tu empresa más eficiente, sustentable y competitiva.</h1>
+      <h1 style="font-size: 3.5rem; color: #ffffff; margin-bottom: 25px; line-height: 1.1; font-weight: 800;">Hacemos tu empresa más eficiente, sustentable y competitiva.</h1>
+      <div style="margin: 40px 0;">
+        <p style="font-size: 1.6rem; color: #e8f5e9; font-weight: 500; line-height: 1.5;">Marca + Procesos + Tecnología + Medición de impacto + Sello Digital de Sustentabilidad + Comunicación.</p>
+      </div>
+      <a href="#contacto" class="btn" style="font-size: 1.3rem; background: #ffd54f; color: #1b5e20; padding: 18px 45px; font-weight: 700; border-radius: 50px; text-decoration: none; display: inline-block;">Hablemos</a>
     </div>
     
-    <!-- Servicios en círculos estilo Nodus -->
-    <div class="hero-services">
-      <!-- Marca -->
-      <div class="service-item">
-        <div class="service-circle">
-          <i class="fas fa-certificate" style="font-size: 2.2rem; color: #ffffff;"></i>
+    <!-- Columna Gráficos - ECONOMÍA CIRCULAR MEJORADA -->
+    <div class="hero-graphics">
+      <div style="position: relative; height: 500px; width: 500px; margin: 0 auto;">
+        
+        <!-- Círculo de conexión para economía circular -->
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; height: 400px; border: 3px solid rgba(255,255,255,0.4); border-radius: 50%; animation: rotate 20s linear infinite;"></div>
+        
+        <!-- Logo central IMPACTA VERDE -->
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: 120px; background: #ffd54f; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 20; box-shadow: 0 8px 25px rgba(0,0,0,0.3);">
+          <div style="background: #1b5e20; width: 90px; height: 90px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #ffd54f; font-size: 0.9rem; text-align: center; padding: 5px;">
+            IMPACTA VERDE
+          </div>
         </div>
-        <div class="service-text">Marca</div>
-      </div>
-      
-      <!-- Procesos -->
-      <div class="service-item">
-        <div class="service-circle">
-          <i class="fas fa-cogs" style="font-size: 2.2rem; color: #ffffff;"></i>
+        
+        <!-- Íconos GRANDES con movimiento circular -->
+        <!-- Tecnología -->
+        <div class="orbit-icon" style="--orbit-delay: 0s; --orbit-size: 180px; --icon-color: #26c6da;">
+          <div class="icon-circle">
+            <i class="fas fa-laptop-code" style="font-size: 2.8rem;"></i>
+          </div>
         </div>
-        <div class="service-text">Procesos</div>
-      </div>
-      
-      <!-- Tecnología -->
-      <div class="service-item">
-        <div class="service-circle">
-          <i class="fas fa-laptop-code" style="font-size: 2.2rem; color: #ffffff;"></i>
+        
+        <!-- Comunicación -->
+        <div class="orbit-icon" style="--orbit-delay: 2s; --orbit-size: 200px; --icon-color: #f48fb1;">
+          <div class="icon-circle">
+            <i class="fas fa-bullhorn" style="font-size: 2.8rem;"></i>
+          </div>
         </div>
-        <div class="service-text">Tecnología</div>
-      </div>
-      
-      <!-- Medición -->
-      <div class="service-item">
-        <div class="service-circle">
-          <i class="fas fa-chart-line" style="font-size: 2.2rem; color: #ffffff;"></i>
+        
+        <!-- Medición -->
+        <div class="orbit-icon" style="--orbit-delay: 4s; --orbit-size: 220px; --icon-color: #4caf50;">
+          <div class="icon-circle">
+            <i class="fas fa-chart-line" style="font-size: 2.8rem;"></i>
+          </div>
         </div>
-        <div class="service-text">Medición</div>
-      </div>
-      
-      <!-- Sello -->
-      <div class="service-item">
-        <div class="service-circle">
-          <i class="fas fa-leaf" style="font-size: 2.2rem; color: #ffffff;"></i>
+        
+        <!-- Procesos -->
+        <div class="orbit-icon" style="--orbit-delay: 6s; --orbit-size: 200px; --icon-color: #ff9800;">
+          <div class="icon-circle">
+            <i class="fas fa-cogs" style="font-size: 2.8rem;"></i>
+          </div>
         </div>
-        <div class="service-text">Sello</div>
-      </div>
-      
-      <!-- Comunicación -->
-      <div class="service-item">
-        <div class="service-circle">
-          <i class="fas fa-bullhorn" style="font-size: 2.2rem; color: #ffffff;"></i>
+        
+        <!-- Marca -->
+        <div class="orbit-icon" style="--orbit-delay: 8s; --orbit-size: 180px; --icon-color: #9c27b0;">
+          <div class="icon-circle">
+            <i class="fas fa-certificate" style="font-size: 2.8rem;"></i>
+          </div>
         </div>
-        <div class="service-text">Comunicación</div>
+        
+        <!-- Sello -->
+        <div class="orbit-icon" style="--orbit-delay: 10s; --orbit-size: 160px; --icon-color: #00bcd4;">
+          <div class="icon-circle">
+            <i class="fas fa-leaf" style="font-size: 2.8rem;"></i>
+          </div>
+        </div>
+        
       </div>
     </div>
-    
-    <!-- Botón CTA -->
-    <a href="#contacto" class="cta-button">Hablemos</a>
     
   </div>
 </section>
 
 <style>
-/* Hero Section - Fondo con imagen y overlay verde */
 .hero {
-  background: 
-    linear-gradient(rgba(44, 62, 47, 0.9), rgba(44, 62, 47, 0.95)),
-    url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  padding: 100px 0 !important;
-  position: relative !important;
-  overflow: hidden !important;
+  background: linear-gradient(135deg, #00c853 0%, #00e676 100%);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Título principal - MUY GRANDE */
-.hero-title {
-  font-size: 3.2rem !important;
-  color: #ffffff !important;
-  font-weight: 800 !important;
-  line-height: 1.1 !important;
-  margin-bottom: 50px !important;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  max-width: 900px;
-}
-
-/* Grid para los servicios */
-.hero-services {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  margin: 50px 0;
-  max-width: 800px;
-}
-
-/* Cada item de servicio */
-.service-item {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* CÍRCULOS al estilo Nodus */
-.service-circle {
-  width: 100px;
-  height: 100px;
+/* Círculos de iconos estilo Nodus MEJORADOS */
+.icon-circle {
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 255, 255, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.service-circle:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-5px);
+.icon-circle:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.15);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Texto de los servicios */
-.service-text {
-  font-size: 1.2rem !important;
-  font-weight: 600 !important;
+.icon-circle i {
   color: white;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
 
-/* Botón Hablemos con efecto glassmorphism */
-.cta-button {
-  background: rgba(255, 193, 7, 0.9) !important;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  padding: 15px 40px !important;
-  font-size: 1.2rem !important;
-  font-weight: 700 !important;
-  border-radius: 50px !important;
-  transition: all 0.3s ease !important;
-  margin-top: 30px;
-  color: #1b5e20 !important;
-  text-decoration: none;
-  display: inline-block;
+/* Animación de órbita para economía circular */
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(var(--orbit-size)) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(var(--orbit-size)) rotate(-360deg);
+  }
 }
 
-.cta-button:hover {
-  background: rgba(255, 193, 7, 1) !important;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  color: #1b5e20 !important;
+@keyframes rotate {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
+
+.orbit-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  animation: orbit 25s linear infinite;
+  animation-delay: var(--orbit-delay);
+}
+
+/* Efectos de flotación adicional */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.orbit-icon .icon-circle {
+  animation: float 4s ease-in-out infinite;
+}
+
+.orbit-icon:nth-child(1) .icon-circle { animation-delay: 0s; }
+.orbit-icon:nth-child(2) .icon-circle { animation-delay: 0.8s; }
+.orbit-icon:nth-child(3) .icon-circle { animation-delay: 1.6s; }
+.orbit-icon:nth-child(4) .icon-circle { animation-delay: 2.4s; }
+.orbit-icon:nth-child(5) .icon-circle { animation-delay: 3.2s; }
+.orbit-icon:nth-child(6) .icon-circle { animation-delay: 4s; }
 
 /* Responsive */
+@media (max-width: 1200px) {
+  .container[style*="grid-template-columns"] {
+    gap: 40px !important;
+  }
+  
+  .hero-text h1 {
+    font-size: 3rem !important;
+  }
+  
+  .hero-graphics div[style*="position: relative"] {
+    height: 450px !important;
+    width: 450px !important;
+  }
+}
+
 @media (max-width: 768px) {
   .hero {
-    padding: 80px 0 !important;
+    padding: 80px 0;
   }
   
-  .hero-title {
+  .container[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 50px !important;
+    text-align: center;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.5rem !important;
+  }
+  
+  .hero-text p {
+    font-size: 1.3rem !important;
+  }
+  
+  .hero-graphics div[style*="position: relative"] {
+    height: 380px !important;
+    width: 380px !important;
+  }
+  
+  .icon-circle {
+    width: 75px;
+    height: 75px;
+  }
+  
+  .icon-circle i {
     font-size: 2.2rem !important;
-    margin-bottom: 40px !important;
-  }
-  
-  .hero-services {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-  }
-  
-  .service-circle {
-    width: 90px;
-    height: 90px;
-  }
-  
-  .service-circle i {
-    font-size: 1.8rem !important;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-services {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+  .hero-text h1 {
+    font-size: 2rem !important;
   }
   
-  .hero-title {
+  .hero-text p {
+    font-size: 1.1rem !important;
+  }
+  
+  .hero-graphics div[style*="position: relative"] {
+    height: 320px !important;
+    width: 320px !important;
+  }
+  
+  .icon-circle {
+    width: 65px;
+    height: 65px;
+  }
+  
+  .icon-circle i {
     font-size: 1.8rem !important;
-  }
-  
-  .service-circle {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .service-circle i {
-    font-size: 1.6rem !important;
-  }
-  
-  .service-text {
-    font-size: 1rem !important;
   }
 }
 </style>
-  
   <!-- Misión y Resultados -->
   <section id="mision" class="mision-resultados">
     <div class="container">
