@@ -1403,100 +1403,151 @@ footer > .container {
       <a href="#contacto" class="btn" style="font-size: 1.2rem; background: #ffd54f; color: #1b5e20; padding: 15px 35px; font-weight: 600;">Hablemos</a>
     </div>
     
-    <!-- Columna Gráficos - Estilo Nodus -->
-    <div class="hero-graphics">
-      <div style="position: relative; height: 500px; width: 500px; margin: 0 auto;">
-        
-        <!-- Círculo central con logo Impacta Verde -->
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 140px; height: 140px; background: #ffd54f; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 10;">
-          <div style="background: #1b5e20; width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-            <i class="fas fa-arrow-up" style="font-size: 2.5rem; color: #ffd54f; transform: rotate(45deg);"></i>
-          </div>
-        </div>
-        
-        <!-- Líneas conectivas -->
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; height: 400px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%;"></div>
-        
-        <!-- Elementos orbitantes -->
-        <!-- Tecnología -->
-        <div style="position: absolute; top: 20%; left: 20%; background: #26c6da; padding: 20px; border-radius: 15px; text-align: center; min-width: 120px; animation: float1 6s infinite ease-in-out;">
-          <i class="fas fa-laptop-code" style="font-size: 2rem; color: white; margin-bottom: 8px;"></i>
-          <div style="color: white; font-weight: 600; font-size: 0.9rem;">Tecnología</div>
-        </div>
-        
-        <!-- Comunicación -->
-        <div style="position: absolute; top: 20%; right: 20%; background: #f48fb1; padding: 20px; border-radius: 15px; text-align: center; min-width: 120px; animation: float2 7s infinite ease-in-out;">
-          <i class="fas fa-bullhorn" style="font-size: 2rem; color: white; margin-bottom: 8px;"></i>
-          <div style="color: white; font-weight: 600; font-size: 0.9rem;">Comunicación</div>
-        </div>
-        
-        <!-- Medición -->
-        <div style="position: absolute; bottom: 20%; left: 20%; background: #4caf50; padding: 20px; border-radius: 15px; text-align: center; min-width: 120px; animation: float3 8s infinite ease-in-out;">
-          <i class="fas fa-chart-line" style="font-size: 2rem; color: white; margin-bottom: 8px;"></i>
-          <div style="color: white; font-weight: 600; font-size: 0.9rem;">Medición</div>
-        </div>
-        
-        <!-- Procesos -->
-        <div style="position: absolute; bottom: 20%; right: 20%; background: #ff9800; padding: 20px; border-radius: 15px; text-align: center; min-width: 120px; animation: float4 6.5s infinite ease-in-out;">
-          <i class="fas fa-cogs" style="font-size: 2rem; color: white; margin-bottom: 8px;"></i>
-          <div style="color: white; font-weight: 600; font-size: 0.9rem;">Procesos</div>
-        </div>
-        
-        <!-- Marca -->
-        <div style="position: absolute; top: 10%; left: 50%; transform: translateX(-50%); background: #9c27b0; padding: 20px; border-radius: 15px; text-align: center; min-width: 120px; animation: float5 7.5s infinite ease-in-out;">
-          <i class="fas fa-certificate" style="font-size: 2rem; color: white; margin-bottom: 8px;"></i>
-          <div style="color: white; font-weight: 600; font-size: 0.9rem;">Marca</div>
-        </div>
-        
-        <!-- Sello -->
-        <div style="position: absolute; bottom: 10%; left: 50%; transform: translateX(-50%); background: #00bcd4; padding: 20px; border-radius: 15px; text-align: center; min-width: 120px; animation: float6 8.5s infinite ease-in-out;">
-          <i class="fas fa-leaf" style="font-size: 2rem; color: white; margin-bottom: 8px;"></i>
-          <div style="color: white; font-weight: 600; font-size: 0.9rem;">Sello</div>
-        </div>
-        
+   <!-- Columna Gráficos - Animación Secuencial -->
+<div class="hero-graphics">
+  <div style="position: relative; height: 450px; width: 450px; margin: 0 auto;">
+    
+    <!-- Contenedor de íconos -->
+    <div id="animated-icons" style="position: relative; height: 100%; width: 100%;">
+      
+      <!-- Íconos individuales (inicialmente ocultos) -->
+      <!-- Tecnología -->
+      <div class="icon-item" data-step="1" style="position: absolute; top: 15%; left: 50%; transform: translateX(-50%); opacity: 0;">
+        <i class="fas fa-laptop-code" style="font-size: 2.5rem; color: #26c6da;"></i>
       </div>
+      
+      <!-- Comunicación -->
+      <div class="icon-item" data-step="2" style="position: absolute; top: 30%; right: 15%; opacity: 0;">
+        <i class="fas fa-bullhorn" style="font-size: 2.5rem; color: #f48fb1;"></i>
+      </div>
+      
+      <!-- Medición -->
+      <div class="icon-item" data-step="3" style="position: absolute; bottom: 30%; right: 15%; opacity: 0;">
+        <i class="fas fa-chart-line" style="font-size: 2.5rem; color: #4caf50;"></i>
+      </div>
+      
+      <!-- Procesos -->
+      <div class="icon-item" data-step="4" style="position: absolute; bottom: 15%; left: 50%; transform: translateX(-50%); opacity: 0;">
+        <i class="fas fa-cogs" style="font-size: 2.5rem; color: #ff9800;"></i>
+      </div>
+      
+      <!-- Marca -->
+      <div class="icon-item" data-step="5" style="position: absolute; bottom: 30%; left: 15%; opacity: 0;">
+        <i class="fas fa-certificate" style="font-size: 2.5rem; color: #9c27b0;"></i>
+      </div>
+      
+      <!-- Sello -->
+      <div class="icon-item" data-step="6" style="position: absolute; top: 30%; left: 15%; opacity: 0;">
+        <i class="fas fa-leaf" style="font-size: 2.5rem; color: #00bcd4;"></i>
+      </div>
+      
+      <!-- Círculo conectivo (oculto inicialmente) -->
+      <div id="connecting-circle" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; border: 2px solid rgba(255,255,255,0); border-radius: 50%; opacity: 0;"></div>
+      
+      <!-- Logo central (oculto inicialmente) -->
+      <div id="central-logo" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 100px; background: #ffd54f; border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
+        <div style="background: #1b5e20; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+          <i class="fas fa-arrow-up" style="font-size: 1.8rem; color: #ffd54f; transform: rotate(45deg);"></i>
+        </div>
+      </div>
+      
     </div>
   </div>
-</section>
+</div>
 
 <style>
-.hero {
-  background: linear-gradient(135deg, #00c853 0%, #00e676 100%);
-  padding: 100px 0;
-  position: relative;
-  overflow: hidden;
+/* Animaciones para la secuencia */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-/* Animaciones de flotación suave */
-@keyframes float1 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
+@keyframes fadeOut {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.8); }
 }
 
-@keyframes float2 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
+@keyframes pulseCircle {
+  0% { border-color: rgba(255,255,255,0); transform: translate(-50%, -50%) scale(0.8); }
+  50% { border-color: rgba(255,255,255,0.6); transform: translate(-50%, -50%) scale(1.1); }
+  100% { border-color: rgba(255,255,255,0.3); transform: translate(-50%, -50%) scale(1); }
 }
 
-@keyframes float3 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+.icon-item {
+  transition: all 0.8s ease;
+  animation-duration: 0.8s;
+  animation-fill-mode: both;
 }
 
-@keyframes float4 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-18px); }
+.icon-item.visible {
+  animation-name: fadeIn;
 }
 
-@keyframes float5 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-14px); }
+.icon-item.hidden {
+  animation-name: fadeOut;
 }
 
-@keyframes float6 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-16px); }
+#connecting-circle.visible {
+  animation: pulseCircle 2s ease-out;
+  opacity: 1;
 }
+
+#central-logo.visible {
+  animation: fadeIn 1s ease-out;
+  opacity: 1;
+}
+</style>
+
+<script>
+// Animación secuencial
+function startIconAnimation() {
+  const icons = document.querySelectorAll('.icon-item');
+  const circle = document.getElementById('connecting-circle');
+  const logo = document.getElementById('central-logo');
+  
+  let step = 0;
+  const totalSteps = 8; // 6 íconos + círculo + logo
+  
+  function nextStep() {
+    // Ocultar todos los íconos del paso anterior
+    icons.forEach(icon => {
+      if (parseInt(icon.dataset.step) === step) {
+        icon.classList.remove('visible');
+        icon.classList.add('hidden');
+      }
+    });
+    
+    step++;
+    if (step > totalSteps) step = 1; // Reiniciar
+    
+    // Mostrar elementos del paso actual
+    if (step <= 6) {
+      // Mostrar íconos secuencialmente
+      icons.forEach(icon => {
+        if (parseInt(icon.dataset.step) === step) {
+          icon.classList.remove('hidden');
+          icon.classList.add('visible');
+        }
+      });
+    } else if (step === 7) {
+      // Mostrar círculo conectivo
+      circle.classList.add('visible');
+    } else if (step === 8) {
+      // Mostrar logo central
+      logo.classList.add('visible');
+    }
+    
+    // Siguiente paso en 1.5 segundos
+    setTimeout(nextStep, 1500);
+  }
+  
+  // Iniciar animación
+  nextStep();
+}
+
+// Iniciar cuando la página cargue
+document.addEventListener('DOMContentLoaded', startIconAnimation);
+</script>
 
 /* Responsive */
 @media (max-width: 768px) {
