@@ -1501,6 +1501,11 @@ footer > .container {
   <div class="container" style="display: grid; grid-template-columns: 50% 50%; align-items: center; gap: 60px; min-height: 80vh;">
     
     <!-- Columna Texto -->
+   <!-- Hero Section - Estilo Nodus Mejorado -->
+<section id="inicio" class="hero">
+  <div class="container" style="display: grid; grid-template-columns: 50% 50%; align-items: center; gap: 60px; min-height: 80vh;">
+    
+    <!-- Columna Texto -->
     <div class="hero-text">
       <h1 style="font-size: 3.5rem; color: #ffffff; margin-bottom: 25px; line-height: 1.1; font-weight: 800;">Hacemos tu empresa más eficiente, sustentable y competitiva.</h1>
       <div style="margin: 40px 0;">
@@ -1526,13 +1531,12 @@ footer > .container {
           </div>
         </div>
         
-        <!-- Íconos con colores específicos -->
+        <!-- Íconos SIN TEXTO y con rotación -->
         <!-- Tecnología - TURQUESA -->
         <div class="static-icon" style="--icon-position: 0deg; --icon-color: #26c6da;">
           <div class="icon-circle">
             <i class="fas fa-laptop-code"></i>
           </div>
-          <div class="icon-label">Tecnología</div>
         </div>
         
         <!-- Comunicación - ROSA -->
@@ -1540,7 +1544,6 @@ footer > .container {
           <div class="icon-circle">
             <i class="fas fa-bullhorn"></i>
           </div>
-          <div class="icon-label">Comunicación</div>
         </div>
         
         <!-- Medición - AMARILLO -->
@@ -1548,7 +1551,6 @@ footer > .container {
           <div class="icon-circle">
             <i class="fas fa-chart-line"></i>
           </div>
-          <div class="icon-label">Medición</div>
         </div>
         
         <!-- Procesos - NARANJA -->
@@ -1556,7 +1558,6 @@ footer > .container {
           <div class="icon-circle">
             <i class="fas fa-cogs"></i>
           </div>
-          <div class="icon-label">Procesos</div>
         </div>
         
         <!-- Marca - TURQUESA OSCURO -->
@@ -1564,7 +1565,6 @@ footer > .container {
           <div class="icon-circle">
             <i class="fas fa-certificate"></i>
           </div>
-          <div class="icon-label">Marca</div>
         </div>
         
         <!-- Sello - VERDE AGUA -->
@@ -1572,7 +1572,6 @@ footer > .container {
           <div class="icon-circle">
             <i class="fas fa-leaf"></i>
           </div>
-          <div class="icon-label">Sello</div>
         </div>
         
       </div>
@@ -1603,6 +1602,11 @@ footer > .container {
 /* Efecto de zoom cuando aparece el logo */
 .graphic-container.logo-visible {
   transform: scale(1.08);
+}
+
+/* Estado de rotación */
+.graphic-container.rotating .static-icon {
+  animation: iconRotate 12s linear infinite !important;
 }
 
 /* Círculo de fondo sutil */
@@ -1674,7 +1678,6 @@ footer > .container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 8px;
   transition: all 0.3s ease;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
@@ -1688,15 +1691,6 @@ footer > .container {
   color: var(--icon-color);
   font-size: 2rem;
   filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
-}
-
-/* Etiquetas de los iconos */
-.icon-label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: white;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-  white-space: nowrap;
 }
 
 /* Animaciones */
@@ -1726,6 +1720,16 @@ footer > .container {
   100% { 
     opacity: 1; 
     transform: translate(-50%, -50%) scale(1) rotate(45deg);
+  }
+}
+
+/* Nueva animación de rotación de iconos */
+@keyframes iconRotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(var(--icon-position)) translateX(200px) rotate(calc(-1 * var(--icon-position)));
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(calc(var(--icon-position) + 360deg)) translateX(200px) rotate(calc(-1 * var(--icon-position) - 360deg));
   }
 }
 
@@ -1847,20 +1851,17 @@ footer > .container {
   .icon-circle i {
     font-size: 1.5rem;
   }
-  
-  .icon-label {
-    font-size: 0.8rem;
-  }
 }
 </style>
 
-<!-- JavaScript para el efecto de aparición/desaparición -->
+<!-- JavaScript para el efecto de aparición/desaparición y rotación -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const graphicContainer = document.querySelector('.graphic-container');
   const logoCenter = document.querySelector('.logo-center');
   const pulseWave = document.querySelector('.pulse-wave');
   let isLogoVisible = false;
+  let rotationInterval;
   
   function showLogo() {
     isLogoVisible = true;
@@ -1884,8 +1885,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // Ciclo automático cada 4 segundos
+  function startRotation() {
+    graphicContainer.classList.add('rotating');
+  }
+  
+  function stopRotation() {
+    graphicContainer.classList.remove('rotating');
+  }
+  
+  function toggleRotation() {
+    if (graphicContainer.classList.contains('rotating')) {
+      stopRotation();
+      // Esperar 8 segundos antes de volver a rotar
+      setTimeout(startRotation, 8000);
+    } else {
+      startRotation();
+      // Rotar por 15 segundos
+      setTimeout(stopRotation, 15000);
+    }
+  }
+  
+  // Ciclo automático logo cada 4 segundos
   setInterval(toggleLogo, 4000);
+  
+  // Ciclo de rotación cada 25 segundos (15s rotación + 8s pausa + 2s margen)
+  setTimeout(() => {
+    startRotation();
+    setInterval(toggleRotation, 23000);
+  }, 2000);
   
   // Mostrar logo al hacer hover
   graphicContainer.addEventListener('mouseenter', function() {
@@ -1901,25 +1928,6 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(showLogo, 1000);
 });
 </script>
-  <!-- Misión y Resultados -->
-  <section id="mision" class="mision-resultados">
-    <div class="container">
-      <div class="mision-content">
-        <p class="mision-texto-principal" style="font-size: 1.6rem; color: #2c3e50;">Acompañamos a empresas y emprendimientos en su transición hacia la sustentabilidad, integrando estrategias de comunicación, innovación en productos y mejora de procesos. Evaluamos el impacto ambiental y promovemos acciones concretas para reducir la huella de carbono. A través del <strong>Sello Digital de Sustentabilidad</strong>, reconocemos a las marcas que asumen un compromiso real con un cambio positivo y duradero.</p>
-      </div>
-      
-      <div class="resultados-grid">
-        <div class="resultado-item">
-          <div class="resultado-valor">11+</div>
-          <div class="resultado-label">Marcas Potenciadas</div>
-        </div>
-        <div class="resultado-item">
-          <div class="resultado-valor">153</div>
-          <div class="resultado-label">Árboles Equivalentes</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Services Section -->
   <section id="servicios" class="services">
