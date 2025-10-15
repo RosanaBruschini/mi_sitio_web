@@ -1601,7 +1601,7 @@ footer > .container {
 
 /* Estado de rotación */
 .graphic-container.rotating .static-icon {
-  animation: iconRotate 12s linear infinite !important;
+  animation: iconRotate 15s linear infinite !important;
 }
 
 /* Círculo de fondo sutil */
@@ -1636,8 +1636,8 @@ footer > .container {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 20;
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  opacity: 1; /* SIEMPRE VISIBLE */
+  transition: all 0.4s ease;
 }
 
 .logo-arrow {
@@ -1660,6 +1660,7 @@ footer > .container {
   transform: translate(-50%, -50%) rotate(var(--icon-position)) translateX(200px) rotate(calc(-1 * var(--icon-position)));
   text-align: center;
   transition: all 0.4s ease;
+  opacity: 1 !important; /* SIEMPRE VISIBLES */
 }
 
 /* Círculos de iconos con colores */
@@ -1709,12 +1710,24 @@ footer > .container {
 
 @keyframes logoAppear {
   0% { 
-    opacity: 0; 
-    transform: translate(-50%, -50%) scale(0.8) rotate(45deg);
+    transform: translate(-50%, -50%) scale(0.9) rotate(45deg);
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.1) rotate(45deg);
   }
   100% { 
-    opacity: 1; 
     transform: translate(-50%, -50%) scale(1) rotate(45deg);
+  }
+}
+
+@keyframes logoPulse {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1) rotate(45deg);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.05) rotate(45deg);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.4);
   }
 }
 
@@ -1728,28 +1741,54 @@ footer > .container {
   }
 }
 
-/* Estados de animación */
+/* Efecto de respiración para iconos */
+@keyframes iconBreathing {
+  0%, 100% { 
+    transform: translate(-50%, -50%) rotate(var(--icon-position)) translateX(200px) rotate(calc(-1 * var(--icon-position))) scale(1);
+  }
+  50% { 
+    transform: translate(-50%, -50%) rotate(var(--icon-position)) translateX(200px) rotate(calc(-1 * var(--icon-position))) scale(1.05);
+  }
+}
+
+/* Estados de animación MEJORADOS */
 .logo-visible .logo-center {
-  opacity: 1;
-  animation: logoAppear 0.6s ease-out;
+  animation: logoPulse 2s ease-in-out;
 }
 
 .logo-visible .pulse-wave {
   animation: wavePulse 2s ease-out;
 }
 
-/* Efecto de aparición secuencial de iconos */
+/* Los iconos SIEMPRE tienen animación suave y son visibles */
 .static-icon {
-  opacity: 0;
-  animation: fadeInUp 0.6s ease forwards;
+  opacity: 1 !important;
+  animation: iconBreathing 4s ease-in-out infinite, fadeInUp 0.6s ease forwards !important;
 }
 
-.static-icon:nth-child(1) { animation-delay: 0.1s; }
-.static-icon:nth-child(2) { animation-delay: 0.2s; }
-.static-icon:nth-child(3) { animation-delay: 0.3s; }
-.static-icon:nth-child(4) { animation-delay: 0.4s; }
-.static-icon:nth-child(5) { animation-delay: 0.5s; }
-.static-icon:nth-child(6) { animation-delay: 0.6s; }
+.static-icon:nth-child(1) { 
+  animation-delay: 0s, 0.1s !important; 
+}
+.static-icon:nth-child(2) { 
+  animation-delay: 0.3s, 0.2s !important; 
+}
+.static-icon:nth-child(3) { 
+  animation-delay: 0.6s, 0.3s !important; 
+}
+.static-icon:nth-child(4) { 
+  animation-delay: 0.9s, 0.4s !important; 
+}
+.static-icon:nth-child(5) { 
+  animation-delay: 1.2s, 0.5s !important; 
+}
+.static-icon:nth-child(6) { 
+  animation-delay: 1.5s, 0.6s !important; 
+}
+
+/* Cuando está rotando, los iconos rotan suavemente */
+.graphic-container.rotating .static-icon {
+  animation: iconRotate 15s linear infinite, iconBreathing 4s ease-in-out infinite !important;
+}
 
 @keyframes fadeInUp {
   from {
@@ -1849,34 +1888,33 @@ footer > .container {
 }
 </style>
 
-<!-- JavaScript para el efecto de aparición/desaparición y rotación -->
+<!-- JavaScript MEJORADO - Elementos SIEMPRE visibles -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const graphicContainer = document.querySelector('.graphic-container');
   const logoCenter = document.querySelector('.logo-center');
   const pulseWave = document.querySelector('.pulse-wave');
-  let isLogoVisible = false;
+  const staticIcons = document.querySelectorAll('.static-icon');
   
-  function showLogo() {
-    isLogoVisible = true;
-    graphicContainer.classList.add('logo-visible');
-    logoCenter.style.opacity = '1';
+  // Logo SIEMPRE visible desde el inicio
+  logoCenter.style.opacity = '1';
+  
+  function pulseLogo() {
+    // Efecto de pulso en el logo
+    logoCenter.style.animation = 'logoPulse 2s ease-in-out';
     pulseWave.style.animation = 'wavePulse 2s ease-out';
-  }
-  
-  function hideLogo() {
-    isLogoVisible = false;
-    graphicContainer.classList.remove('logo-visible');
-    logoCenter.style.opacity = '0';
-    pulseWave.style.animation = 'none';
-  }
-  
-  function toggleLogo() {
-    if (isLogoVisible) {
-      hideLogo();
-    } else {
-      showLogo();
-    }
+    
+    // Efecto sutil en los iconos
+    staticIcons.forEach(icon => {
+      icon.style.filter = 'brightness(1.2)';
+      setTimeout(() => {
+        icon.style.filter = 'brightness(1)';
+      }, 1000);
+    });
+    
+    setTimeout(() => {
+      logoCenter.style.animation = 'none';
+    }, 2000);
   }
   
   function startRotation() {
@@ -1890,36 +1928,36 @@ document.addEventListener('DOMContentLoaded', function() {
   function toggleRotation() {
     if (graphicContainer.classList.contains('rotating')) {
       stopRotation();
-      // Esperar 8 segundos antes de volver a rotar
-      setTimeout(startRotation, 8000);
+      // Pausa más corta - solo 5 segundos
+      setTimeout(startRotation, 5000);
     } else {
       startRotation();
-      // Rotar por 15 segundos
-      setTimeout(stopRotation, 15000);
+      // Rotación por 10 segundos
+      setTimeout(stopRotation, 10000);
     }
   }
   
-  // Ciclo automático logo cada 4 segundos
-  setInterval(toggleLogo, 4000);
+  // Pulso del logo cada 6 segundos
+  setInterval(pulseLogo, 6000);
   
-  // Ciclo de rotación cada 25 segundos (15s rotación + 8s pausa + 2s margen)
+  // Rotación continua (15 segundos ciclo completo)
   setTimeout(() => {
     startRotation();
-    setInterval(toggleRotation, 23000);
+    setInterval(toggleRotation, 15000);
   }, 2000);
   
-  // Mostrar logo al hacer hover
+  // Pulso inicial después de 1 segundo
+  setTimeout(pulseLogo, 1000);
+  
+  // Efecto hover mejorado
   graphicContainer.addEventListener('mouseenter', function() {
-    if (!isLogoVisible) showLogo();
+    graphicContainer.style.transform = 'scale(1.05)';
+    pulseLogo(); // Pulso inmediato al hover
   });
   
-  // Ocultar logo al salir del hover (opcional)
   graphicContainer.addEventListener('mouseleave', function() {
-    if (isLogoVisible) hideLogo();
+    graphicContainer.style.transform = 'scale(1)';
   });
-  
-  // Mostrar logo inicialmente después de 1 segundo
-  setTimeout(showLogo, 1000);
 });
 </script>
 
@@ -1927,8 +1965,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <section class="mision-resultados">
   <div class="container">
     <div class="mision-content">
-      <h2>Acompañamos a empresas y emprendimientos en su transición hacia la sustentabilidad integral</h2>
-      <p>Integramos diseño, procesos, tecnología y comunicación para crear estrategias de sustentabilidad reales, medibles y auténticas que generen valor tanto para el negocio como para el planeta.</p>
+      <h2>Acompañamos empresas y emprendimientos en la transición hacia la sustentabilidad real</h2>
+      <p>Integrando procesos, comunicación, innovación y mejora continua. Otorgamos el <span class="sello-destacado"><i class="fas fa-leaf"></i> Sello Digital de Sustentabilidad</span> como reconocimiento al compromiso tangible con el impacto ambiental positivo, midiendo huella de carbono y ofreciendo herramientas de transparencia para construir marcas más responsables.</p>
       
       <div class="resultados-grid">
         <div class="resultado-item">
