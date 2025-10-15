@@ -1965,7 +1965,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <section class="mision-resultados">
   <div class="container">
     <div class="mision-content">
-      <h2>Acompañamos empresas y emprendimientos en la transición hacia la sustentabilidad real</h2>
+      <h2>Acompañamos empresas y emprendimientos en la transición hacia la sustentabilidad.</h2>
       <p>Integrando procesos, comunicación, innovación y mejora continua. Otorgamos el <span class="sello-destacado"><i class="fas fa-leaf"></i> Sello Digital de Sustentabilidad</span> como reconocimiento al compromiso tangible con el impacto ambiental positivo, midiendo huella de carbono y ofreciendo herramientas de transparencia para construir marcas más responsables.</p>
       
       <div class="resultados-grid">
@@ -1984,12 +1984,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <style>
 /* Misión y Resultados */
+<!-- Misión y Resultados -->
 <section class="mision-resultados">
   <div class="container">
     <div class="mision-content">
-     <h2>Acompañamos empresas y emprendimientos en la transición hacia la sustentabilidad real</h2>
-     <p>Integrando procesos, comunicación, innovación y mejora continua. Otorgamos el Sello Digital de Sustentabilidad como reconocimiento al compromiso tangible con el impacto ambiental positivo, midiendo huella de carbono y ofreciendo herramientas de transparencia para construir marcas más responsables.</p>
-      
+      <h2>Acompañamos empresas y emprendimientos en la transición hacia la sustentabilidad real</h2>
+      <p>Integrando procesos, comunicación, innovación y mejora continua. Otorgamos el <span class="sello-destacado"><i class="fas fa-leaf"></i> Sello Digital de Sustentabilidad</span> como reconocimiento al compromiso tangible con el impacto ambiental positivo, midiendo huella de carbono y ofreciendo herramientas de transparencia para construir marcas más responsables.</p>
       
       <div class="resultados-grid">
         <div class="resultado-item">
@@ -2029,6 +2029,25 @@ document.addEventListener('DOMContentLoaded', function() {
   max-width: 900px;
   margin: 0 auto 50px;
   line-height: 1.7;
+}
+
+/* Estilo para el Sello Digital destacado - CON NEGRITA */
+.sello-destacado {
+  color: var(--primary);
+  font-weight: 800; /* NEGRITA MÁS FUERTE */
+  background: rgba(46, 125, 50, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(46, 125, 50, 0.3);
+}
+
+.sello-destacado i {
+  font-size: 0.9em;
+  color: var(--primary);
+  font-weight: 800; /* Icono también en negrita */
 }
 
 .resultados-grid {
