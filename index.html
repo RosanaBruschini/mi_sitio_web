@@ -2429,22 +2429,64 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </section>
 
-<!-- JavaScript para servicios acordeón -->
+<!-- JavaScript mejorado para servicios acordeón -->
 <script>
-// Servicios acordeón
-function toggleService(card) {
-  card.classList.toggle('active');
-}
-
-// Agregar event listeners cuando el DOM esté listo
+// Servicios acordeón - Versión mejorada y debug
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM cargado - Inicializando servicios acordeón');
+  
   const serviceCards = document.querySelectorAll('.service-card');
-  serviceCards.forEach(card => {
-    card.addEventListener('click', function() {
-      toggleService(this);
+  console.log('Tarjetas encontradas:', serviceCards.length);
+  
+  serviceCards.forEach((card, index) => {
+    console.log(`Configurando tarjeta ${index + 1}`);
+    
+    card.addEventListener('click', function(e) {
+      console.log(`Click en tarjeta ${index + 1}`);
+      
+      // Cerrar todas las demás tarjetas (comportamiento acordeón)
+      serviceCards.forEach(otherCard => {
+        if (otherCard !== this) {
+          otherCard.classList.remove('active');
+          console.log(`Cerrando tarjeta ${Array.from(serviceCards).indexOf(otherCard) + 1}`);
+        }
+      });
+      
+      // Alternar la tarjeta clickeada
+      this.classList.toggle('active');
+      console.log(`Tarjeta ${index + 1} ahora está:`, this.classList.contains('active') ? 'ABIERTA' : 'CERRADA');
+      
+      // Prevenir propagación del evento
+      e.stopPropagation();
     });
+    
+    // Verificar que cada tarjeta tiene los elementos necesarios
+    const header = card.querySelector('.service-header');
+    const content = card.querySelector('.service-content');
+    const arrow = card.querySelector('.service-arrow');
+    
+    if (!header || !content || !arrow) {
+      console.warn(`Tarjeta ${index + 1} falta algún elemento necesario`);
+    } else {
+      console.log(`Tarjeta ${index + 1} tiene todos los elementos`);
+    }
+  });
+  
+  // Agregar también event listeners a los headers específicamente
+  const serviceHeaders = document.querySelectorAll('.service-header');
+  serviceHeaders.forEach(header => {
+    header.style.cursor = 'pointer';
   });
 });
+
+// Función auxiliar para debug
+function debugServices() {
+  const activeCards = document.querySelectorAll('.service-card.active');
+  console.log('Tarjetas activas:', activeCards.length);
+  activeCards.forEach((card, index) => {
+    console.log(`Tarjeta activa ${index + 1}:`, card.querySelector('h3').textContent);
+  });
+}
 </script>
  <!-- Sección Sello Digital -->
 <section id="sello" class="sello-section">
