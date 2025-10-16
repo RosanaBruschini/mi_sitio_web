@@ -2490,64 +2490,145 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </section>
 
-<!-- JavaScript mejorado para servicios acordeón -->
+<style>
+/* Estilos para los acordeones */
+.service-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.service-header {
+  padding: 1.5rem;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.service-header:hover {
+  background-color: #f7fafc;
+}
+
+.service-icon {
+  color: #48bb78; /* Verde sustentable */
+  font-size: 1.5rem;
+}
+
+.service-title h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #2d3748;
+}
+
+.service-summary {
+  margin: 0.25rem 0 0 0;
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+.service-arrow {
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+
+.service-arrow i {
+  color: #718096;
+}
+
+.service-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: #f8fafc;
+}
+
+.service-details {
+  padding: 0 1.5rem;
+}
+
+/* Estado activo */
+.service-card.active .service-content {
+  max-height: 1000px; /* Valor suficientemente alto */
+  padding: 1.5rem 0;
+}
+
+.service-card.active .service-arrow {
+  transform: rotate(180deg);
+}
+
+.service-card.active .service-arrow i {
+  color: #48bb78;
+}
+
+/* Estilos del contenido */
+.service-features h4 {
+  margin-bottom: 1rem;
+  color: #2d3748;
+}
+
+.service-features ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.service-features li {
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.service-features li i {
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+.service-result,
+.service-case-study {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  border-left: 4px solid #48bb78;
+  font-style: italic;
+}
+</style>
+
 <script>
-// Servicios acordeón - Versión mejorada y debug
+// JavaScript corregido para acordeones
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM cargado - Inicializando servicios acordeón');
-  
   const serviceCards = document.querySelectorAll('.service-card');
-  console.log('Tarjetas encontradas:', serviceCards.length);
   
-  serviceCards.forEach((card, index) => {
-    console.log(`Configurando tarjeta ${index + 1}`);
+  serviceCards.forEach(card => {
+    const header = card.querySelector('.service-header');
     
-    card.addEventListener('click', function(e) {
-      console.log(`Click en tarjeta ${index + 1}`);
-      
-      // Cerrar todas las demás tarjetas (comportamiento acordeón)
+    header.addEventListener('click', function() {
+      // Cerrar todas las otras tarjetas
       serviceCards.forEach(otherCard => {
-        if (otherCard !== this) {
+        if (otherCard !== card) {
           otherCard.classList.remove('active');
-          console.log(`Cerrando tarjeta ${Array.from(serviceCards).indexOf(otherCard) + 1}`);
         }
       });
       
       // Alternar la tarjeta clickeada
-      this.classList.toggle('active');
-      console.log(`Tarjeta ${index + 1} ahora está:`, this.classList.contains('active') ? 'ABIERTA' : 'CERRADA');
-      
-      // Prevenir propagación del evento
-      e.stopPropagation();
+      card.classList.toggle('active');
     });
-    
-    // Verificar que cada tarjeta tiene los elementos necesarios
-    const header = card.querySelector('.service-header');
-    const content = card.querySelector('.service-content');
-    const arrow = card.querySelector('.service-arrow');
-    
-    if (!header || !content || !arrow) {
-      console.warn(`Tarjeta ${index + 1} falta algún elemento necesario`);
-    } else {
-      console.log(`Tarjeta ${index + 1} tiene todos los elementos`);
-    }
   });
   
-  // Agregar también event listeners a los headers específicamente
-  const serviceHeaders = document.querySelectorAll('.service-header');
-  serviceHeaders.forEach(header => {
-    header.style.cursor = 'pointer';
+  // Cerrar acordeón al hacer click fuera
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.service-card')) {
+      serviceCards.forEach(card => {
+        card.classList.remove('active');
+      });
+    }
   });
 });
-
-// Función auxiliar para debug
-function debugServices() {
-  const activeCards = document.querySelectorAll('.service-card.active');
-  console.log('Tarjetas activas:', activeCards.length);
-  activeCards.forEach((card, index) => {
-    console.log(`Tarjeta activa ${index + 1}:`, card.querySelector('h3').textContent);
-  });
-}
 </script>
  <!-- Sección Sello Digital -->
 <section id="sello" class="sello-section">
