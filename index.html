@@ -376,7 +376,7 @@ nav ul li a:hover::after {
       font-weight: 500;
     }
 
-  /* ===== SERVICES SECTION ===== */
+ /* Services Section - Tipografía más pequeña como Nodus */
 .services {
   padding: 80px 0;
   background: white;
@@ -386,14 +386,15 @@ nav ul li a:hover::after {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 25px;
-  margin-top: 50px;
 }
 
 .service-card {
-  background: white;
+  text-align: left;
+  padding: 0;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
+  background: white;
   cursor: pointer;
   overflow: hidden;
   border: 1px solid #e2e8f0;
@@ -417,8 +418,10 @@ nav ul li a:hover::after {
   position: relative;
 }
 
+/* Iconos estilo Nodus */
 .service-icon {
   font-size: 2.2rem;
+  margin-bottom: 0;
   flex-shrink: 0;
   margin-top: 3px;
 }
@@ -474,6 +477,7 @@ nav ul li a:hover::after {
   transform: rotate(180deg);
 }
 
+/* ESTO ES LO MÁS IMPORTANTE - CONTROL DEL ACORDEÓN */
 .service-content {
   max-height: 0;
   overflow: hidden;
@@ -482,7 +486,7 @@ nav ul li a:hover::after {
 }
 
 .service-card.active .service-content {
-  max-height: 1000px;
+  max-height: 1000px; /* Suficiente espacio para el contenido */
 }
 
 .service-details {
