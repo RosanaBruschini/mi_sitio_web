@@ -376,59 +376,184 @@ nav ul li a:hover::after {
       font-weight: 500;
     }
 
-    /* Services Section */
-    .services {
-      padding: 80px 0;
-      background: white;
-    }
+    /* Services Section - Manteniendo estética Impacta Verde + Nodus */
+.services {
+  padding: 80px 0;
+  background: white;
+}
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
 
-    .service-card {
-      text-align: center;
-      padding: 40px 30px;
-      border-radius: 8px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-      background: white;
-    }
+.service-card {
+  text-align: left;
+  padding: 0;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  background: white;
+  cursor: pointer;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
 
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    }
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
 
-    .service-icon {
-      font-size: 3.5rem;
-      color: var(--primary);
-      margin-bottom: 25px;
-    }
+.service-header {
+  padding: 30px 25px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+}
 
-    .service-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-      color: var(--primary);
-    }
+/* Iconos estilo Nodus - contorno negro con detalle de color */
+.service-icon {
+  font-size: 3rem;
+  color: var(--primary);
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
 
-    .service-card p {
-      color: #2d3748;
-      font-size: 1.1rem;
-      line-height: 1.5;
-    }
+.service-icon i {
+  color: transparent;
+  -webkit-text-stroke: 1.5px #000;
+  position: relative;
+}
 
-    .service-card ul li {
-      color: #2d3748;
-      font-size: 1.1rem;
-    }
+.service-icon i::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+  background-color: var(--primary);
+  opacity: 0.7;
+  z-index: -1;
+  border-radius: 50%;
+}
 
-    .service-card div[style*="background: #f0f7f0"] {
-      color: #2d3748 !important;
-      font-size: 1.1rem !important;
-    }
+.service-title {
+  flex-grow: 1;
+}
+
+.service-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+.service-summary {
+  color: #2d3748;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  margin: 0;
+  font-weight: 500;
+}
+
+.service-arrow {
+  color: var(--primary);
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.service-card.active .service-arrow {
+  transform: rotate(180deg);
+}
+
+.service-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background: #f8fafc;
+}
+
+.service-card.active .service-content {
+  max-height: 800px;
+}
+
+.service-details {
+  padding: 0 25px 30px;
+}
+
+.service-features h4 {
+  font-size: 1.6rem;
+  color: #1a202c;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.service-features ul {
+  text-align: left;
+  margin-top: 15px;
+  list-style: none;
+  padding-left: 0;
+  font-size: 1.3rem;
+}
+
+.service-features li {
+  margin-bottom: 12px;
+  padding-left: 30px;
+  position: relative;
+  color: #2d3748;
+}
+
+.service-features li i {
+  color: var(--primary);
+  position: absolute;
+  left: 0;
+  top: 3px;
+}
+
+/* Manteniendo los estilos de cajas de resultado de Impacta Verde */
+.service-card div[style*="background: #f0f7f0"] {
+  color: #2d3748 !important;
+  font-size: 1.3rem !important;
+  margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .service-header {
+    padding: 25px 20px;
+    gap: 15px;
+  }
+  
+  .service-icon {
+    font-size: 2.5rem;
+  }
+  
+  .service-card h3 {
+    font-size: 1.6rem;
+  }
+  
+  .service-summary {
+    font-size: 1.2rem;
+  }
+  
+  .service-details {
+    padding: 0 20px 25px;
+  }
+  
+  .service-features ul {
+    font-size: 1.2rem;
+  }
+}
 
     /* Sección Sello Digital */
 .sello-section {
@@ -2086,134 +2211,193 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 </style>
   <!-- Services Section -->
-  <section id="servicios" class="services">
-    <div class="container">
-      <div class="section-title" style="text-align: center;">
-        <h2 style="font-size: 2.6rem;">Nuestros Servicios</h2>
-        <p style="color: #2d3748; font-size: 1.5rem;">Integramos diseño, procesos, tecnología y comunicación para una sustentabilidad real y medible</p>
+<section id="servicios" class="services">
+  <div class="container">
+    <div class="section-title" style="text-align: center;">
+      <h2 style="font-size: 2.6rem;">Nuestros Servicios</h2>
+      <p style="color: #2d3748; font-size: 1.5rem;">Integramos diseño, procesos, tecnología y comunicación para una sustentabilidad real y medible</p>
+    </div>
+    
+    <div class="services-grid">
+      <!-- Servicio 1: Gestión de Marca Sustentable -->
+      <div class="service-card" onclick="toggleService(this)">
+        <div class="service-header">
+          <div class="service-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <div class="service-title">
+            <h3>Gestión de Marca Sustentable</h3>
+            <p class="service-summary">Posicionamos tu marca como referente en sustentabilidad</p>
+          </div>
+          <div class="service-arrow">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+        <div class="service-content">
+          <div class="service-details">
+            <div class="service-features">
+              <h4>¿Qué incluye?</h4>
+              <ul>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Estrategia de marca sustentable</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Sello Digital de Sustentabilidad</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Gestión de reputación verde</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Alineación con ODS y estándares</li>
+              </ul>
+            </div>
+            <div style="margin-top: 20px; padding: 15px; background: #f0f7f0; border-radius: 8px; font-size: 1.3rem; color: #2d3748;">
+              <strong>Resultado:</strong> "Marca posicionada como líder en sustentabilidad del sector"
+            </div>
+          </div>
+        </div>
       </div>
-     <div class="services-grid">
-  <!-- Pilar 1: Gestión de Marca Sustentable -->
-  <div class="service-card">
-    <div class="service-icon">
-      <i class="fas fa-certificate"></i>
-    </div>
-    <h3 style="font-size: 1.8rem;">Gestión de Marca Sustentable</h3>
-    <p style="font-size: 1.4rem;"><strong>Posicionamos tu marca como referente en sustentabilidad</strong></p>
-    <ul style="text-align: left; margin-top: 15px; list-style: none; padding-left: 0; font-size: 1.3rem;">
-      <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-        <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-        Estrategia de marca sustentable
-      </li>
-      <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-        <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-        Sello Digital de Sustentabilidad
-      </li>
-      <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-        <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-        Gestión de reputación verde
-      </li>
-      <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-        <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-        Alineación con ODS y estándares
-      </li>
-    </ul>
-    <div style="margin-top: 20px; padding: 15px; background: #f0f7f0; border-radius: 8px; font-size: 1.3rem; color: #2d3748;">
-      <strong>Resultado:</strong> "Marca posicionada como líder en sustentabilidad del sector"
+
+      <!-- Servicio 2: Optimización de Procesos -->
+      <div class="service-card" onclick="toggleService(this)">
+        <div class="service-header">
+          <div class="service-icon">
+            <i class="fas fa-sync-alt"></i>
+          </div>
+          <div class="service-title">
+            <h3>Optimización de Procesos</h3>
+            <p class="service-summary">Transformamos tus operaciones internas con tecnología y eficiencia</p>
+          </div>
+          <div class="service-arrow">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+        <div class="service-content">
+          <div class="service-details">
+            <div class="service-features">
+              <h4>¿Qué incluye?</h4>
+              <ul>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Análisis y mejora de procesos internos</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Implementación de herramientas tecnológicas</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Optimización de gestión diaria y operativa</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Digitalización de flujos de trabajo</li>
+              </ul>
+            </div>
+            <div style="margin-top: 20px; padding: 15px; background: #f0f7f0; border-radius: 8px; font-size: 1.3rem; color: #2d3748;">
+              <strong>Case study:</strong> "Cómo optimizamos procesos reduciendo un 40% el tiempo de gestión"
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Servicio 3: Gestión Circular -->
+      <div class="service-card" onclick="toggleService(this)">
+        <div class="service-header">
+          <div class="service-icon">
+            <i class="fas fa-recycle"></i>
+          </div>
+          <div class="service-title">
+            <h3>Gestión Circular</h3>
+            <p class="service-summary">Implementamos economía circular aplicada</p>
+          </div>
+          <div class="service-arrow">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+        <div class="service-content">
+          <div class="service-details">
+            <div class="service-features">
+              <h4>¿Qué incluye?</h4>
+              <ul>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Planes de economía circular práctica</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Estrategias de reducción de desperdicios</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Optimización de cadena y procesos</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Mediciones de impacto reales</li>
+              </ul>
+            </div>
+            <div style="margin-top: 20px; padding: 15px; background: #f0f7f0; border-radius: 8px; font-size: 1.3rem; color: #2d3748;">
+              <strong>Ejemplo:</strong> "Sistema circular implementado en taller de [industria]"
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Servicio 4: Comunicación Integral -->
+      <div class="service-card" onclick="toggleService(this)">
+        <div class="service-header">
+          <div class="service-icon">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <div class="service-title">
+            <h3>Comunicación Integral</h3>
+            <p class="service-summary">Contamos tu historia sustentable sin greenwashing</p>
+          </div>
+          <div class="service-arrow">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+        <div class="service-content">
+          <div class="service-details">
+            <div class="service-features">
+              <h4>¿Qué incluye?</h4>
+              <ul>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Storytelling de la marca</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Comunicación verde integrada a la marca</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Posicionamiento de marca</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Estrategias de contenido creativo</li>
+              </ul>
+            </div>
+            <div style="margin-top: 20px; padding: 15px; background: #f0f7f0; border-radius: 8px; font-size: 1.3rem; color: #2d3748;">
+              <strong>Ejemplo:</strong> "Campaña que aumentó 30% engagement mostrando procesos reales"
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Servicio 5: Transformación Digital Sustentable -->
+      <div class="service-card" onclick="toggleService(this)">
+        <div class="service-header">
+          <div class="service-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <div class="service-title">
+            <h3>Transformación Digital Sustentable</h3>
+            <p class="service-summary">Digitalizamos y conectamos la información clave de tu empresa para hacerla más eficiente, trazable y sustentable</p>
+          </div>
+          <div class="service-arrow">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+        <div class="service-content">
+          <div class="service-details">
+            <div class="service-features">
+              <h4>¿Qué incluye?</h4>
+              <ul>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Relevamiento y organización de datos de procesos internos</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Creación de bases de datos e indicadores clave (KPIs)</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Implementación de herramientas digitales colaborativas</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Desarrollo de automatizaciones y dashboards de gestión</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Integración de sistemas para trazabilidad ambiental y operativa</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Capacitación del equipo en herramientas digitales y gestión del cambio</li>
+              </ul>
+            </div>
+            <div style="margin-top: 20px; padding: 15px; background: #f0f7f0; border-radius: 8px; font-size: 1.3rem; color: #2d3748;">
+              <strong>📊 Case study:</strong> "Cómo digitalizamos la gestión de una pyme, reduciendo errores operativos y generando reportes automáticos de impacto ambiental."
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- Pilar 2: Optimización de Procesos -->
-  <div class="service-card">
-    <div class="service-icon">
-      <i class="fas fa-sync-alt"></i>
-    </div>
-    <h3 style="font-size: 1.8rem;">Optimización de Procesos</h3>
-    <p style="font-size: 1.4rem;"><strong>Transformamos tus operaciones internas con tecnología y eficiencia</strong></p>
-    <ul style="text-align: left; margin-top: 15px; list-style: none; padding-left: 0; font-size: 1.3rem;">
-      <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-        <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-        Análisis y mejora de procesos internos
-      </li>
-      <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-        <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-        Implementación de herramientas tecnológicas
-      </li>
-      <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-        <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-        Optimización de gestión diaria y operativa
-      </li>
-      <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-        <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-        Digitalización de flujos de trabajo
-      </li>
-    </ul>
-    <div style="margin-top: 20px; padding: 15px; background: #f0f7f0; border-radius: 8px; font-size: 1.3rem; color: #2d3748;">
-      <strong>Case study:</strong> "Cómo optimizamos procesos reduciendo un 40% el tiempo de gestión"
-    </div>
-  </div>
-
-  <!-- Pilar 3: Gestión Circular -->
-  <div class="service-card">
-    <div class="service-icon">
-      <i class="fas fa-recycle"></i>
-    </div>
-    <h3 style="font-size: 1.8rem;">Gestión Circular</h3>
-    <p style="font-size: 1.4rem;"><strong>Implementamos economía circular aplicada</strong></p>
-    <ul style="text-align: left; margin-top: 15px; list-style: none; padding-left: 0; font-size: 1.3rem;">
-      <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-        <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-        Planes de economía circular práctica
-      </li>
-      <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-        <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-        Estrategias de reducción de desperdicios
-      </li>
-      <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-        <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-        Optimización de cadena y procesos
-      </li>
-      <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-        <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-        Mediciones de impacto reales
-      </li>
-    </ul>
-    <div style="margin-top: 20px; padding: 15px; background: #f0f7f0; border-radius: 8px; font-size: 1.3rem; color: #2d3748;">
-      <strong>Ejemplo:</strong> "Sistema circular implementado en taller de [industria]"
-    </div>
-  </div>
-
-  <!-- Pilar 4: Comunicación Estratégica -->
-  <div class="service-card">
-    <div class="service-icon">
-      <i class="fas fa-bullhorn"></i>
-    </div>
-    <h3 style="font-size: 1.8rem;">Comunicación Integral</h3>
-    <p style="font-size: 1.4rem;"><strong>Contamos tu historia sustentable sin greenwashing</strong></p>
-    <ul style="text-align: left; margin-top: 15px; list-style: none; padding-left: 0; font-size: 1.3rem;">
-      <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-        <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-        Storytelling de la marca
-      </li>
-      <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-        <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-        Comunicación verde integrada a la marca
-      </li>
-      <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-        <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-        Posicionamiento de marca 
-      </li>
-      <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-        <i class="fas fa-check" style="color: var(--primary); position: absolute; left: 0;"></i>
-        Estrategias de contenido creativo
-      </li>
-    </ul>
-    <div style="margin-top: 20px; padding: 15px; background: #f0f7f0; border-radius: 8px; font-size: 1.3rem; color: #2d3748;">
-      <strong>Ejemplo:</strong> "Campaña que aumentó 30% engagement mostrando procesos reales"
-    </div>
-  </div>
-</div>
-
+<script>
+function toggleService(card) {
+  // Cerrar todos los demás servicios
+  const allCards = document.querySelectorAll('.service-card');
+  allCards.forEach(otherCard => {
+    if (otherCard !== card && otherCard.classList.contains('active')) {
+      otherCard.classList.remove('active');
+    }
+  });
+  
+  // Alternar el servicio clickeado
+  card.classList.toggle('active');
+}
+</script>
   <!-- Sección Sello Digital -->
   <section id="sello" class="sello-section">
     <div class="container">
