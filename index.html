@@ -2292,7 +2292,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     <div class="services-grid">
       <!-- Servicio 1: Gestión de Marca Sustentable -->
-      <div class="service-card">
+      <div class="service-card" data-service="1">
         <div class="service-header">
           <div class="service-icon">
             <i class="fas fa-certificate"></i>
@@ -2324,7 +2324,7 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
 
       <!-- Servicio 2: Optimización de Procesos -->
-      <div class="service-card">
+      <div class="service-card" data-service="2">
         <div class="service-header">
           <div class="service-icon">
             <i class="fas fa-sync-alt"></i>
@@ -2356,7 +2356,7 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
 
       <!-- Servicio 3: Gestión Circular -->
-      <div class="service-card">
+      <div class="service-card" data-service="3">
         <div class="service-header">
           <div class="service-icon">
             <i class="fas fa-recycle"></i>
@@ -2388,7 +2388,7 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
 
       <!-- Servicio 4: Comunicación Integral -->
-      <div class="service-card">
+      <div class="service-card" data-service="4">
         <div class="service-header">
           <div class="service-icon">
             <i class="fas fa-bullhorn"></i>
@@ -2420,7 +2420,7 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
 
       <!-- Servicio 5: Transformación Digital Sustentable -->
-      <div class="service-card">
+      <div class="service-card" data-service="5">
         <div class="service-header">
           <div class="service-icon">
             <i class="fas fa-laptop-code"></i>
@@ -2454,7 +2454,7 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
 
       <!-- Servicio 6: Asesoría Legal e Impositiva Sustentable -->
-      <div class="service-card">
+      <div class="service-card" data-service="6">
         <div class="service-header">
           <div class="service-icon">
             <i class="fas fa-balance-scale"></i>
@@ -2491,7 +2491,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </section>
 
 <style>
-/* Estilos para los acordeones */
+/* Estilos para los acordeones - CORREGIDOS */
 .service-card {
   border: 1px solid #e2e8f0;
   border-radius: 8px;
@@ -2515,7 +2515,7 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
 .service-icon {
-  color: #48bb78; /* Verde sustentable */
+  color: #48bb78;
   font-size: 1.5rem;
 }
 
@@ -2540,6 +2540,7 @@ document.addEventListener('DOMContentLoaded', function() {
   color: #718096;
 }
 
+/* CONTENIDO OCULTO POR DEFECTO */
 .service-content {
   max-height: 0;
   overflow: hidden;
@@ -2549,12 +2550,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 .service-details {
   padding: 0 1.5rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
-/* Estado activo */
+/* SOLO EL ACTIVO MUESTRA CONTENIDO */
 .service-card.active .service-content {
-  max-height: 1000px; /* Valor suficientemente alto */
-  padding: 1.5rem 0;
+  max-height: 1000px;
+}
+
+.service-card.active .service-details {
+  opacity: 1;
+  padding: 1.5rem;
 }
 
 .service-card.active .service-arrow {
@@ -2600,7 +2607,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </style>
 
 <script>
-// JavaScript corregido para acordeones
+// JavaScript CORREGIDO - Cada tarjeta es independiente
 document.addEventListener('DOMContentLoaded', function() {
   const serviceCards = document.querySelectorAll('.service-card');
   
@@ -2608,19 +2615,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const header = card.querySelector('.service-header');
     
     header.addEventListener('click', function() {
-      // Cerrar todas las otras tarjetas
+      // Solo alterna la tarjeta clickeada - NO afecta a las demás
+      const isCurrentlyActive = card.classList.contains('active');
+      
+      // Remover active de todas las tarjetas si quieres comportamiento de acordeón
+      // Si quieres que múltiples se puedan abrir, comenta las siguientes 3 líneas
       serviceCards.forEach(otherCard => {
-        if (otherCard !== card) {
-          otherCard.classList.remove('active');
-        }
+        otherCard.classList.remove('active');
       });
       
-      // Alternar la tarjeta clickeada
-      card.classList.toggle('active');
+      // Si no estaba activa, activarla
+      if (!isCurrentlyActive) {
+        card.classList.add('active');
+      }
     });
   });
   
-  // Cerrar acordeón al hacer click fuera
+  // Opcional: Cerrar al hacer click fuera
   document.addEventListener('click', function(e) {
     if (!e.target.closest('.service-card')) {
       serviceCards.forEach(card => {
