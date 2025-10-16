@@ -2214,7 +2214,7 @@ document.addEventListener('DOMContentLoaded', function() {
   font-weight: 500;
 }
 </style>
- <!-- Services Section -->
+<!-- Services Section -->
 <section id="servicios" class="services">
   <div class="container">
     <div class="section-title" style="text-align: center;">
@@ -2359,7 +2359,7 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
           <div class="service-title">
             <h3>Transformación Digital Sustentable</h3>
-            <p class="service-summary">Digitalizamos y conectamos la información clave de tu empresa</p>
+            <p class="service-summary">Digitalizamos y conectamos la información clave de tu empresa para hacerla más eficiente, trazable y sustentable</p>
           </div>
           <div class="service-arrow">
             <i class="fas fa-chevron-down"></i>
@@ -2421,6 +2421,21 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
 </section>
+
+<script>
+function toggleService(card) {
+  // Cerrar todos los demás servicios
+  const allCards = document.querySelectorAll('.service-card');
+  allCards.forEach(otherCard => {
+    if (otherCard !== card && otherCard.classList.contains('active')) {
+      otherCard.classList.remove('active');
+    }
+  });
+  
+  // Alternar el servicio clickeado
+  card.classList.toggle('active');
+}
+</script>
   <!-- Sección Sello Digital -->
   <section id="sello" class="sello-section">
     <div class="container">
