@@ -3742,7 +3742,7 @@ document.addEventListener('DOMContentLoaded', function() {
   </footer>
 
     <script>
-    // Chatbot CORREGIDO - Sin botones duplicados
+    // Chatbot CORREGIDO - Solo UN botón de Calendly
 document.addEventListener('DOMContentLoaded', function() {
     console.log('✅ Chatbot con Calendly iniciado');
     
@@ -3820,9 +3820,8 @@ document.addEventListener('DOMContentLoaded', function() {
           quickReplies: ['Servicios', 'Agendar cita', 'Volver al inicio']
         },
         'agendar': {
-          text: '¡Perfecto! Puedes agendar una cita directamente en Calendly. ¿Te gustaría abrir el calendario ahora?',
-          quickReplies: ['Abrir Calendly', 'Más información'],
-          action: 'calendly'
+          text: '¡Perfecto! Puedes agendar una cita directamente en Calendly usando el botón de abajo:',
+          action: 'calendly_only' // SOLO botón grande, NO respuestas rápidas
         },
         'diagnóstico': {
           text: '¡Claro! Puedes solicitar tu diagnóstico gratuito haciendo clic en el botón "Solicitá tu diagnóstico gratuito" en nuestra página principal o visitando la sección de contacto.',
@@ -3880,7 +3879,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return responses['default'];
     }
     
-    // Manejar el envío de mensajes CORREGIDO - SIN DUPLICADOS
+    // Manejar el envío de mensajes CORREGIDO - SOLO UN BOTÓN
     function handleSendMessage() {
       const message = userInput.value.trim();
       if (message) {
@@ -3894,11 +3893,11 @@ document.addEventListener('DOMContentLoaded', function() {
           hideTypingIndicator();
           const response = botResponse(message);
           
-          // EJECUTAR ACCIÓN DE CALENDLY - SOLO UNA VEZ
-          if (response.action === 'calendly') {
+          // SOLO PARA CALENDLY: Mostrar solo el botón grande
+          if (response.action === 'calendly_only') {
             addMessage(response.text, false);
             
-            // AGREGAR BOTÓN CALENDLY SOLO UNA VEZ
+            // SOLO UN BOTÓN GRANDE DE CALENDLY
             const calendlyButton = document.createElement('button');
             calendlyButton.classList.add('calendly-btn');
             calendlyButton.innerHTML = '<i class="fas fa-calendar-alt"></i> Abrir Calendly';
@@ -3907,32 +3906,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const lastMessage = chatMessages.lastChild;
             lastMessage.appendChild(calendlyButton);
             
-            // AGREGAR RESPUESTAS RÁPIDAS (sin duplicar Calendly)
-            if (response.quickReplies) {
-              const quickRepliesContainer = document.createElement('div');
-              quickRepliesContainer.classList.add('quick-replies');
-              
-              response.quickReplies.forEach(reply => {
-                const button = document.createElement('button');
-                button.classList.add('quick-reply');
-                
-                // Botón especial para Calendly
-                if (reply.includes('Calendly')) {
-                  button.classList.add('calendly');
-                  button.onclick = openCalendly;
-                } else {
-                  button.dataset.reply = reply.toLowerCase();
-                }
-                
-                button.textContent = reply;
-                quickRepliesContainer.appendChild(button);
-              });
-              
-              lastMessage.appendChild(quickRepliesContainer);
-            }
-            
           } else {
-            // RESPUESTA NORMAL (sin Calendly)
+            // RESPUESTA NORMAL (sin Calendly especial)
             addMessage(response.text, false);
             
             // Agregar respuestas rápidas si existen
