@@ -3742,7 +3742,7 @@ document.addEventListener('DOMContentLoaded', function() {
   </footer>
 
     <script>
-    // Chatbot CORREGIDO con Calendly
+    // Chatbot CORREGIDO - Sin botones duplicados
 document.addEventListener('DOMContentLoaded', function() {
     console.log('✅ Chatbot con Calendly iniciado');
     
@@ -3796,11 +3796,6 @@ document.addEventListener('DOMContentLoaded', function() {
       typingIndicator.style.display = 'none';
     }
     
-    // Estados de agendamiento
-    let appointmentStep = 0;
-    let appointmentDate = null;
-    let appointmentTime = null;
-    
     // RESPUESTAS DEL BOT CORREGIDAS
     function botResponse(userMessage) {
       const responses = {
@@ -3826,7 +3821,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         'agendar': {
           text: '¡Perfecto! Puedes agendar una cita directamente en Calendly. ¿Te gustaría abrir el calendario ahora?',
-          quickReplies: ['Abrir Calendly', 'Más información', 'Volver'],
+          quickReplies: ['Abrir Calendly', 'Más información'],
           action: 'calendly'
         },
         'diagnóstico': {
@@ -3885,7 +3880,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return responses['default'];
     }
     
-    // Manejar el envío de mensajes CORREGIDO
+    // Manejar el envío de mensajes CORREGIDO - SIN DUPLICADOS
     function handleSendMessage() {
       const message = userInput.value.trim();
       if (message) {
@@ -3899,11 +3894,11 @@ document.addEventListener('DOMContentLoaded', function() {
           hideTypingIndicator();
           const response = botResponse(message);
           
-          // EJECUTAR ACCIÓN DE CALENDLY
+          // EJECUTAR ACCIÓN DE CALENDLY - SOLO UNA VEZ
           if (response.action === 'calendly') {
             addMessage(response.text, false);
             
-            // AGREGAR BOTÓN CALENDLY
+            // AGREGAR BOTÓN CALENDLY SOLO UNA VEZ
             const calendlyButton = document.createElement('button');
             calendlyButton.classList.add('calendly-btn');
             calendlyButton.innerHTML = '<i class="fas fa-calendar-alt"></i> Abrir Calendly';
@@ -3911,38 +3906,51 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const lastMessage = chatMessages.lastChild;
             lastMessage.appendChild(calendlyButton);
+            
+            // AGREGAR RESPUESTAS RÁPIDAS (sin duplicar Calendly)
+            if (response.quickReplies) {
+              const quickRepliesContainer = document.createElement('div');
+              quickRepliesContainer.classList.add('quick-replies');
+              
+              response.quickReplies.forEach(reply => {
+                const button = document.createElement('button');
+                button.classList.add('quick-reply');
+                
+                // Botón especial para Calendly
+                if (reply.includes('Calendly')) {
+                  button.classList.add('calendly');
+                  button.onclick = openCalendly;
+                } else {
+                  button.dataset.reply = reply.toLowerCase();
+                }
+                
+                button.textContent = reply;
+                quickRepliesContainer.appendChild(button);
+              });
+              
+              lastMessage.appendChild(quickRepliesContainer);
+            }
+            
           } else {
+            // RESPUESTA NORMAL (sin Calendly)
             addMessage(response.text, false);
-          }
-          
-          // Agregar respuestas rápidas si existen
-          if (response.quickReplies) {
-            const quickRepliesContainer = document.createElement('div');
-            quickRepliesContainer.classList.add('quick-replies');
             
-            response.quickReplies.forEach(reply => {
-              const button = document.createElement('button');
-              button.classList.add('quick-reply');
+            // Agregar respuestas rápidas si existen
+            if (response.quickReplies) {
+              const quickRepliesContainer = document.createElement('div');
+              quickRepliesContainer.classList.add('quick-replies');
               
-              // Botón especial para Calendly
-              if (reply.includes('Calendly')) {
-                button.classList.add('calendly');
-                button.onclick = openCalendly;
-              } else {
+              response.quickReplies.forEach(reply => {
+                const button = document.createElement('button');
+                button.classList.add('quick-reply');
                 button.dataset.reply = reply.toLowerCase();
-              }
+                button.textContent = reply;
+                quickRepliesContainer.appendChild(button);
+              });
               
-              button.textContent = reply;
-              quickRepliesContainer.appendChild(button);
-            });
-            
-            const lastMessage = chatMessages.lastChild;
-            lastMessage.appendChild(quickRepliesContainer);
-          }
-          
-          // Actualizar el paso de agendamiento si es necesario
-          if (response.step) {
-            appointmentStep = response.step;
+              const lastMessage = chatMessages.lastChild;
+              lastMessage.appendChild(quickRepliesContainer);
+            }
           }
         }, 1500);
       }
@@ -3960,12 +3968,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Manejar respuestas rápidas CORREGIDO
     document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('quick-reply')) {
+      if (e.target.classList.contains('quick-reply') && e.target.dataset.reply) {
         const reply = e.target.dataset.reply;
-        if (reply) {
-          userInput.value = reply;
-          handleSendMessage();
-        }
+        userInput.value = reply;
+        handleSendMessage();
       }
     });
 
