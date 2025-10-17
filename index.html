@@ -1279,394 +1279,430 @@ footer > .container {
   padding-left: 15px;
   padding-right: 15px;
 }
-    /* Chatbot Mejorado */
-    .chatbot-btn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 70px;
-      height: 70px;
-      background: var(--primary);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 2rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      cursor: pointer;
-      z-index: 1000;
-      transition: all 0.3s ease;
-      animation: pulse-chat 2s infinite;
-    }
-    
-    .chatbot-btn:hover {
-      transform: scale(1.1);
-      background: var(--primary-dark);
-    }
-    
-    @keyframes pulse-chat {
-      0% {
-        box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
-      }
-      50% {
-        box-shadow: 0 5px 20px rgba(46, 125, 50, 0.6);
-      }
-      100% {
-        box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
-      }
-    }
-    
-    .chatbot-container {
-      position: fixed;
-      bottom: 110px;
-      right: 30px;
-      width: 380px;
-      height: 500px;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      z-index: 1000;
-      display: none;
-      flex-direction: column;
-      overflow: hidden;
-      transform: translateY(20px);
-      opacity: 0;
-      transition: all 0.3s ease;
-    }
-    
-    .chatbot-container.active {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    
-    .chatbot-header {
-      background: var(--primary);
-      color: white;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    
-    .chatbot-header h3 {
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 600;
-    }
-    
-    .chatbot-header .close-btn {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .chatbot-header .close-btn:hover {
-      transform: rotate(90deg);
-    }
-    
-    .chatbot-messages {
-      flex: 1;
-      padding: 15px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      background: #f9fbf9;
-    }
-    
-    .message {
-      max-width: 85%;
-      padding: 12px 16px;
-      border-radius: 18px;
-      font-size: 0.95rem;
-      line-height: 1.4;
-      position: relative;
-      animation: messageAppear 0.3s ease-out;
-    }
-    
-    @keyframes messageAppear {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .message.bot {
-      background: white;
-      align-self: flex-start;
-      border-bottom-left-radius: 5px;
-      border: 1px solid #e0e0e0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-    
-    .message.bot::before {
-      content: "EcoAsistente";
-      position: absolute;
-      top: -18px;
-      left: 0;
-      font-size: 0.75rem;
-      color: #7f8c8d;
-      font-weight: 500;
-    }
-    
-    .message.user {
-      background: var(--primary);
-      color: white;
-      align-self: flex-end;
-      border-bottom-right-radius: 5px;
-    }
-    
-    .chatbot-input-container {
-      padding: 15px;
-      display: flex;
-      gap: 10px;
-      border-top: 1px solid #eee;
-      background: white;
-    }
-    
-    .chatbot-input {
-      flex: 1;
-      padding: 12px 15px;
-      border: 1px solid #ddd;
-      border-radius: 25px;
-      font-size: 1rem;
-      outline: none;
-      transition: all 0.3s ease;
-    }
-    
-    .chatbot-input:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
-    }
-    
-    .chatbot-send-btn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 25px;
-      padding: 12px 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .chatbot-send-btn:hover {
-      background: var(--primary-dark);
-    }
-    
-    .typing-indicator {
-      display: none;
-      align-self: flex-start;
-      background: white;
-      padding: 12px 16px;
-      border-radius: 18px;
-      border: 1px solid #e0e0e0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-    
-    .typing-indicator span {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      background: #7f8c8d;
-      border-radius: 50%;
-      margin: 0 2px;
-      animation: typing 1.4s infinite ease-in-out;
-    }
-    
-    .typing-indicator span:nth-child(1) {
-      animation-delay: 0s;
-    }
-    
-    .typing-indicator span:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-    
-    .typing-indicator span:nth-child(3) {
-      animation-delay: 0.4s;
-    }
-    
-    @keyframes typing {
-      0%, 60%, 100% {
-        transform: translateY(0);
-      }
-      30% {
-        transform: translateY(-5px);
-      }
-    }
-    
-    .quick-replies {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-    }
-    
-    .quick-reply {
-      background: #e8f5e9;
-      color: var(--primary);
-      border: none;
-      border-radius: 20px;
-      padding: 8px 15px;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    
-    .quick-reply:hover {
-      background: #d0ebd2;
-    }
+   /* Chatbot Mejorado */
+.chatbot-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 70px;
+  height: 70px;
+  background: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  animation: pulse-chat 2s infinite;
+}
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero {
-        padding: 150px 0 80px;
-      }
-      
-      .hero h1 {
-        font-size: 1.8rem;
-      }
-      
-      .hero p {
-        font-size: 1rem;
-      }
-      
-      nav ul {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: white;
-        flex-direction: column;
-        padding: 20px 0;
-        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-      }
-      
-      nav ul.active {
-        display: flex;
-      }
-      
-      nav ul li {
-        margin: 12px 0;
-        text-align: center;
-      }
-      
-      .mobile-menu-btn {
-        display: block;
-      }
-      
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .mision-content h2 {
-        font-size: 1.8rem;
-      }
-      
-      .mision-content p {
-        font-size: 1.1rem;
-      }
-      
-      .resultados-grid {
-        grid-template-columns: 1fr;
-        max-width: 300px;
-      }
-      
-      .impacto-value {
-        font-size: 3.5rem;
-      }
-      
-      .impacto-unit {
-        font-size: 1.3rem;
-      }
-      
-      .impacto-desc {
-        font-size: 1.1rem;
-      }
-      
-      .impacto-card {
-        padding: 35px 25px;
-      }
-      
-      .impacto-cta {
-        padding: 40px 30px;
-      }
-      
-      .contact-form {
-        padding: 30px;
-      }
-      
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-    }
+.chatbot-btn:hover {
+  transform: scale(1.1);
+  background: var(--primary-dark);
+}
 
-    @media (max-width: 576px) {
-      .hero h1 {
-        font-size: 1.6rem;
-      }
-      
-      .section-title h2 {
-        font-size: 1.8rem;
-      }
-      
-      .sello-box {
-        padding: 25px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- Chatbot Button -->
-  <div class="chatbot-btn" id="chatbotBtn">
-    <i class="fas fa-comments"></i>
-  </div>
+@keyframes pulse-chat {
+  0% {
+    box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
+  }
+  50% {
+    box-shadow: 0 5px 20px rgba(46, 125, 50, 0.6);
+  }
+  100% {
+    box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
+  }
+}
+
+.chatbot-container {
+  position: fixed;
+  bottom: 110px;
+  right: 30px;
+  width: 380px;
+  height: 500px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  z-index: 1000;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.chatbot-container.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.chatbot-header {
+  background: var(--primary);
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chatbot-header h3 {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.chatbot-header .close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.chatbot-header .close-btn:hover {
+  transform: rotate(90deg);
+}
+
+.chatbot-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #f9fbf9;
+}
+
+.message {
+  max-width: 85%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  position: relative;
+  animation: messageAppear 0.3s ease-out;
+}
+
+@keyframes messageAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message.bot {
+  background: white;
+  align-self: flex-start;
+  border-bottom-left-radius: 5px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.message.bot::before {
+  content: "EcoAsistente";
+  position: absolute;
+  top: -18px;
+  left: 0;
+  font-size: 0.75rem;
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+.message.user {
+  background: var(--primary);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 5px;
+}
+
+.chatbot-input-container {
+  padding: 15px;
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid #eee;
+  background: white;
+}
+
+.chatbot-input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.chatbot-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+}
+
+.chatbot-send-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chatbot-send-btn:hover {
+  background: var(--primary-dark);
+}
+
+.typing-indicator {
+  display: none;
+  align-self: flex-start;
+  background: white;
+  padding: 12px 16px;
+  border-radius: 18px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.typing-indicator span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #7f8c8d;
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-5px);
+  }
+}
+
+.quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.quick-reply {
+  background: #e8f5e9;
+  color: var(--primary);
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quick-reply:hover {
+  background: #d0ebd2;
+}
+
+/* ===== BOTÓN DE CALENDLY ===== */
+.calendly-btn {
+  background: linear-gradient(135deg, #2e7d32, #4caf50);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin: 10px 0 5px 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  text-align: center;
+}
+
+.calendly-btn:hover {
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(46, 125, 50, 0.4);
+}
+
+/* Contenedor del botón Calendly */
+.message.bot .calendly-btn {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Responsive para Calendly */
+@media (max-width: 480px) {
+  .calendly-btn {
+    font-size: 0.85rem;
+    padding: 10px 16px;
+    max-width: 240px;
+  }
+}
+
+/* Responsive Chatbot */
+@media (max-width: 768px) {
+  .chatbot-container {
+    width: 350px;
+    height: 450px;
+    right: 20px;
+    bottom: 100px;
+  }
   
-  <!-- Chatbot Container -->
-  <div class="chatbot-container" id="chatbotContainer">
-    <div class="chatbot-header">
-      <h3><i class="fas fa-leaf"></i> EcoAsistente</h3>
-      <button class="close-btn" id="closeChatbot">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    <div class="chatbot-messages" id="chatMessages">
-      <div class="message bot">
-        ¡Hola! Soy EcoAsistente de Impacta Verde. ¿En qué puedo ayudarte hoy?
-        <div class="quick-replies">
-          <button class="quick-reply" data-reply="servicios">Servicios</button>
-          <button class="quick-reply" data-reply="agendar">Agendar cita</button>
-          <button class="quick-reply" data-reply="contacto">Contacto</button>
-        </div>
-      </div>
-    </div>
-    <div class="typing-indicator" id="typingIndicator">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="chatbot-input-container">
-      <input type="text" id="userInput" class="chatbot-input" placeholder="Escribe tu mensaje...">
-      <button id="sendMessage" class="chatbot-send-btn">
-        <i class="fas fa-paper-plane"></i>
-      </button>
-    </div>
-  </div>
+  .chatbot-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 1.7rem;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .hero {
+    padding: 150px 0 80px;
+  }
+  
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    padding: 20px 0;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+  }
+  
+  nav ul.active {
+    display: flex;
+  }
+  
+  nav ul li {
+    margin: 12px 0;
+    text-align: center;
+  }
+  
+  .mobile-menu-btn {
+    display: block;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .mision-content h2 {
+    font-size: 1.8rem;
+  }
+  
+  .mision-content p {
+    font-size: 1.1rem;
+  }
+  
+  .resultados-grid {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+  }
+  
+  .impacto-value {
+    font-size: 3.5rem;
+  }
+  
+  .impacto-unit {
+    font-size: 1.3rem;
+  }
+  
+  .impacto-desc {
+    font-size: 1.1rem;
+  }
+  
+  .impacto-card {
+    padding: 35px 25px;
+  }
+  
+  .impacto-cta {
+    padding: 40px 30px;
+  }
+  
+  .contact-form {
+    padding: 30px;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
 
+@media (max-width: 576px) {
+  .chatbot-container {
+    width: 300px;
+    height: 400px;
+    right: 10px;
+    bottom: 90px;
+  }
+  
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+  
+  .section-title h2 {
+    font-size: 1.8rem;
+  }
+  
+  .sello-box {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 380px) {
+  .chatbot-container {
+    width: 280px;
+    right: 10px;
+  }
+  
+  .calendly-btn {
+    max-width: 220px;
+    font-size: 0.8rem;
+    padding: 8px 14px;
+  }
+}
   <!-- Header -->
   <header>
     <div class="container header-container">
@@ -3639,203 +3675,231 @@ document.addEventListener('DOMContentLoaded', function() {
   </footer>
 
   <script>
-    // Chatbot mejorado
-    const chatbotBtn = document.getElementById('chatbotBtn');
-    const chatbotContainer = document.getElementById('chatbotContainer');
-    const closeChatbot = document.getElementById('closeChatbot');
-    const chatMessages = document.getElementById('chatMessages');
-    const userInput = document.getElementById('userInput');
-    const sendMessage = document.getElementById('sendMessage');
-    const typingIndicator = document.getElementById('typingIndicator');
-    
-    chatbotBtn.addEventListener('click', () => {
-      chatbotContainer.style.display = 'flex';
-      setTimeout(() => {
-        chatbotContainer.classList.add('active');
-      }, 10);
-    });
-    
-    closeChatbot.addEventListener('click', () => {
-      chatbotContainer.classList.remove('active');
-      setTimeout(() => {
-        chatbotContainer.style.display = 'none';
-      }, 300);
-    });
-    
-    // Función para agregar mensajes al chat
-    function addMessage(text, isUser) {
-      const messageDiv = document.createElement('div');
-      messageDiv.classList.add('message');
-      messageDiv.classList.add(isUser ? 'user' : 'bot');
-      messageDiv.textContent = text;
-      chatMessages.appendChild(messageDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-    
-    // Función para mostrar el indicador de "escribiendo"
-    function showTypingIndicator() {
-      typingIndicator.style.display = 'flex';
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-    
-    // Función para ocultar el indicador de "escribiendo"
-    function hideTypingIndicator() {
-      typingIndicator.style.display = 'none';
-    }
-    
-    // Estados de agendamiento
-    let appointmentStep = 0;
-    let appointmentDate = null;
-    let appointmentTime = null;
-    
-    // Respuestas del bot
-    function botResponse(userMessage) {
-      const responses = {
-        'hola': {
-          text: '¡Hola! Soy EcoAsistente de Impacta Verde. ¿En qué puedo ayudarte hoy?',
-          quickReplies: ['servicios', 'agendar', 'contacto']
-        },
-        'servicios': {
-          text: 'Ofrecemos los siguientes servicios:\n\n' +
-                '• Gestión de Marca Sustentable\n' +
-                '• Optimización de Procesos\n' +
-                '• Gestión Circular\n' +
-                '• Comunicación Integral\n\n' +
-                '¿Te gustaría conocer más sobre alguno en particular?',
-          quickReplies: ['Marca Sustentable', 'Rediseño', 'Circular', 'Comunicación']
-        },
-        'contacto': {
-          text: 'Puedes contactarnos de las siguientes formas:\n\n' +
-                '📧 Email: impactaverde@gmail.com\n' +
-                '📍 Dirección: Buenos Aires, Argentina\n\n' +
-                'También puedes completar el formulario de contacto en nuestra página.'
-        },
-        'diagnóstico': {
-          text: '¡Claro! Puedes solicitar tu diagnóstico gratuito haciendo clic en el botón "Solicitá tu diagnóstico gratuito" en nuestra página principal o visitando la sección de contacto.'
-        },
-        'sello': {
-          text: 'Nuestro Sello Digital de Sustentabilidad se obtiene al completar nuestro diagnóstico básico. Este sello certifica tu compromiso ambiental y te ayuda a acceder a beneficios.'
-        },
-        'agendar': {
-          text: '¡Perfecto! Para agendar una cita, por favor dime la fecha que te vendría bien (ejemplo: 15/07/2024).',
-          step: 1
-        },
-        'gracias': {
-          text: '¡De nada! Estoy aquí para ayudarte. ¿Hay algo más en lo que pueda asistirte?'
-        },
-        'impacto': {
-          text: 'En Impacta Verde hemos logrado un impacto positivo equivalente a:\n\n' +
-                '🌳 153 árboles salvados\n' +
-                '☁️ 9.2 toneladas de CO₂ reducidas\n\n' +
-                'Esto gracias al trabajo con más de 15 empresas en 8 sectores diferentes.'
-        },
-        'default': {
-          text: 'Gracias por tu mensaje. Un miembro de nuestro equipo te responderá pronto. ¿Hay algo más en lo que pueda ayudarte?'
-        }
-      };
-      
-      userMessage = userMessage.toLowerCase();
-      
-      // Manejo de agendamiento de citas
-      if (appointmentStep === 1) {
-        if (userMessage.match(/\d{1,2}\/\d{1,2}\/\d{4}/)) {
-          appointmentDate = userMessage;
-          appointmentStep = 2;
-          return { text: 'Fecha seleccionada: ' + appointmentDate + '. Ahora, ¿a qué hora te vendría bien? (Por ejemplo: 10:00, 14:30, etc.)' };
-        } else {
-          return { text: 'Por favor, ingresa la fecha en formato DD/MM/AAAA. Por ejemplo: 20/07/2024' };
-        }
-      }
-      
-      if (appointmentStep === 2) {
-        if (userMessage.match(/\d{1,2}:\d{2}/)) {
-          appointmentTime = userMessage;
-          appointmentStep = 0;
-          return { text: '¡Perfecto! Tu cita ha sido agendada para el ' + appointmentDate + ' a las ' + appointmentTime + '. Te enviaremos un correo de confirmación. ¿Hay algo más en lo que pueda ayudarte?' };
-        } else {
-          return { text: 'Por favor, ingresa la hora en formato HH:MM (por ejemplo: 14:30).' };
-        }
-      }
-      
-      // Respuestas directas
-      if (userMessage.includes('hola') || userMessage.includes('buenas')) return responses['hola'];
-      if (userMessage.includes('servicio') || userMessage.includes('servicios')) return responses['servicios'];
-      if (userMessage.includes('contact') || userMessage.includes('contacto') || userMessage.includes('email')) return responses['contacto'];
-      if (userMessage.includes('diagnóstico') || userMessage.includes('diagnostico')) return responses['diagnóstico'];
-      if (userMessage.includes('sello') || userMessage.includes('certificación')) return responses['sello'];
-      if (userMessage.includes('agendar') || userMessage.includes('cita') || userMessage.includes('reunión')) return responses['agendar'];
-      if (userMessage.includes('impacto') || userMessage.includes('arbol') || userMessage.includes('co2')) return responses['impacto'];
-      if (userMessage.includes('gracias')) return responses['gracias'];
-      
-      return responses['default'];
-    }
-    
-    // Manejar el envío de mensajes
-    function handleSendMessage() {
-      const message = userInput.value.trim();
-      if (message) {
-        addMessage(message, true);
-        userInput.value = '';
-        
-        // Simular que el bot está escribiendo
-        showTypingIndicator();
-        
-        setTimeout(() => {
-          hideTypingIndicator();
-          const response = botResponse(message);
-          addMessage(response.text, false);
-          
-          // Agregar respuestas rápidas si existen
-          if (response.quickReplies) {
-            const quickRepliesContainer = document.createElement('div');
-            quickRepliesContainer.classList.add('quick-replies');
-            
-            response.quickReplies.forEach(reply => {
-              const button = document.createElement('button');
-              button.classList.add('quick-reply');
-              button.textContent = reply;
-              button.dataset.reply = reply.toLowerCase();
-              quickRepliesContainer.appendChild(button);
-            });
-            
-            const lastMessage = chatMessages.lastChild;
-            lastMessage.appendChild(quickRepliesContainer);
-          }
-          
-          // Actualizar el paso de agendamiento si es necesario
-          if (response.step) {
-            appointmentStep = response.step;
-          }
-        }, 1500);
-      }
-    }
-    
-    // Enviar mensaje al hacer clic en el botón
-    sendMessage.addEventListener('click', handleSendMessage);
-    
-    // Enviar mensaje al presionar Enter
-    userInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        handleSendMessage();
-      }
-    });
-    
-    // Manejar respuestas rápidas
-    document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('quick-reply')) {
-        const reply = e.target.dataset.reply;
-        userInput.value = reply;
-        handleSendMessage();
-      }
-    });
+ // Chatbot mejorado
+const chatbotBtn = document.getElementById('chatbotBtn');
+const chatbotContainer = document.getElementById('chatbotContainer');
+const closeChatbot = document.getElementById('closeChatbot');
+const chatMessages = document.getElementById('chatMessages');
+const userInput = document.getElementById('userInput');
+const sendMessage = document.getElementById('sendMessage');
+const typingIndicator = document.getElementById('typingIndicator');
 
-    // Mobile menu functionality
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const nav = document.querySelector('nav ul');
+chatbotBtn.addEventListener('click', () => {
+  chatbotContainer.style.display = 'flex';
+  setTimeout(() => {
+    chatbotContainer.classList.add('active');
+  }, 10);
+});
+
+closeChatbot.addEventListener('click', () => {
+  chatbotContainer.classList.remove('active');
+  setTimeout(() => {
+    chatbotContainer.style.display = 'none';
+  }, 300);
+});
+
+// Función para agregar mensajes al chat
+function addMessage(text, isUser) {
+  const messageDiv = document.createElement('div');
+  messageDiv.classList.add('message');
+  messageDiv.classList.add(isUser ? 'user' : 'bot');
+  
+  // Si el texto contiene saltos de línea, mantenerlos
+  messageDiv.innerHTML = text.replace(/\n/g, '<br>');
+  
+  chatMessages.appendChild(messageDiv);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// Función para mostrar el indicador de "escribiendo"
+function showTypingIndicator() {
+  typingIndicator.style.display = 'flex';
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// Función para ocultar el indicador de "escribiendo"
+function hideTypingIndicator() {
+  typingIndicator.style.display = 'none';
+}
+
+// Estados de agendamiento
+let appointmentStep = 0;
+let appointmentDate = null;
+let appointmentTime = null;
+
+// Respuestas del bot
+function botResponse(userMessage) {
+  const responses = {
+    'hola': {
+      text: '¡Hola! Soy EcoAsistente de Impacta Verde. ¿En qué puedo ayudarte hoy?',
+      quickReplies: ['servicios', 'agendar', 'contacto']
+    },
+    'servicios': {
+      text: 'Ofrecemos los siguientes servicios:\n\n' +
+            '• Gestión de Marca Sustentable\n' +
+            '• Optimización de Procesos\n' +
+            '• Gestión Circular\n' +
+            '• Comunicación Integral\n\n' +
+            '¿Te gustaría conocer más sobre alguno en particular?',
+      quickReplies: ['Marca Sustentable', 'Rediseño', 'Circular', 'Comunicación']
+    },
+    'contacto': {
+      text: 'Puedes contactarnos de las siguientes formas:\n\n' +
+            '📧 Email: impactaverde@gmail.com\n' +
+            '📍 Dirección: Buenos Aires, Argentina\n\n' +
+            'También puedes completar el formulario de contacto en nuestra página.'
+    },
+    'diagnóstico': {
+      text: '¡Claro! Puedes solicitar tu diagnóstico gratuito haciendo clic en el botón "Solicitá tu diagnóstico gratuito" en nuestra página principal o visitando la sección de contacto.'
+    },
+    'sello': {
+      text: 'Nuestro Sello Digital de Sustentabilidad se obtiene al completar nuestro diagnóstico básico. Este sello certifica tu compromiso ambiental y te ayuda a acceder a beneficios.'
+    },
+    'agendar': {
+      text: '¡Perfecto! Te ayudo a agendar una consulta gratuita de 30 minutos.',
+      hasCalendly: true
+    },
+    'gracias': {
+      text: '¡De nada! Estoy aquí para ayudarte. ¿Hay algo más en lo que pueda asistirte?'
+    },
+    'impacto': {
+      text: 'En Impacta Verde hemos logrado un impacto positivo equivalente a:\n\n' +
+            '🌳 153 árboles salvados\n' +
+            '☁️ 9.2 toneladas de CO₂ reducidas\n\n' +
+            'Esto gracias al trabajo con más de 15 empresas en 8 sectores diferentes.'
+    },
+    'default': {
+      text: 'Gracias por tu mensaje. Un miembro de nuestro equipo te responderá pronto. ¿Hay algo más en lo que pueda ayudarte?'
+    }
+  };
+  
+  userMessage = userMessage.toLowerCase();
+  
+  // Manejo de agendamiento de citas (sistema viejo - lo mantenemos por si acaso)
+  if (appointmentStep === 1) {
+    if (userMessage.match(/\d{1,2}\/\d{1,2}\/\d{4}/)) {
+      appointmentDate = userMessage;
+      appointmentStep = 2;
+      return { text: 'Fecha seleccionada: ' + appointmentDate + '. Ahora, ¿a qué hora te vendría bien? (Por ejemplo: 10:00, 14:30, etc.)' };
+    } else {
+      return { text: 'Por favor, ingresa la fecha en formato DD/MM/AAAA. Por ejemplo: 20/07/2024' };
+    }
+  }
+  
+  if (appointmentStep === 2) {
+    if (userMessage.match(/\d{1,2}:\d{2}/)) {
+      appointmentTime = userMessage;
+      appointmentStep = 0;
+      return { text: '¡Perfecto! Tu cita ha sido agendada para el ' + appointmentDate + ' a las ' + appointmentTime + '. Te enviaremos un correo de confirmación. ¿Hay algo más en lo que pueda ayudarte?' };
+    } else {
+      return { text: 'Por favor, ingresa la hora en formato HH:MM (por ejemplo: 14:30).' };
+    }
+  }
+  
+  // Respuestas directas
+  if (userMessage.includes('hola') || userMessage.includes('buenas')) return responses['hola'];
+  if (userMessage.includes('servicio') || userMessage.includes('servicios')) return responses['servicios'];
+  if (userMessage.includes('contact') || userMessage.includes('contacto') || userMessage.includes('email')) return responses['contacto'];
+  if (userMessage.includes('diagnóstico') || userMessage.includes('diagnostico')) return responses['diagnóstico'];
+  if (userMessage.includes('sello') || userMessage.includes('certificación')) return responses['sello'];
+  if (userMessage.includes('agendar') || userMessage.includes('cita') || userMessage.includes('reunión')) return responses['agendar'];
+  if (userMessage.includes('impacto') || userMessage.includes('arbol') || userMessage.includes('co2')) return responses['impacto'];
+  if (userMessage.includes('gracias')) return responses['gracias'];
+  
+  return responses['default'];
+}
+
+// Función para crear botón de Calendly
+function createCalendlyButton() {
+  const calendlyContainer = document.createElement('div');
+  calendlyContainer.style.marginTop = '15px';
+  calendlyContainer.style.textAlign = 'center';
+  
+  const calendlyBtn = document.createElement('button');
+  calendlyBtn.innerHTML = '📅 Agendar Consulta Gratuita (30min)';
+  calendlyBtn.className = 'calendly-btn';
+  calendlyBtn.onclick = () => {
+    window.open('https://calendly.com/estudioimpactaverde', '_blank');
+    // Agregar mensaje de confirmación
+    setTimeout(() => {
+      addMessage('¡Perfecto! He abierto el agendador. ¿Necesitas ayuda con algo más?', false);
+    }, 1000);
+  };
+  
+  calendlyContainer.appendChild(calendlyBtn);
+  return calendlyContainer;
+}
+
+// Manejar el envío de mensajes
+function handleSendMessage() {
+  const message = userInput.value.trim();
+  if (message) {
+    addMessage(message, true);
+    userInput.value = '';
     
-    mobileMenuBtn.addEventListener('click', () => {
-      nav.classList.toggle('active');
-    });
-  </script>
-</body>
-</html>
+    // Simular que el bot está escribiendo
+    showTypingIndicator();
+    
+    setTimeout(() => {
+      hideTypingIndicator();
+      const response = botResponse(message);
+      addMessage(response.text, false);
+      
+      // Agregar botón de Calendly si corresponde
+      if (response.hasCalendly) {
+        const lastMessage = chatMessages.lastChild;
+        const calendlyButton = createCalendlyButton();
+        lastMessage.appendChild(calendlyButton);
+      }
+      
+      // Agregar respuestas rápidas si existen
+      if (response.quickReplies) {
+        const quickRepliesContainer = document.createElement('div');
+        quickRepliesContainer.classList.add('quick-replies');
+        
+        response.quickReplies.forEach(reply => {
+          const button = document.createElement('button');
+          button.classList.add('quick-reply');
+          button.textContent = reply;
+          button.dataset.reply = reply.toLowerCase();
+          quickRepliesContainer.appendChild(button);
+        });
+        
+        const lastMessage = chatMessages.lastChild;
+        lastMessage.appendChild(quickRepliesContainer);
+      }
+      
+      // Actualizar el paso de agendamiento si es necesario
+      if (response.step) {
+        appointmentStep = response.step;
+      }
+    }, 1500);
+  }
+}
+
+// Enviar mensaje al hacer clic en el botón
+sendMessage.addEventListener('click', handleSendMessage);
+
+// Enviar mensaje al presionar Enter
+userInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    handleSendMessage();
+  }
+});
+
+// Manejar respuestas rápidas
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('quick-reply')) {
+    const reply = e.target.dataset.reply;
+    userInput.value = reply;
+    handleSendMessage();
+  }
+});
+
+// Mobile menu functionality
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const nav = document.querySelector('nav ul');
+
+mobileMenuBtn.addEventListener('click', () => {
+  nav.classList.toggle('active');
+});
