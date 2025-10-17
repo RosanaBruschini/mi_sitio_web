@@ -3742,9 +3742,9 @@ document.addEventListener('DOMContentLoaded', function() {
   </footer>
 
     <script>
-    // Chatbot que SÍ funciona - Tu código original corregido
+    // Chatbot CORREGIDO con Calendly
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ Chatbot iniciado');
+    console.log('✅ Chatbot con Calendly iniciado');
     
     const chatbotBtn = document.getElementById('chatbotBtn');
     const chatbotContainer = document.getElementById('chatbotContainer');
@@ -3768,6 +3768,12 @@ document.addEventListener('DOMContentLoaded', function() {
         chatbotContainer.style.display = 'none';
       }, 300);
     });
+
+    // FUNCIÓN CALENDLY
+    function openCalendly() {
+        window.open('https://calendly.com/estudioimpactaverde', '_blank');
+        addMessage('¡Perfecto! He abierto Calendly para que agendes tu cita. ¿Necesitas ayuda con algo más?', false);
+    }
     
     // Función para agregar mensajes al chat
     function addMessage(text, isUser) {
@@ -3795,12 +3801,12 @@ document.addEventListener('DOMContentLoaded', function() {
     let appointmentDate = null;
     let appointmentTime = null;
     
-    // Respuestas del bot
+    // RESPUESTAS DEL BOT CORREGIDAS
     function botResponse(userMessage) {
       const responses = {
         'hola': {
           text: '¡Hola! Soy EcoAsistente de Impacta Verde. ¿En qué puedo ayudarte hoy?',
-          quickReplies: ['servicios', 'agendar', 'contacto']
+          quickReplies: ['Servicios', 'Agendar cita', 'Contacto']
         },
         'servicios': {
           text: 'Ofrecemos los siguientes servicios:\n\n' +
@@ -3809,75 +3815,77 @@ document.addEventListener('DOMContentLoaded', function() {
                 '• Gestión Circular\n' +
                 '• Comunicación Integral\n\n' +
                 '¿Te gustaría conocer más sobre alguno en particular?',
-          quickReplies: ['Marca Sustentable', 'Rediseño', 'Circular', 'Comunicación']
+          quickReplies: ['Marca Sustentable', 'Optimización', 'Circular', 'Comunicación', 'Agendar cita']
         },
         'contacto': {
           text: 'Puedes contactarnos de las siguientes formas:\n\n' +
                 '📧 Email: impactaverde@gmail.com\n' +
                 '📍 Dirección: Buenos Aires, Argentina\n\n' +
-                'También puedes completar el formulario de contacto en nuestra página.'
-        },
-        'diagnóstico': {
-          text: '¡Claro! Puedes solicitar tu diagnóstico gratuito haciendo clic en el botón "Solicitá tu diagnóstico gratuito" en nuestra página principal o visitando la sección de contacto.'
-        },
-        'sello': {
-          text: 'Nuestro Sello Digital de Sustentabilidad se obtiene al completar nuestro diagnóstico básico. Este sello certifica tu compromiso ambiental y te ayuda a acceder a beneficios.'
+                'También puedes completar el formulario de contacto en nuestra página.',
+          quickReplies: ['Servicios', 'Agendar cita', 'Volver al inicio']
         },
         'agendar': {
-          text: '¡Perfecto! Para agendar una cita, por favor dime la fecha que te vendría bien (ejemplo: 15/07/2024).',
-          step: 1
+          text: '¡Perfecto! Puedes agendar una cita directamente en Calendly. ¿Te gustaría abrir el calendario ahora?',
+          quickReplies: ['Abrir Calendly', 'Más información', 'Volver'],
+          action: 'calendly'
+        },
+        'diagnóstico': {
+          text: '¡Claro! Puedes solicitar tu diagnóstico gratuito haciendo clic en el botón "Solicitá tu diagnóstico gratuito" en nuestra página principal o visitando la sección de contacto.',
+          quickReplies: ['Agendar cita', 'Servicios', 'Contacto']
+        },
+        'sello': {
+          text: 'Nuestro Sello Digital de Sustentabilidad se obtiene al completar nuestro diagnóstico básico. Este sello certifica tu compromiso ambiental y te ayuda a acceder a beneficios.',
+          quickReplies: ['Agendar cita', 'Servicios', 'Más info']
         },
         'gracias': {
-          text: '¡De nada! Estoy aquí para ayudarte. ¿Hay algo más en lo que pueda asistirte?'
+          text: '¡De nada! Estoy aquí para ayudarte. ¿Hay algo más en lo que pueda asistirte?',
+          quickReplies: ['Servicios', 'Agendar cita', 'Contacto']
         },
         'impacto': {
           text: 'En Impacta Verde hemos logrado un impacto positivo equivalente a:\n\n' +
                 '🌳 153 árboles salvados\n' +
                 '☁️ 9.2 toneladas de CO₂ reducidas\n\n' +
-                'Esto gracias al trabajo con más de 15 empresas en 8 sectores diferentes.'
+                'Esto gracias al trabajo con más de 15 empresas en 8 sectores diferentes.',
+          quickReplies: ['Agendar cita', 'Servicios', 'Contacto']
         },
         'default': {
-          text: 'Gracias por tu mensaje. Un miembro de nuestro equipo te responderá pronto. ¿Hay algo más en lo que pueda ayudarte?'
+          text: 'Gracias por tu mensaje. Un miembro de nuestro equipo te responderá pronto. ¿Hay algo más en lo que pueda ayudarte?',
+          quickReplies: ['Servicios', 'Agendar cita', 'Contacto']
         }
       };
       
       userMessage = userMessage.toLowerCase();
       
-      // Manejo de agendamiento de citas
-      if (appointmentStep === 1) {
-        if (userMessage.match(/\d{1,2}\/\d{1,2}\/\d{4}/)) {
-          appointmentDate = userMessage;
-          appointmentStep = 2;
-          return { text: 'Fecha seleccionada: ' + appointmentDate + '. Ahora, ¿a qué hora te vendría bien? (Por ejemplo: 10:00, 14:30, etc.)' };
-        } else {
-          return { text: 'Por favor, ingresa la fecha en formato DD/MM/AAAA. Por ejemplo: 20/07/2024' };
-        }
+      // CORRECCIÓN: Verificar respuestas en orden de prioridad
+      if (userMessage.includes('hola') || userMessage.includes('buenas')) {
+        return responses['hola'];
       }
-      
-      if (appointmentStep === 2) {
-        if (userMessage.match(/\d{1,2}:\d{2}/)) {
-          appointmentTime = userMessage;
-          appointmentStep = 0;
-          return { text: '¡Perfecto! Tu cita ha sido agendada para el ' + appointmentDate + ' a las ' + appointmentTime + '. Te enviaremos un correo de confirmación. ¿Hay algo más en lo que pueda ayudarte?' };
-        } else {
-          return { text: 'Por favor, ingresa la hora en formato HH:MM (por ejemplo: 14:30).' };
-        }
+      if (userMessage.includes('servicio') || userMessage === 'servicios') {
+        return responses['servicios'];
       }
-      
-      // Respuestas directas
-      if (userMessage.includes('hola') || userMessage.includes('buenas')) return responses['hola'];
-      if (userMessage.includes('servicio') || userMessage.includes('servicios')) return responses['servicios'];
-      if (userMessage.includes('contact') || userMessage.includes('contacto') || userMessage.includes('email')) return responses['contacto'];
-      if (userMessage.includes('diagnóstico') || userMessage.includes('diagnostico')) return responses['diagnóstico'];
-      if (userMessage.includes('sello') || userMessage.includes('certificación')) return responses['sello'];
-      if (userMessage.includes('agendar') || userMessage.includes('cita') || userMessage.includes('reunión')) return responses['agendar'];
-      if (userMessage.includes('impacto') || userMessage.includes('arbol') || userMessage.includes('co2')) return responses['impacto'];
-      if (userMessage.includes('gracias')) return responses['gracias'];
+      if (userMessage.includes('contacto') || userMessage.includes('email')) {
+        return responses['contacto'];
+      }
+      if (userMessage.includes('diagnóstico') || userMessage.includes('diagnostico')) {
+        return responses['diagnóstico'];
+      }
+      if (userMessage.includes('sello') || userMessage.includes('certificación')) {
+        return responses['sello'];
+      }
+      if (userMessage.includes('agendar') || userMessage.includes('cita') || userMessage.includes('reunión')) {
+        return responses['agendar'];
+      }
+      if (userMessage.includes('impacto') || userMessage.includes('arbol') || userMessage.includes('co2')) {
+        return responses['impacto'];
+      }
+      if (userMessage.includes('gracias')) {
+        return responses['gracias'];
+      }
       
       return responses['default'];
     }
     
-    // Manejar el envío de mensajes
+    // Manejar el envío de mensajes CORREGIDO
     function handleSendMessage() {
       const message = userInput.value.trim();
       if (message) {
@@ -3890,7 +3898,22 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
           hideTypingIndicator();
           const response = botResponse(message);
-          addMessage(response.text, false);
+          
+          // EJECUTAR ACCIÓN DE CALENDLY
+          if (response.action === 'calendly') {
+            addMessage(response.text, false);
+            
+            // AGREGAR BOTÓN CALENDLY
+            const calendlyButton = document.createElement('button');
+            calendlyButton.classList.add('calendly-btn');
+            calendlyButton.innerHTML = '<i class="fas fa-calendar-alt"></i> Abrir Calendly';
+            calendlyButton.onclick = openCalendly;
+            
+            const lastMessage = chatMessages.lastChild;
+            lastMessage.appendChild(calendlyButton);
+          } else {
+            addMessage(response.text, false);
+          }
           
           // Agregar respuestas rápidas si existen
           if (response.quickReplies) {
@@ -3900,8 +3923,16 @@ document.addEventListener('DOMContentLoaded', function() {
             response.quickReplies.forEach(reply => {
               const button = document.createElement('button');
               button.classList.add('quick-reply');
+              
+              // Botón especial para Calendly
+              if (reply.includes('Calendly')) {
+                button.classList.add('calendly');
+                button.onclick = openCalendly;
+              } else {
+                button.dataset.reply = reply.toLowerCase();
+              }
+              
               button.textContent = reply;
-              button.dataset.reply = reply.toLowerCase();
               quickRepliesContainer.appendChild(button);
             });
             
@@ -3927,12 +3958,14 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
-    // Manejar respuestas rápidas
+    // Manejar respuestas rápidas CORREGIDO
     document.addEventListener('click', (e) => {
       if (e.target.classList.contains('quick-reply')) {
         const reply = e.target.dataset.reply;
-        userInput.value = reply;
-        handleSendMessage();
+        if (reply) {
+          userInput.value = reply;
+          handleSendMessage();
+        }
       }
     });
 
