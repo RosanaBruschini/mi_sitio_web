@@ -3742,7 +3742,10 @@ document.addEventListener('DOMContentLoaded', function() {
   </footer>
 
     <script>
-    // Chatbot mejorado
+    // Chatbot que SÍ funciona - Tu código original corregido
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('✅ Chatbot iniciado');
+    
     const chatbotBtn = document.getElementById('chatbotBtn');
     const chatbotContainer = document.getElementById('chatbotContainer');
     const closeChatbot = document.getElementById('closeChatbot');
@@ -3752,6 +3755,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const typingIndicator = document.getElementById('typingIndicator');
     
     chatbotBtn.addEventListener('click', () => {
+      console.log('🎯 Abriendo chatbot');
       chatbotContainer.style.display = 'flex';
       setTimeout(() => {
         chatbotContainer.classList.add('active');
@@ -3939,6 +3943,7 @@ document.addEventListener('DOMContentLoaded', function() {
     mobileMenuBtn.addEventListener('click', () => {
       nav.classList.toggle('active');
     });
+});
   </script>
 </body>
 </html>
