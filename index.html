@@ -3742,41 +3742,66 @@ document.addEventListener('DOMContentLoaded', function() {
   </footer>
 
   <script>
- // Chatbot simple que SÍ funciona
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Página cargada - chatbot iniciando');
+// Chatbot CORREGIDO que SÍ funciona
+console.log('🟢 Script JavaScript CARGADO');
+
+// SOLUCIÓN: Usar window.onload en lugar de DOMContentLoaded
+window.onload = function() {
+    console.log('🟢 Ventana COMPLETAMENTE cargada');
     
     const chatbotBtn = document.getElementById('chatbotBtn');
     const chatbotContainer = document.getElementById('chatbotContainer');
     const closeChatbot = document.getElementById('closeChatbot');
     
-    // Verificar que los elementos existen
+    console.log('🔍 Botón:', chatbotBtn);
+    console.log('🔍 Contenedor:', chatbotContainer);
+    console.log('🔍 Cerrar:', closeChatbot);
+    
     if (!chatbotBtn || !chatbotContainer) {
-        console.error('ERROR: No se encontró el chatbot en la página');
+        console.error('❌ ERROR: Elementos del chatbot no encontrados');
         return;
     }
     
-    console.log('Chatbot encontrado - agregando eventos');
+    console.log('✅ Todos los elementos encontrados');
     
-    // Abrir chatbot
-    chatbotBtn.addEventListener('click', function() {
-        console.log('Botón clickeado - abriendo chatbot');
+    // ABRIR CHATBOT - FORMA CORREGIDA
+    chatbotBtn.onclick = function() {
+        console.log('🎯 CLICK EN BOTÓN - Abriendo chatbot');
         chatbotContainer.style.display = 'flex';
+        // Pequeño delay para la animación
         setTimeout(function() {
             chatbotContainer.classList.add('active');
-        }, 50);
-    });
+            console.log('✅ Chatbot ABIERTO');
+        }, 10);
+    };
     
-    // Cerrar chatbot
-    closeChatbot.addEventListener('click', function() {
-        console.log('Cerrando chatbot');
-        chatbotContainer.classList.remove('active');
-        setTimeout(function() {
-            chatbotContainer.style.display = 'none';
-        }, 300);
-    });
+    // CERRAR CHATBOT
+    if (closeChatbot) {
+        closeChatbot.onclick = function() {
+            console.log('🔒 Cerrando chatbot');
+            chatbotContainer.classList.remove('active');
+            setTimeout(function() {
+                chatbotContainer.style.display = 'none';
+                console.log('✅ Chatbot CERRADO');
+            }, 300);
+        };
+    }
     
-    console.log('Chatbot listo - debería funcionar ahora');
-});
+    console.log('🚀 Chatbot INICIALIZADO - Haz clic en el botón verde');
+};
+
+// BACKUP: También agregar evento directo
+setTimeout(function() {
+    const btn = document.getElementById('chatbotBtn');
+    const container = document.getElementById('chatbotContainer');
+    
+    if (btn && container) {
+        btn.addEventListener('click', function() {
+            console.log('⚡ CLICK DIRECTO (backup)');
+            container.style.display = 'flex';
+            container.classList.add('active');
+        });
+    }
+}, 1000);
 </body>
 </html>
