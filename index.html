@@ -3742,7 +3742,7 @@ document.addEventListener('DOMContentLoaded', function() {
   </footer>
 
     <script>
-    // Chatbot CORREGIDO - Solo UN botón de Calendly
+    // Chatbot CORREGIDO - SOLO UN BOTÓN
 document.addEventListener('DOMContentLoaded', function() {
     console.log('✅ Chatbot con Calendly iniciado');
     
@@ -3755,7 +3755,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const typingIndicator = document.getElementById('typingIndicator');
     
     chatbotBtn.addEventListener('click', () => {
-      console.log('🎯 Abriendo chatbot');
       chatbotContainer.style.display = 'flex';
       setTimeout(() => {
         chatbotContainer.classList.add('active');
@@ -3772,7 +3771,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // FUNCIÓN CALENDLY
     function openCalendly() {
         window.open('https://calendly.com/estudioimpactaverde', '_blank');
-        addMessage('¡Perfecto! He abierto Calendly para que agendes tu cita. ¿Necesitas ayuda con algo más?', false);
     }
     
     // Función para agregar mensajes al chat
@@ -3796,121 +3794,81 @@ document.addEventListener('DOMContentLoaded', function() {
       typingIndicator.style.display = 'none';
     }
     
-    // RESPUESTAS DEL BOT CORREGIDAS
+    // RESPUESTAS DEL BOT - SIMPLIFICADAS
     function botResponse(userMessage) {
-      const responses = {
-        'hola': {
-          text: '¡Hola! Soy EcoAsistente de Impacta Verde. ¿En qué puedo ayudarte hoy?',
-          quickReplies: ['Servicios', 'Agendar cita', 'Contacto']
-        },
-        'servicios': {
-          text: 'Ofrecemos los siguientes servicios:\n\n' +
-                '• Gestión de Marca Sustentable\n' +
-                '• Optimización de Procesos\n' +
-                '• Gestión Circular\n' +
-                '• Comunicación Integral\n\n' +
-                '¿Te gustaría conocer más sobre alguno en particular?',
-          quickReplies: ['Marca Sustentable', 'Optimización', 'Circular', 'Comunicación', 'Agendar cita']
-        },
-        'contacto': {
-          text: 'Puedes contactarnos de las siguientes formas:\n\n' +
-                '📧 Email: impactaverde@gmail.com\n' +
-                '📍 Dirección: Buenos Aires, Argentina\n\n' +
-                'También puedes completar el formulario de contacto en nuestra página.',
-          quickReplies: ['Servicios', 'Agendar cita', 'Volver al inicio']
-        },
-        'agendar': {
-          text: '¡Perfecto! Puedes agendar una cita directamente en Calendly usando el botón de abajo:',
-          action: 'calendly_only' // SOLO botón grande, NO respuestas rápidas
-        },
-        'diagnóstico': {
-          text: '¡Claro! Puedes solicitar tu diagnóstico gratuito haciendo clic en el botón "Solicitá tu diagnóstico gratuito" en nuestra página principal o visitando la sección de contacto.',
-          quickReplies: ['Agendar cita', 'Servicios', 'Contacto']
-        },
-        'sello': {
-          text: 'Nuestro Sello Digital de Sustentabilidad se obtiene al completar nuestro diagnóstico básico. Este sello certifica tu compromiso ambiental y te ayuda a acceder a beneficios.',
-          quickReplies: ['Agendar cita', 'Servicios', 'Más info']
-        },
-        'gracias': {
-          text: '¡De nada! Estoy aquí para ayudarte. ¿Hay algo más en lo que pueda asistirte?',
-          quickReplies: ['Servicios', 'Agendar cita', 'Contacto']
-        },
-        'impacto': {
-          text: 'En Impacta Verde hemos logrado un impacto positivo equivalente a:\n\n' +
-                '🌳 153 árboles salvados\n' +
-                '☁️ 9.2 toneladas de CO₂ reducidas\n\n' +
-                'Esto gracias al trabajo con más de 15 empresas en 8 sectores diferentes.',
-          quickReplies: ['Agendar cita', 'Servicios', 'Contacto']
-        },
-        'default': {
-          text: 'Gracias por tu mensaje. Un miembro de nuestro equipo te responderá pronto. ¿Hay algo más en lo que pueda ayudarte?',
-          quickReplies: ['Servicios', 'Agendar cita', 'Contacto']
-        }
-      };
-      
       userMessage = userMessage.toLowerCase();
       
-      // CORRECCIÓN: Verificar respuestas en orden de prioridad
       if (userMessage.includes('hola') || userMessage.includes('buenas')) {
-        return responses['hola'];
-      }
-      if (userMessage.includes('servicio') || userMessage === 'servicios') {
-        return responses['servicios'];
-      }
-      if (userMessage.includes('contacto') || userMessage.includes('email')) {
-        return responses['contacto'];
-      }
-      if (userMessage.includes('diagnóstico') || userMessage.includes('diagnostico')) {
-        return responses['diagnóstico'];
-      }
-      if (userMessage.includes('sello') || userMessage.includes('certificación')) {
-        return responses['sello'];
-      }
-      if (userMessage.includes('agendar') || userMessage.includes('cita') || userMessage.includes('reunión')) {
-        return responses['agendar'];
-      }
-      if (userMessage.includes('impacto') || userMessage.includes('arbol') || userMessage.includes('co2')) {
-        return responses['impacto'];
-      }
-      if (userMessage.includes('gracias')) {
-        return responses['gracias'];
+        return {
+          text: '¡Hola! Soy EcoAsistente de Impacta Verde. ¿En qué puedo ayudarte hoy?',
+          quickReplies: ['Servicios', 'Agendar cita', 'Contacto']
+        };
       }
       
-      return responses['default'];
+      if (userMessage.includes('servicio')) {
+        return {
+          text: 'Ofrecemos:\n• Gestión de Marca Sustentable\n• Optimización de Procesos\n• Gestión Circular\n• Comunicación Integral',
+          quickReplies: ['Agendar cita', 'Más información', 'Contacto']
+        };
+      }
+      
+      if (userMessage.includes('contacto')) {
+        return {
+          text: '📧 Email: impactaverde@gmail.com\n📍 Buenos Aires, Argentina',
+          quickReplies: ['Servicios', 'Agendar cita', 'Volver']
+        };
+      }
+      
+      // SOLO PARA AGENDAR - BOTÓN ÚNICO
+      if (userMessage.includes('agendar') || userMessage.includes('cita')) {
+        return {
+          text: '¡Perfecto! Haz clic en el botón para abrir Calendly y agendar tu cita:',
+          action: 'calendly_unique' // SOLO ESTE CREA EL BOTÓN
+        };
+      }
+      
+      return {
+        text: '¿En qué más puedo ayudarte?',
+        quickReplies: ['Servicios', 'Agendar cita', 'Contacto']
+      };
     }
     
-    // Manejar el envío de mensajes CORREGIDO - SOLO UN BOTÓN
+    // MANEJAR MENSAJES - VERSIÓN SIMPLE
     function handleSendMessage() {
       const message = userInput.value.trim();
       if (message) {
         addMessage(message, true);
         userInput.value = '';
         
-        // Simular que el bot está escribiendo
         showTypingIndicator();
         
         setTimeout(() => {
           hideTypingIndicator();
           const response = botResponse(message);
           
-          // SOLO PARA CALENDLY: Mostrar solo el botón grande
-          if (response.action === 'calendly_only') {
+          // SOLO PARA CALENDLY: Crear UN botón
+          if (response.action === 'calendly_unique') {
             addMessage(response.text, false);
             
-            // SOLO UN BOTÓN GRANDE DE CALENDLY
+            // CREAR SOLO UN BOTÓN
+            const calendlyContainer = document.createElement('div');
+            calendlyContainer.style.marginTop = '10px';
+            calendlyContainer.style.textAlign = 'center';
+            
             const calendlyButton = document.createElement('button');
             calendlyButton.classList.add('calendly-btn');
             calendlyButton.innerHTML = '<i class="fas fa-calendar-alt"></i> Abrir Calendly';
             calendlyButton.onclick = openCalendly;
             
+            calendlyContainer.appendChild(calendlyButton);
+            
             const lastMessage = chatMessages.lastChild;
-            lastMessage.appendChild(calendlyButton);
+            lastMessage.appendChild(calendlyContainer);
             
           } else {
-            // RESPUESTA NORMAL (sin Calendly especial)
+            // RESPUESTA NORMAL
             addMessage(response.text, false);
             
-            // Agregar respuestas rápidas si existen
             if (response.quickReplies) {
               const quickRepliesContainer = document.createElement('div');
               quickRepliesContainer.classList.add('quick-replies');
@@ -3918,8 +3876,11 @@ document.addEventListener('DOMContentLoaded', function() {
               response.quickReplies.forEach(reply => {
                 const button = document.createElement('button');
                 button.classList.add('quick-reply');
-                button.dataset.reply = reply.toLowerCase();
                 button.textContent = reply;
+                button.onclick = function() {
+                  userInput.value = reply;
+                  handleSendMessage();
+                };
                 quickRepliesContainer.appendChild(button);
               });
               
@@ -3927,36 +3888,23 @@ document.addEventListener('DOMContentLoaded', function() {
               lastMessage.appendChild(quickRepliesContainer);
             }
           }
-        }, 1500);
+        }, 1000);
       }
     }
     
-    // Enviar mensaje al hacer clic en el botón
+    // EVENTOS SIMPLES
     sendMessage.addEventListener('click', handleSendMessage);
     
-    // Enviar mensaje al presionar Enter
     userInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        handleSendMessage();
-      }
-    });
-    
-    // Manejar respuestas rápidas CORREGIDO
-    document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('quick-reply') && e.target.dataset.reply) {
-        const reply = e.target.dataset.reply;
-        userInput.value = reply;
-        handleSendMessage();
-      }
+      if (e.key === 'Enter') handleSendMessage();
     });
 
-    // Mobile menu functionality
+    // Mobile menu
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const nav = document.querySelector('nav ul');
-    
-    mobileMenuBtn.addEventListener('click', () => {
-      nav.classList.toggle('active');
-    });
+    if (mobileMenuBtn && nav) {
+        mobileMenuBtn.addEventListener('click', () => nav.classList.toggle('active'));
+    }
 });
   </script>
 </body>
