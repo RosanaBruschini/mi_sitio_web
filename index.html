@@ -3741,67 +3741,204 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </footer>
 
-  <script>
-// Chatbot CORREGIDO que SÍ funciona
-console.log('🟢 Script JavaScript CARGADO');
-
-// SOLUCIÓN: Usar window.onload en lugar de DOMContentLoaded
-window.onload = function() {
-    console.log('🟢 Ventana COMPLETAMENTE cargada');
-    
+    <script>
+    // Chatbot mejorado
     const chatbotBtn = document.getElementById('chatbotBtn');
     const chatbotContainer = document.getElementById('chatbotContainer');
     const closeChatbot = document.getElementById('closeChatbot');
+    const chatMessages = document.getElementById('chatMessages');
+    const userInput = document.getElementById('userInput');
+    const sendMessage = document.getElementById('sendMessage');
+    const typingIndicator = document.getElementById('typingIndicator');
     
-    console.log('🔍 Botón:', chatbotBtn);
-    console.log('🔍 Contenedor:', chatbotContainer);
-    console.log('🔍 Cerrar:', closeChatbot);
+    chatbotBtn.addEventListener('click', () => {
+      chatbotContainer.style.display = 'flex';
+      setTimeout(() => {
+        chatbotContainer.classList.add('active');
+      }, 10);
+    });
     
-    if (!chatbotBtn || !chatbotContainer) {
-        console.error('❌ ERROR: Elementos del chatbot no encontrados');
-        return;
+    closeChatbot.addEventListener('click', () => {
+      chatbotContainer.classList.remove('active');
+      setTimeout(() => {
+        chatbotContainer.style.display = 'none';
+      }, 300);
+    });
+    
+    // Función para agregar mensajes al chat
+    function addMessage(text, isUser) {
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('message');
+      messageDiv.classList.add(isUser ? 'user' : 'bot');
+      messageDiv.textContent = text;
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
     }
     
-    console.log('✅ Todos los elementos encontrados');
-    
-    // ABRIR CHATBOT - FORMA CORREGIDA
-    chatbotBtn.onclick = function() {
-        console.log('🎯 CLICK EN BOTÓN - Abriendo chatbot');
-        chatbotContainer.style.display = 'flex';
-        // Pequeño delay para la animación
-        setTimeout(function() {
-            chatbotContainer.classList.add('active');
-            console.log('✅ Chatbot ABIERTO');
-        }, 10);
-    };
-    
-    // CERRAR CHATBOT
-    if (closeChatbot) {
-        closeChatbot.onclick = function() {
-            console.log('🔒 Cerrando chatbot');
-            chatbotContainer.classList.remove('active');
-            setTimeout(function() {
-                chatbotContainer.style.display = 'none';
-                console.log('✅ Chatbot CERRADO');
-            }, 300);
-        };
+    // Función para mostrar el indicador de "escribiendo"
+    function showTypingIndicator() {
+      typingIndicator.style.display = 'flex';
+      chatMessages.scrollTop = chatMessages.scrollHeight;
     }
     
-    console.log('🚀 Chatbot INICIALIZADO - Haz clic en el botón verde');
-};
+    // Función para ocultar el indicador de "escribiendo"
+    function hideTypingIndicator() {
+      typingIndicator.style.display = 'none';
+    }
+    
+    // Estados de agendamiento
+    let appointmentStep = 0;
+    let appointmentDate = null;
+    let appointmentTime = null;
+    
+    // Respuestas del bot
+    function botResponse(userMessage) {
+      const responses = {
+        'hola': {
+          text: '¡Hola! Soy EcoAsistente de Impacta Verde. ¿En qué puedo ayudarte hoy?',
+          quickReplies: ['servicios', 'agendar', 'contacto']
+        },
+        'servicios': {
+          text: 'Ofrecemos los siguientes servicios:\n\n' +
+                '• Gestión de Marca Sustentable\n' +
+                '• Optimización de Procesos\n' +
+                '• Gestión Circular\n' +
+                '• Comunicación Integral\n\n' +
+                '¿Te gustaría conocer más sobre alguno en particular?',
+          quickReplies: ['Marca Sustentable', 'Rediseño', 'Circular', 'Comunicación']
+        },
+        'contacto': {
+          text: 'Puedes contactarnos de las siguientes formas:\n\n' +
+                '📧 Email: impactaverde@gmail.com\n' +
+                '📍 Dirección: Buenos Aires, Argentina\n\n' +
+                'También puedes completar el formulario de contacto en nuestra página.'
+        },
+        'diagnóstico': {
+          text: '¡Claro! Puedes solicitar tu diagnóstico gratuito haciendo clic en el botón "Solicitá tu diagnóstico gratuito" en nuestra página principal o visitando la sección de contacto.'
+        },
+        'sello': {
+          text: 'Nuestro Sello Digital de Sustentabilidad se obtiene al completar nuestro diagnóstico básico. Este sello certifica tu compromiso ambiental y te ayuda a acceder a beneficios.'
+        },
+        'agendar': {
+          text: '¡Perfecto! Para agendar una cita, por favor dime la fecha que te vendría bien (ejemplo: 15/07/2024).',
+          step: 1
+        },
+        'gracias': {
+          text: '¡De nada! Estoy aquí para ayudarte. ¿Hay algo más en lo que pueda asistirte?'
+        },
+        'impacto': {
+          text: 'En Impacta Verde hemos logrado un impacto positivo equivalente a:\n\n' +
+                '🌳 153 árboles salvados\n' +
+                '☁️ 9.2 toneladas de CO₂ reducidas\n\n' +
+                'Esto gracias al trabajo con más de 15 empresas en 8 sectores diferentes.'
+        },
+        'default': {
+          text: 'Gracias por tu mensaje. Un miembro de nuestro equipo te responderá pronto. ¿Hay algo más en lo que pueda ayudarte?'
+        }
+      };
+      
+      userMessage = userMessage.toLowerCase();
+      
+      // Manejo de agendamiento de citas
+      if (appointmentStep === 1) {
+        if (userMessage.match(/\d{1,2}\/\d{1,2}\/\d{4}/)) {
+          appointmentDate = userMessage;
+          appointmentStep = 2;
+          return { text: 'Fecha seleccionada: ' + appointmentDate + '. Ahora, ¿a qué hora te vendría bien? (Por ejemplo: 10:00, 14:30, etc.)' };
+        } else {
+          return { text: 'Por favor, ingresa la fecha en formato DD/MM/AAAA. Por ejemplo: 20/07/2024' };
+        }
+      }
+      
+      if (appointmentStep === 2) {
+        if (userMessage.match(/\d{1,2}:\d{2}/)) {
+          appointmentTime = userMessage;
+          appointmentStep = 0;
+          return { text: '¡Perfecto! Tu cita ha sido agendada para el ' + appointmentDate + ' a las ' + appointmentTime + '. Te enviaremos un correo de confirmación. ¿Hay algo más en lo que pueda ayudarte?' };
+        } else {
+          return { text: 'Por favor, ingresa la hora en formato HH:MM (por ejemplo: 14:30).' };
+        }
+      }
+      
+      // Respuestas directas
+      if (userMessage.includes('hola') || userMessage.includes('buenas')) return responses['hola'];
+      if (userMessage.includes('servicio') || userMessage.includes('servicios')) return responses['servicios'];
+      if (userMessage.includes('contact') || userMessage.includes('contacto') || userMessage.includes('email')) return responses['contacto'];
+      if (userMessage.includes('diagnóstico') || userMessage.includes('diagnostico')) return responses['diagnóstico'];
+      if (userMessage.includes('sello') || userMessage.includes('certificación')) return responses['sello'];
+      if (userMessage.includes('agendar') || userMessage.includes('cita') || userMessage.includes('reunión')) return responses['agendar'];
+      if (userMessage.includes('impacto') || userMessage.includes('arbol') || userMessage.includes('co2')) return responses['impacto'];
+      if (userMessage.includes('gracias')) return responses['gracias'];
+      
+      return responses['default'];
+    }
+    
+    // Manejar el envío de mensajes
+    function handleSendMessage() {
+      const message = userInput.value.trim();
+      if (message) {
+        addMessage(message, true);
+        userInput.value = '';
+        
+        // Simular que el bot está escribiendo
+        showTypingIndicator();
+        
+        setTimeout(() => {
+          hideTypingIndicator();
+          const response = botResponse(message);
+          addMessage(response.text, false);
+          
+          // Agregar respuestas rápidas si existen
+          if (response.quickReplies) {
+            const quickRepliesContainer = document.createElement('div');
+            quickRepliesContainer.classList.add('quick-replies');
+            
+            response.quickReplies.forEach(reply => {
+              const button = document.createElement('button');
+              button.classList.add('quick-reply');
+              button.textContent = reply;
+              button.dataset.reply = reply.toLowerCase();
+              quickRepliesContainer.appendChild(button);
+            });
+            
+            const lastMessage = chatMessages.lastChild;
+            lastMessage.appendChild(quickRepliesContainer);
+          }
+          
+          // Actualizar el paso de agendamiento si es necesario
+          if (response.step) {
+            appointmentStep = response.step;
+          }
+        }, 1500);
+      }
+    }
+    
+    // Enviar mensaje al hacer clic en el botón
+    sendMessage.addEventListener('click', handleSendMessage);
+    
+    // Enviar mensaje al presionar Enter
+    userInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        handleSendMessage();
+      }
+    });
+    
+    // Manejar respuestas rápidas
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('quick-reply')) {
+        const reply = e.target.dataset.reply;
+        userInput.value = reply;
+        handleSendMessage();
+      }
+    });
 
-// BACKUP: También agregar evento directo
-setTimeout(function() {
-    const btn = document.getElementById('chatbotBtn');
-    const container = document.getElementById('chatbotContainer');
+    // Mobile menu functionality
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const nav = document.querySelector('nav ul');
     
-    if (btn && container) {
-        btn.addEventListener('click', function() {
-            console.log('⚡ CLICK DIRECTO (backup)');
-            container.style.display = 'flex';
-            container.classList.add('active');
-        });
-    }
-}, 1000);
+    mobileMenuBtn.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
