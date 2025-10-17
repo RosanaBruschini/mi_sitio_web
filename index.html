@@ -3742,247 +3742,256 @@ document.addEventListener('DOMContentLoaded', function() {
   </footer>
 
   <script>
-    // Chatbot mejorado con Calendly
-const chatbotBtn = document.getElementById('chatbotBtn');
-const chatbotContainer = document.getElementById('chatbotContainer');
-const closeChatbot = document.getElementById('closeChatbot');
-const chatMessages = document.getElementById('chatMessages');
-const userInput = document.getElementById('userInput');
-const sendMessage = document.getElementById('sendMessage');
-const typingIndicator = document.getElementById('typingIndicator');
+  // Chatbot mejorado con Calendly - VERSIÓN CORREGIDA
+document.addEventListener('DOMContentLoaded', function() {
+    const chatbotBtn = document.getElementById('chatbotBtn');
+    const chatbotContainer = document.getElementById('chatbotContainer');
+    const closeChatbot = document.getElementById('closeChatbot');
+    const chatMessages = document.getElementById('chatMessages');
+    const userInput = document.getElementById('userInput');
+    const sendMessage = document.getElementById('sendMessage');
+    const typingIndicator = document.getElementById('typingIndicator');
 
-chatbotBtn.addEventListener('click', () => {
-  chatbotContainer.style.display = 'flex';
-  setTimeout(() => {
-    chatbotContainer.classList.add('active');
-  }, 10);
-});
-
-closeChatbot.addEventListener('click', () => {
-  chatbotContainer.classList.remove('active');
-  setTimeout(() => {
-    chatbotContainer.style.display = 'none';
-  }, 300);
-});
-
-// Función para agregar mensajes al chat
-function addMessage(text, isUser) {
-  const messageDiv = document.createElement('div');
-  messageDiv.classList.add('message');
-  messageDiv.classList.add(isUser ? 'user' : 'bot');
-  
-  // Si el mensaje contiene saltos de línea, los convertimos en elementos <br>
-  const formattedText = text.replace(/\n/g, '<br>');
-  messageDiv.innerHTML = formattedText;
-  
-  chatMessages.appendChild(messageDiv);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-// Función para mostrar el indicador de "escribiendo"
-function showTypingIndicator() {
-  typingIndicator.style.display = 'flex';
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-// Función para ocultar el indicador de "escribiendo"
-function hideTypingIndicator() {
-  typingIndicator.style.display = 'none';
-}
-
-// FUNCIÓN CLAVE PARA CALENDLY
-function openCalendly() {
-  window.open('https://calendly.com/estudioimpactaverde', '_blank');
-  return '¡Perfecto! He abierto Calendly para que puedas agendar tu cita. ¿Necesitas ayuda con algo más?';
-}
-
-// Estados de agendamiento
-let appointmentStep = 0;
-
-// Respuestas del bot con Calendly integrado
-function botResponse(userMessage) {
-  const responses = {
-    'hola': {
-      text: '¡Hola! Soy EcoAsistente de Impacta Verde. ¿En qué puedo ayudarte hoy?',
-      quickReplies: ['servicios', 'agendar cita', 'contacto']
-    },
-    'servicios': {
-      text: 'Ofrecemos los siguientes servicios:\n\n' +
-            '• Gestión de Marca Sustentable\n' +
-            '• Optimización de Procesos\n' +
-            '• Gestión Circular\n' +
-            '• Comunicación Integral\n\n' +
-            '¿Te gustaría conocer más sobre alguno en particular?',
-      quickReplies: ['Marca Sustentable', 'Optimización', 'Circular', 'Comunicación']
-    },
-    'contacto': {
-      text: 'Puedes contactarnos de las siguientes formas:\n\n' +
-            '📧 Email: impactaverde@gmail.com\n' +
-            '📍 Dirección: Buenos Aires, Argentina\n\n' +
-            'También puedes completar el formulario de contacto en nuestra página.'
-    },
-    'agendar cita': {
-      text: '¡Perfecto! Puedes agendar una cita directamente en nuestro Calendly. ¿Te gustaría abrir el calendario ahora?',
-      quickReplies: ['Abrir Calendly', 'Más información'],
-      action: 'calendly_prompt'
-    },
-    'abrir calendly': {
-      text: 'Abriendo Calendly...',
-      action: 'openCalendly'
-    },
-    'diagnóstico': {
-      text: '¡Claro! Puedes solicitar tu diagnóstico gratuito haciendo clic en el botón "Solicitá tu diagnóstico gratuito" en nuestra página principal o visitando la sección de contacto.'
-    },
-    'sello': {
-      text: 'Nuestro Sello Digital de Sustentabilidad se obtiene al completar nuestro diagnóstico básico. Este sello certifica tu compromiso ambiental y te ayuda a acceder a beneficios.'
-    },
-    'gracias': {
-      text: '¡De nada! Estoy aquí para ayudarte. ¿Hay algo más en lo que pueda asistirte?'
-    },
-    'impacto': {
-      text: 'En Impacta Verde hemos logrado un impacto positivo equivalente a:\n\n' +
-            '🌳 153 árboles salvados\n' +
-            '☁️ 9.2 toneladas de CO₂ reducidas\n\n' +
-            'Esto gracias al trabajo con más de 15 empresas en 8 sectores diferentes.'
-    },
-    'default': {
-      text: 'Gracias por tu mensaje. Un miembro de nuestro equipo te responderá pronto. ¿Hay algo más en lo que pueda ayudarte?'
+    // Verificar que todos los elementos existen
+    if (!chatbotBtn || !chatbotContainer) {
+        console.error('No se encontraron los elementos del chatbot');
+        return;
     }
-  };
-  
-  userMessage = userMessage.toLowerCase();
-  
-  // Respuestas directas
-  if (userMessage.includes('hola') || userMessage.includes('buenas')) return responses['hola'];
-  if (userMessage.includes('servicio') || userMessage.includes('servicios')) return responses['servicios'];
-  if (userMessage.includes('contact') || userMessage.includes('contacto') || userMessage.includes('email')) return responses['contacto'];
-  if (userMessage.includes('agendar') || userMessage.includes('cita') || userMessage.includes('reunión') || userMessage.includes('calendly')) return responses['agendar cita'];
-  if (userMessage.includes('abrir calendly') || userMessage.includes('abrir cal') || userMessage.includes('calendario')) return responses['abrir calendly'];
-  if (userMessage.includes('diagnóstico') || userMessage.includes('diagnostico')) return responses['diagnóstico'];
-  if (userMessage.includes('sello') || userMessage.includes('certificación')) return responses['sello'];
-  if (userMessage.includes('impacto') || userMessage.includes('arbol') || userMessage.includes('co2')) return responses['impacto'];
-  if (userMessage.includes('gracias')) return responses['gracias'];
-  
-  return responses['default'];
-}
 
-// Manejar el envío de mensajes
-function handleSendMessage() {
-  const message = userInput.value.trim();
-  if (message) {
-    addMessage(message, true);
-    userInput.value = '';
-    
-    // Simular que el bot está escribiendo
-    showTypingIndicator();
-    
-    setTimeout(() => {
-      hideTypingIndicator();
-      const response = botResponse(message);
-      
-      // Ejecutar acción si existe
-      if (response.action === 'openCalendly') {
-        const calendlyMessage = openCalendly();
-        addMessage(calendlyMessage, false);
-      } else if (response.action === 'calendly_prompt') {
-        addMessage(response.text, false);
-        
-        // Agregar botón especial de Calendly
-        const calendlyButton = document.createElement('button');
-        calendlyButton.classList.add('calendly-btn');
-        calendlyButton.innerHTML = '<i class="fas fa-calendar-alt"></i> Abrir Calendly';
-        calendlyButton.onclick = openCalendly;
-        
-        const lastMessage = chatMessages.lastChild;
-        lastMessage.appendChild(calendlyButton);
-        
-        // También agregar respuestas rápidas
-        if (response.quickReplies) {
-          const quickRepliesContainer = document.createElement('div');
-          quickRepliesContainer.classList.add('quick-replies');
-          
-          response.quickReplies.forEach(reply => {
-            const button = document.createElement('button');
-            button.classList.add('quick-reply');
-            
-            // Añadir clase especial para Calendly
-            if (reply.toLowerCase().includes('calendly')) {
-              button.classList.add('calendly');
-            }
-            
-            button.textContent = reply;
-            button.dataset.reply = reply.toLowerCase();
-            quickRepliesContainer.appendChild(button);
-          });
-          
-          lastMessage.appendChild(quickRepliesContainer);
-        }
-      } else {
-        addMessage(response.text, false);
-        
-        // Agregar respuestas rápidas si existen
-        if (response.quickReplies) {
-          const quickRepliesContainer = document.createElement('div');
-          quickRepliesContainer.classList.add('quick-replies');
-          
-          response.quickReplies.forEach(reply => {
-            const button = document.createElement('button');
-            button.classList.add('quick-reply');
-            
-            // Añadir clase especial para Calendly
-            if (reply.toLowerCase().includes('calendly')) {
-              button.classList.add('calendly');
-            }
-            
-            button.textContent = reply;
-            button.dataset.reply = reply.toLowerCase();
-            quickRepliesContainer.appendChild(button);
-          });
-          
-          const lastMessage = chatMessages.lastChild;
-          lastMessage.appendChild(quickRepliesContainer);
-        }
-      }
-      
-      // Actualizar el paso de agendamiento si es necesario
-      if (response.step) {
-        appointmentStep = response.step;
-      }
-    }, 1500);
-  }
-}
+    console.log('Chatbot inicializado correctamente');
 
-// Enviar mensaje al hacer clic en el botón
-sendMessage.addEventListener('click', handleSendMessage);
+    chatbotBtn.addEventListener('click', () => {
+        console.log('Abriendo chatbot');
+        chatbotContainer.style.display = 'flex';
+        setTimeout(() => {
+            chatbotContainer.classList.add('active');
+        }, 10);
+    });
 
-// Enviar mensaje al presionar Enter
-userInput.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') {
-    handleSendMessage();
-  }
-});
+    closeChatbot.addEventListener('click', () => {
+        console.log('Cerrando chatbot');
+        chatbotContainer.classList.remove('active');
+        setTimeout(() => {
+            chatbotContainer.style.display = 'none';
+        }, 300);
+    });
 
-// Manejar respuestas rápidas
-document.addEventListener('click', (e) => {
-  if (e.target.classList.contains('quick-reply')) {
-    const reply = e.target.dataset.reply;
-    
-    // Si es Calendly, abrir directamente
-    if (reply.includes('calendly')) {
-      openCalendly();
-    } else {
-      userInput.value = reply;
-      handleSendMessage();
+    // Función para agregar mensajes al chat
+    function addMessage(text, isUser) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        messageDiv.classList.add(isUser ? 'user' : 'bot');
+        
+        const formattedText = text.replace(/\n/g, '<br>');
+        messageDiv.innerHTML = formattedText;
+        
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
     }
-  }
-});
 
-// Mobile menu functionality
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const nav = document.querySelector('nav ul');
+    // Función para mostrar el indicador de "escribiendo"
+    function showTypingIndicator() {
+        if (typingIndicator) {
+            typingIndicator.style.display = 'flex';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    }
 
-mobileMenuBtn.addEventListener('click', () => {
-  nav.classList.toggle('active');
+    // Función para ocultar el indicador de "escribiendo"
+    function hideTypingIndicator() {
+        if (typingIndicator) {
+            typingIndicator.style.display = 'none';
+        }
+    }
+
+    // FUNCIÓN CLAVE PARA CALENDLY
+    function openCalendly() {
+        window.open('https://calendly.com/estudioimpactaverde', '_blank');
+        return '¡Perfecto! He abierto Calendly para que puedas agendar tu cita. ¿Necesitas ayuda con algo más?';
+    }
+
+    // Respuestas del bot con Calendly integrado
+    function botResponse(userMessage) {
+        const responses = {
+            'hola': {
+                text: '¡Hola! Soy EcoAsistente de Impacta Verde. ¿En qué puedo ayudarte hoy?',
+                quickReplies: ['servicios', 'agendar cita', 'contacto']
+            },
+            'servicios': {
+                text: 'Ofrecemos los siguientes servicios:\n\n' +
+                      '• Gestión de Marca Sustentable\n' +
+                      '• Optimización de Procesos\n' +
+                      '• Gestión Circular\n' +
+                      '• Comunicación Integral\n\n' +
+                      '¿Te gustaría conocer más sobre alguno en particular?',
+                quickReplies: ['Marca Sustentable', 'Optimización', 'Circular', 'Comunicación']
+            },
+            'contacto': {
+                text: 'Puedes contactarnos de las siguientes formas:\n\n' +
+                      '📧 Email: impactaverde@gmail.com\n' +
+                      '📍 Dirección: Buenos Aires, Argentina\n\n' +
+                      'También puedes completar el formulario de contacto en nuestra página.'
+            },
+            'agendar cita': {
+                text: '¡Perfecto! Puedes agendar una cita directamente en nuestro Calendly. ¿Te gustaría abrir el calendario ahora?',
+                quickReplies: ['Abrir Calendly', 'Más información'],
+                action: 'calendly_prompt'
+            },
+            'abrir calendly': {
+                text: 'Abriendo Calendly...',
+                action: 'openCalendly'
+            },
+            'diagnóstico': {
+                text: '¡Claro! Puedes solicitar tu diagnóstico gratuito haciendo clic en el botón "Solicitá tu diagnóstico gratuito" en nuestra página principal o visitando la sección de contacto.'
+            },
+            'sello': {
+                text: 'Nuestro Sello Digital de Sustentabilidad se obtiene al completar nuestro diagnóstico básico. Este sello certifica tu compromiso ambiental y te ayuda a acceder a beneficios.'
+            },
+            'gracias': {
+                text: '¡De nada! Estoy aquí para ayudarte. ¿Hay algo más en lo que pueda asistirte?'
+            },
+            'impacto': {
+                text: 'En Impacta Verde hemos logrado un impacto positivo equivalente a:\n\n' +
+                      '🌳 153 árboles salvados\n' +
+                      '☁️ 9.2 toneladas de CO₂ reducidas\n\n' +
+                      'Esto gracias al trabajo con más de 15 empresas en 8 sectores diferentes.'
+            },
+            'default': {
+                text: 'Gracias por tu mensaje. Un miembro de nuestro equipo te responderá pronto. ¿Hay algo más en lo que pueda ayudarte?'
+            }
+        };
+        
+        userMessage = userMessage.toLowerCase();
+        
+        // Respuestas directas
+        if (userMessage.includes('hola') || userMessage.includes('buenas')) return responses['hola'];
+        if (userMessage.includes('servicio') || userMessage.includes('servicios')) return responses['servicios'];
+        if (userMessage.includes('contact') || userMessage.includes('contacto') || userMessage.includes('email')) return responses['contacto'];
+        if (userMessage.includes('agendar') || userMessage.includes('cita') || userMessage.includes('reunión') || userMessage.includes('calendly')) return responses['agendar cita'];
+        if (userMessage.includes('abrir calendly') || userMessage.includes('abrir cal') || userMessage.includes('calendario')) return responses['abrir calendly'];
+        if (userMessage.includes('diagnóstico') || userMessage.includes('diagnostico')) return responses['diagnóstico'];
+        if (userMessage.includes('sello') || userMessage.includes('certificación')) return responses['sello'];
+        if (userMessage.includes('impacto') || userMessage.includes('arbol') || userMessage.includes('co2')) return responses['impacto'];
+        if (userMessage.includes('gracias')) return responses['gracias'];
+        
+        return responses['default'];
+    }
+
+    // Manejar el envío de mensajes
+    function handleSendMessage() {
+        const message = userInput.value.trim();
+        if (message) {
+            addMessage(message, true);
+            userInput.value = '';
+            
+            // Simular que el bot está escribiendo
+            showTypingIndicator();
+            
+            setTimeout(() => {
+                hideTypingIndicator();
+                const response = botResponse(message);
+                
+                // Ejecutar acción si existe
+                if (response.action === 'openCalendly') {
+                    const calendlyMessage = openCalendly();
+                    addMessage(calendlyMessage, false);
+                } else if (response.action === 'calendly_prompt') {
+                    addMessage(response.text, false);
+                    
+                    // Agregar botón especial de Calendly
+                    const calendlyButton = document.createElement('button');
+                    calendlyButton.classList.add('calendly-btn');
+                    calendlyButton.innerHTML = '<i class="fas fa-calendar-alt"></i> Abrir Calendly';
+                    calendlyButton.onclick = openCalendly;
+                    
+                    const lastMessage = chatMessages.lastChild;
+                    lastMessage.appendChild(calendlyButton);
+                    
+                    // También agregar respuestas rápidas
+                    if (response.quickReplies) {
+                        const quickRepliesContainer = document.createElement('div');
+                        quickRepliesContainer.classList.add('quick-replies');
+                        
+                        response.quickReplies.forEach(reply => {
+                            const button = document.createElement('button');
+                            button.classList.add('quick-reply');
+                            
+                            // Añadir clase especial para Calendly
+                            if (reply.toLowerCase().includes('calendly')) {
+                                button.classList.add('calendly');
+                            }
+                            
+                            button.textContent = reply;
+                            button.dataset.reply = reply.toLowerCase();
+                            quickRepliesContainer.appendChild(button);
+                        });
+                        
+                        lastMessage.appendChild(quickRepliesContainer);
+                    }
+                } else {
+                    addMessage(response.text, false);
+                    
+                    // Agregar respuestas rápidas si existen
+                    if (response.quickReplies) {
+                        const quickRepliesContainer = document.createElement('div');
+                        quickRepliesContainer.classList.add('quick-replies');
+                        
+                        response.quickReplies.forEach(reply => {
+                            const button = document.createElement('button');
+                            button.classList.add('quick-reply');
+                            
+                            // Añadir clase especial para Calendly
+                            if (reply.toLowerCase().includes('calendly')) {
+                                button.classList.add('calendly');
+                            }
+                            
+                            button.textContent = reply;
+                            button.dataset.reply = reply.toLowerCase();
+                            quickRepliesContainer.appendChild(button);
+                        });
+                        
+                        const lastMessage = chatMessages.lastChild;
+                        lastMessage.appendChild(quickRepliesContainer);
+                    }
+                }
+            }, 1500);
+        }
+    }
+
+    // Enviar mensaje al hacer clic en el botón
+    sendMessage.addEventListener('click', handleSendMessage);
+
+    // Enviar mensaje al presionar Enter
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            handleSendMessage();
+        }
+    });
+
+    // Manejar respuestas rápidas
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('quick-reply')) {
+            const reply = e.target.dataset.reply;
+            
+            // Si es Calendly, abrir directamente
+            if (reply.includes('calendly')) {
+                openCalendly();
+            } else {
+                userInput.value = reply;
+                handleSendMessage();
+            }
+        }
+    });
+
+    // Mobile menu functionality
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const nav = document.querySelector('nav ul');
+
+    if (mobileMenuBtn && nav) {
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+    }
 });
 </body>
 </html>
