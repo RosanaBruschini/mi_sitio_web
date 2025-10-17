@@ -3742,9 +3742,9 @@ document.addEventListener('DOMContentLoaded', function() {
   </footer>
 
     <script>
-    // Chatbot CORREGIDO - SOLO UN BOTÓN
+    // Chatbot COMPLETO - Todo funciona
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ Chatbot con Calendly iniciado');
+    console.log('✅ Chatbot iniciado');
     
     const chatbotBtn = document.getElementById('chatbotBtn');
     const chatbotContainer = document.getElementById('chatbotContainer');
@@ -3771,6 +3771,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // FUNCIÓN CALENDLY
     function openCalendly() {
         window.open('https://calendly.com/estudioimpactaverde', '_blank');
+        addMessage('¡Perfecto! He abierto Calendly. ¿Necesitas ayuda con algo más?', false);
     }
     
     // Función para agregar mensajes al chat
@@ -3794,7 +3795,7 @@ document.addEventListener('DOMContentLoaded', function() {
       typingIndicator.style.display = 'none';
     }
     
-    // RESPUESTAS DEL BOT - SIMPLIFICADAS
+    // RESPUESTAS DEL BOT
     function botResponse(userMessage) {
       userMessage = userMessage.toLowerCase();
       
@@ -3822,8 +3823,8 @@ document.addEventListener('DOMContentLoaded', function() {
       // SOLO PARA AGENDAR - BOTÓN ÚNICO
       if (userMessage.includes('agendar') || userMessage.includes('cita')) {
         return {
-          text: '¡Perfecto! Haz clic en el botón para abrir Calendly y agendar tu cita:',
-          action: 'calendly_unique' // SOLO ESTE CREA EL BOTÓN
+          text: '¡Perfecto! Haz clic en el botón para abrir Calendly:',
+          action: 'calendly'
         };
       }
       
@@ -3833,7 +3834,7 @@ document.addEventListener('DOMContentLoaded', function() {
       };
     }
     
-    // MANEJAR MENSAJES - VERSIÓN SIMPLE
+    // MANEJAR MENSAJES - CORREGIDO
     function handleSendMessage() {
       const message = userInput.value.trim();
       if (message) {
@@ -3846,27 +3847,21 @@ document.addEventListener('DOMContentLoaded', function() {
           hideTypingIndicator();
           const response = botResponse(message);
           
-          // SOLO PARA CALENDLY: Crear UN botón
-          if (response.action === 'calendly_unique') {
+          // PARA CALENDLY: Solo el botón grande
+          if (response.action === 'calendly') {
             addMessage(response.text, false);
             
-            // CREAR SOLO UN BOTÓN
-            const calendlyContainer = document.createElement('div');
-            calendlyContainer.style.marginTop = '10px';
-            calendlyContainer.style.textAlign = 'center';
-            
+            // SOLO UN BOTÓN GRANDE
             const calendlyButton = document.createElement('button');
             calendlyButton.classList.add('calendly-btn');
             calendlyButton.innerHTML = '<i class="fas fa-calendar-alt"></i> Abrir Calendly';
             calendlyButton.onclick = openCalendly;
             
-            calendlyContainer.appendChild(calendlyButton);
-            
             const lastMessage = chatMessages.lastChild;
-            lastMessage.appendChild(calendlyContainer);
+            lastMessage.appendChild(calendlyButton);
             
           } else {
-            // RESPUESTA NORMAL
+            // RESPUESTA NORMAL con botones que funcionan
             addMessage(response.text, false);
             
             if (response.quickReplies) {
@@ -3877,10 +3872,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const button = document.createElement('button');
                 button.classList.add('quick-reply');
                 button.textContent = reply;
-                button.onclick = function() {
-                  userInput.value = reply;
-                  handleSendMessage();
-                };
+                button.dataset.reply = reply.toLowerCase();
                 quickRepliesContainer.appendChild(button);
               });
               
@@ -3892,11 +3884,22 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
     
-    // EVENTOS SIMPLES
+    // ENVIAR MENSAJE
     sendMessage.addEventListener('click', handleSendMessage);
     
     userInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') handleSendMessage();
+    });
+    
+    // MANEJAR BOTONES RÁPIDOS - ¡ESTO ES LO QUE FALTABA!
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('quick-reply')) {
+        const reply = e.target.dataset.reply;
+        if (reply) {
+          userInput.value = reply;
+          handleSendMessage();
+        }
+      }
     });
 
     // Mobile menu
