@@ -8,6 +8,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #2e7d32;
@@ -24,13 +25,14 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
     }
     
     body {
       color: var(--text-dark);
       line-height: 1.6;
       background-color: #f9f9f9;
+      font-weight: 400;
     }
     
     .container {
@@ -110,7 +112,7 @@
     
     .logo-text {
       font-weight: 700;
-      font-size: 1.8rem; /* Agrandado +5 puntos */
+      font-size: 1.8rem;
     }
     
     .logo-text span:first-child {
@@ -131,33 +133,33 @@
     }
     
     nav ul li a {
-  text-decoration: none;
-  color: var(--text-dark);
-  font-weight: 500;
-  transition: all 0.3s ease;
-  position: relative;
-  font-size: 1.1rem; /* Reducido a tamaño profesional */
-  padding: 8px 0;
-}
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      font-size: 1.1rem;
+      padding: 8px 0;
+    }
 
-nav ul li a:hover {
-  color: var(--primary);
-}
+    nav ul li a:hover {
+      color: var(--primary);
+    }
 
-nav ul li a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--primary);
-  transition: all 0.3s ease;
-}
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: all 0.3s ease;
+    }
 
-nav ul li a:hover::after {
-  width: 100%;
-}
+    nav ul li a:hover::after {
+      width: 100%;
+    }
     
     .mobile-menu-btn {
       display: none;
@@ -168,12 +170,39 @@ nav ul li a:hover::after {
       color: var(--dark);
     }
     
-/* ===== HERO SECTION ===== */
+/* ===== HERO SECTION - TIPOGRAFÍA ESTILO NODUS ===== */
 .hero {
   background: linear-gradient(135deg, #00c853 0%, #00e676 100%);
   padding: 100px 0;
   position: relative;
   overflow: hidden;
+}
+
+/* Tipografía estilo Nodus */
+.hero-text h1 {
+  font-size: 3.5rem;
+  color: #ffffff;
+  margin-bottom: 25px;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.hero-text h1 strong {
+  font-weight: 800; /* Extra bold para palabras clave */
+  color: #ffffff;
+}
+
+.hero-text p {
+  font-size: 1.6rem;
+  color: #e8f5e9;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 40px 0;
+}
+
+.hero-text p strong {
+  font-weight: 700; /* Negrita para palabras clave */
+  color: #ffffff;
 }
 
 /* Círculos de iconos estilo Nodus MEJORADOS */
@@ -271,10 +300,12 @@ nav ul li a:hover::after {
   
   .hero-text h1 {
     font-size: 2.5rem !important;
+    font-weight: 700;
   }
   
   .hero-text p {
     font-size: 1.3rem !important;
+    font-weight: 400;
   }
   
   .hero-graphics div[style*="position: relative"] {
@@ -295,10 +326,12 @@ nav ul li a:hover::after {
 @media (max-width: 480px) {
   .hero-text h1 {
     font-size: 2rem !important;
+    font-weight: 700;
   }
   
   .hero-text p {
     font-size: 1.1rem !important;
+    font-weight: 400;
   }
   
   .hero-graphics div[style*="position: relative"] {
