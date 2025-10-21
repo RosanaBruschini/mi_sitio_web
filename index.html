@@ -188,8 +188,8 @@
 }
 
 .hero-text h1 strong {
-  font-weight: 800; /* Extra bold para palabras clave */
-  color: #ffffff;
+  font-weight: 800 !important; /* Extra bold para palabras clave */
+  color: #ffffff !important;
 }
 
 .hero-text p {
@@ -201,8 +201,8 @@
 }
 
 .hero-text p strong {
-  font-weight: 700; /* Negrita para palabras clave */
-  color: #ffffff;
+  font-weight: 700 !important; /* Negrita para palabras clave */
+  color: #ffffff !important;
 }
 
 /* Círculos de iconos estilo Nodus MEJORADOS */
@@ -572,7 +572,7 @@
 .service-features li {
   font-size: 0.9rem;
   margin-bottom: 10px;
-  padding-left: 30px; /* Espacio suficiente para el check */
+  padding-left: 32px; /* Aumentado de 30px a 32px */
   position: relative;
   color: #2d3748;
   line-height: 1.5;
@@ -582,7 +582,7 @@
 .service-features li i {
   color: var(--primary);
   position: absolute;
-  left: 8px; /* MOVIDO MÁS A LA DERECHA - antes estaba en 0 o 5px */
+  left: 10px; /* Aumentado de 8px a 10px - 2 espacios más a la derecha */
   top: 3px;  /* Alineación vertical perfecta */
   font-size: 0.8rem;
 }
@@ -630,12 +630,12 @@
   }
   
   .service-features li {
-    padding-left: 26px;
+    padding-left: 28px; /* Aumentado de 26px a 28px */
     font-size: 0.85rem;
   }
   
   .service-features li i {
-    left: 6px; /* Ajuste para móviles */
+    left: 8px; /* Aumentado de 6px a 8px - 2 espacios más a la derecha */
     top: 2px;
   }
   
@@ -643,7 +643,6 @@
     max-height: 2000px !important;
   }
 }
-
 /* ===== ANIMACIONES ADICIONALES ===== */
 @keyframes slideDown {
   from {
