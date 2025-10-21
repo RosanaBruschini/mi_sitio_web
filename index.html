@@ -521,7 +521,7 @@ nav ul li a:hover::after {
   transform: translateY(0);
 }
 
-/* CARACTERÍSTICAS DEL SERVICIO - VERSIÓN CORREGIDA */
+/* CARACTERÍSTICAS DEL SERVICIO - CORRECCIÓN DEFINITIVA */
 .service-features h4 {
   font-size: 1.1rem;
   color: #1a202c;
@@ -535,31 +535,23 @@ nav ul li a:hover::after {
   margin: 0 0 20px 0 !important;
 }
 
-/* CORRECCIÓN DEFINITIVA PARA LOS ITEMS */
+/* ITEMS CORREGIDOS - CHECK BIEN POSICIONADO */
 .service-features li {
   font-size: 0.9rem;
-  margin-bottom: 12px;
-  padding-left: 28px !important; /* Espacio amplio forzado */
+  margin-bottom: 10px;
+  padding-left: 30px; /* Espacio suficiente para el check */
   position: relative;
   color: #2d3748;
   line-height: 1.5;
-  min-height: 24px;
-  display: block;
-  align-items: center;
+  min-height: 20px;
 }
 
-.service-features li i.fa-check {
-  color: var(--primary) !important;
-  position: absolute !important;
-  left: 5px !important; /* Más margen izquierdo */
-  top: 4px !important;  /* Mejor alineación vertical */
-  font-size: 0.9rem !important;
-  width: 16px !important;
-  height: 16px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  z-index: 2 !important;
+.service-features li i {
+  color: var(--primary);
+  position: absolute;
+  left: 8px; /* MOVIDO MÁS A LA DERECHA - antes estaba en 0 o 5px */
+  top: 3px;  /* Alineación vertical perfecta */
+  font-size: 0.8rem;
 }
 
 /* CAJAS DE RESULTADO Y CASE STUDY */
@@ -605,15 +597,13 @@ nav ul li a:hover::after {
   }
   
   .service-features li {
-    padding-left: 24px !important;
-    min-height: 22px;
+    padding-left: 26px;
     font-size: 0.85rem;
   }
   
-  .service-features li i.fa-check {
-    left: 3px !important;
-    top: 3px !important;
-    font-size: 0.8rem !important;
+  .service-features li i {
+    left: 6px; /* Ajuste para móviles */
+    top: 2px;
   }
   
   .service-card.active .service-content {
