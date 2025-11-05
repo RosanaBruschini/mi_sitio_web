@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sello Digital de Sostenibilidad – Impacta Verde</title>
+
+<!-- ✅ Favicon igual al de tu sitio -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
 
 <style>
     body {
-        font-family: Arial, sans-serif;
+        font-family: 'Inter', Arial, sans-serif;
         margin: 0;
         padding: 0;
         background: #f4f7f4;
@@ -39,7 +42,7 @@
 
     .titulo {
         font-size: 28px;
-        font-weight: bold;
+        font-weight: 800;
         color: #1F7A3E;
         line-height: 1.1;
     }
@@ -48,7 +51,7 @@
         font-size: 18px;
         color: #287a48;
         margin-top: 4px;
-        font-weight: 500;
+        font-weight: 600;
     }
 
     /* QR */
@@ -64,7 +67,7 @@
         height: 130px;
     }
 
-    /* Bloque principal */
+    /* Sección principal */
     .bloque {
         margin-top: 25px;
         padding: 22px;
@@ -78,6 +81,7 @@
         color: #124d2d;
         font-size: 24px;
         text-transform: uppercase;
+        font-weight: 700;
     }
 
     .fila {
@@ -88,7 +92,7 @@
     }
 
     .etiqueta {
-        font-weight: bold;
+        font-weight: 600;
         color: #124d2d;
     }
 
@@ -104,6 +108,7 @@
     .ods-box h3 {
         margin-top: 0;
         color: #0f5e30;
+        font-weight: 700;
     }
 
     .ods-list span {
@@ -122,7 +127,7 @@
 <body>
 <div class="contenedor">
 
-    <!-- ✅ Cabecera con título -->
+    <!-- ✅ Cabecera -->
     <div class="header">
         <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo.png" alt="Impacta Verde">
         <div>
@@ -137,7 +142,7 @@
         <div style="font-size:14px; color:#444;">Verificación</div>
     </div>
 
-    <!-- ✅ Datos principales -->
+    <!-- ✅ Datos -->
     <div class="bloque">
         <h2>{{nivel}}</h2>
 
@@ -163,3 +168,4 @@
 </div>
 </body>
 </html>
+
