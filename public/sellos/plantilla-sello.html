@@ -1,1 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sello Digital de Sostenibilidad – Impacta Verde</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f4f7f4;
+        color: #1d1d1d;
+    }
+
+    .contenedor {
+        max-width: 900px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 14px;
+        border: 4px solid #1F7A3E;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Cabecera */
+    .header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 25px;
+    }
+
+    .header img {
+        height: 55px;
+    }
+
+    .titulo {
+        font-size: 26px;
+        font-weight: bold;
+        color: #1F7A3E;
+    }
+
+    /* Datos del sello */
+    .bloque {
+        margin-top: 25px;
+        padding: 22px;
+        border-radius: 10px;
+        border: 2px solid #D8EEDB;
+        background: #F9FFF9;
+    }
+
+    .bloque h2 {
+        margin: 0 0 15px 0;
+        color: #124d2d;
+        font-size: 22px;
+    }
+
+    .fila {
+        display: flex;
+        justify-content: space-between;
+        padding: 6px 0;
+        font-size: 18px;
+    }
+
+    .etiqueta {
+        font-weight: bold;
+        color: #124d2d;
+    }
+
+    /* QR */
+    .qr {
+        float: right;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .qr img {
+        width: 130px;
+        height: 130px;
+    }
+
+    /* ODS */
+    .ods-box {
+        margin-top: 25px;
+        padding: 15px;
+        border-radius: 10px;
+        border: 2px solid #D8EEDB;
+        background: #F3FFF3;
+    }
+
+    .ods-box h3 {
+        margin-top: 0;
+        color: #0f5e30;
+    }
+
+    .ods-list span {
+        display: inline-block;
+        padding: 6px 14px;
+        margin: 6px;
+        background: #1F7A3E;
+        color: white;
+        border-radius: 6px;
+        font-size: 16px;
+    }
+
+</style>
+</head>
+
+<body>
+<div class="contenedor">
+
+    <!-- ✅ Cabecera con logo -->
+    <div class="header">
+        <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo.png" alt="Impacta Verde">
+        <div class="titulo">Sello Digital de Sostenibilidad</div>
+    </div>
+
+    <!-- ✅ QR dinámico -->
+    <div class="qr">
+        <img src="{{qr_url}}" alt="Código QR">
+        <div style="font-size:14px; color:#444;">Verificación</div>
+    </div>
+
+    <!-- ✅ Datos principales -->
+    <div class="bloque">
+        <h2>{{nivel}}</h2>
+
+        <div class="fila"><span class="etiqueta">Empresa:</span> {{empresa}}</div>
+        <div class="fila"><span class="etiqueta">Año:</span> {{anio}}</div>
+        <div class="fila"><span class="etiqueta">Tipo de medición:</span> {{tipo}}</div>
+        <div class="fila"><span class="etiqueta">Puntaje:</span> {{puntaje}}%</div>
+        <div class="fila"><span class="etiqueta">CH₄ evitado:</span> {{ch4}} kg</div>
+        <div class="fila"><span class="etiqueta">CO₂e equivalente:</span> {{co2e}} kg</div>
+        <div class="fila"><span class="etiqueta">N° de Sello:</span> {{num_sello}}</div>
+        <div class="fila"><span class="etiqueta">Emitido:</span> {{fecha_emision}}</div>
+        <div class="fila"><span class="etiqueta">Vence:</span> {{fecha_vencimiento}}</div>
+    </div>
+
+    <!-- ✅ ODS -->
+    <div class="ods-box">
+        <h3>ODS con los que contribuye</h3>
+        <div class="ods-list">
+            {{ods}}
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
 
