@@ -1,1 +1,1 @@
-Carpeta de certificados. Este archivo evita que GitHub la elimine.
+
