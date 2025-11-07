@@ -1,0 +1,8 @@
+[build]
+  publish = "public"
+  command = ""
+
+[[redirects]]
+  from = "/sellos/*"
+  to = "/sellos/:splat"
+  status = 200
