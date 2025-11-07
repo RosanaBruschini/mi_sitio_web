@@ -3,6 +3,6 @@
 
 [[redirects]]
   from = "/sellos/*"
-  to = "/sellos/:splat"
+  to = "/public/sellos/:splat"
   status = 200
 
