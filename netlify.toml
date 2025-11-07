@@ -1,10 +1,10 @@
 [build]
-  publish = "."
-  command = "echo 'Building Impacta Verde'"
+  publish = "public"
+  command = ""
 
 [[redirects]]
   from = "/sellos/*"
-  to = "/sellos/:splat"
+  to = "/public/sellos/:splat"
   status = 200
 
 
