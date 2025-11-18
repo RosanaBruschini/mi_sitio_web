@@ -28,31 +28,41 @@
         position: relative;
     }
 
-    /* Cabecera */
-    .header {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 25px;
-    }
+   /* Cabecera */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  /* Logo izquierda + texto centrado + QR derecha */
+    margin-bottom: 25px;
+    width: 100%;
+}
 
-    .header img {
+.header img {
     height: 150px;
 }
 
-    .titulo {
-        font-size: 28px;
-        font-weight: 800;
-        color: #1F7A3E;
-        line-height: 1.1;
-    }
+/* Caja central del texto */
+.header-texto {
+    text-align: center;
+    flex: 1; /* Ocupa el espacio del centro */
+}
 
-    .subtitulo {
-        font-size: 18px;
-        color: #287a48;
-        margin-top: 4px;
-        font-weight: 600;
-    }
+/* Título */
+.titulo {
+    font-size: 32px; /* antes 28 → más equilibrado */
+    font-weight: 800;
+    color: #1F7A3E;
+    line-height: 1.1;
+}
+
+/* Subtítulo centrado y +4 puntos */
+.subtitulo {
+    font-size: 22px; /* antes 18 */
+    color: #287a48;
+    margin-top: 4px;
+    font-weight: 600;
+    text-align: center;
+}
 
     /* QR */
     .qr {
@@ -131,7 +141,7 @@
 <div class="header">
     <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" alt="Impacta Verde">
     <div>
-        <div class="titulo">Impacta Verde</div>
+        <div class="titulo"></div>
         <div class="subtitulo">Sello Digital de Sostenibilidad</div>
     </div>
 </div>
