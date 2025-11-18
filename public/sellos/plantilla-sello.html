@@ -28,32 +28,31 @@
         position: relative;
     }
 
-   /* Cabecera limpia */
-.header {
-    position: relative;
-    height: 120px; /* ajustable */
-}
+    /* Cabecera limpia */
+    .header {
+        position: relative;
+        height: 120px;
+    }
 
-/* Logo */
-.logo {
-    height: 150px; /* como te gustaba */
-    position: absolute;
-    left: 20px;
-    top: -10px;
-}
+    /* Logo */
+    .logo {
+        height: 150px;
+        position: absolute;
+        left: 20px;
+        top: -10px;
+    }
 
-/* Título centrado */
-.header-subtitulo {
-    position: absolute;
-    left: 50%;
-    top: 40px; /* bajalo o subilo si querés */
-    transform: translateX(-50%);
-    font-size: 26px;  /* agrandado 4 puntos */
-    font-weight: 700;
-    color: #287a48;
-    text-align: center;
-}
-
+    /* Título centrado */
+    .header-subtitulo {
+        position: absolute;
+        left: 50%;
+        top: 40px;
+        transform: translateX(-50%);
+        font-size: 26px;
+        font-weight: 700;
+        color: #287a48;
+        text-align: center;
+    }
 
     /* QR */
     .qr {
@@ -122,49 +121,54 @@
         font-size: 16px;
     }
 
+    /* Dinámico: oculta filas vacías */
+    .valor:empty { display: none; }
+    .fila:has(.valor:empty) { display: none; }
+
 </style>
 </head>
 
 <body>
 <div class="contenedor">
 
-    <!-- ✅ Cabecera -->
-<div class="header">
+    <!-- ✔ Cabecera -->
+    <div class="header">
+        <img class="logo" 
+             src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png"
+             alt="Impacta Verde">
 
-    <!-- LOGO -->
-    <img class="logo" 
-         src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png"
-         alt="Impacta Verde">
+        <div class="header-subtitulo">Sello Digital de Sostenibilidad</div>
+    </div>
 
-    <!-- TÍTULO CENTRADO -->
-    <div class="header-subtitulo">Sello Digital de Sostenibilidad</div>
-
-</div>
-
-
-
-    <!-- ✅ QR -->
+    <!-- ✔ QR -->
     <div class="qr">
         <img src="{{qr_url}}" alt="Código QR">
         <div style="font-size:14px; color:#444;">Verificación</div>
     </div>
 
-    <!-- ✅ Datos -->
+    <!-- ✔ Datos -->
     <div class="bloque">
         <h2>{{nivel}}</h2>
 
-        <div class="fila"><span class="etiqueta">Empresa:</span> {{empresa}}</div>
-        <div class="fila"><span class="etiqueta">Año:</span> {{anio}}</div>
-        <div class="fila"><span class="etiqueta">Tipo de medición:</span> {{tipo}}</div>
-        <div class="fila"><span class="etiqueta">Puntaje:</span> {{puntaje}}%</div>
-        <div class="fila"><span class="etiqueta">CH₄ evitado:</span> {{ch4}} kg</div>
-        <div class="fila"><span class="etiqueta">CO₂e equivalente:</span> {{co2e}} kg</div>
-        <div class="fila"><span class="etiqueta">N° de Sello:</span> {{num_sello}}</div>
-        <div class="fila"><span class="etiqueta">Emitido:</span> {{fecha_emision}}</div>
-        <div class="fila"><span class="etiqueta">Vence:</span> {{fecha_vencimiento}}</div>
+        <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor">{{empresa}}</span></div>
+        <div class="fila"><span class="etiqueta">Año:</span> <span class="valor">{{anio}}</span></div>
+        <div class="fila"><span class="etiqueta">Tipo de medición:</span> <span class="valor">{{tipo}}</span></div>
+        <div class="fila"><span class="etiqueta">Puntaje:</span> <span class="valor">{{puntaje}}%</span></div>
+
+        <!-- Indicadores dinámicos -->
+        <div class="fila"><span class="etiqueta">CH₄ evitado:</span> <span class="valor">{{ch4}} kg</span></div>
+        <div class="fila"><span class="etiqueta">CO₂e equivalente:</span> <span class="valor">{{co2e}} kg</span></div>
+        <div class="fila"><span class="etiqueta">Empleo responsable:</span> <span class="valor">{{empleo}}%</span></div>
+        <div class="fila"><span class="etiqueta">Reutilización textil:</span> <span class="valor">{{reutil_textil}} kg</span></div>
+        <div class="fila"><span class="etiqueta">Reutilización tecnológica:</span> <span class="valor">{{reutil_tec}} kg</span></div>
+        <div class="fila"><span class="etiqueta">Economía circular:</span> <span class="valor">{{economia_circular}}</span></div>
+
+        <div class="fila"><span class="etiqueta">N° de Sello:</span> <span class="valor">{{num_sello}}</span></div>
+        <div class="fila"><span class="etiqueta">Emitido:</span> <span class="valor">{{fecha_emision}}</span></div>
+        <div class="fila"><span class="etiqueta">Vence:</span> <span class="valor">{{fecha_vencimiento}}</span></div>
     </div>
 
-    <!-- ✅ ODS -->
+    <!-- ✔ ODS -->
     <div class="ods-box">
         <h3>ODS con los que contribuye</h3>
         <div class="ods-list">
@@ -175,4 +179,3 @@
 </div>
 </body>
 </html>
-
