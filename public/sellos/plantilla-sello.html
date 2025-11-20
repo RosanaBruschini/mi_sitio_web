@@ -200,26 +200,46 @@
 <button id="descargar" class="btn-descargar">Descargar PNG del Sello</button>
 
 <!-- ✔ Script para capturar PNG -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
- integrity="sha512-BNa5lHnC2qS0CjV1XDsVxuxMxDPZWS9Vyuk3F7S3w7Dnk3a1JpN96CB2TF+qsSVqS+8CA0nVddO+jrIu2C7R7w=="
- crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <script>
 document.getElementById("descargar").addEventListener("click", function() {
-
+    console.log("Iniciando descarga...");
+    
     const contenedor = document.querySelector(".contenedor");
-
-    html2canvas(contenedor, {
-        scale: 3,
-        backgroundColor: null
-    }).then(canvas => {
-
-        const link = document.createElement("a");
-        link.download = "sello-impacta-verde.png";
-        link.href = canvas.toDataURL();
-        link.click();
-
-    });
+    const boton = this;
+    
+    // Guardar texto original y cambiar temporalmente
+    const textoOriginal = boton.textContent;
+    boton.textContent = "Generando imagen...";
+    boton.disabled = true;
+    
+    // Pequeña pausa para que se vea el cambio
+    setTimeout(() => {
+        html2canvas(contenedor, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff"
+        }).then(canvas => {
+            console.log("Imagen generada correctamente");
+            
+            // Crear y disparar descarga
+            const link = document.createElement("a");
+            link.download = "sello-sostenibilidad-impacta-verde.png";
+            link.href = canvas.toDataURL("image/png");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+        }).catch(error => {
+            console.error("Error:", error);
+            alert("Error al generar la imagen: " + error.message);
+        }).finally(() => {
+            // Restaurar botón
+            boton.textContent = textoOriginal;
+            boton.disabled = false;
+        });
+    }, 100);
 });
 </script>
 
