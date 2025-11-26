@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insignia Mensual - Impacta Verde</title>
+
+<!-- ✅ Favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+
+<style>
+    body {
+        margin: 0;
+        padding: 20px;
+        background: #f4f7f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: 'Inter', Arial, sans-serif;
+    }
+    
+    .insignia {
+        width: 320px;
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border: 3px solid #1F7A3E;
+        position: relative;
+    }
+    
+    .logo {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 15px;
+    }
+    
+    .nivel {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+    
+    .empresa {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 5px 0;
+        color: #1d1d1d;
+    }
+    
+    .periodo {
+        color: #666;
+        margin: 5px 0;
+        font-size: 16px;
+    }
+    
+    .puntaje {
+        font-size: 18px;
+        margin: 10px 0;
+        color: #333;
+    }
+    
+    .badge {
+        background: #1F7A3E;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        margin-top: 15px;
+        display: inline-block;
+    }
+    
+    /* Colores por nivel */
+    .nivel-Inicial { color: #95a5a6; border-color: #95a5a6; }
+    .nivel-Bronce { color: #cd7f32; border-color: #cd7f32; }
+    .nivel-Plata { color: #c0c0c0; border-color: #c0c0c0; }
+    .nivel-Oro { color: #ffd700; border-color: #ffd700; }
+    .nivel-Verde-Plus { color: #1F7A3E; border-color: #1F7A3E; }
+</style>
+</head>
+<body>
+
+<div class="insignia nivel-{{nivel}}">
+    <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" 
+         alt="Impacta Verde" class="logo">
+    
+    <div class="nivel">{{nivel}}</div>
+    <div class="empresa">{{empresa}}</div>
+    <div class="periodo">{{mes}} {{anio}}</div>
+    <div class="puntaje">Puntaje: {{puntaje}}%</div>
+    
+    <div class="badge">Insignia Mensual Sostenibilidad</div>
+</div>
+
+<!-- Script para descargar PNG -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+// Descarga automática al cargar
+window.addEventListener('load', function() {
+    html2canvas(document.querySelector('.insignia'), {
+        scale: 3, // Mayor calidad
+        useCORS: true,
+        backgroundColor: "#ffffff",
+        logging: false
+    }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'insignia-{{empresa}}-{{mes}}-{{anio}}.png';
+        link.href = canvas.toDataURL('image/png');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }).catch(error => {
+        console.error('Error generando imagen:', error);
+    });
+});
+</script>
+
+</body>
+</html>
