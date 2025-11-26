@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sello Digital de Sostenibilidad – Impacta Verde</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+<style>
+    body { font-family: 'Inter', Arial, sans-serif; margin: 0; padding: 0; background: #f4f7f4; color: #1d1d1d; }
+    .contenedor { max-width: 900px; margin: 40px auto; background: #ffffff; padding: 40px; border-radius: 14px; border: 4px solid #1F7A3E; box-shadow: 0 0 20px rgba(0, 0, 0, 0.08); position: relative; }
+    .header { position: relative; height: 120px; }
+    .logo { height: 150px; position: absolute; left: 20px; top: -10px; }
+    .header-subtitulo { position: absolute; left: 50%; top: 40px; transform: translateX(-50%); font-size: 26px; font-weight: 700; color: #287a48; text-align: center; }
+    .qr { position: absolute; top: 40px; right: 40px; text-align: center; }
+    .qr img { width: 130px; height: 130px; }
+    .bloque { margin-top: 25px; padding: 22px; border-radius: 10px; border: 2px solid #D8EEDB; background: #F9FFF9; }
+    .bloque h2 { margin: 0 0 15px 0; color: #124d2d; font-size: 24px; text-transform: uppercase; font-weight: 700; }
+    .fila { display: flex; justify-content: space-between; padding: 6px 0; font-size: 18px; }
+    .etiqueta { font-weight: 600; color: #124d2d; }
+    .ods-box { margin-top: 25px; padding: 15px; border-radius: 10px; border: 2px solid #D8EEDB; background: #F3FFF3; }
+    .ods-box h3 { margin-top: 0; color: #0f5e30; font-weight: 700; }
+    .ods-list span { display: inline-block; padding: 6px 14px; margin: 6px; background: #1F7A3E; color: white; border-radius: 6px; font-size: 16px; }
+    
+    /* OCULTAR FILAS CON VALOR 0 */
+    .fila[data-value="0"] { display: none !important; }
+    
+    .btn-descargar { margin: 30px auto 10px auto; display: block; background: #1F7A3E; color: white; border: none; padding: 14px 26px; font-size: 18px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.3s; }
+    .btn-descargar:hover { background: #155b2a; }
+</style>
+</head>
+<body>
+<div class="contenedor">
+    <div class="header">
+        <img class="logo" src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" alt="Impacta Verde">
+        <div class="header-subtitulo">Sello Digital de Sostenibilidad</div>
+    </div>
+    <div class="qr">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAa4AAAGuAQAAAADgjt83AAAC+klEQVR4nO2cQW6kMBBFX42ReglSDpCjwA3mSHM1OEoOEMksI4H+LGwDPZ1V0jMMcvWi1dg8YatL5arvMia+8Fl/fIUCxxxzzDHHHHPMMccc+w6GJEnj4XKBXpLGdsmNvcovWknScom5OfYsrFhJ/veTlWhspWwRMVvO/X2XmJtjT8dWM+uAqcuXUsxtucPMzh6kY/8LNjfYrxhkw3wTfQQp/rWnOXYFrHlsCgtT994wvX4YUwdG+/6cpzl2cSwou4z2Iy0s0luDRkhf9JIesX87SMfOxWYzM7vzLNPrApREx8zMbHjO0xy7Fpbtor/bzjFaAILo324y2vDHds8l5ubYs7Atw13KZcxrj0aCSmK8HG/2TLg2rPzxMQgIRRGJQYdopNcCfQRX1erEjr4kG0PYpNiQOrJraYso61ZSG7Yp9GFzKBRTabN0n3pHwH1JndgWamjLhDetPm7ifFmP3ErqxI6+JO3epJhVyoFIso28weNWUjeWspjVoF2wYTZjU9o0zg1QBPvzBunYSdjBl5RN4FAS4zY7lBKSLJ4JV4rdxSUlBjl+aeFgQ145UCV20EuSMaR0uESvaSna9BK3kjqxzUogrynpl5TS4azC5l7XS+rEDjVo2SykQ1Jz2BPeb3YrqRZbbS8o0UipQkoepOglqWrtvEE6dg52zHE2YziuM+xtwaPXSrG7qucIsNtLSmrKnnAfgzwuqRM71h1NP4XRvu9F0BjcZHATzKsxdfGEQTp2MnbYE961kbIKkXPiEXC9xLEtJAHAhrn4mMlusqGVNLL6SYtKscezfTG33ckni9eXOLbXCzB1QemEVh/BhtQdBHOzKyeXmptj38W26HVtSMdu2gh97ID5RcDSaBoMICxGG08YpGMnY5+c2lobTT8FUxcwCLJ0kmvwuKRW7NFK5psMDPr4gpg7ox9Xo48d23mLS8zNsWdhn7xzoBTNZ3Ee9iIT38epE3vIcXYVNguwRS9x7bVezPwdjY455phjjjnmmGOOXQb7DTo8+bTGfzY5AAAAAElFTkSuQmCC" alt="Código QR">
+        <div style="font-size:14px; color:#444;">Verificación</div>
+    </div>
+    <div class="bloque">
+        <h2>Oro</h2>
+        <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor">ETIMO</span></div>
+        <div class="fila"><span class="etiqueta">Año:</span> <span class="valor">2025</span></div>
+        <div class="fila"><span class="etiqueta">Tipo de medición:</span> <span class="valor">Solo CH₄</span></div>
+        <div class="fila"><span class="etiqueta">Puntaje:</span> <span class="valor">75.0%</span></div>
+        <div class="fila"><span class="etiqueta">CH₄ evitado:</span> <span class="valor">39.6 kg</span></div>
+        <div class="fila"><span class="etiqueta">CO₂e equivalente:</span> <span class="valor">1108.8 kg</span></div>
+        <div class="fila"><span class="etiqueta">Empleo responsable:</span> <span class="valor">85.0%</span></div>
+        
+        <!-- MÉTRICAS CONDICIONALES - SE OCULTAN SI EL VALOR ES 0 -->
+        <div class="fila" data-value="0"><span class="etiqueta">Reutilización textil:</span> <span class="valor">0 kg</span></div>
+        <div class="fila" data-value="0"><span class="etiqueta">Reutilización tecnológica:</span> <span class="valor">0 kg</span></div>
+        
+        <div class="fila"><span class="etiqueta">Economía circular:</span> <span class="valor">396.0 kg</span></div>
+        <div class="fila"><span class="etiqueta">N° de Sello:</span> <span class="valor">IV-ETI-2025-MEJ</span></div>
+        <div class="fila"><span class="etiqueta">Emitido:</span> <span class="valor">26/11/2025</span></div>
+        <div class="fila"><span class="etiqueta">Vence:</span> <span class="valor">26/11/2026</span></div>
+    </div>
+    <div class="ods-box">
+        <h3>ODS con los que contribuye</h3>
+        <div class="ods-list">
+            8, 9, 12, 13
+        </div>
+    </div>
+</div>
+<button id="descargar" class="btn-descargar">Descargar PNG del Sello</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+document.getElementById("descargar").addEventListener("click", function() {
+    const contenedor = document.querySelector(".contenedor");
+    const boton = this;
+    const textoOriginal = boton.textContent;
+    boton.textContent = "Generando imagen...";
+    boton.disabled = true;
+    setTimeout(() => {
+        html2canvas(contenedor, { scale: 2, useCORS: true, backgroundColor: "#ffffff" })
+        .then(canvas => {
+            const link = document.createElement("a");
+            link.download = "sello-sostenibilidad-impacta-verde.png";
+            link.href = canvas.toDataURL("image/png");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }).finally(() => {
+            boton.textContent = textoOriginal;
+            boton.disabled = false;
+        });
+    }, 100);
+});
+
+// OCULTAR AUTOMÁTICAMENTE FILAS CON VALOR 0
+document.addEventListener('DOMContentLoaded', function() {
+    const filas = document.querySelectorAll('.fila[data-value]');
+    filas.forEach(fila => {
+        if (fila.getAttribute('data-value') === '0') {
+            fila.style.display = 'none';
+        }
+    });
+});
+</script>
+</body>
+</html>
