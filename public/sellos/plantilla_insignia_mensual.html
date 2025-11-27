@@ -12,7 +12,7 @@
     body {
         margin: 0;
         padding: 20px;
-        background: #f4f7f4;
+        background: linear-gradient(135deg, #f4f7f4 0%, #e8f5e8 100%);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -21,75 +21,148 @@
     }
     
     .insignia {
-        width: 320px;
+        width: 350px;
         background: white;
-        border-radius: 15px;
-        padding: 25px;
+        border-radius: 20px;
+        padding: 30px;
         text-align: center;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        border: 3px solid #1F7A3E;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        border: 4px solid #1F7A3E;
         position: relative;
+        overflow: hidden;
+    }
+    
+    .insignia::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 8px;
+        background: linear-gradient(90deg, #1F7A3E, #4CAF50);
     }
     
     .logo {
-        width: 80px;
-        height: 80px;
+        width: 90px;
+        height: 90px;
         margin-bottom: 15px;
+        border-radius: 50%;
+        padding: 8px;
+        background: #f8fff8;
+        border: 2px solid #e8f5e9;
     }
     
-    .nivel {
-        font-size: 24px;
-        font-weight: bold;
+    .qr-code {
+        width: 100px;
+        height: 100px;
+        margin: 10px auto;
+        border: 2px solid #e8f5e9;
+        border-radius: 10px;
+        padding: 5px;
+        background: white;
+    }
+    
+    .proceso-text {
+        font-size: 14px;
+        color: #1F7A3E;
         margin: 10px 0;
-    }
-    
-    .empresa {
-        font-size: 20px;
-        font-weight: bold;
-        margin: 5px 0;
-        color: #1d1d1d;
+        font-style: italic;
+        font-weight: 500;
     }
     
     .periodo {
         color: #666;
-        margin: 5px 0;
-        font-size: 16px;
+        margin: 8px 0;
+        font-size: 18px;
+        font-weight: 600;
     }
     
-    .puntaje {
-        font-size: 18px;
+    .empresa {
+        font-size: 22px;
+        font-weight: bold;
         margin: 10px 0;
+        color: #1d1d1d;
+    }
+    
+    .medicion {
+        font-size: 16px;
+        margin: 12px 0;
         color: #333;
+        font-weight: 600;
+        background: #f8fff8;
+        padding: 10px;
+        border-radius: 10px;
+        border-left: 4px solid #1F7A3E;
     }
     
     .badge {
-        background: #1F7A3E;
+        background: linear-gradient(135deg, #1F7A3E, #4CAF50);
         color: white;
-        padding: 8px 15px;
-        border-radius: 20px;
+        padding: 12px 20px;
+        border-radius: 25px;
         font-size: 14px;
         margin-top: 15px;
         display: inline-block;
+        font-weight: 600;
+        letter-spacing: 0.5px;
     }
     
     /* Colores por nivel */
-    .nivel-Inicial { color: #95a5a6; border-color: #95a5a6; }
-    .nivel-Bronce { color: #cd7f32; border-color: #cd7f32; }
-    .nivel-Plata { color: #c0c0c0; border-color: #c0c0c0; }
-    .nivel-Oro { color: #ffd700; border-color: #ffd700; }
-    .nivel-Verde-Plus { color: #1F7A3E; border-color: #1F7A3E; }
+    .nivel-Inicial { 
+        color: #95a5a6; 
+        border-color: #95a5a6; 
+    }
+    .nivel-Bronce { 
+        color: #cd7f32; 
+        border-color: #cd7f32; 
+    }
+    .nivel-Plata { 
+        color: #c0c0c0; 
+        border-color: #c0c0c0; 
+    }
+    .nivel-Oro { 
+        color: #ffd700; 
+        border-color: #ffd700; 
+        background: linear-gradient(135deg, #fff9e6, #fff);
+    }
+    .nivel-Verde-Plus { 
+        color: #1F7A3E; 
+        border-color: #1F7A3E; 
+        background: linear-gradient(135deg, #f0fff0, #fff);
+    }
 </style>
 </head>
 <body>
 
 <div class="insignia nivel-{{nivel}}">
+    <!-- Logo -->
     <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" 
          alt="Impacta Verde" class="logo">
     
-    <div class="nivel">{{nivel}}</div>
+    <!-- Texto de proceso -->
+    <div class="proceso-text">
+        Empresa en proceso de recibir el sello anual de sustentabilidad
+    </div>
+    
+    <!-- Periodo -->
+    <div class="periodo">Mes: {{mes}}/{{anio}}</div>
+    
+    <!-- QR -->
+    <img src="{{qr_url}}" alt="Código QR" class="qr-code">
+    
+    <!-- Empresa -->
     <div class="empresa">{{empresa}}</div>
-    <div class="periodo">{{mes}} {{anio}}</div>
-    <div class="puntaje">Puntaje: {{puntaje}}%</div>
+    
+    <!-- Medición lograda -->
+    <div class="medicion">
+        {{medicion_mensual}}
+    </div>
+    
+    <!-- Nivel y puntaje -->
+    <div class="medicion">
+        Nivel: {{nivel}}<br>
+        Puntaje: {{puntaje}}%
+    </div>
     
     <div class="badge">Insignia Mensual Sostenibilidad</div>
 </div>
@@ -99,21 +172,26 @@
 <script>
 // Descarga automática al cargar
 window.addEventListener('load', function() {
-    html2canvas(document.querySelector('.insignia'), {
-        scale: 3, // Mayor calidad
-        useCORS: true,
-        backgroundColor: "#ffffff",
-        logging: false
-    }).then(canvas => {
-        const link = document.createElement('a');
-        link.download = 'insignia-{{empresa}}-{{mes}}-{{anio}}.png';
-        link.href = canvas.toDataURL('image/png');
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }).catch(error => {
-        console.error('Error generando imagen:', error);
-    });
+    setTimeout(function() {
+        html2canvas(document.querySelector('.insignia'), {
+            scale: 3,
+            useCORS: true,
+            backgroundColor: "#ffffff",
+            logging: false,
+            allowTaint: true
+        }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'insignia-{{empresa}}-{{mes}}-{{anio}}.png';
+            link.href = canvas.toDataURL('image/png');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            console.log('✅ Insignia descargada exitosamente');
+        }).catch(error => {
+            console.error('❌ Error generando imagen:', error);
+        });
+    }, 500);
 });
 </script>
 
