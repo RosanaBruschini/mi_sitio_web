@@ -11,11 +11,11 @@
             background: linear-gradient(135deg, #f4f7f4 0%, #e8f5e8 100%);
             display: flex; justify-content: center; 
             align-items: center; min-height: 100vh; 
-            font-family: Arial, sans-serif; 
+            font-family: 'Arial', sans-serif; 
         }
         .insignia {
-            width: 380px; background: white; 
-            border-radius: 20px; padding: 25px;
+            width: 400px; background: white; 
+            border-radius: 20px; padding: 30px;
             text-align: center; 
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             border: 4px solid #1F7A3E;
@@ -28,25 +28,58 @@
             height: 8px;
             background: linear-gradient(90deg, #1F7A3E, #4CAF50);
         }
-        .logo { width: 80px; height: 80px; margin-bottom: 15px; }
-        .qr { width: 100px; height: 100px; margin: 15px auto; border: 2px solid #e8f5e9; border-radius: 10px; padding: 5px; background: white; }
-        .empresa { font-size: 22px; font-weight: bold; margin: 10px 0; color: #1d1d1d; }
-        .periodo { color: #666; margin: 8px 0; font-size: 18px; font-weight: 600; }
+        .logo { width: 90px; height: 90px; margin-bottom: 20px; border-radius: 50%; }
+        .qr { width: 120px; height: 120px; margin: 15px auto; border: 2px solid #e8f5e9; border-radius: 12px; padding: 8px; background: white; }
+        .empresa { font-size: 24px; font-weight: bold; margin: 15px 0; color: #1d1d1d; }
+        .periodo { color: #666; margin: 10px 0; font-size: 20px; font-weight: 600; }
         .medicion { 
-            background: #f8fff8; padding: 12px; 
-            border-radius: 10px; margin: 12px 0; 
-            font-size: 15px; border-left: 4px solid #1F7A3E;
+            background: #f8fff8; padding: 15px; 
+            border-radius: 12px; margin: 15px 0; 
+            font-size: 16px; border-left: 4px solid #1F7A3E;
+            line-height: 1.5;
         }
         .nivel {
-            font-size: 20px; font-weight: bold; margin: 10px 0;
-            padding: 8px 15px; border-radius: 20px;
+            font-size: 22px; font-weight: bold; margin: 15px 0;
+            padding: 10px 20px; border-radius: 25px;
             display: inline-block;
+            background: linear-gradient(135deg, #1F7A3E, #4CAF50);
+            color: white;
         }
-        .proceso-text { color: #1F7A3E; font-style: italic; margin: 10px 0; font-size: 13px; }
+        .proceso-text { 
+            color: #1F7A3E; 
+            font-style: italic; 
+            margin: 15px 0; 
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        .equivalencia {
+            font-size: 16px;
+            color: #2e7d32;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+        .btn-descargar {
+            margin: 20px auto 10px auto;
+            display: block;
+            background: #1F7A3E;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-descargar:hover {
+            background: #155b2a;
+            transform: scale(1.05);
+        }
         .badge {
             background: linear-gradient(135deg, #1F7A3E, #4CAF50);
-            color: white; padding: 10px 20px; border-radius: 20px;
-            font-size: 14px; margin-top: 15px; display: inline-block;
+            color: white; padding: 12px 24px; border-radius: 25px;
+            font-size: 14px; margin-top: 20px; display: inline-block;
             font-weight: 600;
         }
     </style>
@@ -54,20 +87,66 @@
 <body>
     <div class="insignia">
         <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" class="logo" alt="Impacta Verde">
+        
         <div class="proceso-text">Empresa en proceso de recibir el sello anual de sustentabilidad</div>
+        
         <div class="periodo"><strong>Mes: Ene/2025</strong></div>
         
         <img src="data:image/png;base64,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" class="qr" alt="Código QR">
         
         <div class="empresa">ETIMO</div>
+        
         <div class="medicion">🌿 CO₂e evitado: 73.8 kg | 👥 Puntaje social: 24.5% | 💻 Puntaje digital: 75.0%</div>
         
         <div class="medicion">
-            <div class="nivel">🌿 Inicial</div><br>
-            <strong>Puntaje:</strong> 27.8%
+            <div class="nivel">🌿 NIVEL: Inicial</div>
+            <div style="font-size: 28px; font-weight: bold; color: #1F7A3E; margin: 10px 0;">
+                27.8%
+            </div>
+            
+            <div class="equivalencia">
+                <strong>Equivale a:</strong><br>
+                <span style="font-size: 24px;">🌳 (Iniciando)</span>
+            </div>
         </div>
+        
+        <button class="btn-descargar" onclick="descargarInsignia()">📥 Descargar Insignia PNG</button>
         
         <div class="badge">Insignia Mensual Sostenibilidad</div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+    function descargarInsignia() {
+        const btn = document.querySelector('.btn-descargar');
+        const textoOriginal = btn.textContent;
+        btn.textContent = "⏳ Generando...";
+        btn.disabled = true;
+        
+        setTimeout(() => {
+            html2canvas(document.querySelector('.insignia'), {
+                scale: 3,
+                useCORS: true,
+                backgroundColor: "#ffffff",
+                logging: false
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'insignia-mensual-ETIMO-Ene-2025.png';
+                link.href = canvas.toDataURL('image/png');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                console.log('✅ Insignia descargada exitosamente');
+            }).catch(error => {
+                console.error('❌ Error generando imagen:', error);
+                alert('Error al generar la imagen: ' + error.message);
+            }).finally(() => {
+                btn.textContent = textoOriginal;
+                btn.disabled = false;
+            });
+        }, 100);
+    }
+    </script>
 </body>
 </html>
