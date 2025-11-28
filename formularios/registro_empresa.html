@@ -176,26 +176,6 @@
             margin-top: 0.5rem;
             font-style: italic;
         }
-        
-        .plan-option {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            border: 2px solid #e0e0e0;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .plan-option:hover {
-            border-color: var(--verde-medio);
-            background: var(--gris);
-        }
-        
-        .plan-option.selected {
-            border-color: var(--verde-oscuro);
-            background: var(--verde-claro);
-        }
     </style>
 </head>
 <body>
@@ -221,7 +201,7 @@
                     
                     <div class="form-group">
                         <label for="empresa">Nombre de la Empresa <span class="required">*</span></label>
-                        <input type="text" id="empresa" name="empresa" required>
+                        <input type="text" id="empresa" name="empresa" required placeholder="Ej: Mi Empresa S.A.">
                     </div>
                     
                     <div class="form-row">
@@ -243,19 +223,19 @@
                         
                         <div class="form-group">
                             <label for="localidad">Localidad <span class="required">*</span></label>
-                            <input type="text" id="localidad" name="localidad" required>
+                            <input type="text" id="localidad" name="localidad" required placeholder="Ej: Buenos Aires">
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
                             <label for="responsable">Responsable <span class="required">*</span></label>
-                            <input type="text" id="responsable" name="responsable" required>
+                            <input type="text" id="responsable" name="responsable" required placeholder="Nombre y apellido">
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Email <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" required placeholder="ejemplo@empresa.com">
                         </div>
                     </div>
                 </div>
@@ -263,25 +243,27 @@
                 <div class="form-section">
                     <h3><span class="section-icon">📊</span> Configuración de Medición</h3>
                     
-                    <div class="form-group">
-                        <label for="tipo_medicion">¿Cuántos indicadores medirá? <span class="required">*</span></label>
-                        <select id="tipo_medicion" name="tipo_medicion" required>
-                            <option value="">Seleccionar cantidad...</option>
-                            <option value="Solo 1">✅ Solo 1 indicador</option>
-                            <option value="De 2 a 4">✅ De 2 a 4 indicadores</option>
-                            <option value="Más de 5">✅ Más de 5 indicadores (Completo)</option>
-                        </select>
-                        <div class="info-text">Elija según la cantidad de indicadores ambientales y sociales que planea reportar mensualmente</div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="plan">Frecuencia de reporte <span class="required">*</span></label>
-                        <select id="plan" name="plan" required>
-                            <option value="">Seleccionar frecuencia...</option>
-                            <option value="Mensual">📅 Mensual</option>
-                            <option value="Trimestral">📊 Trimestral</option>
-                            <option value="Anual">🎯 Anual</option>
-                        </select>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tipo_medicion">Tipo de medición <span class="required">*</span></label>
+                            <select id="tipo_medicion" name="tipo_medicion" required>
+                                <option value="">Seleccionar tipo...</option>
+                                <option value="Solo 1">✅ Solo 1 indicador</option>
+                                <option value="De 2 a 4">✅ De 2 a 4 indicadores</option>
+                                <option value="Más de 5">✅ Más de 5 indicadores</option>
+                            </select>
+                            <div class="info-text">Cantidad de indicadores que reportará mensualmente</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="plan">Plan <span class="required">*</span></label>
+                            <select id="plan" name="plan" required>
+                                <option value="">Seleccionar plan...</option>
+                                <option value="Mensual">Mensual</option>
+                                <option value="Anual">Anual</option>
+                            </select>
+                            <div class="info-text">Frecuencia de pago del servicio</div>
+                        </div>
                     </div>
                     
                     <div class="form-group">
