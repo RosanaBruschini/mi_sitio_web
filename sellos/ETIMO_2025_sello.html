@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sello Digital de Sostenibilidad – Impacta Verde</title>
+<style>
+    body {
+        font-family: 'Inter', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f4f7f4;
+        color: #1d1d1d;
+    }
+    .contenedor {
+        max-width: 900px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 14px;
+        border: 4px solid #1F7A3E;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+        position: relative;
+    }
+    .header {
+        position: relative;
+        height: 120px;
+    }
+    .logo {
+        height: 150px;
+        position: absolute;
+        left: 20px;
+        top: -10px;
+    }
+    .header-subtitulo {
+        position: absolute;
+        left: 50%;
+        top: 40px;
+        transform: translateX(-50%);
+        font-size: 26px;
+        font-weight: 700;
+        color: #287a48;
+        text-align: center;
+    }
+    .qr {
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        text-align: center;
+    }
+    .qr img {
+        width: 130px;
+        height: 130px;
+    }
+    .bloque {
+        margin-top: 25px;
+        padding: 22px;
+        border-radius: 10px;
+        border: 2px solid #D8EEDB;
+        background: #F9FFF9;
+    }
+    .bloque h2 {
+        margin: 0 0 15px 0;
+        color: #124d2d;
+        font-size: 24px;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+    .fila {
+        display: flex;
+        justify-content: space-between;
+        padding: 6px 0;
+        font-size: 18px;
+    }
+    .etiqueta {
+        font-weight: 600;
+        color: #124d2d;
+    }
+    .ods-box {
+        margin-top: 25px;
+        padding: 15px;
+        border-radius: 10px;
+        border: 2px solid #D8EEDB;
+        background: #F3FFF3;
+    }
+    .ods-box h3 {
+        margin-top: 0;
+        color: #0f5e30;
+        font-weight: 700;
+    }
+    .ods-list span {
+        display: inline-block;
+        padding: 6px 14px;
+        margin: 6px;
+        background: #1F7A3E;
+        color: white;
+        border-radius: 6px;
+        font-size: 16px;
+    }
+    .valor:empty { display: none; }
+    .fila:has(.valor:empty) { display: none; }
+    .btn-descargar {
+        margin: 30px auto 10px auto;
+        display: block;
+        background: #1F7A3E;
+        color: white;
+        border: none;
+        padding: 14px 26px;
+        font-size: 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+    .btn-descargar:hover {
+        background: #155b2a;
+    }
+</style>
+</head>
+<body>
+<div class="contenedor">
+    <div class="header">
+        <img class="logo" 
+             src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png"
+             alt="Impacta Verde">
+        <div class="header-subtitulo">Sello Digital de Sostenibilidad</div>
+    </div>
+    <div class="qr">
+        <img src="data:image/png;base64,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" alt="Código QR">
+        <div style="font-size:14px; color:#444;">Verificación</div>
+    </div>
+    <div class="bloque">
+        <!-- 🍃 HOJITA EN EL NIVEL -->
+        <h2>🌿 Inicial</h2>
+        <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor">ETIMO</span></div>
+        <div class="fila"><span class="etiqueta">Año:</span> <span class="valor">2025</span></div>
+        <div class="fila"><span class="etiqueta">Tipo de medición:</span> <span class="valor">Solo CH₄</span></div>
+        <div class="fila"><span class="etiqueta">Puntaje:</span> <span class="valor">27.7%</span></div>
+        <div class="fila"><span class="etiqueta">CO₂e equivalente:</span> <span class="valor">71.77 kg</span></div>
+        <div class="fila"><span class="etiqueta">N° de Sello:</span> <span class="valor">SEL-2025-1</span></div>
+        <div class="fila"><span class="etiqueta">Emitido:</span> <span class="valor">2025-11-28</span></div>
+        <div class="fila"><span class="etiqueta">Vence:</span> <span class="valor">2026-12-31</span></div>
+    </div>
+    <div class="ods-box">
+        <h3>ODS con los que contribuye</h3>
+        <div class="ods-list">
+            <span>7</span><span>12</span><span>13</span>
+        </div>
+    </div>
+</div>
+<button id="descargar" class="btn-descargar">Descargar PNG del Sello</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+document.getElementById("descargar").addEventListener("click", function() {
+    const contenedor = document.querySelector(".contenedor");
+    const boton = this;
+    const textoOriginal = boton.textContent;
+    boton.textContent = "Generando imagen...";
+    boton.disabled = true;
+    setTimeout(() => {
+        html2canvas(contenedor, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff"
+        }).then(canvas => {
+            const link = document.createElement("a");
+            link.download = "sello-sostenibilidad-ETIMO-2025.png";
+            link.href = canvas.toDataURL("image/png");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }).finally(() => {
+            boton.textContent = textoOriginal;
+            boton.disabled = false;
+        });
+    }, 100);
+});
+</script>
+</body>
+</html>
