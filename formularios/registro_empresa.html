@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Empresa - Impacta Verde</title>
+    <!-- ✅ Favicon igual al de tu sitio -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
     <style>
         :root {
             --verde-oscuro: #1F7A3E;
@@ -44,11 +46,25 @@
             color: white;
             padding: 2rem;
             text-align: center;
+            position: relative;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 1rem;
+        }
+        
+        .logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
         }
         
         .logo {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
         }
         
         .header h1 {
@@ -133,6 +149,11 @@
             .form-row {
                 grid-template-columns: 1fr;
             }
+            
+            .logo-container {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
         
         .success-message {
@@ -155,12 +176,36 @@
             margin-top: 0.5rem;
             font-style: italic;
         }
+        
+        .plan-option {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .plan-option:hover {
+            border-color: var(--verde-medio);
+            background: var(--gris);
+        }
+        
+        .plan-option.selected {
+            border-color: var(--verde-oscuro);
+            background: var(--verde-claro);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">🌿</div>
+            <div class="logo-container">
+                <!-- ✅ Logo de la empresa -->
+                <img src="https://impactaverde.com.ar/logo.png" alt="Impacta Verde Logo" class="logo-img" onerror="this.style.display='none'">
+                <div class="logo">🌿</div>
+            </div>
             <h1>Impacta Verde - Registro de Empresa</h1>
             <p>Completa los datos de tu empresa para comenzar a medir tu impacto</p>
         </div>
@@ -218,30 +263,30 @@
                 <div class="form-section">
                     <h3><span class="section-icon">📊</span> Configuración de Medición</h3>
                     
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="tipo_medicion">Tipo de medición <span class="required">*</span></label>
-                            <select id="tipo_medicion" name="tipo_medicion" required>
-                                <option value="">Seleccionar tipo...</option>
-                                <option value="Básica">Básica</option>
-                                <option value="Completa">Completa</option>
-                            </select>
-                            <div class="info-text">Básica: indicadores esenciales | Completa: todos los indicadores</div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="plan">Plan <span class="required">*</span></label>
-                            <select id="plan" name="plan" required>
-                                <option value="">Seleccionar plan...</option>
-                                <option value="Mensual">Mensual</option>
-                                <option value="Anual">Anual</option>
-                            </select>
-                        </div>
+                    <div class="form-group">
+                        <label for="tipo_medicion">¿Cuántos indicadores medirá? <span class="required">*</span></label>
+                        <select id="tipo_medicion" name="tipo_medicion" required>
+                            <option value="">Seleccionar cantidad...</option>
+                            <option value="Solo 1">✅ Solo 1 indicador</option>
+                            <option value="De 2 a 4">✅ De 2 a 4 indicadores</option>
+                            <option value="Más de 5">✅ Más de 5 indicadores (Completo)</option>
+                        </select>
+                        <div class="info-text">Elija según la cantidad de indicadores ambientales y sociales que planea reportar mensualmente</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="plan">Frecuencia de reporte <span class="required">*</span></label>
+                        <select id="plan" name="plan" required>
+                            <option value="">Seleccionar frecuencia...</option>
+                            <option value="Mensual">📅 Mensual</option>
+                            <option value="Trimestral">📊 Trimestral</option>
+                            <option value="Anual">🎯 Anual</option>
+                        </select>
                     </div>
                     
                     <div class="form-group">
                         <label for="observaciones">Observaciones</label>
-                        <textarea id="observaciones" name="observaciones" rows="3" placeholder="Comentarios adicionales..."></textarea>
+                        <textarea id="observaciones" name="observaciones" rows="3" placeholder="Comentarios adicionales, indicadores específicos de interés..."></textarea>
                     </div>
                 </div>
                 
