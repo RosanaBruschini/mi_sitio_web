@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insignia Mensual - ETIMO</title>
+    <style>
+        body {
+            margin: 0; padding: 20px; 
+            background: linear-gradient(135deg, #f4f7f4 0%, #e8f5e8 100%);
+            display: flex; justify-content: center; 
+            align-items: center; min-height: 100vh; 
+            font-family: Arial, sans-serif; 
+        }
+        .insignia {
+            width: 380px; background: white; 
+            border-radius: 20px; padding: 25px;
+            text-align: center; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 4px solid #1F7A3E;
+            position: relative;
+        }
+        .insignia::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #1F7A3E, #4CAF50);
+        }
+        .logo { width: 80px; height: 80px; margin-bottom: 15px; }
+        .qr { width: 100px; height: 100px; margin: 15px auto; border: 2px solid #e8f5e9; border-radius: 10px; padding: 5px; background: white; }
+        .empresa { font-size: 22px; font-weight: bold; margin: 10px 0; color: #1d1d1d; }
+        .periodo { color: #666; margin: 8px 0; font-size: 18px; font-weight: 600; }
+        .medicion { 
+            background: #f8fff8; padding: 12px; 
+            border-radius: 10px; margin: 12px 0; 
+            font-size: 15px; border-left: 4px solid #1F7A3E;
+        }
+        .nivel {
+            font-size: 20px; font-weight: bold; margin: 10px 0;
+            padding: 8px 15px; border-radius: 20px;
+            display: inline-block;
+        }
+        .proceso-text { color: #1F7A3E; font-style: italic; margin: 10px 0; font-size: 13px; }
+        .badge {
+            background: linear-gradient(135deg, #1F7A3E, #4CAF50);
+            color: white; padding: 10px 20px; border-radius: 20px;
+            font-size: 14px; margin-top: 15px; display: inline-block;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="insignia">
+        <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" class="logo" alt="Impacta Verde">
+        <div class="proceso-text">Empresa en proceso de recibir el sello anual de sustentabilidad</div>
+        <div class="periodo"><strong>Mes: Ago/2025</strong></div>
+        
+        <img src="data:image/png;base64,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" class="qr" alt="Código QR">
+        
+        <div class="empresa">ETIMO</div>
+        <div class="medicion">🌿 CO₂e evitado: 71.25 kg | 👥 Puntaje social: 24.5% | 💻 Puntaje digital: 75.0%</div>
+        
+        <div class="medicion">
+            <div class="nivel">🌿 Inicial</div><br>
+            <strong>Puntaje:</strong> 27.7%
+        </div>
+        
+        <div class="badge">Insignia Mensual Sostenibilidad</div>
+    </div>
+</body>
+</html>
