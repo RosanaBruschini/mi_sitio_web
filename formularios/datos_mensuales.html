@@ -216,8 +216,6 @@
                             <select id="empresa" name="empresa" required>
                                 <option value="">Seleccionar empresa...</option>
                                 <!-- Las opciones se cargarán dinámicamente desde las empresas registradas -->
-                                <option value="ETIMO">ETIMO</option>
-                                <!-- Más opciones se agregarán automáticamente -->
                             </select>
                         </div>
                     </div>
@@ -227,18 +225,18 @@
                             <label for="mes">Mes <span class="required">*</span></label>
                             <select id="mes" name="mes" required>
                                 <option value="">Seleccionar mes...</option>
-                                <option value="Ene">Enero</option>
-                                <option value="Feb">Febrero</option>
-                                <option value="Mar">Marzo</option>
-                                <option value="Abr">Abril</option>
-                                <option value="May">Mayo</option>
-                                <option value="Jun">Junio</option>
-                                <option value="Jul">Julio</option>
-                                <option value="Ago">Agosto</option>
-                                <option value="Sep">Septiembre</option>
-                                <option value="Oct">Octubre</option>
-                                <option value="Nov">Noviembre</option>
-                                <option value="Dic">Diciembre</option>
+                                <option value="Enero">Enero</option>
+                                <option value="Febrero">Febrero</option>
+                                <option value="Marzo">Marzo</option>
+                                <option value="Abril">Abril</option>
+                                <option value="Mayo">Mayo</option>
+                                <option value="Junio">Junio</option>
+                                <option value="Julio">Julio</option>
+                                <option value="Agosto">Agosto</option>
+                                <option value="Septiembre">Septiembre</option>
+                                <option value="Octubre">Octubre</option>
+                                <option value="Noviembre">Noviembre</option>
+                                <option value="Diciembre">Diciembre</option>
                             </select>
                         </div>
                         
@@ -254,7 +252,6 @@
                     </div>
                 </div>
                 
-                <!-- Resto del formulario igual que antes -->
                 <!-- SECCIÓN IMPACTO AMBIENTAL -->
                 <div class="form-section">
                     <h3><span class="section-icon">🌿</span> Impacto Ambiental</h3>
@@ -283,8 +280,120 @@
                         </div>
                     </div>
                     
-                    <!-- ... resto del formulario igual ... -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tecnologia_recuperada_kg">Tecnología recuperada (kg)</label>
+                            <input type="number" id="tecnologia_recuperada_kg" name="tecnologia_recuperada_kg" step="0.1" min="0" placeholder="0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="borra_seca_kg">Borra seca (kg)</label>
+                            <input type="number" id="borra_seca_kg" name="borra_seca_kg" step="0.1" min="0" placeholder="0">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="borra_humeda_kg">Borra húmeda (kg)</label>
+                            <input type="number" id="borra_humeda_kg" name="borra_humeda_kg" step="0.1" min="0" placeholder="0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="combustible_l">Combustible (litros)</label>
+                            <input type="number" id="combustible_l" name="combustible_l" step="0.1" min="0" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SECCIÓN IMPACTO SOCIAL -->
+                <div class="form-section">
+                    <h3><span class="section-icon">👥</span> Impacto Social</h3>
                     
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="empleados_total">Total empleados</label>
+                            <input type="number" id="empleados_total" name="empleados_total" min="0" placeholder="0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="empleados_mujeres">Empleadas mujeres</label>
+                            <input type="number" id="empleados_mujeres" name="empleados_mujeres" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="empleados_discapacidad">Personas con discapacidad</label>
+                            <input type="number" id="empleados_discapacidad" name="empleados_discapacidad" min="0" placeholder="0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="capacitacion_horas">Horas de capacitación</label>
+                            <input type="number" id="capacitacion_horas" name="capacitacion_horas" step="0.1" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-group">
+                            <input type="checkbox" id="politica_inclusion" name="politica_inclusion" value="Sí">
+                            ¿Tiene política de inclusión?
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- SECCIÓN DIGITALIZACIÓN -->
+                <div class="form-section">
+                    <h3><span class="section-icon">💻</span> Digitalización</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="procesos_optimizados">Procesos optimizados (%)</label>
+                            <input type="number" id="procesos_optimizados" name="procesos_optimizados" min="0" max="100" step="1" placeholder="0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="digitalizacion">Digitalización (%)</label>
+                            <input type="number" id="digitalizacion" name="digitalizacion" min="0" max="100" step="1" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SECCIÓN RESIDUOS -->
+                <div class="form-section">
+                    <h3><span class="section-icon">🗑️</span> Gestión de Residuos</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="residuo_organico">Residuo orgánico (kg)</label>
+                            <input type="number" id="residuo_organico" name="residuo_organico" step="0.1" min="0" placeholder="0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="residuo_reciclable">Residuo reciclable (kg)</label>
+                            <input type="number" id="residuo_reciclable" name="residuo_reciclable" step="0.1" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="residuo_no_reciclable">Residuo no reciclable (kg)</label>
+                        <input type="number" id="residuo_no_reciclable" name="residuo_no_reciclable" step="0.1" min="0" placeholder="0">
+                    </div>
+                </div>
+                
+                <!-- SECCIÓN EVIDENCIA Y COMENTARIOS -->
+                <div class="form-section">
+                    <h3><span class="section-icon">📎</span> Evidencia y Comentarios</h3>
+                    
+                    <div class="form-group">
+                        <label for="link_evidencia">Link de evidencia</label>
+                        <input type="url" id="link_evidencia" name="link_evidencia" placeholder="https://...">
+                        <div class="info-text">Incluir link a Excel con facturas, remitos, donaciones o convenios que evidencien el impacto del mes</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comentarios">Comentarios adicionales</label>
+                        <textarea id="comentarios" name="comentarios" rows="3" placeholder="Observaciones, logros destacados, dificultades..."></textarea>
+                    </div>
                 </div>
                 
                 <button type="submit" class="btn">📊 Enviar Datos Mensuales</button>
@@ -306,10 +415,15 @@
             }, 1000);
         });
 
-        // Simular carga de empresas
+        // Cargar empresas dinámicamente (sin ETIMO duplicado)
         setTimeout(() => {
-            const empresas = ['ETIMO', 'EMPRESA_EJEMPLO_1', 'EMPRESA_EJEMPLO_2'];
+            const empresas = ['ETIMO']; // Solo ETIMO por ahora, luego se cargarán desde la BD
             const selectEmpresa = document.getElementById('empresa');
+            
+            // Limpiar opciones existentes (excepto la primera vacía)
+            while (selectEmpresa.options.length > 1) {
+                selectEmpresa.remove(1);
+            }
             
             empresas.forEach(empresa => {
                 const option = document.createElement('option');
