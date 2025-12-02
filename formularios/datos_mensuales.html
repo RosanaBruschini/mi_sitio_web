@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datos Mensuales - Impacta Verde</title>
-    <!-- ✅ Favicon igual al de tu sitio -->
-    <link rel="icon" href="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/favicon.ico">
+    <!-- ✅ FAVICON RESTAURADO - IGUAL AL DE TU SITIO -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
     <style>
         :root {
             --verde-oscuro: #1F7A3E;
@@ -53,145 +53,185 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .logo-img {
-            height: 70px;
+            height: 120px; /* ✅ LOGO GRANDE */
             width: auto;
-            border-radius: 8px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+            border-radius: 12px;
+            background: white; /* ✅ FONDO BLANCO PARA MEJOR VISIBILIDAD */
+            padding: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .header h1 {
-            font-size: 1.8rem;
+            font-size: 2.2rem; /* ✅ TÍTULO GRANDE */
             margin-bottom: 0.5rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.1rem; /* ✅ SUBTÍTULO GRANDE */
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .form-container {
-            padding: 2rem;
+            padding: 2.5rem; /* ✅ ESPACIADO AMPLIO */
         }
 
         .form-section {
             margin-bottom: 2rem;
-            padding: 1.5rem;
+            padding: 1.8rem; /* ✅ ESPACIADO AMPLIO */
             background: var(--beige);
-            border-radius: 10px;
-            border-left: 4px solid var(--verde-oscuro);
+            border-radius: 12px;
+            border-left: 5px solid var(--verde-oscuro);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
         }
 
         .form-section h3 {
             color: var(--verde-oscuro);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-weight: 600;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
         }
 
         label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
             font-weight: 600;
             color: #333;
+            font-size: 1.05rem;
         }
 
         input, select, textarea {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            transition: all 0.3s;
         }
 
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--verde-medio);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+            transform: translateY(-1px);
         }
 
         .btn {
             background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
             color: white;
             border: none;
-            padding: 15px 30px;
-            border-radius: 8px;
+            padding: 18px 35px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 600;
-            transition: transform 0.3s;
+            transition: all 0.3s;
             width: 100%;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(31, 122, 62, 0.3);
         }
 
         .btn:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(31, 122, 62, 0.4);
         }
 
         .required {
             color: #e74c3c;
+            font-weight: bold;
         }
 
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         @media (max-width: 768px) {
             .form-row {
                 grid-template-columns: 1fr;
             }
-
-            .logo-container {
-                flex-direction: column;
-                gap: 10px;
+            
+            .logo-img {
+                height: 100px; /* ✅ LOGO GRANDE PARA MÓVIL */
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
             }
         }
 
         .success-message {
             background: var(--verde-claro);
             color: var(--verde-oscuro);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
             text-align: center;
             display: none;
+            font-size: 1.1rem;
+            border: 2px solid var(--verde-medio);
         }
 
         .section-icon {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
         }
 
         .info-text {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #666;
-            margin-top: 0.5rem;
+            margin-top: 0.6rem;
             font-style: italic;
+            line-height: 1.4;
         }
 
         .checkbox-group {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-size: 1.05rem;
         }
 
         .checkbox-group input[type="checkbox"] {
-            width: auto;
+            width: 20px;
+            height: 20px;
         }
         
         .google-apps-script {
             background: #f8f9fa;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 15px 0;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 20px 0;
             font-family: monospace;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #333;
+            line-height: 1.5;
+        }
+        
+        .google-apps-script strong {
+            color: var(--verde-oscuro);
+            font-size: 1.1rem;
+        }
+        
+        .hidden-fields {
+            display: none;
         }
     </style>
 </head>
@@ -199,7 +239,7 @@
     <div class="container">
         <div class="header">
             <div class="logo-container">
-                <!-- ✅ LOGO CORRECTO DE IMPACTA VERDE -->
+                <!-- ✅ LOGO GRANDE Y NÍTIDO -->
                 <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" 
                      alt="Impacta Verde Logo" 
                      class="logo-img">
@@ -215,6 +255,12 @@
 
             <form id="datosMensualesForm" action="https://script.google.com/macros/s/AKfycbwo3k3fW4FrrOHHeL0eNyxpptz5rY2JRmPZ_mF6nQfY35Vt5jFyDyUoHzqP8_LZ7J0i/exec" method="POST">
                 <input type="hidden" name="hoja" value="Datos_Mensuales_Crudos">
+                
+                <!-- CAMPOS OCULTOS PARA DATOS AUTOMÁTICOS -->
+                <div class="hidden-fields">
+                    <input type="hidden" name="fecha_carga" id="fecha_carga">
+                    <input type="hidden" name="cantidad_empleados_locales" value="0">
+                </div>
                 
                 <!-- SECCIÓN EMPRESA Y PERIODO -->
                 <div class="form-section">
@@ -396,7 +442,7 @@
 
                     <div class="form-group">
                         <label for="link_evidencia">Link de evidencia</label>
-                        <input type="url" id="link_evidencia" name="link_evidencia" placeholder="https://...">
+                            <input type="url" id="link_evidencia" name="link_evidencia" placeholder="https://...">
                         <div class="info-text">Incluir link a Excel con facturas, remitos, donaciones o convenios que evidencien el impacto del mes</div>
                     </div>
 
@@ -412,7 +458,7 @@
             <div class="google-apps-script">
                 <strong>🔗 Este formulario está conectado a Google Sheets:</strong><br>
                 Hoja: <code>Datos_Mensuales_Crudos</code><br>
-                Campos: Empresa, Mes, Año, Energia_kWh, Combustible_L, Papel_kg, Borra_humeda_kg, Borra_seca_kg, 
+                Campos: Empresa, Mes, Año, Fecha_carga, Energia_kWh, Combustible_L, Papel_kg, Borra_humeda_kg, Borra_seca_kg, 
                 Tela_reutilizada_kg, Tecnologia_recuperada_kg, Plastico_reutilizado_kg, Cantidad_Empleados_Total, 
                 Cantidad_Empleados_Locales, Cantidad_Mujeres, Cantidad_Personas_Discapacidad, Capacitacion_horas, 
                 Politica_inclusion, Procesos_optimizados_%, Digitalizacion_%, Residuo_Organico_kg, 
@@ -422,19 +468,19 @@
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ✅ AGREGAR FECHA DE CARGA AUTOMÁTICAMENTE
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('fecha_carga').value = today;
+            
+            console.log(`Fecha de carga: ${today}`);
+        });
+
         document.getElementById('datosMensualesForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Mostrar mensaje de éxito
             document.getElementById('successMessage').style.display = 'block';
-            
-            // Agregar fecha de carga automáticamente
-            const today = new Date().toISOString().split('T')[0];
-            const fechaInput = document.createElement('input');
-            fechaInput.type = 'hidden';
-            fechaInput.name = 'fecha_carga';
-            fechaInput.value = today;
-            this.appendChild(fechaInput);
             
             // Enviar formulario
             const form = e.target;
