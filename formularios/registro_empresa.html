@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Empresa - Impacta Verde</title>
-    <!-- ✅ FAVICON RESTAURADO - IGUAL AL DE TU SITIO -->
+    <!-- ✅ FAVICON -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
     <style>
         :root {
@@ -57,37 +57,37 @@
         }
 
         .logo-img {
-            height: 120px; /* ✅ LOGO GRANDE */
+            height: 120px;
             width: auto;
             object-fit: contain;
             filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
             border-radius: 12px;
-            background: white; /* ✅ FONDO BLANCO PARA MEJOR VISIBILIDAD */
+            background: white;
             padding: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .header h1 {
-            font-size: 2.2rem; /* ✅ TÍTULO GRANDE */
+            font-size: 2.2rem;
             margin-bottom: 0.5rem;
             font-weight: 700;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
         }
 
         .header p {
-            font-size: 1.1rem; /* ✅ SUBTÍTULO GRANDE */
+            font-size: 1.1rem;
             opacity: 0.95;
             max-width: 600px;
             margin: 0 auto;
         }
 
         .form-container {
-            padding: 2.5rem; /* ✅ ESPACIADO AMPLIO */
+            padding: 2.5rem;
         }
 
         .form-section {
             margin-bottom: 2rem;
-            padding: 1.8rem; /* ✅ ESPACIADO AMPLIO */
+            padding: 1.8rem;
             background: var(--beige);
             border-radius: 12px;
             border-left: 5px solid var(--verde-oscuro);
@@ -169,7 +169,7 @@
             }
             
             .logo-img {
-                height: 100px; /* ✅ LOGO GRANDE PARA MÓVIL */
+                height: 100px;
             }
             
             .header h1 {
@@ -201,25 +201,26 @@
             line-height: 1.4;
         }
         
-        .google-apps-script {
-            background: #f8f9fa;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            padding: 18px;
-            margin: 20px 0;
-            font-family: monospace;
-            font-size: 0.95rem;
-            color: #333;
-            line-height: 1.5;
-        }
-        
-        .google-apps-script strong {
-            color: var(--verde-oscuro);
-            font-size: 1.1rem;
-        }
-        
         .hidden-fields {
             display: none;
+        }
+        
+        .footer-info {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gris);
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .footer-info a {
+            color: var(--verde-oscuro);
+            text-decoration: none;
+        }
+        
+        .footer-info a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -227,7 +228,6 @@
     <div class="container">
         <div class="header">
             <div class="logo-container">
-                <!-- ✅ LOGO GRANDE Y NÍTIDO -->
                 <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" 
                      alt="Impacta Verde Logo" 
                      class="logo-img">
@@ -244,7 +244,6 @@
             <form id="registroEmpresaForm" action="https://script.google.com/macros/s/AKfycbwo3k3fW4FrrOHHeL0eNyxpptz5rY2JRmPZ_mF6nQfY35Vt5jFyDyUoHzqP8_LZ7J0i/exec" method="POST">
                 <input type="hidden" name="hoja" value="Empresa">
                 
-                <!-- CAMPOS OCULTOS PARA DATOS AUTOMÁTICOS -->
                 <div class="hidden-fields">
                     <input type="hidden" name="fecha_alta" id="fecha_alta">
                     <input type="hidden" name="estado" value="Activo">
@@ -329,10 +328,10 @@
                 <button type="submit" class="btn">🌿 Registrar Empresa</button>
             </form>
             
-            <div class="google-apps-script">
-                <strong>🔗 Este formulario está conectado a Google Sheets:</strong><br>
-                Hoja: <code>Empresa</code><br>
-                Campos: ID_Empresa, Empresa, Rubro, Localidad, Responsable, Email, Fecha_alta, Tipo_medición, Observaciones, Plan, Estado
+            <!-- ✅ INFORMACIÓN LIMPIA PARA EL CLIENTE (sin detalles técnicos) -->
+            <div class="footer-info">
+                <p>📧 ¿Necesitas ayuda? <a href="mailto:info@impactaverde.com.ar">Contacta con nuestro equipo</a></p>
+                <p>🔒 Tus datos están protegidos y se utilizarán únicamente para el sistema de medición de impacto ambiental</p>
             </div>
         </div>
     </div>
@@ -353,9 +352,6 @@
             idInput.name = 'id_empresa';
             idInput.value = idEmpresa;
             document.getElementById('registroEmpresaForm').appendChild(idInput);
-            
-            console.log(`ID de empresa generado: ${idEmpresa}`);
-            console.log(`Fecha de alta: ${today}`);
         });
 
         document.getElementById('registroEmpresaForm').addEventListener('submit', function(e) {
