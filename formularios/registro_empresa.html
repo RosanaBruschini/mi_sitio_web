@@ -235,6 +235,11 @@
             border-color: #ff6b6b;
             background-color: #fff8f8;
         }
+        
+        .whatsapp-input {
+            direction: ltr;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -260,6 +265,7 @@
                 <div class="hidden-fields">
                     <input type="hidden" name="fecha_alta" id="fecha_alta">
                     <input type="hidden" name="estado" value="Activo">
+                    <input type="hidden" name="nivel_sello_actual" value="Sin sello">
                 </div>
                 
                 <div class="form-section">
@@ -283,25 +289,40 @@
                                 <option value="Construcción">Construcción</option>
                                 <option value="Educación">Educación</option>
                                 <option value="Salud">Salud</option>
+                                <option value="Manufactura">Manufactura</option>
+                                <option value="Logística">Logística</option>
                                 <option value="Otro">Otro</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="localidad">Localidad <span class="required">*</span></label>
-                            <input type="text" id="localidad" name="localidad" required placeholder="Ej: Buenos Aires">
+                            <label for="pais">País <span class="required">*</span></label>
+                            <select id="pais" name="pais" required>
+                                <option value="">Seleccionar país...</option>
+                                <option value="Argentina">Argentina</option>
+                                <option value="Uruguay">Uruguay</option>
+                                <option value="Chile">Chile</option>
+                                <option value="Brasil">Brasil</option>
+                                <option value="Paraguay">Paraguay</option>
+                                <option value="Bolivia">Bolivia</option>
+                                <option value="Perú">Perú</option>
+                                <option value="Colombia">Colombia</option>
+                                <option value="México">México</option>
+                                <option value="España">España</option>
+                                <option value="Otro">Otro</option>
+                            </select>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="responsable">Responsable <span class="required">*</span></label>
-                            <input type="text" id="responsable" name="responsable" required placeholder="Nombre y apellido">
+                            <label for="localidad">Localidad <span class="required">*</span></label>
+                            <input type="text" id="localidad" name="localidad" required placeholder="Ej: Buenos Aires, CABA">
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Email <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" required placeholder="ejemplo@empresa.com">
+                            <label for="area_a_cargo">Área a cargo <span class="required">*</span></label>
+                            <input type="text" id="area_a_cargo" name="area_a_cargo" required placeholder="Ej: Sostenibilidad, Operaciones, RSE">
                         </div>
                     </div>
                     
@@ -322,25 +343,32 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="telefono">Teléfono de Contacto</label>
-                            <input type="tel" id="telefono" name="telefono" placeholder="Ej: +54 11 1234-5678">
+                            <label for="responsable">Responsable <span class="required">*</span></label>
+                            <input type="text" id="responsable" name="responsable" required placeholder="Nombre y apellido completo">
                         </div>
                     </div>
                 </div>
 
                 <div class="form-section">
-                    <h3><span class="section-icon">📊</span> Configuración de Medición</h3>
+                    <h3><span class="section-icon">📞</span> Contacto</h3>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="tipo_medicion">Tipo de medición <span class="required">*</span></label>
-                            <select id="tipo_medicion" name="tipo_medicion" required>
-                                <option value="">Seleccionar tipo...</option>
-                                <option value="Solo 1">✅ Solo 1 indicador</option>
-                                <option value="De 2 a 4">✅ De 2 a 4 indicadores</option>
-                                <option value="Más de 5">✅ Más de 5 indicadores</option>
-                            </select>
-                            <div class="info-text">Cantidad de indicadores que reportará mensualmente</div>
+                            <label for="email">Email <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required placeholder="ejemplo@empresa.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="tel_contacto">Teléfono de Contacto <span class="required">*</span></label>
+                            <input type="tel" id="tel_contacto" name="tel_contacto" required placeholder="Ej: +54 11 1234-5678">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="whatsapp">WhatsApp</label>
+                            <input type="tel" id="whatsapp" name="whatsapp" class="whatsapp-input" placeholder="Ej: +54 9 11 1234-5678">
+                            <div class="info-text">Incluir código de país y área</div>
                         </div>
 
                         <div class="form-group">
@@ -387,6 +415,9 @@
             idInput.name = 'id_empresa';
             idInput.value = idEmpresa;
             document.getElementById('registroEmpresaForm').appendChild(idInput);
+            
+            // ✅ ESTABLECER ARGENTINA COMO PAÍS PREDETERMINADO
+            document.getElementById('pais').value = 'Argentina';
         });
 
         // ✅ FUNCIÓN PARA FORMATEAR CUIT
@@ -417,6 +448,27 @@
                 input.style.backgroundColor = '#fff8f8';
             }
         }
+        
+        // ✅ FUNCIÓN PARA FORMATEAR TELÉFONOS
+        function formatPhone(input) {
+            let value = input.value.replace(/\D/g, '');
+            
+            // Mantener formato mientras se escribe
+            if (value.length > 0) {
+                if (!input.value.startsWith('+')) {
+                    input.value = '+' + value;
+                }
+            }
+        }
+        
+        // Aplicar formatPhone a los campos de teléfono
+        document.getElementById('tel_contacto').addEventListener('input', function() {
+            formatPhone(this);
+        });
+        
+        document.getElementById('whatsapp').addEventListener('input', function() {
+            formatPhone(this);
+        });
 
         document.getElementById('registroEmpresaForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -428,6 +480,22 @@
             if (!cuitPattern.test(cuitInput.value)) {
                 alert('❌ Por favor, ingrese un CUIT válido en formato: 99-99999999-9');
                 cuitInput.focus();
+                return;
+            }
+            
+            // ✅ VALIDAR TELÉFONO REQUERIDO
+            const telefonoInput = document.getElementById('tel_contacto');
+            if (!telefonoInput.value.trim()) {
+                alert('❌ Por favor, ingrese un teléfono de contacto');
+                telefonoInput.focus();
+                return;
+            }
+            
+            // ✅ VALIDAR ÁREA A CARGO
+            const areaInput = document.getElementById('area_a_cargo');
+            if (!areaInput.value.trim()) {
+                alert('❌ Por favor, ingrese el área a cargo');
+                areaInput.focus();
                 return;
             }
             
