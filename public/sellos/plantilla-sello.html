@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sello Digital de Sostenibilidad – Impacta Verde</title>
 
-<!-- ✅ Favicon igual al de tu sitio -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
 
 <style>
@@ -142,6 +141,150 @@
     .btn-descargar:hover {
         background: #155b2a;
     }
+
+    /* ✅ AJUSTES RESPONSIVE SIN CAMBIAR ESTÉTICA */
+    
+    /* Para tablets y móviles grandes */
+    @media (max-width: 1024px) {
+        .contenedor {
+            max-width: 90%;
+            margin: 30px auto;
+            padding: 30px;
+        }
+        
+        .header {
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .logo {
+            position: static;
+            height: 120px;
+            order: 1;
+            flex: 0 0 auto;
+        }
+        
+        .header-subtitulo {
+            position: static;
+            transform: none;
+            font-size: 24px;
+            order: 2;
+            flex: 1;
+            padding: 0 20px;
+        }
+        
+        .qr {
+            position: static;
+            order: 3;
+            flex: 0 0 auto;
+        }
+        
+        .qr img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+    
+    /* Para móviles */
+    @media (max-width: 768px) {
+        .contenedor {
+            max-width: 95%;
+            margin: 20px auto;
+            padding: 25px;
+        }
+        
+        .header {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .logo {
+            height: 100px;
+            margin-bottom: 15px;
+        }
+        
+        .header-subtitulo {
+            font-size: 22px;
+            padding: 0;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        
+        .qr {
+            margin: 10px 0;
+        }
+        
+        .qr img {
+            width: 90px;
+            height: 90px;
+        }
+        
+        .bloque {
+            padding: 20px;
+        }
+        
+        .bloque h2 {
+            font-size: 22px;
+        }
+        
+        .fila {
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .etiqueta {
+            margin-bottom: 5px;
+            font-size: 17px;
+        }
+        
+        .valor {
+            font-size: 17px;
+        }
+    }
+    
+    /* Para móviles pequeños */
+    @media (max-width: 480px) {
+        .contenedor {
+            padding: 20px;
+            margin: 15px auto;
+        }
+        
+        .logo {
+            height: 90px;
+        }
+        
+        .header-subtitulo {
+            font-size: 20px;
+        }
+        
+        .qr img {
+            width: 80px;
+            height: 80px;
+        }
+        
+        .bloque {
+            padding: 15px;
+        }
+        
+        .bloque h2 {
+            font-size: 20px;
+        }
+        
+        .fila, .etiqueta, .valor {
+            font-size: 16px;
+        }
+        
+        .btn-descargar {
+            padding: 12px 20px;
+            font-size: 16px;
+            width: 100%;
+        }
+    }
 </style>
 </head>
 
@@ -156,12 +299,12 @@
              alt="Impacta Verde">
 
         <div class="header-subtitulo">Sello Digital de Sostenibilidad</div>
-    </div>
 
-    <!-- ✔ QR -->
-    <div class="qr">
-        <img src="{{qr_url}}" alt="Código QR">
-        <div style="font-size:14px; color:#444;">Verificación</div>
+        <!-- ✔ QR -->
+        <div class="qr">
+            <img src="{{qr_url}}" alt="Código QR">
+            <div style="font-size:14px; color:#444;">Verificación</div>
+        </div>
     </div>
 
     <!-- ✔ Datos -->
