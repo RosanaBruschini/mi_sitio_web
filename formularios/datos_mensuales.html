@@ -161,7 +161,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
         }
-        
+
         .form-row-3 {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -172,11 +172,11 @@
             .form-row, .form-row-3 {
                 grid-template-columns: 1fr;
             }
-            
+
             .logo-img {
                 height: 100px;
             }
-            
+
             .header h1 {
                 font-size: 1.8rem;
             }
@@ -217,11 +217,11 @@
             width: 20px;
             height: 20px;
         }
-        
+
         .hidden-fields {
             display: none;
         }
-        
+
         .footer-info {
             text-align: center;
             margin-top: 2rem;
@@ -230,20 +230,20 @@
             color: #666;
             font-size: 0.9rem;
         }
-        
+
         .footer-info a {
             color: var(--verde-oscuro);
             text-decoration: none;
         }
-        
+
         .footer-info a:hover {
             text-decoration: underline;
         }
-        
+
         .input-unit {
             position: relative;
         }
-        
+
         .unit {
             position: absolute;
             right: 15px;
@@ -258,8 +258,8 @@
     <div class="container">
         <div class="header">
             <div class="logo-container">
-                <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" 
-                     alt="Impacta Verde Logo" 
+                <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png"
+                     alt="Impacta Verde Logo"
                      class="logo-img">
             </div>
             <h1>Impacta Verde - Datos Mensuales</h1>
@@ -273,11 +273,11 @@
 
             <form id="datosMensualesForm" action="https://script.google.com/macros/s/AKfycbwo3k3fW4FrrOHHeL0eNyxpptz5rY2JRmPZ_mF6nQfY35Vt5jFyDyUoHzqP8_LZ7J0i/exec" method="POST">
                 <input type="hidden" name="hoja" value="Datos_Mensuales_Crudos">
-                
+
                 <div class="hidden-fields">
                     <input type="hidden" name="fecha_carga" id="fecha_carga">
                 </div>
-                
+
                 <!-- SECCIÓN EMPRESA Y PERIODO -->
                 <div class="form-section">
                     <h3><span class="section-icon">🏢</span> Empresa y Período</h3>
@@ -396,7 +396,7 @@
                                 <span class="unit">kg</span>
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="agua_m3">Agua consumida</label>
                             <div class="input-unit">
@@ -524,7 +524,7 @@
 
                 <button type="submit" class="btn">📊 Enviar Datos Mensuales</button>
             </form>
-            
+
             <div class="footer-info">
                 <p>📧 ¿Necesitas ayuda con algún campo? <a href="mailto:info@impactaverde.com.ar">Contacta con nuestro equipo</a></p>
                 <p>🔒 Todos los datos enviados son confidenciales y se utilizan exclusivamente para calcular tu impacto ambiental</p>
@@ -539,7 +539,7 @@
             // ✅ AGREGAR FECHA DE CARGA AUTOMÁTICAMENTE
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('fecha_carga').value = today;
-            
+
             // ✅ AGREGAR ID EMPRESA BASADO EN LA SELECCIÓN
             const empresaSelect = document.getElementById('empresa');
             const idEmpresaInput = document.createElement('input');
@@ -547,7 +547,7 @@
             idEmpresaInput.name = 'id_empresa';
             idEmpresaInput.id = 'id_empresa';
             document.getElementById('datosMensualesForm').appendChild(idEmpresaInput);
-            
+
             empresaSelect.addEventListener('change', function() {
                 const empresaNombre = this.value;
                 if (empresaNombre) {
@@ -565,7 +565,7 @@
                 input.value = 0;
             }
         }
-        
+
         // Aplicar validación a todos los inputs numéricos
         const numberInputs = document.querySelectorAll('input[type="number"]');
         numberInputs.forEach(input => {
@@ -576,7 +576,7 @@
 
         document.getElementById('datosMensualesForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             // Validar empresa seleccionada
             const empresaSelect = document.getElementById('empresa');
             if (!empresaSelect.value) {
@@ -584,7 +584,7 @@
                 empresaSelect.focus();
                 return;
             }
-            
+
             // Validar mes y año
             const mesSelect = document.getElementById('mes');
             const anioSelect = document.getElementById('anio');
@@ -594,14 +594,14 @@
                 else anioSelect.focus();
                 return;
             }
-            
+
             // Mostrar mensaje de éxito
             document.getElementById('successMessage').style.display = 'block';
-            
+
             // Enviar formulario
             const form = e.target;
             const formData = new FormData(form);
-            
+
             fetch(form.action, {
                 method: 'POST',
                 body: formData,
