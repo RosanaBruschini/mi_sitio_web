@@ -273,48 +273,36 @@
 
             <form id="datosMensualesForm" action="https://api.sheetbest.com/sheets/2eb917d5-94d0-4d5a-b511-ea115ba62206" method="POST">
                 <input type="hidden" name="hoja" value="Datos_Mensuales_Crudos">
-
-                <div class="hidden-fields">
-                    <input type="hidden" name="fecha_carga" id="fecha_carga">
-                </div>
+                <input type="hidden" name="Fecha_carga" id="fecha_carga">
 
                 <!-- SECCIÓN EMPRESA Y PERIODO -->
                 <div class="form-section">
                     <h3><span class="section-icon">🏢</span> Empresa y Período</h3>
-
                     <div class="form-row">
                         <div class="form-group">
                             <label for="empresa">Empresa <span class="required">*</span></label>
-                            <select id="empresa" name="empresa" required>
+                            <select id="empresa" name="Empresa" required>
                                 <option value="">Seleccionar empresa...</option>
-                                <option value="ETIMO">ETIMO</option>
+                                <option value="ETIMO">ETIMO</option><option value="Empresa de Prueba API">Empresa de Prueba API</option>
                             </select>
                         </div>
                     </div>
-
                     <div class="form-row">
                         <div class="form-group">
                             <label for="mes">Mes <span class="required">*</span></label>
-                            <select id="mes" name="mes" required>
+                            <select id="mes" name="Mes" required>
                                 <option value="">Seleccionar mes...</option>
-                                <option value="Enero">Enero</option>
-                                <option value="Febrero">Febrero</option>
-                                <option value="Marzo">Marzo</option>
-                                <option value="Abril">Abril</option>
-                                <option value="Mayo">Mayo</option>
-                                <option value="Junio">Junio</option>
-                                <option value="Julio">Julio</option>
-                                <option value="Agosto">Agosto</option>
-                                <option value="Septiembre">Septiembre</option>
-                                <option value="Octubre">Octubre</option>
-                                <option value="Noviembre">Noviembre</option>
-                                <option value="Diciembre">Diciembre</option>
+                                <option value="Enero">Enero</option><option value="Febrero">Febrero</option>
+                                <option value="Marzo">Marzo</option><option value="Abril">Abril</option>
+                                <option value="Mayo">Mayo</option><option value="Junio">Junio</option>
+                                <option value="Julio">Julio</option><option value="Agosto">Agosto</option>
+                                <option value="Septiembre">Septiembre</option><option value="Octubre">Octubre</option>
+                                <option value="Noviembre">Noviembre</option><option value="Diciembre">Diciembre</option>
                             </select>
                         </div>
-
                         <div class="form-group">
                             <label for="anio">Año <span class="required">*</span></label>
-                            <select id="anio" name="anio" required>
+                            <select id="anio" name="Año" required>
                                 <option value="">Seleccionar año...</option>
                                 <option value="2024">2024</option>
                                 <option value="2025">2025</option>
@@ -327,83 +315,73 @@
                 <!-- SECCIÓN IMPACTO AMBIENTAL -->
                 <div class="form-section">
                     <h3><span class="section-icon">🌿</span> Impacto Ambiental</h3>
-
                     <div class="form-row-3">
                         <div class="form-group">
                             <label for="energia_kwh">Energía consumida</label>
                             <div class="input-unit">
-                                <input type="number" id="energia_kwh" name="energia_kwh" step="0.1" min="0" value="0" placeholder="0">
+                                <input type="number" id="energia_kwh" name="Energia_kWh" step="0.1" min="0" value="0" placeholder="0">
                                 <span class="unit">kWh</span>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label for="combustible_l">Combustible</label>
                             <div class="input-unit">
-                                <input type="number" id="combustible_l" name="combustible_l" step="0.1" min="0" value="0" placeholder="0">
+                                <input type="number" id="combustible_l" name="Combustible_L" step="0.1" min="0" value="0" placeholder="0">
                                 <span class="unit">litros</span>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label for="papel_kg">Papel reutilizado</label>
                             <div class="input-unit">
-                                <input type="number" id="papel_kg" name="papel_kg" step="0.1" min="0" value="0" placeholder="0">
+                                <input type="number" id="papel_kg" name="Papel_kg" step="0.1" min="0" value="0" placeholder="0">
                                 <span class="unit">kg</span>
                             </div>
                         </div>
                     </div>
-
                     <div class="form-row-3">
                         <div class="form-group">
                             <label for="borra_humeda_kg">Borra húmeda</label>
                             <div class="input-unit">
-                                <input type="number" id="borra_humeda_kg" name="borra_humeda_kg" step="0.1" min="0" value="0" placeholder="0">
+                                <input type="number" id="borra_humeda_kg" name="Borra_humeda_kg " step="0.1" min="0" value="0" placeholder="0">
                                 <span class="unit">kg</span>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label for="borra_seca_kg">Borra seca</label>
                             <div class="input-unit">
-                                <input type="number" id="borra_seca_kg" name="borra_seca_kg" step="0.1" min="0" value="0" placeholder="0">
+                                <input type="number" id="borra_seca_kg" name="Borra_seca_kg" step="0.1" min="0" value="0" placeholder="0">
                                 <span class="unit">kg</span>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label for="tela_reutilizada_kg">Tela reutilizada</label>
                             <div class="input-unit">
-                                <input type="number" id="tela_reutilizada_kg" name="tela_reutilizada_kg" step="0.1" min="0" value="0" placeholder="0">
+                                <input type="number" id="tela_reutilizada_kg" name="Tela_reutilizada_kg" step="0.1" min="0" value="0" placeholder="0">
                                 <span class="unit">kg</span>
                             </div>
                         </div>
                     </div>
-
                     <div class="form-row-3">
                         <div class="form-group">
                             <label for="tecnologia_recuperada_kg">Tecnología recuperada</label>
                             <div class="input-unit">
-                                <input type="number" id="tecnologia_recuperada_kg" name="tecnologia_recuperada_kg" step="0.1" min="0" value="0" placeholder="0">
+                                <input type="number" id="tecnologia_recuperada_kg" name="Tecnologia_recuperada_kg" step="0.1" min="0" value="0" placeholder="0">
                                 <span class="unit">kg</span>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label for="plastico_reutilizado_kg">Plástico reutilizado</label>
                             <div class="input-unit">
-                                <input type="number" id="plastico_reutilizado_kg" name="plastico_reutilizado_kg" step="0.1" min="0" value="0" placeholder="0">
+                                <input type="number" id="plastico_reutilizado_kg" name="Plastico_reutilizado_kg" step="0.1" min="0" value="0" placeholder="0">
                                 <span class="unit">kg</span>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label for="agua_m3">Agua consumida</label>
                             <div class="input-unit">
                                 <input type="number" id="agua_m3" name="agua_m3" step="0.1" min="0" value="0" placeholder="0">
                                 <span class="unit">m³</span>
                             </div>
-                            <div class="info-text">Nuevo indicador opcional</div>
                         </div>
                     </div>
                 </div>
@@ -411,41 +389,35 @@
                 <!-- SECCIÓN IMPACTO SOCIAL -->
                 <div class="form-section">
                     <h3><span class="section-icon">👥</span> Impacto Social</h3>
-
                     <div class="form-row-3">
                         <div class="form-group">
                             <label for="empleados_total">Total empleados</label>
-                            <input type="number" id="empleados_total" name="cantidad_empleados_total" min="0" value="0" placeholder="0">
+                            <input type="number" id="empleados_total" name="Cantidad_ Empleados_Total" min="0" value="0" placeholder="0">
                         </div>
-
                         <div class="form-group">
                             <label for="empleados_locales">Empleados locales</label>
-                            <input type="number" id="empleados_locales" name="cantidad_empleados_locales" min="0" value="0" placeholder="0">
+                            <input type="number" id="empleados_locales" name="Cantidad_ Empleados_Locales" min="0" value="0" placeholder="0">
                         </div>
-
                         <div class="form-group">
                             <label for="empleados_mujeres">Empleadas mujeres</label>
-                            <input type="number" id="empleados_mujeres" name="cantidad_mujeres" min="0" value="0" placeholder="0">
+                            <input type="number" id="empleados_mujeres" name="Cantidad_Mujeres" min="0" value="0" placeholder="0">
                         </div>
                     </div>
-
                     <div class="form-row-3">
                         <div class="form-group">
                             <label for="empleados_discapacidad">Personas con discapacidad</label>
-                            <input type="number" id="empleados_discapacidad" name="cantidad_personas_discapacitadas" min="0" value="0" placeholder="0">
+                            <input type="number" id="empleados_discapacidad" name="Cantidad_Personas_Discapacitadas" min="0" value="0" placeholder="0">
                         </div>
-
                         <div class="form-group">
                             <label for="capacitacion_horas">Horas de capacitación</label>
                             <div class="input-unit">
-                                <input type="number" id="capacitacion_horas" name="capacitacion_horas" step="0.1" min="0" value="0" placeholder="0">
+                                <input type="number" id="capacitacion_horas" name="Capacitacion_horas" step="0.1" min="0" value="0" placeholder="0">
                                 <span class="unit">horas</span>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label class="checkbox-group">
-                                <input type="checkbox" id="politica_inclusion" name="politica_inclusion" value="Sí">
+                                <input type="checkbox" id="politica_inclusion" name="Politica_inclusion" value="Sí">
                                 ¿Tiene política de inclusión?
                             </label>
                         </div>
@@ -455,20 +427,18 @@
                 <!-- SECCIÓN DIGITALIZACIÓN -->
                 <div class="form-section">
                     <h3><span class="section-icon">💻</span> Digitalización</h3>
-
                     <div class="form-row">
                         <div class="form-group">
                             <label for="procesos_optimizados">Procesos optimizados</label>
                             <div class="input-unit">
-                                <input type="number" id="procesos_optimizados" name="procesos_optimizados_porcentaje" min="0" max="100" step="1" value="0" placeholder="0">
+                                <input type="number" id="procesos_optimizados" name="Procesos_optimizados_%" min="0" max="100" step="1" value="0" placeholder="0">
                                 <span class="unit">%</span>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label for="digitalizacion">Digitalización</label>
                             <div class="input-unit">
-                                <input type="number" id="digitalizacion" name="digitalizacion_porcentaje" min="0" max="100" step="1" value="0" placeholder="0">
+                                <input type="number" id="digitalizacion" name="Digitalizacion_%" min="0" max="100" step="1" value="0" placeholder="0">
                                 <span class="unit">%</span>
                             </div>
                         </div>
@@ -478,28 +448,25 @@
                 <!-- SECCIÓN GESTIÓN DE RESIDUOS -->
                 <div class="form-section">
                     <h3><span class="section-icon">🗑️</span> Gestión de Residuos</h3>
-
                     <div class="form-row-3">
                         <div class="form-group">
                             <label for="residuo_organico">Residuo orgánico</label>
                             <div class="input-unit">
-                                <input type="number" id="residuo_organico" name="residuo_organico_kg" step="0.1" min="0" value="0" placeholder="0">
+                                <input type="number" id="residuo_organico" name="Residuo_Organico_kg" step="0.1" min="0" value="0" placeholder="0">
                                 <span class="unit">kg</span>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label for="residuo_reciclable">Residuo reciclable</label>
                             <div class="input-unit">
-                                <input type="number" id="residuo_reciclable" name="residuo_reciclable_kg" step="0.1" min="0" value="0" placeholder="0">
+                                <input type="number" id="residuo_reciclable" name="Residuo_Reciclable_kg" step="0.1" min="0" value="0" placeholder="0">
                                 <span class="unit">kg</span>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label for="residuo_no_reciclable">Residuo no reciclable</label>
                             <div class="input-unit">
-                                <input type="number" id="residuo_no_reciclable" name="residuo_no_reciclable_kg" step="0.1" min="0" value="0" placeholder="0">
+                                <input type="number" id="residuo_no_reciclable" name="Residuo_No_Reciclable_kg" step="0.1" min="0" value="0" placeholder="0">
                                 <span class="unit">kg</span>
                             </div>
                         </div>
@@ -509,16 +476,13 @@
                 <!-- SECCIÓN EVIDENCIA Y COMENTARIOS -->
                 <div class="form-section">
                     <h3><span class="section-icon">📎</span> Evidencia y Comentarios</h3>
-
                     <div class="form-group">
                         <label for="link_evidencia">Link de evidencia</label>
-                        <input type="url" id="link_evidencia" name="link_evidencia" placeholder="https://drive.google.com/... o https://docs.google.com/...">
-                        <div class="info-text">Incluir link a Excel con facturas, remitos, donaciones o convenios que evidencien el impacto del mes</div>
+                        <input type="url" id="link_evidencia" name="Link_Evidencia" placeholder="https://drive.google.com/... o https://docs.google.com/...">
                     </div>
-
                     <div class="form-group">
                         <label for="comentarios">Comentarios adicionales</label>
-                        <textarea id="comentarios" name="comentarios" rows="3" placeholder="Observaciones, logros destacados, dificultades, proyectos especiales..."></textarea>
+                        <textarea id="comentarios" name="Comentarios" rows="3" placeholder="Observaciones, logros destacados, dificultades, proyectos especiales..."></textarea>
                     </div>
                 </div>
 
@@ -536,71 +500,51 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // ✅ AGREGAR FECHA DE CARGA AUTOMÁTICAMENTE
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('fecha_carga').value = today;
 
-            // ✅ AGREGAR ID EMPRESA BASADO EN LA SELECCIÓN
             const empresaSelect = document.getElementById('empresa');
             const idEmpresaInput = document.createElement('input');
             idEmpresaInput.type = 'hidden';
-            idEmpresaInput.name = 'id_empresa';
+            idEmpresaInput.name = 'ID_Empresa';
             idEmpresaInput.id = 'id_empresa';
             document.getElementById('datosMensualesForm').appendChild(idEmpresaInput);
 
             empresaSelect.addEventListener('change', function() {
-                const empresaNombre = this.value;
-                if (empresaNombre) {
-                    // Generar ID basado en el nombre y timestamp
+                if (this.value) {
                     const timestamp = Date.now();
-                    const idEmpresa = `EMP-${empresaNombre.substring(0, 3).toUpperCase()}-${timestamp}`;
+                    const idEmpresa = `EMP-${this.value.substring(0, 3).toUpperCase()}-${timestamp}`;
                     document.getElementById('id_empresa').value = idEmpresa;
                 }
             });
         });
 
-        // ✅ VALIDACIÓN DE NÚMEROS POSITIVOS
         function validatePositiveNumber(input) {
-            if (input.value < 0) {
-                input.value = 0;
-            }
+            if (input.value < 0) input.value = 0;
         }
 
-        // Aplicar validación a todos los inputs numéricos
-        const numberInputs = document.querySelectorAll('input[type="number"]');
-        numberInputs.forEach(input => {
-            input.addEventListener('change', function() {
-                validatePositiveNumber(this);
-            });
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('change', function() { validatePositiveNumber(this); });
         });
 
         document.getElementById('datosMensualesForm').addEventListener('submit', function(e) {
             e.preventDefault();
-
-            // Validar empresa seleccionada
             const empresaSelect = document.getElementById('empresa');
+            const mesSelect = document.getElementById('mes');
+            const anioSelect = document.getElementById('anio');
+
             if (!empresaSelect.value) {
                 alert('❌ Por favor, selecciona una empresa');
                 empresaSelect.focus();
                 return;
             }
-
-            // Validar mes y año
-            const mesSelect = document.getElementById('mes');
-            const anioSelect = document.getElementById('anio');
             if (!mesSelect.value || !anioSelect.value) {
                 alert('❌ Por favor, selecciona mes y año');
-                if (!mesSelect.value) mesSelect.focus();
-                else anioSelect.focus();
                 return;
             }
 
-            // Mostrar mensaje de éxito
             document.getElementById('successMessage').style.display = 'block';
-
-            // Enviar formulario
             const form = e.target;
-            const formData = new FormData(form);
 
             fetch(form.action, {
                 method: 'POST',
@@ -610,7 +554,7 @@
             .then(response => {
                 if (response.ok) {
                     document.getElementById('successMessage').textContent = '✅ ¡Datos mensuales enviados correctamente! Tu insignia se generará pronto.';
-                    form.reset(); // Opcional: limpia el formulario
+                    form.reset();
                 } else {
                     document.getElementById('successMessage').textContent = '⚠️ Hubo un problema al enviar. Por favor, inténtalo de nuevo.';
                 }
