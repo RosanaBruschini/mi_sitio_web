@@ -259,7 +259,7 @@
                 ✅ ¡Empresa registrada correctamente! Redirigiendo...
             </div>
 
-            <form id="registroEmpresaForm" action="https://script.google.com/macros/s/AKfycbwo3k3fW4FrrOHHeL0eNyxpptz5rY2JRmPZ_mF6nQfY35Vt5jFyDyUoHzqP8_LZ7J0i/exec" method="POST">
+            <form id="registroEmpresaForm" action="https://api.sheetbest.com/sheets/2eb917d5-94d0-4d5a-b511-ea115ba62206" method="POST">
                 <input type="hidden" name="hoja" value="Empresa">
 
                 <div class="hidden-fields">
@@ -509,18 +509,18 @@
             fetch(form.action, {
                 method: 'POST',
                 body: formData,
-                mode: 'no-cors'
-            }).then(() => {
-                document.getElementById('successMessage').textContent = '✅ ¡Empresa registrada! Procesando información...';
-                setTimeout(() => {
-                    window.location.href = 'https://impactaverde.com.ar/gracias-registro.html';
-                }, 2000);
-            }).catch(error => {
+            })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('successMessage').textContent = '✅ ¡Empresa registrada correctamente! Los datos se guardaron en el sistema.';
+                    form.reset(); // Opcional: limpia el formulario
+                } else {
+                    document.getElementById('successMessage').textContent = '⚠️ Hubo un problema al enviar. Por favor, inténtalo de nuevo.';
+                }
+            })
+            .catch(error => {
                 console.error('Error:', error);
-                document.getElementById('successMessage').textContent = '✅ ¡Empresa registrada! Redirigiendo...';
-                setTimeout(() => {
-                    window.location.href = 'https://impactaverde.com.ar/gracias-registro.html';
-                }, 1000);
+                document.getElementById('successMessage').textContent = '❌ Error de conexión. Verifica tu internet.';
             });
         });
     </script>
