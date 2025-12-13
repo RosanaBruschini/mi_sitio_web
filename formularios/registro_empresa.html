@@ -263,9 +263,10 @@
                 <input type="hidden" name="hoja" value="Empresa">
 
                 <div class="hidden-fields">
-                    <input type="hidden" name="fecha_alta" id="fecha_alta">
-                    <input type="hidden" name="estado" value="Activo">
-                    <input type="hidden" name="nivel_sello_actual" value="Sin sello">
+                    <!-- NOMBRES CORREGIDOS SEGÚN EXCEL -->
+                    <input type="hidden" name="Fecha alta" id="fecha_alta">
+                    <input type="hidden" name="Estado" value="Activo">
+                    <input type="hidden" name="Nivel de sello actual" value="Sin sello">
                 </div>
 
                 <div class="form-section">
@@ -273,13 +274,13 @@
 
                     <div class="form-group">
                         <label for="empresa">Nombre de la Empresa <span class="required">*</span></label>
-                        <input type="text" id="empresa" name="empresa" required placeholder="Ej: Mi Empresa S.A.">
+                        <input type="text" id="empresa" name="Empresa" required placeholder="Ej: Mi Empresa S.A.">
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label for="rubro">Rubro <span class="required">*</span></label>
-                            <select id="rubro" name="rubro" required>
+                            <select id="rubro" name="Rubro" required>
                                 <option value="">Seleccionar rubro...</option>
                                 <option value="Textil">Textil</option>
                                 <option value="Tecnología">Tecnología</option>
@@ -297,7 +298,7 @@
 
                         <div class="form-group">
                             <label for="pais">País <span class="required">*</span></label>
-                            <select id="pais" name="pais" required>
+                            <select id="pais" name="Pais" required>
                                 <option value="">Seleccionar país...</option>
                                 <option value="Argentina">Argentina</option>
                                 <option value="Uruguay">Uruguay</option>
@@ -317,22 +318,21 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="localidad">Localidad <span class="required">*</span></label>
-                            <input type="text" id="localidad" name="localidad" required placeholder="Ej: Buenos Aires, CABA">
+                            <input type="text" id="localidad" name="Localidad" required placeholder="Ej: Buenos Aires, CABA">
                         </div>
 
                         <div class="form-group">
                             <label for="area_a_cargo">Área a cargo <span class="required">*</span></label>
-                            <input type="text" id="area_a_cargo" name="area_a_cargo" required placeholder="Ej: Sostenibilidad, Operaciones, RSE">
+                            <input type="text" id="area_a_cargo" name="Area_a_cargo" required placeholder="Ej: Sostenibilidad, Operaciones, RSE">
                         </div>
                     </div>
 
-                    <!-- ✅ NUEVO CAMPO CUIT -->
                     <div class="form-row">
                         <div class="form-group">
                             <label for="cuit">CUIT <span class="required">*</span></label>
                             <input type="text"
                                    id="cuit"
-                                   name="cuit"
+                                   name="CUIT"
                                    class="cuit-input"
                                    required
                                    pattern="[0-9]{2}-[0-9]{8}-[0-9]{1}"
@@ -344,7 +344,7 @@
 
                         <div class="form-group">
                             <label for="responsable">Responsable <span class="required">*</span></label>
-                            <input type="text" id="responsable" name="responsable" required placeholder="Nombre y apellido completo">
+                            <input type="text" id="responsable" name="Responsable" required placeholder="Nombre y apellido completo">
                         </div>
                     </div>
                 </div>
@@ -355,25 +355,26 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="email">Email <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" required placeholder="ejemplo@empresa.com">
+                            <input type="email" id="email" name="Email" required placeholder="ejemplo@empresa.com">
                         </div>
 
                         <div class="form-group">
                             <label for="tel_contacto">Teléfono de Contacto <span class="required">*</span></label>
-                            <input type="tel" id="tel_contacto" name="tel_contacto" required placeholder="Ej: +54 11 1234-5678">
+                            <input type="tel" id="tel_contacto" name="Tel_contacto" required placeholder="Ej: +54 11 1234-5678">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label for="whatsapp">WhatsApp</label>
-                            <input type="tel" id="whatsapp" name="whatsapp" class="whatsapp-input" placeholder="Ej: +54 9 11 1234-5678">
+                            <input type="tel" id="whatsapp" name="WhatsApp" class="whatsapp-input" placeholder="Ej: +54 9 11 1234-5678">
                             <div class="info-text">Incluir código de país y área</div>
                         </div>
 
                         <div class="form-group">
                             <label for="plan">Plan <span class="required">*</span></label>
-                            <select id="plan" name="plan" required>
+                            <!-- ¡CON ESPACIOS SEGÚN EXCEL! -->
+                            <select id="plan" name=" Plan (Mensual/Anual) " required>
                                 <option value="">Seleccionar plan...</option>
                                 <option value="Mensual">Mensual</option>
                                 <option value="Anual">Anual</option>
@@ -384,7 +385,7 @@
 
                     <div class="form-group">
                         <label for="observaciones">Observaciones</label>
-                        <textarea id="observaciones" name="observaciones" rows="3" placeholder="Comentarios adicionales, indicadores específicos de interés..."></textarea>
+                        <textarea id="observaciones" name="Observaciones" rows="3" placeholder="Comentarios adicionales, indicadores específicos de interés..."></textarea>
                     </div>
                 </div>
 
@@ -405,14 +406,14 @@
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('fecha_alta').value = today;
 
-            // ✅ AGREGAR ID ÚNICO AUTOMÁTICAMENTE
+            // ✅ AGREGAR ID ÚNICO AUTOMÁTICAMENTE (ID_Empresa SEGÚN EXCEL)
             const timestamp = Date.now();
             const randomNum = Math.floor(Math.random() * 1000);
             const idEmpresa = `EMP-${timestamp}-${randomNum}`;
 
             const idInput = document.createElement('input');
             idInput.type = 'hidden';
-            idInput.name = 'id_empresa';
+            idInput.name = 'ID_Empresa';
             idInput.value = idEmpresa;
             document.getElementById('registroEmpresaForm').appendChild(idInput);
 
@@ -422,10 +423,8 @@
 
         // ✅ FUNCIÓN PARA FORMATEAR CUIT
         function formatCUIT(input) {
-            // Eliminar todo excepto números
             let value = input.value.replace(/\D/g, '');
 
-            // Aplicar formato 99-99999999-9
             if (value.length > 2) {
                 value = value.substring(0, 2) + '-' + value.substring(2);
             }
@@ -438,7 +437,6 @@
 
             input.value = value;
 
-            // Validación visual
             const cuitPattern = /^\d{2}-\d{8}-\d{1}$/;
             if (cuitPattern.test(value)) {
                 input.style.borderColor = '#4CAF50';
@@ -452,16 +450,11 @@
         // ✅ FUNCIÓN PARA FORMATEAR TELÉFONOS
         function formatPhone(input) {
             let value = input.value.replace(/\D/g, '');
-
-            // Mantener formato mientras se escribe
-            if (value.length > 0) {
-                if (!input.value.startsWith('+')) {
-                    input.value = '+' + value;
-                }
+            if (value.length > 0 && !input.value.startsWith('+')) {
+                input.value = '+' + value;
             }
         }
 
-        // Aplicar formatPhone a los campos de teléfono
         document.getElementById('tel_contacto').addEventListener('input', function() {
             formatPhone(this);
         });
@@ -473,17 +466,14 @@
         document.getElementById('registroEmpresaForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // ✅ VALIDAR CUIT ANTES DE ENVIAR
             const cuitInput = document.getElementById('cuit');
             const cuitPattern = /^\d{2}-\d{8}-\d{1}$/;
-
             if (!cuitPattern.test(cuitInput.value)) {
                 alert('❌ Por favor, ingrese un CUIT válido en formato: 99-99999999-9');
                 cuitInput.focus();
                 return;
             }
 
-            // ✅ VALIDAR TELÉFONO REQUERIDO
             const telefonoInput = document.getElementById('tel_contacto');
             if (!telefonoInput.value.trim()) {
                 alert('❌ Por favor, ingrese un teléfono de contacto');
@@ -491,7 +481,6 @@
                 return;
             }
 
-            // ✅ VALIDAR ÁREA A CARGO
             const areaInput = document.getElementById('area_a_cargo');
             if (!areaInput.value.trim()) {
                 alert('❌ Por favor, ingrese el área a cargo');
@@ -499,12 +488,8 @@
                 return;
             }
 
-            // Mostrar mensaje de éxito
             document.getElementById('successMessage').style.display = 'block';
-
-            // Enviar formulario
             const form = e.target;
-            const formData = new FormData(form);
 
             fetch(form.action, {
                 method: 'POST',
@@ -514,7 +499,7 @@
             .then(response => {
                 if (response.ok) {
                     document.getElementById('successMessage').textContent = '✅ ¡Empresa registrada correctamente! Los datos se guardaron en el sistema.';
-                    form.reset(); // Opcional: limpia el formulario
+                    form.reset();
                 } else {
                     document.getElementById('successMessage').textContent = '⚠️ Hubo un problema al enviar. Por favor, inténtalo de nuevo.';
                 }
