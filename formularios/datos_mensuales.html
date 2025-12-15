@@ -272,8 +272,7 @@
             </div>
 
             <!-- 🟢 URL ACTUALIZADA a Google Apps Script -->
-            <form id="datosMensualesForm" action="https://script.google.com/macros/s/AKfycbxRTR6mJjapr47yzUpQDLEvWCHpKzLpVcVdxXTNg1sRRGMRI68Fb3V3RSfzK3TzqDh1/exec" method="POST">
-                <!-- Se eliminó el input oculto 'hoja', ya no es necesario con Apps Script -->
+            <form id="datosMensualesForm" action="https://script.google.com/macros/s/AKfycbyowk80gxYJDXWlskiRIyeDZ221RF15zkQF2Z-CYkGBXe1cypDFRbA_u5iqYPc1op7I/exec" method="POST">
                 <input type="hidden" name="Fecha_carga" id="fecha_carga">
 
                 <!-- SECCIÓN EMPRESA Y PERIODO -->
@@ -284,7 +283,7 @@
                             <label for="empresa">Empresa <span class="required">*</span></label>
                             <select id="empresa" name="Empresa" required>
                                 <option value="">Seleccionar empresa...</option>
-                                <option value="1">ETIMO</option>
+                                <option value="1">ETIMO</option><option value="EMP-1765825170756-394">arcor</option>
                             </select>
                             <div class="info-text">El valor seleccionado es el ID real de la empresa.</div>
                         </div>
@@ -344,7 +343,7 @@
                         <div class="form-group">
                             <label for="borra_humeda_kg">Borra húmeda</label>
                             <div class="input-unit">
-                                <!-- 🟢 Se mantiene el espacio al final en 'name' para coincidir con Excel -->
+                                <!-- 🟢 Se mantiene el espacio al final en 'name' -->
                                 <input type="number" id="borra_humeda_kg" name="Borra_humeda_kg " step="0.1" min="0" value="0" placeholder="0">
                                 <span class="unit">kg</span>
                             </div>
@@ -382,7 +381,7 @@
                         <div class="form-group">
                             <label for="agua_m3">Agua consumida</label>
                             <div class="input-unit">
-                                <!-- 🟢 Corregido a 'Agua_m3' (con A mayúscula) -->
+                                <!-- 🟢 Corregido a 'Agua_m3' -->
                                 <input type="number" id="agua_m3" name="Agua_m3" step="0.1" min="0" value="0" placeholder="0">
                                 <span class="unit">m³</span>
                             </div>
@@ -428,19 +427,25 @@
                     </div>
                 </div>
 
-                <!-- SECCIÓN DIGITALIZACIÓN -->
+                <!-- SECCIÓN DIGITALIZACIÓN (CON AYUDA AÑADIDA) -->
                 <div class="form-section">
                     <h3><span class="section-icon">💻</span> Digitalización</h3>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="procesos_optimizados">Procesos optimizados</label>
+                            <label for="procesos_optimizados">
+                                Procesos optimizados
+                                <span style="font-weight:normal; color:#666;">(Porcentaje de procesos operativos optimizados en el último mes)</span>
+                            </label>
                             <div class="input-unit">
                                 <input type="number" id="procesos_optimizados" name="Procesos_optimizados_%" min="0" max="100" step="1" value="0" placeholder="0">
                                 <span class="unit">%</span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="digitalizacion">Digitalización</label>
+                            <label for="digitalizacion">
+                                Digitalización
+                                <span style="font-weight:normal; color:#666;">(Porcentaje de documentación y procesos digitalizados)</span>
+                            </label>
                             <div class="input-unit">
                                 <input type="number" id="digitalizacion" name="Digitalizacion_%" min="0" max="100" step="1" value="0" placeholder="0">
                                 <span class="unit">%</span>
@@ -507,21 +512,21 @@
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('fecha_carga').value = today;
 
-            // 🟢 Se crea un campo oculto para el ID, se poblará al seleccionar empresa
+            // 🟢 Campo oculto para el ID real
             const idEmpresaInput = document.createElement('input');
             idEmpresaInput.type = 'hidden';
-            idEmpresaInput.name = 'ID_Empresa'; // Nombre exacto para el script
+            idEmpresaInput.name = 'ID_Empresa';
             idEmpresaInput.id = 'id_empresa_hidden';
             document.getElementById('datosMensualesForm').appendChild(idEmpresaInput);
 
             const empresaSelect = document.getElementById('empresa');
 
-            // 🟢 EVENTO ACTUALIZADO: El value de la opción ES el ID real.
+            // 🟢 EVENTO: El value de la opción ES el ID real.
             empresaSelect.addEventListener('change', function() {
-                const idEmpresaReal = this.value; // Esto es el ID (ej: "1", "5")
+                const idEmpresaReal = this.value;
                 if (idEmpresaReal) {
                     document.getElementById('id_empresa_hidden').value = idEmpresaReal;
-                    console.log("ID de empresa asignado para envío:", idEmpresaReal);
+                    console.log("ID de empresa asignado:", idEmpresaReal);
                 }
             });
         });
@@ -554,15 +559,13 @@
             document.getElementById('successMessage').style.display = 'block';
             const form = e.target;
 
-            // Envía los datos a tu Google Apps Script
             fetch(form.action, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(Object.fromEntries(new FormData(form)))
             })
-            .then(response => response.json()) // Apps Script devuelve JSON
+            .then(response => response.json())
             .then(data => {
-                // Maneja la respuesta JSON de tu script
                 if (data.success) {
                     document.getElementById('successMessage').textContent = '✅ ' + data.message;
                     form.reset();
