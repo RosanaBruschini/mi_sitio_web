@@ -271,8 +271,9 @@
                 ✅ ¡Datos enviados correctamente! Redirigiendo...
             </div>
 
-            <form id="datosMensualesForm" action="https://api.sheetbest.com/sheets/2eb917d5-94d0-4d5a-b511-ea115ba62206" method="POST">
-                <input type="hidden" name="hoja" value="Datos_Mensuales_Crudos">
+            <!-- 🟢 URL ACTUALIZADA a Google Apps Script -->
+            <form id="datosMensualesForm" action="https://script.google.com/macros/s/AKfycbxRTR6mJjapr47yzUpQDLEvWCHpKzLpVcVdxXTNg1sRRGMRI68Fb3V3RSfzK3TzqDh1/exec" method="POST">
+                <!-- Se eliminó el input oculto 'hoja', ya no es necesario con Apps Script -->
                 <input type="hidden" name="Fecha_carga" id="fecha_carga">
 
                 <!-- SECCIÓN EMPRESA Y PERIODO -->
@@ -283,8 +284,9 @@
                             <label for="empresa">Empresa <span class="required">*</span></label>
                             <select id="empresa" name="Empresa" required>
                                 <option value="">Seleccionar empresa...</option>
-                                <option value="ETIMO">ETIMO</option><option value="Empresa de Prueba API">Empresa de Prueba API</option>
+                                <option value="1">ETIMO</option>
                             </select>
+                            <div class="info-text">El valor seleccionado es el ID real de la empresa.</div>
                         </div>
                     </div>
                     <div class="form-row">
@@ -342,6 +344,7 @@
                         <div class="form-group">
                             <label for="borra_humeda_kg">Borra húmeda</label>
                             <div class="input-unit">
+                                <!-- 🟢 Se mantiene el espacio al final en 'name' para coincidir con Excel -->
                                 <input type="number" id="borra_humeda_kg" name="Borra_humeda_kg " step="0.1" min="0" value="0" placeholder="0">
                                 <span class="unit">kg</span>
                             </div>
@@ -379,7 +382,8 @@
                         <div class="form-group">
                             <label for="agua_m3">Agua consumida</label>
                             <div class="input-unit">
-                                <input type="number" id="agua_m3" name="agua_m3" step="0.1" min="0" value="0" placeholder="0">
+                                <!-- 🟢 Corregido a 'Agua_m3' (con A mayúscula) -->
+                                <input type="number" id="agua_m3" name="Agua_m3" step="0.1" min="0" value="0" placeholder="0">
                                 <span class="unit">m³</span>
                             </div>
                         </div>
@@ -503,18 +507,21 @@
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('fecha_carga').value = today;
 
-            const empresaSelect = document.getElementById('empresa');
+            // 🟢 Se crea un campo oculto para el ID, se poblará al seleccionar empresa
             const idEmpresaInput = document.createElement('input');
             idEmpresaInput.type = 'hidden';
-            idEmpresaInput.name = 'ID_Empresa';
-            idEmpresaInput.id = 'id_empresa';
+            idEmpresaInput.name = 'ID_Empresa'; // Nombre exacto para el script
+            idEmpresaInput.id = 'id_empresa_hidden';
             document.getElementById('datosMensualesForm').appendChild(idEmpresaInput);
 
+            const empresaSelect = document.getElementById('empresa');
+
+            // 🟢 EVENTO ACTUALIZADO: El value de la opción ES el ID real.
             empresaSelect.addEventListener('change', function() {
-                if (this.value) {
-                    const timestamp = Date.now();
-                    const idEmpresa = `EMP-${this.value.substring(0, 3).toUpperCase()}-${timestamp}`;
-                    document.getElementById('id_empresa').value = idEmpresa;
+                const idEmpresaReal = this.value; // Esto es el ID (ej: "1", "5")
+                if (idEmpresaReal) {
+                    document.getElementById('id_empresa_hidden').value = idEmpresaReal;
+                    console.log("ID de empresa asignado para envío:", idEmpresaReal);
                 }
             });
         });
@@ -527,6 +534,7 @@
             input.addEventListener('change', function() { validatePositiveNumber(this); });
         });
 
+        // 🟢 MANEJADOR DE ENVÍO ACTUALIZADO para Apps Script
         document.getElementById('datosMensualesForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const empresaSelect = document.getElementById('empresa');
@@ -546,17 +554,20 @@
             document.getElementById('successMessage').style.display = 'block';
             const form = e.target;
 
+            // Envía los datos a tu Google Apps Script
             fetch(form.action, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(Object.fromEntries(new FormData(form)))
             })
-            .then(response => {
-                if (response.ok) {
-                    document.getElementById('successMessage').textContent = '✅ ¡Datos mensuales enviados correctamente! Tu insignia se generará pronto.';
+            .then(response => response.json()) // Apps Script devuelve JSON
+            .then(data => {
+                // Maneja la respuesta JSON de tu script
+                if (data.success) {
+                    document.getElementById('successMessage').textContent = '✅ ' + data.message;
                     form.reset();
                 } else {
-                    document.getElementById('successMessage').textContent = '⚠️ Hubo un problema al enviar. Por favor, inténtalo de nuevo.';
+                    document.getElementById('successMessage').textContent = '⚠️ ' + data.message;
                 }
             })
             .catch(error => {
