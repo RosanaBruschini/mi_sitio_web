@@ -259,14 +259,13 @@
                 ✅ ¡Empresa registrada correctamente! Redirigiendo...
             </div>
 
-            <form id="registroEmpresaForm" action="https://api.sheetbest.com/sheets/2eb917d5-94d0-4d5a-b511-ea115ba62206" method="POST">
-                <input type="hidden" name="hoja" value="Empresa">
+            <!-- 🟢 CAMBIO CRÍTICO: Ahora también usa Apps Script para generar ID numérico -->
+            <form id="registroEmpresaForm" action="https://script.google.com/macros/s/AKfycbyowk80gxYJDXWlskiRIyeDZ221RF15zkQF2Z-CYkGBXe1cypDFRbA_u5iqYPc1op7I/exec" method="POST">
+                <!-- NO enviar 'hoja' ni 'ID_Empresa', el script los gestiona -->
 
                 <div class="hidden-fields">
-                    <!-- NOMBRES CORREGIDOS SEGÚN EXCEL -->
                     <input type="hidden" name="Fecha alta" id="fecha_alta">
-                    <input type="hidden" name="Estado" value="Activo">
-                    <input type="hidden" name="Nivel de sello actual" value="Sin sello">
+                    
                 </div>
 
                 <div class="form-section">
@@ -402,23 +401,14 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // ✅ AGREGAR FECHA ACTUAL AUTOMÁTICAMENTE
+            // ✅ FECHA ACTUAL
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('fecha_alta').value = today;
-
-            // ✅ AGREGAR ID ÚNICO AUTOMÁTICAMENTE (ID_Empresa SEGÚN EXCEL)
-            const timestamp = Date.now();
-            const randomNum = Math.floor(Math.random() * 1000);
-            const idEmpresa = `EMP-${timestamp}-${randomNum}`;
-
-            const idInput = document.createElement('input');
-            idInput.type = 'hidden';
-            idInput.name = 'ID_Empresa';
-            idInput.value = idEmpresa;
-            document.getElementById('registroEmpresaForm').appendChild(idInput);
-
-            // ✅ ESTABLECER ARGENTINA COMO PAÍS PREDETERMINADO
+            
+            // ✅ PAÍS PREDETERMINADO
             document.getElementById('pais').value = 'Argentina';
+            
+            // 🟢 SE ELIMINÓ la generación del ID raro. Lo generará el script.
         });
 
         // ✅ FUNCIÓN PARA FORMATEAR CUIT
@@ -463,6 +453,7 @@
             formatPhone(this);
         });
 
+        // 🟢 MANEJADOR DE ENVÍO ACTUALIZADO para Apps Script
         document.getElementById('registroEmpresaForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
@@ -491,17 +482,23 @@
             document.getElementById('successMessage').style.display = 'block';
             const form = e.target;
 
+            // Envía a Apps Script
             fetch(form.action, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(Object.fromEntries(new FormData(form)))
             })
-            .then(response => {
-                if (response.ok) {
-                    document.getElementById('successMessage').textContent = '✅ ¡Empresa registrada correctamente! Los datos se guardaron en el sistema.';
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('successMessage').textContent = '✅ ' + data.message;
                     form.reset();
+                    // Opcional: Redirigir después de 3 segundos
+                    setTimeout(() => {
+                        window.location.href = 'https://impactaverde.com.ar';
+                    }, 3000);
                 } else {
-                    document.getElementById('successMessage').textContent = '⚠️ Hubo un problema al enviar. Por favor, inténtalo de nuevo.';
+                    document.getElementById('successMessage').textContent = '❌ ' + data.message;
                 }
             })
             .catch(error => {
