@@ -7,6 +7,7 @@
     <title>Registro de Empresa - Impacta Verde</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
     <style>
+        /* ESTILOS COMPLETOS (sin cambios) */
         :root {
             --verde-oscuro: #1F7A3E;
             --verde-medio: #4CAF50;
@@ -259,13 +260,10 @@
                 ✅ ¡Empresa registrada correctamente! Redirigiendo...
             </div>
 
-            <!-- 🟢 CAMBIO CRÍTICO: Ahora también usa Apps Script para generar ID numérico -->
-            <form id="registroEmpresaForm" action="https://script.google.com/macros/s/AKfycbyowk80gxYJDXWlskiRIyeDZ221RF15zkQF2Z-CYkGBXe1cypDFRbA_u5iqYPc1op7I/exec" method="POST">
-                <!-- NO enviar 'hoja' ni 'ID_Empresa', el script los gestiona -->
-
+            <!-- 🟢 CAMBIO 1: URL CORREGIDA -->
+            <form id="registroEmpresaForm" action="https://script.google.com/macros/s/AKfycbzHNXLmJQ32ZJ_7NFr0z2EwcEYpk6e_Ed0AGC9SsHZWHinfjm8ePEHJPpXoEK33jJRY/exec" method="POST">
                 <div class="hidden-fields">
                     <input type="hidden" name="Fecha alta" id="fecha_alta">
-                    
                 </div>
 
                 <div class="form-section">
@@ -372,8 +370,7 @@
 
                         <div class="form-group">
                             <label for="plan">Plan <span class="required">*</span></label>
-                            <!-- ¡CON ESPACIOS SEGÚN EXCEL! -->
-                            <select id="plan" name=" Plan (Mensual/Anual) " required>
+                            <select id="plan" name="Plan (Mensual/Anual)" required>
                                 <option value="">Seleccionar plan...</option>
                                 <option value="Mensual">Mensual</option>
                                 <option value="Anual">Anual</option>
@@ -404,11 +401,7 @@
             // ✅ FECHA ACTUAL
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('fecha_alta').value = today;
-            
-            // ✅ PAÍS PREDETERMINADO
             document.getElementById('pais').value = 'Argentina';
-            
-            // 🟢 SE ELIMINÓ la generación del ID raro. Lo generará el script.
         });
 
         // ✅ FUNCIÓN PARA FORMATEAR CUIT
@@ -437,26 +430,11 @@
             }
         }
 
-        // ✅ FUNCIÓN PARA FORMATEAR TELÉFONOS
-        function formatPhone(input) {
-            let value = input.value.replace(/\D/g, '');
-            if (value.length > 0 && !input.value.startsWith('+')) {
-                input.value = '+' + value;
-            }
-        }
-
-        document.getElementById('tel_contacto').addEventListener('input', function() {
-            formatPhone(this);
-        });
-
-        document.getElementById('whatsapp').addEventListener('input', function() {
-            formatPhone(this);
-        });
-
-        // 🟢 MANEJADOR DE ENVÍO ACTUALIZADO para Apps Script
+        // 🟢 CAMBIO 2: FUNCIÓN DE ENVÍO MEJORADA
         document.getElementById('registroEmpresaForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
+            // Validaciones
             const cuitInput = document.getElementById('cuit');
             const cuitPattern = /^\d{2}-\d{8}-\d{1}$/;
             if (!cuitPattern.test(cuitInput.value)) {
@@ -465,35 +443,29 @@
                 return;
             }
 
-            const telefonoInput = document.getElementById('tel_contacto');
-            if (!telefonoInput.value.trim()) {
-                alert('❌ Por favor, ingrese un teléfono de contacto');
-                telefonoInput.focus();
-                return;
-            }
-
-            const areaInput = document.getElementById('area_a_cargo');
-            if (!areaInput.value.trim()) {
-                alert('❌ Por favor, ingrese el área a cargo');
-                areaInput.focus();
-                return;
-            }
-
             document.getElementById('successMessage').style.display = 'block';
             const form = e.target;
+            const formData = new FormData(form);
+            const datos = Object.fromEntries(formData.entries());
 
-            // Envía a Apps Script
+            // 🟢 CAMBIO 3: ENVÍO CON HEADERS CORRECTOS
             fetch(form.action, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(Object.fromEntries(new FormData(form)))
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(datos)
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error de red: ' + response.status);
+                }
+                return response.json();
+            })
             .then(data => {
                 if (data.success) {
                     document.getElementById('successMessage').textContent = '✅ ' + data.message;
-                    form.reset();
-                    // Opcional: Redirigir después de 3 segundos
                     setTimeout(() => {
                         window.location.href = 'https://impactaverde.com.ar';
                     }, 3000);
