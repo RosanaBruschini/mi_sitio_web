@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,7 +6,6 @@
     <title>Registro de Empresa - Impacta Verde</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
     <style>
-        /* ESTILOS COMPLETOS (sin cambios) */
         :root {
             --verde-oscuro: #1F7A3E;
             --verde-medio: #4CAF50;
@@ -260,7 +258,6 @@
                 ✅ ¡Empresa registrada correctamente! Redirigiendo...
             </div>
 
-            <!-- 🟢 CAMBIO 1: URL CORREGIDA -->
             <form id="registroEmpresaForm" action="https://script.google.com/macros/s/AKfycbzHNXLmJQ32ZJ_7NFr0z2EwcEYpk6e_Ed0AGC9SsHZWHinfjm8ePEHJPpXoEK33jJRY/exec" method="POST">
                 <div class="hidden-fields">
                     <input type="hidden" name="Fecha alta" id="fecha_alta">
@@ -398,13 +395,11 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // ✅ FECHA ACTUAL
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('fecha_alta').value = today;
             document.getElementById('pais').value = 'Argentina';
         });
 
-        // ✅ FUNCIÓN PARA FORMATEAR CUIT
         function formatCUIT(input) {
             let value = input.value.replace(/\D/g, '');
 
@@ -430,11 +425,9 @@
             }
         }
 
-        // 🟢 CAMBIO 2: FUNCIÓN DE ENVÍO MEJORADA
         document.getElementById('registroEmpresaForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Validaciones
             const cuitInput = document.getElementById('cuit');
             const cuitPattern = /^\d{2}-\d{8}-\d{1}$/;
             if (!cuitPattern.test(cuitInput.value)) {
@@ -448,7 +441,6 @@
             const formData = new FormData(form);
             const datos = Object.fromEntries(formData.entries());
 
-            // 🟢 CAMBIO 3: ENVÍO CON HEADERS CORRECTOS
             fetch(form.action, {
                 method: 'POST',
                 headers: { 
