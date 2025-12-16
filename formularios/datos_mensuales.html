@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,7 +6,6 @@
     <title>Datos Mensuales - Impacta Verde</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
     <style>
-        /* ESTILOS COMPLETOS (sin cambios) */
         :root {
             --verde-oscuro: #1F7A3E;
             --verde-medio: #4CAF50;
@@ -272,7 +270,6 @@
                 ✅ ¡Datos enviados correctamente! Redirigiendo...
             </div>
 
-            <!-- 🟢 CAMBIO 1: URL CORREGIDA -->
             <form id="datosMensualesForm" action="https://script.google.com/macros/s/AKfycbzHNXLmJQ32ZJ_7NFr0z2EwcEYpk6e_Ed0AGC9SsHZWHinfjm8ePEHJPpXoEK33jJRY/exec" method="POST">
                 <input type="hidden" name="Fecha_carga" id="fecha_carga">
                 <input type="hidden" name="ID_Empresa" id="id_empresa_hidden">
@@ -515,7 +512,6 @@
             });
         });
 
-        // 🟢 CAMBIO 2: FUNCIÓN DE ENVÍO MEJORADA
         document.getElementById('datosMensualesForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const empresaSelect = document.getElementById('empresa');
@@ -537,7 +533,6 @@
             const formData = new FormData(form);
             const datos = Object.fromEntries(formData.entries());
 
-            // 🟢 CAMBIO 3: ENVÍO CON HEADERS CORRECTOS
             fetch(form.action, {
                 method: 'POST',
                 headers: { 
