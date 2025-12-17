@@ -319,7 +319,7 @@
                             <label for="empresa">Empresa <span class="required">*</span></label>
                             <select id="empresa" name="Empresa" required>
                                 <option value="">Seleccionar empresa...</option>
-                                <option value="1">ETIMO (ID: 1)</option>
+                                <option value="1">ETIMO (ID: 1)</option><option value="2">RORO (ID: 2)</option>
                             </select>
                             <div class="info-text">Selecciona tu empresa del listado</div>
                         </div>
@@ -503,7 +503,7 @@
                         <div class="form-group">
                             <label for="residuo_no_reciclable">Residuo no reciclable</label>
                             <div class="input-unit">
-                                <input type="number" id="residuo_no_reciclable" name="Residuo_No_Reciclable_kg" step="0.1, min="0" value="0" placeholder="0">
+                                <input type="number" id="residuo_no_reciclable" name="Residuo_No_Reciclable_kg" step="0.1" min="0" value="0" placeholder="0">
                                 <span class="unit">kg</span>
                             </div>
                         </div>
@@ -534,7 +534,9 @@
     </div>
 
     <script>
-        // 🔥 SOLUCIÓN DEFINITIVA: SIMPLE Y FUNCIONAL
+        // 🔥 SOLUCIÓN DEFINITIVA CORREGIDA - SIN ABRIR NUEVAS PESTAÑAS
+        let enviandoMensual = false; // Variable para prevenir envíos duplicados
+
         document.addEventListener('DOMContentLoaded', function() {
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('fecha_carga').value = today;
@@ -552,7 +554,10 @@
         });
 
         document.getElementById('datosMensualesForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
+            e.preventDefault(); // 🔥 EVITA QUE SE ABRA NUEVA PESTAÑA
+            
+            if (enviandoMensual) return; // Prevenir envíos duplicados
+            enviandoMensual = true;
             
             // Validaciones básicas
             const empresaSelect = document.getElementById('empresa');
@@ -562,10 +567,12 @@
             if (!empresaSelect.value) {
                 showError('❌ Por favor, selecciona una empresa');
                 empresaSelect.focus();
+                enviandoMensual = false;
                 return;
             }
             if (!mesSelect.value || !anioSelect.value) {
                 showError('❌ Por favor, selecciona mes y año');
+                enviandoMensual = false;
                 return;
             }
 
@@ -574,7 +581,10 @@
             showLoading('⏳ Enviando datos, por favor espera...');
             
             // Deshabilitar botón
-            document.getElementById('submitBtn').disabled = true;
+            const submitBtn = document.getElementById('submitBtn');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
             
             // Preparar datos
             const formData = new FormData(this);
@@ -588,11 +598,15 @@
                 }
             });
             
+            // Manejar checkbox
+            const politicaInclusion = document.getElementById('politica_inclusion');
+            datos['Politica_inclusion'] = politicaInclusion.checked ? 'Sí' : 'No';
+            
             console.log('📦 Datos a enviar:', datos);
             
             try {
-                // 🟢 ENVÍO DIRECTO Y SIMPLE CON NUEVA URL
-                const response = await fetch('https://script.google.com/macros/s/AKfycbyWk7gbbg3rBqST05IpmsUQBkc1Ez3Vx_T7pTXlq8wAFRtK7C58htpM8FavRdH60RAD/exec', {
+                // 🟢 ENVÍO CON LA NUEVA URL CORREGIDA - SIN ABRIR PESTAÑA
+                const response = await fetch('https://script.google.com/macros/s/AKfycbyrdOvO2npB9TeT5JDJtwJmH3lSoes3mTFMI53ZuUS2tFc8o9OdjtvTRQwZTNjwnOA/exec', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -615,68 +629,30 @@
                         // Limpiar formulario después de 3 segundos
                         setTimeout(() => {
                             resetForm();
+                            enviandoMensual = false;
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = originalBtnText;
                         }, 3000);
                     } else {
                         showError('❌ ' + data.message);
+                        enviandoMensual = false;
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalBtnText;
                     }
                 } catch (jsonError) {
-                    // Si no es JSON, mostrar la respuesta tal cual
-                    console.log('⚠️  Respuesta no es JSON:', responseText);
-                    if (responseText.includes('success') || responseText.includes('Success')) {
-                        showSuccess('✅ Datos enviados correctamente al servidor');
-                        setTimeout(() => {
-                            resetForm();
-                        }, 3000);
-                    } else {
-                        showError('❌ El servidor respondió: ' + responseText.substring(0, 100));
-                    }
+                    console.error('❌ Error parseando JSON:', jsonError);
+                    showError('❌ Error en la respuesta del servidor');
+                    enviandoMensual = false;
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
                 }
                 
             } catch (error) {
-                console.error('❌ Error completo:', error);
-                
-                // 🔥 SOLUCIÓN ALTERNATIVA: Crear formulario temporal
-                try {
-                    showLoading('⏳ Probando método alternativo...');
-                    
-                    // Crear un formulario oculto y enviarlo
-                    const tempForm = document.createElement('form');
-                    tempForm.method = 'POST';
-                    tempForm.action = 'https://script.google.com/macros/s/AKfycbyWk7gbbg3rBqST05IpmsUQBkc1Ez3Vx_T7pTXlq8wAFRtK7C58htpM8FavRdH60RAD/exec';
-                    tempForm.target = '_blank'; // Abrir en nueva pestaña
-                    tempForm.style.display = 'none';
-                    
-                    // Agregar todos los campos
-                    for (const [key, value] of Object.entries(datos)) {
-                        const input = document.createElement('input');
-                        input.type = 'hidden';
-                        input.name = key;
-                        input.value = value;
-                        tempForm.appendChild(input);
-                    }
-                    
-                    document.body.appendChild(tempForm);
-                    tempForm.submit();
-                    
-                    // Eliminar formulario temporal después de enviar
-                    setTimeout(() => {
-                        document.body.removeChild(tempForm);
-                    }, 1000);
-                    
-                    showSuccess('✅ Formulario enviado. Verifica que los datos llegaron a tu hoja de Excel.');
-                    setTimeout(() => {
-                        resetForm();
-                    }, 3000);
-                    
-                } catch (fallbackError) {
-                    console.error('❌ Error en método alternativo:', fallbackError);
-                    showError('❌ Error de conexión. Intenta nuevamente o contacta a soporte.');
-                }
-            } finally {
-                // Rehabilitar botón después de 3 segundos
-                setTimeout(() => {
-                    document.getElementById('submitBtn').disabled = false;
-                }, 3000);
+                console.error('❌ Error de conexión:', error);
+                showError('❌ Error de conexión. Verifica tu internet e intenta nuevamente.');
+                enviandoMensual = false;
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
             }
         });
         
@@ -691,6 +667,11 @@
             const errorDiv = document.getElementById('errorMessage');
             errorDiv.textContent = message;
             errorDiv.style.display = 'block';
+            
+            // Ocultar mensaje de error después de 5 segundos
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
         }
         
         function showSuccess(message) {
@@ -710,6 +691,10 @@
         function resetForm() {
             document.getElementById('datosMensualesForm').reset();
             document.getElementById('fecha_carga').value = new Date().toISOString().split('T')[0];
+            
+            // Restablecer el checkbox
+            document.getElementById('politica_inclusion').checked = false;
+            
             hideAllMessages();
         }
     </script>
