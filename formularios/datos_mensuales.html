@@ -308,7 +308,7 @@
             </div>
 
             <form id="datosMensualesForm">
-                <!-- Campos con nombres EXACTOS como en sheet.best -->
+                <!-- Campos principales -->
                 <input type="hidden" name="Fecha_carga" id="fecha_carga">
                 <input type="hidden" name="ID_Empresa" id="id_empresa_hidden">
 
@@ -535,14 +535,14 @@
     </div>
 
     <script>
-        // 🔥 SOLUCIÓN CORREGIDA PARA sheet.best
+        // 🔥 SOLUCIÓN COMPLETA
         let enviandoMensual = false;
 
         document.addEventListener('DOMContentLoaded', function() {
             // Fecha actual en formato correcto
             const today = new Date();
-            const day = today.getDate();
-            const month = today.getMonth() + 1;
+            const day = today.getDate().toString().padStart(2, '0');
+            const month = (today.getMonth() + 1).toString().padStart(2, '0');
             const year = today.getFullYear();
             const fechaFormateada = day + '/' + month + '/' + year;
             document.getElementById('fecha_carga').value = fechaFormateada;
@@ -591,7 +591,7 @@
             submitBtn.disabled = true;
             submitBtn.textContent = 'Enviando...';
 
-            // Preparar datos en formato CORRECTO para sheet.best
+            // Preparar datos en formato CORRECTO
             const formData = new FormData(this);
             const datos = {};
             
@@ -616,16 +616,16 @@
             // Asegurar ID_Empresa
             datos['ID_Empresa'] = document.getElementById('id_empresa_hidden').value;
 
-            console.log('📦 Datos a enviar a sheet.best (formato corregido):', datos);
+            console.log('📦 Datos a enviar a sheet.best:', datos);
 
             try {
-                // 🟢 ENVÍO A sheet.best - EXCEL ANTERIOR
+                // 🟢 ENVÍO A SHEET.BEST - EXCEL ANTERIOR (HOJA DATOS_MENSUALES_CRUDOS)
                 const response = await fetch('https://api.sheetbest.com/sheets/2eb917d5-94d0-4d5a-b511-ea115ba62206', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(datos)  // UN OBJETO INDIVIDUAL
+                    body: JSON.stringify(datos)
                 });
 
                 console.log('📥 Estado de respuesta:', response.status);
@@ -709,8 +709,8 @@
             
             // Restablecer fecha
             const today = new Date();
-            const day = today.getDate();
-            const month = today.getMonth() + 1;
+            const day = today.getDate().toString().padStart(2, '0');
+            const month = (today.getMonth() + 1).toString().padStart(2, '0');
             const year = today.getFullYear();
             const fechaFormateada = day + '/' + month + '/' + year;
             document.getElementById('fecha_carga').value = fechaFormateada;
