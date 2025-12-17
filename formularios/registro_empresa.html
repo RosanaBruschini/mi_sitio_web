@@ -295,7 +295,7 @@
 
         <div class="form-container">
             <div id="successMessage" class="success-message">
-                ✅ ¡Empresa registrada correctamente!
+                ✅ ¡Empresa registrada correctamente! ID asignado: <span id="successId"></span>
             </div>
 
             <div id="errorMessage" class="error-message">
@@ -313,10 +313,10 @@
 
             <!-- 🟢 FORMULARIO REGISTRO - CON ID AUTOMÁTICO -->
             <form id="registroEmpresaForm">
-                <!-- Campos ocultos con ID -->
+                <!-- Campos ocultos con ID y fecha -->
                 <div class="hidden-fields">
                     <input type="hidden" name="ID_Empresa" id="id_empresa" value="3">
-                    <input type="hidden" name="Fecha_alta" id="fecha_alta">
+                    <input type="hidden" name="Fecha alta" id="fecha_alta">
                 </div>
 
                 <div class="form-section">
@@ -334,11 +334,11 @@
                                 <option value="">Seleccionar rubro...</option>
                                 <option value="Textil">Textil</option>
                                 <option value="Reciclaje">Reciclaje</option>
+                                <option value="Construcción">Construcción</option>
                                 <option value="Tecnología">Tecnología</option>
                                 <option value="Alimentación">Alimentación</option>
                                 <option value="Servicios">Servicios</option>
                                 <option value="Comercio">Comercio</option>
-                                <option value="Construcción">Construcción</option>
                                 <option value="Educación">Educación</option>
                                 <option value="Salud">Salud</option>
                                 <option value="Manufactura">Manufactura</option>
@@ -374,7 +374,7 @@
 
                         <div class="form-group">
                             <label for="area_a_cargo">Área a cargo <span class="required">*</span></label>
-                            <input type="text" id="area_a_cargo" name="Area_a_cargo" required placeholder="Ej: Sostenibilidad, Operaciones, RSE">
+                            <input type="text" id="area_a_cargo" name="Area a cargo" required placeholder="Ej: Sostenibilidad, Operaciones, RSE">
                         </div>
                     </div>
 
@@ -424,7 +424,7 @@
 
                         <div class="form-group">
                             <label for="plan">Plan <span class="required">*</span></label>
-                            <select id="plan" name="Plan" required>
+                            <select id="plan" name="Plan (Mensual/Anual)" required>
                                 <option value="">Seleccionar plan...</option>
                                 <option value="Mensual">Mensual</option>
                                 <option value="Anual">Anual</option>
@@ -445,22 +445,21 @@
             <div class="footer-info">
                 <p>📧 ¿Necesitas ayuda? <a href="mailto:info@impactaverde.com.ar">Contacta con nuestro equipo</a></p>
                 <p>🔒 Tus datos están protegidos y se utilizarán únicamente para el sistema de medición de impacto ambiental</p>
-                <p>🔄 Los datos se guardan directamente en el Excel Anterior (hoja Empresa) para el sistema de medición</p>
+                <p>🔄 Los datos se guardan en el Excel de Registro y se sincronizarán automáticamente con el sistema de medición</p>
             </div>
         </div>
     </div>
 
     <script>
-        // 🔥 SOLUCIÓN COMPLETA CON ID AUTOMÁTICO
+        // 🔥 SOLUCIÓN DEFINITIVA - REGISTRO A EXCEL NUEVO CON ID AUTOMÁTICO
         let enviando = false;
 
         document.addEventListener('DOMContentLoaded', function() {
-            // ✅ FECHA ACTUAL EN FORMATO CORRECTO (d/m/Y)
+            // ✅ FECHA ACTUAL EN FORMATO CORRECTO (m/Y)
             const today = new Date();
-            const day = today.getDate().toString().padStart(2, '0');
             const month = (today.getMonth() + 1).toString().padStart(2, '0');
             const year = today.getFullYear();
-            const fechaFormateada = day + '/' + month + '/' + year;
+            const fechaFormateada = month + '/' + year;  // Formato: 12/2025
             document.getElementById('fecha_alta').value = fechaFormateada;
             
             // País por defecto
@@ -495,7 +494,7 @@
             }
         }
 
-        // ✅ MANEJADOR DE ENVÍO - ENVÍA DIRECTO A EXCEL ANTERIOR (HOJA EMPRESA)
+        // ✅ MANEJADOR DE ENVÍO - ENVÍA A EXCEL NUEVO (URL CORRECTA)
         document.getElementById('registroEmpresaForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -516,7 +515,7 @@
 
             // Ocultar mensajes anteriores y mostrar loading
             hideAllMessages();
-            showLoading('⏳ Enviando datos, por favor espera...');
+            showLoading('⏳ Enviando datos al sistema de registro, por favor espera...');
 
             // Deshabilitar botón
             const submitBtn = document.getElementById('submitBtn');
@@ -524,25 +523,25 @@
             submitBtn.disabled = true;
             submitBtn.textContent = 'Enviando...';
 
-            // Preparar datos COMPLETOS
+            // Preparar datos COMPLETOS con nombres EXACTOS del Excel
             const formData = new FormData(this);
             const datos = {};
             
-            // Agregar todos los campos
+            // Agregar todos los campos con nombres exactos
             formData.forEach((value, key) => {
                 datos[key] = value;
             });
 
             // Agregar campos adicionales que necesita el sistema
             datos['Estado'] = 'activo';
-            datos['Plan (Mensual/Anual)'] = datos['Plan'] || 'Anual';
+            // El campo Plan ya se llama "Plan (Mensual/Anual)" en el formulario
 
-            console.log('📦 Datos a enviar (formato completo):', datos);
+            console.log('📦 Datos a enviar a Excel Nuevo (Registro):', datos);
+            console.log('🔗 URL de destino:', 'https://api.sheetbest.com/sheets/c7fec5f9-d83f-4d32-b31e-6ee06ea50d00');
 
             try {
-                // 🟢 ENVÍO A SHEET.BEST - EXCEL ANTERIOR (HOJA EMPRESA)
-                // IMPORTANTE: Usamos la misma URL que el formulario mensual pero con datos de empresa
-                const response = await fetch('https://api.sheetbest.com/sheets/2eb917d5-94d0-4d5a-b511-ea115ba62206', {
+                // 🟢 ENVÍO A SHEET.BEST - EXCEL NUEVO (REGISTRO)
+                const response = await fetch('https://api.sheetbest.com/sheets/c7fec5f9-d83f-4d32-b31e-6ee06ea50d00', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -550,20 +549,16 @@
                     body: JSON.stringify(datos)
                 });
 
-                console.log('📥 Estado de respuesta:', response.status);
+                console.log('📥 Estado de respuesta:', response.status, response.statusText);
 
                 if (response.ok) {
                     const responseData = await response.json();
-                    console.log('✅ Registro exitoso en Excel Anterior:', responseData);
+                    console.log('✅ Registro exitoso en Excel Nuevo:', responseData);
                     
                     // Mostrar éxito con el ID
                     const idEmpresa = document.getElementById('id_empresa').value;
-                    let successMsg = '✅ ¡Empresa registrada correctamente! ID: ' + idEmpresa;
-                    if (responseData.rowNumber) {
-                        successMsg += ' (Fila: ' + responseData.rowNumber + ')';
-                    }
-                    
-                    showSuccess(successMsg);
+                    document.getElementById('successId').textContent = idEmpresa;
+                    showSuccess('✅ ¡Empresa registrada correctamente! ID asignado: ' + idEmpresa + '. Los datos se sincronizarán automáticamente con el sistema de medición.');
 
                     // Limpiar formulario después de 3 segundos y generar nuevo ID
                     setTimeout(() => {
@@ -580,7 +575,7 @@
                         const errorData = JSON.parse(errorText);
                         showError('❌ Error: ' + (errorData.message || 'Error desconocido'));
                     } catch {
-                        showError('❌ Error al enviar datos. Por favor, intenta nuevamente.');
+                        showError('❌ Error al enviar datos. Por favor, intenta nuevamente o contacta al soporte.');
                     }
                     
                     enviando = false;
@@ -644,10 +639,9 @@
             
             // Restablecer valores por defecto
             const today = new Date();
-            const day = today.getDate().toString().padStart(2, '0');
             const month = (today.getMonth() + 1).toString().padStart(2, '0');
             const year = today.getFullYear();
-            const fechaFormateada = day + '/' + month + '/' + year;
+            const fechaFormateada = month + '/' + year;
             document.getElementById('fecha_alta').value = fechaFormateada;
             document.getElementById('pais').value = 'Argentina';
 
