@@ -319,7 +319,7 @@
                             <label for="empresa">Empresa <span class="required">*</span></label>
                             <select id="empresa" name="Empresa" required>
                                 <option value="">Seleccionar empresa...</option>
-                                <option value="1">ETIMO (ID: 1)</option><option value="EMP-1765825170756-394">arcor (ID: EMP-1765825170756-394)</option><option value="2">PRUEBA INTERNA (ID: 2)</option><option value="3">PRUEBA INTERNA V2 (ID: 3)</option><option value="4">PRUEBA DESDE COLAB (ID: 4)</option><option value="5">PRUEBA FINAL DESDE COLAB (ID: 5)</option><option value="6">PRUEBA+FINAL+DESDE+COLAB (ID: 6)</option><option value="7">PRUEBA FINAL DESDE COLAB (ID: 7)</option><option value="8">PRUEBA INTERNA DEBUG (ID: 8)</option><option value="9">2025-12-16 (ID: 9)</option><option value="10">2025-12-16 (ID: 10)</option>
+                                <option value="1">ETIMO (ID: 1)</option>
                             </select>
                             <div class="info-text">Selecciona tu empresa del listado</div>
                         </div>
@@ -503,7 +503,7 @@
                         <div class="form-group">
                             <label for="residuo_no_reciclable">Residuo no reciclable</label>
                             <div class="input-unit">
-                                <input type="number" id="residuo_no_reciclable" name="Residuo_No_Reciclable_kg" step="0.1" min="0" value="0" placeholder="0">
+                                <input type="number" id="residuo_no_reciclable" name="Residuo_No_Reciclable_kg" step="0.1, min="0" value="0" placeholder="0">
                                 <span class="unit">kg</span>
                             </div>
                         </div>
@@ -591,8 +591,8 @@
             console.log('📦 Datos a enviar:', datos);
             
             try {
-                // 🟢 ENVÍO DIRECTO Y SIMPLE
-                const response = await fetch('https://script.google.com/macros/s/AKfycbzCuKwQzYosSQWeErlxc0TOYhfhUy5pDY4hobtmxHA1Qz7h0d-dgISE6rouZRQfpVaP/exec', {
+                // 🟢 ENVÍO DIRECTO Y SIMPLE CON NUEVA URL
+                const response = await fetch('https://script.google.com/macros/s/AKfycbyWk7gbbg3rBqST05IpmsUQBkc1Ez3Vx_T7pTXlq8wAFRtK7C58htpM8FavRdH60RAD/exec', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -642,7 +642,7 @@
                     // Crear un formulario oculto y enviarlo
                     const tempForm = document.createElement('form');
                     tempForm.method = 'POST';
-                    tempForm.action = 'https://script.google.com/macros/s/AKfycbzCuKwQzYosSQWeErlxc0TOYhfhUy5pDY4hobtmxHA1Qz7h0d-dgISE6rouZRQfpVaP/exec';
+                    tempForm.action = 'https://script.google.com/macros/s/AKfycbyWk7gbbg3rBqST05IpmsUQBkc1Ez3Vx_T7pTXlq8wAFRtK7C58htpM8FavRdH60RAD/exec';
                     tempForm.target = '_blank'; // Abrir en nueva pestaña
                     tempForm.style.display = 'none';
                     
