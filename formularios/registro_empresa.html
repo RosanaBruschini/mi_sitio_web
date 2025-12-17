@@ -504,8 +504,8 @@
             console.log('📦 Datos a enviar:', datos);
             
             try {
-                // 🟢 ENVÍO DIRECTO Y SIMPLE
-                const response = await fetch('https://script.google.com/macros/s/AKfycbzCuKwQzYosSQWeErlxc0TOYhfhUy5pDY4hobtmxHA1Qz7h0d-dgISE6rouZRQfpVaP/exec', {
+                // 🟢 ENVÍO DIRECTO Y SIMPLE CON NUEVA URL
+                const response = await fetch('https://script.google.com/macros/s/AKfycbyWk7gbbg3rBqST05IpmsUQBkc1Ez3Vx_T7pTXlq8wAFRtK7C58htpM8FavRdH60RAD/exec', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -555,7 +555,7 @@
                     // Crear un formulario oculto y enviarlo
                     const tempForm = document.createElement('form');
                     tempForm.method = 'POST';
-                    tempForm.action = 'https://script.google.com/macros/s/AKfycbzCuKwQzYosSQWeErlxc0TOYhfhUy5pDY4hobtmxHA1Qz7h0d-dgISE6rouZRQfpVaP/exec';
+                    tempForm.action = 'https://script.google.com/macros/s/AKfycbyWk7gbbg3rBqST05IpmsUQBkc1Ez3Vx_T7pTXlq8wAFRtK7C58htpM8FavRdH60RAD/exec';
                     tempForm.target = '_blank'; // Abrir en nueva pestaña
                     tempForm.style.display = 'none';
                     
