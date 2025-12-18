@@ -4,222 +4,198 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datos Mensuales - Impacta Verde</title>
-    <link rel="icon" href="https://impactaverde.com.ar/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://impactaverde.com.ar/favicon.ico">
     <style>
         :root {
             --verde-oscuro: #1F7A3E;
             --verde-medio: #4CAF50;
             --verde-claro: #76ba99;
-            --beige: #f8fff8;
-            --gris: #e8f5e9;
         }
         * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0; box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         body {
-            background: linear-gradient(135deg, #f4f7f4 0%, #e8f5e8 100%);
-            color: #333;
-            line-height: 1.6;
-            min-height: 100vh;
+            background: #f5f9f5;
             padding: 20px;
+            min-height: 100vh;
         }
         .container {
             max-width: 1100px;
             margin: 0 auto;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             overflow: hidden;
-            border: 3px solid var(--verde-oscuro);
+            border: 2px solid var(--verde-oscuro);
         }
         .header {
-            background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
+            background: linear-gradient(to right, var(--verde-oscuro), var(--verde-medio));
             color: white;
-            padding: 2rem;
+            padding: 30px 20px;
             text-align: center;
         }
-        .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-        .logo-img {
-            height: 100px;
-            width: auto;
-            object-fit: contain;
-            border-radius: 12px;
-            background: white;
-            padding: 10px;
-        }
         .header h1 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+            font-size: 28px;
+            margin-bottom: 10px;
         }
         .header p {
-            font-size: 1.1rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.5;
+            font-size: 16px;
+            opacity: 0.9;
         }
         .form-container {
-            padding: 2rem;
+            padding: 30px;
         }
-        .form-section {
-            margin-bottom: 1.5rem;
-            padding: 1.5rem;
-            background: var(--beige);
-            border-radius: 12px;
-            border-left: 5px solid var(--verde-oscuro);
+        .seccion {
+            background: #f8fdf8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--verde-oscuro);
         }
-        .form-section h3 {
+        .seccion h3 {
             color: var(--verde-oscuro);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-size: 18px;
         }
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 15px;
         }
         label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 5px;
             font-weight: 600;
             color: #333;
         }
         input, select, textarea {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 15px;
         }
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--verde-medio);
-            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
         }
         .btn {
-            background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
+            background: var(--verde-oscuro);
             color: white;
             border: none;
-            padding: 16px 30px;
-            border-radius: 10px;
+            padding: 15px 30px;
+            border-radius: 6px;
+            font-size: 18px;
             cursor: pointer;
-            font-size: 1.1rem;
-            font-weight: 600;
             width: 100%;
-            transition: transform 0.3s;
+            margin-top: 10px;
         }
         .btn:hover {
-            transform: translateY(-2px);
+            background: var(--verde-medio);
         }
-        .required { color: #e74c3c; }
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-        .form-row-3 {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 1rem;
-        }
-        @media (max-width: 768px) { 
-            .form-row, .form-row-3 { grid-template-columns: 1fr; } 
-        }
-        .success-message, .error-message, .loading-message {
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
+        .mensaje {
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
             text-align: center;
             display: none;
         }
-        .success-message {
-            background: var(--verde-claro);
-            color: var(--verde-oscuro);
-            border: 2px solid var(--verde-medio);
+        .exito {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
         }
-        .error-message {
-            background: #ffe6e6;
-            color: #cc0000;
-            border: 2px solid #ff6666;
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
-        .loading-message {
-            background: #e8f5e9;
-            color: var(--verde-oscuro);
-            border: 2px solid var(--verde-medio);
+        .cargando {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
         }
-        .footer-info {
+        .footer {
             text-align: center;
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--gris);
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
             color: #666;
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 14px;
         }
-        .footer-info p { margin-bottom: 0.8rem; }
-        .footer-info a {
-            color: var(--verde-oscuro);
-            text-decoration: none;
-            font-weight: 500;
+        .required { color: #dc3545; }
+        .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .footer-info a:hover { text-decoration: underline; }
+        .checkbox input {
+            width: auto;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo-container">
-                <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png"
-                     alt="Impacta Verde Logo" class="logo-img">
-            </div>
             <h1>Impacta Verde - Datos Mensuales</h1>
             <p>Reporta tu impacto ambiental y social del mes</p>
         </div>
-
+        
         <div class="form-container">
-            <div id="successMessage" class="success-message"></div>
-            <div id="errorMessage" class="error-message"></div>
-            <div id="loadingMessage" class="loading-message"></div>
-
-            <form id="datosMensualesForm">
-                <input type="hidden" name="Fecha_carga" id="fecha_carga">
-                <input type="hidden" name="ID_Empresa" id="id_empresa_hidden">
-
-                <!-- SECCIÓN EMPRESA Y PERÍODO -->
-                <div class="form-section">
+            <div id="mensajeExito" class="mensaje exito"></div>
+            <div id="mensajeError" class="mensaje error"></div>
+            <div id="mensajeCarga" class="mensaje cargando"></div>
+            
+            <form id="formDatos">
+                <!-- Campos ocultos -->
+                <input type="hidden" id="fechaCarga" name="Fecha_carga">
+                <input type="hidden" id="idEmpresaHidden" name="ID_Empresa">
+                
+                <!-- Sección 1: Empresa y Período -->
+                <div class="seccion">
                     <h3>🏢 Empresa y Período</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="empresa">Empresa <span class="required">*</span></label>
-                            <select id="empresa" name="Empresa" required>
-                                <option value="">Seleccionar empresa...</option>
-                                <option value="{id_emp}">{nombre} (ID: {id_emp})</option>
-                            </select>
-                        </div>
+                    <div class="form-group">
+                        <label for="empresa">Empresa <span class="required">*</span></label>
+                        <select id="empresa" name="Empresa" required>
+                            <option value="">Seleccionar empresa...</option>
+                            <option value="1">ETIMO (ID: 1)</option>
+                        </select>
                     </div>
-                    <div class="form-row">
+                    <div class="grid-2">
                         <div class="form-group">
                             <label for="mes">Mes <span class="required">*</span></label>
                             <select id="mes" name="Mes" required>
-                                <option value="">Seleccionar mes...</option>
-                                <option value="Enero">Enero</option><option value="Febrero">Febrero</option>
-                                <option value="Marzo">Marzo</option><option value="Abril">Abril</option>
-                                <option value="Mayo">Mayo</option><option value="Junio">Junio</option>
-                                <option value="Julio">Julio</option><option value="Agosto">Agosto</option>
-                                <option value="Septiembre">Septiembre</option><option value="Octubre">Octubre</option>
-                                <option value="Noviembre">Noviembre</option><option value="Diciembre">Diciembre</option>
+                                <option value="">Seleccionar...</option>
+                                <option value="Enero">Enero</option>
+                                <option value="Febrero">Febrero</option>
+                                <option value="Marzo">Marzo</option>
+                                <option value="Abril">Abril</option>
+                                <option value="Mayo">Mayo</option>
+                                <option value="Junio">Junio</option>
+                                <option value="Julio">Julio</option>
+                                <option value="Agosto">Agosto</option>
+                                <option value="Septiembre">Septiembre</option>
+                                <option value="Octubre">Octubre</option>
+                                <option value="Noviembre">Noviembre</option>
+                                <option value="Diciembre">Diciembre</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="anio">Año <span class="required">*</span></label>
                             <select id="anio" name="Año" required>
-                                <option value="">Seleccionar año...</option>
+                                <option value="">Seleccionar...</option>
                                 <option value="2024">2024</option>
                                 <option value="2025">2025</option>
                                 <option value="2026">2026</option>
@@ -227,96 +203,90 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- SECCIÓN IMPACTO AMBIENTAL -->
-                <div class="form-section">
+                
+                <!-- Sección 2: Impacto Ambiental -->
+                <div class="seccion">
                     <h3>🌿 Impacto Ambiental</h3>
-                    <div class="form-row-3">
+                    <div class="grid-3">
                         <div class="form-group">
-                            <label for="energia_kwh">Energía consumida (kWh)</label>
-                            <input type="number" id="energia_kwh" name="Energia_kWh" step="0.1" min="0" value="0">
+                            <label for="energia">Energía (kWh)</label>
+                            <input type="number" id="energia" name="Energia_kWh" step="0.1" min="0" value="0">
                         </div>
                         <div class="form-group">
-                            <label for="combustible_l">Combustible (litros)</label>
-                            <input type="number" id="combustible_l" name="Combustible_L" step="0.1" min="0" value="0">
+                            <label for="combustible">Combustible (L)</label>
+                            <input type="number" id="combustible" name="Combustible_L" step="0.1" min="0" value="0">
                         </div>
                         <div class="form-group">
-                            <label for="papel_kg">Papel reutilizado (kg)</label>
-                            <input type="number" id="papel_kg" name="Papel_kg" step="0.1" min="0" value="0">
-                        </div>
-                    </div>
-                    <div class="form-row-3">
-                        <div class="form-group">
-                            <label for="borra_humeda_kg">Borra húmeda (kg)</label>
-                            <input type="number" id="borra_humeda_kg" name="Borra_humeda_kg" step="0.1" min="0" value="0">
+                            <label for="papel">Papel reutilizado (kg)</label>
+                            <input type="number" id="papel" name="Papel_kg" step="0.1" min="0" value="0">
                         </div>
                         <div class="form-group">
-                            <label for="borra_seca_kg">Borra seca (kg)</label>
-                            <input type="number" id="borra_seca_kg" name="Borra_seca_kg" step="0.1" min="0" value="0">
+                            <label for="borraHumeda">Borra húmeda (kg)</label>
+                            <input type="number" id="borraHumeda" name="Borra_humeda_kg" step="0.1" min="0" value="0">
                         </div>
                         <div class="form-group">
-                            <label for="tela_reutilizada_kg">Tela reutilizada (kg)</label>
-                            <input type="number" id="tela_reutilizada_kg" name="Tela_reutilizada_kg" step="0.1" min="0" value="0">
-                        </div>
-                    </div>
-                    <div class="form-row-3">
-                        <div class="form-group">
-                            <label for="tecnologia_recuperada_kg">Tecnología recuperada (kg)</label>
-                            <input type="number" id="tecnologia_recuperada_kg" name="Tecnologia_recuperada_kg" step="0.1" min="0" value="0">
+                            <label for="borraSeca">Borra seca (kg)</label>
+                            <input type="number" id="borraSeca" name="Borra_seca_kg" step="0.1" min="0" value="0">
                         </div>
                         <div class="form-group">
-                            <label for="plastico_reutilizado_kg">Plástico reutilizado (kg)</label>
-                            <input type="number" id="plastico_reutilizado_kg" name="Plastico_reutilizado_kg" step="0.1" min="0" value="0">
+                            <label for="tela">Tela reutilizada (kg)</label>
+                            <input type="number" id="tela" name="Tela_reutilizada_kg" step="0.1" min="0" value="0">
                         </div>
                         <div class="form-group">
-                            <label for="agua_m3">Agua consumida (m³)</label>
-                            <input type="number" id="agua_m3" name="Agua_m3" step="0.1" min="0" value="0">
+                            <label for="tecnologia">Tecnología recuperada (kg)</label>
+                            <input type="number" id="tecnologia" name="Tecnologia_recuperada_kg" step="0.1" min="0" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="plastico">Plástico reutilizado (kg)</label>
+                            <input type="number" id="plastico" name="Plastico_reutilizado_kg" step="0.1" min="0" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="agua">Agua consumida (m³)</label>
+                            <input type="number" id="agua" name="Agua_m3" step="0.1" min="0" value="0">
                         </div>
                     </div>
                 </div>
-
-                <!-- SECCIÓN IMPACTO SOCIAL -->
-                <div class="form-section">
+                
+                <!-- Sección 3: Impacto Social -->
+                <div class="seccion">
                     <h3>👥 Impacto Social</h3>
-                    <div class="form-row-3">
+                    <div class="grid-3">
                         <div class="form-group">
-                            <label for="empleados_total">Total empleados</label>
-                            <input type="number" id="empleados_total" name="Cantidad_Empleados_Total" min="0" value="0">
+                            <label for="empleadosTotal">Total empleados</label>
+                            <input type="number" id="empleadosTotal" name="Cantidad_Empleados_Total" min="0" value="0">
                         </div>
                         <div class="form-group">
-                            <label for="empleados_locales">Empleados locales</label>
-                            <input type="number" id="empleados_locales" name="Cantidad_Empleados_Locales" min="0" value="0">
+                            <label for="empleadosLocales">Empleados locales</label>
+                            <input type="number" id="empleadosLocales" name="Cantidad_Empleados_Locales" min="0" value="0">
                         </div>
                         <div class="form-group">
-                            <label for="empleados_mujeres">Empleadas mujeres</label>
-                            <input type="number" id="empleados_mujeres" name="Cantidad_Mujeres" min="0" value="0">
-                        </div>
-                    </div>
-                    <div class="form-row-3">
-                        <div class="form-group">
-                            <label for="empleados_discapacidad">Personas con discapacidad</label>
-                            <input type="number" id="empleados_discapacidad" name="Cantidad_Personas_Discapacitadas" min="0" value="0">
+                            <label for="empleadosMujeres">Empleadas mujeres</label>
+                            <input type="number" id="empleadosMujeres" name="Cantidad_Mujeres" min="0" value="0">
                         </div>
                         <div class="form-group">
-                            <label for="capacitacion_horas">Horas de capacitación</label>
-                            <input type="number" id="capacitacion_horas" name="Capacitacion_horas" step="0.1" min="0" value="0">
+                            <label for="empleadosDiscapacidad">Personas con discapacidad</label>
+                            <input type="number" id="empleadosDiscapacidad" name="Cantidad_Personas_Discapacitadas" min="0" value="0">
                         </div>
                         <div class="form-group">
-                            <label style="display: flex; align-items: center; gap: 10px;">
-                                <input type="checkbox" id="politica_inclusion" name="Politica_inclusion" value="Sí">
-                                ¿Tiene política de inclusión?
-                            </label>
+                            <label for="capacitacion">Horas de capacitación</label>
+                            <input type="number" id="capacitacion" name="Capacitacion_horas" step="0.1" min="0" value="0">
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <input type="checkbox" id="politicaInclusion" name="Politica_inclusion" value="Sí">
+                                <label for="politicaInclusion">¿Tiene política de inclusión?</label>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- SECCIÓN DIGITALIZACIÓN -->
-                <div class="form-section">
+                
+                <!-- Sección 4: Digitalización -->
+                <div class="seccion">
                     <h3>💻 Digitalización</h3>
-                    <div class="form-row">
+                    <div class="grid-2">
                         <div class="form-group">
-                            <label for="procesos_optimizados">Procesos optimizados (%)</label>
-                            <input type="number" id="procesos_optimizados" name="Procesos_optimizados_%" min="0" max="100" value="0">
+                            <label for="procesosOptimizados">Procesos optimizados (%)</label>
+                            <input type="number" id="procesosOptimizados" name="Procesos_optimizados_%" min="0" max="100" value="0">
                         </div>
                         <div class="form-group">
                             <label for="digitalizacion">Digitalización (%)</label>
@@ -324,219 +294,185 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- SECCIÓN RESIDUOS -->
-                <div class="form-section">
+                
+                <!-- Sección 5: Residuos -->
+                <div class="seccion">
                     <h3>🗑️ Gestión de Residuos</h3>
-                    <div class="form-row-3">
+                    <div class="grid-3">
                         <div class="form-group">
-                            <label for="residuo_organico">Residuo orgánico (kg)</label>
-                            <input type="number" id="residuo_organico" name="Residuo_Organico_kg" step="0.1" min="0" value="0">
+                            <label for="residuoOrganico">Residuo orgánico (kg)</label>
+                            <input type="number" id="residuoOrganico" name="Residuo_Organico_kg" step="0.1" min="0" value="0">
                         </div>
                         <div class="form-group">
-                            <label for="residuo_reciclable">Residuo reciclable (kg)</label>
-                            <input type="number" id="residuo_reciclable" name="Residuo_Reciclable_kg" step="0.1" min="0" value="0">
+                            <label for="residuoReciclable">Residuo reciclable (kg)</label>
+                            <input type="number" id="residuoReciclable" name="Residuo_Reciclable_kg" step="0.1" min="0" value="0">
                         </div>
                         <div class="form-group">
-                            <label for="residuo_no_reciclable">Residuo no reciclable (kg)</label>
-                            <input type="number" id="residuo_no_reciclable" name="Residuo_No_Reciclable_kg" step="0.1" min="0" value="0">
+                            <label for="residuoNoReciclable">Residuo no reciclable (kg)</label>
+                            <input type="number" id="residuoNoReciclable" name="Residuo_No_Reciclable_kg" step="0.1" min="0" value="0">
                         </div>
                     </div>
                 </div>
-
-                <!-- SECCIÓN COMENTARIOS -->
-                <div class="form-section">
+                
+                <!-- Sección 6: Comentarios -->
+                <div class="seccion">
                     <h3>📎 Comentarios y Evidencia</h3>
                     <div class="form-group">
                         <label for="comentarios">Comentarios adicionales</label>
-                        <textarea id="comentarios" name="Comentarios" rows="3" placeholder="Observaciones..."></textarea>
+                        <textarea id="comentarios" name="Comentarios" rows="3"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="link_evidencia">Link de evidencia</label>
-                        <input type="url" id="link_evidencia" name="Link_Evidencia" placeholder="https://drive.google.com/...">
+                        <label for="linkEvidencia">Link de evidencia</label>
+                        <input type="url" id="linkEvidencia" name="Link_Evidencia" placeholder="https://...">
                     </div>
                 </div>
-
-                <button type="submit" class="btn" id="submitBtn">📊 Enviar Datos Mensuales</button>
+                
+                <button type="submit" class="btn" id="btnEnviar">📊 Enviar Datos Mensuales</button>
             </form>
-
-            <div class="footer-info">
-                <p>📧 ¿Necesitas ayuda con algún campo? <a href="mailto:info@impactaverde.com.ar">Contacta con nuestro equipo</a></p>
-                <p>🔒 Todos los datos enviados son confidenciales y se guardan en el sistema de medición</p>
+            
+            <div class="footer">
+                <p>📧 ¿Necesitas ayuda? <a href="mailto:info@impactaverde.com.ar">Contacta con nuestro equipo</a></p>
+                <p>🔒 Todos los datos enviados son confidenciales</p>
             </div>
         </div>
     </div>
 
     <script>
-        let enviandoMensual = false;
-        const URL_DATOS = 'https://api.sheetbest.com/sheets/2eb917d5-94d0-4d5a-b511-ea115ba62206';
-
+        const URL_SHEETBEST = 'https://api.sheetbest.com/sheets/2eb917d5-94d0-4d5a-b511-ea115ba62206';
+        
+        // Configurar fecha al cargar
         document.addEventListener('DOMContentLoaded', function() {
-            // Fecha actual
-            const today = new Date();
-            const day = today.getDate().toString().padStart(2, '0');
-            const month = (today.getMonth() + 1).toString().padStart(2, '0');
-            const year = today.getFullYear();
-            document.getElementById('fecha_carga').value = day + '/' + month + '/' + year;
-
-            // Actualizar ID cuando se selecciona empresa
+            const hoy = new Date();
+            const dia = hoy.getDate().toString().padStart(2, '0');
+            const mes = (hoy.getMonth() + 1).toString().padStart(2, '0');
+            const año = hoy.getFullYear();
+            document.getElementById('fechaCarga').value = dia + '/' + mes + '/' + año;
+            
+            // Configurar cambio en selector de empresa
             document.getElementById('empresa').addEventListener('change', function() {
-                const selectedValue = this.value;
-                if (selectedValue) {
-                    // El valor es el ID de la empresa
-                    document.getElementById('id_empresa_hidden').value = selectedValue;
-                    console.log('ID Empresa seleccionada:', selectedValue);
-                }
+                document.getElementById('idEmpresaHidden').value = this.value;
             });
         });
-
-        document.getElementById('datosMensualesForm').addEventListener('submit', async function(e) {
+        
+        // Manejar envío del formulario
+        document.getElementById('formDatos').addEventListener('submit', async function(e) {
             e.preventDefault();
-            if (enviandoMensual) return;
-            enviandoMensual = true;
-
-            // Validaciones
+            
+            // Validaciones básicas
             const empresa = document.getElementById('empresa').value;
             const mes = document.getElementById('mes').value;
             const anio = document.getElementById('anio').value;
             
-            if (!empresa || empresa === "") {
-                showError('❌ Por favor, selecciona una empresa');
-                enviandoMensual = false;
+            if (!empresa) {
+                mostrarError('❌ Debes seleccionar una empresa');
+                return;
+            }
+            if (!mes || !anio) {
+                mostrarError('❌ Debes seleccionar mes y año');
                 return;
             }
             
-            if (!mes || !anio) {
-                showError('❌ Por favor, selecciona mes y año');
-                enviandoMensual = false;
-                return;
-            }
-
-            hideAllMessages();
-            showLoading('⏳ Enviando datos al sistema...');
-
-            const submitBtn = document.getElementById('submitBtn');
-            const originalText = submitBtn.textContent;
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Enviando...';
-
+            // Mostrar cargando
+            ocultarMensajes();
+            document.getElementById('mensajeCarga').style.display = 'block';
+            document.getElementById('mensajeCarga').textContent = '⏳ Enviando datos...';
+            
+            // Deshabilitar botón
+            const btn = document.getElementById('btnEnviar');
+            btn.disabled = true;
+            btn.textContent = 'Enviando...';
+            
             // Preparar datos
             const formData = new FormData(this);
             const datos = {};
             
-            formData.forEach((value, key) => {
-                if (value !== '' && !isNaN(value) && value !== '0') {
+            formData.forEach((valor, clave) => {
+                if (valor && !isNaN(valor) && valor !== '0') {
                     // Convertir números
-                    datos[key] = parseFloat(value);
+                    datos[clave] = parseFloat(valor);
                 } else {
-                    datos[key] = value;
+                    datos[clave] = valor;
                 }
             });
-
+            
             // Manejar checkbox
-            const politicaCheckbox = document.getElementById('politica_inclusion');
-            datos['Politica_inclusion'] = politicaCheckbox.checked ? 'Sí' : 'No';
-
-            // Asegurar que el ID de empresa esté presente
-            if (!datos['ID_Empresa'] || datos['ID_Empresa'] === '') {
-                datos['ID_Empresa'] = document.getElementById('id_empresa_hidden').value;
-            }
-
-            console.log('Datos a enviar:', datos);
-
+            const checkbox = document.getElementById('politicaInclusion');
+            datos['Politica_inclusion'] = checkbox.checked ? 'Sí' : 'No';
+            
+            console.log('Enviando datos:', datos);
+            
             try {
-                const response = await fetch(URL_DATOS, {
+                // Enviar a Sheet.best
+                const respuesta = await fetch(URL_SHEETBEST, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(datos)
                 });
-
-                if (response.ok) {
-                    const responseData = await response.json();
-                    console.log('✅ Datos enviados exitosamente:', responseData);
+                
+                if (respuesta.ok) {
+                    const resultado = await respuesta.json();
+                    console.log('✅ Éxito:', resultado);
                     
-                    showSuccess('✅ ¡Datos enviados correctamente al sistema de medición!');
+                    // Mostrar mensaje de éxito
+                    ocultarMensajes();
+                    document.getElementById('mensajeExito').style.display = 'block';
+                    document.getElementById('mensajeExito').textContent = 
+                        '✅ ¡Datos enviados exitosamente al sistema!';
                     
-                    // Limpiar formulario después de 3 segundos
+                    // Reiniciar formulario después de 3 segundos
                     setTimeout(() => {
-                        resetForm();
-                        enviandoMensual = false;
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = originalText;
+                        document.getElementById('formDatos').reset();
+                        
+                        // Restablecer fecha
+                        const hoy = new Date();
+                        const dia = hoy.getDate().toString().padStart(2, '0');
+                        const mes = (hoy.getMonth() + 1).toString().padStart(2, '0');
+                        const año = hoy.getFullYear();
+                        document.getElementById('fechaCarga').value = dia + '/' + mes + '/' + año;
+                        
+                        // Restaurar botón
+                        btn.disabled = false;
+                        btn.textContent = '📊 Enviar Datos Mensuales';
+                        
+                        // Ocultar mensaje después de 5 segundos
+                        setTimeout(() => {
+                            document.getElementById('mensajeExito').style.display = 'none';
+                        }, 5000);
+                        
                     }, 3000);
                     
                 } else {
-                    const errorText = await response.text();
-                    console.error('❌ Error al enviar:', errorText);
-                    showError('❌ Error al enviar datos. Por favor, intenta nuevamente.');
-                    enviandoMensual = false;
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = originalText;
+                    throw new Error('Error en la respuesta del servidor');
                 }
                 
             } catch (error) {
-                console.error('❌ Error de conexión:', error);
-                showError('❌ Error de conexión. Verifica tu internet.');
-                enviandoMensual = false;
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
+                console.error('❌ Error:', error);
+                ocultarMensajes();
+                document.getElementById('mensajeError').style.display = 'block';
+                document.getElementById('mensajeError').textContent = 
+                    '❌ Error al enviar los datos. Por favor, intenta nuevamente.';
+                
+                btn.disabled = false;
+                btn.textContent = '📊 Enviar Datos Mensuales';
+                
+                // Ocultar error después de 5 segundos
+                setTimeout(() => {
+                    document.getElementById('mensajeError').style.display = 'none';
+                }, 5000);
             }
         });
-
-        function hideAllMessages() {
-            document.getElementById('errorMessage').style.display = 'none';
-            document.getElementById('successMessage').style.display = 'none';
-            document.getElementById('loadingMessage').style.display = 'none';
+        
+        function ocultarMensajes() {
+            document.getElementById('mensajeExito').style.display = 'none';
+            document.getElementById('mensajeError').style.display = 'none';
+            document.getElementById('mensajeCarga').style.display = 'none';
         }
-
-        function showError(msg) {
-            hideAllMessages();
-            const div = document.getElementById('errorMessage');
-            div.textContent = msg;
-            div.style.display = 'block';
-            div.style.animation = 'fadeIn 0.5s';
+        
+        function mostrarError(mensaje) {
+            ocultarMensajes();
+            document.getElementById('mensajeError').style.display = 'block';
+            document.getElementById('mensajeError').textContent = mensaje;
         }
-
-        function showSuccess(msg) {
-            hideAllMessages();
-            const div = document.getElementById('successMessage');
-            div.textContent = msg;
-            div.style.display = 'block';
-            div.style.animation = 'fadeIn 0.5s';
-        }
-
-        function showLoading(msg) {
-            hideAllMessages();
-            const div = document.getElementById('loadingMessage');
-            div.textContent = msg;
-            div.style.display = 'block';
-        }
-
-        function resetForm() {
-            document.getElementById('datosMensualesForm').reset();
-            
-            // Restaurar fecha
-            const today = new Date();
-            const day = today.getDate().toString().padStart(2, '0');
-            const month = (today.getMonth() + 1).toString().padStart(2, '0');
-            const year = today.getFullYear();
-            document.getElementById('fecha_carga').value = day + '/' + month + '/' + year;
-            
-            // Limpiar ID oculto
-            document.getElementById('id_empresa_hidden').value = '';
-            
-            hideAllMessages();
-        }
-
-        // Agregar animación CSS
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(-10px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
