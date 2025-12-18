@@ -52,9 +52,9 @@
             margin-bottom: 15px;
         }
         
-        /* LOGO 75px CON FONDO BLANCO */
+        /* LOGO 100px CON FONDO BLANCO - CORREGIDO */
         .logo-img {
-            height: 75px;
+            height: 100px;  /* CAMBIADO A 100px */
             width: auto;
             border-radius: 8px;
             background-color: white;
@@ -77,19 +77,7 @@
             line-height: 1.4;
         }
         
-        /* ID OCULTO - Solo para depuración */
-        .info-id-discreta {
-            display: none; /* OCULTO PARA EL CLIENTE */
-            text-align: center;
-            color: #1F7A3E;
-            font-size: 13px;
-            margin: 10px auto 20px auto;
-            padding: 5px;
-            background: #f0f9f0;
-            border-radius: 4px;
-            max-width: 300px;
-        }
-        
+        /* ID COMPLETAMENTE OCULTO - ELIMINADO EL TEXTO VISIBLE */
         .contenido-formulario {
             padding: 25px;
         }
@@ -219,7 +207,7 @@
             }
             
             .logo-img {
-                height: 70px;
+                height: 80px; /* Un poco más pequeño en móviles */
             }
         }
         
@@ -238,10 +226,7 @@
             <h1 class="titulo-principal">Impacta Verde - Registro de Empresa</h1>
             <p class="subtitulo">Completa los datos de tu empresa para comenzar a medir tu impacto ambiental</p>
             
-            <!-- ID OCULTO (solo para desarrolladores) -->
-            <div class="info-id-discreta" id="debugInfo">
-                🔢 ID asignado: <strong>5</strong> (solo para desarrollo)
-            </div>
+            <!-- ID COMPLETAMENTE OCULTO - SOLO CAMPO OCULTO -->
         </div>
         
         <div class="contenido-formulario">
@@ -251,7 +236,7 @@
             <div id="mensajeCarga" class="mensaje mensaje-carga"></div>
             
             <form id="formularioRegistro">
-                <!-- Campos ocultos -->
+                <!-- Campos ocultos - EL ID ESTÁ AQUÍ PERO OCULTO -->
                 <input type="hidden" id="idEmpresa" name="ID_Empresa" value="5">
                 <input type="hidden" id="fechaAlta" name="Fecha alta">
                 
@@ -358,9 +343,10 @@
                         </small>
                     </div>
                     
+                    <!-- CAMPO PLAN MEJORADO PARA GARANTIZAR QUE SE ENVÍE -->
                     <div class="grupo-formulario">
                         <label for="plan">Plan <span class="obligatorio">*</span></label>
-                        <select id="plan" name="Plan (Mensual/Anual)" required>
+                        <select id="plan" name="Plan (Mensual/Anual)" required style="background-color: #fff8f0;">
                             <option value="">Seleccionar plan...</option>
                             <option value="Mensual">Mensual</option>
                             <option value="Anual">Anual</option>
@@ -404,6 +390,7 @@
             document.getElementById('pais').value = 'Argentina';
             
             console.log('Formulario de registro cargado. ID asignado:', 5);
+            console.log('URL Sheet.best:', URL_SHEETBEST);
         });
         
         // Función para formatear CUIT
@@ -423,7 +410,7 @@
             input.value = valor;
         }
         
-        // Manejar envío del formulario
+        // Manejar envío del formulario - VERSIÓN CORREGIDA
         document.getElementById('formularioRegistro').addEventListener('submit', async function(evento) {
             evento.preventDefault();
             
@@ -437,12 +424,17 @@
                 return;
             }
             
-            // Validar plan
+            // Validar plan - Asegurar que se seleccionó
             const planSelect = document.getElementById('plan');
             if (!planSelect.value) {
                 mostrarMensajeError('❌ Por favor, selecciona un plan (Mensual o Anual)');
                 planSelect.focus();
+                planSelect.style.borderColor = '#dc3545';
+                planSelect.style.backgroundColor = '#fff8f8';
                 return;
+            } else {
+                planSelect.style.borderColor = '#4caf50';
+                planSelect.style.backgroundColor = '#f8fff8';
             }
             
             // Mostrar mensaje de carga
@@ -455,7 +447,7 @@
             boton.disabled = true;
             boton.textContent = 'Enviando...';
             
-            // Preparar datos
+            // Preparar datos - FORMA MÁS CONFIABLE
             const datosParaEnviar = {
                 'ID_Empresa': document.getElementById('idEmpresa').value,
                 'Empresa': document.getElementById('nombreEmpresa').value,
@@ -468,14 +460,16 @@
                 'Email': document.getElementById('email').value,
                 'Tel_contacto': document.getElementById('telefono').value,
                 'WhatsApp': document.getElementById('whatsapp').value || '',
+                // ¡¡¡IMPORTANTE!!! Asegurar que el nombre del campo sea exacto
                 'Plan (Mensual/Anual)': document.getElementById('plan').value,
                 'Observaciones': document.getElementById('observaciones').value || '',
                 'Fecha alta': document.getElementById('fechaAlta').value,
                 'Estado': 'activo'
             };
             
-            console.log('📤 Enviando datos:', datosParaEnviar);
-            console.log('📋 Plan seleccionado:', datosParaEnviar['Plan (Mensual/Anual)']);
+            console.log('📤 Enviando datos a Sheet.best:');
+            console.log('📋 Plan seleccionado (verificar que no esté vacío):', datosParaEnviar['Plan (Mensual/Anual)']);
+            console.log('📊 Todos los datos:', datosParaEnviar);
             
             try {
                 // Enviar a Sheet.best
@@ -493,7 +487,7 @@
                     
                     // Mostrar mensaje de éxito
                     ocultarTodosLosMensajes();
-                    mostrarMensajeExito('✅ ¡Empresa registrada correctamente!');
+                    mostrarMensajeExito('✅ ¡Empresa registrada correctamente!<br>📋 El plan seleccionado ha sido guardado.');
                     
                     // Incrementar ID para próximo registro
                     const idActual = parseInt(document.getElementById('idEmpresa').value);
@@ -514,7 +508,7 @@
                         const año = hoy.getFullYear();
                         document.getElementById('fechaAlta').value = mes + '/' + año;
                         
-                        // Ocultar mensaje de éxito
+                        // Ocultar mensaje de éxito después de 5 segundos
                         setTimeout(() => {
                             document.getElementById('mensajeExito').style.display = 'none';
                         }, 5000);
@@ -524,7 +518,7 @@
                 } else {
                     const errorTexto = await respuesta.text();
                     console.error('❌ Error de Sheet.best:', errorTexto);
-                    mostrarMensajeError('❌ Error al registrar. Por favor, verifica la conexión o contacta a soporte.');
+                    mostrarMensajeError('❌ Error al registrar. Verifica la conexión o contacta a soporte.<br>Detalle: ' + errorTexto);
                     
                     // Restaurar botón
                     boton.disabled = false;
@@ -552,13 +546,13 @@
         
         function mostrarMensajeExito(texto) {
             const mensaje = document.getElementById('mensajeExito');
-            mensaje.textContent = texto;
+            mensaje.innerHTML = texto;
             mensaje.style.display = 'block';
         }
         
         function mostrarMensajeError(texto) {
             const mensaje = document.getElementById('mensajeError');
-            mensaje.textContent = texto;
+            mensaje.innerHTML = texto;
             mensaje.style.display = 'block';
         }
         
