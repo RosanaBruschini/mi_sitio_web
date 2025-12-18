@@ -49,13 +49,18 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
+        /* LOGO MÁS GRANDE CON FONDO BLANCO */
         .logo-img {
-            height: 50px;
+            height: 70px;  /* 20px más grande que antes */
             width: auto;
             border-radius: 8px;
+            background-color: white;  /* Fondo blanco para contraste */
+            padding: 8px;  /* Espacio interno para el logo */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* Sombra para destacar */
+            border: 2px solid #f0f0f0;  /* Borde sutil */
         }
         
         .titulo-principal {
@@ -227,7 +232,7 @@
             }
             
             .logo-img {
-                height: 40px;
+                height: 60px; /* Un poco más pequeño en móviles pero aún con fondo blanco */
             }
         }
         
@@ -247,7 +252,7 @@
             <p class="subtitulo">Completa los datos de tu empresa para comenzar a medir tu impacto ambiental</p>
             
             <div class="info-id-discreta">
-                🔢 ID asignado: <strong>2</strong>
+                🔢 ID asignado: <strong>4</strong>
             </div>
         </div>
         
@@ -259,7 +264,7 @@
             
             <form id="formularioRegistro">
                 <!-- Campos ocultos -->
-                <input type="hidden" id="idEmpresa" name="ID_Empresa" value="2">
+                <input type="hidden" id="idEmpresa" name="ID_Empresa" value="4">
                 <input type="hidden" id="fechaAlta" name="Fecha alta">
                 
                 <div class="grupo-formulario">
@@ -411,7 +416,8 @@
             // Poner Argentina por defecto
             document.getElementById('pais').value = 'Argentina';
             
-            console.log('Formulario cargado. ID asignado:', 2);
+            console.log('Formulario cargado. ID asignado:', 4);
+            console.log('URL de Sheet.best:', URL_SHEETBEST);
         });
         
         // Función para formatear CUIT
@@ -477,15 +483,17 @@
             const datosFormulario = new FormData(this);
             const datosParaEnviar = {};
             
+            // IMPORTANTE: Convertir FormData a objeto JSON correctamente
             datosFormulario.forEach((valor, campo) => {
                 datosParaEnviar[campo] = valor;
             });
             
-            // Agregar campo adicional
+            // Agregar campo adicional para estado
             datosParaEnviar['Estado'] = 'activo';
             
-            console.log('Enviando datos a Sheet.best:', datosParaEnviar);
-            console.log('Campo Plan:', datosParaEnviar['Plan (Mensual/Anual)']);
+            // Depuración: mostrar los datos que se enviarán
+            console.log('📤 Datos a enviar a Sheet.best:', datosParaEnviar);
+            console.log('📋 Campo Plan (Mensual/Anual):', datosParaEnviar['Plan (Mensual/Anual)']);
             
             try {
                 // Enviar a Sheet.best
@@ -541,14 +549,18 @@
                 } else {
                     const errorTexto = await respuesta.text();
                     console.error('❌ Error de Sheet.best:', errorTexto);
-                    throw new Error('Error en la respuesta del servidor');
+                    mostrarMensajeError('❌ Error al registrar. Por favor, verifica la conexión o contacta a soporte.');
+                    
+                    // Restaurar botón
+                    boton.disabled = false;
+                    boton.textContent = textoOriginal;
                 }
                 
             } catch (error) {
                 console.error('❌ Error al enviar:', error);
                 
                 ocultarTodosLosMensajes();
-                mostrarMensajeError('❌ Error al enviar los datos. Por favor, intenta nuevamente.');
+                mostrarMensajeError('❌ Error de conexión. Por favor, intenta nuevamente.');
                 
                 // Restaurar botón
                 boton.disabled = false;
