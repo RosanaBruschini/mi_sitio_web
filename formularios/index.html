@@ -24,10 +24,10 @@
             margin-bottom: 10px;
         }
         .logo {
-            height: 80px;
+            height: 85px;
             margin-bottom: 20px;
             background-color: white;
-            padding: 10px;
+            padding: 12px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
@@ -59,19 +59,13 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(31, 122, 62, 0.3);
         }
-        .boton.registro {
-            background: linear-gradient(135deg, #1F7A3E, #4CAF50);
-        }
-        .boton.datos {
-            background: linear-gradient(135deg, #4CAF50, #76ba99);
-        }
         .descripcion {
             font-size: 14px;
             color: #666;
             margin-top: 5px;
             margin-bottom: 20px;
         }
-        .features {
+        .correcciones {
             margin-top: 40px;
             text-align: left;
             background: #f8fff8;
@@ -79,14 +73,14 @@
             border-radius: 8px;
             border-left: 4px solid #1F7A3E;
         }
-        .features h3 {
+        .correcciones h3 {
             color: #1F7A3E;
             margin-top: 0;
         }
-        .features ul {
+        .correcciones ul {
             padding-left: 20px;
         }
-        .features li {
+        .correcciones li {
             margin-bottom: 8px;
         }
         .check {
@@ -98,11 +92,8 @@
                 padding: 20px;
                 margin: 20px;
             }
-            .botones-container {
-                width: 100%;
-            }
             .logo {
-                height: 70px;
+                height: 75px;
             }
         }
     </style>
@@ -111,31 +102,29 @@
     <div class="container">
         <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" alt="Logo Impacta Verde" class="logo">
         <h1>🌿 Impacta Verde</h1>
-        <p class="subtitle">Sistema de Medición de Impacto Ambiental - Versión Completamente Corregida</p>
+        <p class="subtitle">Sistema de Medición de Impacto Ambiental - VERSIÓN CORREGIDA</p>
         
         <div class="botones-container">
             <div>
-                <a href="registro_empresa.html" class="boton registro">📝 Registrar Nueva Empresa</a>
+                <a href="registro_empresa.html" class="boton">📝 Registrar Nueva Empresa</a>
                 <p class="descripcion">Completa los datos de tu empresa para comenzar a medir tu impacto ambiental</p>
             </div>
             
             <div>
-                <a href="datos_mensuales.html" class="boton datos">📊 Cargar Datos Mensuales</a>
+                <a href="datos_mensuales.html" class="boton">📊 Cargar Datos Mensuales</a>
                 <p class="descripcion">Reporta tu impacto ambiental y social del mes</p>
             </div>
         </div>
         
-        <div class="features">
+        <div class="correcciones">
             <h3>✅ TODOS LOS PROBLEMAS RESUELTOS:</h3>
             <ul>
-                <li><span class="check">✓</span> Logo agrandado a 70px con fondo blanco en ambos formularios</li>
-                <li><span class="check">✓</span> Favicon funcionando correctamente</li>
+                <li><span class="check">✓</span> Logo agrandado a 75px con fondo blanco</li>
+                <li><span class="check">✓</span> ID oculto en el formulario de registro</li>
                 <li><span class="check">✓</span> Campo "Plan (Mensual/Anual)" ahora se guarda en Excel</li>
-                <li><span class="check">✓</span> Sincronización automática del Registro al Sistema funciona</li>
+                <li><span class="check">✓</span> Sincronización automática cada vez que se carga el formulario</li>
+                <li><span class="check">✓</span> Mes y Cantidad_Empleados_Total se guardan correctamente</li>
                 <li><span class="check">✓</span> Todas las empresas aparecen en datos mensuales</li>
-                <li><span class="check">✓</span> ID discreto sin recuadro visible</li>
-                <li><span class="check">✓</span> Diseño responsive para móviles</li>
-                <li><span class="check">✓</span> Mensajes de éxito/error mejorados</li>
             </ul>
         </div>
         
@@ -144,13 +133,12 @@
             <p>1. Abre el formulario de Registro y completa los datos</p>
             <p>2. Verifica que el Plan se guarde en el Excel de registro</p>
             <p>3. Abre el formulario de Datos Mensuales</p>
-            <p>4. La empresa nueva debe aparecer en la lista</p>
-            <p>5. Verifica que se copió al Excel del sistema</p>
+            <p>4. La empresa nueva debe aparecer automáticamente en la lista</p>
+            <p>5. Completa los datos y verifica que se guarden todos los campos</p>
         </div>
         
         <div style="margin-top: 30px; font-size: 13px; color: #666;">
             <p>📧 ¿Problemas técnicos? <a href="mailto:soporte@impactaverde.com.ar" style="color: #1F7A3E; font-weight: bold;">Contacta a soporte</a></p>
-            <p>© 2024 Impacta Verde - Todos los derechos reservados</p>
         </div>
     </div>
 </body>
