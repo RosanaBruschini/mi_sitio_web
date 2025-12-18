@@ -52,13 +52,18 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
+        /* LOGO MÁS GRANDE CON FONDO BLANCO */
         .logo-img {
-            height: 50px;
+            height: 70px;  /* 20px más grande que antes */
             width: auto;
             border-radius: 8px;
+            background-color: white;  /* Fondo blanco para contraste */
+            padding: 8px;  /* Espacio interno para el logo */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* Sombra para destacar */
+            border: 2px solid #f0f0f0;  /* Borde sutil */
         }
         
         .titulo-principal {
@@ -267,7 +272,7 @@
             }
             
             .logo-img {
-                height: 40px;
+                height: 60px; /* Un poco más pequeño en móviles pero aún con fondo blanco */
             }
         }
         
@@ -306,7 +311,7 @@
                         <label for="empresa">Empresa <span class="obligatorio">*</span></label>
                         <select id="empresa" name="Empresa" required>
                             <option value="">Seleccionar empresa...</option>
-                            <option value="1">ETIMO</option>
+                            <option value="1">ETIMO</option><option value="2">RORO</option><option value="2">RORO</option><option value="3">llamina</option>
                         </select>
                     </div>
                     
