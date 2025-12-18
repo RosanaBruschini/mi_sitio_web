@@ -10,11 +10,7 @@
             --verde-oscuro: #1F7A3E;
             --verde-medio: #4CAF50;
             --verde-claro: #76ba99;
-            --azul: #2196f3;
-            --naranja: #ff9800;
-            --rosa: #e91e63;
             --beige: #f8fff8;
-            --gris: #e8f5e9;
         }
         
         * {
@@ -55,15 +51,15 @@
             margin-bottom: 15px;
         }
         
-        /* LOGO MÁS GRANDE CON FONDO BLANCO */
+        /* LOGO 75px CON FONDO BLANCO */
         .logo-img {
-            height: 70px;  /* 20px más grande que antes */
+            height: 75px;
             width: auto;
             border-radius: 8px;
-            background-color: white;  /* Fondo blanco para contraste */
-            padding: 8px;  /* Espacio interno para el logo */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* Sombra para destacar */
-            border: 2px solid #f0f0f0;  /* Borde sutil */
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 2px solid #f0f0f0;
         }
         
         .titulo-principal {
@@ -84,7 +80,6 @@
             padding: 25px;
         }
         
-        /* Secciones del formulario */
         .seccion {
             background: var(--beige);
             padding: 20px;
@@ -103,15 +98,6 @@
             gap: 8px;
         }
         
-        .seccion h3::before {
-            content: '';
-            width: 5px;
-            height: 18px;
-            background: var(--verde-oscuro);
-            border-radius: 3px;
-        }
-        
-        /* Grids para organizar campos */
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -166,7 +152,6 @@
             transform: scale(1.1);
         }
         
-        /* Botón */
         .boton-enviar {
             background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
             color: white;
@@ -196,7 +181,6 @@
             transform: none;
         }
         
-        /* Mensajes */
         .mensaje {
             padding: 12px;
             border-radius: 6px;
@@ -229,24 +213,10 @@
             text-align: center;
             margin-top: 25px;
             padding-top: 15px;
-            border-top: 1px solid var(--gris);
+            border-top: 1px solid #e8f5e9;
             color: #666;
             font-size: 13px;
             line-height: 1.5;
-        }
-        
-        .pie-pagina p {
-            margin-bottom: 6px;
-        }
-        
-        .pie-pagina a {
-            color: var(--verde-oscuro);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .pie-pagina a:hover {
-            text-decoration: underline;
         }
         
         .obligatorio {
@@ -272,7 +242,7 @@
             }
             
             .logo-img {
-                height: 60px; /* Un poco más pequeño en móviles pero aún con fondo blanco */
+                height: 70px;
             }
         }
         
@@ -301,7 +271,6 @@
             <form id="formularioDatos">
                 <!-- Campos ocultos -->
                 <input type="hidden" id="fechaCarga" name="Fecha_carga">
-                <input type="hidden" id="idEmpresaHidden" name="ID_Empresa">
                 
                 <!-- SECCIÓN 1: Empresa y Período -->
                 <div class="seccion">
@@ -309,9 +278,9 @@
                     
                     <div class="grupo-formulario">
                         <label for="empresa">Empresa <span class="obligatorio">*</span></label>
-                        <select id="empresa" name="Empresa" required>
+                        <select id="empresa" name="ID_Empresa" required>
                             <option value="">Seleccionar empresa...</option>
-                            <option value="1">ETIMO</option><option value="2">RORO</option><option value="2">RORO</option><option value="3">llamina</option>
+                            <option value="1">ETIMO</option><option value="2">RORO</option><option value="2">RORO</option><option value="3">llamina</option><option value="4">pirulo</option>
                         </select>
                     </div>
                     
@@ -405,8 +374,8 @@
                     
                     <div class="grid-3">
                         <div class="grupo-formulario">
-                            <label for="cantidad_empleados_total">Total empleados</label>
-                            <input type="number" id="cantidad_empleados_total" name="Cantidad_Empleados_Total" min="0" value="0">
+                            <label for="cantidad_empleados_total">Total empleados <span class="obligatorio">*</span></label>
+                            <input type="number" id="cantidad_empleados_total" name="Cantidad_Empleados_Total" min="0" value="0" required>
                         </div>
                         
                         <div class="grupo-formulario">
@@ -508,9 +477,8 @@
         // Configuración
         const URL_SHEETBEST = 'https://api.sheetbest.com/sheets/2eb917d5-94d0-4d5a-b511-ea115ba62206';
         
-        // Inicialización cuando carga la página
         document.addEventListener('DOMContentLoaded', function() {
-            // Establecer fecha actual (formato d/m/Y)
+            // Establecer fecha actual
             const hoy = new Date();
             const dia = hoy.getDate().toString().padStart(2, '0');
             const mesNum = (hoy.getMonth() + 1).toString().padStart(2, '0');
@@ -523,35 +491,33 @@
             document.getElementById('mes').value = meses[hoy.getMonth()];
             document.getElementById('anio').value = año.toString();
             
-            // Configurar evento para cuando cambie la empresa seleccionada
-            document.getElementById('empresa').addEventListener('change', function() {
-                const valorSeleccionado = this.value;
-                if (valorSeleccionado) {
-                    document.getElementById('idEmpresaHidden').value = valorSeleccionado;
-                    console.log('ID Empresa seleccionada:', valorSeleccionado);
-                }
-            });
-            
-            console.log('Formulario de datos mensuales cargado correctamente');
-            console.log('Empresas disponibles:', document.getElementById('empresa').options.length);
+            console.log('Formulario de datos mensuales cargado');
+            console.log('URL Sheet.best:', URL_SHEETBEST);
         });
         
         // Manejar envío del formulario
         document.getElementById('formularioDatos').addEventListener('submit', async function(evento) {
             evento.preventDefault();
             
-            // Validaciones básicas
+            // Validaciones
             const empresa = document.getElementById('empresa').value;
             const mes = document.getElementById('mes').value;
             const anio = document.getElementById('anio').value;
+            const cantidadEmpleados = document.getElementById('cantidad_empleados_total').value;
             
-            if (!empresa || empresa === "") {
+            if (!empresa) {
                 mostrarMensajeError('❌ Por favor, selecciona una empresa');
                 return;
             }
             
             if (!mes || !anio) {
                 mostrarMensajeError('❌ Por favor, selecciona mes y año');
+                return;
+            }
+            
+            if (!cantidadEmpleados || cantidadEmpleados === "" || parseInt(cantidadEmpleados) <= 0) {
+                mostrarMensajeError('❌ Por favor, ingresa la cantidad total de empleados');
+                document.getElementById('cantidad_empleados_total').focus();
                 return;
             }
             
@@ -565,34 +531,40 @@
             boton.disabled = true;
             boton.textContent = 'Enviando...';
             
-            // Preparar datos para enviar
-            const datosFormulario = new FormData(this);
-            const datosParaEnviar = {};
+            // Preparar datos para enviar - FORMA CORRECTA
+            const datosParaEnviar = {
+                'ID_Empresa': document.getElementById('empresa').value,
+                'Empresa': document.getElementById('empresa').options[document.getElementById('empresa').selectedIndex].text,
+                'Mes': document.getElementById('mes').value,
+                'Año': document.getElementById('anio').value,
+                'Fecha_carga': document.getElementById('fechaCarga').value,
+                'Cantidad_Empleados_Total': parseInt(document.getElementById('cantidad_empleados_total').value) || 0,
+                'Energia_kWh': parseFloat(document.getElementById('energia_kwh').value) || 0,
+                'Combustible_L': parseFloat(document.getElementById('combustible_l').value) || 0,
+                'Papel_kg': parseFloat(document.getElementById('papel_kg').value) || 0,
+                'Borra_humeda_kg': parseFloat(document.getElementById('borra_humeda_kg').value) || 0,
+                'Borra_seca_kg': parseFloat(document.getElementById('borra_seca_kg').value) || 0,
+                'Tela_reutilizada_kg': parseFloat(document.getElementById('tela_reutilizada_kg').value) || 0,
+                'Tecnologia_recuperada_kg': parseFloat(document.getElementById('tecnologia_recuperada_kg').value) || 0,
+                'Plastico_reutilizado_kg': parseFloat(document.getElementById('plastico_reutilizado_kg').value) || 0,
+                'Agua_m3': parseFloat(document.getElementById('agua_m3').value) || 0,
+                'Cantidad_Empleados_Locales': parseInt(document.getElementById('cantidad_empleados_locales').value) || 0,
+                'Cantidad_Mujeres': parseInt(document.getElementById('cantidad_mujeres').value) || 0,
+                'Cantidad_Personas_Discapacitadas': parseInt(document.getElementById('cantidad_personas_discapacitadas').value) || 0,
+                'Capacitacion_horas': parseFloat(document.getElementById('capacitacion_horas').value) || 0,
+                'Politica_inclusion': document.getElementById('politica_inclusion').checked ? 'Sí' : 'No',
+                'Procesos_optimizados_%': parseInt(document.getElementById('procesos_optimizados').value) || 0,
+                'Digitalizacion_%': parseInt(document.getElementById('digitalizacion').value) || 0,
+                'Residuo_Organico_kg': parseFloat(document.getElementById('residuo_organico_kg').value) || 0,
+                'Residuo_Reciclable_kg': parseFloat(document.getElementById('residuo_reciclable_kg').value) || 0,
+                'Residuo_No_Reciclable_kg': parseFloat(document.getElementById('residuo_no_reciclable_kg').value) || 0,
+                'Comentarios': document.getElementById('comentarios').value || '',
+                'Link_Evidencia': document.getElementById('link_evidencia').value || ''
+            };
             
-            datosFormulario.forEach((valor, campo) => {
-                if (valor !== '' && !isNaN(valor) && valor !== '0') {
-                    // Convertir números cuando sea posible
-                    datosParaEnviar[campo] = parseFloat(valor);
-                } else {
-                    datosParaEnviar[campo] = valor;
-                }
-            });
-            
-            // Manejar el checkbox de política de inclusión
-            const checkbox = document.getElementById('politica_inclusion');
-            datosParaEnviar['Politica_inclusion'] = checkbox.checked ? 'Sí' : 'No';
-            
-            // Asegurarnos de que el ID de empresa esté presente
-            if (!datosParaEnviar['ID_Empresa'] || datosParaEnviar['ID_Empresa'] === '') {
-                datosParaEnviar['ID_Empresa'] = document.getElementById('empresa').value;
-            }
-            
-            // Asegurarnos de que el nombre de la empresa esté presente
-            const selectEmpresa = document.getElementById('empresa');
-            const empresaSeleccionada = selectEmpresa.options[selectEmpresa.selectedIndex];
-            datosParaEnviar['Empresa'] = empresaSeleccionada.text;
-            
-            console.log('Enviando datos a Sheet.best:', datosParaEnviar);
+            console.log('📤 Datos a enviar:', datosParaEnviar);
+            console.log('📅 Mes seleccionado:', datosParaEnviar['Mes']);
+            console.log('👥 Total empleados:', datosParaEnviar['Cantidad_Empleados_Total']);
             
             try {
                 // Enviar a Sheet.best
@@ -612,32 +584,27 @@
                     ocultarTodosLosMensajes();
                     mostrarMensajeExito('✅ ¡Datos enviados correctamente al sistema de medición!');
                     
+                    // Restaurar botón
+                    boton.disabled = false;
+                    boton.textContent = textoOriginal;
+                    
                     // Limpiar formulario después de 3 segundos
                     setTimeout(() => {
-                        // Limpiar formulario
                         document.getElementById('formularioDatos').reset();
                         
-                        // Restablecer fecha
+                        // Restablecer valores por defecto
                         const hoy = new Date();
                         const dia = hoy.getDate().toString().padStart(2, '0');
                         const mesNum = (hoy.getMonth() + 1).toString().padStart(2, '0');
                         const año = hoy.getFullYear();
                         document.getElementById('fechaCarga').value = dia + '/' + mesNum + '/' + año;
                         
-                        // Establecer mes y año actual por defecto
                         const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
                                       'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
                         document.getElementById('mes').value = meses[hoy.getMonth()];
                         document.getElementById('anio').value = año.toString();
                         
-                        // Limpiar ID oculto
-                        document.getElementById('idEmpresaHidden').value = '';
-                        
-                        // Restaurar botón
-                        boton.disabled = false;
-                        boton.textContent = textoOriginal;
-                        
-                        // Ocultar mensaje de éxito después de 5 segundos más
+                        // Ocultar mensaje de éxito
                         setTimeout(() => {
                             document.getElementById('mensajeExito').style.display = 'none';
                         }, 5000);
@@ -647,23 +614,22 @@
                 } else {
                     const errorTexto = await respuesta.text();
                     console.error('❌ Error de Sheet.best:', errorTexto);
-                    throw new Error('Error en la respuesta del servidor');
+                    mostrarMensajeError('❌ Error al enviar los datos. Por favor, intenta nuevamente.');
+                    
+                    // Restaurar botón
+                    boton.disabled = false;
+                    boton.textContent = textoOriginal;
                 }
                 
             } catch (error) {
                 console.error('❌ Error al enviar:', error);
                 
                 ocultarTodosLosMensajes();
-                mostrarMensajeError('❌ Error al enviar los datos. Por favor, intenta nuevamente.');
+                mostrarMensajeError('❌ Error de conexión. Por favor, intenta nuevamente.');
                 
                 // Restaurar botón
                 boton.disabled = false;
                 boton.textContent = textoOriginal;
-                
-                // Ocultar mensaje de error después de 5 segundos
-                setTimeout(() => {
-                    document.getElementById('mensajeError').style.display = 'none';
-                }, 5000);
             }
         });
         
