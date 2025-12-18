@@ -51,13 +51,13 @@
             margin-bottom: 15px;
         }
         
-        /* LOGO 100px CON FONDO BLANCO - CORREGIDO */
+        /* LOGO 150px CON FONDO BLANCO - CORREGIDO */
         .logo-img {
-            height: 100px;  /* CAMBIADO A 100px */
+            height: 150px;  /* CAMBIADO A 150px */
             width: auto;
             border-radius: 8px;
             background-color: white;
-            padding: 10px;
+            padding: 12px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             border: 2px solid #f0f0f0;
         }
@@ -242,7 +242,7 @@
             }
             
             .logo-img {
-                height: 80px; /* Un poco más pequeño en móviles */
+                height: 120px; /* Un poco más pequeño en móviles */
             }
         }
         
@@ -280,12 +280,12 @@
                         <label for="empresa">Empresa <span class="obligatorio">*</span></label>
                         <select id="empresa" name="ID_Empresa" required style="background-color: #fff8f0;">
                             <option value="">Seleccionar empresa...</option>
-                            <option value="1">ETIMO</option><option value="2">RORO</option><option value="2">RORO</option><option value="3">llamina</option><option value="4">pirulo</option>
+                            <option value="1">ETIMO</option><option value="2">RORO</option><option value="2">RORO</option><option value="3">llamina</option><option value="4">pirulo</option><option value="5">labels</option>
                         </select>
                     </div>
                     
                     <div class="grid-2">
-                        <!-- CAMPO MES - MEJORADO PARA GARANTIZAR ENVÍO -->
+                        <!-- CAMPO MES - NOMBRE CORRECTO -->
                         <div class="grupo-formulario">
                             <label for="mes">Mes <span class="obligatorio">*</span></label>
                             <select id="mes" name="Mes" required style="background-color: #fff8f0;">
@@ -374,7 +374,7 @@
                     <h3>👥 Impacto Social</h3>
                     
                     <div class="grid-3">
-                        <!-- CAMPO CANTIDAD_EMPLEADOS_TOTAL - MEJORADO PARA GARANTIZAR ENVÍO -->
+                        <!-- CAMPO CANTIDAD_EMPLEADOS_TOTAL - NOMBRE CORRECTO -->
                         <div class="grupo-formulario">
                             <label for="cantidad_empleados_total">Total empleados <span class="obligatorio">*</span></label>
                             <input type="number" id="cantidad_empleados_total" name="Cantidad_Empleados_Total" min="1" value="1" required style="background-color: #fff8f0;">
@@ -483,7 +483,7 @@
         const URL_SHEETBEST = 'https://api.sheetbest.com/sheets/2eb917d5-94d0-4d5a-b511-ea115ba62206';
         
         document.addEventListener('DOMContentLoaded', function() {
-            // Establecer fecha actual
+            // Establecer fecha actual (18 de diciembre)
             const hoy = new Date();
             const dia = hoy.getDate().toString().padStart(2, '0');
             const mesNum = (hoy.getMonth() + 1).toString().padStart(2, '0');
@@ -500,11 +500,11 @@
             console.log('URL Sheet.best:', URL_SHEETBEST);
         });
         
-        // Manejar envío del formulario - VERSIÓN CORREGIDA
+        // Manejar envío del formulario - VERSIÓN MEJORADA
         document.getElementById('formularioDatos').addEventListener('submit', async function(evento) {
             evento.preventDefault();
             
-            // Validaciones - MÁS ESTRICTAS
+            // Validaciones
             const empresa = document.getElementById('empresa').value;
             const mes = document.getElementById('mes').value;
             const anio = document.getElementById('anio').value;
@@ -556,11 +556,11 @@
             boton.disabled = true;
             boton.textContent = 'Enviando...';
             
-            // Preparar datos para enviar - FORMA MÁS CONFIABLE
+            // Preparar datos para enviar - NOMBRES CORRECTOS
             const datosParaEnviar = {
                 'ID_Empresa': document.getElementById('empresa').value,
                 'Empresa': document.getElementById('empresa').options[document.getElementById('empresa').selectedIndex].text,
-                // ¡¡¡CAMPOS CRÍTICOS!!! Asegurar nombres exactos
+                // CAMPOS CRÍTICOS CON NOMBRES EXACTOS
                 'Mes': document.getElementById('mes').value,
                 'Año': document.getElementById('anio').value,
                 'Fecha_carga': document.getElementById('fechaCarga').value,
@@ -589,8 +589,8 @@
             };
             
             console.log('📤 Datos a enviar a Sheet.best:');
-            console.log('📅 Mes (verificar que no esté vacío):', datosParaEnviar['Mes']);
-            console.log('👥 Cantidad_Empleados_Total (verificar que no sea 0):', datosParaEnviar['Cantidad_Empleados_Total']);
+            console.log('📅 Mes:', datosParaEnviar['Mes']);
+            console.log('👥 Cantidad_Empleados_Total:', datosParaEnviar['Cantidad_Empleados_Total']);
             console.log('📊 Todos los datos:', datosParaEnviar);
             
             try {
@@ -607,15 +607,15 @@
                     const resultado = await respuesta.json();
                     console.log('✅ Datos enviados exitosamente:', resultado);
                     
-                    // Mostrar mensaje de éxito
+                    // Mostrar mensaje de éxito SIMPLE (sin mención a campos específicos)
                     ocultarTodosLosMensajes();
-                    mostrarMensajeExito('✅ ¡Datos enviados correctamente al sistema de medición!<br>📅 Mes y 👥 Total de empleados guardados correctamente.');
+                    mostrarMensajeExito('✅ ¡Datos enviados correctamente al sistema de medición!');
                     
                     // Restaurar botón
                     boton.disabled = false;
                     boton.textContent = textoOriginal;
                     
-                    // Limpiar formulario después de 3 segundos
+                    // Limpiar formulario después de 2 segundos
                     setTimeout(() => {
                         document.getElementById('formularioDatos').reset();
                         
@@ -637,12 +637,12 @@
                             document.getElementById('mensajeExito').style.display = 'none';
                         }, 5000);
                         
-                    }, 3000);
+                    }, 2000);
                     
                 } else {
                     const errorTexto = await respuesta.text();
                     console.error('❌ Error de Sheet.best:', errorTexto);
-                    mostrarMensajeError('❌ Error al enviar los datos. Por favor, intenta nuevamente.<br>Detalle: ' + errorTexto);
+                    mostrarMensajeError('❌ Error al enviar los datos. Por favor, intenta nuevamente.');
                     
                     // Restaurar botón
                     boton.disabled = false;
