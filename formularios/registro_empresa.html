@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Empresa - Impacta Verde</title>
-    <link rel="icon" href="https://impactaverde.com.ar/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>" type="image/x-icon">
     <style>
         :root {
             --verde-oscuro: #1F7A3E;
@@ -39,7 +39,7 @@
         .encabezado {
             background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
             color: white;
-            padding: 30px 20px;
+            padding: 25px 20px;
             text-align: center;
             position: relative;
         }
@@ -49,50 +49,52 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 15px;
-        }
-        
-        .logo {
-            width: 60px;
-            height: 60px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .logo img {
-            width: 40px;
-            height: 40px;
-        }
-        
-        .titulo-principal {
-            font-size: 24px;
-            font-weight: 600;
             margin-bottom: 10px;
         }
         
+        .logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
+        }
+        
+        .titulo-principal {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
         .subtitulo {
-            font-size: 15px;
+            font-size: 14px;
             opacity: 0.9;
             max-width: 500px;
             margin: 0 auto;
-            line-height: 1.5;
+            line-height: 1.4;
+        }
+        
+        .info-id-discreta {
+            text-align: center;
+            color: #1F7A3E;
+            font-size: 13px;
+            margin-bottom: 15px;
+            padding: 5px;
+            background: #f0f9f0;
+            border-radius: 4px;
+            max-width: 300px;
+            margin: 10px auto 20px auto;
         }
         
         .contenido-formulario {
-            padding: 30px;
+            padding: 25px;
         }
         
         .grupo-formulario {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
         
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 600;
             color: #333;
             font-size: 14px;
@@ -100,10 +102,10 @@
         
         input, select, textarea {
             width: 100%;
-            padding: 12px 15px;
+            padding: 10px 12px;
             border: 2px solid #e0e0e0;
             border-radius: 6px;
-            font-size: 15px;
+            font-size: 14px;
             transition: all 0.3s;
             background-color: var(--beige);
         }
@@ -117,16 +119,16 @@
         .fila-doble {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 15px;
         }
         
         .boton-enviar {
             background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
             color: white;
             border: none;
-            padding: 16px 30px;
+            padding: 14px 25px;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
@@ -135,7 +137,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
         }
         
         .boton-enviar:hover {
@@ -151,9 +153,9 @@
         
         /* Mensajes */
         .mensaje {
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
             text-align: center;
             font-weight: 500;
             display: none;
@@ -180,16 +182,16 @@
         
         .pie-pagina {
             text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
+            margin-top: 25px;
+            padding-top: 15px;
             border-top: 1px solid var(--gris);
             color: #666;
-            font-size: 14px;
-            line-height: 1.6;
+            font-size: 13px;
+            line-height: 1.5;
         }
         
         .pie-pagina p {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         
         .pie-pagina a {
@@ -204,16 +206,6 @@
         
         .obligatorio {
             color: #dc3545;
-        }
-        
-        .info-id {
-            background-color: var(--gris);
-            padding: 10px;
-            border-radius: 6px;
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 13px;
-            color: #1F7A3E;
         }
         
         @media (max-width: 768px) {
@@ -233,6 +225,10 @@
             .titulo-principal {
                 font-size: 20px;
             }
+            
+            .logo-img {
+                height: 40px;
+            }
         }
         
         @keyframes fadeIn {
@@ -245,12 +241,14 @@
     <div class="contenedor-principal">
         <div class="encabezado">
             <div class="logo-container">
-                <div class="logo">
-                    <img src="https://impactaverde.com.ar/logo.png" alt="Logo Impacta Verde">
-                </div>
+                <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" alt="Logo Impacta Verde" class="logo-img">
             </div>
             <h1 class="titulo-principal">Impacta Verde - Registro de Empresa</h1>
             <p class="subtitulo">Completa los datos de tu empresa para comenzar a medir tu impacto ambiental</p>
+            
+            <div class="info-id-discreta">
+                🔢 ID asignado: <strong>2</strong>
+            </div>
         </div>
         
         <div class="contenido-formulario">
@@ -258,10 +256,6 @@
             <div id="mensajeExito" class="mensaje mensaje-exito"></div>
             <div id="mensajeError" class="mensaje mensaje-error"></div>
             <div id="mensajeCarga" class="mensaje mensaje-carga"></div>
-            
-            <div class="info-id">
-                🔢 <strong>ID asignado automáticamente:</strong> 2
-            </div>
             
             <form id="formularioRegistro">
                 <!-- Campos ocultos -->
@@ -335,7 +329,7 @@
                                title="Formato: 00-12345678-9"
                                placeholder="00-12345678-9"
                                oninput="formatearCUIT(this)">
-                        <small style="color: #666; font-size: 13px; display: block; margin-top: 5px;">
+                        <small style="color: #666; font-size: 12px; display: block; margin-top: 3px;">
                             Formato: 00-12345678-9
                         </small>
                     </div>
@@ -366,7 +360,7 @@
                         <label for="whatsapp">WhatsApp</label>
                         <input type="tel" id="whatsapp" name="WhatsApp" 
                                placeholder="+54 9 11 1234-5678">
-                        <small style="color: #666; font-size: 13px; display: block; margin-top: 5px;">
+                        <small style="color: #666; font-size: 12px; display: block; margin-top: 3px;">
                             Incluir código de país
                         </small>
                     </div>
@@ -378,7 +372,7 @@
                             <option value="Mensual">Mensual</option>
                             <option value="Anual">Anual</option>
                         </select>
-                        <small style="color: #666; font-size: 13px; display: block; margin-top: 5px;">
+                        <small style="color: #666; font-size: 12px; display: block; margin-top: 3px;">
                             Frecuencia de pago del servicio
                         </small>
                     </div>
@@ -386,7 +380,7 @@
                 
                 <div class="grupo-formulario">
                     <label for="observaciones">Observaciones</label>
-                    <textarea id="observaciones" name="Observaciones" rows="4" 
+                    <textarea id="observaciones" name="Observaciones" rows="3" 
                               placeholder="Comentarios adicionales, indicadores específicos de interés..."></textarea>
                 </div>
                 
@@ -397,8 +391,7 @@
             
             <div class="pie-pagina">
                 <p>📧 ¿Necesitas ayuda? <a href="mailto:info@impactaverde.com.ar">Contacta con nuestro equipo</a></p>
-                <p>🔒 Tus datos están protegidos y se utilizarán únicamente para el sistema de medición de impacto ambiental</p>
-                <p>🔄 Los datos se guardan en el sistema de registro y estarán disponibles para reportes mensuales</p>
+                <p>🔒 Tus datos están protegidos y se utilizarán únicamente para el sistema de medición</p>
             </div>
         </div>
     </div>
@@ -462,6 +455,14 @@
                 return;
             }
             
+            // Validar que se seleccionó un plan
+            const planSelect = document.getElementById('plan');
+            if (!planSelect.value) {
+                mostrarMensajeError('❌ Por favor, selecciona un plan (Mensual o Anual)');
+                planSelect.focus();
+                return;
+            }
+            
             // Mostrar mensaje de carga
             ocultarTodosLosMensajes();
             mostrarMensajeCarga('⏳ Enviando datos, por favor espera...');
@@ -484,6 +485,7 @@
             datosParaEnviar['Estado'] = 'activo';
             
             console.log('Enviando datos a Sheet.best:', datosParaEnviar);
+            console.log('Campo Plan:', datosParaEnviar['Plan (Mensual/Anual)']);
             
             try {
                 // Enviar a Sheet.best
@@ -513,8 +515,8 @@
                         document.getElementById('idEmpresa').value = idActual + 1;
                         
                         // Actualizar info del ID
-                        document.querySelector('.info-id').innerHTML = 
-                            '🔢 <strong>ID asignado automáticamente:</strong> ' + (idActual + 1);
+                        document.querySelector('.info-id-discreta').innerHTML = 
+                            '🔢 ID asignado: <strong>' + (idActual + 1) + '</strong>';
                         
                         // Restablecer fecha y país
                         const hoy = new Date();
