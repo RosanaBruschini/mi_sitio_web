@@ -52,15 +52,15 @@
             margin-bottom: 15px;
         }
         
-        /* LOGO MÁS GRANDE CON FONDO BLANCO */
+        /* LOGO 75px CON FONDO BLANCO */
         .logo-img {
-            height: 70px;  /* 20px más grande que antes */
+            height: 75px;
             width: auto;
             border-radius: 8px;
-            background-color: white;  /* Fondo blanco para contraste */
-            padding: 8px;  /* Espacio interno para el logo */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* Sombra para destacar */
-            border: 2px solid #f0f0f0;  /* Borde sutil */
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 2px solid #f0f0f0;
         }
         
         .titulo-principal {
@@ -77,16 +77,17 @@
             line-height: 1.4;
         }
         
+        /* ID OCULTO - Solo para depuración */
         .info-id-discreta {
+            display: none; /* OCULTO PARA EL CLIENTE */
             text-align: center;
             color: #1F7A3E;
             font-size: 13px;
-            margin-bottom: 15px;
+            margin: 10px auto 20px auto;
             padding: 5px;
             background: #f0f9f0;
             border-radius: 4px;
             max-width: 300px;
-            margin: 10px auto 20px auto;
         }
         
         .contenido-formulario {
@@ -195,20 +196,6 @@
             line-height: 1.5;
         }
         
-        .pie-pagina p {
-            margin-bottom: 6px;
-        }
-        
-        .pie-pagina a {
-            color: var(--verde-oscuro);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .pie-pagina a:hover {
-            text-decoration: underline;
-        }
-        
         .obligatorio {
             color: #dc3545;
         }
@@ -232,7 +219,7 @@
             }
             
             .logo-img {
-                height: 60px; /* Un poco más pequeño en móviles pero aún con fondo blanco */
+                height: 70px;
             }
         }
         
@@ -251,8 +238,9 @@
             <h1 class="titulo-principal">Impacta Verde - Registro de Empresa</h1>
             <p class="subtitulo">Completa los datos de tu empresa para comenzar a medir tu impacto ambiental</p>
             
-            <div class="info-id-discreta">
-                🔢 ID asignado: <strong>4</strong>
+            <!-- ID OCULTO (solo para desarrolladores) -->
+            <div class="info-id-discreta" id="debugInfo">
+                🔢 ID asignado: <strong>5</strong> (solo para desarrollo)
             </div>
         </div>
         
@@ -264,7 +252,7 @@
             
             <form id="formularioRegistro">
                 <!-- Campos ocultos -->
-                <input type="hidden" id="idEmpresa" name="ID_Empresa" value="4">
+                <input type="hidden" id="idEmpresa" name="ID_Empresa" value="5">
                 <input type="hidden" id="fechaAlta" name="Fecha alta">
                 
                 <div class="grupo-formulario">
@@ -405,9 +393,8 @@
         // Configuración
         const URL_SHEETBEST = 'https://api.sheetbest.com/sheets/c7fec5f9-d83f-4d32-b31e-6ee06ea50d00';
         
-        // Inicialización cuando carga la página
         document.addEventListener('DOMContentLoaded', function() {
-            // Establecer fecha actual (formato m/Y)
+            // Establecer fecha actual
             const hoy = new Date();
             const mes = (hoy.getMonth() + 1).toString().padStart(2, '0');
             const año = hoy.getFullYear();
@@ -416,8 +403,7 @@
             // Poner Argentina por defecto
             document.getElementById('pais').value = 'Argentina';
             
-            console.log('Formulario cargado. ID asignado:', 4);
-            console.log('URL de Sheet.best:', URL_SHEETBEST);
+            console.log('Formulario de registro cargado. ID asignado:', 5);
         });
         
         // Función para formatear CUIT
@@ -435,23 +421,13 @@
             }
             
             input.value = valor;
-            
-            // Validar visualmente
-            const patronCUIT = /^[0-9]{2}-[0-9]{8}-[0-9]{1}$/;
-            if (patronCUIT.test(valor)) {
-                input.style.borderColor = '#4caf50';
-                input.style.backgroundColor = '#f8fff8';
-            } else {
-                input.style.borderColor = '#ff6b6b';
-                input.style.backgroundColor = '#fff8f8';
-            }
         }
         
         // Manejar envío del formulario
         document.getElementById('formularioRegistro').addEventListener('submit', async function(evento) {
             evento.preventDefault();
             
-            // Validar CUIT antes de enviar
+            // Validar CUIT
             const cuitInput = document.getElementById('cuit');
             const patronCUIT = /^[0-9]{2}-[0-9]{8}-[0-9]{1}$/;
             
@@ -461,7 +437,7 @@
                 return;
             }
             
-            // Validar que se seleccionó un plan
+            // Validar plan
             const planSelect = document.getElementById('plan');
             if (!planSelect.value) {
                 mostrarMensajeError('❌ Por favor, selecciona un plan (Mensual o Anual)');
@@ -479,21 +455,27 @@
             boton.disabled = true;
             boton.textContent = 'Enviando...';
             
-            // Preparar datos para enviar
-            const datosFormulario = new FormData(this);
-            const datosParaEnviar = {};
+            // Preparar datos
+            const datosParaEnviar = {
+                'ID_Empresa': document.getElementById('idEmpresa').value,
+                'Empresa': document.getElementById('nombreEmpresa').value,
+                'Rubro': document.getElementById('rubro').value,
+                'Pais': document.getElementById('pais').value,
+                'Localidad': document.getElementById('localidad').value,
+                'Area_a_cargo': document.getElementById('areaCargo').value,
+                'CUIT': document.getElementById('cuit').value,
+                'Responsable': document.getElementById('responsable').value,
+                'Email': document.getElementById('email').value,
+                'Tel_contacto': document.getElementById('telefono').value,
+                'WhatsApp': document.getElementById('whatsapp').value || '',
+                'Plan (Mensual/Anual)': document.getElementById('plan').value,
+                'Observaciones': document.getElementById('observaciones').value || '',
+                'Fecha alta': document.getElementById('fechaAlta').value,
+                'Estado': 'activo'
+            };
             
-            // IMPORTANTE: Convertir FormData a objeto JSON correctamente
-            datosFormulario.forEach((valor, campo) => {
-                datosParaEnviar[campo] = valor;
-            });
-            
-            // Agregar campo adicional para estado
-            datosParaEnviar['Estado'] = 'activo';
-            
-            // Depuración: mostrar los datos que se enviarán
-            console.log('📤 Datos a enviar a Sheet.best:', datosParaEnviar);
-            console.log('📋 Campo Plan (Mensual/Anual):', datosParaEnviar['Plan (Mensual/Anual)']);
+            console.log('📤 Enviando datos:', datosParaEnviar);
+            console.log('📋 Plan seleccionado:', datosParaEnviar['Plan (Mensual/Anual)']);
             
             try {
                 // Enviar a Sheet.best
@@ -513,33 +495,26 @@
                     ocultarTodosLosMensajes();
                     mostrarMensajeExito('✅ ¡Empresa registrada correctamente!');
                     
-                    // Limpiar y preparar para nuevo registro después de 3 segundos
+                    // Incrementar ID para próximo registro
+                    const idActual = parseInt(document.getElementById('idEmpresa').value);
+                    document.getElementById('idEmpresa').value = idActual + 1;
+                    
+                    // Restaurar botón después de 3 segundos
                     setTimeout(() => {
+                        boton.disabled = false;
+                        boton.textContent = textoOriginal;
+                        
                         // Limpiar formulario
                         document.getElementById('formularioRegistro').reset();
                         
-                        // Incrementar ID para próximo registro
-                        const idActual = parseInt(document.getElementById('idEmpresa').value);
-                        document.getElementById('idEmpresa').value = idActual + 1;
-                        
-                        // Actualizar info del ID
-                        document.querySelector('.info-id-discreta').innerHTML = 
-                            '🔢 ID asignado: <strong>' + (idActual + 1) + '</strong>';
-                        
-                        // Restablecer fecha y país
+                        // Restablecer valores por defecto
+                        document.getElementById('pais').value = 'Argentina';
                         const hoy = new Date();
                         const mes = (hoy.getMonth() + 1).toString().padStart(2, '0');
                         const año = hoy.getFullYear();
                         document.getElementById('fechaAlta').value = mes + '/' + año;
-                        document.getElementById('pais').value = 'Argentina';
                         
-                        // Restaurar botón
-                        boton.disabled = false;
-                        boton.textContent = textoOriginal;
-                        
-                        console.log('Formulario reiniciado. Nuevo ID:', idActual + 1);
-                        
-                        // Ocultar mensaje de éxito después de 5 segundos más
+                        // Ocultar mensaje de éxito
                         setTimeout(() => {
                             document.getElementById('mensajeExito').style.display = 'none';
                         }, 5000);
@@ -565,11 +540,6 @@
                 // Restaurar botón
                 boton.disabled = false;
                 boton.textContent = textoOriginal;
-                
-                // Ocultar mensaje de error después de 5 segundos
-                setTimeout(() => {
-                    document.getElementById('mensajeError').style.display = 'none';
-                }, 5000);
             }
         });
         
