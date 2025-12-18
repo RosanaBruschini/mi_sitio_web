@@ -45,19 +45,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         .logo-img {
-            height: 120px;
+            height: 100px;
             width: auto;
             object-fit: contain;
             border-radius: 12px;
             background: white;
             padding: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         .header h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin-bottom: 0.5rem;
         }
         .header p {
@@ -68,79 +67,69 @@
             line-height: 1.5;
         }
         .form-container {
-            padding: 2.5rem;
+            padding: 2rem;
         }
         .form-section {
-            margin-bottom: 2rem;
-            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
             background: var(--beige);
             border-radius: 12px;
             border-left: 5px solid var(--verde-oscuro);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
         }
         .form-section h3 {
             color: var(--verde-oscuro);
-            margin-bottom: 1.2rem;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
         .form-group {
-            margin-bottom: 1.8rem;
+            margin-bottom: 1.5rem;
         }
         label {
             display: block;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.5rem;
             font-weight: 600;
             color: #333;
-            font-size: 1.05rem;
         }
         input, select, textarea {
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1.05rem;
-            transition: all 0.3s;
+            border-radius: 8px;
+            font-size: 1rem;
         }
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--verde-medio);
             box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
-            transform: translateY(-1px);
         }
         .btn {
             background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
             color: white;
             border: none;
-            padding: 18px 35px;
+            padding: 16px 30px;
             border-radius: 10px;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            transition: all 0.3s;
             width: 100%;
-            box-shadow: 0 4px 12px rgba(31, 122, 62, 0.3);
+            transition: transform 0.3s;
         }
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 18px rgba(31, 122, 62, 0.4);
+            transform: translateY(-2px);
         }
-        .required { color: #e74c3c; font-weight: bold; }
+        .required { color: #e74c3c; }
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+            gap: 1rem;
         }
         @media (max-width: 768px) { .form-row { grid-template-columns: 1fr; } }
         .success-message, .error-message, .loading-message {
-            padding: 1.2rem;
+            padding: 1rem;
             border-radius: 10px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             text-align: center;
             display: none;
-            font-size: 1.1rem;
         }
         .success-message {
             background: var(--verde-claro);
@@ -156,16 +145,6 @@
             background: #e8f5e9;
             color: var(--verde-oscuro);
             border: 2px solid var(--verde-medio);
-        }
-        .id-display {
-            background-color: var(--gris);
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            font-weight: bold;
-            color: var(--verde-oscuro);
-            border: 2px dashed var(--verde-medio);
         }
         .footer-info {
             text-align: center;
@@ -201,13 +180,12 @@
             <div id="errorMessage" class="error-message"></div>
             <div id="loadingMessage" class="loading-message"></div>
 
-            <div class="id-display">
-                📝 <strong>ID asignado para esta empresa:</strong> <span id="idAsignado">1</span>
-            </div>
-
             <form id="registroEmpresaForm">
+                <!-- Campos ocultos -->
                 <input type="hidden" name="ID_Empresa" id="id_empresa" value="1">
                 <input type="hidden" name="Fecha alta" id="fecha_alta">
+                <!-- Cambiado a Area_a_cargo para que coincida con Excel -->
+                <input type="hidden" name="Area_a_cargo" id="area_a_cargo_hidden">
 
                 <div class="form-section">
                     <h3>🏢 Información de la Empresa</h3>
@@ -215,49 +193,70 @@
                         <label for="empresa">Nombre de la Empresa <span class="required">*</span></label>
                         <input type="text" id="empresa" name="Empresa" required placeholder="Ej: Mi Empresa S.A.">
                     </div>
+                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="rubro">Rubro <span class="required">*</span></label>
                             <select id="rubro" name="Rubro" required>
                                 <option value="">Seleccionar rubro...</option>
-                                <option value="Textil">Textil</option><option value="Reciclaje">Reciclaje</option>
-                                <option value="Construcción">Construcción</option><option value="Tecnología">Tecnología</option>
-                                <option value="Alimentación">Alimentación</option><option value="Servicios">Servicios</option>
-                                <option value="Comercio">Comercio</option><option value="Educación">Educación</option>
-                                <option value="Salud">Salud</option><option value="Manufactura">Manufactura</option>
-                                <option value="Logística">Logística</option><option value="Otro">Otro</option>
+                                <option value="Textil">Textil</option>
+                                <option value="Reciclaje">Reciclaje</option>
+                                <option value="Construcción">Construcción</option>
+                                <option value="Tecnología">Tecnología</option>
+                                <option value="Alimentación">Alimentación</option>
+                                <option value="Servicios">Servicios</option>
+                                <option value="Comercio">Comercio</option>
+                                <option value="Educación">Educación</option>
+                                <option value="Salud">Salud</option>
+                                <option value="Manufactura">Manufactura</option>
+                                <option value="Logística">Logística</option>
+                                <option value="Otro">Otro</option>
                             </select>
                         </div>
+                        
                         <div class="form-group">
                             <label for="pais">País <span class="required">*</span></label>
                             <select id="pais" name="Pais" required>
                                 <option value="">Seleccionar país...</option>
                                 <option value="Argentina" selected>Argentina</option>
-                                <option value="Uruguay">Uruguay</option><option value="Chile">Chile</option>
-                                <option value="Brasil">Brasil</option><option value="Paraguay">Paraguay</option>
-                                <option value="Bolivia">Bolivia</option><option value="Perú">Perú</option>
-                                <option value="Colombia">Colombia</option><option value="México">México</option>
-                                <option value="España">España</option><option value="Otro">Otro</option>
+                                <option value="Uruguay">Uruguay</option>
+                                <option value="Chile">Chile</option>
+                                <option value="Brasil">Brasil</option>
+                                <option value="Paraguay">Paraguay</option>
+                                <option value="Bolivia">Bolivia</option>
+                                <option value="Perú">Perú</option>
+                                <option value="Colombia">Colombia</option>
+                                <option value="México">México</option>
+                                <option value="España">España</option>
+                                <option value="Otro">Otro</option>
                             </select>
                         </div>
                     </div>
+                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="localidad">Localidad <span class="required">*</span></label>
                             <input type="text" id="localidad" name="Localidad" required placeholder="Ej: Buenos Aires, CABA">
                         </div>
+                        
                         <div class="form-group">
                             <label for="area_a_cargo">Área a cargo <span class="required">*</span></label>
-                            <input type="text" id="area_a_cargo" name="Area a cargo" required placeholder="Ej: Sostenibilidad, Operaciones, RSE">
+                            <input type="text" id="area_a_cargo" name="Area_a_cargo_input" required 
+                                   placeholder="Ej: Sostenibilidad, Operaciones, RSE">
                         </div>
                     </div>
+                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="cuit">CUIT <span class="required">*</span></label>
-                            <input type="text" id="cuit" name="CUIT" required pattern="[0-9]{2}-[0-9]{8}-[0-9]{1}" 
-                                   title="Formato: 99-99999999-9" placeholder="Ej: 30-12345678-9" oninput="formatCUIT(this)">
-                            <small>Formato requerido: 99-99999999-9</small>
+                            <input type="text" id="cuit" name="CUIT" required 
+                                   pattern="[0-9]{2}-[0-9]{8}-[0-9]{1}"
+                                   title="Formato: 99-99999999-9"
+                                   placeholder="Ej: 30-12345678-9"
+                                   oninput="formatCUIT(this)">
+                            <small style="color: #666; font-size: 0.9rem;">Formato: 99-99999999-9</small>
                         </div>
+                        
                         <div class="form-group">
                             <label for="responsable">Responsable <span class="required">*</span></label>
                             <input type="text" id="responsable" name="Responsable" required placeholder="Nombre y apellido completo">
@@ -267,22 +266,26 @@
 
                 <div class="form-section">
                     <h3>📞 Contacto</h3>
+                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="email">Email <span class="required">*</span></label>
                             <input type="email" id="email" name="Email" required placeholder="ejemplo@empresa.com">
                         </div>
+                        
                         <div class="form-group">
                             <label for="tel_contacto">Teléfono de Contacto <span class="required">*</span></label>
                             <input type="tel" id="tel_contacto" name="Tel_contacto" required placeholder="Ej: +54 11 1234-5678">
                         </div>
                     </div>
+                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="whatsapp">WhatsApp</label>
                             <input type="tel" id="whatsapp" name="WhatsApp" placeholder="Ej: +54 9 11 1234-5678">
-                            <small>Incluir código de país y área</small>
+                            <small style="color: #666; font-size: 0.9rem;">Incluir código de país y área</small>
                         </div>
+                        
                         <div class="form-group">
                             <label for="plan">Plan <span class="required">*</span></label>
                             <select id="plan" name="Plan (Mensual/Anual)" required>
@@ -290,9 +293,10 @@
                                 <option value="Mensual">Mensual</option>
                                 <option value="Anual">Anual</option>
                             </select>
-                            <small>Frecuencia de pago del servicio</small>
+                            <small style="color: #666; font-size: 0.9rem;">Frecuencia de pago del servicio</small>
                         </div>
                     </div>
+                    
                     <div class="form-group">
                         <label for="observaciones">Observaciones</label>
                         <textarea id="observaciones" name="Observaciones" rows="3" placeholder="Comentarios adicionales..."></textarea>
@@ -312,13 +316,19 @@
     <script>
         let enviando = false;
         const URL_REGISTRO = 'https://api.sheetbest.com/sheets/c7fec5f9-d83f-4d32-b31e-6ee06ea50d00';
+        const URL_SISTEMA = 'https://api.sheetbest.com/sheets/2eb917d5-94d0-4d5a-b511-ea115ba62206?sheet=Empresa';
 
         document.addEventListener('DOMContentLoaded', function() {
+            // Fecha actual en formato m/Y
             const today = new Date();
             const month = (today.getMonth() + 1).toString().padStart(2, '0');
             const year = today.getFullYear();
             document.getElementById('fecha_alta').value = month + '/' + year;
-            document.getElementById('pais').value = 'Argentina';
+            
+            // Copiar valor de area_a_cargo al campo oculto
+            document.getElementById('area_a_cargo').addEventListener('input', function() {
+                document.getElementById('area_a_cargo_hidden').value = this.value;
+            });
         });
 
         function formatCUIT(input) {
@@ -334,6 +344,7 @@
             if (enviando) return;
             enviando = true;
 
+            // Validar CUIT
             const cuitInput = document.getElementById('cuit');
             const cuitPattern = /^[0-9]{2}-[0-9]{8}-[0-9]{1}$/;
             if (!cuitPattern.test(cuitInput.value)) {
@@ -343,50 +354,82 @@
                 return;
             }
 
+            // Actualizar campo oculto de área
+            document.getElementById('area_a_cargo_hidden').value = 
+                document.getElementById('area_a_cargo').value;
+
             hideAllMessages();
-            showLoading('⏳ Enviando datos...');
+            showLoading('⏳ Enviando datos al sistema...');
 
             const submitBtn = document.getElementById('submitBtn');
             const originalText = submitBtn.textContent;
             submitBtn.disabled = true;
             submitBtn.textContent = 'Enviando...';
 
+            // Preparar datos
             const formData = new FormData(this);
             const datos = {};
-            formData.forEach((value, key) => { datos[key] = value; });
+            formData.forEach((value, key) => { 
+                if (key === 'Area_a_cargo_input') {
+                    datos['Area_a_cargo'] = value;  // Mapear correctamente
+                } else {
+                    datos[key] = value;
+                }
+            });
+            
+            // Agregar campo faltante
             datos['Estado'] = 'activo';
 
-            console.log('Enviando:', datos);
+            console.log('Datos a enviar:', datos);
 
             try {
-                const response = await fetch(URL_REGISTRO, {
+                // 1. Enviar al Excel de REGISTRO
+                console.log('Enviando a Excel Registro...');
+                const responseRegistro = await fetch(URL_REGISTRO, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(datos)
                 });
 
-                if (response.ok) {
-                    const responseData = await response.json();
-                    console.log('Éxito:', responseData);
-                    showSuccess('✅ ¡Empresa registrada! ID: ' + datos['ID_Empresa']);
+                if (responseRegistro.ok) {
+                    console.log('✅ Registro exitoso en Excel Registro');
                     
+                    // 2. Enviar copia al Excel SISTEMA
+                    console.log('Sincronizando con Excel Sistema...');
+                    const responseSistema = await fetch(URL_SISTEMA, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(datos)
+                    });
+
+                    if (responseSistema.ok) {
+                        console.log('✅ Sincronización exitosa con Excel Sistema');
+                        showSuccess('✅ ¡Empresa registrada correctamente! ID: ' + datos['ID_Empresa']);
+                    } else {
+                        console.log('⚠️ Registrado pero no sincronizado');
+                        showSuccess('✅ ¡Empresa registrada! (Sincronización pendiente) ID: ' + datos['ID_Empresa']);
+                    }
+
+                    // Limpiar formulario después de 3 segundos
                     setTimeout(() => {
                         resetForm();
                         enviando = false;
                         submitBtn.disabled = false;
                         submitBtn.textContent = originalText;
                     }, 3000);
+
                 } else {
-                    const errorText = await response.text();
-                    console.error('Error:', errorText);
-                    showError('❌ Error al enviar. Intenta nuevamente.');
+                    const errorText = await responseRegistro.text();
+                    console.error('Error en registro:', errorText);
+                    showError('❌ Error al registrar empresa. Intenta nuevamente.');
                     enviando = false;
                     submitBtn.disabled = false;
                     submitBtn.textContent = originalText;
                 }
+
             } catch (error) {
-                console.error('Conexión:', error);
-                showError('❌ Error de conexión.');
+                console.error('Error de conexión:', error);
+                showError('❌ Error de conexión. Verifica tu internet.');
                 enviando = false;
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalText;
@@ -398,34 +441,43 @@
             document.getElementById('successMessage').style.display = 'none';
             document.getElementById('loadingMessage').style.display = 'none';
         }
+
         function showError(msg) {
             hideAllMessages();
             const div = document.getElementById('errorMessage');
             div.textContent = msg;
             div.style.display = 'block';
+            div.style.animation = 'fadeIn 0.5s';
         }
+
         function showSuccess(msg) {
             hideAllMessages();
             const div = document.getElementById('successMessage');
             div.textContent = msg;
             div.style.display = 'block';
+            div.style.animation = 'fadeIn 0.5s';
         }
+
         function showLoading(msg) {
             hideAllMessages();
             const div = document.getElementById('loadingMessage');
             div.textContent = msg;
             div.style.display = 'block';
         }
+
         function resetForm() {
             const form = document.getElementById('registroEmpresaForm');
             const idInput = document.getElementById('id_empresa');
+            
+            // Incrementar ID (buscar siguiente disponible)
             const idActual = parseInt(idInput.value);
             const nuevoId = idActual + 1;
-            
             idInput.value = nuevoId;
-            document.getElementById('idAsignado').textContent = nuevoId;
+            
+            // Limpiar formulario
             form.reset();
             
+            // Restaurar valores por defecto
             const today = new Date();
             const month = (today.getMonth() + 1).toString().padStart(2, '0');
             const year = today.getFullYear();
@@ -434,6 +486,16 @@
             
             hideAllMessages();
         }
+
+        // Agregar animación CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(-10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
