@@ -4,498 +4,358 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Empresa - Impacta Verde</title>
-    <link rel="icon" href="https://impactaverde.com.ar/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://impactaverde.com.ar/favicon.ico">
     <style>
         :root {
             --verde-oscuro: #1F7A3E;
             --verde-medio: #4CAF50;
             --verde-claro: #76ba99;
-            --beige: #f8fff8;
-            --gris: #e8f5e9;
         }
         * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0; box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         body {
-            background: linear-gradient(135deg, #f4f7f4 0%, #e8f5e8 100%);
-            color: #333;
-            line-height: 1.6;
-            min-height: 100vh;
+            background: #f5f9f5;
             padding: 20px;
+            min-height: 100vh;
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             overflow: hidden;
-            border: 3px solid var(--verde-oscuro);
+            border: 2px solid var(--verde-oscuro);
         }
         .header {
-            background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
+            background: linear-gradient(to right, var(--verde-oscuro), var(--verde-medio));
             color: white;
-            padding: 2rem;
+            padding: 30px 20px;
             text-align: center;
         }
-        .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-        .logo-img {
-            height: 100px;
-            width: auto;
-            object-fit: contain;
-            border-radius: 12px;
-            background: white;
-            padding: 10px;
-        }
         .header h1 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+            font-size: 28px;
+            margin-bottom: 10px;
         }
         .header p {
-            font-size: 1.1rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.5;
+            font-size: 16px;
+            opacity: 0.9;
         }
         .form-container {
-            padding: 2rem;
-        }
-        .form-section {
-            margin-bottom: 1.5rem;
-            padding: 1.5rem;
-            background: var(--beige);
-            border-radius: 12px;
-            border-left: 5px solid var(--verde-oscuro);
-        }
-        .form-section h3 {
-            color: var(--verde-oscuro);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+            padding: 30px;
         }
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
         }
         label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 8px;
             font-weight: 600;
             color: #333;
         }
         input, select, textarea {
             width: 100%;
             padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
         }
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--verde-medio);
-            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .form-row > div {
+            flex: 1;
         }
         .btn {
-            background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
+            background: var(--verde-oscuro);
             color: white;
             border: none;
-            padding: 16px 30px;
-            border-radius: 10px;
+            padding: 15px 30px;
+            border-radius: 6px;
+            font-size: 18px;
             cursor: pointer;
-            font-size: 1.1rem;
-            font-weight: 600;
             width: 100%;
-            transition: transform 0.3s;
+            margin-top: 20px;
         }
         .btn:hover {
-            transform: translateY(-2px);
+            background: var(--verde-medio);
         }
-        .required { color: #e74c3c; }
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-        @media (max-width: 768px) { .form-row { grid-template-columns: 1fr; } }
-        .success-message, .error-message, .loading-message {
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
+        .mensaje {
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
             text-align: center;
             display: none;
         }
-        .success-message {
-            background: var(--verde-claro);
-            color: var(--verde-oscuro);
-            border: 2px solid var(--verde-medio);
+        .exito {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
         }
-        .error-message {
-            background: #ffe6e6;
-            color: #cc0000;
-            border: 2px solid #ff6666;
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
-        .loading-message {
-            background: #e8f5e9;
-            color: var(--verde-oscuro);
-            border: 2px solid var(--verde-medio);
+        .cargando {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
         }
-        .footer-info {
+        .footer {
             text-align: center;
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--gris);
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
             color: #666;
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 14px;
         }
-        .footer-info p { margin-bottom: 0.8rem; }
-        .footer-info a {
-            color: var(--verde-oscuro);
-            text-decoration: none;
-            font-weight: 500;
+        .required { color: #dc3545; }
+        @media (max-width: 768px) {
+            .form-row { flex-direction: column; gap: 0; }
         }
-        .footer-info a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo-container">
-                <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png"
-                     alt="Impacta Verde Logo" class="logo-img">
-            </div>
             <h1>Impacta Verde - Registro de Empresa</h1>
             <p>Completa los datos de tu empresa para comenzar a medir tu impacto ambiental</p>
         </div>
-
+        
         <div class="form-container">
-            <div id="successMessage" class="success-message"></div>
-            <div id="errorMessage" class="error-message"></div>
-            <div id="loadingMessage" class="loading-message"></div>
-
-            <form id="registroEmpresaForm">
-                <!-- Campos ocultos -->
-                <input type="hidden" name="ID_Empresa" id="id_empresa" value="1">
-                <input type="hidden" name="Fecha alta" id="fecha_alta">
-                <!-- Cambiado a Area_a_cargo para que coincida con Excel -->
-                <input type="hidden" name="Area_a_cargo" id="area_a_cargo_hidden">
-
-                <div class="form-section">
-                    <h3>🏢 Información de la Empresa</h3>
-                    <div class="form-group">
-                        <label for="empresa">Nombre de la Empresa <span class="required">*</span></label>
-                        <input type="text" id="empresa" name="Empresa" required placeholder="Ej: Mi Empresa S.A.">
+            <div id="mensajeExito" class="mensaje exito"></div>
+            <div id="mensajeError" class="mensaje error"></div>
+            <div id="mensajeCarga" class="mensaje cargando"></div>
+            
+            <form id="formRegistro">
+                <!-- ID oculto -->
+                <input type="hidden" id="idEmpresa" name="ID_Empresa" value="1">
+                <input type="hidden" id="fechaAlta" name="Fecha alta">
+                
+                <div class="form-group">
+                    <label for="nombreEmpresa">Nombre de la Empresa <span class="required">*</span></label>
+                    <input type="text" id="nombreEmpresa" name="Empresa" required>
+                </div>
+                
+                <div class="form-row">
+                    <div>
+                        <label for="rubro">Rubro <span class="required">*</span></label>
+                        <select id="rubro" name="Rubro" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="Textil">Textil</option>
+                            <option value="Reciclaje">Reciclaje</option>
+                            <option value="Construcción">Construcción</option>
+                            <option value="Tecnología">Tecnología</option>
+                            <option value="Servicios">Servicios</option>
+                            <option value="Otro">Otro</option>
+                        </select>
                     </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="rubro">Rubro <span class="required">*</span></label>
-                            <select id="rubro" name="Rubro" required>
-                                <option value="">Seleccionar rubro...</option>
-                                <option value="Textil">Textil</option>
-                                <option value="Reciclaje">Reciclaje</option>
-                                <option value="Construcción">Construcción</option>
-                                <option value="Tecnología">Tecnología</option>
-                                <option value="Alimentación">Alimentación</option>
-                                <option value="Servicios">Servicios</option>
-                                <option value="Comercio">Comercio</option>
-                                <option value="Educación">Educación</option>
-                                <option value="Salud">Salud</option>
-                                <option value="Manufactura">Manufactura</option>
-                                <option value="Logística">Logística</option>
-                                <option value="Otro">Otro</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="pais">País <span class="required">*</span></label>
-                            <select id="pais" name="Pais" required>
-                                <option value="">Seleccionar país...</option>
-                                <option value="Argentina" selected>Argentina</option>
-                                <option value="Uruguay">Uruguay</option>
-                                <option value="Chile">Chile</option>
-                                <option value="Brasil">Brasil</option>
-                                <option value="Paraguay">Paraguay</option>
-                                <option value="Bolivia">Bolivia</option>
-                                <option value="Perú">Perú</option>
-                                <option value="Colombia">Colombia</option>
-                                <option value="México">México</option>
-                                <option value="España">España</option>
-                                <option value="Otro">Otro</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="localidad">Localidad <span class="required">*</span></label>
-                            <input type="text" id="localidad" name="Localidad" required placeholder="Ej: Buenos Aires, CABA">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="area_a_cargo">Área a cargo <span class="required">*</span></label>
-                            <input type="text" id="area_a_cargo" name="Area_a_cargo_input" required 
-                                   placeholder="Ej: Sostenibilidad, Operaciones, RSE">
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="cuit">CUIT <span class="required">*</span></label>
-                            <input type="text" id="cuit" name="CUIT" required 
-                                   pattern="[0-9]{2}-[0-9]{8}-[0-9]{1}"
-                                   title="Formato: 99-99999999-9"
-                                   placeholder="Ej: 30-12345678-9"
-                                   oninput="formatCUIT(this)">
-                            <small style="color: #666; font-size: 0.9rem;">Formato: 99-99999999-9</small>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="responsable">Responsable <span class="required">*</span></label>
-                            <input type="text" id="responsable" name="Responsable" required placeholder="Nombre y apellido completo">
-                        </div>
+                    <div>
+                        <label for="pais">País <span class="required">*</span></label>
+                        <select id="pais" name="Pais" required>
+                            <option value="Argentina" selected>Argentina</option>
+                            <option value="Uruguay">Uruguay</option>
+                            <option value="Chile">Chile</option>
+                            <option value="Brasil">Brasil</option>
+                        </select>
                     </div>
                 </div>
-
-                <div class="form-section">
-                    <h3>📞 Contacto</h3>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email <span class="required">*</span></label>
-                            <input type="email" id="email" name="Email" required placeholder="ejemplo@empresa.com">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="tel_contacto">Teléfono de Contacto <span class="required">*</span></label>
-                            <input type="tel" id="tel_contacto" name="Tel_contacto" required placeholder="Ej: +54 11 1234-5678">
-                        </div>
+                
+                <div class="form-row">
+                    <div>
+                        <label for="localidad">Localidad <span class="required">*</span></label>
+                        <input type="text" id="localidad" name="Localidad" required>
                     </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="whatsapp">WhatsApp</label>
-                            <input type="tel" id="whatsapp" name="WhatsApp" placeholder="Ej: +54 9 11 1234-5678">
-                            <small style="color: #666; font-size: 0.9rem;">Incluir código de país y área</small>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="plan">Plan <span class="required">*</span></label>
-                            <select id="plan" name="Plan (Mensual/Anual)" required>
-                                <option value="">Seleccionar plan...</option>
-                                <option value="Mensual">Mensual</option>
-                                <option value="Anual">Anual</option>
-                            </select>
-                            <small style="color: #666; font-size: 0.9rem;">Frecuencia de pago del servicio</small>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="observaciones">Observaciones</label>
-                        <textarea id="observaciones" name="Observaciones" rows="3" placeholder="Comentarios adicionales..."></textarea>
+                    <div>
+                        <label for="areaCargo">Área a cargo <span class="required">*</span></label>
+                        <input type="text" id="areaCargo" name="Area_a_cargo" required>
                     </div>
                 </div>
-
-                <button type="submit" class="btn" id="submitBtn">🌿 Registrar Empresa</button>
+                
+                <div class="form-row">
+                    <div>
+                        <label for="cuit">CUIT <span class="required">*</span></label>
+                        <input type="text" id="cuit" name="CUIT" required pattern="[0-9]{2}-[0-9]{8}-[0-9]{1}" placeholder="00-12345678-9">
+                    </div>
+                    <div>
+                        <label for="responsable">Responsable <span class="required">*</span></label>
+                        <input type="text" id="responsable" name="Responsable" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div>
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="Email" required>
+                    </div>
+                    <div>
+                        <label for="telefono">Teléfono <span class="required">*</span></label>
+                        <input type="tel" id="telefono" name="Tel_contacto" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div>
+                        <label for="whatsapp">WhatsApp</label>
+                        <input type="tel" id="whatsapp" name="WhatsApp">
+                    </div>
+                    <div>
+                        <label for="plan">Plan <span class="required">*</span></label>
+                        <select id="plan" name="Plan (Mensual/Anual)" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="Mensual">Mensual</option>
+                            <option value="Anual">Anual</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="observaciones">Observaciones</label>
+                    <textarea id="observaciones" name="Observaciones" rows="3"></textarea>
+                </div>
+                
+                <button type="submit" class="btn" id="btnEnviar">🌿 Registrar Empresa</button>
             </form>
-
-            <div class="footer-info">
+            
+            <div class="footer">
                 <p>📧 ¿Necesitas ayuda? <a href="mailto:info@impactaverde.com.ar">Contacta con nuestro equipo</a></p>
-                <p>🔒 Tus datos están protegidos y se utilizarán únicamente para el sistema de medición de impacto ambiental</p>
+                <p>🔒 Tus datos están protegidos y se utilizarán únicamente para el sistema de medición</p>
             </div>
         </div>
     </div>
 
     <script>
-        let enviando = false;
-        const URL_REGISTRO = 'https://api.sheetbest.com/sheets/c7fec5f9-d83f-4d32-b31e-6ee06ea50d00';
-        const URL_SISTEMA = 'https://api.sheetbest.com/sheets/2eb917d5-94d0-4d5a-b511-ea115ba62206?sheet=Empresa';
-
+        const URL_SHEETBEST = 'https://api.sheetbest.com/sheets/c7fec5f9-d83f-4d32-b31e-6ee06ea50d00';
+        
+        // Configurar fecha al cargar
         document.addEventListener('DOMContentLoaded', function() {
-            // Fecha actual en formato m/Y
-            const today = new Date();
-            const month = (today.getMonth() + 1).toString().padStart(2, '0');
-            const year = today.getFullYear();
-            document.getElementById('fecha_alta').value = month + '/' + year;
-            
-            // Copiar valor de area_a_cargo al campo oculto
-            document.getElementById('area_a_cargo').addEventListener('input', function() {
-                document.getElementById('area_a_cargo_hidden').value = this.value;
-            });
+            const hoy = new Date();
+            const mes = (hoy.getMonth() + 1).toString().padStart(2, '0');
+            const año = hoy.getFullYear();
+            document.getElementById('fechaAlta').value = mes + '/' + año;
         });
-
-        function formatCUIT(input) {
-            let value = input.value.replace(/[^0-9]/g, '');
-            if (value.length > 2) value = value.substring(0, 2) + '-' + value.substring(2);
-            if (value.length > 11) value = value.substring(0, 11) + '-' + value.substring(11);
-            if (value.length > 13) value = value.substring(0, 13);
-            input.value = value;
-        }
-
-        document.getElementById('registroEmpresaForm').addEventListener('submit', async function(e) {
+        
+        // Formatear CUIT
+        document.getElementById('cuit').addEventListener('input', function(e) {
+            let valor = e.target.value.replace(/[^0-9]/g, '');
+            if (valor.length > 2) valor = valor.substring(0, 2) + '-' + valor.substring(2);
+            if (valor.length > 11) valor = valor.substring(0, 11) + '-' + valor.substring(11);
+            if (valor.length > 13) valor = valor.substring(0, 13);
+            e.target.value = valor;
+        });
+        
+        // Manejar envío del formulario
+        document.getElementById('formRegistro').addEventListener('submit', async function(e) {
             e.preventDefault();
-            if (enviando) return;
-            enviando = true;
-
+            
             // Validar CUIT
-            const cuitInput = document.getElementById('cuit');
-            const cuitPattern = /^[0-9]{2}-[0-9]{8}-[0-9]{1}$/;
-            if (!cuitPattern.test(cuitInput.value)) {
-                showError('❌ CUIT inválido. Formato: 99-99999999-9');
-                cuitInput.focus();
-                enviando = false;
+            const cuit = document.getElementById('cuit').value;
+            const patronCUIT = /^[0-9]{2}-[0-9]{8}-[0-9]{1}$/;
+            if (!patronCUIT.test(cuit)) {
+                mostrarError('❌ El CUIT debe tener formato 00-12345678-9');
                 return;
             }
-
-            // Actualizar campo oculto de área
-            document.getElementById('area_a_cargo_hidden').value = 
-                document.getElementById('area_a_cargo').value;
-
-            hideAllMessages();
-            showLoading('⏳ Enviando datos al sistema...');
-
-            const submitBtn = document.getElementById('submitBtn');
-            const originalText = submitBtn.textContent;
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Enviando...';
-
+            
+            // Mostrar cargando
+            ocultarMensajes();
+            document.getElementById('mensajeCarga').style.display = 'block';
+            document.getElementById('mensajeCarga').textContent = '⏳ Enviando datos...';
+            
+            // Deshabilitar botón
+            const btn = document.getElementById('btnEnviar');
+            btn.disabled = true;
+            btn.textContent = 'Enviando...';
+            
             // Preparar datos
             const formData = new FormData(this);
             const datos = {};
-            formData.forEach((value, key) => { 
-                if (key === 'Area_a_cargo_input') {
-                    datos['Area_a_cargo'] = value;  // Mapear correctamente
-                } else {
-                    datos[key] = value;
-                }
+            formData.forEach((valor, clave) => {
+                datos[clave] = valor;
             });
-            
-            // Agregar campo faltante
             datos['Estado'] = 'activo';
-
-            console.log('Datos a enviar:', datos);
-
+            
+            console.log('Enviando datos:', datos);
+            
             try {
-                // 1. Enviar al Excel de REGISTRO
-                console.log('Enviando a Excel Registro...');
-                const responseRegistro = await fetch(URL_REGISTRO, {
+                // Enviar a Sheet.best
+                const respuesta = await fetch(URL_SHEETBEST, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(datos)
                 });
-
-                if (responseRegistro.ok) {
-                    console.log('✅ Registro exitoso en Excel Registro');
+                
+                if (respuesta.ok) {
+                    const resultado = await respuesta.json();
+                    console.log('✅ Éxito:', resultado);
                     
-                    // 2. Enviar copia al Excel SISTEMA
-                    console.log('Sincronizando con Excel Sistema...');
-                    const responseSistema = await fetch(URL_SISTEMA, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(datos)
-                    });
-
-                    if (responseSistema.ok) {
-                        console.log('✅ Sincronización exitosa con Excel Sistema');
-                        showSuccess('✅ ¡Empresa registrada correctamente! ID: ' + datos['ID_Empresa']);
-                    } else {
-                        console.log('⚠️ Registrado pero no sincronizado');
-                        showSuccess('✅ ¡Empresa registrada! (Sincronización pendiente) ID: ' + datos['ID_Empresa']);
-                    }
-
-                    // Limpiar formulario después de 3 segundos
+                    // Mostrar mensaje de éxito
+                    ocultarMensajes();
+                    document.getElementById('mensajeExito').style.display = 'block';
+                    document.getElementById('mensajeExito').textContent = 
+                        '✅ ¡Empresa registrada exitosamente!';
+                    
+                    // Reiniciar formulario después de 3 segundos
                     setTimeout(() => {
-                        resetForm();
-                        enviando = false;
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = originalText;
+                        document.getElementById('formRegistro').reset();
+                        
+                        // Incrementar ID para próximo registro
+                        const idActual = parseInt(document.getElementById('idEmpresa').value);
+                        document.getElementById('idEmpresa').value = idActual + 1;
+                        
+                        // Restablecer fecha
+                        const hoy = new Date();
+                        const mes = (hoy.getMonth() + 1).toString().padStart(2, '0');
+                        const año = hoy.getFullYear();
+                        document.getElementById('fechaAlta').value = mes + '/' + año;
+                        
+                        // Restaurar botón
+                        btn.disabled = false;
+                        btn.textContent = '🌿 Registrar Empresa';
+                        
+                        // Ocultar mensaje después de 5 segundos
+                        setTimeout(() => {
+                            document.getElementById('mensajeExito').style.display = 'none';
+                        }, 5000);
+                        
                     }, 3000);
-
+                    
                 } else {
-                    const errorText = await responseRegistro.text();
-                    console.error('Error en registro:', errorText);
-                    showError('❌ Error al registrar empresa. Intenta nuevamente.');
-                    enviando = false;
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = originalText;
+                    throw new Error('Error en la respuesta del servidor');
                 }
-
+                
             } catch (error) {
-                console.error('Error de conexión:', error);
-                showError('❌ Error de conexión. Verifica tu internet.');
-                enviando = false;
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
+                console.error('❌ Error:', error);
+                ocultarMensajes();
+                document.getElementById('mensajeError').style.display = 'block';
+                document.getElementById('mensajeError').textContent = 
+                    '❌ Error al enviar los datos. Por favor, intenta nuevamente.';
+                
+                btn.disabled = false;
+                btn.textContent = '🌿 Registrar Empresa';
+                
+                // Ocultar error después de 5 segundos
+                setTimeout(() => {
+                    document.getElementById('mensajeError').style.display = 'none';
+                }, 5000);
             }
         });
-
-        function hideAllMessages() {
-            document.getElementById('errorMessage').style.display = 'none';
-            document.getElementById('successMessage').style.display = 'none';
-            document.getElementById('loadingMessage').style.display = 'none';
+        
+        function ocultarMensajes() {
+            document.getElementById('mensajeExito').style.display = 'none';
+            document.getElementById('mensajeError').style.display = 'none';
+            document.getElementById('mensajeCarga').style.display = 'none';
         }
-
-        function showError(msg) {
-            hideAllMessages();
-            const div = document.getElementById('errorMessage');
-            div.textContent = msg;
-            div.style.display = 'block';
-            div.style.animation = 'fadeIn 0.5s';
+        
+        function mostrarError(mensaje) {
+            ocultarMensajes();
+            document.getElementById('mensajeError').style.display = 'block';
+            document.getElementById('mensajeError').textContent = mensaje;
         }
-
-        function showSuccess(msg) {
-            hideAllMessages();
-            const div = document.getElementById('successMessage');
-            div.textContent = msg;
-            div.style.display = 'block';
-            div.style.animation = 'fadeIn 0.5s';
-        }
-
-        function showLoading(msg) {
-            hideAllMessages();
-            const div = document.getElementById('loadingMessage');
-            div.textContent = msg;
-            div.style.display = 'block';
-        }
-
-        function resetForm() {
-            const form = document.getElementById('registroEmpresaForm');
-            const idInput = document.getElementById('id_empresa');
-            
-            // Incrementar ID (buscar siguiente disponible)
-            const idActual = parseInt(idInput.value);
-            const nuevoId = idActual + 1;
-            idInput.value = nuevoId;
-            
-            // Limpiar formulario
-            form.reset();
-            
-            // Restaurar valores por defecto
-            const today = new Date();
-            const month = (today.getMonth() + 1).toString().padStart(2, '0');
-            const year = today.getFullYear();
-            document.getElementById('fecha_alta').value = month + '/' + year;
-            document.getElementById('pais').value = 'Argentina';
-            
-            hideAllMessages();
-        }
-
-        // Agregar animación CSS
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(-10px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
