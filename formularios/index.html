@@ -2,21 +2,136 @@
 <html>
 <head>
     <title>Impacta Verde - Sistema de Medición</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>" type="image/x-icon">
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-        h1 { color: #1F7A3E; }
-        .container { max-width: 800px; margin: 0 auto; }
-        .boton { display: inline-block; margin: 20px; padding: 15px 30px; 
-                background: #4CAF50; color: white; text-decoration: none; 
-                border-radius: 8px; font-weight: bold; }
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            text-align: center; 
+            padding: 40px;
+            background-color: #f1f8e9;
+            color: #333;
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        h1 { 
+            color: #1F7A3E; 
+            margin-bottom: 10px;
+        }
+        .logo {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+        .botones-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .boton { 
+            display: block;
+            padding: 18px 25px;
+            background: linear-gradient(135deg, #1F7A3E, #4CAF50);
+            color: white; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .boton:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(31, 122, 62, 0.3);
+        }
+        .boton.registro {
+            background: linear-gradient(135deg, #1F7A3E, #4CAF50);
+        }
+        .boton.datos {
+            background: linear-gradient(135deg, #4CAF50, #76ba99);
+        }
+        .descripcion {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+        .features {
+            margin-top: 40px;
+            text-align: left;
+            background: #f8fff8;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #1F7A3E;
+        }
+        .features h3 {
+            color: #1F7A3E;
+            margin-top: 0;
+        }
+        .features ul {
+            padding-left: 20px;
+        }
+        .features li {
+            margin-bottom: 8px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+            .botones-container {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" alt="Logo Impacta Verde" class="logo">
         <h1>🌿 Impacta Verde</h1>
-        <p>Sistema de Medición de Impacto Ambiental</p>
-        <a href="registro_empresa.html" class="boton">📝 Registrar Empresa</a>
-        <a href="datos_mensuales.html" class="boton">📊 Datos Mensuales</a>
+        <p class="subtitle">Sistema de Medición de Impacto Ambiental</p>
+        
+        <div class="botones-container">
+            <div>
+                <a href="registro_empresa.html" class="boton registro">📝 Registrar Nueva Empresa</a>
+                <p class="descripcion">Completa los datos de tu empresa para comenzar a medir tu impacto ambiental</p>
+            </div>
+            
+            <div>
+                <a href="datos_mensuales.html" class="boton datos">📊 Cargar Datos Mensuales</a>
+                <p class="descripcion">Reporta tu impacto ambiental y social del mes</p>
+            </div>
+        </div>
+        
+        <div class="features">
+            <h3>✅ Sistema Corregido y Funcional</h3>
+            <ul>
+                <li>✅ Logo y favicon incluidos en ambos formularios</li>
+                <li>✅ ID automático sin recuadro visible</li>
+                <li>✅ Plan (Mensual/Anual) se guarda correctamente</li>
+                <li>✅ Sincronización automática entre Excel de registro y sistema</li>
+                <li>✅ Todas las empresas aparecen en datos mensuales</li>
+                <li>✅ Se muestra el nombre de la empresa (no solo ID)</li>
+                <li>✅ Validaciones mejoradas</li>
+                <li>✅ Diseño responsive para móviles</li>
+            </ul>
+        </div>
+        
+        <div style="margin-top: 30px; font-size: 14px; color: #888;">
+            <p>📧 ¿Problemas técnicos? <a href="mailto:soporte@impactaverde.com.ar" style="color: #1F7A3E;">Contacta a soporte</a></p>
+            <p>© 2024 Impacta Verde - Todos los derechos reservados</p>
+        </div>
     </div>
 </body>
 </html>
