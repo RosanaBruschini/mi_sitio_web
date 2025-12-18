@@ -52,13 +52,13 @@
             margin-bottom: 15px;
         }
         
-        /* LOGO 100px CON FONDO BLANCO - CORREGIDO */
+        /* LOGO 150px CON FONDO BLANCO - CORREGIDO */
         .logo-img {
-            height: 100px;  /* CAMBIADO A 100px */
+            height: 150px;  /* CAMBIADO A 150px */
             width: auto;
             border-radius: 8px;
             background-color: white;
-            padding: 10px;
+            padding: 12px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             border: 2px solid #f0f0f0;
         }
@@ -207,7 +207,7 @@
             }
             
             .logo-img {
-                height: 80px; /* Un poco más pequeño en móviles */
+                height: 120px; /* Un poco más pequeño en móviles */
             }
         }
         
@@ -225,8 +225,6 @@
             </div>
             <h1 class="titulo-principal">Impacta Verde - Registro de Empresa</h1>
             <p class="subtitulo">Completa los datos de tu empresa para comenzar a medir tu impacto ambiental</p>
-            
-            <!-- ID COMPLETAMENTE OCULTO - SOLO CAMPO OCULTO -->
         </div>
         
         <div class="contenido-formulario">
@@ -237,8 +235,8 @@
             
             <form id="formularioRegistro">
                 <!-- Campos ocultos - EL ID ESTÁ AQUÍ PERO OCULTO -->
-                <input type="hidden" id="idEmpresa" name="ID_Empresa" value="5">
-                <input type="hidden" id="fechaAlta" name="Fecha alta">
+                <input type="hidden" id="idEmpresa" name="ID_Empresa" value="6">
+                <input type="hidden" id="fechaAlta" name="Fecha alta" value="12/2025">
                 
                 <div class="grupo-formulario">
                     <label for="nombreEmpresa">Nombre de la Empresa <span class="obligatorio">*</span></label>
@@ -343,7 +341,7 @@
                         </small>
                     </div>
                     
-                    <!-- CAMPO PLAN MEJORADO PARA GARANTIZAR QUE SE ENVÍE -->
+                    <!-- CAMPO PLAN - NOMBRE EXACTO PARA SHEET.BEST -->
                     <div class="grupo-formulario">
                         <label for="plan">Plan <span class="obligatorio">*</span></label>
                         <select id="plan" name="Plan (Mensual/Anual)" required style="background-color: #fff8f0;">
@@ -380,16 +378,13 @@
         const URL_SHEETBEST = 'https://api.sheetbest.com/sheets/c7fec5f9-d83f-4d32-b31e-6ee06ea50d00';
         
         document.addEventListener('DOMContentLoaded', function() {
-            // Establecer fecha actual
-            const hoy = new Date();
-            const mes = (hoy.getMonth() + 1).toString().padStart(2, '0');
-            const año = hoy.getFullYear();
-            document.getElementById('fechaAlta').value = mes + '/' + año;
+            // La fecha ya está establecida desde Python (fecha actual correcta)
+            console.log('Fecha de alta establecida:', document.getElementById('fechaAlta').value);
             
             // Poner Argentina por defecto
             document.getElementById('pais').value = 'Argentina';
             
-            console.log('Formulario de registro cargado. ID asignado:', 5);
+            console.log('Formulario de registro cargado. ID asignado:', 6);
             console.log('URL Sheet.best:', URL_SHEETBEST);
         });
         
@@ -410,7 +405,7 @@
             input.value = valor;
         }
         
-        // Manejar envío del formulario - VERSIÓN CORREGIDA
+        // Manejar envío del formulario - VERSIÓN MEJORADA
         document.getElementById('formularioRegistro').addEventListener('submit', async function(evento) {
             evento.preventDefault();
             
@@ -447,7 +442,7 @@
             boton.disabled = true;
             boton.textContent = 'Enviando...';
             
-            // Preparar datos - FORMA MÁS CONFIABLE
+            // Preparar datos - FORMA MEJORADA
             const datosParaEnviar = {
                 'ID_Empresa': document.getElementById('idEmpresa').value,
                 'Empresa': document.getElementById('nombreEmpresa').value,
@@ -460,7 +455,7 @@
                 'Email': document.getElementById('email').value,
                 'Tel_contacto': document.getElementById('telefono').value,
                 'WhatsApp': document.getElementById('whatsapp').value || '',
-                // ¡¡¡IMPORTANTE!!! Asegurar que el nombre del campo sea exacto
+                // ¡¡¡IMPORTANTE!!! Nombre exacto para Sheet.best
                 'Plan (Mensual/Anual)': document.getElementById('plan').value,
                 'Observaciones': document.getElementById('observaciones').value || '',
                 'Fecha alta': document.getElementById('fechaAlta').value,
@@ -468,7 +463,7 @@
             };
             
             console.log('📤 Enviando datos a Sheet.best:');
-            console.log('📋 Plan seleccionado (verificar que no esté vacío):', datosParaEnviar['Plan (Mensual/Anual)']);
+            console.log('📋 Plan seleccionado:', datosParaEnviar['Plan (Mensual/Anual)']);
             console.log('📊 Todos los datos:', datosParaEnviar);
             
             try {
@@ -487,13 +482,13 @@
                     
                     // Mostrar mensaje de éxito
                     ocultarTodosLosMensajes();
-                    mostrarMensajeExito('✅ ¡Empresa registrada correctamente!<br>📋 El plan seleccionado ha sido guardado.');
+                    mostrarMensajeExito('✅ ¡Empresa registrada correctamente!');
                     
                     // Incrementar ID para próximo registro
                     const idActual = parseInt(document.getElementById('idEmpresa').value);
                     document.getElementById('idEmpresa').value = idActual + 1;
                     
-                    // Restaurar botón después de 3 segundos
+                    // Restaurar botón después de 2 segundos
                     setTimeout(() => {
                         boton.disabled = false;
                         boton.textContent = textoOriginal;
@@ -503,22 +498,20 @@
                         
                         // Restablecer valores por defecto
                         document.getElementById('pais').value = 'Argentina';
-                        const hoy = new Date();
-                        const mes = (hoy.getMonth() + 1).toString().padStart(2, '0');
-                        const año = hoy.getFullYear();
-                        document.getElementById('fechaAlta').value = mes + '/' + año;
+                        // Mantener la fecha actual
+                        document.getElementById('fechaAlta').value = '12/2025';
                         
                         // Ocultar mensaje de éxito después de 5 segundos
                         setTimeout(() => {
                             document.getElementById('mensajeExito').style.display = 'none';
                         }, 5000);
                         
-                    }, 3000);
+                    }, 2000);
                     
                 } else {
                     const errorTexto = await respuesta.text();
                     console.error('❌ Error de Sheet.best:', errorTexto);
-                    mostrarMensajeError('❌ Error al registrar. Verifica la conexión o contacta a soporte.<br>Detalle: ' + errorTexto);
+                    mostrarMensajeError('❌ Error al registrar. Verifica la conexión o contacta a soporte.');
                     
                     // Restaurar botón
                     boton.disabled = false;
