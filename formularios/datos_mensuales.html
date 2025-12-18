@@ -27,7 +27,7 @@
             padding: 20px;
         }
         .container {
-            max-width: 1050px;
+            max-width: 1100px;
             margin: 0 auto;
             background: white;
             border-radius: 15px;
@@ -45,19 +45,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         .logo-img {
-            height: 120px;
+            height: 100px;
             width: auto;
             object-fit: contain;
             border-radius: 12px;
             background: white;
             padding: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         .header h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin-bottom: 0.5rem;
         }
         .header p {
@@ -68,86 +67,76 @@
             line-height: 1.5;
         }
         .form-container {
-            padding: 2.5rem;
+            padding: 2rem;
         }
         .form-section {
-            margin-bottom: 2rem;
-            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
             background: var(--beige);
             border-radius: 12px;
             border-left: 5px solid var(--verde-oscuro);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
         }
         .form-section h3 {
             color: var(--verde-oscuro);
-            margin-bottom: 1.2rem;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
         .form-group {
-            margin-bottom: 1.8rem;
+            margin-bottom: 1.5rem;
         }
         label {
             display: block;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.5rem;
             font-weight: 600;
             color: #333;
-            font-size: 1.05rem;
         }
         input, select, textarea {
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1.05rem;
-            transition: all 0.3s;
+            border-radius: 8px;
+            font-size: 1rem;
         }
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--verde-medio);
             box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
-            transform: translateY(-1px);
         }
         .btn {
             background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
             color: white;
             border: none;
-            padding: 18px 35px;
+            padding: 16px 30px;
             border-radius: 10px;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            transition: all 0.3s;
             width: 100%;
-            box-shadow: 0 4px 12px rgba(31, 122, 62, 0.3);
+            transition: transform 0.3s;
         }
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 18px rgba(31, 122, 62, 0.4);
+            transform: translateY(-2px);
         }
-        .required { color: #e74c3c; font-weight: bold; }
+        .required { color: #e74c3c; }
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+            gap: 1rem;
         }
         .form-row-3 {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 1.5rem;
+            gap: 1rem;
         }
         @media (max-width: 768px) { 
             .form-row, .form-row-3 { grid-template-columns: 1fr; } 
         }
         .success-message, .error-message, .loading-message {
-            padding: 1.2rem;
+            padding: 1rem;
             border-radius: 10px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             text-align: center;
             display: none;
-            font-size: 1.1rem;
         }
         .success-message {
             background: var(--verde-claro);
@@ -163,15 +152,6 @@
             background: #e8f5e9;
             color: var(--verde-oscuro);
             border: 2px solid var(--verde-medio);
-        }
-        .input-unit { position: relative; }
-        .unit {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #666;
-            font-size: 0.9rem;
         }
         .footer-info {
             text-align: center;
@@ -211,7 +191,7 @@
                 <input type="hidden" name="Fecha_carga" id="fecha_carga">
                 <input type="hidden" name="ID_Empresa" id="id_empresa_hidden">
 
-                <!-- Sección Empresa y Período -->
+                <!-- SECCIÓN EMPRESA Y PERÍODO -->
                 <div class="form-section">
                     <h3>🏢 Empresa y Período</h3>
                     <div class="form-row">
@@ -219,7 +199,7 @@
                             <label for="empresa">Empresa <span class="required">*</span></label>
                             <select id="empresa" name="Empresa" required>
                                 <option value="">Seleccionar empresa...</option>
-                                <option value="{id_emp}">{nombre} (ID: {id_emp})</option><option value="{id_emp}">{nombre} (ID: {id_emp})</option>
+                                <option value="{id_emp}">{nombre} (ID: {id_emp})</option>
                             </select>
                         </div>
                     </div>
@@ -248,7 +228,7 @@
                     </div>
                 </div>
 
-                <!-- Sección Impacto Ambiental -->
+                <!-- SECCIÓN IMPACTO AMBIENTAL -->
                 <div class="form-section">
                     <h3>🌿 Impacto Ambiental</h3>
                     <div class="form-row-3">
@@ -261,27 +241,41 @@
                             <input type="number" id="combustible_l" name="Combustible_L" step="0.1" min="0" value="0">
                         </div>
                         <div class="form-group">
-                            <label for="agua_m3">Agua consumida (m³)</label>
-                            <input type="number" id="agua_m3" name="Agua_m3" step="0.1" min="0" value="0">
+                            <label for="papel_kg">Papel reutilizado (kg)</label>
+                            <input type="number" id="papel_kg" name="Papel_kg" step="0.1" min="0" value="0">
                         </div>
                     </div>
                     <div class="form-row-3">
                         <div class="form-group">
-                            <label for="papel_kg">Papel reutilizado (kg)</label>
-                            <input type="number" id="papel_kg" name="Papel_kg" step="0.1" min="0" value="0">
+                            <label for="borra_humeda_kg">Borra húmeda (kg)</label>
+                            <input type="number" id="borra_humeda_kg" name="Borra_humeda_kg" step="0.1" min="0" value="0">
                         </div>
                         <div class="form-group">
-                            <label for="plastico_reutilizado_kg">Plástico reutilizado (kg)</label>
-                            <input type="number" id="plastico_reutilizado_kg" name="Plastico_reutilizado_kg" step="0.1" min="0" value="0">
+                            <label for="borra_seca_kg">Borra seca (kg)</label>
+                            <input type="number" id="borra_seca_kg" name="Borra_seca_kg" step="0.1" min="0" value="0">
                         </div>
                         <div class="form-group">
                             <label for="tela_reutilizada_kg">Tela reutilizada (kg)</label>
                             <input type="number" id="tela_reutilizada_kg" name="Tela_reutilizada_kg" step="0.1" min="0" value="0">
                         </div>
                     </div>
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label for="tecnologia_recuperada_kg">Tecnología recuperada (kg)</label>
+                            <input type="number" id="tecnologia_recuperada_kg" name="Tecnologia_recuperada_kg" step="0.1" min="0" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="plastico_reutilizado_kg">Plástico reutilizado (kg)</label>
+                            <input type="number" id="plastico_reutilizado_kg" name="Plastico_reutilizado_kg" step="0.1" min="0" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="agua_m3">Agua consumida (m³)</label>
+                            <input type="number" id="agua_m3" name="Agua_m3" step="0.1" min="0" value="0">
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Sección Impacto Social -->
+                <!-- SECCIÓN IMPACTO SOCIAL -->
                 <div class="form-section">
                     <h3>👥 Impacto Social</h3>
                     <div class="form-row-3">
@@ -290,23 +284,48 @@
                             <input type="number" id="empleados_total" name="Cantidad_Empleados_Total" min="0" value="0">
                         </div>
                         <div class="form-group">
+                            <label for="empleados_locales">Empleados locales</label>
+                            <input type="number" id="empleados_locales" name="Cantidad_Empleados_Locales" min="0" value="0">
+                        </div>
+                        <div class="form-group">
                             <label for="empleados_mujeres">Empleadas mujeres</label>
                             <input type="number" id="empleados_mujeres" name="Cantidad_Mujeres" min="0" value="0">
+                        </div>
+                    </div>
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label for="empleados_discapacidad">Personas con discapacidad</label>
+                            <input type="number" id="empleados_discapacidad" name="Cantidad_Personas_Discapacitadas" min="0" value="0">
                         </div>
                         <div class="form-group">
                             <label for="capacitacion_horas">Horas de capacitación</label>
                             <input type="number" id="capacitacion_horas" name="Capacitacion_horas" step="0.1" min="0" value="0">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label style="display: flex; align-items: center; gap: 10px;">
-                            <input type="checkbox" id="politica_inclusion" name="Politica_inclusion" value="Sí">
-                            ¿Tiene política de inclusión?
-                        </label>
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; gap: 10px;">
+                                <input type="checkbox" id="politica_inclusion" name="Politica_inclusion" value="Sí">
+                                ¿Tiene política de inclusión?
+                            </label>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Sección Residuos -->
+                <!-- SECCIÓN DIGITALIZACIÓN -->
+                <div class="form-section">
+                    <h3>💻 Digitalización</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="procesos_optimizados">Procesos optimizados (%)</label>
+                            <input type="number" id="procesos_optimizados" name="Procesos_optimizados_%" min="0" max="100" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="digitalizacion">Digitalización (%)</label>
+                            <input type="number" id="digitalizacion" name="Digitalizacion_%" min="0" max="100" value="0">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN RESIDUOS -->
                 <div class="form-section">
                     <h3>🗑️ Gestión de Residuos</h3>
                     <div class="form-row-3">
@@ -325,16 +344,16 @@
                     </div>
                 </div>
 
-                <!-- Sección Comentarios -->
+                <!-- SECCIÓN COMENTARIOS -->
                 <div class="form-section">
-                    <h3>📎 Evidencia y Comentarios</h3>
-                    <div class="form-group">
-                        <label for="link_evidencia">Link de evidencia</label>
-                        <input type="url" id="link_evidencia" name="Link_Evidencia" placeholder="https://drive.google.com/...">
-                    </div>
+                    <h3>📎 Comentarios y Evidencia</h3>
                     <div class="form-group">
                         <label for="comentarios">Comentarios adicionales</label>
                         <textarea id="comentarios" name="Comentarios" rows="3" placeholder="Observaciones..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="link_evidencia">Link de evidencia</label>
+                        <input type="url" id="link_evidencia" name="Link_Evidencia" placeholder="https://drive.google.com/...">
                     </div>
                 </div>
 
@@ -343,7 +362,7 @@
 
             <div class="footer-info">
                 <p>📧 ¿Necesitas ayuda con algún campo? <a href="mailto:info@impactaverde.com.ar">Contacta con nuestro equipo</a></p>
-                <p>🔒 Todos los datos enviados son confidenciales</p>
+                <p>🔒 Todos los datos enviados son confidenciales y se guardan en el sistema de medición</p>
             </div>
         </div>
     </div>
@@ -353,14 +372,21 @@
         const URL_DATOS = 'https://api.sheetbest.com/sheets/2eb917d5-94d0-4d5a-b511-ea115ba62206';
 
         document.addEventListener('DOMContentLoaded', function() {
+            // Fecha actual
             const today = new Date();
             const day = today.getDate().toString().padStart(2, '0');
             const month = (today.getMonth() + 1).toString().padStart(2, '0');
             const year = today.getFullYear();
             document.getElementById('fecha_carga').value = day + '/' + month + '/' + year;
 
+            // Actualizar ID cuando se selecciona empresa
             document.getElementById('empresa').addEventListener('change', function() {
-                document.getElementById('id_empresa_hidden').value = this.value;
+                const selectedValue = this.value;
+                if (selectedValue) {
+                    // El valor es el ID de la empresa
+                    document.getElementById('id_empresa_hidden').value = selectedValue;
+                    console.log('ID Empresa seleccionada:', selectedValue);
+                }
             });
         });
 
@@ -369,34 +395,54 @@
             if (enviandoMensual) return;
             enviandoMensual = true;
 
-            if (!document.getElementById('empresa').value) {
-                showError('❌ Selecciona una empresa');
+            // Validaciones
+            const empresa = document.getElementById('empresa').value;
+            const mes = document.getElementById('mes').value;
+            const anio = document.getElementById('anio').value;
+            
+            if (!empresa || empresa === "") {
+                showError('❌ Por favor, selecciona una empresa');
+                enviandoMensual = false;
+                return;
+            }
+            
+            if (!mes || !anio) {
+                showError('❌ Por favor, selecciona mes y año');
                 enviandoMensual = false;
                 return;
             }
 
             hideAllMessages();
-            showLoading('⏳ Enviando datos...');
+            showLoading('⏳ Enviando datos al sistema...');
 
             const submitBtn = document.getElementById('submitBtn');
             const originalText = submitBtn.textContent;
             submitBtn.disabled = true;
             submitBtn.textContent = 'Enviando...';
 
+            // Preparar datos
             const formData = new FormData(this);
             const datos = {};
+            
             formData.forEach((value, key) => {
-                if (value && !isNaN(value) && value !== '0') {
+                if (value !== '' && !isNaN(value) && value !== '0') {
+                    // Convertir números
                     datos[key] = parseFloat(value);
                 } else {
                     datos[key] = value;
                 }
             });
 
+            // Manejar checkbox
             const politicaCheckbox = document.getElementById('politica_inclusion');
             datos['Politica_inclusion'] = politicaCheckbox.checked ? 'Sí' : 'No';
 
-            console.log('Enviando:', datos);
+            // Asegurar que el ID de empresa esté presente
+            if (!datos['ID_Empresa'] || datos['ID_Empresa'] === '') {
+                datos['ID_Empresa'] = document.getElementById('id_empresa_hidden').value;
+            }
+
+            console.log('Datos a enviar:', datos);
 
             try {
                 const response = await fetch(URL_DATOS, {
@@ -407,26 +453,30 @@
 
                 if (response.ok) {
                     const responseData = await response.json();
-                    console.log('Éxito:', responseData);
-                    showSuccess('✅ ¡Datos enviados correctamente!');
+                    console.log('✅ Datos enviados exitosamente:', responseData);
                     
+                    showSuccess('✅ ¡Datos enviados correctamente al sistema de medición!');
+                    
+                    // Limpiar formulario después de 3 segundos
                     setTimeout(() => {
                         resetForm();
                         enviandoMensual = false;
                         submitBtn.disabled = false;
                         submitBtn.textContent = originalText;
                     }, 3000);
+                    
                 } else {
                     const errorText = await response.text();
-                    console.error('Error:', errorText);
-                    showError('❌ Error al enviar. Intenta nuevamente.');
+                    console.error('❌ Error al enviar:', errorText);
+                    showError('❌ Error al enviar datos. Por favor, intenta nuevamente.');
                     enviandoMensual = false;
                     submitBtn.disabled = false;
                     submitBtn.textContent = originalText;
                 }
+                
             } catch (error) {
-                console.error('Conexión:', error);
-                showError('❌ Error de conexión.');
+                console.error('❌ Error de conexión:', error);
+                showError('❌ Error de conexión. Verifica tu internet.');
                 enviandoMensual = false;
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalText;
@@ -438,34 +488,55 @@
             document.getElementById('successMessage').style.display = 'none';
             document.getElementById('loadingMessage').style.display = 'none';
         }
+
         function showError(msg) {
             hideAllMessages();
             const div = document.getElementById('errorMessage');
             div.textContent = msg;
             div.style.display = 'block';
+            div.style.animation = 'fadeIn 0.5s';
         }
+
         function showSuccess(msg) {
             hideAllMessages();
             const div = document.getElementById('successMessage');
             div.textContent = msg;
             div.style.display = 'block';
+            div.style.animation = 'fadeIn 0.5s';
         }
+
         function showLoading(msg) {
             hideAllMessages();
             const div = document.getElementById('loadingMessage');
             div.textContent = msg;
             div.style.display = 'block';
         }
+
         function resetForm() {
             document.getElementById('datosMensualesForm').reset();
+            
+            // Restaurar fecha
             const today = new Date();
             const day = today.getDate().toString().padStart(2, '0');
             const month = (today.getMonth() + 1).toString().padStart(2, '0');
             const year = today.getFullYear();
             document.getElementById('fecha_carga').value = day + '/' + month + '/' + year;
+            
+            // Limpiar ID oculto
             document.getElementById('id_empresa_hidden').value = '';
+            
             hideAllMessages();
         }
+
+        // Agregar animación CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(-10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
