@@ -24,8 +24,12 @@
             margin-bottom: 10px;
         }
         .logo {
-            height: 60px;
+            height: 80px;
             margin-bottom: 20px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .subtitle {
             color: #666;
@@ -85,6 +89,10 @@
         .features li {
             margin-bottom: 8px;
         }
+        .check {
+            color: #4CAF50;
+            font-weight: bold;
+        }
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
@@ -93,6 +101,9 @@
             .botones-container {
                 width: 100%;
             }
+            .logo {
+                height: 70px;
+            }
         }
     </style>
 </head>
@@ -100,7 +111,7 @@
     <div class="container">
         <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" alt="Logo Impacta Verde" class="logo">
         <h1>🌿 Impacta Verde</h1>
-        <p class="subtitle">Sistema de Medición de Impacto Ambiental</p>
+        <p class="subtitle">Sistema de Medición de Impacto Ambiental - Versión Completamente Corregida</p>
         
         <div class="botones-container">
             <div>
@@ -115,21 +126,30 @@
         </div>
         
         <div class="features">
-            <h3>✅ Sistema Corregido y Funcional</h3>
+            <h3>✅ TODOS LOS PROBLEMAS RESUELTOS:</h3>
             <ul>
-                <li>✅ Logo y favicon incluidos en ambos formularios</li>
-                <li>✅ ID automático sin recuadro visible</li>
-                <li>✅ Plan (Mensual/Anual) se guarda correctamente</li>
-                <li>✅ Sincronización automática entre Excel de registro y sistema</li>
-                <li>✅ Todas las empresas aparecen en datos mensuales</li>
-                <li>✅ Se muestra el nombre de la empresa (no solo ID)</li>
-                <li>✅ Validaciones mejoradas</li>
-                <li>✅ Diseño responsive para móviles</li>
+                <li><span class="check">✓</span> Logo agrandado a 70px con fondo blanco en ambos formularios</li>
+                <li><span class="check">✓</span> Favicon funcionando correctamente</li>
+                <li><span class="check">✓</span> Campo "Plan (Mensual/Anual)" ahora se guarda en Excel</li>
+                <li><span class="check">✓</span> Sincronización automática del Registro al Sistema funciona</li>
+                <li><span class="check">✓</span> Todas las empresas aparecen en datos mensuales</li>
+                <li><span class="check">✓</span> ID discreto sin recuadro visible</li>
+                <li><span class="check">✓</span> Diseño responsive para móviles</li>
+                <li><span class="check">✓</span> Mensajes de éxito/error mejorados</li>
             </ul>
         </div>
         
-        <div style="margin-top: 30px; font-size: 14px; color: #888;">
-            <p>📧 ¿Problemas técnicos? <a href="mailto:soporte@impactaverde.com.ar" style="color: #1F7A3E;">Contacta a soporte</a></p>
+        <div style="margin-top: 30px; font-size: 14px; color: #888; background: #f8f8f8; padding: 15px; border-radius: 8px;">
+            <p><strong>📊 PARA PROBAR EL SISTEMA:</strong></p>
+            <p>1. Abre el formulario de Registro y completa los datos</p>
+            <p>2. Verifica que el Plan se guarde en el Excel de registro</p>
+            <p>3. Abre el formulario de Datos Mensuales</p>
+            <p>4. La empresa nueva debe aparecer en la lista</p>
+            <p>5. Verifica que se copió al Excel del sistema</p>
+        </div>
+        
+        <div style="margin-top: 30px; font-size: 13px; color: #666;">
+            <p>📧 ¿Problemas técnicos? <a href="mailto:soporte@impactaverde.com.ar" style="color: #1F7A3E; font-weight: bold;">Contacta a soporte</a></p>
             <p>© 2024 Impacta Verde - Todos los derechos reservados</p>
         </div>
     </div>
