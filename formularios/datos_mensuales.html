@@ -51,9 +51,9 @@
             margin-bottom: 15px;
         }
         
-        /* LOGO 75px CON FONDO BLANCO */
+        /* LOGO 100px CON FONDO BLANCO - CORREGIDO */
         .logo-img {
-            height: 75px;
+            height: 100px;  /* CAMBIADO A 100px */
             width: auto;
             border-radius: 8px;
             background-color: white;
@@ -242,7 +242,7 @@
             }
             
             .logo-img {
-                height: 70px;
+                height: 80px; /* Un poco más pequeño en móviles */
             }
         }
         
@@ -278,16 +278,17 @@
                     
                     <div class="grupo-formulario">
                         <label for="empresa">Empresa <span class="obligatorio">*</span></label>
-                        <select id="empresa" name="ID_Empresa" required>
+                        <select id="empresa" name="ID_Empresa" required style="background-color: #fff8f0;">
                             <option value="">Seleccionar empresa...</option>
                             <option value="1">ETIMO</option><option value="2">RORO</option><option value="2">RORO</option><option value="3">llamina</option><option value="4">pirulo</option>
                         </select>
                     </div>
                     
                     <div class="grid-2">
+                        <!-- CAMPO MES - MEJORADO PARA GARANTIZAR ENVÍO -->
                         <div class="grupo-formulario">
                             <label for="mes">Mes <span class="obligatorio">*</span></label>
-                            <select id="mes" name="Mes" required>
+                            <select id="mes" name="Mes" required style="background-color: #fff8f0;">
                                 <option value="">Seleccionar mes...</option>
                                 <option value="Enero">Enero</option>
                                 <option value="Febrero">Febrero</option>
@@ -306,7 +307,7 @@
                         
                         <div class="grupo-formulario">
                             <label for="anio">Año <span class="obligatorio">*</span></label>
-                            <select id="anio" name="Año" required>
+                            <select id="anio" name="Año" required style="background-color: #fff8f0;">
                                 <option value="">Seleccionar año...</option>
                                 <option value="2024">2024</option>
                                 <option value="2025" selected>2025</option>
@@ -373,9 +374,13 @@
                     <h3>👥 Impacto Social</h3>
                     
                     <div class="grid-3">
+                        <!-- CAMPO CANTIDAD_EMPLEADOS_TOTAL - MEJORADO PARA GARANTIZAR ENVÍO -->
                         <div class="grupo-formulario">
                             <label for="cantidad_empleados_total">Total empleados <span class="obligatorio">*</span></label>
-                            <input type="number" id="cantidad_empleados_total" name="Cantidad_Empleados_Total" min="0" value="0" required>
+                            <input type="number" id="cantidad_empleados_total" name="Cantidad_Empleados_Total" min="1" value="1" required style="background-color: #fff8f0;">
+                            <small style="color: #666; font-size: 12px; display: block; margin-top: 3px;">
+                                Este campo es obligatorio
+                            </small>
                         </div>
                         
                         <div class="grupo-formulario">
@@ -495,30 +500,50 @@
             console.log('URL Sheet.best:', URL_SHEETBEST);
         });
         
-        // Manejar envío del formulario
+        // Manejar envío del formulario - VERSIÓN CORREGIDA
         document.getElementById('formularioDatos').addEventListener('submit', async function(evento) {
             evento.preventDefault();
             
-            // Validaciones
+            // Validaciones - MÁS ESTRICTAS
             const empresa = document.getElementById('empresa').value;
             const mes = document.getElementById('mes').value;
             const anio = document.getElementById('anio').value;
             const cantidadEmpleados = document.getElementById('cantidad_empleados_total').value;
             
-            if (!empresa) {
+            if (!empresa || empresa === "") {
                 mostrarMensajeError('❌ Por favor, selecciona una empresa');
+                document.getElementById('empresa').focus();
+                document.getElementById('empresa').style.borderColor = '#dc3545';
                 return;
+            } else {
+                document.getElementById('empresa').style.borderColor = '#4caf50';
             }
             
-            if (!mes || !anio) {
-                mostrarMensajeError('❌ Por favor, selecciona mes y año');
+            if (!mes || mes === "") {
+                mostrarMensajeError('❌ Por favor, selecciona un mes');
+                document.getElementById('mes').focus();
+                document.getElementById('mes').style.borderColor = '#dc3545';
                 return;
+            } else {
+                document.getElementById('mes').style.borderColor = '#4caf50';
             }
             
-            if (!cantidadEmpleados || cantidadEmpleados === "" || parseInt(cantidadEmpleados) <= 0) {
-                mostrarMensajeError('❌ Por favor, ingresa la cantidad total de empleados');
+            if (!anio || anio === "") {
+                mostrarMensajeError('❌ Por favor, selecciona un año');
+                document.getElementById('anio').focus();
+                document.getElementById('anio').style.borderColor = '#dc3545';
+                return;
+            } else {
+                document.getElementById('anio').style.borderColor = '#4caf50';
+            }
+            
+            if (!cantidadEmpleados || cantidadEmpleados === "" || parseInt(cantidadEmpleados) < 1) {
+                mostrarMensajeError('❌ Por favor, ingresa la cantidad total de empleados (mínimo 1)');
                 document.getElementById('cantidad_empleados_total').focus();
+                document.getElementById('cantidad_empleados_total').style.borderColor = '#dc3545';
                 return;
+            } else {
+                document.getElementById('cantidad_empleados_total').style.borderColor = '#4caf50';
             }
             
             // Mostrar mensaje de carga
@@ -531,14 +556,15 @@
             boton.disabled = true;
             boton.textContent = 'Enviando...';
             
-            // Preparar datos para enviar - FORMA CORRECTA
+            // Preparar datos para enviar - FORMA MÁS CONFIABLE
             const datosParaEnviar = {
                 'ID_Empresa': document.getElementById('empresa').value,
                 'Empresa': document.getElementById('empresa').options[document.getElementById('empresa').selectedIndex].text,
+                // ¡¡¡CAMPOS CRÍTICOS!!! Asegurar nombres exactos
                 'Mes': document.getElementById('mes').value,
                 'Año': document.getElementById('anio').value,
                 'Fecha_carga': document.getElementById('fechaCarga').value,
-                'Cantidad_Empleados_Total': parseInt(document.getElementById('cantidad_empleados_total').value) || 0,
+                'Cantidad_Empleados_Total': parseInt(document.getElementById('cantidad_empleados_total').value) || 1,
                 'Energia_kWh': parseFloat(document.getElementById('energia_kwh').value) || 0,
                 'Combustible_L': parseFloat(document.getElementById('combustible_l').value) || 0,
                 'Papel_kg': parseFloat(document.getElementById('papel_kg').value) || 0,
@@ -562,9 +588,10 @@
                 'Link_Evidencia': document.getElementById('link_evidencia').value || ''
             };
             
-            console.log('📤 Datos a enviar:', datosParaEnviar);
-            console.log('📅 Mes seleccionado:', datosParaEnviar['Mes']);
-            console.log('👥 Total empleados:', datosParaEnviar['Cantidad_Empleados_Total']);
+            console.log('📤 Datos a enviar a Sheet.best:');
+            console.log('📅 Mes (verificar que no esté vacío):', datosParaEnviar['Mes']);
+            console.log('👥 Cantidad_Empleados_Total (verificar que no sea 0):', datosParaEnviar['Cantidad_Empleados_Total']);
+            console.log('📊 Todos los datos:', datosParaEnviar);
             
             try {
                 // Enviar a Sheet.best
@@ -582,7 +609,7 @@
                     
                     // Mostrar mensaje de éxito
                     ocultarTodosLosMensajes();
-                    mostrarMensajeExito('✅ ¡Datos enviados correctamente al sistema de medición!');
+                    mostrarMensajeExito('✅ ¡Datos enviados correctamente al sistema de medición!<br>📅 Mes y 👥 Total de empleados guardados correctamente.');
                     
                     // Restaurar botón
                     boton.disabled = false;
@@ -603,8 +630,9 @@
                                       'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
                         document.getElementById('mes').value = meses[hoy.getMonth()];
                         document.getElementById('anio').value = año.toString();
+                        document.getElementById('cantidad_empleados_total').value = "1";
                         
-                        // Ocultar mensaje de éxito
+                        // Ocultar mensaje de éxito después de 5 segundos
                         setTimeout(() => {
                             document.getElementById('mensajeExito').style.display = 'none';
                         }, 5000);
@@ -614,7 +642,7 @@
                 } else {
                     const errorTexto = await respuesta.text();
                     console.error('❌ Error de Sheet.best:', errorTexto);
-                    mostrarMensajeError('❌ Error al enviar los datos. Por favor, intenta nuevamente.');
+                    mostrarMensajeError('❌ Error al enviar los datos. Por favor, intenta nuevamente.<br>Detalle: ' + errorTexto);
                     
                     // Restaurar botón
                     boton.disabled = false;
@@ -642,13 +670,13 @@
         
         function mostrarMensajeExito(texto) {
             const mensaje = document.getElementById('mensajeExito');
-            mensaje.textContent = texto;
+            mensaje.innerHTML = texto;
             mensaje.style.display = 'block';
         }
         
         function mostrarMensajeError(texto) {
             const mensaje = document.getElementById('mensajeError');
-            mensaje.textContent = texto;
+            mensaje.innerHTML = texto;
             mensaje.style.display = 'block';
         }
         
