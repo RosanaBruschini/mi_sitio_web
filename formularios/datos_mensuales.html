@@ -274,7 +274,7 @@
                         <label for="empresa">Empresa <span class="obligatorio">*</span></label>
                         <select id="empresa" name="ID_Empresa" required style="background-color: #fff8f0; border: 2px solid #ffc107;">
                             <option value="">Seleccionar empresa...</option>
-                            <option value="1">ETIMO (ID: 1)</option><option value="2">RORO (ID: 2)</option><option value="2">RORO (ID: 2)</option><option value="3">llamina (ID: 3)</option><option value="4">pirulo (ID: 4)</option><option value="5">labels (ID: 5)</option><option value="6">bruno (ID: 6)</option>
+                            <option value="1">ETIMO</option><option value="2">RORO</option><option value="2">RORO</option><option value="3">llamina</option><option value="4">pirulo</option><option value="5">labels</option><option value="6">bruno</option>
                         </select>
                     </div>
                     
@@ -283,7 +283,7 @@
                         <div class="grupo-formulario">
                             <label for="mes">Mes <span class="obligatorio">*</span></label>
                             <select id="mes" name="Mes" required style="background-color: #fff8f0; border: 2px solid #ffc107;">
-                                <option value="">Seleccionar mes...</option>
+                                <option value="" selected>Seleccionar mes...</option>
                                 <option value="Enero">Enero</option>
                                 <option value="Febrero">Febrero</option>
                                 <option value="Marzo">Marzo</option>
@@ -302,11 +302,10 @@
                         <div class="grupo-formulario">
                             <label for="anio">Año <span class="obligatorio">*</span></label>
                             <select id="anio" name="Año" required style="background-color: #fff8f0; border: 2px solid #ffc107;">
-                                <option value="">Seleccionar año...</option>
+                                <option value="" selected>Seleccionar año...</option>
                                 <option value="2023">2023</option>
-                                <option value="2024" selected>2024</option>
+                                <option value="2024">2024</option>
                                 <option value="2025">2025</option>
-                                <!-- CORRECCIÓN: Añadido 2026 -->
                                 <option value="2026">2026</option>
                             </select>
                         </div>
@@ -373,8 +372,9 @@
                         <!-- CAMPO CANTIDAD_EMPLEADOS_TOTAL - OBLIGATORIO -->
                         <div class="grupo-formulario">
                             <label for="cantidad_empleados_total">Total empleados <span class="obligatorio">*</span></label>
-                            <input type="number" id="cantidad_empleados_total" name="Cantidad_Empleados_Total" min="1" value="1" required 
-                                   style="background-color: #fff8f0; border: 2px solid #ffc107;">
+                            <input type="number" id="cantidad_empleados_total" name="Cantidad_Empleados_Total" min="1" required 
+                                   style="background-color: #fff8f0; border: 2px solid #ffc107;"
+                                   placeholder="Ingrese cantidad">
                             <small style="color: #666; font-size: 12px; display: block; margin-top: 3px;">
                                 Este campo es obligatorio
                             </small>
@@ -487,12 +487,8 @@
             console.log('📅 Fecha de carga:', '19/12/2025');
             console.log('🌐 URL Sheet.best:', URL_SHEETBEST);
             
-            // Establecer mes y año actual por defecto
-            const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
-                          'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-            const hoy = new Date();
-            document.getElementById('mes').value = meses[hoy.getMonth()];
-            document.getElementById('anio').value = '2024';
+            // NO establecer valores por defecto para mes y año
+            // Dejar que el usuario seleccione
         });
         
         // Manejar envío del formulario
@@ -539,7 +535,7 @@
             boton.disabled = true;
             boton.textContent = 'Enviando...';
             
-            // Preparar datos para enviar - CORREGIDO: Nombres exactos para Sheet.best
+            // Preparar datos para enviar - CORREGIDO: Nombres exactos como en Excel
             const datosParaEnviar = {
                 'ID_Empresa': document.getElementById('empresa').value,
                 'Empresa': document.getElementById('empresa').options[document.getElementById('empresa').selectedIndex].text,
@@ -601,19 +597,13 @@
                     setTimeout(() => {
                         document.getElementById('formularioDatos').reset();
                         
-                        // Restablecer valores por defecto
-                        const hoy = new Date();
-                        const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
-                                      'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-                        document.getElementById('mes').value = meses[hoy.getMonth()];
-                        document.getElementById('anio').value = '2024';
-                        document.getElementById('cantidad_empleados_total').value = "1";
+                        // Restablecer valores
                         document.getElementById('fechaCarga').value = '19/12/2025';
                         
-                        // Ocultar mensaje de éxito después de 5 segundos
+                        // Recargar página después de 3 segundos
                         setTimeout(() => {
-                            document.getElementById('mensajeExito').style.display = 'none';
-                        }, 5000);
+                            location.reload();
+                        }, 3000);
                         
                     }, 2000);
                     
