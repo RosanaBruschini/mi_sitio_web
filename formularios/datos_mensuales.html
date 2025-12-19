@@ -51,15 +51,9 @@
             margin-bottom: 15px;
         }
         
-        /* LOGO 150px CON FONDO BLANCO - CORREGIDO */
+        /* LOGO 200px */
         .logo-img {
-            height: 150px;  /* CAMBIADO A 150px */
-            width: auto;
-            border-radius: 8px;
-            background-color: white;
-            padding: 12px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border: 2px solid #f0f0f0;
+            height: 200px; width: auto; border-radius: 8px; background-color: white; padding: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;
         }
         
         .titulo-principal {
@@ -242,7 +236,7 @@
             }
             
             .logo-img {
-                height: 120px; /* Un poco más pequeño en móviles */
+                height: 150px;
             }
         }
         
@@ -270,7 +264,7 @@
             
             <form id="formularioDatos">
                 <!-- Campos ocultos -->
-                <input type="hidden" id="fechaCarga" name="Fecha_carga">
+                <input type="hidden" id="fechaCarga" name="Fecha_carga" value="19/12/2025">
                 
                 <!-- SECCIÓN 1: Empresa y Período -->
                 <div class="seccion">
@@ -278,17 +272,17 @@
                     
                     <div class="grupo-formulario">
                         <label for="empresa">Empresa <span class="obligatorio">*</span></label>
-                        <select id="empresa" name="ID_Empresa" required style="background-color: #fff8f0;">
+                        <select id="empresa" name="ID_Empresa" required style="background-color: #fff8f0; border: 2px solid #ffc107;">
                             <option value="">Seleccionar empresa...</option>
-                            <option value="1">ETIMO</option><option value="2">RORO</option><option value="2">RORO</option><option value="3">llamina</option><option value="4">pirulo</option><option value="5">labels</option>
+                            <option value="1">ETIMO (ID: 1)</option><option value="2">RORO (ID: 2)</option><option value="2">RORO (ID: 2)</option><option value="3">llamina (ID: 3)</option><option value="4">pirulo (ID: 4)</option><option value="5">labels (ID: 5)</option>
                         </select>
                     </div>
                     
                     <div class="grid-2">
-                        <!-- CAMPO MES - NOMBRE CORRECTO -->
+                        <!-- CAMPO MES - OBLIGATORIO -->
                         <div class="grupo-formulario">
                             <label for="mes">Mes <span class="obligatorio">*</span></label>
-                            <select id="mes" name="Mes" required style="background-color: #fff8f0;">
+                            <select id="mes" name="Mes" required style="background-color: #fff8f0; border: 2px solid #ffc107;">
                                 <option value="">Seleccionar mes...</option>
                                 <option value="Enero">Enero</option>
                                 <option value="Febrero">Febrero</option>
@@ -307,11 +301,11 @@
                         
                         <div class="grupo-formulario">
                             <label for="anio">Año <span class="obligatorio">*</span></label>
-                            <select id="anio" name="Año" required style="background-color: #fff8f0;">
+                            <select id="anio" name="Año" required style="background-color: #fff8f0; border: 2px solid #ffc107;">
                                 <option value="">Seleccionar año...</option>
-                                <option value="2024">2024</option>
-                                <option value="2025" selected>2025</option>
-                                <option value="2026">2026</option>
+                                <option value="2023">2023</option>
+                                <option value="2024" selected>2024</option>
+                                <option value="2025">2025</option>
                             </select>
                         </div>
                     </div>
@@ -374,10 +368,11 @@
                     <h3>👥 Impacto Social</h3>
                     
                     <div class="grid-3">
-                        <!-- CAMPO CANTIDAD_EMPLEADOS_TOTAL - NOMBRE CORRECTO -->
+                        <!-- CAMPO CANTIDAD_EMPLEADOS_TOTAL - OBLIGATORIO -->
                         <div class="grupo-formulario">
                             <label for="cantidad_empleados_total">Total empleados <span class="obligatorio">*</span></label>
-                            <input type="number" id="cantidad_empleados_total" name="Cantidad_Empleados_Total" min="1" value="1" required style="background-color: #fff8f0;">
+                            <input type="number" id="cantidad_empleados_total" name="Cantidad_Empleados_Total" min="1" value="1" required 
+                                   style="background-color: #fff8f0; border: 2px solid #ffc107;">
                             <small style="color: #666; font-size: 12px; display: block; margin-top: 3px;">
                                 Este campo es obligatorio
                             </small>
@@ -474,6 +469,9 @@
             <div class="pie-pagina">
                 <p>📧 ¿Necesitas ayuda con algún campo? <a href="mailto:info@impactaverde.com.ar">Contacta con nuestro equipo</a></p>
                 <p>🔒 Todos los datos enviados son confidenciales y se guardan en el sistema de medición</p>
+                <p style="font-size: 11px; margin-top: 10px; color: #888;">
+                    Fecha actual del sistema: 19/12/2025
+                </p>
             </div>
         </div>
     </div>
@@ -483,67 +481,50 @@
         const URL_SHEETBEST = 'https://api.sheetbest.com/sheets/2eb917d5-94d0-4d5a-b511-ea115ba62206';
         
         document.addEventListener('DOMContentLoaded', function() {
-            // Establecer fecha actual (18 de diciembre)
-            const hoy = new Date();
-            const dia = hoy.getDate().toString().padStart(2, '0');
-            const mesNum = (hoy.getMonth() + 1).toString().padStart(2, '0');
-            const año = hoy.getFullYear();
-            document.getElementById('fechaCarga').value = dia + '/' + mesNum + '/' + año;
+            console.log('✅ Formulario de datos mensuales cargado');
+            console.log('📅 Fecha de carga:', document.getElementById('fechaCarga').value);
+            console.log('🌐 URL Sheet.best:', URL_SHEETBEST);
             
             // Establecer mes y año actual por defecto
             const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
                           'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+            const hoy = new Date();
             document.getElementById('mes').value = meses[hoy.getMonth()];
-            document.getElementById('anio').value = año.toString();
-            
-            console.log('Formulario de datos mensuales cargado');
-            console.log('URL Sheet.best:', URL_SHEETBEST);
+            document.getElementById('anio').value = '2024';
         });
         
-        // Manejar envío del formulario - VERSIÓN MEJORADA
+        // Manejar envío del formulario
         document.getElementById('formularioDatos').addEventListener('submit', async function(evento) {
             evento.preventDefault();
             
-            // Validaciones
+            // Validaciones obligatorias
             const empresa = document.getElementById('empresa').value;
             const mes = document.getElementById('mes').value;
             const anio = document.getElementById('anio').value;
             const cantidadEmpleados = document.getElementById('cantidad_empleados_total').value;
             
-            if (!empresa || empresa === "") {
+            if (!empresa) {
                 mostrarMensajeError('❌ Por favor, selecciona una empresa');
                 document.getElementById('empresa').focus();
-                document.getElementById('empresa').style.borderColor = '#dc3545';
                 return;
-            } else {
-                document.getElementById('empresa').style.borderColor = '#4caf50';
             }
             
-            if (!mes || mes === "") {
+            if (!mes) {
                 mostrarMensajeError('❌ Por favor, selecciona un mes');
                 document.getElementById('mes').focus();
-                document.getElementById('mes').style.borderColor = '#dc3545';
                 return;
-            } else {
-                document.getElementById('mes').style.borderColor = '#4caf50';
             }
             
-            if (!anio || anio === "") {
+            if (!anio) {
                 mostrarMensajeError('❌ Por favor, selecciona un año');
                 document.getElementById('anio').focus();
-                document.getElementById('anio').style.borderColor = '#dc3545';
                 return;
-            } else {
-                document.getElementById('anio').style.borderColor = '#4caf50';
             }
             
-            if (!cantidadEmpleados || cantidadEmpleados === "" || parseInt(cantidadEmpleados) < 1) {
+            if (!cantidadEmpleados || parseInt(cantidadEmpleados) < 1) {
                 mostrarMensajeError('❌ Por favor, ingresa la cantidad total de empleados (mínimo 1)');
                 document.getElementById('cantidad_empleados_total').focus();
-                document.getElementById('cantidad_empleados_total').style.borderColor = '#dc3545';
                 return;
-            } else {
-                document.getElementById('cantidad_empleados_total').style.borderColor = '#4caf50';
             }
             
             // Mostrar mensaje de carga
@@ -556,11 +537,11 @@
             boton.disabled = true;
             boton.textContent = 'Enviando...';
             
-            // Preparar datos para enviar - NOMBRES CORRECTOS
+            // Preparar datos para enviar
             const datosParaEnviar = {
                 'ID_Empresa': document.getElementById('empresa').value,
                 'Empresa': document.getElementById('empresa').options[document.getElementById('empresa').selectedIndex].text,
-                // CAMPOS CRÍTICOS CON NOMBRES EXACTOS
+                // CAMPOS CRÍTICOS
                 'Mes': document.getElementById('mes').value,
                 'Año': document.getElementById('anio').value,
                 'Fecha_carga': document.getElementById('fechaCarga').value,
@@ -588,10 +569,9 @@
                 'Link_Evidencia': document.getElementById('link_evidencia').value || ''
             };
             
-            console.log('📤 Datos a enviar a Sheet.best:');
+            console.log('📤 Datos a enviar:');
             console.log('📅 Mes:', datosParaEnviar['Mes']);
             console.log('👥 Cantidad_Empleados_Total:', datosParaEnviar['Cantidad_Empleados_Total']);
-            console.log('📊 Todos los datos:', datosParaEnviar);
             
             try {
                 // Enviar a Sheet.best
@@ -621,16 +601,12 @@
                         
                         // Restablecer valores por defecto
                         const hoy = new Date();
-                        const dia = hoy.getDate().toString().padStart(2, '0');
-                        const mesNum = (hoy.getMonth() + 1).toString().padStart(2, '0');
-                        const año = hoy.getFullYear();
-                        document.getElementById('fechaCarga').value = dia + '/' + mesNum + '/' + año;
-                        
                         const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
                                       'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
                         document.getElementById('mes').value = meses[hoy.getMonth()];
-                        document.getElementById('anio').value = año.toString();
+                        document.getElementById('anio').value = '2024';
                         document.getElementById('cantidad_empleados_total').value = "1";
+                        document.getElementById('fechaCarga').value = '19/12/2025';
                         
                         // Ocultar mensaje de éxito después de 5 segundos
                         setTimeout(() => {
