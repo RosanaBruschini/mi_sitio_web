@@ -229,8 +229,8 @@
             <form id="formularioRegistro">
                 <!-- Campos ocultos -->
                 <input type="hidden" id="idEmpresa" name="ID_Empresa" value="7">
-                <!-- CAMPO CORREGIDO: Fecha alta como texto plano -->
-                <input type="hidden" id="fechaAlta" name="Fecha_alta" value="12/2025">
+                <!-- CAMPO CORREGIDO: Fecha alta en formato correcto -->
+                <input type="hidden" id="fechaAlta" name="Fecha alta" value="19/12/2025">
                 <input type="hidden" id="estado" name="Estado" value="activo">
                 
                 <div class="grupo-formulario">
@@ -336,10 +336,10 @@
                         </small>
                     </div>
                     
-                    <!-- CAMPO PLAN - CORREGIDO: Nombre simplificado para Sheet.best -->
+                    <!-- CAMPO PLAN - CORREGIDO: Nombre EXACTO como en Excel -->
                     <div class="grupo-formulario">
                         <label for="plan">Plan <span class="obligatorio">*</span></label>
-                        <select id="plan" name="Plan" required style="background-color: #fff8f0; border: 2px solid #ffc107;">
+                        <select id="plan" name="Plan (Mensual/Anual)" required style="background-color: #fff8f0; border: 2px solid #ffc107;">
                             <option value="">Seleccionar plan...</option>
                             <option value="Mensual">Mensual</option>
                             <option value="Anual">Anual</option>
@@ -365,7 +365,7 @@
                 <p>📧 ¿Necesitas ayuda? <a href="mailto:info@impactaverde.com.ar">Contacta con nuestro equipo</a></p>
                 <p>🔒 Tus datos están protegidos y se utilizarán únicamente para el sistema de medición</p>
                 <p style="font-size: 11px; margin-top: 10px; color: #888;">
-                    Fecha actual del sistema: 19/12/2025 | Fecha de alta: 12/2025
+                    Fecha actual del sistema: 19/12/2025 | ID asignado: 7
                 </p>
             </div>
         </div>
@@ -378,7 +378,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             console.log('✅ Formulario de registro cargado');
             console.log('📅 Fecha de hoy:', '19/12/2025');
-            console.log('📅 Fecha de alta establecida:', '12/2025');
+            console.log('📅 Fecha de alta establecida:', '19/12/2025');
             console.log('🔢 ID asignado:', 7);
             console.log('🌐 URL Sheet.best:', URL_SHEETBEST);
             
@@ -436,7 +436,7 @@
             boton.disabled = true;
             boton.textContent = 'Enviando...';
             
-            // Preparar datos para enviar - CORREGIDO: Nombres exactos para Sheet.best
+            // Preparar datos para enviar - CORREGIDO: Nombres EXACTOS como en Excel
             const datosParaEnviar = {
                 'ID_Empresa': document.getElementById('idEmpresa').value,
                 'Empresa': document.getElementById('nombreEmpresa').value,
@@ -449,17 +449,16 @@
                 'Email': document.getElementById('email').value,
                 'Tel_contacto': document.getElementById('telefono').value,
                 'WhatsApp': document.getElementById('whatsapp').value || '',
-                // CAMPO CORREGIDO: Nombre simplificado
-                'Plan': document.getElementById('plan').value,
+                // CAMPO CRÍTICO CORREGIDO: Nombre EXACTO como en Excel
+                'Plan (Mensual/Anual)': document.getElementById('plan').value,
                 'Observaciones': document.getElementById('observaciones').value || '',
-                // CAMPO CORREGIDO: Fecha_alta (sin espacios)
-                'Fecha_alta': document.getElementById('fechaAlta').value,
+                'Fecha alta': document.getElementById('fechaAlta').value,
                 'Estado': 'activo'
             };
             
             console.log('📤 Datos a enviar:', datosParaEnviar);
-            console.log('📋 Plan seleccionado:', datosParaEnviar['Plan']);
-            console.log('📅 Fecha de alta:', datosParaEnviar['Fecha_alta']);
+            console.log('📋 Plan seleccionado:', datosParaEnviar['Plan (Mensual/Anual)']);
+            console.log('📅 Fecha de alta:', datosParaEnviar['Fecha alta']);
             
             try {
                 // Enviar a Sheet.best
@@ -477,13 +476,10 @@
                     
                     // Mostrar mensaje de éxito
                     ocultarTodosLosMensajes();
-                    mostrarMensajeExito('✅ ¡Empresa registrada correctamente!<br>Plan: ' + datosParaEnviar['Plan'] + '<br>Fecha de alta: ' + datosParaEnviar['Fecha_alta']);
+                    mostrarMensajeExito('✅ ¡Empresa registrada correctamente!<br><br>Plan: ' + datosParaEnviar['Plan (Mensual/Anual)'] + '<br>Fecha de alta: ' + datosParaEnviar['Fecha alta'] + '<br>ID asignado: ' + datosParaEnviar['ID_Empresa']);
                     
-                    // Incrementar ID para próximo registro
-                    const idActual = parseInt(document.getElementById('idEmpresa').value);
-                    document.getElementById('idEmpresa').value = idActual + 1;
-                    
-                    // Restaurar botón después de 2 segundos
+                    // NO incrementar ID aquí, recargar página para obtener nuevo ID
+                    // Restaurar botón después de 3 segundos
                     setTimeout(() => {
                         boton.disabled = false;
                         boton.textContent = textoOriginal;
@@ -494,12 +490,12 @@
                         // Restablecer valores por defecto
                         document.getElementById('pais').value = 'Argentina';
                         
-                        // Ocultar mensaje de éxito después de 5 segundos
+                        // Recargar página para obtener nuevo ID
                         setTimeout(() => {
-                            document.getElementById('mensajeExito').style.display = 'none';
-                        }, 5000);
+                            location.reload();
+                        }, 2000);
                         
-                    }, 2000);
+                    }, 3000);
                     
                 } else {
                     const errorTexto = await respuesta.text();
