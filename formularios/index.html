@@ -9,7 +9,6 @@
             text-align: center; 
             padding: 40px;
             background-color: #f1f8e9;
-            color: #333;
         }
         .container { 
             max-width: 800px; 
@@ -19,25 +18,9 @@
             border-radius: 12px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
         }
-        h1 { 
-            color: #1F7A3E; 
-            margin-bottom: 10px;
-        }
         .logo {
             height: 200px; width: auto; border-radius: 8px; background-color: white; padding: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;
             margin: 0 auto 20px;
-        }
-        .subtitle {
-            color: #666;
-            margin-bottom: 40px;
-            font-size: 16px;
-        }
-        .botones-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            max-width: 400px;
-            margin: 0 auto;
         }
         .boton { 
             display: block;
@@ -48,116 +31,50 @@
             border-radius: 8px; 
             font-weight: 600;
             font-size: 16px;
-            transition: all 0.3s;
-            text-align: center;
+            margin: 20px auto;
+            max-width: 400px;
         }
         .boton:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(31, 122, 62, 0.3);
         }
-        .descripcion {
-            font-size: 14px;
-            color: #666;
-            margin-top: 5px;
-            margin-bottom: 20px;
-        }
-        .correcciones {
-            margin-top: 40px;
+        .instrucciones {
             text-align: left;
             background: #f8fff8;
             padding: 20px;
             border-radius: 8px;
             border-left: 4px solid #1F7A3E;
-        }
-        .correcciones h3 {
-            color: #1F7A3E;
-            margin-top: 0;
-        }
-        .correcciones ul {
-            padding-left: 20px;
-        }
-        .correcciones li {
-            margin-bottom: 8px;
-        }
-        .check {
-            color: #4CAF50;
-            font-weight: bold;
-        }
-        .alerta {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            text-align: left;
-        }
-        .alerta h4 {
-            color: #856404;
-            margin-top: 0;
-        }
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-                margin: 20px;
-            }
-            .logo {
-                height: 150px;
-            }
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" alt="Logo Impacta Verde" class="logo">
-        <h1>🌿 Impacta Verde</h1>
-        <p class="subtitle">Sistema de Medición de Impacto Ambiental - VERSIÓN DEFINITIVA</p>
-        <p style="color: #888; font-size: 14px;">📅 Fecha del sistema: 19/12/2025</p>
+        <h1 style="color: #1F7A3E;">🌿 Impacta Verde</h1>
+        <p style="color: #666; margin-bottom: 40px;">Sistema de Medición de Impacto Ambiental</p>
+        <p style="color: #888; font-size: 14px;">📅 Fecha: 19/12/2025</p>
         
-        <div class="botones-container">
-            <div>
-                <a href="registro_empresa.html" class="boton">📝 Registrar Nueva Empresa</a>
-                <p class="descripcion">Completa los datos de tu empresa para comenzar a medir tu impacto ambiental</p>
-            </div>
-            
-            <div>
-                <a href="datos_mensuales.html" class="boton">📊 Cargar Datos Mensuales</a>
-                <p class="descripcion">Reporta tu impacto ambiental y social del mes</p>
-            </div>
-        </div>
+        <a href="registro_empresa.html" class="boton">📝 Registrar Nueva Empresa</a>
+        <a href="datos_mensuales.html" class="boton">📊 Cargar Datos Mensuales</a>
         
-        <div class="correcciones">
-            <h3>✅ CORRECCIONES DEFINITIVAS APLICADAS:</h3>
-            <ul>
-                <li><span class="check">✓</span> <strong>Plan ahora se guarda</strong>: Campo con nombre EXACTO "Plan (Mensual/Anual)"</li>
-                <li><span class="check">✓</span> <strong>Fecha de alta corregida</strong>: 19/12/2025 (no más 20/12)</li>
-                <li><span class="check">✓</span> <strong>ID no se repite</strong>: Lógica corregida para obtener último ID</li>
-                <li><span class="check">✓</span> <strong>Mes se guarda</strong>: Campo "Mes" con nombre correcto</li>
-                <li><span class="check">✓</span> <strong>Empleados se guardan</strong>: Campo "Cantidad_Empleados_Total" correcto</li>
-                <li><span class="check">✓</span> <strong>Sin valores por defecto</strong>: Mes y empleados vacíos</li>
-                <li><span class="check">✓</span> <strong>Solo nombres en selector</strong>: Empresas sin ID en lista</li>
-                <li><span class="check">✓</span> <strong>Año 2026 disponible</strong>: En selector de años</li>
-                <li><span class="check">✓</span> <strong>Recarga automática</strong>: Página se recarga para actualizar IDs</li>
-            </ul>
-        </div>
-        
-        <div class="alerta">
-            <h4>📋 INSTRUCCIONES PARA VERIFICAR:</h4>
+        <div class="instrucciones">
+            <h3>📋 INSTRUCCIONES IMPORTANTES:</h3>
             <p><strong>1. Registro de empresa:</strong></p>
-            <p>• Completa todos los datos (selecciona plan Mensual/Anual)</p>
-            <p>• Verifica en Excel de registro que el plan aparece en columna L</p>
-            <p>• Verifica que fecha de alta es 19/12/2025 en columna N</p>
-            <p>• ID debe ser único y no repetirse</p>
+            <p>• Plan se guarda automáticamente en columna L</p>
+            <p>• Fecha de alta se guarda automáticamente en columna N</p>
+            <p>• ID se genera automáticamente y no se repite</p>
+            <p>• La empresa se sincroniza automáticamente al sistema</p>
             
             <p style="margin-top: 15px;"><strong>2. Datos mensuales:</strong></p>
-            <p>• Empresas aparecen solo con nombre (sin ID)</p>
-            <p>• Mes y año deben seleccionarse (no hay valores por defecto)</p>
-            <p>• Empleados es obligatorio (sin valor por defecto)</p>
-            <p>• Verifica en Excel "Datos mensuales crudos" que todos los campos están</p>
+            <p>• Mes se guarda automáticamente en columna C</p>
+            <p>• Empleados totales se guardan en columna F</p>
+            <p>• Solo se muestran nombres de empresas (sin ID)</p>
+            <p>• No hay valores por defecto - debe seleccionar/ingresar</p>
         </div>
         
         <div style="margin-top: 30px; font-size: 13px; color: #666;">
-            <p>📧 ¿Problemas técnicos? <a href="mailto:info@impactaverde.com.ar" style="color: #1F7A3E; font-weight: bold;">Contacta a soporte</a></p>
-            <p>🔧 Última actualización: 19/12/2025 - TODOS LOS ERRORES CORREGIDOS</p>
+            <p>📧 ¿Problemas? <a href="mailto:info@impactaverde.com.ar" style="color: #1F7A3E; font-weight: bold;">Contacta a soporte</a></p>
         </div>
     </div>
 </body>
