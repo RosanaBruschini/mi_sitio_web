@@ -228,8 +228,9 @@
             
             <form id="formularioRegistro">
                 <!-- Campos ocultos -->
-                <input type="hidden" id="idEmpresa" name="ID_Empresa" value="6">
-                <input type="hidden" id="fechaAlta" name="Fecha alta" value="12/2025">
+                <input type="hidden" id="idEmpresa" name="ID_Empresa" value="7">
+                <!-- CAMPO CORREGIDO: Fecha alta como texto plano -->
+                <input type="hidden" id="fechaAlta" name="Fecha_alta" value="12/2025">
                 <input type="hidden" id="estado" name="Estado" value="activo">
                 
                 <div class="grupo-formulario">
@@ -335,10 +336,10 @@
                         </small>
                     </div>
                     
-                    <!-- CAMPO PLAN - IMPORTANTE: nombre exacto para Sheet.best -->
+                    <!-- CAMPO PLAN - CORREGIDO: Nombre simplificado para Sheet.best -->
                     <div class="grupo-formulario">
                         <label for="plan">Plan <span class="obligatorio">*</span></label>
-                        <select id="plan" name="Plan (Mensual/Anual)" required style="background-color: #fff8f0; border: 2px solid #ffc107;">
+                        <select id="plan" name="Plan" required style="background-color: #fff8f0; border: 2px solid #ffc107;">
                             <option value="">Seleccionar plan...</option>
                             <option value="Mensual">Mensual</option>
                             <option value="Anual">Anual</option>
@@ -364,7 +365,7 @@
                 <p>📧 ¿Necesitas ayuda? <a href="mailto:info@impactaverde.com.ar">Contacta con nuestro equipo</a></p>
                 <p>🔒 Tus datos están protegidos y se utilizarán únicamente para el sistema de medición</p>
                 <p style="font-size: 11px; margin-top: 10px; color: #888;">
-                    Fecha actual del sistema: 19/12/2025
+                    Fecha actual del sistema: 19/12/2025 | Fecha de alta: 12/2025
                 </p>
             </div>
         </div>
@@ -376,8 +377,9 @@
         
         document.addEventListener('DOMContentLoaded', function() {
             console.log('✅ Formulario de registro cargado');
-            console.log('📅 Fecha de alta establecida:', document.getElementById('fechaAlta').value);
-            console.log('🔢 ID asignado:', 6);
+            console.log('📅 Fecha de hoy:', '19/12/2025');
+            console.log('📅 Fecha de alta establecida:', '12/2025');
+            console.log('🔢 ID asignado:', 7);
             console.log('🌐 URL Sheet.best:', URL_SHEETBEST);
             
             // Poner Argentina por defecto
@@ -434,7 +436,7 @@
             boton.disabled = true;
             boton.textContent = 'Enviando...';
             
-            // Preparar datos para enviar
+            // Preparar datos para enviar - CORREGIDO: Nombres exactos para Sheet.best
             const datosParaEnviar = {
                 'ID_Empresa': document.getElementById('idEmpresa').value,
                 'Empresa': document.getElementById('nombreEmpresa').value,
@@ -447,15 +449,17 @@
                 'Email': document.getElementById('email').value,
                 'Tel_contacto': document.getElementById('telefono').value,
                 'WhatsApp': document.getElementById('whatsapp').value || '',
-                // NOMBRE EXACTO para Sheet.best
-                'Plan (Mensual/Anual)': document.getElementById('plan').value,
+                // CAMPO CORREGIDO: Nombre simplificado
+                'Plan': document.getElementById('plan').value,
                 'Observaciones': document.getElementById('observaciones').value || '',
-                'Fecha alta': document.getElementById('fechaAlta').value,
+                // CAMPO CORREGIDO: Fecha_alta (sin espacios)
+                'Fecha_alta': document.getElementById('fechaAlta').value,
                 'Estado': 'activo'
             };
             
-            console.log('📤 Datos a enviar:');
-            console.log('📋 Plan seleccionado:', datosParaEnviar['Plan (Mensual/Anual)']);
+            console.log('📤 Datos a enviar:', datosParaEnviar);
+            console.log('📋 Plan seleccionado:', datosParaEnviar['Plan']);
+            console.log('📅 Fecha de alta:', datosParaEnviar['Fecha_alta']);
             
             try {
                 // Enviar a Sheet.best
@@ -471,9 +475,9 @@
                     const resultado = await respuesta.json();
                     console.log('✅ Registro exitoso:', resultado);
                     
-                    // Mostrar mensaje de éxito SIMPLE (sin mención al plan)
+                    // Mostrar mensaje de éxito
                     ocultarTodosLosMensajes();
-                    mostrarMensajeExito('✅ ¡Empresa registrada correctamente!');
+                    mostrarMensajeExito('✅ ¡Empresa registrada correctamente!<br>Plan: ' + datosParaEnviar['Plan'] + '<br>Fecha de alta: ' + datosParaEnviar['Fecha_alta']);
                     
                     // Incrementar ID para próximo registro
                     const idActual = parseInt(document.getElementById('idEmpresa').value);
