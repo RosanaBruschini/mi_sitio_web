@@ -24,12 +24,8 @@
             margin-bottom: 10px;
         }
         .logo {
-            height: 150px;  /* CAMBIADO A 150px */
-            margin-bottom: 20px;
-            background-color: white;
-            padding: 12px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            height: 200px; width: auto; border-radius: 8px; background-color: white; padding: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;
+            margin: 0 auto 20px;
         }
         .subtitle {
             color: #666;
@@ -87,13 +83,25 @@
             color: #4CAF50;
             font-weight: bold;
         }
+        .alerta {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .alerta h4 {
+            color: #856404;
+            margin-top: 0;
+        }
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
                 margin: 20px;
             }
             .logo {
-                height: 120px; /* Un poco más pequeño en móviles */
+                height: 150px;
             }
         }
     </style>
@@ -102,7 +110,8 @@
     <div class="container">
         <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" alt="Logo Impacta Verde" class="logo">
         <h1>🌿 Impacta Verde</h1>
-        <p class="subtitle">Sistema de Medición de Impacto Ambiental - VERSIÓN FINAL CORREGIDA</p>
+        <p class="subtitle">Sistema de Medición de Impacto Ambiental - VERSIÓN CORREGIDA</p>
+        <p style="color: #888; font-size: 14px;">📅 Fecha del sistema: 19/12/2025</p>
         
         <div class="botones-container">
             <div>
@@ -119,28 +128,32 @@
         <div class="correcciones">
             <h3>✅ CORRECCIONES APLICADAS:</h3>
             <ul>
-                <li><span class="check">✓</span> Logo agrandado a 150px en ambos formularios</li>
-                <li><span class="check">✓</span> Campo "Plan" ahora se guarda correctamente en Excel</li>
-                <li><span class="check">✓</span> Fecha de alta correcta (18 de diciembre)</li>
-                <li><span class="check">✓</span> Sincronización automática cada vez que se carga</li>
-                <li><span class="check">✓</span> Campos "Mes" y "Cantidad_Empleados_Total" funcionan</li>
-                <li><span class="check">✓</span> Mensaje de confirmación simplificado</li>
+                <li><span class="check">✓</span> Logo agrandado a 200px en ambos formularios</li>
+                <li><span class="check">✓</span> Campo "Plan (Mensual/Anual)" ahora se guarda en Excel</li>
+                <li><span class="check">✓</span> Fecha corregida a 19/12/2025 (18 de diciembre)</li>
+                <li><span class="check">✓</span> Sincronización automática de empresas</li>
+                <li><span class="check">✓</span> Campos "Mes" y "Cantidad_Empleados_Total" obligatorios</li>
+                <li><span class="check">✓</span> Mensaje de éxito simplificado (sin mención específica)</li>
+                <li><span class="check">✓</span> Las 4 empresas pendientes se sincronizarán</li>
             </ul>
         </div>
         
-        <div style="margin-top: 30px; font-size: 14px; color: #888; background: #f8f8f8; padding: 15px; border-radius: 8px;">
-            <p><strong>📊 PARA PROBAR EL SISTEMA:</strong></p>
-            <p>1. Abre el formulario de Registro (logo 150px)</p>
-            <p>2. Registra una empresa (selecciona un plan)</p>
-            <p>3. Verifica en Excel de registro que el plan se guardó</p>
-            <p>4. Abre el formulario de Datos (logo 150px)</p>
-            <p>5. La empresa nueva debe aparecer automáticamente</p>
-            <p>6. Completa los datos (mes y empleados son obligatorios)</p>
-            <p>7. Verifica en Excel del sistema que todos los datos están</p>
+        <div class="alerta">
+            <h4>📋 PARA VERIFICAR EL FUNCIONAMIENTO:</h4>
+            <p><strong>1. Registro de empresa:</strong></p>
+            <p>• Abre el formulario de registro (logo 200px)</p>
+            <p>• Completa todos los datos (selecciona un plan)</p>
+            <p>• Verifica en Excel de registro que el plan aparece en columna L</p>
+            
+            <p style="margin-top: 15px;"><strong>2. Datos mensuales:</strong></p>
+            <p>• Abre el formulario de datos (logo 200px)</p>
+            <p>• La empresa registrada debe aparecer en el selector</p>
+            <p>• Completa los datos (mes y empleados son obligatorios)</p>
+            <p>• Verifica en Excel "Datos mensuales crudos" que los datos están</p>
         </div>
         
         <div style="margin-top: 30px; font-size: 13px; color: #666;">
-            <p>📧 ¿Problemas técnicos? <a href="mailto:soporte@impactaverde.com.ar" style="color: #1F7A3E; font-weight: bold;">Contacta a soporte</a></p>
+            <p>📧 ¿Problemas técnicos? <a href="mailto:info@impactaverde.com.ar" style="color: #1F7A3E; font-weight: bold;">Contacta a soporte</a></p>
         </div>
     </div>
 </body>
