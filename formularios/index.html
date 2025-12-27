@@ -48,9 +48,9 @@
             margin-top: 30px;
             font-size: 14px;
         }
-        .novedad {
-            background: #d1ecf1;
-            border-left: 4px solid #0c5460;
+        .correccion {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
             padding: 15px;
             margin-top: 20px;
             border-radius: 6px;
@@ -62,43 +62,45 @@
     <div class="container">
         <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" alt="Logo Impacta Verde" class="logo">
         <h1 style="color: #1F7A3E;">🌿 Impacta Verde</h1>
-        <p style="color: #666; margin-bottom: 40px;">Sistema de Medición de Impacto Ambiental</p>
+        <p style="color: #666; margin-bottom: 40px;">Sistema de Medición de Impacto Ambiental y Social</p>
         <p style="color: #888; font-size: 14px;">📅 Fecha: 27/12/2025</p>
 
         <a href="registro_empresa.html" class="boton">📝 Registrar Nueva Empresa</a>
         <a href="datos_mensuales.html" class="boton">📊 Cargar Datos Mensuales</a>
 
-        <div class="novedad">
-            <h3>🚰 NUEVO: Medición de Consumo de Agua</h3>
-            <p>Hemos agregado un campo para <strong>Agua (m³)</strong> en el formulario de datos mensuales.</p>
-            <p><strong>¿Dónde encontrar este dato?</strong> En tu factura de agua, busca el consumo en <strong>metros cúbicos (m³)</strong>.</p>
-            <p><small>Recuerda: 1 m³ = 1000 litros. El dato se guarda en la columna AA del Excel.</small></p>
+        <div class="correccion">
+            <h3>✅ CORRECCIONES APLICADAS:</h3>
+            <p><strong>Formulario de Registro:</strong></p>
+            <p>• Fecha de alta corregida: 27/12/2025 (antes mostraba 12/2025)</p>
+            <p>• Plan ahora se guarda correctamente en columna N</p>
+            <p>• Mensajes de éxito limpios (sin referencias a columnas)</p>
+
+            <p><strong>Formulario de Datos:</strong></p>
+            <p>• <strong>TODOS</strong> los campos incluidos (28 campos total)</p>
+            <p>• Diseño limpio sin notas de columnas</p>
+            <p>• Mes y año auto-completados</p>
+            <p>• Campos Comentarios y Link_Evidencia agregados</p>
+            <p>• Agua correctamente en última columna (AA)</p>
         </div>
 
         <div class="instrucciones">
-            <h3>📋 INSTRUCCIONES DE USO ACTUALIZADAS:</h3>
-            <p><strong>1. Registro de empresa (NUEVO):</strong></p>
-            <p>• Completa todos los campos obligatorios (*)</p>
-            <p>• El ID se genera automáticamente</p>
-            <p>• La empresa se sincroniza automáticamente al sistema</p>
-            <p>• <strong>Verifica en Excel:</strong> Fecha en columna L, Plan en columna N</p>
+            <h3>📋 INSTRUCCIONES:</h3>
+            <p><strong>Para nuevo registro:</strong></p>
+            <p>1. Completa todos los campos (* obligatorios)</p>
+            <p>2. El plan se guardará automáticamente</p>
+            <p>3. La fecha será 27/12/2025</p>
+            <p>4. <em>Nota:</em> La empresa NO se copia automáticamente al sistema. Ejecuta el Colab de sincronización después.</p>
 
-            <p style="margin-top: 15px;"><strong>2. Datos mensuales (EXISTENTE):</strong></p>
-            <p>• Selecciona empresa registrada</p>
-            <p>• Mes y Año se completan automáticamente</p>
-            <p>• <strong>Nuevo campo:</strong> Agua (m³) - consulta tu factura</p>
-            <p>• Solo <strong>Total empleados</strong> es obligatorio</p>
-            <p>• <strong>Verifica en Excel:</strong> Mes (C), Empleados (N), Agua (AA)</p>
-
-            <p style="margin-top: 15px;"><strong>3. Depuración:</strong></p>
-            <p>• Abre Consola del Navegador (F12 → Console)</p>
-            <p>• Verifica que los datos se envíen correctamente</p>
-            <p>• Revisa cualquier error en rojo</p>
+            <p><strong>Para datos mensuales:</strong></p>
+            <p>1. Ingresa ID de empresa (ETIMO = 1)</p>
+            <p>2. Mes y año se completan automáticamente</p>
+            <p>3. Solo "Total empleados" es obligatorio</p>
+            <p>4. Puedes dejar en 0 los campos que no aplican</p>
+            <p>5. Agrega link de evidencia si dispones</p>
         </div>
 
         <div style="margin-top: 30px; font-size: 13px; color: #666;">
-            <p>🐛 ¿Problemas? <a href="mailto:info@impactaverde.com.ar" style="color: #1F7A3E; font-weight: bold;">Contacta a soporte</a></p>
-            <p style="font-size: 11px; margin-top: 5px;">⚠️ Asegúrate de ejecutar este Colab cuando agregues nuevas empresas</p>
+            <p>📧 ¿Problemas? <a href="mailto:info@impactaverde.com.ar" style="color: #1F7A3E; font-weight: bold;">Contacta a soporte</a></p>
         </div>
     </div>
 </body>
