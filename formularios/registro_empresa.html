@@ -115,10 +115,12 @@
         }
 
         .info-fecha {
-            font-size: 11px;
+            font-size: 12px;
             color: #666;
-            font-style: italic;
-            margin-top: 3px;
+            background: #f8f9fa;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-top: 5px;
         }
 
         @media (max-width: 768px) {
@@ -133,7 +135,7 @@
         <div class="encabezado">
             <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" alt="Logo Impacta Verde" class="logo-img">
             <h1 style="margin: 15px 0 8px 0;">Impacta Verde - Registro de Empresa</h1>
-            <p style="opacity: 0.9; max-width: 500px; margin: 0 auto;">Completa los datos de tu empresa</p>
+            <p style="opacity: 0.9; max-width: 500px; margin: 0 auto;">Completa los datos de tu empresa una sola vez</p>
         </div>
 
         <div class="contenido-formulario">
@@ -142,8 +144,8 @@
             <div id="mensajeCarga" class="mensaje mensaje-carga"></div>
 
             <form id="formularioRegistro">
-                <!-- NOTA: El ID se genera en Sheet.best automáticamente -->
-                <input type="hidden" id="fechaAlta" name="Fecha alta" value="27/12/2025">
+                <!-- NOTA: NO enviamos ID_Empresa - Sheet.best lo maneja -->
+                <!-- NOTA: NO enviamos Fecha alta - Se pondrá automática en el servidor -->
 
                 <div class="grupo-formulario">
                     <label for="nombreEmpresa">Nombre de la Empresa *</label>
@@ -216,7 +218,7 @@
                         <input type="tel" id="whatsapp" name="WhatsApp" placeholder="+54 9 11 1234-5678">
                     </div>
 
-                    <!-- PLAN CORREGIDO: Nombre EXACTO como en Excel -->
+                    <!-- PLAN CORREGIDO - NOMBRE EXACTO -->
                     <div class="grupo-formulario">
                         <label for="plan">Plan de suscripción *</label>
                         <select id="plan" name="Plan (Mensual/Anual)" required>
@@ -233,7 +235,7 @@
                 </div>
 
                 <div class="info-fecha">
-                    📅 Fecha de alta automática: 27/12/2025
+                    📅 La fecha de alta se asignará automáticamente al enviar el formulario
                 </div>
 
                 <button type="submit" class="boton-enviar" id="botonEnviar">
@@ -243,6 +245,9 @@
 
             <div style="text-align: center; margin-top: 25px; color: #666; font-size: 13px;">
                 <p>📧 ¿Necesitas ayuda? <a href="mailto:info@impactaverde.com.ar">Contacta con nuestro equipo</a></p>
+                <p style="font-size: 11px; margin-top: 10px; color: #888;">
+                    Después de registrar tu empresa, podrás cargar datos mensuales inmediatamente
+                </p>
             </div>
         </div>
     </div>
@@ -261,6 +266,14 @@
             if (valor.length > 11) valor = valor.substring(0, 11) + '-' + valor.substring(11);
             if (valor.length > 13) valor = valor.substring(0, 13);
             input.value = valor;
+        }
+
+        function obtenerFechaActual() {
+            const ahora = new Date();
+            const dia = String(ahora.getDate()).padStart(2, '0');
+            const mes = String(ahora.getMonth() + 1).padStart(2, '0');
+            const año = ahora.getFullYear();
+            return `${dia}/${mes}/${año}`;
         }
 
         document.getElementById('formularioRegistro').addEventListener('submit', async function(evento) {
@@ -289,7 +302,10 @@
             boton.disabled = true;
             boton.textContent = 'Registrando...';
 
-            // DATOS CORRECTOS: Nombre EXACTO de "Plan (Mensual/Anual)" y "Fecha alta"
+            // OBTENER FECHA ACTUAL EN EL MOMENTO DEL ENVÍO
+            const fechaActual = obtenerFechaActual();
+
+            // DATOS CORRECTOS - Sin ID, con fecha actual
             const datosParaEnviar = {
                 'Empresa': document.getElementById('nombreEmpresa').value,
                 'Rubro': document.getElementById('rubro').value,
@@ -303,11 +319,11 @@
                 'WhatsApp': document.getElementById('whatsapp').value || '',
                 'Plan (Mensual/Anual)': document.getElementById('plan').value,  // NOMBRE EXACTO
                 'Observaciones': document.getElementById('observaciones').value || '',
-                'Fecha alta': document.getElementById('fechaAlta').value,  // NOMBRE EXACTO
+                'Fecha alta': fechaActual,  // FECHA ACTUAL AL ENVIAR
                 'Estado': 'activo'
             };
 
-            console.log('📤 Datos a enviar al registro:', datosParaEnviar);
+            console.log('📤 Enviando registro con fecha:', fechaActual);
 
             try {
                 const respuesta = await fetch(URL_SHEETBEST, {
@@ -318,16 +334,14 @@
 
                 if (respuesta.ok) {
                     ocultarTodosLosMensajes();
-                    mostrarMensajeExito('✅ ¡Empresa registrada correctamente!');
+                    mostrarMensajeExito('✅ ¡Empresa registrada correctamente!<br><small>Ya puedes cargar datos mensuales</small>');
 
                     setTimeout(() => {
                         boton.disabled = false;
                         boton.textContent = '🌿 Registrar Empresa';
                         document.getElementById('formularioRegistro').reset();
                         document.getElementById('pais').value = 'Argentina';
-                        // Recargar para nuevo formulario
-                        setTimeout(() => { location.reload(); }, 1000);
-                    }, 2000);
+                    }, 3000);
 
                 } else {
                     mostrarMensajeError('❌ Error al registrar. Verifica los datos e intenta nuevamente.');
