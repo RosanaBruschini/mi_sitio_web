@@ -48,9 +48,9 @@
             margin-top: 30px;
             font-size: 14px;
         }
-        .correccion {
-            background: #d4edda;
-            border-left: 4px solid #28a745;
+        .nota-importante {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
             padding: 15px;
             margin-top: 20px;
             border-radius: 6px;
@@ -63,40 +63,32 @@
         <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" alt="Logo Impacta Verde" class="logo">
         <h1 style="color: #1F7A3E;">🌿 Impacta Verde</h1>
         <p style="color: #666; margin-bottom: 40px;">Sistema de Medición de Impacto Ambiental y Social</p>
-        <p style="color: #888; font-size: 14px;">📅 Fecha: 27/12/2025</p>
+        <p style="color: #888; font-size: 14px;">Fecha: 27/12/2025</p>
 
         <a href="registro_empresa.html" class="boton">📝 Registrar Nueva Empresa</a>
         <a href="datos_mensuales.html" class="boton">📊 Cargar Datos Mensuales</a>
 
-        <div class="correccion">
-            <h3>✅ CORRECCIONES APLICADAS:</h3>
-            <p><strong>Formulario de Registro:</strong></p>
-            <p>• Fecha de alta corregida: 27/12/2025 (antes mostraba 12/2025)</p>
-            <p>• Plan ahora se guarda correctamente en columna N</p>
-            <p>• Mensajes de éxito limpios (sin referencias a columnas)</p>
+        <div class="nota-importante">
+            <h3>⚠️ CAMBIOS IMPORTANTES:</h3>
+            <p><strong>1. Registro de empresa:</strong></p>
+            <p>• <strong>Fecha automática:</strong> Se asigna al momento de enviar</p>
+            <p>• <strong>Sin ID duplicado:</strong> Sheet.best maneja los IDs</p>
+            <p>• <strong>Plan corregido:</strong> Ahora se guarda correctamente</p>
 
-            <p><strong>Formulario de Datos:</strong></p>
-            <p>• <strong>TODOS</strong> los campos incluidos (28 campos total)</p>
-            <p>• Diseño limpio sin notas de columnas</p>
-            <p>• Mes y año auto-completados</p>
-            <p>• Campos Comentarios y Link_Evidencia agregados</p>
-            <p>• Agua correctamente en última columna (AA)</p>
+            <p><strong>2. Datos mensuales:</strong></p>
+            <p>• <strong>Sin ID visible:</strong> Solo seleccionas empresa</p>
+            <p>• <strong>Política de inclusión:</strong> Casilla de verificación (Sí/No)</p>
+            <p>• <strong>Empresas inmediatas:</strong> Se cargan desde el registro</p>
         </div>
 
         <div class="instrucciones">
-            <h3>📋 INSTRUCCIONES:</h3>
-            <p><strong>Para nuevo registro:</strong></p>
-            <p>1. Completa todos los campos (* obligatorios)</p>
-            <p>2. El plan se guardará automáticamente</p>
-            <p>3. La fecha será 27/12/2025</p>
-            <p>4. <em>Nota:</em> La empresa NO se copia automáticamente al sistema. Ejecuta el Colab de sincronización después.</p>
-
-            <p><strong>Para datos mensuales:</strong></p>
-            <p>1. Ingresa ID de empresa (ETIMO = 1)</p>
-            <p>2. Mes y año se completan automáticamente</p>
-            <p>3. Solo "Total empleados" es obligatorio</p>
-            <p>4. Puedes dejar en 0 los campos que no aplican</p>
-            <p>5. Agrega link de evidencia si dispones</p>
+            <h3>📋 FLUJO CORRECTO:</h3>
+            <p><strong>Paso 1:</strong> Registrar empresa (una sola vez)</p>
+            <p><strong>Paso 2:</strong> Inmediatamente puedes cargar datos mensuales</p>
+            <p><strong>Paso 3:</strong> La empresa aparecerá en el selector de datos</p>
+            <p><strong>Paso 4:</strong> Los datos se guardan en el Excel correspondiente</p>
+            
+            <p style="margin-top: 15px;"><strong>⚠️ NOTA:</strong> Los datos de registro NO se copian automáticamente al sistema. Para incluir la empresa en informes anuales, ejecuta el Colab de sincronización cuando sea necesario.</p>
         </div>
 
         <div style="margin-top: 30px; font-size: 13px; color: #666;">
