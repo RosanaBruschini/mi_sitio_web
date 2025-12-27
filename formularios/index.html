@@ -4,14 +4,14 @@
     <title>Impacta Verde - Sistema de Medición</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>" type="image/x-icon">
     <style>
-        body { 
-            font-family: 'Segoe UI', Arial, sans-serif; 
-            text-align: center; 
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            text-align: center;
             padding: 40px;
             background-color: #f1f8e9;
         }
-        .container { 
-            max-width: 800px; 
+        .container {
+            max-width: 800px;
             margin: 0 auto;
             background: white;
             padding: 40px;
@@ -22,17 +22,18 @@
             height: 200px; width: auto; border-radius: 8px; background-color: white; padding: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;
             margin: 0 auto 20px;
         }
-        .boton { 
+        .boton {
             display: block;
             padding: 18px 25px;
             background: linear-gradient(135deg, #1F7A3E, #4CAF50);
-            color: white; 
-            text-decoration: none; 
-            border-radius: 8px; 
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
             font-weight: 600;
             font-size: 16px;
             margin: 20px auto;
             max-width: 400px;
+            transition: all 0.3s ease;
         }
         .boton:hover {
             transform: translateY(-3px);
@@ -45,6 +46,15 @@
             border-radius: 8px;
             border-left: 4px solid #1F7A3E;
             margin-top: 30px;
+            font-size: 14px;
+        }
+        .novedad {
+            background: #d1ecf1;
+            border-left: 4px solid #0c5460;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 6px;
+            text-align: left;
         }
     </style>
 </head>
@@ -53,28 +63,42 @@
         <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" alt="Logo Impacta Verde" class="logo">
         <h1 style="color: #1F7A3E;">🌿 Impacta Verde</h1>
         <p style="color: #666; margin-bottom: 40px;">Sistema de Medición de Impacto Ambiental</p>
-        <p style="color: #888; font-size: 14px;">📅 Fecha: 19/12/2025</p>
-        
+        <p style="color: #888; font-size: 14px;">📅 Fecha: 27/12/2025</p>
+
         <a href="registro_empresa.html" class="boton">📝 Registrar Nueva Empresa</a>
         <a href="datos_mensuales.html" class="boton">📊 Cargar Datos Mensuales</a>
-        
-        <div class="instrucciones">
-            <h3>📋 INSTRUCCIONES IMPORTANTES:</h3>
-            <p><strong>1. Registro de empresa:</strong></p>
-            <p>• Plan se guarda automáticamente en columna L</p>
-            <p>• Fecha de alta se guarda automáticamente en columna N</p>
-            <p>• ID se genera automáticamente y no se repite</p>
-            <p>• La empresa se sincroniza automáticamente al sistema</p>
-            
-            <p style="margin-top: 15px;"><strong>2. Datos mensuales:</strong></p>
-            <p>• Mes se guarda automáticamente en columna C</p>
-            <p>• Empleados totales se guardan en columna F</p>
-            <p>• Solo se muestran nombres de empresas (sin ID)</p>
-            <p>• No hay valores por defecto - debe seleccionar/ingresar</p>
+
+        <div class="novedad">
+            <h3>🚰 NUEVO: Medición de Consumo de Agua</h3>
+            <p>Hemos agregado un campo para <strong>Agua (m³)</strong> en el formulario de datos mensuales.</p>
+            <p><strong>¿Dónde encontrar este dato?</strong> En tu factura de agua, busca el consumo en <strong>metros cúbicos (m³)</strong>.</p>
+            <p><small>Recuerda: 1 m³ = 1000 litros. El dato se guarda en la columna AA del Excel.</small></p>
         </div>
-        
+
+        <div class="instrucciones">
+            <h3>📋 INSTRUCCIONES DE USO ACTUALIZADAS:</h3>
+            <p><strong>1. Registro de empresa (NUEVO):</strong></p>
+            <p>• Completa todos los campos obligatorios (*)</p>
+            <p>• El ID se genera automáticamente</p>
+            <p>• La empresa se sincroniza automáticamente al sistema</p>
+            <p>• <strong>Verifica en Excel:</strong> Fecha en columna L, Plan en columna N</p>
+
+            <p style="margin-top: 15px;"><strong>2. Datos mensuales (EXISTENTE):</strong></p>
+            <p>• Selecciona empresa registrada</p>
+            <p>• Mes y Año se completan automáticamente</p>
+            <p>• <strong>Nuevo campo:</strong> Agua (m³) - consulta tu factura</p>
+            <p>• Solo <strong>Total empleados</strong> es obligatorio</p>
+            <p>• <strong>Verifica en Excel:</strong> Mes (C), Empleados (N), Agua (AA)</p>
+
+            <p style="margin-top: 15px;"><strong>3. Depuración:</strong></p>
+            <p>• Abre Consola del Navegador (F12 → Console)</p>
+            <p>• Verifica que los datos se envíen correctamente</p>
+            <p>• Revisa cualquier error en rojo</p>
+        </div>
+
         <div style="margin-top: 30px; font-size: 13px; color: #666;">
-            <p>📧 ¿Problemas? <a href="mailto:info@impactaverde.com.ar" style="color: #1F7A3E; font-weight: bold;">Contacta a soporte</a></p>
+            <p>🐛 ¿Problemas? <a href="mailto:info@impactaverde.com.ar" style="color: #1F7A3E; font-weight: bold;">Contacta a soporte</a></p>
+            <p style="font-size: 11px; margin-top: 5px;">⚠️ Asegúrate de ejecutar este Colab cuando agregues nuevas empresas</p>
         </div>
     </div>
 </body>
