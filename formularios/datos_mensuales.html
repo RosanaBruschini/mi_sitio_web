@@ -25,7 +25,7 @@
         }
 
         .contenedor-principal {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             background: white;
             border-radius: 12px;
@@ -63,9 +63,9 @@
             margin-bottom: 15px;
         }
 
-        .grid-4 {
+        .grid-3 {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 15px;
             margin-bottom: 15px;
         }
@@ -130,21 +130,25 @@
             border: 1px solid #bee5eb;
         }
 
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            width: auto;
+        }
+
         .unidad {
             font-size: 12px;
             color: #666;
             margin-left: 3px;
         }
 
-        .nota {
-            font-size: 11px;
-            color: #666;
-            font-style: italic;
-            margin-top: 3px;
-        }
-
         @media (max-width: 768px) {
-            .grid-2, .grid-4 {
+            .grid-2, .grid-3 {
                 grid-template-columns: 1fr;
             }
         }
@@ -170,15 +174,16 @@
                     <h3 style="color: var(--verde-oscuro); margin-bottom: 15px;">🏢 Empresa y Período</h3>
 
                     <div class="grupo-formulario">
-                        <label for="idEmpresa">ID de Empresa *</label>
-                        <input type="number" id="idEmpresa" name="ID_Empresa" min="1" required placeholder="Ej: 1 (para ETIMO)">
-                        <div class="nota">Ingresa el ID numérico de la empresa. ETIMO es ID: 1</div>
+                        <label for="empresa">Selecciona tu empresa *</label>
+                        <select id="empresa" required onchange="actualizarID()">
+                            <option value="">Cargando empresas...</option>
+                        </select>
+                        <div style="font-size: 11px; color: #666; margin-top: 5px;">
+                            Si no ves tu empresa, <a href="registro_empresa.html">regístrala primero aquí</a>
+                        </div>
                     </div>
 
-                    <div class="grupo-formulario">
-                        <label for="nombreEmpresa">Nombre de Empresa *</label>
-                        <input type="text" id="nombreEmpresa" name="Empresa" required placeholder="Ej: ETIMO">
-                    </div>
+                    <input type="hidden" id="idEmpresa" name="ID_Empresa">
 
                     <div class="grid-2">
                         <div class="grupo-formulario">
@@ -212,11 +217,11 @@
                     </div>
                 </div>
 
-                <!-- Sección Impacto Ambiental COMPLETA -->
+                <!-- Sección Impacto Ambiental (solo campos esenciales) -->
                 <div class="seccion">
                     <h3 style="color: var(--verde-oscuro); margin-bottom: 15px;">🌿 Impacto Ambiental</h3>
 
-                    <div class="grid-4">
+                    <div class="grid-3">
                         <div class="grupo-formulario">
                             <label for="energia_kwh">Energía <span class="unidad">(kWh)</span></label>
                             <input type="number" id="energia_kwh" name="Energia_kWh" step="0.1" min="0" value="0">
@@ -228,74 +233,20 @@
                         </div>
 
                         <div class="grupo-formulario">
-                            <label for="papel_kg">Papel <span class="unidad">(kg)</span></label>
-                            <input type="number" id="papel_kg" name="Papel_kg" step="0.1" min="0" value="0">
-                        </div>
-
-                        <div class="grupo-formulario">
                             <label for="agua_m3">Agua <span class="unidad">(m³)</span></label>
                             <input type="number" id="agua_m3" name="Agua_m3" step="0.1" min="0" value="0" placeholder="1 m³ = 1000 L">
                         </div>
                     </div>
-
-                    <div class="grid-4">
-                        <div class="grupo-formulario">
-                            <label for="borra_humeda_kg">Borra húmeda <span class="unidad">(kg)</span></label>
-                            <input type="number" id="borra_humeda_kg" name="Borra_humeda_kg" step="0.1" min="0" value="0">
-                        </div>
-
-                        <div class="grupo-formulario">
-                            <label for="borra_seca_kg">Borra seca <span class="unidad">(kg)</span></label>
-                            <input type="number" id="borra_seca_kg" name="Borra_seca_kg" step="0.1" min="0" value="0">
-                        </div>
-
-                        <div class="grupo-formulario">
-                            <label for="tela_reutilizada_kg">Tela reutilizada <span class="unidad">(kg)</span></label>
-                            <input type="number" id="tela_reutilizada_kg" name="Tela_reutilizada_kg" step="0.1" min="0" value="0">
-                        </div>
-
-                        <div class="grupo-formulario">
-                            <label for="tecnologia_recuperada_kg">Tecnología recuperada <span class="unidad">(kg)</span></label>
-                            <input type="number" id="tecnologia_recuperada_kg" name="Tecnologia_recuperada_kg" step="0.1" min="0" value="0">
-                        </div>
-                    </div>
-
-                    <div class="grid-4">
-                        <div class="grupo-formulario">
-                            <label for="plastico_reutilizado_kg">Plástico reutilizado <span class="unidad">(kg)</span></label>
-                            <input type="number" id="plastico_reutilizado_kg" name="Plastico_reutilizado_kg" step="0.1" min="0" value="0">
-                        </div>
-
-                        <div class="grupo-formulario">
-                            <label for="residuo_organico_kg">Residuo orgánico <span class="unidad">(kg)</span></label>
-                            <input type="number" id="residuo_organico_kg" name="Residuo_Organico_kg" step="0.1" min="0" value="0">
-                        </div>
-
-                        <div class="grupo-formulario">
-                            <label for="residuo_reciclable_kg">Residuo reciclable <span class="unidad">(kg)</span></label>
-                            <input type="number" id="residuo_reciclable_kg" name="Residuo_Reciclable_kg" step="0.1" min="0" value="0">
-                        </div>
-
-                        <div class="grupo-formulario">
-                            <label for="residuo_no_reciclable_kg">Residuo no reciclable <span class="unidad">(kg)</span></label>
-                            <input type="number" id="residuo_no_reciclable_kg" name="Residuo_No_Reciclable_kg" step="0.1" min="0" value="0">
-                        </div>
-                    </div>
                 </div>
 
-                <!-- Sección Impacto Social COMPLETA -->
+                <!-- Sección Impacto Social -->
                 <div class="seccion">
                     <h3 style="color: var(--verde-oscuro); margin-bottom: 15px;">👥 Impacto Social</h3>
 
-                    <div class="grid-4">
+                    <div class="grid-3">
                         <div class="grupo-formulario">
-                            <label for="cantidad_empleados_total">Total empleados *</label>
+                            <label for="cantidad_empleados_total">Total de empleados *</label>
                             <input type="number" id="cantidad_empleados_total" name="Cantidad_Empleados_Total" min="1" required placeholder="Mínimo 1">
-                        </div>
-
-                        <div class="grupo-formulario">
-                            <label for="cantidad_empleados_locales">Empleados locales</label>
-                            <input type="number" id="cantidad_empleados_locales" name="Cantidad_Empleados_Locales" min="0" value="0">
                         </div>
 
                         <div class="grupo-formulario">
@@ -309,42 +260,29 @@
                         </div>
                     </div>
 
-                    <div class="grid-4">
-                        <div class="grupo-formulario">
-                            <label for="capacitacion_horas">Capacitación <span class="unidad">(horas)</span></label>
-                            <input type="number" id="capacitacion_horas" name="Capacitacion_horas" step="0.1" min="0" value="0">
+                    <!-- POLÍTICA DE INCLUSIÓN COMO CHECKBOX -->
+                    <div class="grupo-formulario">
+                        <label>¿Tiene política de inclusión?</label>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="politica_inclusion_si" name="politica_inclusion_check" value="SI">
+                            <label for="politica_inclusion_si" style="font-weight: normal;">Sí, nuestra empresa tiene política de inclusión</label>
                         </div>
-
-                        <div class="grupo-formulario">
-                            <label for="politica_inclusion">Política de inclusión <span class="unidad">(%)</span></label>
-                            <input type="number" id="politica_inclusion" name="Politica_inclusion" min="0" max="100" value="0">
-                        </div>
-
-                        <div class="grupo-formulario">
-                            <label for="procesos_optimizados">Procesos optimizados <span class="unidad">(%)</span></label>
-                            <input type="number" id="procesos_optimizados" name="Procesos_optimizados_%" min="0" max="100" value="0">
-                        </div>
-
-                        <div class="grupo-formulario">
-                            <label for="digitalizacion">Digitalización <span class="unidad">(%)</span></label>
-                            <input type="number" id="digitalizacion" name="Digitalizacion_%" min="0" max="100" value="0">
-                        </div>
+                        <input type="hidden" id="politica_inclusion" name="Politica_inclusion" value="NO">
                     </div>
                 </div>
 
-                <!-- Sección Comentarios y Evidencia -->
+                <!-- Sección Información Adicional -->
                 <div class="seccion">
                     <h3 style="color: var(--verde-oscuro); margin-bottom: 15px;">📝 Información Adicional</h3>
 
                     <div class="grupo-formulario">
-                        <label for="comentarios">Comentarios u observaciones</label>
-                        <textarea id="comentarios" name="Comentarios" rows="3" placeholder="Comentarios adicionales sobre los datos reportados..."></textarea>
+                        <label for="comentarios">Comentarios</label>
+                        <textarea id="comentarios" name="Comentarios" rows="3" placeholder="Observaciones sobre los datos reportados..."></textarea>
                     </div>
 
                     <div class="grupo-formulario">
-                        <label for="link_evidencia">Link de evidencia/documentación</label>
-                        <input type="url" id="link_evidencia" name="Link_Evidencia" placeholder="https://drive.google.com/... o link a documento">
-                        <div class="nota">Puedes subir documentos a Google Drive y compartir el enlace</div>
+                        <label for="link_evidencia">Link de documentación (opcional)</label>
+                        <input type="url" id="link_evidencia" name="Link_Evidencia" placeholder="https://drive.google.com/...">
                     </div>
                 </div>
 
@@ -356,7 +294,7 @@
             <div style="text-align: center; margin-top: 25px; color: #666; font-size: 13px;">
                 <p>📧 ¿Necesitas ayuda? <a href="mailto:info@impactaverde.com.ar">Contacta con nuestro equipo</a></p>
                 <p style="font-size: 11px; margin-top: 10px; color: #888;">
-                    Fecha actual: 27/12/2025 | Todos los campos numéricos pueden dejarse en 0 si no aplican
+                    Los campos marcados con * son obligatorios. Los demás pueden dejarse en 0.
                 </p>
             </div>
         </div>
@@ -364,9 +302,59 @@
 
     <script>
         const URL_SHEETBEST = 'https://api.sheetbest.com/sheets/2eb917d5-94d0-4d5a-b511-ea115ba62206';
+        const URL_REGISTRO = 'https://api.sheetbest.com/sheets/c7fec5f9-d83f-4d32-b31e-6ee06ea50d00';
 
-        // Auto-completar mes y año actual
+        // Cargar empresas desde el Excel de Registro
+        async function cargarEmpresas() {
+            try {
+                const respuesta = await fetch(URL_REGISTRO);
+                if (respuesta.ok) {
+                    const datos = await respuesta.json();
+                    const selectEmpresa = document.getElementById('empresa');
+                    selectEmpresa.innerHTML = '<option value="">Seleccionar empresa...</option>';
+                    
+                    if (datos.length > 0) {
+                        datos.forEach((empresa, index) => {
+                            // El primer elemento es el header, así que lo saltamos
+                            if (index === 0) return;
+                            
+                            if (empresa[0] && empresa[1]) {
+                                const id = empresa[0];
+                                const nombre = empresa[1];
+                                const option = document.createElement('option');
+                                option.value = id;
+                                option.textContent = `${nombre} (ID: ${id})`;
+                                option.setAttribute('data-id', id);
+                                option.setAttribute('data-nombre', nombre);
+                                selectEmpresa.appendChild(option);
+                            }
+                        });
+                    } else {
+                        selectEmpresa.innerHTML = '<option value="">No hay empresas registradas</option>';
+                    }
+                }
+            } catch (error) {
+                console.error('Error cargando empresas:', error);
+                document.getElementById('empresa').innerHTML = '<option value="">Error cargando empresas</option>';
+            }
+        }
+
+        function actualizarID() {
+            const select = document.getElementById('empresa');
+            const id = select.options[select.selectedIndex].value;
+            document.getElementById('idEmpresa').value = id;
+        }
+
+        // Configurar checkbox de política de inclusión
+        document.getElementById('politica_inclusion_si').addEventListener('change', function() {
+            document.getElementById('politica_inclusion').value = this.checked ? 'SI' : 'NO';
+        });
+
         document.addEventListener('DOMContentLoaded', function() {
+            // Cargar empresas al iniciar
+            cargarEmpresas();
+            
+            // Auto-completar año actual
             const anioActual = new Date().getFullYear();
             const selectAnio = document.getElementById('anio');
             for (let i = 0; i < selectAnio.options.length; i++) {
@@ -376,6 +364,7 @@
                 }
             }
             
+            // Auto-completar mes actual
             const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
                           'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
             const mesActual = meses[new Date().getMonth()];
@@ -391,14 +380,13 @@
         document.getElementById('formularioDatos').addEventListener('submit', async function(evento) {
             evento.preventDefault();
 
-            // Validaciones básicas
-            const idEmpresa = document.getElementById('idEmpresa').value;
-            const nombreEmpresa = document.getElementById('nombreEmpresa').value;
+            // Validaciones
+            const empresa = document.getElementById('empresa').value;
             const mes = document.getElementById('mes').value;
             const anio = document.getElementById('anio').value;
             const cantidadEmpleados = document.getElementById('cantidad_empleados_total').value;
 
-            if (!idEmpresa || !nombreEmpresa || !mes || !anio || !cantidadEmpleados) {
+            if (!empresa || !mes || !anio || !cantidadEmpleados) {
                 mostrarMensajeError('❌ Por favor, completa todos los campos obligatorios');
                 return;
             }
@@ -415,48 +403,50 @@
             boton.disabled = true;
             boton.textContent = 'Enviando...';
 
-            // OBJETO COMPLETO con TODOS los campos en orden
+            // Obtener nombre de la empresa seleccionada
+            const selectEmpresa = document.getElementById('empresa');
+            const nombreEmpresa = selectEmpresa.options[selectEmpresa.selectedIndex].text.split(' (ID:')[0];
+
+            // DATOS COMPLETOS para enviar
             const datosParaEnviar = {
                 'ID_Empresa': document.getElementById('idEmpresa').value,
-                'Empresa': document.getElementById('nombreEmpresa').value,
+                'Empresa': nombreEmpresa,
                 'Mes': document.getElementById('mes').value,
                 'Año': document.getElementById('anio').value,
                 'Fecha_carga': document.getElementById('fechaCarga').value,
                 
-                // Impacto Ambiental (en orden del Excel)
+                // Impacto Ambiental
                 'Energia_kWh': parseFloat(document.getElementById('energia_kwh').value) || 0,
                 'Combustible_L': parseFloat(document.getElementById('combustible_l').value) || 0,
-                'Papel_kg': parseFloat(document.getElementById('papel_kg').value) || 0,
-                'Borra_humeda_kg': parseFloat(document.getElementById('borra_humeda_kg').value) || 0,
-                'Borra_seca_kg': parseFloat(document.getElementById('borra_seca_kg').value) || 0,
-                'Tela_reutilizada_kg': parseFloat(document.getElementById('tela_reutilizada_kg').value) || 0,
-                'Tecnologia_recuperada_kg': parseFloat(document.getElementById('tecnologia_recuperada_kg').value) || 0,
-                'Plastico_reutilizado_kg': parseFloat(document.getElementById('plastico_reutilizado_kg').value) || 0,
+                'Agua_m3': parseFloat(document.getElementById('agua_m3').value) || 0,
+                
+                // Campos con valor 0 por defecto (no en formulario)
+                'Papel_kg': 0,
+                'Borra_humeda_kg': 0,
+                'Borra_seca_kg': 0,
+                'Tela_reutilizada_kg': 0,
+                'Tecnologia_recuperada_kg': 0,
+                'Plastico_reutilizado_kg': 0,
+                'Residuo_Organico_kg': 0,
+                'Residuo_Reciclable_kg': 0,
+                'Residuo_No_Reciclable_kg': 0,
                 
                 // Impacto Social
                 'Cantidad_Empleados_Total': parseInt(document.getElementById('cantidad_empleados_total').value) || 1,
-                'Cantidad_Empleados_Locales': parseInt(document.getElementById('cantidad_empleados_locales').value) || 0,
+                'Cantidad_Empleados_Locales': 0,
                 'Cantidad_Mujeres': parseInt(document.getElementById('cantidad_mujeres').value) || 0,
                 'Cantidad_Personas_Discapacitadas': parseInt(document.getElementById('cantidad_personas_discapacitadas').value) || 0,
-                'Capacitacion_horas': parseFloat(document.getElementById('capacitacion_horas').value) || 0,
-                'Politica_inclusion': parseFloat(document.getElementById('politica_inclusion').value) || 0,
-                'Procesos_optimizados_%': parseFloat(document.getElementById('procesos_optimizados').value) || 0,
-                'Digitalizacion_%': parseFloat(document.getElementById('digitalizacion').value) || 0,
-                
-                // Residuos
-                'Residuo_Organico_kg': parseFloat(document.getElementById('residuo_organico_kg').value) || 0,
-                'Residuo_Reciclable_kg': parseFloat(document.getElementById('residuo_reciclable_kg').value) || 0,
-                'Residuo_No_Reciclable_kg': parseFloat(document.getElementById('residuo_no_reciclable_kg').value) || 0,
+                'Capacitacion_horas': 0,
+                'Politica_inclusion': document.getElementById('politica_inclusion').value,
+                'Procesos_optimizados_%': 0,
+                'Digitalizacion_%': 0,
                 
                 // Información adicional
                 'Comentarios': document.getElementById('comentarios').value || '',
-                'Link_Evidencia': document.getElementById('link_evidencia').value || '',
-                
-                // Agua al final (columna AA)
-                'Agua_m3': parseFloat(document.getElementById('agua_m3').value) || 0
+                'Link_Evidencia': document.getElementById('link_evidencia').value || ''
             };
 
-            console.log('📤 Enviando datos mensuales completos...');
+            console.log('📤 Enviando datos mensuales...');
 
             try {
                 const respuesta = await fetch(URL_SHEETBEST, {
@@ -472,7 +462,7 @@
                     setTimeout(() => {
                         boton.disabled = false;
                         boton.textContent = '📊 Enviar Datos Mensuales';
-                        // Resetear formulario pero mantener fecha
+                        // Resetear formulario
                         document.getElementById('formularioDatos').reset();
                         document.getElementById('fechaCarga').value = '27/12/2025';
                         // Restaurar mes y año actual
@@ -482,6 +472,8 @@
                                       'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
                         const mesActual = meses[new Date().getMonth()];
                         document.getElementById('mes').value = mesActual;
+                        // Recargar empresas por si hay nuevas
+                        cargarEmpresas();
                     }, 2000);
 
                 } else {
