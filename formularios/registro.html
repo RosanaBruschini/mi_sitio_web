@@ -110,18 +110,18 @@
             <h1 style="margin: 15px 0 8px 0;">Impacta Verde - Registro de Empresa</h1>
             <p style="opacity: 0.9; max-width: 500px; margin: 0 auto;">Completa los datos de tu empresa una sola vez</p>
         </div>
-        
+
         <div class="contenido-formulario">
             <div id="mensajeExito" class="mensaje mensaje-exito"></div>
             <div id="mensajeError" class="mensaje mensaje-error"></div>
             <div id="mensajeCarga" class="mensaje mensaje-carga"></div>
-            
+
             <form id="formularioRegistro">
                 <div class="grupo-formulario">
                     <label for="nombreEmpresa">Nombre de la Empresa *</label>
                     <input type="text" id="nombreEmpresa" name="Empresa" required placeholder="Ejemplo: Mi Empresa S.A.">
                 </div>
-                
+
                 <div class="fila-doble">
                     <div class="grupo-formulario">
                         <label for="rubro">Rubro *</label>
@@ -134,7 +134,7 @@
                             <option value="Otro">Otro</option>
                         </select>
                     </div>
-                    
+
                     <div class="grupo-formulario">
                         <label for="pais">País *</label>
                         <select id="pais" name="Pais" required>
@@ -145,49 +145,49 @@
                         </select>
                     </div>
                 </div>
-                
+
                 <div class="fila-doble">
                     <div class="grupo-formulario">
                         <label for="localidad">Localidad *</label>
                         <input type="text" id="localidad" name="Localidad" required placeholder="Ejemplo: Buenos Aires">
                     </div>
-                    
+
                     <div class="grupo-formulario">
                         <label for="areaCargo">Área a cargo *</label>
                         <input type="text" id="areaCargo" name="Area_a_cargo" required placeholder="Ejemplo: Sostenibilidad">
                     </div>
                 </div>
-                
+
                 <div class="fila-doble">
                     <div class="grupo-formulario">
                         <label for="cuit">CUIT *</label>
                         <input type="text" id="cuit" name="CUIT" required placeholder="00-12345678-9">
                     </div>
-                    
+
                     <div class="grupo-formulario">
                         <label for="responsable">Responsable *</label>
                         <input type="text" id="responsable" name="Responsable" required placeholder="Nombre y apellido">
                     </div>
                 </div>
-                
+
                 <div class="fila-doble">
                     <div class="grupo-formulario">
                         <label for="email">Email *</label>
                         <input type="email" id="email" name="Email" required placeholder="ejemplo@empresa.com">
                     </div>
-                    
+
                     <div class="grupo-formulario">
                         <label for="telefono">Teléfono *</label>
                         <input type="tel" id="telefono" name="Tel_contacto" required placeholder="+54 11 1234-5678">
                     </div>
                 </div>
-                
+
                 <div class="fila-doble">
                     <div class="grupo-formulario">
                         <label for="whatsapp">WhatsApp</label>
                         <input type="tel" id="whatsapp" name="WhatsApp" placeholder="+54 9 11 1234-5678">
                     </div>
-                    
+
                     <div class="grupo-formulario">
                         <label for="plan">Plan de suscripción *</label>
                         <select id="plan" name="Plan" required>
@@ -197,29 +197,29 @@
                         </select>
                     </div>
                 </div>
-                
+
                 <div class="grupo-formulario">
                     <label for="observaciones">Observaciones</label>
                     <textarea id="observaciones" name="Observaciones" rows="3" placeholder="Comentarios adicionales..."></textarea>
                 </div>
-                
+
                 <button type="submit" class="boton-enviar" id="botonEnviar">🌿 Registrar Empresa</button>
             </form>
-            
+
             <div style="text-align: center; margin-top: 25px; color: #666; font-size: 13px;">
                 <p>📧 ¿Necesitas ayuda? <a href="mailto:info@impactaverde.com.ar">Contacta con nuestro equipo</a></p>
             </div>
         </div>
     </div>
-    
+
     <script>
         const URL_BACKEND = "http://localhost:5000/api/registrar-empresa";
-        
+
         document.getElementById('formularioRegistro').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
+
             mostrarMensajeCarga('⏳ Registrando empresa...');
-            
+
             const datos = {
                 'Empresa': document.getElementById('nombreEmpresa').value,
                 'Rubro': document.getElementById('rubro').value,
@@ -234,16 +234,16 @@
                 'Observaciones': document.getElementById('observaciones').value || '',
                 'Plan': document.getElementById('plan').value
             };
-            
+
             try {
                 const respuesta = await fetch(URL_BACKEND, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(datos)
                 });
-                
+
                 const resultado = await respuesta.json();
-                
+
                 if (resultado.success) {
                     mostrarMensajeExito(`✅ ¡Empresa registrada!<br><small>ID: ${resultado.id} | Fecha: ${resultado.fecha}</small>`);
                     setTimeout(() => { document.getElementById('formularioRegistro').reset(); }, 3000);
@@ -254,21 +254,21 @@
                 mostrarMensajeError('❌ Error de conexión');
             }
         });
-        
+
         function mostrarMensajeExito(texto) {
             document.getElementById('mensajeExito').innerHTML = texto;
             document.getElementById('mensajeExito').style.display = 'block';
             document.getElementById('mensajeError').style.display = 'none';
             document.getElementById('mensajeCarga').style.display = 'none';
         }
-        
+
         function mostrarMensajeError(texto) {
             document.getElementById('mensajeError').innerHTML = texto;
             document.getElementById('mensajeError').style.display = 'block';
             document.getElementById('mensajeExito').style.display = 'none';
             document.getElementById('mensajeCarga').style.display = 'none';
         }
-        
+
         function mostrarMensajeCarga(texto) {
             document.getElementById('mensajeCarga').innerHTML = texto;
             document.getElementById('mensajeCarga').style.display = 'block';
