@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos Mensuales - Impacta Verde</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>" type="image/x-icon">
+    <style>
+        :root {
+            --verde-oscuro: #1F7A3E;
+            --verde-medio: #4CAF50;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        body {
+            background-color: #f1f8e9;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .contenedor-principal {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        .encabezado {
+            background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        .logo-img {
+            height: 200px; width: auto; border-radius: 8px; background-color: white; padding: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;
+        }
+        .contenido-formulario {
+            padding: 25px;
+        }
+        .seccion {
+            background: #f8fff8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--verde-oscuro);
+        }
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .grupo-formulario { margin-bottom: 15px; }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #333;
+            font-size: 13px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .boton-enviar {
+            background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .mensaje {
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+        .mensaje-exito { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .mensaje-error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .mensaje-carga { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        @media (max-width: 768px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="contenedor-principal">
+        <div class="encabezado">
+            <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" alt="Logo Impacta Verde" class="logo-img">
+            <h1 style="margin: 15px 0 8px 0;">Impacta Verde - Datos Mensuales</h1>
+            <p style="opacity: 0.9; max-width: 600px; margin: 0 auto;">Reporta tu impacto ambiental y social del mes</p>
+        </div>
+        
+        <div class="contenido-formulario">
+            <div id="mensajeExito" class="mensaje mensaje-exito"></div>
+            <div id="mensajeError" class="mensaje mensaje-error"></div>
+            <div id="mensajeCarga" class="mensaje mensaje-carga"></div>
+            
+            <form id="formularioDatos">
+                <div class="seccion">
+                    <h3>🏢 Empresa y Período</h3>
+                    
+                    <div class="grupo-formulario">
+                        <label for="empresa">Selecciona tu empresa *</label>
+                        <select id="empresa" required onchange="document.getElementById('idEmpresa').value=this.value">
+                            <option value="">Cargando empresas...</option>
+                        </select>
+                    </div>
+                    
+                    <input type="hidden" id="idEmpresa" name="ID_Empresa">
+                    
+                    <div class="grid-2">
+                        <div class="grupo-formulario">
+                            <label for="mes">Mes *</label>
+                            <select id="mes" name="Mes" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="Enero">Enero</option><option value="Febrero">Febrero</option>
+                                <option value="Marzo">Marzo</option><option value="Abril">Abril</option>
+                                <option value="Mayo">Mayo</option><option value="Junio">Junio</option>
+                                <option value="Julio">Julio</option><option value="Agosto">Agosto</option>
+                                <option value="Septiembre">Septiembre</option><option value="Octubre">Octubre</option>
+                                <option value="Noviembre">Noviembre</option><option value="Diciembre">Diciembre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="grupo-formulario">
+                            <label for="anio">Año *</label>
+                            <select id="anio" name="Año" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="seccion">
+                    <h3>🌿 Impacto Ambiental</h3>
+                    <div class="grid-3">
+                        <div class="grupo-formulario"><label for="energia_kwh">Energía (kWh)</label><input type="number" id="energia_kwh" name="Energia_kWh" value="0" step="0.1"></div>
+                        <div class="grupo-formulario"><label for="combustible_l">Combustible (L)</label><input type="number" id="combustible_l" name="Combustible_L" value="0" step="0.1"></div>
+                        <div class="grupo-formulario"><label for="agua_m3">Agua (m³)</label><input type="number" id="agua_m3" name="Agua_m3" value="0" step="0.1"></div>
+                        <div class="grupo-formulario"><label for="papel_kg">Papel (kg)</label><input type="number" id="papel_kg" name="Papel_kg" value="0" step="0.1"></div>
+                        <div class="grupo-formulario"><label for="borra_humeda_kg">Borra húmeda (kg)</label><input type="number" id="borra_humeda_kg" name="Borra_humeda_kg" value="0" step="0.1"></div>
+                        <div class="grupo-formulario"><label for="borra_seca_kg">Borra seca (kg)</label><input type="number" id="borra_seca_kg" name="Borra_seca_kg" value="0" step="0.1"></div>
+                    </div>
+                </div>
+                
+                <div class="seccion">
+                    <h3>👥 Impacto Social</h3>
+                    <div class="grid-3">
+                        <div class="grupo-formulario"><label for="empleados_total">Total empleados *</label><input type="number" id="empleados_total" name="Cantidad_Empleados_Total" required min="1"></div>
+                        <div class="grupo-formulario"><label for="empleados_mujeres">Mujeres</label><input type="number" id="empleados_mujeres" name="Cantidad_Mujeres" value="0" min="0"></div>
+                        <div class="grupo-formulario"><label for="discapacitadas">Personas con discapacidad</label><input type="number" id="discapacitadas" name="Cantidad_Personas_Discapacitadas" value="0" min="0"></div>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label>Política de inclusión</label>
+                        <div style="display: flex; gap: 15px; margin-top: 5px;">
+                            <label><input type="radio" name="Politica_inclusion" value="SI" checked> Sí</label>
+                            <label><input type="radio" name="Politica_inclusion" value="NO"> No</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="boton-enviar" id="botonEnviar">📊 Enviar Datos Mensuales</button>
+            </form>
+            
+            <div style="text-align: center; margin-top: 25px; color: #666; font-size: 13px;">
+                <p>📧 ¿Necesitas ayuda? <a href="mailto:info@impactaverde.com.ar">Contacta con nuestro equipo</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const URL_EMPRESAS = "http://localhost:5000/api/empresas";
+        const URL_DATOS = "http://localhost:5000/api/guardar-datos-mensuales";
+        
+        async function cargarEmpresas() {
+            try {
+                const respuesta = await fetch(URL_EMPRESAS);
+                const datos = await respuesta.json();
+                
+                if (datos.success) {
+                    const select = document.getElementById('empresa');
+                    select.innerHTML = '<option value="">Seleccionar empresa...</option>';
+                    
+                    datos.empresas.forEach(emp => {
+                        const option = document.createElement('option');
+                        option.value = emp.id;
+                        option.textContent = `${emp.nombre} (ID: ${emp.id})`;
+                        select.appendChild(option);
+                    });
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', cargarEmpresas);
+        
+        document.getElementById('formularioDatos').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const empresaSelect = document.getElementById('empresa');
+            const empresaTexto = empresaSelect.options[empresaSelect.selectedIndex].text;
+            
+            const datos = {
+                'ID_Empresa': document.getElementById('idEmpresa').value,
+                'Empresa': empresaTexto.split(' (ID:')[0].trim(),
+                'Mes': document.getElementById('mes').value,
+                'Año': document.getElementById('anio').value,
+                'Energia_kWh': parseFloat(document.getElementById('energia_kwh').value) || 0,
+                'Combustible_L': parseFloat(document.getElementById('combustible_l').value) || 0,
+                'Agua_m3': parseFloat(document.getElementById('agua_m3').value) || 0,
+                'Papel_kg': parseFloat(document.getElementById('papel_kg').value) || 0,
+                'Borra_humeda_kg': parseFloat(document.getElementById('borra_humeda_kg').value) || 0,
+                'Borra_seca_kg': parseFloat(document.getElementById('borra_seca_kg').value) || 0,
+                'Cantidad_Empleados_Total': parseInt(document.getElementById('empleados_total').value) || 1,
+                'Cantidad_Mujeres': parseInt(document.getElementById('empleados_mujeres').value) || 0,
+                'Cantidad_Personas_Discapacitadas': parseInt(document.getElementById('discapacitadas').value) || 0,
+                'Politica_inclusion': document.querySelector('input[name="Politica_inclusion"]:checked').value
+            };
+            
+            mostrarMensajeCarga('⏳ Enviando datos...');
+            
+            try {
+                const respuesta = await fetch(URL_DATOS, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(datos)
+                });
+                
+                const resultado = await respuesta.json();
+                
+                if (resultado.success) {
+                    mostrarMensajeExito(`✅ Datos guardados<br><small>${datos.Mes}/${datos.Año} - ${resultado.campos} campos</small>`);
+                    setTimeout(() => { document.getElementById('formularioDatos').reset(); cargarEmpresas(); }, 3000);
+                } else {
+                    mostrarMensajeError(`❌ Error: ${resultado.error}`);
+                }
+            } catch (error) {
+                mostrarMensajeError('❌ Error de conexión');
+            }
+        });
+        
+        // Funciones de mensajes
+        function mostrarMensajeExito(texto) {
+            document.getElementById('mensajeExito').innerHTML = texto;
+            document.getElementById('mensajeExito').style.display = 'block';
+            document.getElementById('mensajeError').style.display = 'none';
+            document.getElementById('mensajeCarga').style.display = 'none';
+        }
+        
+        function mostrarMensajeError(texto) {
+            document.getElementById('mensajeError').innerHTML = texto;
+            document.getElementById('mensajeError').style.display = 'block';
+            document.getElementById('mensajeExito').style.display = 'none';
+            document.getElementById('mensajeCarga').style.display = 'none';
+        }
+        
+        function mostrarMensajeCarga(texto) {
+            document.getElementById('mensajeCarga').innerHTML = texto;
+            document.getElementById('mensajeCarga').style.display = 'block';
+            document.getElementById('mensajeExito').style.display = 'none';
+            document.getElementById('mensajeError').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
