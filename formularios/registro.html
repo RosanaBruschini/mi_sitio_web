@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Empresa - Impacta Verde</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>" type="image/x-icon">
+    <style>
+        :root {
+            --verde-oscuro: #1F7A3E;
+            --verde-medio: #4CAF50;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        body {
+            background-color: #f1f8e9;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .contenedor-principal {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        .encabezado {
+            background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        .logo-img {
+            height: 200px; width: auto; border-radius: 8px; background-color: white; padding: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;
+        }
+        .contenido-formulario {
+            padding: 25px;
+        }
+        .grupo-formulario {
+            margin-bottom: 18px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .fila-doble {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .boton-enviar {
+            background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .mensaje {
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+        .mensaje-exito {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .mensaje-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .mensaje-carga {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        @media (max-width: 768px) {
+            .fila-doble { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor-principal">
+        <div class="encabezado">
+            <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" alt="Logo Impacta Verde" class="logo-img">
+            <h1 style="margin: 15px 0 8px 0;">Impacta Verde - Registro de Empresa</h1>
+            <p style="opacity: 0.9; max-width: 500px; margin: 0 auto;">Completa los datos de tu empresa una sola vez</p>
+        </div>
+        
+        <div class="contenido-formulario">
+            <div id="mensajeExito" class="mensaje mensaje-exito"></div>
+            <div id="mensajeError" class="mensaje mensaje-error"></div>
+            <div id="mensajeCarga" class="mensaje mensaje-carga"></div>
+            
+            <form id="formularioRegistro">
+                <div class="grupo-formulario">
+                    <label for="nombreEmpresa">Nombre de la Empresa *</label>
+                    <input type="text" id="nombreEmpresa" name="Empresa" required placeholder="Ejemplo: Mi Empresa S.A.">
+                </div>
+                
+                <div class="fila-doble">
+                    <div class="grupo-formulario">
+                        <label for="rubro">Rubro *</label>
+                        <select id="rubro" name="Rubro" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="Textil">Textil</option>
+                            <option value="Reciclaje">Reciclaje</option>
+                            <option value="Construcción">Construcción</option>
+                            <option value="Tecnología">Tecnología</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="grupo-formulario">
+                        <label for="pais">País *</label>
+                        <select id="pais" name="Pais" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="Argentina" selected>Argentina</option>
+                            <option value="Uruguay">Uruguay</option>
+                            <option value="Chile">Chile</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="fila-doble">
+                    <div class="grupo-formulario">
+                        <label for="localidad">Localidad *</label>
+                        <input type="text" id="localidad" name="Localidad" required placeholder="Ejemplo: Buenos Aires">
+                    </div>
+                    
+                    <div class="grupo-formulario">
+                        <label for="areaCargo">Área a cargo *</label>
+                        <input type="text" id="areaCargo" name="Area_a_cargo" required placeholder="Ejemplo: Sostenibilidad">
+                    </div>
+                </div>
+                
+                <div class="fila-doble">
+                    <div class="grupo-formulario">
+                        <label for="cuit">CUIT *</label>
+                        <input type="text" id="cuit" name="CUIT" required placeholder="00-12345678-9">
+                    </div>
+                    
+                    <div class="grupo-formulario">
+                        <label for="responsable">Responsable *</label>
+                        <input type="text" id="responsable" name="Responsable" required placeholder="Nombre y apellido">
+                    </div>
+                </div>
+                
+                <div class="fila-doble">
+                    <div class="grupo-formulario">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="Email" required placeholder="ejemplo@empresa.com">
+                    </div>
+                    
+                    <div class="grupo-formulario">
+                        <label for="telefono">Teléfono *</label>
+                        <input type="tel" id="telefono" name="Tel_contacto" required placeholder="+54 11 1234-5678">
+                    </div>
+                </div>
+                
+                <div class="fila-doble">
+                    <div class="grupo-formulario">
+                        <label for="whatsapp">WhatsApp</label>
+                        <input type="tel" id="whatsapp" name="WhatsApp" placeholder="+54 9 11 1234-5678">
+                    </div>
+                    
+                    <div class="grupo-formulario">
+                        <label for="plan">Plan de suscripción *</label>
+                        <select id="plan" name="Plan" required>
+                            <option value="">Seleccionar plan...</option>
+                            <option value="Mensual">Mensual</option>
+                            <option value="Anual">Anual</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="grupo-formulario">
+                    <label for="observaciones">Observaciones</label>
+                    <textarea id="observaciones" name="Observaciones" rows="3" placeholder="Comentarios adicionales..."></textarea>
+                </div>
+                
+                <button type="submit" class="boton-enviar" id="botonEnviar">🌿 Registrar Empresa</button>
+            </form>
+            
+            <div style="text-align: center; margin-top: 25px; color: #666; font-size: 13px;">
+                <p>📧 ¿Necesitas ayuda? <a href="mailto:info@impactaverde.com.ar">Contacta con nuestro equipo</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const URL_BACKEND = "http://localhost:5000/api/registrar-empresa";
+        
+        document.getElementById('formularioRegistro').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            mostrarMensajeCarga('⏳ Registrando empresa...');
+            
+            const datos = {
+                'Empresa': document.getElementById('nombreEmpresa').value,
+                'Rubro': document.getElementById('rubro').value,
+                'Pais': document.getElementById('pais').value,
+                'Localidad': document.getElementById('localidad').value,
+                'Responsable': document.getElementById('responsable').value,
+                'Email': document.getElementById('email').value,
+                'Tel_contacto': document.getElementById('telefono').value,
+                'WhatsApp': document.getElementById('whatsapp').value || '',
+                'Area_a_cargo': document.getElementById('areaCargo').value,
+                'CUIT': document.getElementById('cuit').value,
+                'Observaciones': document.getElementById('observaciones').value || '',
+                'Plan': document.getElementById('plan').value
+            };
+            
+            try {
+                const respuesta = await fetch(URL_BACKEND, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(datos)
+                });
+                
+                const resultado = await respuesta.json();
+                
+                if (resultado.success) {
+                    mostrarMensajeExito(`✅ ¡Empresa registrada!<br><small>ID: ${resultado.id} | Fecha: ${resultado.fecha}</small>`);
+                    setTimeout(() => { document.getElementById('formularioRegistro').reset(); }, 3000);
+                } else {
+                    mostrarMensajeError(`❌ Error: ${resultado.error}`);
+                }
+            } catch (error) {
+                mostrarMensajeError('❌ Error de conexión');
+            }
+        });
+        
+        function mostrarMensajeExito(texto) {
+            document.getElementById('mensajeExito').innerHTML = texto;
+            document.getElementById('mensajeExito').style.display = 'block';
+            document.getElementById('mensajeError').style.display = 'none';
+            document.getElementById('mensajeCarga').style.display = 'none';
+        }
+        
+        function mostrarMensajeError(texto) {
+            document.getElementById('mensajeError').innerHTML = texto;
+            document.getElementById('mensajeError').style.display = 'block';
+            document.getElementById('mensajeExito').style.display = 'none';
+            document.getElementById('mensajeCarga').style.display = 'none';
+        }
+        
+        function mostrarMensajeCarga(texto) {
+            document.getElementById('mensajeCarga').innerHTML = texto;
+            document.getElementById('mensajeCarga').style.display = 'block';
+            document.getElementById('mensajeExito').style.display = 'none';
+            document.getElementById('mensajeError').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
