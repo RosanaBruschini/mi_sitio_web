@@ -98,25 +98,25 @@
             <h1 style="margin: 15px 0 8px 0;">Impacta Verde - Datos Mensuales</h1>
             <p style="opacity: 0.9; max-width: 600px; margin: 0 auto;">Reporta tu impacto ambiental y social del mes</p>
         </div>
-        
+
         <div class="contenido-formulario">
             <div id="mensajeExito" class="mensaje mensaje-exito"></div>
             <div id="mensajeError" class="mensaje mensaje-error"></div>
             <div id="mensajeCarga" class="mensaje mensaje-carga"></div>
-            
+
             <form id="formularioDatos">
                 <div class="seccion">
                     <h3>🏢 Empresa y Período</h3>
-                    
+
                     <div class="grupo-formulario">
                         <label for="empresa">Selecciona tu empresa *</label>
                         <select id="empresa" required onchange="document.getElementById('idEmpresa').value=this.value">
                             <option value="">Cargando empresas...</option>
                         </select>
                     </div>
-                    
+
                     <input type="hidden" id="idEmpresa" name="ID_Empresa">
-                    
+
                     <div class="grid-2">
                         <div class="grupo-formulario">
                             <label for="mes">Mes *</label>
@@ -130,7 +130,7 @@
                                 <option value="Noviembre">Noviembre</option><option value="Diciembre">Diciembre</option>
                             </select>
                         </div>
-                        
+
                         <div class="grupo-formulario">
                             <label for="anio">Año *</label>
                             <select id="anio" name="Año" required>
@@ -142,7 +142,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="seccion">
                     <h3>🌿 Impacto Ambiental</h3>
                     <div class="grid-3">
@@ -154,7 +154,7 @@
                         <div class="grupo-formulario"><label for="borra_seca_kg">Borra seca (kg)</label><input type="number" id="borra_seca_kg" name="Borra_seca_kg" value="0" step="0.1"></div>
                     </div>
                 </div>
-                
+
                 <div class="seccion">
                     <h3>👥 Impacto Social</h3>
                     <div class="grid-3">
@@ -170,29 +170,29 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <button type="submit" class="boton-enviar" id="botonEnviar">📊 Enviar Datos Mensuales</button>
             </form>
-            
+
             <div style="text-align: center; margin-top: 25px; color: #666; font-size: 13px;">
                 <p>📧 ¿Necesitas ayuda? <a href="mailto:info@impactaverde.com.ar">Contacta con nuestro equipo</a></p>
             </div>
         </div>
     </div>
-    
+
     <script>
         const URL_EMPRESAS = "http://localhost:5000/api/empresas";
         const URL_DATOS = "http://localhost:5000/api/guardar-datos-mensuales";
-        
+
         async function cargarEmpresas() {
             try {
                 const respuesta = await fetch(URL_EMPRESAS);
                 const datos = await respuesta.json();
-                
+
                 if (datos.success) {
                     const select = document.getElementById('empresa');
                     select.innerHTML = '<option value="">Seleccionar empresa...</option>';
-                    
+
                     datos.empresas.forEach(emp => {
                         const option = document.createElement('option');
                         option.value = emp.id;
@@ -204,15 +204,15 @@
                 console.error("Error:", error);
             }
         }
-        
+
         document.addEventListener('DOMContentLoaded', cargarEmpresas);
-        
+
         document.getElementById('formularioDatos').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
+
             const empresaSelect = document.getElementById('empresa');
             const empresaTexto = empresaSelect.options[empresaSelect.selectedIndex].text;
-            
+
             const datos = {
                 'ID_Empresa': document.getElementById('idEmpresa').value,
                 'Empresa': empresaTexto.split(' (ID:')[0].trim(),
@@ -229,18 +229,18 @@
                 'Cantidad_Personas_Discapacitadas': parseInt(document.getElementById('discapacitadas').value) || 0,
                 'Politica_inclusion': document.querySelector('input[name="Politica_inclusion"]:checked').value
             };
-            
+
             mostrarMensajeCarga('⏳ Enviando datos...');
-            
+
             try {
                 const respuesta = await fetch(URL_DATOS, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(datos)
                 });
-                
+
                 const resultado = await respuesta.json();
-                
+
                 if (resultado.success) {
                     mostrarMensajeExito(`✅ Datos guardados<br><small>${datos.Mes}/${datos.Año} - ${resultado.campos} campos</small>`);
                     setTimeout(() => { document.getElementById('formularioDatos').reset(); cargarEmpresas(); }, 3000);
@@ -251,7 +251,7 @@
                 mostrarMensajeError('❌ Error de conexión');
             }
         });
-        
+
         // Funciones de mensajes
         function mostrarMensajeExito(texto) {
             document.getElementById('mensajeExito').innerHTML = texto;
@@ -259,14 +259,14 @@
             document.getElementById('mensajeError').style.display = 'none';
             document.getElementById('mensajeCarga').style.display = 'none';
         }
-        
+
         function mostrarMensajeError(texto) {
             document.getElementById('mensajeError').innerHTML = texto;
             document.getElementById('mensajeError').style.display = 'block';
             document.getElementById('mensajeExito').style.display = 'none';
             document.getElementById('mensajeCarga').style.display = 'none';
         }
-        
+
         function mostrarMensajeCarga(texto) {
             document.getElementById('mensajeCarga').innerHTML = texto;
             document.getElementById('mensajeCarga').style.display = 'block';
