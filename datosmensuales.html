@@ -4,156 +4,213 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datos Mensuales - Impacta Verde</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>" type="image/x-icon">
+    <link rel="icon" href="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" type="image/x-icon">
     <style>
         :root {
             --verde-oscuro: #1F7A3E;
             --verde-medio: #4CAF50;
+            --verde-claro: #d4edda;
+            --azul: #2196F3;
+            --naranja: #FF9800;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #f1f8e9;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             padding: 20px;
             min-height: 100vh;
         }
 
         .contenedor-principal {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 1400px;
+            margin: 40px auto;
             background: white;
-            border-radius: 12px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
 
         .encabezado {
             background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
             color: white;
-            padding: 25px 20px;
+            padding: 40px 30px;
             text-align: center;
+            position: relative;
         }
 
         .logo-img {
-            height: 200px; width: auto; border-radius: 8px; background-color: white; padding: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;
+            height: 100px;
+            width: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
         }
 
         .contenido-formulario {
-            padding: 25px;
+            padding: 40px;
         }
 
         .seccion {
             background: #f8fff8;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--verde-oscuro);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--verde-oscuro);
+            transition: transform 0.3s ease;
+        }
+
+        .seccion:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 15px;
+            gap: 25px;
+            margin-bottom: 25px;
         }
 
         .grid-4 {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 15px;
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
         .grupo-formulario {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         label {
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-weight: 600;
-            color: #333;
-            font-size: 13px;
+            color: #2c3e50;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .campo-obligatorio::after {
+            content: " *";
+            color: #dc3545;
         }
 
         input, select, textarea {
             width: 100%;
-            padding: 10px 12px;
+            padding: 14px 16px;
             border: 2px solid #e0e0e0;
-            border-radius: 6px;
-            font-size: 14px;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--verde-medio);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+            outline: none;
+            background: white;
         }
 
         .boton-enviar {
             background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
             color: white;
             border: none;
-            padding: 14px 25px;
-            border-radius: 8px;
-            font-size: 15px;
+            padding: 18px 30px;
+            border-radius: 10px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
-            margin-top: 10px;
+            margin-top: 40px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .boton-enviar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(31, 122, 62, 0.3);
+        }
+
+        .boton-enviar:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
         }
 
         .mensaje {
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
             text-align: center;
             font-weight: 500;
             display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .mensaje-exito {
-            background-color: #d4edda;
+            background-color: var(--verde-claro);
             color: #155724;
-            border: 1px solid #c3e6cb;
+            border: 2px solid #c3e6cb;
         }
 
         .mensaje-error {
             background-color: #f8d7da;
             color: #721c24;
-            border: 1px solid #f5c6cb;
+            border: 2px solid #f5c6cb;
         }
 
         .mensaje-carga {
             background-color: #d1ecf1;
             color: #0c5460;
-            border: 1px solid #bee5eb;
+            border: 2px solid #bee5eb;
         }
 
         .unidad {
             font-size: 12px;
-            color: #666;
+            color: #6c757d;
+            font-weight: normal;
             margin-left: 3px;
         }
 
         .nota {
-            font-size: 11px;
-            color: #666;
+            font-size: 12px;
+            color: #6c757d;
             font-style: italic;
-            margin-top: 3px;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        @media (max-width: 768px) {
-            .grid-2, .grid-4 {
-                grid-template-columns: 1fr;
-            }
+        .seccion-titulo {
+            color: var(--verde-oscuro);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--verde-claro);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
         }
-        
-        /* Autocomplete styles */
+
         .autocomplete-container {
             position: relative;
         }
-        
+
         .autocomplete-items {
             position: absolute;
             border: 1px solid #e0e0e0;
@@ -164,59 +221,139 @@
             left: 0;
             right: 0;
             background: white;
-            max-height: 200px;
+            max-height: 250px;
             overflow-y: auto;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        
+
         .autocomplete-items div {
-            padding: 10px;
+            padding: 12px 16px;
             cursor: pointer;
             border-bottom: 1px solid #e0e0e0;
+            transition: background 0.2s ease;
         }
-        
+
         .autocomplete-items div:hover {
-            background-color: #f1f8e9;
+            background-color: var(--verde-claro);
+        }
+
+        .header-info {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--azul);
+        }
+
+        @media (max-width: 1200px) {
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contenedor-principal {
+                margin: 20px auto;
+                border-radius: 15px;
+            }
+            
+            .encabezado {
+                padding: 30px 20px;
+            }
+            
+            .contenido-formulario {
+                padding: 25px;
+            }
+            
+            .seccion {
+                padding: 20px;
+            }
+            
+            .grid-2, .grid-4 {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            input, select, textarea {
+                padding: 12px 14px;
+            }
+            
+            .boton-enviar {
+                padding: 16px 25px;
+                margin-top: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .contenedor-principal {
+                margin: 10px auto;
+            }
+            
+            .contenido-formulario {
+                padding: 20px;
+            }
+            
+            .seccion {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="contenedor-principal">
         <div class="encabezado">
-            <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" alt="Logo Impacta Verde" class="logo-img">
-            <h1 style="margin: 15px 0 8px 0;">Impacta Verde - Datos Mensuales</h1>
-            <p style="opacity: 0.9; max-width: 600px; margin: 0 auto;">Reporta tu impacto ambiental y social del mes</p>
+            <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" 
+                 alt="Logo Impacta Verde" class="logo-img">
+            <h1 style="margin: 0 0 10px 0; font-size: 28px;">Impacta Verde</h1>
+            <p style="opacity: 0.9; font-size: 16px;">Reporte de Datos Mensuales</p>
         </div>
 
         <div class="contenido-formulario">
+            <div class="header-info">
+                <h3 style="color: var(--azul); margin-bottom: 10px;">📊 Información del Reporte</h3>
+                <p style="margin: 0; color: #555;">Complete todos los campos obligatorios (*). 
+                Los campos numéricos pueden dejarse en 0 si no aplican.</p>
+            </div>
+
             <div id="mensajeExito" class="mensaje mensaje-exito"></div>
             <div id="mensajeError" class="mensaje mensaje-error"></div>
             <div id="mensajeCarga" class="mensaje mensaje-carga"></div>
 
             <form id="formularioDatos">
-                <!-- Campo oculto para fecha de carga -->
-                <input type="hidden" id="fechaCarga" name="Fecha_carga" value="29/12/2025">
+                <!-- Campos ocultos automáticos -->
+                <input type="hidden" id="fechaCarga" name="Fecha_carga" value="29/12/2025 21:04:25">
 
+                <!-- SECCIÓN 1: EMPRESA Y PERÍODO -->
                 <div class="seccion">
-                    <h3 style="color: var(--verde-oscuro); margin-bottom: 15px;">🏢 Empresa y Período</h3>
-
-                    <div class="grupo-formulario">
-                        <label for="idEmpresa">ID de Empresa *</label>
-                        <input type="number" id="idEmpresa" name="ID_Empresa" min="1" required placeholder="Ej: 1 (para ETIMO)">
-                        <div class="nota">Ingresa el ID numérico de la empresa. ETIMO es ID: 1</div>
-                    </div>
-
-                    <div class="grupo-formulario">
-                        <label for="nombreEmpresa">Nombre de Empresa *</label>
-                        <div class="autocomplete-container">
-                            <input type="text" id="nombreEmpresa" name="Empresa" required placeholder="Ej: ETIMO" autocomplete="off">
-                            <div id="autocomplete-list" class="autocomplete-items"></div>
-                        </div>
-                        <div class="nota">Comienza a escribir y selecciona tu empresa de la lista</div>
+                    <div class="seccion-titulo">
+                        <span>🏢</span> Empresa y Período
                     </div>
 
                     <div class="grid-2">
                         <div class="grupo-formulario">
-                            <label for="mes">Mes *</label>
+                            <label for="idEmpresa" class="campo-obligatorio">ID de Empresa</label>
+                            <input type="number" id="idEmpresa" name="ID_Empresa" min="1" required 
+                                   placeholder="Ej: 1 (para ETIMO)">
+                            <div class="nota">
+                                <span>🆔</span> Ingresa el ID numérico asignado al registrarte
+                            </div>
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="nombreEmpresa" class="campo-obligatorio">Nombre de Empresa</label>
+                            <input type="text" id="nombreEmpresa" name="Empresa" required 
+                                   placeholder="Ej: ETIMO">
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="grupo-formulario">
+                            <label for="mes" class="campo-obligatorio">Mes</label>
                             <select id="mes" name="Mes" required>
                                 <option value="">Seleccionar mes...</option>
                                 <option value="Enero">Enero</option>
@@ -235,9 +372,10 @@
                         </div>
 
                         <div class="grupo-formulario">
-                            <label for="anio">Año *</label>
+                            <label for="anio" class="campo-obligatorio">Año</label>
                             <select id="anio" name="Año" required>
                                 <option value="">Seleccionar año...</option>
+                                <option value="2023">2023</option>
                                 <option value="2024">2024</option>
                                 <option value="2025" selected>2025</option>
                                 <option value="2026">2026</option>
@@ -246,90 +384,97 @@
                     </div>
                 </div>
 
-                <!-- Sección Impacto Ambiental COMPLETA -->
+                <!-- SECCIÓN 2: IMPACTO AMBIENTAL -->
                 <div class="seccion">
-                    <h3 style="color: var(--verde-oscuro); margin-bottom: 15px;">🌿 Impacto Ambiental</h3>
+                    <div class="seccion-titulo">
+                        <span>🌿</span> Impacto Ambiental
+                    </div>
 
                     <div class="grid-4">
                         <div class="grupo-formulario">
                             <label for="energia_kwh">Energía <span class="unidad">(kWh)</span></label>
-                            <input type="number" id="energia_kwh" name="Energia_kWh" step="0.1" min="0" value="0">
+                            <input type="number" id="energia_kwh" name="Energia_kWh" step="0.01" min="0" value="0">
                         </div>
 
                         <div class="grupo-formulario">
                             <label for="combustible_l">Combustible <span class="unidad">(litros)</span></label>
-                            <input type="number" id="combustible_l" name="Combustible_L" step="0.1" min="0" value="0">
+                            <input type="number" id="combustible_l" name="Combustible_L" step="0.01" min="0" value="0">
                         </div>
 
                         <div class="grupo-formulario">
                             <label for="papel_kg">Papel <span class="unidad">(kg)</span></label>
-                            <input type="number" id="papel_kg" name="Papel_kg" step="0.1" min="0" value="0">
+                            <input type="number" id="papel_kg" name="Papel_kg" step="0.01" min="0" value="0">
                         </div>
 
                         <div class="grupo-formulario">
                             <label for="agua_m3">Agua <span class="unidad">(m³)</span></label>
-                            <input type="number" id="agua_m3" name="Agua_m3" step="0.1" min="0" value="0" placeholder="1 m³ = 1000 L">
+                            <input type="number" id="agua_m3" name="Agua_m3" step="0.01" min="0" value="0" 
+                                   placeholder="1 m³ = 1000 L">
                         </div>
                     </div>
 
                     <div class="grid-4">
                         <div class="grupo-formulario">
                             <label for="borra_humeda_kg">Borra húmeda <span class="unidad">(kg)</span></label>
-                            <input type="number" id="borra_humeda_kg" name="Borra_humeda_kg" step="0.1" min="0" value="0">
+                            <input type="number" id="borra_humeda_kg" name="Borra_humeda_kg" step="0.01" min="0" value="0">
                         </div>
 
                         <div class="grupo-formulario">
                             <label for="borra_seca_kg">Borra seca <span class="unidad">(kg)</span></label>
-                            <input type="number" id="borra_seca_kg" name="Borra_seca_kg" step="0.1" min="0" value="0">
+                            <input type="number" id="borra_seca_kg" name="Borra_seca_kg" step="0.01" min="0" value="0">
                         </div>
 
                         <div class="grupo-formulario">
                             <label for="tela_reutilizada_kg">Tela reutilizada <span class="unidad">(kg)</span></label>
-                            <input type="number" id="tela_reutilizada_kg" name="Tela_reutilizada_kg" step="0.1" min="0" value="0">
+                            <input type="number" id="tela_reutilizada_kg" name="Tela_reutilizada_kg" step="0.01" min="0" value="0">
                         </div>
 
                         <div class="grupo-formulario">
                             <label for="tecnologia_recuperada_kg">Tecnología recuperada <span class="unidad">(kg)</span></label>
-                            <input type="number" id="tecnologia_recuperada_kg" name="Tecnologia_recuperada_kg" step="0.1" min="0" value="0">
+                            <input type="number" id="tecnologia_recuperada_kg" name="Tecnologia_recuperada_kg" step="0.01" min="0" value="0">
                         </div>
                     </div>
 
                     <div class="grid-4">
                         <div class="grupo-formulario">
                             <label for="plastico_reutilizado_kg">Plástico reutilizado <span class="unidad">(kg)</span></label>
-                            <input type="number" id="plastico_reutilizado_kg" name="Plastico_reutilizado_kg" step="0.1" min="0" value="0">
+                            <input type="number" id="plastico_reutilizado_kg" name="Plastico_reutilizado_kg" step="0.01" min="0" value="0">
                         </div>
 
                         <div class="grupo-formulario">
                             <label for="residuo_organico_kg">Residuo orgánico <span class="unidad">(kg)</span></label>
-                            <input type="number" id="residuo_organico_kg" name="Residuo_Organico_kg" step="0.1" min="0" value="0">
+                            <input type="number" id="residuo_organico_kg" name="Residuo_Organico_kg" step="0.01" min="0" value="0">
                         </div>
 
                         <div class="grupo-formulario">
                             <label for="residuo_reciclable_kg">Residuo reciclable <span class="unidad">(kg)</span></label>
-                            <input type="number" id="residuo_reciclable_kg" name="Residuo_Reciclable_kg" step="0.1" min="0" value="0">
+                            <input type="number" id="residuo_reciclable_kg" name="Residuo_Reciclable_kg" step="0.01" min="0" value="0">
                         </div>
 
                         <div class="grupo-formulario">
                             <label for="residuo_no_reciclable_kg">Residuo no reciclable <span class="unidad">(kg)</span></label>
-                            <input type="number" id="residuo_no_reciclable_kg" name="Residuo_No_Reciclable_kg" step="0.1" min="0" value="0">
+                            <input type="number" id="residuo_no_reciclable_kg" name="Residuo_No_Reciclable_kg" step="0.01" min="0" value="0">
                         </div>
                     </div>
                 </div>
 
-                <!-- Sección Impacto Social COMPLETA -->
+                <!-- SECCIÓN 3: IMPACTO SOCIAL -->
                 <div class="seccion">
-                    <h3 style="color: var(--verde-oscuro); margin-bottom: 15px;">👥 Impacto Social</h3>
+                    <div class="seccion-titulo">
+                        <span>👥</span> Impacto Social
+                    </div>
 
                     <div class="grid-4">
                         <div class="grupo-formulario">
-                            <label for="cantidad_empleados_total">Total empleados *</label>
-                            <input type="number" id="cantidad_empleados_total" name="Cantidad_Empleados_Total" min="1" required placeholder="Mínimo 1">
+                            <label for="cantidad_empleados_total" class="campo-obligatorio">Total empleados</label>
+                            <input type="number" id="cantidad_empleados_total" name="Cantidad_Empleados_Total" 
+                                   min="1" required placeholder="Mínimo 1">
                         </div>
 
                         <div class="grupo-formulario">
                             <label for="cantidad_empleados_locales">Empleados locales</label>
-                            <input type="number" id="cantidad_empleados_locales" name="Cantidad_Empleados_Locales" min="0" value="0">
+                            <input type="number" id="cantidad_empleados_locales" name="Cantidad_Empleados_Locales" 
+                                   min="0" value="0">
                         </div>
 
                         <div class="grupo-formulario">
@@ -339,7 +484,8 @@
 
                         <div class="grupo-formulario">
                             <label for="cantidad_personas_discapacitadas">Personas con discapacidad</label>
-                            <input type="number" id="cantidad_personas_discapacitadas" name="Cantidad_Personas_Discapacitadas" min="0" value="0">
+                            <input type="number" id="cantidad_personas_discapacitadas" 
+                                   name="Cantidad_Personas_Discapacitadas" min="0" value="0">
                         </div>
                     </div>
 
@@ -351,12 +497,14 @@
 
                         <div class="grupo-formulario">
                             <label for="politica_inclusion">Política de inclusión <span class="unidad">(%)</span></label>
-                            <input type="number" id="politica_inclusion" name="Politica_inclusion" min="0" max="100" value="0">
+                            <input type="number" id="politica_inclusion" name="Politica_inclusion" 
+                                   min="0" max="100" value="0">
                         </div>
 
                         <div class="grupo-formulario">
                             <label for="procesos_optimizados">Procesos optimizados <span class="unidad">(%)</span></label>
-                            <input type="number" id="procesos_optimizados" name="Procesos_optimizados_%" min="0" max="100" value="0">
+                            <input type="number" id="procesos_optimizados" name="Procesos_optimizados_%" 
+                                   min="0" max="100" value="0">
                         </div>
 
                         <div class="grupo-formulario">
@@ -366,137 +514,171 @@
                     </div>
                 </div>
 
-                <!-- Sección Comentarios y Evidencia -->
+                <!-- SECCIÓN 4: INFORMACIÓN ADICIONAL -->
                 <div class="seccion">
-                    <h3 style="color: var(--verde-oscuro); margin-bottom: 15px;">📝 Información Adicional</h3>
+                    <div class="seccion-titulo">
+                        <span>📝</span> Información Adicional
+                    </div>
 
                     <div class="grupo-formulario">
                         <label for="comentarios">Comentarios u observaciones</label>
-                        <textarea id="comentarios" name="Comentarios" rows="3" placeholder="Comentarios adicionales sobre los datos reportados..."></textarea>
+                        <textarea id="comentarios" name="Comentarios" rows="4" 
+                                  placeholder="Comentarios adicionales sobre los datos reportados, mejoras implementadas, etc."></textarea>
                     </div>
 
                     <div class="grupo-formulario">
                         <label for="link_evidencia">Link de evidencia/documentación</label>
-                        <input type="url" id="link_evidencia" name="Link_Evidencia" placeholder="https://drive.google.com/... o link a documento">
-                        <div class="nota">Puedes subir documentos a Google Drive y compartir el enlace</div>
+                        <input type="url" id="link_evidencia" name="Link_Evidencia" 
+                               placeholder="https://drive.google.com/... o link a documento">
+                        <div class="nota">
+                            <span>🔗</span> Puedes subir documentos a Google Drive y compartir el enlace
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resumen antes de enviar -->
+                <div style="background: #e8f5e9; padding: 20px; border-radius: 10px; margin-top: 30px;">
+                    <h4 style="color: var(--verde-oscuro); margin-bottom: 15px;">📋 Resumen del Reporte</h4>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                        <div>
+                            <strong>Fecha:</strong> <span id="resumenFecha">29/12/2025 21:04:25</span>
+                        </div>
+                        <div>
+                            <strong>Campos completos:</strong> <span id="camposCompletos">0/28</span>
+                        </div>
+                        <div>
+                            <strong>Estado:</strong> <span id="estadoFormulario" style="color: var(--verde-oscuro);">Pendiente</span>
+                        </div>
                     </div>
                 </div>
 
                 <button type="submit" class="boton-enviar" id="botonEnviar">
-                    📊 Enviar Datos Mensuales
+                    <span id="textoBoton">📊 Enviar Datos Mensuales</span>
+                    <span id="iconoCarga" style="display: none;">⏳</span>
                 </button>
             </form>
 
-            <div style="text-align: center; margin-top: 25px; color: #666; font-size: 13px;">
-                <p>📧 ¿Necesitas ayuda? <a href="mailto:info@impactaverde.com.ar">Contacta con nuestro equipo</a></p>
-                <p style="font-size: 11px; margin-top: 10px; color: #888;">
-                    Fecha actual: 29/12/2025 | Todos los campos numéricos pueden dejarse en 0 si no aplican
+            <div style="text-align: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid #eee;">
+                <p style="color: #666; font-size: 14px; margin-bottom: 10px;">
+                    📧 ¿Necesitas ayuda? 
+                    <a href="mailto:info@impactaverde.com.ar" style="color: var(--verde-oscuro); font-weight: bold;">
+                        Contacta con nuestro equipo
+                    </a>
+                </p>
+                <p style="color: #888; font-size: 12px;">
+                    © 2024 Impacta Verde - Sistema de Medición de Impacto Ambiental
                 </p>
             </div>
         </div>
     </div>
 
     <script>
-        const URL_SHEETBEST = 'https://api.sheetbest.com/sheets/2eb917d5-94d0-4d5a-b511-ea115ba62206';
-        
-        // Lista de empresas para autocomplete (debes actualizarla manualmente)
-        const empresasRegistradas = [
-            {id: 1, nombre: "ETIMO"},
-            // Agrega más empresas aquí según se vayan registrando
-            // Formato: {id: 2, nombre: "Nombre Empresa"},
-        ];
+        // URL de Sheet.best para DATOS MENSUALES
+        const URL_DATOS = "https://api.sheetbest.com/sheets/2eb917d5-94d0-4d5a-b511-ea115ba62206";
 
-        // Auto-completar mes y año actual
+        // Configurar valores por defecto al cargar
         document.addEventListener('DOMContentLoaded', function() {
-            const anioActual = new Date().getFullYear();
-            const selectAnio = document.getElementById('anio');
-            for (let i = 0; i < selectAnio.options.length; i++) {
-                if (selectAnio.options[i].value == anioActual) {
-                    selectAnio.selectedIndex = i;
-                    break;
-                }
-            }
-
+            // Auto-completar mes y año actual
+            const ahora = new Date();
             const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
                           'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-            const mesActual = meses[new Date().getMonth()];
-            const selectMes = document.getElementById('mes');
-            for (let i = 0; i < selectMes.options.length; i++) {
-                if (selectMes.options[i].value == mesActual) {
-                    selectMes.selectedIndex = i;
-                    break;
-                }
-            }
+            const mesActual = meses[ahora.getMonth()];
+            const anioActual = ahora.getFullYear();
             
-            // Configurar autocomplete
-            setupAutocomplete();
+            document.getElementById('mes').value = mesActual;
+            document.getElementById('anio').value = anioActual;
+            
+            // Actualizar resumen
+            actualizarResumen();
+            
+            console.log('✅ Formulario de datos mensuales listo');
         });
-        
-        // Función para autocomplete
-        function setupAutocomplete() {
-            const input = document.getElementById('nombreEmpresa');
-            const autocompleteList = document.getElementById('autocomplete-list');
+
+        // Función para mostrar/ocultar mensajes
+        function mostrarMensaje(tipo, texto) {
+            const mensajes = document.querySelectorAll('.mensaje');
+            mensajes.forEach(msg => msg.style.display = 'none');
             
-            input.addEventListener('input', function() {
-                const valor = this.value.toLowerCase();
-                autocompleteList.innerHTML = '';
-                
-                if (!valor) return;
-                
-                const filtradas = empresasRegistradas.filter(emp => 
-                    emp.nombre.toLowerCase().includes(valor)
-                );
-                
-                filtradas.forEach(emp => {
-                    const item = document.createElement('div');
-                    item.innerHTML = `<strong>${emp.nombre}</strong> (ID: ${emp.id})`;
-                    item.addEventListener('click', function() {
-                        input.value = emp.nombre;
-                        document.getElementById('idEmpresa').value = emp.id;
-                        autocompleteList.innerHTML = '';
-                    });
-                    autocompleteList.appendChild(item);
-                });
-            });
+            const mensaje = document.getElementById('mensaje' + tipo);
+            mensaje.innerHTML = texto;
+            mensaje.style.display = 'block';
             
-            // Cerrar autocomplete al hacer clic fuera
-            document.addEventListener('click', function(e) {
-                if (e.target.id !== 'nombreEmpresa') {
-                    autocompleteList.innerHTML = '';
-                }
-            });
+            if (tipo === 'Exito') {
+                setTimeout(() => {
+                    mensaje.style.display = 'none';
+                }, 5000);
+            }
         }
 
-        document.getElementById('formularioDatos').addEventListener('submit', async function(evento) {
-            evento.preventDefault();
-
-            // Validaciones básicas
+        // Validar formulario antes de enviar
+        function validarFormulario() {
             const idEmpresa = document.getElementById('idEmpresa').value;
             const nombreEmpresa = document.getElementById('nombreEmpresa').value;
             const mes = document.getElementById('mes').value;
             const anio = document.getElementById('anio').value;
             const cantidadEmpleados = document.getElementById('cantidad_empleados_total').value;
-
+            
             if (!idEmpresa || !nombreEmpresa || !mes || !anio || !cantidadEmpleados) {
-                mostrarMensajeError('❌ Por favor, completa todos los campos obligatorios');
-                return;
+                mostrarMensaje('Error', '❌ Completa todos los campos obligatorios (*)');
+                return false;
             }
-
+            
             if (parseInt(cantidadEmpleados) < 1) {
-                mostrarMensajeError('❌ El total de empleados debe ser al menos 1');
-                return;
+                mostrarMensaje('Error', '❌ El total de empleados debe ser al menos 1');
+                document.getElementById('cantidad_empleados_total').focus();
+                return false;
             }
+            
+            return true;
+        }
 
-            ocultarTodosLosMensajes();
-            mostrarMensajeCarga('⏳ Enviando datos mensuales...');
+        // Actualizar resumen del formulario
+        function actualizarResumen() {
+            const campos = document.querySelectorAll('input[required], select[required], textarea[required]');
+            let completos = 0;
+            
+            campos.forEach(campo => {
+                if (campo.value.trim() !== '') completos++;
+            });
+            
+            document.getElementById('camposCompletos').textContent = completos + '/' + campos.length;
+            document.getElementById('resumenFecha').textContent = new Date().toLocaleString('es-AR');
+            
+            if (completos === campos.length) {
+                document.getElementById('estadoFormulario').textContent = 'Completo';
+                document.getElementById('estadoFormulario').style.color = 'var(--verde-oscuro)';
+            } else {
+                document.getElementById('estadoFormulario').textContent = 'Pendiente';
+                document.getElementById('estadoFormulario').style.color = '#dc3545';
+            }
+        }
 
+        // Escuchar cambios en los campos
+        document.querySelectorAll('input, select, textarea').forEach(campo => {
+            campo.addEventListener('input', actualizarResumen);
+            campo.addEventListener('change', actualizarResumen);
+        });
+
+        // Manejar envío del formulario
+        document.getElementById('formularioDatos').addEventListener('submit', async function(evento) {
+            evento.preventDefault();
+            
+            if (!validarFormulario()) return;
+            
+            mostrarMensaje('Carga', '⏳ Enviando datos mensuales...');
+            
             const boton = document.getElementById('botonEnviar');
+            const textoBoton = document.getElementById('textoBoton');
+            const iconoCarga = document.getElementById('iconoCarga');
+            
             boton.disabled = true;
-            boton.textContent = 'Enviando...';
-
-            // OBJETO COMPLETO en el ORDEN EXACTO de tu Excel
+            textoBoton.textContent = 'Enviando...';
+            iconoCarga.style.display = 'inline';
+            
+            // Preparar datos en el ORDEN EXACTO del Excel
             const datosParaEnviar = {
-                'Empresa': document.getElementById('nombreEmpresa').value,
+                'ID_Empresa': document.getElementById('idEmpresa').value,
+                'Empresa': document.getElementById('nombreEmpresa').value.trim(),
                 'Mes': document.getElementById('mes').value,
                 'Año': document.getElementById('anio').value,
                 'Fecha_carga': document.getElementById('fechaCarga').value,
@@ -519,78 +701,73 @@
                 'Residuo_Organico_kg': parseFloat(document.getElementById('residuo_organico_kg').value) || 0,
                 'Residuo_Reciclable_kg': parseFloat(document.getElementById('residuo_reciclable_kg').value) || 0,
                 'Residuo_No_Reciclable_kg': parseFloat(document.getElementById('residuo_no_reciclable_kg').value) || 0,
-                'Comentarios': document.getElementById('comentarios').value || '',
-                'Link_Evidencia': document.getElementById('link_evidencia').value || '',
-                'Agua_m3': parseFloat(document.getElementById('agua_m3').value) || 0,
-                'ID_Empresa': document.getElementById('idEmpresa').value  // Al final para no afectar el orden
+                'Comentarios': document.getElementById('comentarios').value.trim() || '',
+                'Link_Evidencia': document.getElementById('link_evidencia').value.trim() || '',
+                'Agua_m3': parseFloat(document.getElementById('agua_m3').value) || 0
             };
-
-            console.log('📤 Enviando datos mensuales completos...');
-
+            
+            console.log('📤 Enviando datos:', datosParaEnviar);
+            
             try {
-                const respuesta = await fetch(URL_SHEETBEST, {
+                const respuesta = await fetch(URL_DATOS, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
                     body: JSON.stringify(datosParaEnviar)
                 });
-
+                
                 if (respuesta.ok) {
-                    ocultarTodosLosMensajes();
-                    mostrarMensajeExito('✅ ¡Datos mensuales enviados correctamente!');
-
-                    setTimeout(() => {
-                        boton.disabled = false;
-                        boton.textContent = '📊 Enviar Datos Mensuales';
-                        // Resetear formulario pero mantener fecha
-                        document.getElementById('formularioDatos').reset();
-                        document.getElementById('fechaCarga').value = '29/12/2025';
-                        // Restaurar mes y año actual
-                        const anioActual = new Date().getFullYear();
-                        document.getElementById('anio').value = anioActual;
-                        const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-                                      'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-                        const mesActual = meses[new Date().getMonth()];
-                        document.getElementById('mes').value = mesActual;
-                        // Limpiar autocomplete
-                        document.getElementById('autocomplete-list').innerHTML = '';
-                    }, 2000);
-
+                    const resultado = await respuesta.json();
+                    console.log('✅ Respuesta:', resultado);
+                    
+                    mostrarMensaje('Exito', 
+                        '✅ ¡Datos mensuales enviados correctamente!<br><br>' +
+                        '📊 Reporte guardado en el sistema.');
+                    
+                    // Resetear formulario (excepto campos básicos)
+                    this.reset();
+                    
+                    // Restaurar valores por defecto
+                    const ahora = new Date();
+                    const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                                  'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+                    document.getElementById('mes').value = meses[ahora.getMonth()];
+                    document.getElementById('anio').value = ahora.getFullYear();
+                    document.getElementById('fechaCarga').value = new Date().toLocaleString('es-AR');
+                    
+                    actualizarResumen();
+                    
                 } else {
-                    mostrarMensajeError('❌ Error al enviar datos. Intenta nuevamente.');
-                    boton.disabled = false;
-                    boton.textContent = '📊 Enviar Datos Mensuales';
+                    throw new Error('Error en la respuesta del servidor');
                 }
-
+                
             } catch (error) {
-                mostrarMensajeError('❌ Error de conexión. Intenta nuevamente.');
+                console.error('❌ Error:', error);
+                mostrarMensaje('Error', 
+                    '❌ Error al enviar los datos.<br>' +
+                    'Por favor, verifica tu conexión e intenta nuevamente.');
+                
+            } finally {
                 boton.disabled = false;
-                boton.textContent = '📊 Enviar Datos Mensuales';
+                textoBoton.textContent = '📊 Enviar Datos Mensuales';
+                iconoCarga.style.display = 'none';
             }
         });
 
-        function ocultarTodosLosMensajes() {
-            document.getElementById('mensajeExito').style.display = 'none';
-            document.getElementById('mensajeError').style.display = 'none';
-            document.getElementById('mensajeCarga').style.display = 'none';
-        }
-
-        function mostrarMensajeExito(texto) {
-            const mensaje = document.getElementById('mensajeExito');
-            mensaje.innerHTML = texto;
-            mensaje.style.display = 'block';
-        }
-
-        function mostrarMensajeError(texto) {
-            const mensaje = document.getElementById('mensajeError');
-            mensaje.innerHTML = texto;
-            mensaje.style.display = 'block';
-        }
-
-        function mostrarMensajeCarga(texto) {
-            const mensaje = document.getElementById('mensajeCarga');
-            mensaje.textContent = texto;
-            mensaje.style.display = 'block';
-        }
+        // Mejorar experiencia del usuario
+        document.querySelectorAll('input, select, textarea').forEach(elemento => {
+            elemento.addEventListener('focus', function() {
+                this.style.borderColor = 'var(--verde-medio)';
+                this.style.boxShadow = '0 0 0 3px rgba(76, 175, 80, 0.1)';
+            });
+            
+            elemento.addEventListener('blur', function() {
+                this.style.borderColor = '#e0e0e0';
+                this.style.boxShadow = 'none';
+            });
+        });
     </script>
 </body>
 </html>
