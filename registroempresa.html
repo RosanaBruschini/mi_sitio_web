@@ -20,7 +20,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #f5f7fa;
             padding: 20px;
             min-height: 100vh;
         }
@@ -31,7 +31,7 @@
             background: white;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .encabezado {
@@ -155,9 +155,6 @@
             color: #6c757d;
             font-style: italic;
             margin-top: 5px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
         }
 
         .campo-obligatorio::after {
@@ -197,20 +194,6 @@
                 padding: 12px 14px;
             }
         }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-            
-            .contenedor-principal {
-                margin: 10px auto;
-            }
-            
-            .contenido-formulario {
-                padding: 20px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -234,13 +217,12 @@
             <div id="mensajeCarga" class="mensaje mensaje-carga"></div>
 
             <form id="formularioRegistro">
-                <!-- Campo de fecha actual AUTOMÁTICO -->
                 <div class="grupo-formulario">
                     <label class="campo-obligatorio">Fecha de Alta</label>
                     <input type="text" id="fechaAlta" name="Fecha alta" value="29/12/2025" readonly 
                            style="background-color: #e9ecef; font-weight: bold;">
                     <div class="info-fecha">
-                        <span>📅</span> Fecha generada automáticamente
+                        Fecha generada automáticamente
                     </div>
                 </div>
 
@@ -298,7 +280,7 @@
                         <label for="cuit" class="campo-obligatorio">CUIT</label>
                         <input type="text" id="cuit" name="CUIT" required 
                                placeholder="Formato: 00-12345678-9"
-                               oninput="formatearCUIT(this)">
+                               pattern="[0-9]{2}-[0-9]{8}-[0-9]{1}">
                     </div>
 
                     <div class="grupo-formulario">
@@ -329,7 +311,6 @@
                                placeholder="+54 9 11 1234-5678">
                     </div>
 
-                    <!-- PLAN CORREGIDO: Usar nombre EXACTO de tu Excel -->
                     <div class="grupo-formulario">
                         <label for="plan" class="campo-obligatorio">Plan de suscripción</label>
                         <select id="plan" name="Plan" required>
@@ -344,10 +325,6 @@
                     <label for="observaciones">Observaciones</label>
                     <textarea id="observaciones" name="Observaciones" rows="4" 
                               placeholder="Comentarios adicionales, necesidades específicas, etc."></textarea>
-                </div>
-
-                <div class="info-fecha">
-                    <span>🆔</span> El ID de empresa se asignará automáticamente al guardar
                 </div>
 
                 <button type="submit" class="boton-enviar" id="botonEnviar">
@@ -371,33 +348,12 @@
     </div>
 
     <script>
-        // URL de Sheet.best para REGISTRO
         const URL_REGISTRO = "https://api.sheetbest.com/sheets/c7fec5f9-d83f-4d32-b31e-6ee06ea50d00";
 
-        // Configurar país por defecto
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('pais').value = 'Argentina';
-            console.log('✅ Formulario de registro listo');
         });
 
-        // Función para formatear CUIT
-        function formatearCUIT(input) {
-            let valor = input.value.replace(/[^0-9]/g, '');
-            
-            if (valor.length > 2) {
-                valor = valor.substring(0, 2) + '-' + valor.substring(2);
-            }
-            if (valor.length > 11) {
-                valor = valor.substring(0, 11) + '-' + valor.substring(11);
-            }
-            if (valor.length > 13) {
-                valor = valor.substring(0, 13);
-            }
-            
-            input.value = valor;
-        }
-
-        // Función para mostrar/ocultar mensajes
         function mostrarMensaje(tipo, texto) {
             const mensajes = document.querySelectorAll('.mensaje');
             mensajes.forEach(msg => msg.style.display = 'none');
@@ -406,7 +362,6 @@
             mensaje.innerHTML = texto;
             mensaje.style.display = 'block';
             
-            // Auto-ocultar mensajes de éxito después de 5 segundos
             if (tipo === 'Exito') {
                 setTimeout(() => {
                     mensaje.style.display = 'none';
@@ -414,7 +369,6 @@
             }
         }
 
-        // Validar formulario antes de enviar
         function validarFormulario() {
             const cuit = document.getElementById('cuit').value;
             const cuitRegex = /^[0-9]{2}-[0-9]{8}-[0-9]{1}$/;
@@ -425,23 +379,14 @@
                 return false;
             }
             
-            const plan = document.getElementById('plan').value;
-            if (!plan) {
-                mostrarMensaje('Error', '❌ Por favor, selecciona un plan de suscripción');
-                document.getElementById('plan').focus();
-                return false;
-            }
-            
             return true;
         }
 
-        // Manejar envío del formulario
         document.getElementById('formularioRegistro').addEventListener('submit', async function(evento) {
             evento.preventDefault();
             
             if (!validarFormulario()) return;
             
-            // Mostrar estado de carga
             mostrarMensaje('Carga', '⏳ Registrando empresa en el sistema...');
             
             const boton = document.getElementById('botonEnviar');
@@ -452,8 +397,6 @@
             textoBoton.textContent = 'Registrando...';
             iconoCarga.style.display = 'inline';
             
-            // Preparar datos para enviar
-            // IMPORTANTE: NO enviamos el ID - se generará automáticamente en el Excel
             const datosParaEnviar = {
                 'Empresa': document.getElementById('nombreEmpresa').value.trim(),
                 'Rubro': document.getElementById('rubro').value,
@@ -465,16 +408,13 @@
                 'Email': document.getElementById('email').value.trim(),
                 'Tel_contacto': document.getElementById('telefono').value.trim(),
                 'WhatsApp': document.getElementById('whatsapp').value.trim() || '',
-                'Plan': document.getElementById('plan').value,  // Nombre CORREGIDO
+                'Plan': document.getElementById('plan').value,
                 'Observaciones': document.getElementById('observaciones').value.trim() || '',
                 'Fecha alta': document.getElementById('fechaAlta').value,
                 'Estado': 'Activo'
             };
             
-            console.log('📤 Enviando datos:', datosParaEnviar);
-            
             try {
-                // Enviar a Sheet.best
                 const respuesta = await fetch(URL_REGISTRO, {
                     method: 'POST',
                     headers: { 
@@ -485,18 +425,11 @@
                 });
                 
                 if (respuesta.ok) {
-                    const resultado = await respuesta.json();
-                    console.log('✅ Respuesta:', resultado);
+                    mostrarMensaje('Exito', '✅ ¡Empresa registrada exitosamente!<br>Recibirás un email con confirmación.');
                     
-                    mostrarMensaje('Exito', 
-                        '✅ ¡Empresa registrada exitosamente!<br><br>' +
-                        '📧 Recibirás un email con tu ID de empresa y más información.');
-                    
-                    // Resetear formulario (excepto fecha)
                     this.reset();
                     document.getElementById('pais').value = 'Argentina';
                     
-                    // Actualizar fecha por si pasó tiempo
                     const ahora = new Date();
                     const fechaFormateada = ahora.toLocaleDateString('es-AR');
                     document.getElementById('fechaAlta').value = fechaFormateada;
@@ -506,30 +439,13 @@
                 }
                 
             } catch (error) {
-                console.error('❌ Error:', error);
-                mostrarMensaje('Error', 
-                    '❌ Error al conectar con el servidor.<br>' +
-                    'Por favor, intenta nuevamente en unos minutos.');
+                mostrarMensaje('Error', '❌ Error al conectar con el servidor. Por favor, intenta nuevamente.');
                 
             } finally {
-                // Restaurar botón
                 boton.disabled = false;
                 textoBoton.textContent = '🌿 Registrar Empresa';
                 iconoCarga.style.display = 'none';
             }
-        });
-
-        // Mejorar experiencia del usuario
-        document.querySelectorAll('input, select, textarea').forEach(elemento => {
-            elemento.addEventListener('focus', function() {
-                this.style.borderColor = 'var(--verde-medio)';
-                this.style.boxShadow = '0 0 0 3px rgba(76, 175, 80, 0.1)';
-            });
-            
-            elemento.addEventListener('blur', function() {
-                this.style.borderColor = '#e0e0e0';
-                this.style.boxShadow = 'none';
-            });
         });
     </script>
 </body>
