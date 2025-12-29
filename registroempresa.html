@@ -4,254 +4,334 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Empresa - Impacta Verde</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>" type="image/x-icon">
+    <link rel="icon" href="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" type="image/x-icon">
     <style>
         :root {
             --verde-oscuro: #1F7A3E;
             --verde-medio: #4CAF50;
+            --verde-claro: #d4edda;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #f1f8e9;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 20px;
             min-height: 100vh;
         }
 
         .contenedor-principal {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 40px auto;
             background: white;
-            border-radius: 12px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
 
         .encabezado {
             background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
             color: white;
-            padding: 25px 20px;
+            padding: 40px 30px;
             text-align: center;
+            position: relative;
         }
 
         .logo-img {
-            height: 200px; width: auto; border-radius: 8px; background-color: white; padding: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;
+            height: 120px;
+            width: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
         }
 
         .contenido-formulario {
-            padding: 25px;
+            padding: 40px;
         }
 
         .grupo-formulario {
-            margin-bottom: 18px;
+            margin-bottom: 25px;
         }
 
         label {
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-weight: 600;
-            color: #333;
+            color: #2c3e50;
             font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         input, select, textarea {
             width: 100%;
-            padding: 10px 12px;
+            padding: 14px 16px;
             border: 2px solid #e0e0e0;
-            border-radius: 6px;
-            font-size: 14px;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--verde-medio);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+            outline: none;
+            background: white;
         }
 
         .fila-doble {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 20px;
         }
 
         .boton-enviar {
             background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
             color: white;
             border: none;
-            padding: 14px 25px;
-            border-radius: 8px;
-            font-size: 15px;
+            padding: 18px 30px;
+            border-radius: 10px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
-            margin-top: 10px;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .boton-enviar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(31, 122, 62, 0.2);
+        }
+
+        .boton-enviar:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
         }
 
         .mensaje {
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 15px;
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 25px;
             text-align: center;
             font-weight: 500;
             display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .mensaje-exito {
-            background-color: #d4edda;
+            background-color: var(--verde-claro);
             color: #155724;
-            border: 1px solid #c3e6cb;
+            border: 2px solid #c3e6cb;
         }
 
         .mensaje-error {
             background-color: #f8d7da;
             color: #721c24;
-            border: 1px solid #f5c6cb;
+            border: 2px solid #f5c6cb;
         }
 
         .mensaje-carga {
             background-color: #d1ecf1;
             color: #0c5460;
-            border: 1px solid #bee5eb;
+            border: 2px solid #bee5eb;
         }
 
         .info-fecha {
-            font-size: 11px;
-            color: #666;
+            font-size: 12px;
+            color: #6c757d;
             font-style: italic;
-            margin-top: 3px;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .campo-obligatorio::after {
+            content: " *";
+            color: #dc3545;
+        }
+
+        .header-info {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            border-left: 4px solid var(--verde-oscuro);
         }
 
         @media (max-width: 768px) {
+            .contenedor-principal {
+                margin: 20px auto;
+                border-radius: 15px;
+            }
+            
+            .encabezado {
+                padding: 30px 20px;
+            }
+            
+            .contenido-formulario {
+                padding: 25px;
+            }
+            
             .fila-doble {
                 grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            input, select, textarea {
+                padding: 12px 14px;
             }
         }
-        
-        /* Estilos para autocomplete */
-        .autocomplete-container {
-            position: relative;
-        }
-        
-        .autocomplete-items {
-            position: absolute;
-            border: 1px solid #e0e0e0;
-            border-bottom: none;
-            border-top: none;
-            z-index: 99;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-        
-        .autocomplete-items div {
-            padding: 10px;
-            cursor: pointer;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        .autocomplete-items div:hover {
-            background-color: #f1f8e9;
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .contenedor-principal {
+                margin: 10px auto;
+            }
+            
+            .contenido-formulario {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="contenedor-principal">
         <div class="encabezado">
-            <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" alt="Logo Impacta Verde" class="logo-img">
-            <h1 style="margin: 15px 0 8px 0;">Impacta Verde - Registro de Empresa</h1>
-            <p style="opacity: 0.9; max-width: 500px; margin: 0 auto;">Completa los datos de tu empresa</p>
+            <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" 
+                 alt="Logo Impacta Verde" class="logo-img">
+            <h1 style="margin: 0 0 10px 0; font-size: 28px;">Impacta Verde</h1>
+            <p style="opacity: 0.9; font-size: 16px;">Registro de Empresa</p>
         </div>
 
         <div class="contenido-formulario">
+            <div class="header-info">
+                <h3 style="color: var(--verde-oscuro); margin-bottom: 10px;">📋 Información importante</h3>
+                <p style="margin: 0; color: #555;">Complete todos los campos obligatorios (*). 
+                El ID de empresa se asignará automáticamente después del registro.</p>
+            </div>
+
             <div id="mensajeExito" class="mensaje mensaje-exito"></div>
             <div id="mensajeError" class="mensaje mensaje-error"></div>
             <div id="mensajeCarga" class="mensaje mensaje-carga"></div>
 
             <form id="formularioRegistro">
-                <!-- Campo para fecha actual - el usuario la ingresa -->
+                <!-- Campo de fecha actual AUTOMÁTICO -->
                 <div class="grupo-formulario">
-                    <label for="fechaAlta">Fecha de Alta *</label>
-                    <input type="text" id="fechaAlta" name="Fecha alta" value="29/12/2025" readonly style="background-color: #f5f5f5;">
-                    <div class="info-fecha">Fecha actual automática</div>
+                    <label class="campo-obligatorio">Fecha de Alta</label>
+                    <input type="text" id="fechaAlta" name="Fecha alta" value="29/12/2025" readonly 
+                           style="background-color: #e9ecef; font-weight: bold;">
+                    <div class="info-fecha">
+                        <span>📅</span> Fecha generada automáticamente
+                    </div>
                 </div>
 
                 <div class="grupo-formulario">
-                    <label for="nombreEmpresa">Nombre de la Empresa *</label>
-                    <input type="text" id="nombreEmpresa" name="Empresa" required placeholder="Ejemplo: Mi Empresa S.A.">
+                    <label for="nombreEmpresa" class="campo-obligatorio">Nombre de la Empresa</label>
+                    <input type="text" id="nombreEmpresa" name="Empresa" required 
+                           placeholder="Ejemplo: Mi Empresa S.A.">
                 </div>
 
                 <div class="fila-doble">
                     <div class="grupo-formulario">
-                        <label for="rubro">Rubro *</label>
+                        <label for="rubro" class="campo-obligatorio">Rubro</label>
                         <select id="rubro" name="Rubro" required>
-                            <option value="">Seleccionar...</option>
+                            <option value="">Seleccionar rubro...</option>
                             <option value="Textil">Textil</option>
                             <option value="Reciclaje">Reciclaje</option>
                             <option value="Construcción">Construcción</option>
                             <option value="Tecnología">Tecnología</option>
+                            <option value="Alimentos">Alimentos</option>
+                            <option value="Servicios">Servicios</option>
                             <option value="Otro">Otro</option>
                         </select>
                     </div>
 
                     <div class="grupo-formulario">
-                        <label for="pais">País *</label>
+                        <label for="pais" class="campo-obligatorio">País</label>
                         <select id="pais" name="Pais" required>
-                            <option value="">Seleccionar...</option>
+                            <option value="">Seleccionar país...</option>
                             <option value="Argentina" selected>Argentina</option>
                             <option value="Uruguay">Uruguay</option>
                             <option value="Chile">Chile</option>
+                            <option value="Paraguay">Paraguay</option>
+                            <option value="Brasil">Brasil</option>
+                            <option value="Otro">Otro</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="fila-doble">
                     <div class="grupo-formulario">
-                        <label for="localidad">Localidad *</label>
-                        <input type="text" id="localidad" name="Localidad" required placeholder="Ejemplo: Buenos Aires">
+                        <label for="localidad" class="campo-obligatorio">Localidad</label>
+                        <input type="text" id="localidad" name="Localidad" required 
+                               placeholder="Ejemplo: Buenos Aires">
                     </div>
 
                     <div class="grupo-formulario">
-                        <label for="areaCargo">Área a cargo *</label>
-                        <input type="text" id="areaCargo" name="Area_a_cargo" required placeholder="Ejemplo: Sostenibilidad">
-                    </div>
-                </div>
-
-                <div class="fila-doble">
-                    <div class="grupo-formulario">
-                        <label for="cuit">CUIT *</label>
-                        <input type="text" id="cuit" name="CUIT" required placeholder="00-12345678-9" oninput="formatearCUIT(this)">
-                    </div>
-
-                    <div class="grupo-formulario">
-                        <label for="responsable">Responsable *</label>
-                        <input type="text" id="responsable" name="Responsable" required placeholder="Nombre y apellido">
+                        <label for="areaCargo" class="campo-obligatorio">Área a cargo</label>
+                        <input type="text" id="areaCargo" name="Area_a_cargo" required 
+                               placeholder="Ejemplo: Sostenibilidad, Producción, etc.">
                     </div>
                 </div>
 
                 <div class="fila-doble">
                     <div class="grupo-formulario">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="Email" required placeholder="ejemplo@empresa.com">
+                        <label for="cuit" class="campo-obligatorio">CUIT</label>
+                        <input type="text" id="cuit" name="CUIT" required 
+                               placeholder="Formato: 00-12345678-9"
+                               oninput="formatearCUIT(this)">
                     </div>
 
                     <div class="grupo-formulario">
-                        <label for="telefono">Teléfono *</label>
-                        <input type="tel" id="telefono" name="Tel_contacto" required placeholder="+54 11 1234-5678">
+                        <label for="responsable" class="campo-obligatorio">Responsable</label>
+                        <input type="text" id="responsable" name="Responsable" required 
+                               placeholder="Nombre y apellido completo">
+                    </div>
+                </div>
+
+                <div class="fila-doble">
+                    <div class="grupo-formulario">
+                        <label for="email" class="campo-obligatorio">Email</label>
+                        <input type="email" id="email" name="Email" required 
+                               placeholder="ejemplo@empresa.com">
+                    </div>
+
+                    <div class="grupo-formulario">
+                        <label for="telefono" class="campo-obligatorio">Teléfono</label>
+                        <input type="tel" id="telefono" name="Tel_contacto" required 
+                               placeholder="+54 11 1234-5678">
                     </div>
                 </div>
 
                 <div class="fila-doble">
                     <div class="grupo-formulario">
                         <label for="whatsapp">WhatsApp</label>
-                        <input type="tel" id="whatsapp" name="WhatsApp" placeholder="+54 9 11 1234-5678">
+                        <input type="tel" id="whatsapp" name="WhatsApp" 
+                               placeholder="+54 9 11 1234-5678">
                     </div>
 
-                    <!-- PLAN CORREGIDO: Nombre SIMPLIFICADO para evitar problemas -->
+                    <!-- PLAN CORREGIDO: Usar nombre EXACTO de tu Excel -->
                     <div class="grupo-formulario">
-                        <label for="plan">Plan de suscripción *</label>
+                        <label for="plan" class="campo-obligatorio">Plan de suscripción</label>
                         <select id="plan" name="Plan" required>
                             <option value="">Seleccionar plan...</option>
                             <option value="Mensual">Mensual</option>
@@ -262,142 +342,195 @@
 
                 <div class="grupo-formulario">
                     <label for="observaciones">Observaciones</label>
-                    <textarea id="observaciones" name="Observaciones" rows="3" placeholder="Comentarios adicionales..."></textarea>
+                    <textarea id="observaciones" name="Observaciones" rows="4" 
+                              placeholder="Comentarios adicionales, necesidades específicas, etc."></textarea>
                 </div>
 
                 <div class="info-fecha">
-                    * Campos obligatorios. El ID de empresa se genera automáticamente.
+                    <span>🆔</span> El ID de empresa se asignará automáticamente al guardar
                 </div>
 
                 <button type="submit" class="boton-enviar" id="botonEnviar">
-                    🌿 Registrar Empresa
+                    <span id="textoBoton">🌿 Registrar Empresa</span>
+                    <span id="iconoCarga" style="display: none;">⏳</span>
                 </button>
             </form>
 
-            <div style="text-align: center; margin-top: 25px; color: #666; font-size: 13px;">
-                <p>📧 ¿Necesitas ayuda? <a href="mailto:info@impactaverde.com.ar">Contacta con nuestro equipo</a></p>
+            <div style="text-align: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid #eee;">
+                <p style="color: #666; font-size: 14px; margin-bottom: 10px;">
+                    📧 ¿Necesitas ayuda? 
+                    <a href="mailto:info@impactaverde.com.ar" style="color: var(--verde-oscuro); font-weight: bold;">
+                        Contacta con nuestro equipo
+                    </a>
+                </p>
+                <p style="color: #888; font-size: 12px;">
+                    © 2024 Impacta Verde - Todos los derechos reservados
+                </p>
             </div>
         </div>
     </div>
 
     <script>
-        const URL_SHEETBEST = 'https://api.sheetbest.com/sheets/c7fec5f9-d83f-4d32-b31e-6ee06ea50d00';
+        // URL de Sheet.best para REGISTRO
+        const URL_REGISTRO = "https://api.sheetbest.com/sheets/c7fec5f9-d83f-4d32-b31e-6ee06ea50d00";
 
+        // Configurar país por defecto
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('✅ Formulario de registro cargado');
             document.getElementById('pais').value = 'Argentina';
+            console.log('✅ Formulario de registro listo');
         });
 
+        // Función para formatear CUIT
         function formatearCUIT(input) {
             let valor = input.value.replace(/[^0-9]/g, '');
-            if (valor.length > 2) valor = valor.substring(0, 2) + '-' + valor.substring(2);
-            if (valor.length > 11) valor = valor.substring(0, 11) + '-' + valor.substring(11);
-            if (valor.length > 13) valor = valor.substring(0, 13);
+            
+            if (valor.length > 2) {
+                valor = valor.substring(0, 2) + '-' + valor.substring(2);
+            }
+            if (valor.length > 11) {
+                valor = valor.substring(0, 11) + '-' + valor.substring(11);
+            }
+            if (valor.length > 13) {
+                valor = valor.substring(0, 13);
+            }
+            
             input.value = valor;
         }
 
+        // Función para mostrar/ocultar mensajes
+        function mostrarMensaje(tipo, texto) {
+            const mensajes = document.querySelectorAll('.mensaje');
+            mensajes.forEach(msg => msg.style.display = 'none');
+            
+            const mensaje = document.getElementById('mensaje' + tipo);
+            mensaje.innerHTML = texto;
+            mensaje.style.display = 'block';
+            
+            // Auto-ocultar mensajes de éxito después de 5 segundos
+            if (tipo === 'Exito') {
+                setTimeout(() => {
+                    mensaje.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        // Validar formulario antes de enviar
+        function validarFormulario() {
+            const cuit = document.getElementById('cuit').value;
+            const cuitRegex = /^[0-9]{2}-[0-9]{8}-[0-9]{1}$/;
+            
+            if (!cuitRegex.test(cuit)) {
+                mostrarMensaje('Error', '❌ El CUIT debe tener formato 00-12345678-9');
+                document.getElementById('cuit').focus();
+                return false;
+            }
+            
+            const plan = document.getElementById('plan').value;
+            if (!plan) {
+                mostrarMensaje('Error', '❌ Por favor, selecciona un plan de suscripción');
+                document.getElementById('plan').focus();
+                return false;
+            }
+            
+            return true;
+        }
+
+        // Manejar envío del formulario
         document.getElementById('formularioRegistro').addEventListener('submit', async function(evento) {
             evento.preventDefault();
-
-            // Validar CUIT
-            const cuitInput = document.getElementById('cuit');
-            if (!/^[0-9]{2}-[0-9]{8}-[0-9]{1}$/.test(cuitInput.value)) {
-                mostrarMensajeError('❌ El CUIT debe tener formato 00-12345678-9');
-                cuitInput.focus();
-                return;
-            }
-
-            // Validar plan
-            const planSelect = document.getElementById('plan');
-            if (!planSelect.value) {
-                mostrarMensajeError('❌ Por favor, selecciona un plan de suscripción');
-                planSelect.focus();
-                return;
-            }
-
-            ocultarTodosLosMensajes();
-            mostrarMensajeCarga('⏳ Registrando empresa...');
-
+            
+            if (!validarFormulario()) return;
+            
+            // Mostrar estado de carga
+            mostrarMensaje('Carga', '⏳ Registrando empresa en el sistema...');
+            
             const boton = document.getElementById('botonEnviar');
+            const textoBoton = document.getElementById('textoBoton');
+            const iconoCarga = document.getElementById('iconoCarga');
+            
             boton.disabled = true;
-            boton.textContent = 'Registrando...';
-
-            // DATOS CORRECTOS: Usamos "Plan" en vez de "Plan (Mensual/Anual)"
+            textoBoton.textContent = 'Registrando...';
+            iconoCarga.style.display = 'inline';
+            
+            // Preparar datos para enviar
+            // IMPORTANTE: NO enviamos el ID - se generará automáticamente en el Excel
             const datosParaEnviar = {
-                'Empresa': document.getElementById('nombreEmpresa').value,
+                'Empresa': document.getElementById('nombreEmpresa').value.trim(),
                 'Rubro': document.getElementById('rubro').value,
                 'Pais': document.getElementById('pais').value,
-                'Localidad': document.getElementById('localidad').value,
-                'Area_a_cargo': document.getElementById('areaCargo').value,
+                'Localidad': document.getElementById('localidad').value.trim(),
+                'Area_a_cargo': document.getElementById('areaCargo').value.trim(),
                 'CUIT': document.getElementById('cuit').value,
-                'Responsable': document.getElementById('responsable').value,
-                'Email': document.getElementById('email').value,
-                'Tel_contacto': document.getElementById('telefono').value,
-                'WhatsApp': document.getElementById('whatsapp').value || '',
-                'Plan': document.getElementById('plan').value,  // NOMBRE SIMPLIFICADO
-                'Observaciones': document.getElementById('observaciones').value || '',
+                'Responsable': document.getElementById('responsable').value.trim(),
+                'Email': document.getElementById('email').value.trim(),
+                'Tel_contacto': document.getElementById('telefono').value.trim(),
+                'WhatsApp': document.getElementById('whatsapp').value.trim() || '',
+                'Plan': document.getElementById('plan').value,  // Nombre CORREGIDO
+                'Observaciones': document.getElementById('observaciones').value.trim() || '',
                 'Fecha alta': document.getElementById('fechaAlta').value,
-                'Estado': 'activo'
+                'Estado': 'Activo'
             };
-
-            console.log('📤 Datos a enviar al registro:', datosParaEnviar);
-
+            
+            console.log('📤 Enviando datos:', datosParaEnviar);
+            
             try {
-                const respuesta = await fetch(URL_SHEETBEST, {
+                // Enviar a Sheet.best
+                const respuesta = await fetch(URL_REGISTRO, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
                     body: JSON.stringify(datosParaEnviar)
                 });
-
+                
                 if (respuesta.ok) {
-                    ocultarTodosLosMensajes();
-                    mostrarMensajeExito('✅ ¡Empresa registrada correctamente!<br>El ID se generará automáticamente en el sistema.');
-
-                    setTimeout(() => {
-                        boton.disabled = false;
-                        boton.textContent = '🌿 Registrar Empresa';
-                        document.getElementById('formularioRegistro').reset();
-                        document.getElementById('pais').value = 'Argentina';
-                        // Actualizar fecha
-                        document.getElementById('fechaAlta').value = '29/12/2025';
-                    }, 3000);
-
+                    const resultado = await respuesta.json();
+                    console.log('✅ Respuesta:', resultado);
+                    
+                    mostrarMensaje('Exito', 
+                        '✅ ¡Empresa registrada exitosamente!<br><br>' +
+                        '📧 Recibirás un email con tu ID de empresa y más información.');
+                    
+                    // Resetear formulario (excepto fecha)
+                    this.reset();
+                    document.getElementById('pais').value = 'Argentina';
+                    
+                    // Actualizar fecha por si pasó tiempo
+                    const ahora = new Date();
+                    const fechaFormateada = ahora.toLocaleDateString('es-AR');
+                    document.getElementById('fechaAlta').value = fechaFormateada;
+                    
                 } else {
-                    mostrarMensajeError('❌ Error al registrar. Verifica los datos e intenta nuevamente.');
-                    boton.disabled = false;
-                    boton.textContent = '🌿 Registrar Empresa';
+                    throw new Error('Error en la respuesta del servidor');
                 }
-
+                
             } catch (error) {
-                mostrarMensajeError('❌ Error de conexión. Intenta nuevamente.');
+                console.error('❌ Error:', error);
+                mostrarMensaje('Error', 
+                    '❌ Error al conectar con el servidor.<br>' +
+                    'Por favor, intenta nuevamente en unos minutos.');
+                
+            } finally {
+                // Restaurar botón
                 boton.disabled = false;
-                boton.textContent = '🌿 Registrar Empresa';
+                textoBoton.textContent = '🌿 Registrar Empresa';
+                iconoCarga.style.display = 'none';
             }
         });
 
-        function ocultarTodosLosMensajes() {
-            document.getElementById('mensajeExito').style.display = 'none';
-            document.getElementById('mensajeError').style.display = 'none';
-            document.getElementById('mensajeCarga').style.display = 'none';
-        }
-
-        function mostrarMensajeExito(texto) {
-            const mensaje = document.getElementById('mensajeExito');
-            mensaje.innerHTML = texto;
-            mensaje.style.display = 'block';
-        }
-
-        function mostrarMensajeError(texto) {
-            const mensaje = document.getElementById('mensajeError');
-            mensaje.innerHTML = texto;
-            mensaje.style.display = 'block';
-        }
-
-        function mostrarMensajeCarga(texto) {
-            const mensaje = document.getElementById('mensajeCarga');
-            mensaje.textContent = texto;
-            mensaje.style.display = 'block';
-        }
+        // Mejorar experiencia del usuario
+        document.querySelectorAll('input, select, textarea').forEach(elemento => {
+            elemento.addEventListener('focus', function() {
+                this.style.borderColor = 'var(--verde-medio)';
+                this.style.boxShadow = '0 0 0 3px rgba(76, 175, 80, 0.1)';
+            });
+            
+            elemento.addEventListener('blur', function() {
+                this.style.borderColor = '#e0e0e0';
+                this.style.boxShadow = 'none';
+            });
+        });
     </script>
 </body>
 </html>
