@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insignia Mensual - ROBER</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7f4;
+            color: #1d1d1d;
+        }
+        .contenedor {
+            max-width: 700px; /* ACHICADO */
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            border: 3px solid #1F7A3E;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+        }
+        .header {
+            position: relative;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .logo {
+            height: 100px;
+            position: absolute;
+            left: 10px;
+            top: 0;
+        }
+        .header-titulo {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 22px;
+            font-weight: 700;
+            color: #287a48;
+            text-align: center;
+            width: 100%;
+        }
+        .qr {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            text-align: center;
+        }
+        .qr img {
+            width: 100px;
+            height: 100px;
+        }
+        .bloque {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #D8EEDB;
+            background: #F9FFF9;
+        }
+        .bloque h2 {
+            margin: 0 0 12px 0;
+            color: #124d2d;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .fila {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            font-size: 16px;
+        }
+        .etiqueta {
+            font-weight: 600;
+            color: #124d2d;
+        }
+        .valor {
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+        .equivalencia {
+            font-size: 16px;
+            color: #2e7d32;
+            margin: 12px 0;
+            font-weight: 500;
+            text-align: center;
+            background: #f8fff8;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid #1F7A3E;
+        }
+        .btn-descargar {
+            margin: 20px auto 10px auto;
+            display: block;
+            background: #1F7A3E;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-descargar:hover {
+            background: #155b2a;
+        }
+        .metricas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .metrica {
+            background: #f0f8f0;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid #d0e8d0;
+        }
+        @media (max-width: 768px) {
+            .contenedor {
+                margin: 15px;
+                padding: 20px;
+            }
+            .header {
+                height: auto;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .logo {
+                position: static;
+                height: 80px;
+                margin-bottom: 10px;
+            }
+            .header-titulo {
+                position: static;
+                transform: none;
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .qr {
+                position: static;
+                margin: 10px auto;
+            }
+            .metricas {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+    <div class="header">
+        <img class="logo"
+             src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png"
+             alt="Impacta Verde">
+        <div class="header-titulo">Insignia de Sostenibilidad Mensual</div>
+        <div class="qr">
+            <img src="data:image/png;base64,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" alt="Código QR">
+            <div style="font-size:12px; color:#444;">Verificación</div>
+        </div>
+    </div>
+    <div class="bloque">
+        <h2>🌿 Inicial</h2>
+        <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor">ROBER</span></div>
+        <div class="fila"><span class="etiqueta">Período:</span> <span class="valor">Agosto 2025</span></div>
+        <div class="fila"><span class="etiqueta">Puntaje mensual:</span> <span class="valor" style="font-weight: bold; color: #1F7A3E; font-size: 18px;">21.9%</span></div>
+        
+        <div class="equivalencia">
+            <strong>Impacto equivalente a:</strong><br>
+            <span style="font-size: 20px; font-weight: bold;">🌳 (Iniciando)</span>
+        </div>
+        
+        <div class="metricas">
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">CO₂e evitado</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">186.17 kg</div>
+            </div>
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">Material recuperado</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">27.0 kg</div>
+            </div>
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">Puntaje social</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">45.6%</div>
+            </div>
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">Puntaje digital</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">8.0%</div>
+            </div>
+        </div>
+    </div>
+</div>
+<button id="descargar" class="btn-descargar">Descargar PNG de la Insignia</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+document.getElementById("descargar").addEventListener("click", function() {
+    const contenedor = document.querySelector(".contenedor");
+    const boton = this;
+    const textoOriginal = boton.textContent;
+    boton.textContent = "Generando imagen...";
+    boton.disabled = true;
+    setTimeout(() => {
+        html2canvas(contenedor, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff"
+        }).then(canvas => {
+            const link = document.createElement("a");
+            link.download = "insignia-ROBER-Agosto-2025.png";
+            link.href = canvas.toDataURL("image/png");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }).finally(() => {
+            boton.textContent = textoOriginal;
+            boton.disabled = false;
+        });
+    }, 100);
+});
+</script>
+</body>
+</html>
