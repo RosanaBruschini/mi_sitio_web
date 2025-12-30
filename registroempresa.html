@@ -6,25 +6,23 @@
     <title>Registro de Empresa - Impacta Verde</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>" type="image/svg+xml">
     <style>
+        /* Estilos anteriores sin cambios */
         :root {
             --verde-oscuro: #1F7A3E;
             --verde-medio: #4CAF50;
             --verde-claro: #d4edda;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         body {
             background: #f5f7fa;
             padding: 20px;
             min-height: 100vh;
         }
-
         .contenedor-principal {
             max-width: 800px;
             margin: 40px auto;
@@ -33,7 +31,6 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-
         .encabezado {
             background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
             color: white;
@@ -41,20 +38,16 @@
             text-align: center;
             position: relative;
         }
-
         .logo-img {
             height: 120px; width: auto; border-radius: 8px; background-color: white; padding: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;
             margin-bottom: 20px;
         }
-
         .contenido-formulario {
             padding: 40px;
         }
-
         .grupo-formulario {
             margin-bottom: 25px;
         }
-
         label {
             display: block;
             margin-bottom: 8px;
@@ -62,7 +55,6 @@
             color: #2c3e50;
             font-size: 14px;
         }
-
         input, select, textarea {
             width: 100%;
             padding: 14px 16px;
@@ -72,20 +64,17 @@
             transition: all 0.3s ease;
             background: #f8f9fa;
         }
-
         input:focus, select:focus, textarea:focus {
             border-color: var(--verde-medio);
             box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
             outline: none;
             background: white;
         }
-
         .fila-doble {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
-
         .boton-enviar {
             background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
             color: white;
@@ -99,18 +88,15 @@
             margin-top: 30px;
             transition: all 0.3s ease;
         }
-
         .boton-enviar:hover {
             transform: translateY(-2px);
             box-shadow: 0 7px 14px rgba(31, 122, 62, 0.2);
         }
-
         .boton-enviar:disabled {
             opacity: 0.7;
             cursor: not-allowed;
             transform: none;
         }
-
         .mensaje {
             padding: 16px;
             border-radius: 10px;
@@ -120,56 +106,40 @@
             display: none;
             animation: fadeIn 0.5s ease;
         }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         .mensaje-exito {
             background-color: var(--verde-claro);
             color: #155724;
             border: 2px solid #c3e6cb;
         }
-
         .mensaje-error {
             background-color: #f8d7da;
             color: #721c24;
             border: 2px solid #f5c6cb;
         }
-
         .mensaje-carga {
             background-color: #d1ecf1;
             color: #0c5460;
             border: 2px solid #bee5eb;
         }
-
         .campo-obligatorio::after {
             content: " *";
             color: #dc3545;
         }
-
-        .info-fecha {
-            font-size: 12px;
-            color: #6c757d;
-            font-style: italic;
-            margin-top: 5px;
-        }
-
         @media (max-width: 768px) {
             .contenedor-principal {
                 margin: 20px auto;
                 border-radius: 15px;
             }
-            
             .encabezado {
                 padding: 30px 20px;
             }
-            
             .contenido-formulario {
                 padding: 25px;
             }
-            
             .fila-doble {
                 grid-template-columns: 1fr;
                 gap: 15px;
@@ -192,14 +162,16 @@
             <div id="mensajeCarga" class="mensaje mensaje-carga"></div>
 
             <form id="formularioRegistro">
-                <!-- Campo oculto para ID automático -->
-                <input type="hidden" id="idEmpresa" name="ID">
+                <div class="grupo-formulario">
+                    <label class="campo-obligatorio">ID de Empresa (automático)</label>
+                    <input type="text" id="idEmpresa" name="ID" value="AUTO_GENERADO" readonly 
+                           style="background-color: #e9ecef; font-weight: bold; color: #666;">
+                </div>
 
                 <div class="grupo-formulario">
                     <label class="campo-obligatorio">Fecha de Alta</label>
                     <input type="text" id="fechaAlta" name="Fecha alta" value="30/12/2025" readonly 
                            style="background-color: #e9ecef; font-weight: bold;">
-                    <div class="info-fecha">Fecha actual automática con día, mes y año</div>
                 </div>
 
                 <div class="grupo-formulario">
@@ -208,6 +180,7 @@
                            placeholder="Ejemplo: Mi Empresa S.A.">
                 </div>
 
+                <!-- Resto de campos igual que antes -->
                 <div class="fila-doble">
                     <div class="grupo-formulario">
                         <label for="rubro" class="campo-obligatorio">Rubro</label>
@@ -326,61 +299,23 @@
     <script>
         const URL_REGISTRO = "https://api.sheetbest.com/sheets/c7fec5f9-d83f-4d32-b31e-6ee06ea50d00";
 
-        // Función para obtener el siguiente ID disponible
-        async function obtenerSiguienteID() {
-            try {
-                const response = await fetch(URL_REGISTRO);
-                const empresas = await response.json();
-                
-                let maxID = 999; // Empezamos desde 1000
-                
-                // Buscar el máximo ID existente
-                empresas.forEach(empresa => {
-                    if (empresa.ID && !isNaN(empresa.ID)) {
-                        const idNum = parseInt(empresa.ID);
-                        if (idNum > maxID) {
-                            maxID = idNum;
-                        }
-                    }
-                });
-                
-                // Si no hay empresas, empezamos en 1000
-                if (maxID === 999 && empresas.length > 0) {
-                    // Buscar IDs en otras columnas
-                    empresas.forEach(empresa => {
-                        // Buscar cualquier campo que parezca un ID
-                        Object.values(empresa).forEach(valor => {
-                            if (valor && !isNaN(valor) && parseInt(valor) > 999) {
-                                const idNum = parseInt(valor);
-                                if (idNum > maxID) {
-                                    maxID = idNum;
-                                }
-                            }
-                        });
-                    });
-                }
-                
-                return maxID + 1;
-                
-            } catch (error) {
-                console.error('Error obteniendo siguiente ID:', error);
-                return 1000; // Valor por defecto si hay error
-            }
+        function generarIDUnico() {
+            const timestamp = Date.now();
+            const random = Math.floor(Math.random() * 1000);
+            return `EMP-${timestamp}-${random}`;
         }
 
-        document.addEventListener('DOMContentLoaded', async function() {
-            // Configurar país por defecto
+        document.addEventListener('DOMContentLoaded', function() {
+            // Generar ID único automáticamente
+            document.getElementById('idEmpresa').value = generarIDUnico();
             document.getElementById('pais').value = 'Argentina';
             
-            // Obtener y asignar ID automático
-            const siguienteID = await obtenerSiguienteID();
-            document.getElementById('idEmpresa').value = siguienteID;
-            
-            console.log('✅ ID asignado automáticamente:', siguienteID);
-            
-            // Actualizar fecha actual
+            // Actualizar fecha si es necesario
             const ahora = new Date();
-            const fechaFormateada = ahora.toLocaleDateString('es-AR');
+            const dia = String(ahora.getDate()).padStart(2, '0');
+            const mes = String(ahora.getMonth() + 1).padStart(2, '0');
+            const anio = ahora.getFullYear();
+            const fechaFormateada = `${dia}/${mes}/${anio}`;
             document.getElementById('fechaAlta').value = fechaFormateada;
         });
 
@@ -430,8 +365,6 @@
                 'Estado': 'Activo'
             };
             
-            console.log('📤 Enviando datos con ID:', datosParaEnviar.ID);
-            
             try {
                 const respuesta = await fetch(URL_REGISTRO, {
                     method: 'POST',
@@ -443,22 +376,21 @@
                 });
                 
                 if (respuesta.ok) {
-                    mostrarMensaje('Exito', '✅ ¡Empresa registrada exitosamente!<br>ID asignado: ' + datosParaEnviar.ID);
+                    mostrarMensaje('Exito', '✅ ¡Empresa registrada exitosamente! ID: ' + datosParaEnviar.ID);
                     
-                    // Obtener nuevo ID para la próxima empresa
-                    const nuevoID = await obtenerSiguienteID();
-                    document.getElementById('idEmpresa').value = nuevoID;
-                    
-                    // Resetear formulario
                     this.reset();
                     document.getElementById('pais').value = 'Argentina';
                     
+                    // Generar nuevo ID para próxima empresa
+                    document.getElementById('idEmpresa').value = generarIDUnico();
+                    
                     // Actualizar fecha
                     const ahora = new Date();
-                    const fechaFormateada = ahora.toLocaleDateString('es-AR');
+                    const dia = String(ahora.getDate()).padStart(2, '0');
+                    const mes = String(ahora.getMonth() + 1).padStart(2, '0');
+                    const anio = ahora.getFullYear();
+                    const fechaFormateada = `${dia}/${mes}/${anio}`;
                     document.getElementById('fechaAlta').value = fechaFormateada;
-                    
-                    console.log('🆔 Nuevo ID preparado:', nuevoID);
                     
                 } else {
                     throw new Error('Error en la respuesta del servidor');
