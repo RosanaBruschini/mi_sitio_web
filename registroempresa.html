@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Empresa - Impacta Verde</title>
-    <link rel="icon" href="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" type="image/x-icon">
+    <link rel="icon" href="https://impactaverde.com.ar/favicon.png" type="image/x-icon">
     <style>
         :root {
             --verde-oscuro: #1F7A3E;
@@ -63,8 +63,6 @@
             font-weight: 600;
             color: #2c3e50;
             font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         input, select, textarea {
@@ -102,8 +100,6 @@
             width: 100%;
             margin-top: 30px;
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .boton-enviar:hover {
@@ -150,25 +146,9 @@
             border: 2px solid #bee5eb;
         }
 
-        .info-fecha {
-            font-size: 12px;
-            color: #6c757d;
-            font-style: italic;
-            margin-top: 5px;
-        }
-
         .campo-obligatorio::after {
             content: " *";
             color: #dc3545;
-        }
-
-        .header-info {
-            background: #e8f5e9;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            text-align: center;
-            border-left: 4px solid var(--verde-oscuro);
         }
 
         @media (max-width: 768px) {
@@ -189,29 +169,19 @@
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
-            
-            input, select, textarea {
-                padding: 12px 14px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="contenedor-principal">
         <div class="encabezado">
-            <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" 
+            <img src="https://impactaverde.com.ar/logo.png" 
                  alt="Logo Impacta Verde" class="logo-img">
             <h1 style="margin: 0 0 10px 0; font-size: 28px;">Impacta Verde</h1>
             <p style="opacity: 0.9; font-size: 16px;">Registro de Empresa</p>
         </div>
 
         <div class="contenido-formulario">
-            <div class="header-info">
-                <h3 style="color: var(--verde-oscuro); margin-bottom: 10px;">📋 Información importante</h3>
-                <p style="margin: 0; color: #555;">Complete todos los campos obligatorios (*). 
-                El ID de empresa se asignará automáticamente después del registro.</p>
-            </div>
-
             <div id="mensajeExito" class="mensaje mensaje-exito"></div>
             <div id="mensajeError" class="mensaje mensaje-error"></div>
             <div id="mensajeCarga" class="mensaje mensaje-carga"></div>
@@ -219,11 +189,8 @@
             <form id="formularioRegistro">
                 <div class="grupo-formulario">
                     <label class="campo-obligatorio">Fecha de Alta</label>
-                    <input type="text" id="fechaAlta" name="Fecha alta" value="29/12/2025" readonly 
+                    <input type="text" id="fechaAlta" name="Fecha alta" value="30/12/2025" readonly 
                            style="background-color: #e9ecef; font-weight: bold;">
-                    <div class="info-fecha">
-                        Fecha generada automáticamente
-                    </div>
                 </div>
 
                 <div class="grupo-formulario">
@@ -279,7 +246,7 @@
                     <div class="grupo-formulario">
                         <label for="cuit" class="campo-obligatorio">CUIT</label>
                         <input type="text" id="cuit" name="CUIT" required 
-                               placeholder="Formato: 00-12345678-9"
+                               placeholder="00-12345678-9"
                                pattern="[0-9]{2}-[0-9]{8}-[0-9]{1}">
                     </div>
 
@@ -369,23 +336,8 @@
             }
         }
 
-        function validarFormulario() {
-            const cuit = document.getElementById('cuit').value;
-            const cuitRegex = /^[0-9]{2}-[0-9]{8}-[0-9]{1}$/;
-            
-            if (!cuitRegex.test(cuit)) {
-                mostrarMensaje('Error', '❌ El CUIT debe tener formato 00-12345678-9');
-                document.getElementById('cuit').focus();
-                return false;
-            }
-            
-            return true;
-        }
-
         document.getElementById('formularioRegistro').addEventListener('submit', async function(evento) {
             evento.preventDefault();
-            
-            if (!validarFormulario()) return;
             
             mostrarMensaje('Carga', '⏳ Registrando empresa en el sistema...');
             
@@ -425,7 +377,7 @@
                 });
                 
                 if (respuesta.ok) {
-                    mostrarMensaje('Exito', '✅ ¡Empresa registrada exitosamente!<br>Recibirás un email con confirmación.');
+                    mostrarMensaje('Exito', '✅ ¡Empresa registrada exitosamente!');
                     
                     this.reset();
                     document.getElementById('pais').value = 'Argentina';
