@@ -122,6 +122,22 @@
             text-align: center;
             border: 1px solid #d0e8d0;
         }
+        .ods-box {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #D8EEDB;
+            background: #F3FFF3;
+        }
+        .ods-box span {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #1F7A3E;
+            color: white;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
         @media (max-width: 768px) {
             .contenedor {
                 margin: 15px;
@@ -164,7 +180,7 @@
         <div class="header-titulo">Insignia de Sostenibilidad Mensual</div>
         <div class="qr">
             <img src="data:image/png;base64,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" alt="Código QR">
-            <div style="font-size:12px; color:#444;">Verificación</div>
+            <div style="font-size:12px; color:#444; margin-top:5px;">Verificación</div>
         </div>
     </div>
     <div class="bloque">
@@ -183,6 +199,16 @@
             <div class="metrica" style="grid-column: 1 / -1;">
                 <div style="font-size:14px; color:#124d2d; font-weight:600;">Métricas de sostenibilidad</div>
                 <div style="font-size:16px; color:#666;">Reporte mensual completo</div>
+            </div>
+        </div>
+        
+        
+        <div class="ods-box">
+            <h3 style="font-size:14px; color:#0f5e30; margin:15px 0 10px 0; text-align:center;">
+                Contribuye a los ODS
+            </h3>
+            <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:8px;">
+                <span>7</span><span>12</span><span>13</span>
             </div>
         </div>
     </div>
