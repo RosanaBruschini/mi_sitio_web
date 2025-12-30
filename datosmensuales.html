@@ -240,9 +240,9 @@
             <div id="mensajeCarga" class="mensaje mensaje-carga"></div>
 
             <form id="formularioDatos">
-                <!-- Campo oculto para ID de empresa (se llena automáticamente) -->
+                <!-- Campos ocultos -->
                 <input type="hidden" id="idEmpresaHidden" name="ID_Empresa">
-                <input type="hidden" id="fechaCarga" name="Fecha_carga" value="30/12/2025">
+                <input type="hidden" id="fechaCarga" name="Fecha_carga">
 
                 <!-- SECCIÓN 1: 🏢 EMPRESA Y PERÍODO -->
                 <div class="seccion">
@@ -468,6 +468,7 @@
         const URL_REGISTRO = "https://api.sheetbest.com/sheets/c7fec5f9-d83f-4d32-b31e-6ee06ea50d00";
 
         document.addEventListener('DOMContentLoaded', async function() {
+            // Configurar mes y año actual
             const ahora = new Date();
             const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
                           'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
@@ -568,6 +569,11 @@
             textoBoton.textContent = 'Enviando...';
             iconoCarga.style.display = 'inline';
             
+            // ESTABLECER FECHA ACTUAL EN TIEMPO REAL
+            const ahora = new Date();
+            const fechaFormateada = ahora.toLocaleString('es-AR'); // 29/12/2025, 22:00:00
+            document.getElementById('fechaCarga').value = fechaFormateada;
+            
             const datosParaEnviar = {
                 'ID_Empresa': document.getElementById('idEmpresaHidden').value,
                 'Empresa': document.getElementById('empresaSelect').value,
@@ -598,6 +604,8 @@
                 'Agua_m3': parseFloat(document.getElementById('agua_m3').value) || 0
             };
             
+            console.log('📤 Enviando datos con fecha:', datosParaEnviar.Fecha_carga);
+            
             try {
                 const respuesta = await fetch(URL_DATOS, {
                     method: 'POST',
@@ -609,7 +617,7 @@
                 });
                 
                 if (respuesta.ok) {
-                    mostrarMensaje('Exito', '✅ ¡Datos mensuales enviados correctamente!');
+                    mostrarMensaje('Exito', '✅ ¡Datos mensuales enviados correctamente!<br>Fecha: ' + datosParaEnviar.Fecha_carga);
                     
                     this.reset();
                     const ahora = new Date();
@@ -617,7 +625,6 @@
                                   'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
                     document.getElementById('mes').value = meses[ahora.getMonth()];
                     document.getElementById('anio').value = ahora.getFullYear();
-                    document.getElementById('fechaCarga').value = '30/12/2025';
                     
                     // Recargar empresas por si se agregaron nuevas
                     await cargarEmpresas();
