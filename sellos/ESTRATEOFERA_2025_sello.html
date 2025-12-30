@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sello Anual - ESTRATEOFERA</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7f4;
+            color: #1d1d1d;
+        }
+        .contenedor {
+            max-width: 750px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 14px;
+            border: 4px solid #1F7A3E;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        .header {
+            position: relative;
+            height: 110px;
+        }
+        .logo {
+            height: 120px;
+            position: absolute;
+            left: 15px;
+            top: -5px;
+        }
+        .header-subtitulo {
+            position: absolute;
+            left: 50%;
+            top: 40px;
+            transform: translateX(-50%);
+            font-size: 24px;
+            font-weight: 700;
+            color: #287a48;
+            text-align: center;
+        }
+        .qr {
+            position: absolute;
+            top: 35px;
+            right: 35px;
+            text-align: center;
+        }
+        .qr img {
+            width: 120px;
+            height: 120px;
+        }
+        .bloque {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #D8EEDB;
+            background: #F9FFF9;
+        }
+        .bloque h2 {
+            margin: 0 0 15px 0;
+            color: #124d2d;
+            font-size: 22px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .fila {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 17px;
+        }
+        .etiqueta {
+            font-weight: 600;
+            color: #124d2d;
+        }
+        .equivalencia {
+            font-size: 17px;
+            color: #2e7d32;
+            margin: 15px 0;
+            font-weight: 500;
+            text-align: center;
+            background: #f8fff8;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #1F7A3E;
+        }
+        .ods-box {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #D8EEDB;
+            background: #F3FFF3;
+        }
+        .ods-box h3 {
+            margin-top: 0;
+            color: #0f5e30;
+            font-weight: 700;
+        }
+        .ods-list span {
+            display: inline-block;
+            padding: 6px 14px;
+            margin: 6px;
+            background: #1F7A3E;
+            color: white;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        .btn-descargar {
+            margin: 25px auto 10px auto;
+            display: block;
+            background: #1F7A3E;
+            color: white;
+            border: none;
+            padding: 14px 26px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-descargar:hover {
+            background: #155b2a;
+        }
+        @media (max-width: 768px) {
+            .contenedor {
+                margin: 20px;
+                padding: 25px;
+            }
+            .header {
+                height: auto;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 25px;
+            }
+            .logo {
+                position: static;
+                height: 100px;
+                margin-bottom: 15px;
+            }
+            .header-subtitulo {
+                position: static;
+                transform: none;
+                font-size: 22px;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            .qr {
+                position: static;
+                margin: 15px auto;
+            }
+            .fila {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+    <div class="header">
+        <img class="logo"
+             src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png"
+             alt="Impacta Verde">
+        <div class="header-subtitulo">Sello Digital de Sostenibilidad</div>
+    </div>
+    <div class="qr">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaCAIAAAC5ZBI0AAAIjklEQVR4nO3dwW1kuRVA0dGgA3EmDsxrB+ZMnEk5AYPQgGLz8c45e1V9VUkXXDySX5/P5w+A9/15+wEAfoacARFyBkTIGRAhZ0CEnAERcgZEyBkQIWdAhJwBEXIGRMgZECFnQIScARFyBkTIGRAhZ0CEnAERcgZEyBkQIWdAhJwBEXIGRMgZECFnQIScARFyBkTIGRAhZ0CEnAERcgZEyBkQIWdAhJwBEXIGRMgZECFnQIScARFyBkT8uvXG//jXP2+99SH//fd/Dr3y+rNav+/O57zzG5175nM/u3buk/S/8FOszoAIOQMi5AyIkDMgQs6ACDkDIuQMiJAzIELOgIhruwLWbk0Vr+1Mb5+bVl97ca/CrW//1u6Ltd7/wjlWZ0CEnAERcgZEyBkQIWdAhJwBEXIGRMgZECFnQMTQXQFrL05g77zyrTP7126d97/j3L6OW178XzjH6gyIkDMgQs6ACDkDIuQMiJAzIELOgAg5AyLkDIh4clfAi2ZOb+881fp9Z+43WJt5gwHfZ3UGRMgZECFnQIScARFyBkTIGRAhZ0CEnAERcgZE2BXwm9yadL+1Z2DHi/cM2DMwgdUZECFnQIScARFyBkTIGRAhZ0CEnAERcgZEyBkQ8eSugBcnsG9Nq6/17hnYed8X9X6jHVZnQIScARFyBkTIGRAhZ0CEnAERcgZEyBkQIWdAxNBdAbdOqb/l3E0C5z7Jc+9761T+c5/zizc2vMjqDIiQMyBCzoAIOQMi5AyIkDMgQs6ACDkDIuQMiPj6fD63n4Frs/vnzJzs33FrVwDfZ3UGRMgZECFnQIScARFyBkTIGRAhZ0CEnAERcgZEXLsrYOYJ6LfO3V+7dSr/2vqpbs3BzzyV/9YtBDNvPzjH6gyIkDMgQs6ACDkDIuQMiJAzIELOgAg5AyLkDIgYelfAuWn1c84987nZ7rVzE/Yz7wrofQtrvRsqrM6ACDkDIuQMiJAzIELOgAg5AyLkDIiQMyBCzoCIa7sCZt4VsOPW9PbMqfGZU/K932jNXQEAT5IzIELOgAg5AyLkDIiQMyBCzoAIOQMi5AyIGLorYOac9N/tfW+dJT/zmddm7lXYed+Zc/9rVmdAhJwBEXIGRMgZECFnQIScARFyBkTIGRAhZ0DE0F0Ba7cmoWfebzBzsv+WF79f3+BPsToDIuQMiJAzIELOgAg5AyLkDIiQMyBCzoAIOQMift1+gN9tZxL63PT2ufnsc6fyr52bzp/5WZ175Vuz+zP/nteszoAIOQMi5AyIkDMgQs6ACDkDIuQMiJAzIELOgIjgroCZJ/qv9U6pn3kOfe+Giluf88zv1+oMiJAzIELOgAg5AyLkDIiQMyBCzoAIOQMi5AyI+Pp8Plfe+Nwc/MxJ95lz/zte3DNwa8J+5mT/zKfaYXUGRMgZECFnQIScARFyBkTIGRAhZ0CEnAERcgZEBO8KWNvZM9Cbot7x4u97bsfILTt/ky/eUbBmdQZEyBkQIWdAhJwBEXIGRMgZECFnQIScARFyBkQ8eVfAuTP7Z57avta7G2Hm97vzyi9+Gi/eBWF1BkTIGRAhZ0CEnAERcgZEyBkQIWdAhJwBEXIGRFy7K+Dc3PC5E99vzVjvOHc3wkwzJ91f/Gtfc1cAwEFyBkTIGRAhZ0CEnAERcgZEyBkQIWdAhJwBEdd2Bcw8xfzcU5372bW/2y0E52b3X/yOdt535tz/mtUZECFnQIScARFyBkTIGRAhZ0CEnAERcgZEyBkQ8fX5fG4/w1828wz7mVPUL+6+OPfKvfscdl557cU9A1ZnQIScARFyBkTIGRAhZ0CEnAERcgZEyBkQIWdAxLVdAS/OhZ+bhL41+X3OzE9y5pT8zFd+8W/S6gyIkDMgQs6ACDkDIuQMiJAzIELOgAg5AyLkDIj4dfsB/r+dqeJzPztzTnrmWfLnfnb9zL3p/JlmPrPVGRAhZ0CEnAERcgZEyBkQIWdAhJwBEXIGRMgZEDF0V8DazHsGdszcjTDzvP9zP3vulWd+C729ClZnQIScARFyBkTIGRAhZ0CEnAERcgZEyBkQIWdAxJO7AnbsTEKf+9mZ/EY/9bO39irc2rlxa0eB1RkQIWdAhJwBEXIGRMgZECFnQIScARFyBkTIGRBxbVfAztzwrZnjW3cF7Dg3jz7z1oW1WzsZXvx+X2R1BkTIGRAhZ0CEnAERcgZEyBkQIWdAhJwBEXIGRFzbFdCbZr416b527rz/F8+/3/nZF3/fW3tCbrE6AyLkDIiQMyBCzoAIOQMi5AyIkDMgQs6ACDkDIq7tClibOXO8M2N962T9c8987n13XvncLohzZv61r828C8LqDIiQMyBCzoAIOQMi5AyIkDMgQs6ACDkDIuQMiBi6K2DtxRPQz53Kf+7s/Bf3KtyaVl+/763dCDP3dZxjdQZEyBkQIWdAhJwBEXIGRMgZECFnQIScARFyBkQ8uSuA77u1Z2DnlV90bq/CzP0kM1mdARFyBkTIGRAhZ0CEnAERcgZEyBkQIWdAhJwBEXYFjLAzF/7idP7MZz73VDPvZOjtGbA6AyLkDIiQMyBCzoAIOQMi5AyIkDMgQs6ACDkDIp7cFfDivPLazjz62rmZ8h3nTsdfu7Ub4dxdAb3/hR1WZ0CEnAERcgZEyBkQIWdAhJwBEXIGRMgZECFnQMTQXQHn5sL5vnOz+/YbTNDbjWB1BkTIGRAhZ0CEnAERcgZEyBkQIWdAhJwBEXIGRHx9Pp/bzwDwA6zOgAg5AyLkDIiQMyBCzoAIOQMi5AyIkDMgQs6ACDkDIuQMiJAzIELOgAg5AyLkDIiQMyBCzoAIOQMi5AyIkDMgQs6ACDkDIuQMiJAzIELOgAg5AyLkDIiQMyBCzoAIOQMi5AyIkDMgQs6ACDkDIuQMiJAzIELOgAg5AyLkDIj4H5It9vlVOfyGAAAAAElFTkSuQmCC" alt="Código QR">
+        <div style="font-size:14px; color:#444;">Verificación</div>
+    </div>
+    <div class="bloque">
+        <h2>🌿 Inicial</h2>
+        
+        <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor" >ESTRATEOFERA</span></div>
+        <div class="fila"><span class="etiqueta">Año:</span> <span class="valor" >2025</span></div>
+        <div class="fila"><span class="etiqueta">Tipo de medición:</span> <span class="valor" >Completa</span></div>
+        <div class="fila"><span class="etiqueta">Puntaje anual:</span> <span class="valor" style="font-weight: bold; color: #1F7A3E; font-size: 20px;">20.7</span></div>
+        <div class="fila"><span class="etiqueta">CO₂e evitado anual:</span> <span class="valor" >175.23 kg</span></div>
+        <div class="fila"><span class="etiqueta">N° de Sello:</span> <span class="valor" >SEL-2025-003</span></div>
+        <div class="fila"><span class="etiqueta">Emitido:</span> <span class="valor" >30/12/2025</span></div>
+        <div class="fila"><span class="etiqueta">Vence:</span> <span class="valor" >31/12/2026</span></div>
+        
+        <div class="equivalencia">
+            <strong>Impacto anual equivalente a:</strong><br>
+            <span style="font-size: 24px; font-weight: bold;">🌳 (Iniciando)</span>
+        </div>
+    </div>
+    <div class="ods-box">
+        <h3>ODS con los que contribuye</h3>
+        <div class="ods-list">
+            <span>7</span><span>12</span><span>13</span>
+        </div>
+    </div>
+</div>
+<button id="descargar" class="btn-descargar">Descargar PNG del Sello</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+document.getElementById("descargar").addEventListener("click", function() {
+    const contenedor = document.querySelector(".contenedor");
+    const boton = this;
+    const textoOriginal = boton.textContent;
+    boton.textContent = "Generando imagen...";
+    boton.disabled = true;
+    setTimeout(() => {
+        html2canvas(contenedor, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff"
+        }).then(canvas => {
+            const link = document.createElement("a");
+            link.download = "sello-ESTRATEOFERA-2025.png";
+            link.href = canvas.toDataURL("image/png");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }).finally(() => {
+            boton.textContent = textoOriginal;
+            boton.disabled = false;
+        });
+    }, 100);
+});
+</script>
+</body>
+</html>
