@@ -160,7 +160,7 @@
             <div id="mensajeCarga" class="mensaje mensaje-carga"></div>
 
             <form id="formularioRegistro">
-                <!-- CAMPO OCULTO PARA ID - NOMBRE EXACTO "ID_Empresa" -->
+                <!-- CAMPO OCULTO PARA ID - GENERADO AUTOMÁTICAMENTE -->
                 <input type="hidden" id="idEmpresa" name="ID_Empresa" value="">
 
                 <div class="grupo-formulario">
@@ -292,18 +292,34 @@
     <script>
         const URL_REGISTRO = "https://api.sheetbest.com/sheets/c7fec5f9-d83f-4d32-b31e-6ee06ea50d00";
 
-        function generarIDUnico() {
-            // Formato: EMP-YYYYMMDD-HHMMSS-RANDOM
-            const ahora = new Date();
-            const fecha = ahora.toISOString().slice(0,10).replace(/-/g, '');
-            const tiempo = ahora.toTimeString().slice(0,8).replace(/:/g, '');
-            const random = Math.floor(Math.random() * 1000);
-            return `EMP-${fecha}-${tiempo}-${random}`;
+        async function generarIDNumerico() {
+            try {
+                // Obtener todas las empresas registradas
+                const response = await fetch(URL_REGISTRO);
+                const empresas = await response.json();
+                
+                // Encontrar el ID más alto
+                let maxID = 0;
+                empresas.forEach(empresa => {
+                    if (empresa.ID_Empresa) {
+                        // Intentar convertir a número
+                        const idNum = parseInt(empresa.ID_Empresa);
+                        if (!isNaN(idNum) && idNum > maxID) {
+                            maxID = idNum;
+                        }
+                    }
+                });
+                
+                // Devolver el siguiente ID (máximo + 1)
+                return (maxID + 1).toString();
+            } catch (error) {
+                console.error('Error obteniendo ID:', error);
+                // Si falla, usar timestamp como respaldo
+                return Date.now().toString();
+            }
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            // Generar ID único automáticamente (oculto para el usuario)
-            document.getElementById('idEmpresa').value = generarIDUnico();
+        document.addEventListener('DOMContentLoaded', async function() {
             document.getElementById('pais').value = 'Argentina';
             
             // Actualizar fecha
@@ -313,6 +329,10 @@
             const anio = ahora.getFullYear();
             const fechaFormateada = `${dia}/${mes}/${anio}`;
             document.getElementById('fechaAlta').value = fechaFormateada;
+            
+            // Generar ID automáticamente
+            const nuevoID = await generarIDNumerico();
+            document.getElementById('idEmpresa').value = nuevoID;
         });
 
         function mostrarMensaje(tipo, texto) {
@@ -333,9 +353,7 @@
         document.getElementById('formularioRegistro').addEventListener('submit', async function(evento) {
             evento.preventDefault();
             
-            // Mostrar mensaje de carga con el ID que se va a generar
-            const idGenerado = document.getElementById('idEmpresa').value;
-            mostrarMensaje('Carga', `⏳ Generando registro con ID: ${idGenerado}...`);
+            mostrarMensaje('Carga', '⏳ Registrando empresa en el sistema...');
             
             const boton = document.getElementById('botonEnviar');
             const textoBoton = document.getElementById('textoBoton');
@@ -346,7 +364,7 @@
             iconoCarga.style.display = 'inline';
             
             const datosParaEnviar = {
-                'ID_Empresa': idGenerado,  // ✅ NOMBRE CORRECTO
+                'ID_Empresa': document.getElementById('idEmpresa').value,
                 'Empresa': document.getElementById('nombreEmpresa').value.trim(),
                 'Rubro': document.getElementById('rubro').value,
                 'Pais': document.getElementById('pais').value,
@@ -363,8 +381,6 @@
                 'Estado': 'Activo'
             };
             
-            console.log('Datos a enviar:', datosParaEnviar); // Para debug
-            
             try {
                 const respuesta = await fetch(URL_REGISTRO, {
                     method: 'POST',
@@ -376,15 +392,16 @@
                 });
                 
                 if (respuesta.ok) {
-                    const resultado = await respuesta.json();
-                    mostrarMensaje('Exito', `✅ ¡Empresa registrada exitosamente!<br><strong>ID: ${idGenerado}</strong><br>Guarde este ID para futuros reportes.`);
+                    // ✅ SOLO ESTE MENSAJE - SIN MOSTRAR ID AL USUARIO
+                    mostrarMensaje('Exito', '✅ ¡Empresa registrada exitosamente!');
                     
                     // Resetear formulario
                     this.reset();
                     document.getElementById('pais').value = 'Argentina';
                     
                     // Generar nuevo ID para próxima empresa
-                    document.getElementById('idEmpresa').value = generarIDUnico();
+                    const nuevoID = await generarIDNumerico();
+                    document.getElementById('idEmpresa').value = nuevoID;
                     
                     // Actualizar fecha
                     const ahora = new Date();
@@ -402,7 +419,7 @@
                 
             } catch (error) {
                 console.error('Error completo:', error);
-                mostrarMensaje('Error', `❌ Error al registrar: ${error.message}<br>Intente nuevamente.`);
+                mostrarMensaje('Error', '❌ Error al registrar. Por favor, intenta nuevamente.');
                 
             } finally {
                 boton.disabled = false;
