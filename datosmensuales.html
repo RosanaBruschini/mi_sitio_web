@@ -207,9 +207,10 @@
             <div id="mensajeCarga" class="mensaje mensaje-carga"></div>
 
             <form id="formularioDatos">
-                <!-- CAMPOS OCULTOS PARA ID Y FECHA -->
+                <!-- ✅ CAMPOS OCULTOS CORREGIDOS -->
                 <input type="hidden" id="idEmpresaHidden" name="ID_Empresa">
-                <input type="hidden" id="fechaCarga" name="Fecha_carga" value="30/12/2025">
+                <input type="hidden" id="nombreEmpresaHidden" name="Empresa">
+                <input type="hidden" id="fechaCarga" name="Fecha_carga">
 
                 <!-- SECCIÓN 1: EMPRESA Y PERÍODO -->
                 <div class="seccion">
@@ -219,9 +220,8 @@
 
                     <div class="grupo-formulario">
                         <label for="empresaSelect" class="campo-obligatorio">Seleccionar Empresa</label>
-                        <select id="empresaSelect" name="Empresa" required>
+                        <select id="empresaSelect" required>
                             <option value="">Seleccionar empresa...</option>
-                            <!-- Se cargarán automáticamente desde el registro -->
                         </select>
                         <small style="color: #666; font-size: 12px; margin-top: 5px; display: block;">
                             Solo se muestran empresas registradas previamente
@@ -444,7 +444,7 @@
         const URL_REGISTRO = "https://api.sheetbest.com/sheets/c7fec5f9-d83f-4d32-b31e-6ee06ea50d00";
 
         document.addEventListener('DOMContentLoaded', async function() {
-            // Actualizar fecha de carga automáticamente
+            // ✅ Actualizar fecha de carga automáticamente - FORMATO dd/mm/yyyy SIN HORA
             const ahora = new Date();
             const dia = String(ahora.getDate()).padStart(2, '0');
             const mes = String(ahora.getMonth() + 1).padStart(2, '0');
@@ -478,39 +478,26 @@
                 empresas.forEach(empresa => {
                     if (empresa.Empresa && empresa.ID_Empresa) {
                         const option = document.createElement('option');
-                        option.value = empresa.ID_Empresa;  // ✅ Usar ID_Empresa como valor
+                        option.value = empresa.ID_Empresa;  // ✅ ID como valor
                         option.textContent = empresa.Empresa;  // ✅ Solo mostrar nombre
                         option.dataset.nombre = empresa.Empresa;
-                        option.dataset.id = empresa.ID_Empresa;  // ✅ Usar ID_Empresa
-                        selectEmpresa.appendChild(option);
-                    } else if (empresa.Empresa) {
-                        const option = document.createElement('option');
-                        option.value = empresa.Empresa;
-                        option.textContent = empresa.Empresa;
-                        option.dataset.nombre = empresa.Empresa;
-                        option.dataset.id = empresa.Empresa; // Fallback
+                        option.dataset.id = empresa.ID_Empresa;
                         selectEmpresa.appendChild(option);
                     }
                 });
                 
-                // Cuando se selecciona una empresa, se asigna el ID automáticamente
+                // ✅ Cuando se selecciona una empresa, se asigna ID y Nombre automáticamente
                 selectEmpresa.addEventListener('change', function() {
                     const selectedOption = this.options[this.selectedIndex];
                     if (selectedOption.dataset.id) {
                         document.getElementById('idEmpresaHidden').value = selectedOption.dataset.id;
+                        document.getElementById('nombreEmpresaHidden').value = selectedOption.dataset.nombre;
                     }
                 });
                 
             } catch (error) {
                 console.error('Error cargando empresas:', error);
                 mostrarMensaje('Error', '⚠️ No se pudieron cargar las empresas. Verifica tu conexión.');
-                
-                // Opción manual si falla la carga
-                const selectEmpresa = document.getElementById('empresaSelect');
-                const option = document.createElement('option');
-                option.value = "manual";
-                option.textContent = "Ingresar manualmente (no hay empresas cargadas)";
-                selectEmpresa.appendChild(option);
             }
         }
 
@@ -535,8 +522,8 @@
             const anio = document.getElementById('anio').value;
             const cantidadEmpleados = document.getElementById('cantidad_empleados_total').value;
             
-            if (!empresa || empresa === "manual") {
-                mostrarMensaje('Error', '❌ Debe seleccionar una empresa válida');
+            if (!empresa) {
+                mostrarMensaje('Error', '❌ Debe seleccionar una empresa');
                 return false;
             }
             
@@ -568,11 +555,10 @@
             textoBoton.textContent = 'Enviando...';
             iconoCarga.style.display = 'inline';
             
-            // Obtener datos del formulario
+            // ✅ DATOS CORREGIDOS - ENVIAR ID NUMÉRICO Y NOMBRE SEPARADOS
             const datosParaEnviar = {
                 'ID_Empresa': document.getElementById('idEmpresaHidden').value,
-                'Empresa': document.getElementById('empresaSelect').options[document.getElementById('empresaSelect').selectedIndex].dataset.nombre || 
-                          document.getElementById('empresaSelect').value,
+                'Empresa': document.getElementById('nombreEmpresaHidden').value,
                 'Mes': document.getElementById('mes').value,
                 'Año': document.getElementById('anio').value,
                 'Fecha_carga': document.getElementById('fechaCarga').value,
@@ -600,8 +586,6 @@
                 'Agua_m3': parseFloat(document.getElementById('agua_m3').value) || 0
             };
             
-            console.log('Datos a enviar:', datosParaEnviar); // Para debug
-            
             try {
                 const respuesta = await fetch(URL_DATOS, {
                     method: 'POST',
@@ -613,17 +597,17 @@
                 });
                 
                 if (respuesta.ok) {
-                    mostrarMensaje('Exito', `✅ ¡Datos mensuales enviados correctamente!<br>Empresa: ${datosParaEnviar.Empresa}`);
+                    mostrarMensaje('Exito', '✅ ¡Datos mensuales enviados correctamente!');
                     
-                    // Resetear solo los campos de datos, mantener empresa seleccionada
+                    // Resetear solo los campos de datos
                     const camposReset = ['energia_kwh', 'combustible_l', 'papel_kg', 'borra_humeda_kg', 
                                        'borra_seca_kg', 'tela_reutilizada_kg', 'tecnologia_recuperada_kg',
-                                       'plastico_reutilizado_kg', 'cantidad_empleados_locales',
-                                       'cantidad_mujeres', 'cantidad_personas_discapacitadas',
-                                       'capacitacion_horas', 'procesos_optimizados', 'digitalizacion',
-                                       'residuo_organico_kg', 'residuo_reciclable_kg', 
-                                       'residuo_no_reciclable_kg', 'comentarios', 'link_evidencia',
-                                       'agua_m3', 'politica_inclusion'];
+                                       'plastico_reutilizado_kg', 'cantidad_empleados_total',
+                                       'cantidad_empleados_locales', 'cantidad_mujeres', 
+                                       'cantidad_personas_discapacitadas', 'capacitacion_horas', 
+                                       'procesos_optimizados', 'digitalizacion', 'residuo_organico_kg', 
+                                       'residuo_reciclable_kg', 'residuo_no_reciclable_kg', 
+                                       'comentarios', 'link_evidencia', 'agua_m3', 'politica_inclusion'];
                     
                     camposReset.forEach(campoId => {
                         const elemento = document.getElementById(campoId);
@@ -631,7 +615,7 @@
                             if (elemento.type === 'checkbox') {
                                 elemento.checked = false;
                             } else {
-                                elemento.value = campoId.includes('cantidad_empleados_total') ? '1' : '0';
+                                elemento.value = campoId === 'cantidad_empleados_total' ? '1' : '0';
                             }
                         }
                     });
@@ -646,13 +630,10 @@
                     document.getElementById('fechaCargaVisible').value = nuevaFecha;
                     
                 } else {
-                    const errorTexto = await respuesta.text();
-                    console.error('Error respuesta:', errorTexto);
                     throw new Error('Error en la respuesta del servidor');
                 }
                 
             } catch (error) {
-                console.error('Error completo:', error);
                 mostrarMensaje('Error', '❌ Error al enviar los datos. Por favor, verifica tu conexión.');
                 
             } finally {
