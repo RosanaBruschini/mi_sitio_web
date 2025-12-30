@@ -149,6 +149,13 @@
             color: #dc3545;
         }
 
+        .info-fecha {
+            font-size: 12px;
+            color: #6c757d;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
         @media (max-width: 768px) {
             .contenedor-principal {
                 margin: 20px auto;
@@ -185,10 +192,14 @@
             <div id="mensajeCarga" class="mensaje mensaje-carga"></div>
 
             <form id="formularioRegistro">
+                <!-- Campo oculto para ID automático -->
+                <input type="hidden" id="idEmpresa" name="ID">
+
                 <div class="grupo-formulario">
                     <label class="campo-obligatorio">Fecha de Alta</label>
                     <input type="text" id="fechaAlta" name="Fecha alta" value="30/12/2025" readonly 
                            style="background-color: #e9ecef; font-weight: bold;">
+                    <div class="info-fecha">Fecha actual automática con día, mes y año</div>
                 </div>
 
                 <div class="grupo-formulario">
@@ -315,8 +326,62 @@
     <script>
         const URL_REGISTRO = "https://api.sheetbest.com/sheets/c7fec5f9-d83f-4d32-b31e-6ee06ea50d00";
 
-        document.addEventListener('DOMContentLoaded', function() {
+        // Función para obtener el siguiente ID disponible
+        async function obtenerSiguienteID() {
+            try {
+                const response = await fetch(URL_REGISTRO);
+                const empresas = await response.json();
+                
+                let maxID = 999; // Empezamos desde 1000
+                
+                // Buscar el máximo ID existente
+                empresas.forEach(empresa => {
+                    if (empresa.ID && !isNaN(empresa.ID)) {
+                        const idNum = parseInt(empresa.ID);
+                        if (idNum > maxID) {
+                            maxID = idNum;
+                        }
+                    }
+                });
+                
+                // Si no hay empresas, empezamos en 1000
+                if (maxID === 999 && empresas.length > 0) {
+                    // Buscar IDs en otras columnas
+                    empresas.forEach(empresa => {
+                        // Buscar cualquier campo que parezca un ID
+                        Object.values(empresa).forEach(valor => {
+                            if (valor && !isNaN(valor) && parseInt(valor) > 999) {
+                                const idNum = parseInt(valor);
+                                if (idNum > maxID) {
+                                    maxID = idNum;
+                                }
+                            }
+                        });
+                    });
+                }
+                
+                return maxID + 1;
+                
+            } catch (error) {
+                console.error('Error obteniendo siguiente ID:', error);
+                return 1000; // Valor por defecto si hay error
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Configurar país por defecto
             document.getElementById('pais').value = 'Argentina';
+            
+            // Obtener y asignar ID automático
+            const siguienteID = await obtenerSiguienteID();
+            document.getElementById('idEmpresa').value = siguienteID;
+            
+            console.log('✅ ID asignado automáticamente:', siguienteID);
+            
+            // Actualizar fecha actual
+            const ahora = new Date();
+            const fechaFormateada = ahora.toLocaleDateString('es-AR');
+            document.getElementById('fechaAlta').value = fechaFormateada;
         });
 
         function mostrarMensaje(tipo, texto) {
@@ -348,6 +413,7 @@
             iconoCarga.style.display = 'inline';
             
             const datosParaEnviar = {
+                'ID': document.getElementById('idEmpresa').value,
                 'Empresa': document.getElementById('nombreEmpresa').value.trim(),
                 'Rubro': document.getElementById('rubro').value,
                 'Pais': document.getElementById('pais').value,
@@ -364,6 +430,8 @@
                 'Estado': 'Activo'
             };
             
+            console.log('📤 Enviando datos con ID:', datosParaEnviar.ID);
+            
             try {
                 const respuesta = await fetch(URL_REGISTRO, {
                     method: 'POST',
@@ -375,14 +443,22 @@
                 });
                 
                 if (respuesta.ok) {
-                    mostrarMensaje('Exito', '✅ ¡Empresa registrada exitosamente!');
+                    mostrarMensaje('Exito', '✅ ¡Empresa registrada exitosamente!<br>ID asignado: ' + datosParaEnviar.ID);
                     
+                    // Obtener nuevo ID para la próxima empresa
+                    const nuevoID = await obtenerSiguienteID();
+                    document.getElementById('idEmpresa').value = nuevoID;
+                    
+                    // Resetear formulario
                     this.reset();
                     document.getElementById('pais').value = 'Argentina';
                     
+                    // Actualizar fecha
                     const ahora = new Date();
                     const fechaFormateada = ahora.toLocaleDateString('es-AR');
                     document.getElementById('fechaAlta').value = fechaFormateada;
+                    
+                    console.log('🆔 Nuevo ID preparado:', nuevoID);
                     
                 } else {
                     throw new Error('Error en la respuesta del servidor');
