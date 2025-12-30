@@ -1,242 +1,172 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sello Anual - ETIMO</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
-<style>
-    body {
-        font-family: 'Inter', Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: #f4f7f4;
-        color: #1d1d1d;
-    }
-    .contenedor {
-        max-width: 900px;
-        margin: 40px auto;
-        background: #ffffff;
-        padding: 40px;
-        border-radius: 14px;
-        border: 4px solid #1F7A3E;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
-        position: relative;
-    }
-    .header {
-        position: relative;
-        height: 120px;
-    }
-    .logo {
-        height: 150px;
-        position: absolute;
-        left: 20px;
-        top: -10px;
-    }
-    .header-subtitulo {
-        position: absolute;
-        left: 50%;
-        top: 40px;
-        transform: translateX(-50%);
-        font-size: 26px;
-        font-weight: 700;
-        color: #287a48;
-        text-align: center;
-    }
-    .qr {
-        position: absolute;
-        top: 40px;
-        right: 40px;
-        text-align: center;
-    }
-    .qr img {
-        width: 130px;
-        height: 130px;
-    }
-    .bloque {
-        margin-top: 25px;
-        padding: 22px;
-        border-radius: 10px;
-        border: 2px solid #D8EEDB;
-        background: #F9FFF9;
-    }
-    .bloque h2 {
-        margin: 0 0 15px 0;
-        color: #124d2d;
-        font-size: 24px;
-        text-transform: uppercase;
-        font-weight: 700;
-    }
-    .fila {
-        display: flex;
-        justify-content: space-between;
-        padding: 6px 0;
-        font-size: 18px;
-    }
-    .etiqueta {
-        font-weight: 600;
-        color: #124d2d;
-    }
-    .equivalencia {
-        font-size: 18px;
-        color: #2e7d32;
-        margin: 15px 0;
-        font-weight: 500;
-        text-align: center;
-        background: #f8fff8;
-        padding: 15px;
-        border-radius: 10px;
-        border-left: 4px solid #1F7A3E;
-    }
-    .ods-box {
-        margin-top: 25px;
-        padding: 15px;
-        border-radius: 10px;
-        border: 2px solid #D8EEDB;
-        background: #F3FFF3;
-    }
-    .ods-box h3 {
-        margin-top: 0;
-        color: #0f5e30;
-        font-weight: 700;
-    }
-    .ods-list span {
-        display: inline-block;
-        padding: 6px 14px;
-        margin: 6px;
-        background: #1F7A3E;
-        color: white;
-        border-radius: 6px;
-        font-size: 16px;
-    }
-    .valor:empty { display: none; }
-    .fila:has(.valor:empty) { display: none; }
-    .btn-descargar {
-        margin: 30px auto 10px auto;
-        display: block;
-        background: #1F7A3E;
-        color: white;
-        border: none;
-        padding: 14px 26px;
-        font-size: 18px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: 600;
-        transition: 0.3s;
-    }
-    .btn-descargar:hover {
-        background: #155b2a;
-    }
-
-    /* ✅ RESPONSIVE PARA MÓVILES */
-    @media (max-width: 768px) {
-        .contenedor {
-            margin: 20px;
-            padding: 25px;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sello Anual - ETIMO</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7f4;
+            color: #1d1d1d;
         }
-
-        .header {
-            height: auto;
+        .contenedor {
+            max-width: 750px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 14px;
+            border: 4px solid #1F7A3E;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
             position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 25px;
         }
-
+        .header {
+            position: relative;
+            height: 110px;
+        }
         .logo {
-            position: static;
             height: 120px;
-            margin-bottom: 15px;
+            position: absolute;
+            left: 15px;
+            top: -5px;
         }
-
         .header-subtitulo {
-            position: static;
-            transform: none;
-            font-size: 22px;
+            position: absolute;
+            left: 50%;
+            top: 40px;
+            transform: translateX(-50%);
+            font-size: 24px;
+            font-weight: 700;
+            color: #287a48;
             text-align: center;
-            margin-bottom: 15px;
-            width: 100%;
         }
-
         .qr {
-            position: static;
-            margin: 15px auto;
+            position: absolute;
+            top: 35px;
+            right: 35px;
+            text-align: center;
         }
-
         .qr img {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
         }
-
         .bloque {
-            padding: 18px;
-        }
-
-        .bloque h2 {
-            font-size: 22px;
-        }
-
-        .fila {
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 10px;
-        }
-
-        .etiqueta {
-            margin-bottom: 5px;
-            font-size: 17px;
-        }
-
-        .valor {
-            font-size: 17px;
-        }
-
-        .btn-descargar {
-            width: 100%;
-            padding: 12px;
-            font-size: 16px;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .contenedor {
+            margin-top: 20px;
             padding: 20px;
-            margin: 15px;
+            border-radius: 10px;
+            border: 2px solid #D8EEDB;
+            background: #F9FFF9;
         }
-
-        .logo {
-            height: 100px;
-        }
-
-        .header-subtitulo {
-            font-size: 20px;
-        }
-
-        .qr img {
-            width: 90px;
-            height: 90px;
-        }
-
-        .bloque {
-            padding: 15px;
-        }
-
         .bloque h2 {
-            font-size: 20px;
+            margin: 0 0 15px 0;
+            color: #124d2d;
+            font-size: 22px;
+            text-transform: uppercase;
+            font-weight: 700;
         }
-
-        .fila, .etiqueta, .valor {
+        .fila {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 17px;
+        }
+        .etiqueta {
+            font-weight: 600;
+            color: #124d2d;
+        }
+        .equivalencia {
+            font-size: 17px;
+            color: #2e7d32;
+            margin: 15px 0;
+            font-weight: 500;
+            text-align: center;
+            background: #f8fff8;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #1F7A3E;
+        }
+        .ods-box {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #D8EEDB;
+            background: #F3FFF3;
+        }
+        .ods-box h3 {
+            margin-top: 0;
+            color: #0f5e30;
+            font-weight: 700;
+        }
+        .ods-list span {
+            display: inline-block;
+            padding: 6px 14px;
+            margin: 6px;
+            background: #1F7A3E;
+            color: white;
+            border-radius: 6px;
             font-size: 16px;
         }
-    }
-</style>
+        .btn-descargar {
+            margin: 25px auto 10px auto;
+            display: block;
+            background: #1F7A3E;
+            color: white;
+            border: none;
+            padding: 14px 26px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-descargar:hover {
+            background: #155b2a;
+        }
+        @media (max-width: 768px) {
+            .contenedor {
+                margin: 20px;
+                padding: 25px;
+            }
+            .header {
+                height: auto;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 25px;
+            }
+            .logo {
+                position: static;
+                height: 100px;
+                margin-bottom: 15px;
+            }
+            .header-subtitulo {
+                position: static;
+                transform: none;
+                font-size: 22px;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            .qr {
+                position: static;
+                margin: 15px auto;
+            }
+            .fila {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
 <div class="contenedor">
     <div class="header">
         <img class="logo"
-     src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png"
+             src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png"
              alt="Impacta Verde">
         <div class="header-subtitulo">Sello Digital de Sostenibilidad</div>
     </div>
@@ -246,21 +176,20 @@
     </div>
     <div class="bloque">
         <h2>🌿 Inicial</h2>
-        <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor">ETIMO</span></div>
-        <div class="fila"><span class="etiqueta">Año:</span> <span class="valor">2025</span></div>
-        <div class="fila"><span class="etiqueta">Tipo de medición:</span> <span class="valor">Completa</span></div>
-
-        <div class="fila"><span class="etiqueta">Puntaje anual consolidado:</span> <span class="valor" style="font-weight: bold; color: #1F7A3E; font-size: 20px;">28.2%</span></div>
-
+        
+        <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor" >ETIMO</span></div>
+        <div class="fila"><span class="etiqueta">Año:</span> <span class="valor" >2025</span></div>
+        <div class="fila"><span class="etiqueta">Tipo de medición:</span> <span class="valor" >Completa</span></div>
+        <div class="fila"><span class="etiqueta">Puntaje anual:</span> <span class="valor" style="font-weight: bold; color: #1F7A3E; font-size: 20px;">36.5</span></div>
+        <div class="fila"><span class="etiqueta">CO₂e evitado anual:</span> <span class="valor" >1467.87 kg</span></div>
+        <div class="fila"><span class="etiqueta">N° de Sello:</span> <span class="valor" >SEL-2025-001</span></div>
+        <div class="fila"><span class="etiqueta">Emitido:</span> <span class="valor" >30/12/2025</span></div>
+        <div class="fila"><span class="etiqueta">Vence:</span> <span class="valor" >31/12/2026</span></div>
+        
         <div class="equivalencia">
             <strong>Impacto anual equivalente a:</strong><br>
-            <span style="font-size: 28px; font-weight: bold;">🌳 (Iniciando)</span>
+            <span style="font-size: 24px; font-weight: bold;">🌳 (Iniciando)</span>
         </div>
-
-        <div class="fila"><span class="etiqueta">CO₂e evitado anual:</span> <span class="valor">861.3 kg</span></div>
-        <div class="fila"><span class="etiqueta">N° de Sello:</span> <span class="valor">SEL-2025-1</span></div>
-        <div class="fila"><span class="etiqueta">Emitido:</span> <span class="valor">2025-12-12</span></div>
-        <div class="fila"><span class="etiqueta">Vence:</span> <span class="valor">2026-12-31</span></div>
     </div>
     <div class="ods-box">
         <h3>ODS con los que contribuye</h3>
@@ -285,7 +214,7 @@ document.getElementById("descargar").addEventListener("click", function() {
             backgroundColor: "#ffffff"
         }).then(canvas => {
             const link = document.createElement("a");
-            link.download = "sello-sostenibilidad-ETIMO-2025.png";
+            link.download = "sello-ETIMO-2025.png";
             link.href = canvas.toDataURL("image/png");
             document.body.appendChild(link);
             link.click();
