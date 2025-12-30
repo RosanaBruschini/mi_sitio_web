@@ -15,7 +15,7 @@
         }
         .contenedor {
             max-width: 750px;
-            margin: 30px auto;
+            margin: 20px auto;  /* REDUCIDO de 30px a 20px */
             background: #ffffff;
             padding: 35px;
             border-radius: 14px;
@@ -45,7 +45,7 @@
         }
         .qr {
             position: absolute;
-            top: 35px;
+            top: 20px;  /* SUBIDO de 35px a 20px */
             right: 35px;
             text-align: center;
         }
@@ -102,12 +102,13 @@
         }
         .ods-list span {
             display: inline-block;
-            padding: 6px 14px;
+            padding: 8px 16px;
             margin: 6px;
             background: #1F7A3E;
             color: white;
             border-radius: 6px;
-            font-size: 16px;
+            font-size: 18px;
+            font-weight: bold;
         }
         .btn-descargar {
             margin: 25px auto 10px auto;
@@ -172,7 +173,7 @@
     </div>
     <div class="qr">
         <img src="data:image/png;base64,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" alt="Código QR">
-        <div style="font-size:14px; color:#444;">Verificación</div>
+        <div style="font-size:14px; color:#444; margin-top:5px; font-weight:500;">Verificación</div>
     </div>
     <div class="bloque">
         <h2>🌿 Inicial</h2>
@@ -180,7 +181,7 @@
         <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor" >ESTRATEOFERA</span></div>
         <div class="fila"><span class="etiqueta">Año:</span> <span class="valor" >2025</span></div>
         <div class="fila"><span class="etiqueta">Tipo de medición:</span> <span class="valor" >Completa</span></div>
-        <div class="fila"><span class="etiqueta">Puntaje anual:</span> <span class="valor" style="font-weight: bold; color: #1F7A3E; font-size: 20px;">20.7</span></div>
+        <div class="fila"><span class="etiqueta">Puntaje anual:</span> <span class="valor" style="font-weight: bold; color: #1F7A3E; font-size: 20px;">27.1</span></div>
         <div class="fila"><span class="etiqueta">CO₂e evitado anual:</span> <span class="valor" >175.23 kg</span></div>
         <div class="fila"><span class="etiqueta">N° de Sello:</span> <span class="valor" >SEL-2025-003</span></div>
         <div class="fila"><span class="etiqueta">Emitido:</span> <span class="valor" >30/12/2025</span></div>
