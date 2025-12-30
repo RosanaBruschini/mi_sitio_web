@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insignia Mensual - ETIMO</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7f4;
+            color: #1d1d1d;
+        }
+        .contenedor {
+            max-width: 700px; /* ACHICADO */
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            border: 3px solid #1F7A3E;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+        }
+        .header {
+            position: relative;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .logo {
+            height: 100px;
+            position: absolute;
+            left: 10px;
+            top: 0;
+        }
+        .header-titulo {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 22px;
+            font-weight: 700;
+            color: #287a48;
+            text-align: center;
+            width: 100%;
+        }
+        .qr {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            text-align: center;
+        }
+        .qr img {
+            width: 100px;
+            height: 100px;
+        }
+        .bloque {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #D8EEDB;
+            background: #F9FFF9;
+        }
+        .bloque h2 {
+            margin: 0 0 12px 0;
+            color: #124d2d;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .fila {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            font-size: 16px;
+        }
+        .etiqueta {
+            font-weight: 600;
+            color: #124d2d;
+        }
+        .valor {
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+        .equivalencia {
+            font-size: 16px;
+            color: #2e7d32;
+            margin: 12px 0;
+            font-weight: 500;
+            text-align: center;
+            background: #f8fff8;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid #1F7A3E;
+        }
+        .btn-descargar {
+            margin: 20px auto 10px auto;
+            display: block;
+            background: #1F7A3E;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-descargar:hover {
+            background: #155b2a;
+        }
+        .metricas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .metrica {
+            background: #f0f8f0;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid #d0e8d0;
+        }
+        @media (max-width: 768px) {
+            .contenedor {
+                margin: 15px;
+                padding: 20px;
+            }
+            .header {
+                height: auto;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .logo {
+                position: static;
+                height: 80px;
+                margin-bottom: 10px;
+            }
+            .header-titulo {
+                position: static;
+                transform: none;
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .qr {
+                position: static;
+                margin: 10px auto;
+            }
+            .metricas {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+    <div class="header">
+        <img class="logo"
+             src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png"
+             alt="Impacta Verde">
+        <div class="header-titulo">Insignia de Sostenibilidad Mensual</div>
+        <div class="qr">
+            <img src="data:image/png;base64,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" alt="Código QR">
+            <div style="font-size:12px; color:#444;">Verificación</div>
+        </div>
+    </div>
+    <div class="bloque">
+        <h2>🌿 Inicial</h2>
+        <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor">ETIMO</span></div>
+        <div class="fila"><span class="etiqueta">Período:</span> <span class="valor">Jul 2025</span></div>
+        <div class="fila"><span class="etiqueta">Puntaje mensual:</span> <span class="valor" style="font-weight: bold; color: #1F7A3E; font-size: 18px;">31.5%</span></div>
+        
+        <div class="equivalencia">
+            <strong>Impacto equivalente a:</strong><br>
+            <span style="font-size: 20px; font-weight: bold;">🌳 (Iniciando)</span>
+        </div>
+        
+        <div class="metricas">
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">CO₂e evitado</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">120.36 kg</div>
+            </div>
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">Material recuperado</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">1.5 kg</div>
+            </div>
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">Puntaje social</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">38.7%</div>
+            </div>
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">Puntaje digital</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">75.0%</div>
+            </div>
+        </div>
+    </div>
+</div>
+<button id="descargar" class="btn-descargar">Descargar PNG de la Insignia</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+document.getElementById("descargar").addEventListener("click", function() {
+    const contenedor = document.querySelector(".contenedor");
+    const boton = this;
+    const textoOriginal = boton.textContent;
+    boton.textContent = "Generando imagen...";
+    boton.disabled = true;
+    setTimeout(() => {
+        html2canvas(contenedor, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff"
+        }).then(canvas => {
+            const link = document.createElement("a");
+            link.download = "insignia-ETIMO-Jul-2025.png";
+            link.href = canvas.toDataURL("image/png");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }).finally(() => {
+            boton.textContent = textoOriginal;
+            boton.disabled = false;
+        });
+    }, 100);
+});
+</script>
+</body>
+</html>
