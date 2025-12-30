@@ -196,8 +196,7 @@
 <body>
     <div class="contenedor-principal">
         <div class="encabezado">
-            <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" 
-                 alt="Logo Impacta Verde" class="logo-img">
+            <img src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" alt="Logo Impacta Verde" class="logo-img">
             <h1 style="margin: 0 0 10px 0; font-size: 28px;">Impacta Verde</h1>
             <p style="opacity: 0.9; font-size: 16px;">Reporte de Datos Mensuales</p>
         </div>
@@ -208,23 +207,24 @@
             <div id="mensajeCarga" class="mensaje mensaje-carga"></div>
 
             <form id="formularioDatos">
-                <!-- Campos ocultos -->
+                <!-- CAMPOS OCULTOS PARA ID Y FECHA -->
                 <input type="hidden" id="idEmpresaHidden" name="ID_Empresa">
                 <input type="hidden" id="fechaCarga" name="Fecha_carga" value="30/12/2025">
 
-                <!-- SECCIÓN 1: 🏢 EMPRESA Y PERÍODO -->
+                <!-- SECCIÓN 1: EMPRESA Y PERÍODO -->
                 <div class="seccion">
                     <div class="seccion-titulo">
                         <span>🏢</span> Empresa y Período
                     </div>
 
                     <div class="grupo-formulario">
-                        <label for="empresaSelect" class="campo-obligatorio">Empresa (con ID)</label>
+                        <label for="empresaSelect" class="campo-obligatorio">Seleccionar Empresa</label>
                         <select id="empresaSelect" name="Empresa" required>
                             <option value="">Seleccionar empresa...</option>
+                            <!-- Se cargarán automáticamente desde el registro -->
                         </select>
                         <small style="color: #666; font-size: 12px; margin-top: 5px; display: block;">
-                            Se mostrará el nombre seguido del ID entre paréntesis
+                            Solo se muestran empresas registradas previamente
                         </small>
                     </div>
 
@@ -267,8 +267,7 @@
                     </div>
                 </div>
 
-                <!-- Resto de secciones sin cambios -->
-                <!-- SECCIÓN 2: 🌿 IMPACTO AMBIENTAL -->
+                <!-- SECCIÓN 2: IMPACTO AMBIENTAL -->
                 <div class="seccion">
                     <div class="seccion-titulo">
                         <span>🌿</span> Impacto Ambiental
@@ -341,7 +340,7 @@
                     </div>
                 </div>
 
-                <!-- SECCIÓN 3: 👥 IMPACTO SOCIAL -->
+                <!-- SECCIÓN 3: IMPACTO SOCIAL -->
                 <div class="seccion">
                     <div class="seccion-titulo">
                         <span>👥</span> Impacto Social
@@ -401,7 +400,7 @@
                     </div>
                 </div>
 
-                <!-- SECCIÓN 4: 📝 INFORMACIÓN ADICIONAL -->
+                <!-- SECCIÓN 4: INFORMACIÓN ADICIONAL -->
                 <div class="seccion">
                     <div class="seccion-titulo">
                         <span>📝</span> Información Adicional
@@ -477,17 +476,19 @@
                 selectEmpresa.innerHTML = '<option value="">Seleccionar empresa...</option>';
                 
                 empresas.forEach(empresa => {
-                    if (empresa.Empresa && empresa.ID) {
+                    if (empresa.Empresa && empresa.ID_Empresa) {
                         const option = document.createElement('option');
-                        option.value = empresa.ID;  // ✅ Usar ID como valor
-                        option.textContent = `${empresa.Empresa} (ID: ${empresa.ID})`;  // ✅ Mostrar ambos
+                        option.value = empresa.ID_Empresa;  // ✅ Usar ID_Empresa como valor
+                        option.textContent = empresa.Empresa;  // ✅ Solo mostrar nombre
                         option.dataset.nombre = empresa.Empresa;
-                        option.dataset.id = empresa.ID;
+                        option.dataset.id = empresa.ID_Empresa;  // ✅ Usar ID_Empresa
                         selectEmpresa.appendChild(option);
                     } else if (empresa.Empresa) {
                         const option = document.createElement('option');
                         option.value = empresa.Empresa;
                         option.textContent = empresa.Empresa;
+                        option.dataset.nombre = empresa.Empresa;
+                        option.dataset.id = empresa.Empresa; // Fallback
                         selectEmpresa.appendChild(option);
                     }
                 });
@@ -567,6 +568,7 @@
             textoBoton.textContent = 'Enviando...';
             iconoCarga.style.display = 'inline';
             
+            // Obtener datos del formulario
             const datosParaEnviar = {
                 'ID_Empresa': document.getElementById('idEmpresaHidden').value,
                 'Empresa': document.getElementById('empresaSelect').options[document.getElementById('empresaSelect').selectedIndex].dataset.nombre || 
@@ -598,6 +600,8 @@
                 'Agua_m3': parseFloat(document.getElementById('agua_m3').value) || 0
             };
             
+            console.log('Datos a enviar:', datosParaEnviar); // Para debug
+            
             try {
                 const respuesta = await fetch(URL_DATOS, {
                     method: 'POST',
@@ -609,7 +613,7 @@
                 });
                 
                 if (respuesta.ok) {
-                    mostrarMensaje('Exito', `✅ ¡Datos mensuales enviados correctamente!<br>Empresa: ${datosParaEnviar.Empresa}<br>ID: ${datosParaEnviar.ID_Empresa}`);
+                    mostrarMensaje('Exito', `✅ ¡Datos mensuales enviados correctamente!<br>Empresa: ${datosParaEnviar.Empresa}`);
                     
                     // Resetear solo los campos de datos, mantener empresa seleccionada
                     const camposReset = ['energia_kwh', 'combustible_l', 'papel_kg', 'borra_humeda_kg', 
@@ -642,10 +646,13 @@
                     document.getElementById('fechaCargaVisible').value = nuevaFecha;
                     
                 } else {
+                    const errorTexto = await respuesta.text();
+                    console.error('Error respuesta:', errorTexto);
                     throw new Error('Error en la respuesta del servidor');
                 }
                 
             } catch (error) {
+                console.error('Error completo:', error);
                 mostrarMensaje('Error', '❌ Error al enviar los datos. Por favor, verifica tu conexión.');
                 
             } finally {
