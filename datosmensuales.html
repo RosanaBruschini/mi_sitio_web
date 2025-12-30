@@ -378,16 +378,35 @@
                         </div>
 
                         <div class="grupo-formulario">
-                            <label for="procesos_optimizados">Procesos optimizados <span class="unidad">(%)</span></label>
-                            <input type="number" id="procesos_optimizados" name="Procesos_optimizados_%" 
-                                   min="0" max="100" value="0">
+                            <label for="procesos_optimizados">Nivel de optimización de procesos</label>
+                            <select id="procesos_optimizados" name="Procesos_optimizados_%">
+                                <option value="0">Seleccionar nivel...</option>
+                                <option value="20">1 - Muy básicos (procesos manuales, sin documentar)</option>
+                                <option value="40">2 - Básicos (algunos procesos documentados)</option>
+                                <option value="60">3 - Intermedios (procesos definidos y seguimiento parcial)</option>
+                                <option value="80">4 - Avanzados (procesos optimizados con métricas)</option>
+                                <option value="100">5 - Excelentes (procesos automatizados, mejora continua)</option>
+                            </select>
+                            <small style="color: #666; font-size: 12px; display: block; margin-top: 5px;">
+                                Evalúa el nivel de optimización de los procesos de tu empresa
+                            </small>
                         </div>
                     </div>
 
                     <div class="fila-triple">
                         <div class="grupo-formulario">
-                            <label for="digitalizacion">Digitalización <span class="unidad">(%)</span></label>
-                            <input type="number" id="digitalizacion" name="Digitalizacion_%" min="0" max="100" value="0">
+                            <label for="digitalizacion">Nivel de digitalización</label>
+                            <select id="digitalizacion" name="Digitalizacion_%">
+                                <option value="0">Seleccionar nivel...</option>
+                                <option value="20">1 - Muy baja (papel, comunicación básica)</option>
+                                <option value="40">2 - Baja (email, algunas herramientas digitales)</option>
+                                <option value="60">3 - Media (sistemas básicos, redes sociales)</option>
+                                <option value="80">4 - Alta (software especializado, automatización parcial)</option>
+                                <option value="100">5 - Muy alta (plataformas integradas, automatización total)</option>
+                            </select>
+                            <small style="color: #666; font-size: 12px; display: block; margin-top: 5px;">
+                                Evalúa el nivel de digitalización de tu empresa
+                            </small>
                         </div>
 
                         <div class="grupo-formulario">
@@ -614,6 +633,9 @@
                         if (elemento) {
                             if (elemento.type === 'checkbox') {
                                 elemento.checked = false;
+                            } else if (elemento.tagName === 'SELECT') {
+                                // Para selects, volver a la primera opción (valor 0)
+                                elemento.selectedIndex = 0;
                             } else {
                                 elemento.value = campoId === 'cantidad_empleados_total' ? '1' : '0';
                             }
