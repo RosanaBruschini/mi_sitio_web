@@ -15,7 +15,7 @@
         }
         .contenedor {
             max-width: 750px;
-            margin: 30px auto;
+            margin: 20px auto;  /* REDUCIDO de 30px a 20px */
             background: #ffffff;
             padding: 35px;
             border-radius: 14px;
@@ -45,7 +45,7 @@
         }
         .qr {
             position: absolute;
-            top: 35px;
+            top: 20px;  /* SUBIDO de 35px a 20px */
             right: 35px;
             text-align: center;
         }
@@ -102,12 +102,13 @@
         }
         .ods-list span {
             display: inline-block;
-            padding: 6px 14px;
+            padding: 8px 16px;
             margin: 6px;
             background: #1F7A3E;
             color: white;
             border-radius: 6px;
-            font-size: 16px;
+            font-size: 18px;
+            font-weight: bold;
         }
         .btn-descargar {
             margin: 25px auto 10px auto;
@@ -172,7 +173,7 @@
     </div>
     <div class="qr">
         <img src="data:image/png;base64,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" alt="Código QR">
-        <div style="font-size:14px; color:#444;">Verificación</div>
+        <div style="font-size:14px; color:#444; margin-top:5px; font-weight:500;">Verificación</div>
     </div>
     <div class="bloque">
         <h2>🌿 Inicial</h2>
