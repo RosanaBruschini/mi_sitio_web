@@ -11,20 +11,17 @@
             --verde-medio: #4CAF50;
             --verde-claro: #d4edda;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         body {
             background: #f5f7fa;
             padding: 20px;
             min-height: 100vh;
         }
-
         .contenedor-principal {
             max-width: 800px;
             margin: 40px auto;
@@ -33,7 +30,6 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-
         .encabezado {
             background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
             color: white;
@@ -41,28 +37,23 @@
             text-align: center;
             position: relative;
         }
-
         .logo-img {
             height: 120px; width: auto; border-radius: 8px; background-color: white; padding: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border: 2px solid #f0f0f0;
             margin-bottom: 20px;
         }
-
         .contenido-formulario {
             padding: 40px;
         }
-
         .seccion {
             margin-bottom: 40px;
             padding-bottom: 30px;
             border-bottom: 2px solid #e0e0e0;
         }
-
         .seccion:last-child {
             border-bottom: none;
             margin-bottom: 0;
             padding-bottom: 0;
         }
-
         .seccion-titulo {
             font-size: 20px;
             color: var(--verde-oscuro);
@@ -73,11 +64,9 @@
             align-items: center;
             gap: 10px;
         }
-
         .grupo-formulario {
             margin-bottom: 20px;
         }
-
         label {
             display: block;
             margin-bottom: 8px;
@@ -85,12 +74,10 @@
             color: #2c3e50;
             font-size: 14px;
         }
-
         .campo-obligatorio::after {
             content: " *";
             color: #dc3545;
         }
-
         input, select, textarea {
             width: 100%;
             padding: 14px 16px;
@@ -100,32 +87,27 @@
             transition: all 0.3s ease;
             background: #f8f9fa;
         }
-
         input:focus, select:focus, textarea:focus {
             border-color: var(--verde-medio);
             box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
             outline: none;
             background: white;
         }
-
         .fila-doble {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
-
         .fila-triple {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 15px;
         }
-
         .fila-cuadruple {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
         }
-
         .boton-enviar {
             background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
             color: white;
@@ -139,18 +121,15 @@
             margin-top: 40px;
             transition: all 0.3s ease;
         }
-
         .boton-enviar:hover {
             transform: translateY(-2px);
             box-shadow: 0 7px 14px rgba(31, 122, 62, 0.2);
         }
-
         .boton-enviar:disabled {
             opacity: 0.7;
             cursor: not-allowed;
             transform: none;
         }
-
         .mensaje {
             padding: 16px;
             border-radius: 10px;
@@ -160,64 +139,53 @@
             display: none;
             animation: fadeIn 0.5s ease;
         }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         .mensaje-exito {
             background-color: var(--verde-claro);
             color: #155724;
             border: 2px solid #c3e6cb;
         }
-
         .mensaje-error {
             background-color: #f8d7da;
             color: #721c24;
             border: 2px solid #f5c6cb;
         }
-
         .mensaje-carga {
             background-color: #d1ecf1;
             color: #0c5460;
             border: 2px solid #bee5eb;
         }
-
         .unidad {
             font-size: 12px;
             color: #6c757d;
             font-weight: normal;
             margin-left: 3px;
         }
-
         .checkbox-container {
             display: flex;
             align-items: center;
             gap: 10px;
             margin-top: 10px;
         }
-
         .checkbox-container input[type="checkbox"] {
             width: 20px;
             height: 20px;
             cursor: pointer;
         }
-
         @media (max-width: 768px) {
             .contenedor-principal {
                 margin: 20px auto;
                 border-radius: 15px;
             }
-            
             .encabezado {
                 padding: 30px 20px;
             }
-            
             .contenido-formulario {
                 padding: 25px;
             }
-            
             .fila-doble, .fila-triple, .fila-cuadruple {
                 grid-template-columns: 1fr;
                 gap: 15px;
@@ -242,7 +210,7 @@
             <form id="formularioDatos">
                 <!-- Campos ocultos -->
                 <input type="hidden" id="idEmpresaHidden" name="ID_Empresa">
-                <input type="hidden" id="fechaCarga" name="Fecha_carga">
+                <input type="hidden" id="fechaCarga" name="Fecha_carga" value="30/12/2025">
 
                 <!-- SECCIÓN 1: 🏢 EMPRESA Y PERÍODO -->
                 <div class="seccion">
@@ -251,11 +219,13 @@
                     </div>
 
                     <div class="grupo-formulario">
-                        <label for="empresaSelect" class="campo-obligatorio">Empresa</label>
+                        <label for="empresaSelect" class="campo-obligatorio">Empresa (con ID)</label>
                         <select id="empresaSelect" name="Empresa" required>
                             <option value="">Seleccionar empresa...</option>
-                            <!-- Se cargarán dinámicamente -->
                         </select>
+                        <small style="color: #666; font-size: 12px; margin-top: 5px; display: block;">
+                            Se mostrará el nombre seguido del ID entre paréntesis
+                        </small>
                     </div>
 
                     <div class="fila-doble">
@@ -289,8 +259,15 @@
                             </select>
                         </div>
                     </div>
+
+                    <div class="grupo-formulario">
+                        <label>Fecha de carga automática</label>
+                        <input type="text" id="fechaCargaVisible" value="30/12/2025" readonly 
+                               style="background-color: #e9ecef; font-weight: bold;">
+                    </div>
                 </div>
 
+                <!-- Resto de secciones sin cambios -->
                 <!-- SECCIÓN 2: 🌿 IMPACTO AMBIENTAL -->
                 <div class="seccion">
                     <div class="seccion-titulo">
@@ -468,8 +445,17 @@
         const URL_REGISTRO = "https://api.sheetbest.com/sheets/c7fec5f9-d83f-4d32-b31e-6ee06ea50d00";
 
         document.addEventListener('DOMContentLoaded', async function() {
-            // Configurar mes y año actual
+            // Actualizar fecha de carga automáticamente
             const ahora = new Date();
+            const dia = String(ahora.getDate()).padStart(2, '0');
+            const mes = String(ahora.getMonth() + 1).padStart(2, '0');
+            const anio = ahora.getFullYear();
+            const fechaFormateada = `${dia}/${mes}/${anio}`;
+            
+            document.getElementById('fechaCarga').value = fechaFormateada;
+            document.getElementById('fechaCargaVisible').value = fechaFormateada;
+            
+            // Establecer mes y año actual
             const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
                           'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
             const mesActual = meses[ahora.getMonth()];
@@ -493,16 +479,15 @@
                 empresas.forEach(empresa => {
                     if (empresa.Empresa && empresa.ID) {
                         const option = document.createElement('option');
-                        option.value = empresa.Empresa;
-                        option.textContent = empresa.Empresa;
+                        option.value = empresa.ID;  // ✅ Usar ID como valor
+                        option.textContent = `${empresa.Empresa} (ID: ${empresa.ID})`;  // ✅ Mostrar ambos
+                        option.dataset.nombre = empresa.Empresa;
                         option.dataset.id = empresa.ID;
                         selectEmpresa.appendChild(option);
                     } else if (empresa.Empresa) {
-                        // Si no hay ID, usar el nombre como referencia
                         const option = document.createElement('option');
                         option.value = empresa.Empresa;
                         option.textContent = empresa.Empresa;
-                        option.dataset.id = empresa.Empresa; // Usar nombre como fallback
                         selectEmpresa.appendChild(option);
                     }
                 });
@@ -517,6 +502,14 @@
                 
             } catch (error) {
                 console.error('Error cargando empresas:', error);
+                mostrarMensaje('Error', '⚠️ No se pudieron cargar las empresas. Verifica tu conexión.');
+                
+                // Opción manual si falla la carga
+                const selectEmpresa = document.getElementById('empresaSelect');
+                const option = document.createElement('option');
+                option.value = "manual";
+                option.textContent = "Ingresar manualmente (no hay empresas cargadas)";
+                selectEmpresa.appendChild(option);
             }
         }
 
@@ -541,7 +534,12 @@
             const anio = document.getElementById('anio').value;
             const cantidadEmpleados = document.getElementById('cantidad_empleados_total').value;
             
-            if (!empresa || !mes || !anio || !cantidadEmpleados) {
+            if (!empresa || empresa === "manual") {
+                mostrarMensaje('Error', '❌ Debe seleccionar una empresa válida');
+                return false;
+            }
+            
+            if (!mes || !anio || !cantidadEmpleados) {
                 mostrarMensaje('Error', '❌ Completa todos los campos obligatorios (*)');
                 return false;
             }
@@ -569,14 +567,10 @@
             textoBoton.textContent = 'Enviando...';
             iconoCarga.style.display = 'inline';
             
-            // ESTABLECER FECHA ACTUAL EN TIEMPO REAL
-            const ahora = new Date();
-            const fechaFormateada = ahora.toLocaleString('es-AR'); // 29/12/2025, 22:00:00
-            document.getElementById('fechaCarga').value = fechaFormateada;
-            
             const datosParaEnviar = {
                 'ID_Empresa': document.getElementById('idEmpresaHidden').value,
-                'Empresa': document.getElementById('empresaSelect').value,
+                'Empresa': document.getElementById('empresaSelect').options[document.getElementById('empresaSelect').selectedIndex].dataset.nombre || 
+                          document.getElementById('empresaSelect').value,
                 'Mes': document.getElementById('mes').value,
                 'Año': document.getElementById('anio').value,
                 'Fecha_carga': document.getElementById('fechaCarga').value,
@@ -604,8 +598,6 @@
                 'Agua_m3': parseFloat(document.getElementById('agua_m3').value) || 0
             };
             
-            console.log('📤 Enviando datos con fecha:', datosParaEnviar.Fecha_carga);
-            
             try {
                 const respuesta = await fetch(URL_DATOS, {
                     method: 'POST',
@@ -617,17 +609,37 @@
                 });
                 
                 if (respuesta.ok) {
-                    mostrarMensaje('Exito', '✅ ¡Datos mensuales enviados correctamente!<br>Fecha: ' + datosParaEnviar.Fecha_carga);
+                    mostrarMensaje('Exito', `✅ ¡Datos mensuales enviados correctamente!<br>Empresa: ${datosParaEnviar.Empresa}<br>ID: ${datosParaEnviar.ID_Empresa}`);
                     
-                    this.reset();
+                    // Resetear solo los campos de datos, mantener empresa seleccionada
+                    const camposReset = ['energia_kwh', 'combustible_l', 'papel_kg', 'borra_humeda_kg', 
+                                       'borra_seca_kg', 'tela_reutilizada_kg', 'tecnologia_recuperada_kg',
+                                       'plastico_reutilizado_kg', 'cantidad_empleados_locales',
+                                       'cantidad_mujeres', 'cantidad_personas_discapacitadas',
+                                       'capacitacion_horas', 'procesos_optimizados', 'digitalizacion',
+                                       'residuo_organico_kg', 'residuo_reciclable_kg', 
+                                       'residuo_no_reciclable_kg', 'comentarios', 'link_evidencia',
+                                       'agua_m3', 'politica_inclusion'];
+                    
+                    camposReset.forEach(campoId => {
+                        const elemento = document.getElementById(campoId);
+                        if (elemento) {
+                            if (elemento.type === 'checkbox') {
+                                elemento.checked = false;
+                            } else {
+                                elemento.value = campoId.includes('cantidad_empleados_total') ? '1' : '0';
+                            }
+                        }
+                    });
+                    
+                    // Actualizar fecha de carga
                     const ahora = new Date();
-                    const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-                                  'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-                    document.getElementById('mes').value = meses[ahora.getMonth()];
-                    document.getElementById('anio').value = ahora.getFullYear();
-                    
-                    // Recargar empresas por si se agregaron nuevas
-                    await cargarEmpresas();
+                    const dia = String(ahora.getDate()).padStart(2, '0');
+                    const mesNum = String(ahora.getMonth() + 1).padStart(2, '0');
+                    const anioNum = ahora.getFullYear();
+                    const nuevaFecha = `${dia}/${mesNum}/${anioNum}`;
+                    document.getElementById('fechaCarga').value = nuevaFecha;
+                    document.getElementById('fechaCargaVisible').value = nuevaFecha;
                     
                 } else {
                     throw new Error('Error en la respuesta del servidor');
