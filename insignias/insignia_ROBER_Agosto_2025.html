@@ -122,6 +122,22 @@
             text-align: center;
             border: 1px solid #d0e8d0;
         }
+        .ods-box {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #D8EEDB;
+            background: #F3FFF3;
+        }
+        .ods-box span {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #1F7A3E;
+            color: white;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
         @media (max-width: 768px) {
             .contenedor {
                 margin: 15px;
@@ -164,7 +180,7 @@
         <div class="header-titulo">Insignia de Sostenibilidad Mensual</div>
         <div class="qr">
             <img src="data:image/png;base64,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" alt="Código QR">
-            <div style="font-size:12px; color:#444;">Verificación</div>
+            <div style="font-size:12px; color:#444; margin-top:5px;">Verificación</div>
         </div>
     </div>
     <div class="bloque">
@@ -195,6 +211,16 @@
             <div class="metrica">
                 <div style="font-size:14px; color:#124d2d; font-weight:600;">Puntaje digital</div>
                 <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">8.0 %</div>
+            </div>
+        </div>
+        
+        
+        <div class="ods-box">
+            <h3 style="font-size:14px; color:#0f5e30; margin:15px 0 10px 0; text-align:center;">
+                Contribuye a los ODS
+            </h3>
+            <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:8px;">
+                <span>7</span><span>12</span><span>13</span>
             </div>
         </div>
     </div>
