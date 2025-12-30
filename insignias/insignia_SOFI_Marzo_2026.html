@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insignia Mensual - SOFI</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7f4;
+            color: #1d1d1d;
+        }
+        .contenedor {
+            max-width: 700px; /* ACHICADO */
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            border: 3px solid #1F7A3E;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+        }
+        .header {
+            position: relative;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .logo {
+            height: 100px;
+            position: absolute;
+            left: 10px;
+            top: 0;
+        }
+        .header-titulo {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 22px;
+            font-weight: 700;
+            color: #287a48;
+            text-align: center;
+            width: 100%;
+        }
+        .qr {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            text-align: center;
+        }
+        .qr img {
+            width: 100px;
+            height: 100px;
+        }
+        .bloque {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #D8EEDB;
+            background: #F9FFF9;
+        }
+        .bloque h2 {
+            margin: 0 0 12px 0;
+            color: #124d2d;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .fila {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            font-size: 16px;
+        }
+        .etiqueta {
+            font-weight: 600;
+            color: #124d2d;
+        }
+        .valor {
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+        .equivalencia {
+            font-size: 16px;
+            color: #2e7d32;
+            margin: 12px 0;
+            font-weight: 500;
+            text-align: center;
+            background: #f8fff8;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid #1F7A3E;
+        }
+        .btn-descargar {
+            margin: 20px auto 10px auto;
+            display: block;
+            background: #1F7A3E;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-descargar:hover {
+            background: #155b2a;
+        }
+        .metricas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .metrica {
+            background: #f0f8f0;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid #d0e8d0;
+        }
+        @media (max-width: 768px) {
+            .contenedor {
+                margin: 15px;
+                padding: 20px;
+            }
+            .header {
+                height: auto;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .logo {
+                position: static;
+                height: 80px;
+                margin-bottom: 10px;
+            }
+            .header-titulo {
+                position: static;
+                transform: none;
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .qr {
+                position: static;
+                margin: 10px auto;
+            }
+            .metricas {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+    <div class="header">
+        <img class="logo"
+             src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png"
+             alt="Impacta Verde">
+        <div class="header-titulo">Insignia de Sostenibilidad Mensual</div>
+        <div class="qr">
+            <img src="data:image/png;base64,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" alt="Código QR">
+            <div style="font-size:12px; color:#444;">Verificación</div>
+        </div>
+    </div>
+    <div class="bloque">
+        <h2>🌿 Inicial</h2>
+        <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor">SOFI</span></div>
+        <div class="fila"><span class="etiqueta">Período:</span> <span class="valor">Marzo 2026</span></div>
+        <div class="fila"><span class="etiqueta">Puntaje mensual:</span> <span class="valor" style="font-weight: bold; color: #1F7A3E; font-size: 18px;">0.0%</span></div>
+        
+        <div class="equivalencia">
+            <strong>Impacto equivalente a:</strong><br>
+            <span style="font-size: 20px; font-weight: bold;">🌳 (Iniciando)</span>
+        </div>
+        
+        <div class="metricas">
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">CO₂e evitado</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">0.0 kg</div>
+            </div>
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">Material recuperado</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">0.0 kg</div>
+            </div>
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">Puntaje social</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">0.0%</div>
+            </div>
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">Puntaje digital</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">0.0%</div>
+            </div>
+        </div>
+    </div>
+</div>
+<button id="descargar" class="btn-descargar">Descargar PNG de la Insignia</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+document.getElementById("descargar").addEventListener("click", function() {
+    const contenedor = document.querySelector(".contenedor");
+    const boton = this;
+    const textoOriginal = boton.textContent;
+    boton.textContent = "Generando imagen...";
+    boton.disabled = true;
+    setTimeout(() => {
+        html2canvas(contenedor, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff"
+        }).then(canvas => {
+            const link = document.createElement("a");
+            link.download = "insignia-SOFI-Marzo-2026.png";
+            link.href = canvas.toDataURL("image/png");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }).finally(() => {
+            boton.textContent = textoOriginal;
+            boton.disabled = false;
+        });
+    }, 100);
+});
+</script>
+</body>
+</html>
