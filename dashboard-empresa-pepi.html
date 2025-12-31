@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - pepi</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="icon" href="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png" type="image/png">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
     <style>
         * {
             box-sizing: border-box;
@@ -361,36 +361,17 @@
                     🌿 Nivel Actual: Inicial
                 </div>
                 <div style="font-size: 14px; color: #888; margin-top: 10px;">
-                    Actualizado: 30/12/2025
+                    Actualizado: 31/12/2025
                 </div>
             </div>
         </header>
         
         
-            <div class="sello-card">
-                <h3>🏅 Sello Actual</h3>
-                <div class="sello-info">
-                    <div class="sello-item">
-                        <strong>Nivel:</strong>
-                        <span class="badge badge-inicial">
-                            🌿 Inicial
-                        </span>
-                    </div>
-                    <div class="sello-item">
-                        <strong>Puntaje:</strong>
-                        <span class="valor-sello">17.7%</span>
-                    </div>
-                    <div class="sello-item">
-                        <strong>Válido hasta:</strong>
-                        <span>31/12/2026</span>
-                    </div>
-                </div>
-            </div>
         
         <div class="kpi-grid">
             <div class="kpi-card">
                 <div class="kpi-icon">🌿</div>
-                <h3>Puntaje Promedio</h3>
+                <h3>Impacto Promedio</h3>
                 <div class="kpi-value">18.6%</div>
                 <div class="kpi-unit">de sostenibilidad</div>
             </div>
@@ -426,7 +407,7 @@
             </div>
             
             <div class="chart-container">
-                <h2>📊 Evolución del Puntaje de Sostenibilidad</h2>
+                <h2>📊 Evolución del Impacto de Sostenibilidad</h2>
                 <div class="chart-wrapper">
                     <canvas id="chartPuntaje"></canvas>
                 </div>
@@ -509,7 +490,7 @@
             data: {
                 labels: ["Septiembre 2024"],
                 datasets: [{
-                    label: 'Puntaje de Sostenibilidad (%)',
+                    label: 'Impacto de Sostenibilidad (%)',
                     data: [18.6],
                     borderColor: '#2ecc71',
                     backgroundColor: 'rgba(46, 204, 113, 0.1)',
@@ -533,7 +514,7 @@
                         max: 100,
                         title: {
                             display: true,
-                            text: 'Puntaje (%)'
+                            text: 'Impacto (%)'
                         }
                     }
                 }
