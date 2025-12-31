@@ -373,7 +373,7 @@
             <div class="kpi-card">
                 <div class="kpi-icon">🌿</div>
                 <h3>Impacto Promedio</h3>
-                <div class="kpi-value">20.8</div>
+                <div class="kpi-value">41.0</div>
                 <div class="kpi-unit">% de sostenibilidad</div>
             </div>
             <div class="kpi-card">
@@ -385,7 +385,7 @@
             <div class="kpi-card">
                 <div class="kpi-icon">♻️</div>
                 <h3>Material Recuperado</h3>
-                <div class="kpi-value">0.0</div>
+                <div class="kpi-value">2.1</div>
                 <div class="kpi-unit">toneladas totales</div>
             </div>
             <div class="kpi-card">
@@ -415,7 +415,7 @@
         <div class="ods-section">
             <h2>🌍 Contribución a los Objetivos de Desarrollo Sostenible</h2>
             <div class="ods-container">
-                <span title="Fin de la pobreza">1</span><span title="Igualdad de género">5</span><span title="Energía asequible y no contaminante">7</span><span title="Trabajo decente y crecimiento económico">8</span><span title="Industria, innovación e infraestructura">9</span><span title="Reducción de las desigualdades">10</span><span title="Ciudades y comunidades sostenibles">11</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Alianzas para lograr los objetivos">17</span>
+                <span title="Fin de la pobreza">1</span><span title="Igualdad de género">5</span><span title="Energía asequible y no contaminante">7</span><span title="Trabajo decente y crecimiento económico">8</span><span title="Industria, innovación e infraestructura">9</span><span title="Reducción de las desigualdades">10</span><span title="Ciudades y comunidades sostenibles">11</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Vida de ecosistemas terrestres">15</span><span title="Alianzas para lograr los objetivos">17</span>
             </div>
             <p style="text-align:center; font-size:14px; color:#666; margin-top:20px; font-style:italic;">
                 Pasa el cursor sobre cada número para ver el objetivo completo
@@ -429,17 +429,17 @@
                 <div class="insignia-item">
                     <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Mayo 2024</div>
                     <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
-                    <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">29.6%</div>
+                    <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">30.0%</div>
                     <div style="font-size: 12px; color: #1F7A3E; margin-top: 5px;">
-                        Material: 35.0 kg
+                        Material: 54.0 kg
                     </div>
                 </div> 
                 <div class="insignia-item">
                     <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Noviembre 2024</div>
                     <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
-                    <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">12.0%</div>
+                    <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">52.0%</div>
                     <div style="font-size: 12px; color: #1F7A3E; margin-top: 5px;">
-                        Material: 0 kg
+                        Material: 2029.0 kg
                     </div>
                 </div>
             </div>
@@ -492,7 +492,7 @@
             }
         });
 
-        // Gráfico de material recuperado - NUEVO GRÁFICO
+        // Gráfico de material recuperado
         const ctx2 = document.getElementById('chartMaterial').getContext('2d');
         new Chart(ctx2, {
             type: 'bar',
@@ -500,7 +500,7 @@
                 labels: ["Mayo 2024", "Noviembre 2024"],
                 datasets: [{
                     label: 'Material Recuperado (kg)',
-                    data: [35.0, 0.0],
+                    data: [54.0, 2029.0],
                     backgroundColor: 'rgba(46, 204, 113, 0.7)',
                     borderColor: '#2ecc71',
                     borderWidth: 2,
