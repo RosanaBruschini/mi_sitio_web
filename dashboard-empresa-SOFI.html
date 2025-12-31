@@ -393,9 +393,9 @@
             </div>
 
             <div class="chart-container">
-                <h2>📊 Evolución del Impacto de Sostenibilidad</h2>
+                <h2>📊 Evolución del Material Recuperado</h2>
                 <div class="chart-wrapper">
-                    <canvas id="chartPuntaje"></canvas>
+                    <canvas id="chartMaterial"></canvas>
                 </div>
             </div>
         </div>
@@ -418,11 +418,17 @@
                     <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Febrero 2026</div>
                     <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
                     <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">0.0%</div>
+                    <div style="font-size: 12px; color: #1F7A3E; margin-top: 5px;">
+                        Material: 0 kg
+                    </div>
                 </div> 
                 <div class="insignia-item">
                     <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Marzo 2026</div>
                     <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
                     <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">0.0%</div>
+                    <div style="font-size: 12px; color: #1F7A3E; margin-top: 5px;">
+                        Material: 0 kg
+                    </div>
                 </div>
             </div>
         </div>
@@ -474,20 +480,19 @@
             }
         });
 
-        // Gráfico de puntaje
-        const ctx2 = document.getElementById('chartPuntaje').getContext('2d');
+        // Gráfico de material recuperado - NUEVO GRÁFICO
+        const ctx2 = document.getElementById('chartMaterial').getContext('2d');
         new Chart(ctx2, {
-            type: 'line',
+            type: 'bar',
             data: {
                 labels: ["Febrero 2026", "Marzo 2026"],
                 datasets: [{
-                    label: 'Impacto de Sostenibilidad (%)',
+                    label: 'Material Recuperado (kg)',
                     data: [0.0, 0.0],
+                    backgroundColor: 'rgba(46, 204, 113, 0.7)',
                     borderColor: '#2ecc71',
-                    backgroundColor: 'rgba(46, 204, 113, 0.1)',
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.4
+                    borderWidth: 2,
+                    borderRadius: 5
                 }]
             },
             options: {
@@ -502,10 +507,9 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        max: 100,
                         title: {
                             display: true,
-                            text: 'Impacto (%)'
+                            text: 'Kilogramos de material'
                         }
                     }
                 }
