@@ -262,7 +262,7 @@
 
                     <div class="grupo-formulario">
                         <label>Fecha de carga automática</label>
-                        <input type="text" id="fechaCargaVisible" value="30/12/2025" readonly 
+                        <input type="text" id="fechaCargaVisible" value="05/01/2026" readonly
                                style="background-color: #e9ecef; font-weight: bold;">
                     </div>
                 </div>
@@ -349,13 +349,13 @@
                     <div class="fila-triple">
                         <div class="grupo-formulario">
                             <label for="cantidad_empleados_total" class="campo-obligatorio">Total empleados</label>
-                            <input type="number" id="cantidad_empleados_total" name="Cantidad_Empleados_Total" 
+                            <input type="number" id="cantidad_empleados_total" name="Cantidad_Empleados_Total"
                                    min="1" required value="1">
                         </div>
 
                         <div class="grupo-formulario">
                             <label for="cantidad_empleados_locales">Empleados locales</label>
-                            <input type="number" id="cantidad_empleados_locales" name="Cantidad_Empleados_Locales" 
+                            <input type="number" id="cantidad_empleados_locales" name="Cantidad_Empleados_Locales"
                                    min="0" value="0">
                         </div>
 
@@ -368,7 +368,7 @@
                     <div class="fila-triple">
                         <div class="grupo-formulario">
                             <label for="cantidad_personas_discapacitadas">Personas con discapacidad</label>
-                            <input type="number" id="cantidad_personas_discapacitadas" 
+                            <input type="number" id="cantidad_personas_discapacitadas"
                                    name="Cantidad_Personas_Discapacitadas" min="0" value="0">
                         </div>
 
@@ -427,13 +427,13 @@
 
                     <div class="grupo-formulario">
                         <label for="comentarios">Comentarios u observaciones</label>
-                        <textarea id="comentarios" name="Comentarios" rows="4" 
+                        <textarea id="comentarios" name="Comentarios" rows="4"
                                   placeholder="Comentarios adicionales sobre los datos reportados, mejoras implementadas, etc."></textarea>
                     </div>
 
                     <div class="grupo-formulario">
                         <label for="link_evidencia">Link de evidencia/documentación</label>
-                        <input type="url" id="link_evidencia" name="Link_Evidencia" 
+                        <input type="url" id="link_evidencia" name="Link_Evidencia"
                                placeholder="https://drive.google.com/... o link a documento">
                     </div>
                 </div>
@@ -446,7 +446,7 @@
 
             <div style="text-align: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid #eee;">
                 <p style="color: #666; font-size: 14px; margin-bottom: 10px;">
-                    📧 ¿Necesitas ayuda? 
+                    📧 ¿Necesitas ayuda?
                     <a href="mailto:info@impactaverde.com.ar" style="color: var(--verde-oscuro); font-weight: bold;">
                         Contacta con nuestro equipo
                     </a>
@@ -469,16 +469,16 @@
             const mes = String(ahora.getMonth() + 1).padStart(2, '0');
             const anio = ahora.getFullYear();
             const fechaFormateada = `${dia}/${mes}/${anio}`;
-            
+
             document.getElementById('fechaCarga').value = fechaFormateada;
             document.getElementById('fechaCargaVisible').value = fechaFormateada;
-            
+
             // Establecer mes y año actual
             const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
                           'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
             const mesActual = meses[ahora.getMonth()];
             const anioActual = ahora.getFullYear();
-            
+
             document.getElementById('mes').value = mesActual;
             document.getElementById('anio').value = anioActual;
 
@@ -490,10 +490,10 @@
             try {
                 const response = await fetch(URL_REGISTRO);
                 const empresas = await response.json();
-                
+
                 const selectEmpresa = document.getElementById('empresaSelect');
                 selectEmpresa.innerHTML = '<option value="">Seleccionar empresa...</option>';
-                
+
                 empresas.forEach(empresa => {
                     if (empresa.Empresa && empresa.ID_Empresa) {
                         const option = document.createElement('option');
@@ -504,7 +504,7 @@
                         selectEmpresa.appendChild(option);
                     }
                 });
-                
+
                 // ✅ Cuando se selecciona una empresa, se asigna ID y Nombre automáticamente
                 selectEmpresa.addEventListener('change', function() {
                     const selectedOption = this.options[this.selectedIndex];
@@ -513,7 +513,7 @@
                         document.getElementById('nombreEmpresaHidden').value = selectedOption.dataset.nombre;
                     }
                 });
-                
+
             } catch (error) {
                 console.error('Error cargando empresas:', error);
                 mostrarMensaje('Error', '⚠️ No se pudieron cargar las empresas. Verifica tu conexión.');
@@ -523,11 +523,11 @@
         function mostrarMensaje(tipo, texto) {
             const mensajes = document.querySelectorAll('.mensaje');
             mensajes.forEach(msg => msg.style.display = 'none');
-            
+
             const mensaje = document.getElementById('mensaje' + tipo);
             mensaje.innerHTML = texto;
             mensaje.style.display = 'block';
-            
+
             if (tipo === 'Exito') {
                 setTimeout(() => {
                     mensaje.style.display = 'none';
@@ -540,40 +540,40 @@
             const mes = document.getElementById('mes').value;
             const anio = document.getElementById('anio').value;
             const cantidadEmpleados = document.getElementById('cantidad_empleados_total').value;
-            
+
             if (!empresa) {
                 mostrarMensaje('Error', '❌ Debe seleccionar una empresa');
                 return false;
             }
-            
+
             if (!mes || !anio || !cantidadEmpleados) {
                 mostrarMensaje('Error', '❌ Completa todos los campos obligatorios (*)');
                 return false;
             }
-            
+
             if (parseInt(cantidadEmpleados) < 1) {
                 mostrarMensaje('Error', '❌ El total de empleados debe ser al menos 1');
                 return false;
             }
-            
+
             return true;
         }
 
         document.getElementById('formularioDatos').addEventListener('submit', async function(evento) {
             evento.preventDefault();
-            
+
             if (!validarFormulario()) return;
-            
+
             mostrarMensaje('Carga', '⏳ Enviando datos mensuales...');
-            
+
             const boton = document.getElementById('botonEnviar');
             const textoBoton = document.getElementById('textoBoton');
             const iconoCarga = document.getElementById('iconoCarga');
-            
+
             boton.disabled = true;
             textoBoton.textContent = 'Enviando...';
             iconoCarga.style.display = 'inline';
-            
+
             // ✅ DATOS CORREGIDOS - ENVIAR ID NUMÉRICO Y NOMBRE SEPARADOS
             const datosParaEnviar = {
                 'ID_Empresa': document.getElementById('idEmpresaHidden').value,
@@ -604,30 +604,30 @@
                 'Link_Evidencia': document.getElementById('link_evidencia').value.trim() || '',
                 'Agua_m3': parseFloat(document.getElementById('agua_m3').value) || 0
             };
-            
+
             try {
                 const respuesta = await fetch(URL_DATOS, {
                     method: 'POST',
-                    headers: { 
+                    headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     },
                     body: JSON.stringify(datosParaEnviar)
                 });
-                
+
                 if (respuesta.ok) {
                     mostrarMensaje('Exito', '✅ ¡Datos mensuales enviados correctamente!');
-                    
+
                     // Resetear solo los campos de datos
-                    const camposReset = ['energia_kwh', 'combustible_l', 'papel_kg', 'borra_humeda_kg', 
+                    const camposReset = ['energia_kwh', 'combustible_l', 'papel_kg', 'borra_humeda_kg',
                                        'borra_seca_kg', 'tela_reutilizada_kg', 'tecnologia_recuperada_kg',
                                        'plastico_reutilizado_kg', 'cantidad_empleados_total',
-                                       'cantidad_empleados_locales', 'cantidad_mujeres', 
-                                       'cantidad_personas_discapacitadas', 'capacitacion_horas', 
-                                       'procesos_optimizados', 'digitalizacion', 'residuo_organico_kg', 
-                                       'residuo_reciclable_kg', 'residuo_no_reciclable_kg', 
+                                       'cantidad_empleados_locales', 'cantidad_mujeres',
+                                       'cantidad_personas_discapacitadas', 'capacitacion_horas',
+                                       'procesos_optimizados', 'digitalizacion', 'residuo_organico_kg',
+                                       'residuo_reciclable_kg', 'residuo_no_reciclable_kg',
                                        'comentarios', 'link_evidencia', 'agua_m3', 'politica_inclusion'];
-                    
+
                     camposReset.forEach(campoId => {
                         const elemento = document.getElementById(campoId);
                         if (elemento) {
@@ -641,7 +641,7 @@
                             }
                         }
                     });
-                    
+
                     // Actualizar fecha de carga
                     const ahora = new Date();
                     const dia = String(ahora.getDate()).padStart(2, '0');
@@ -650,14 +650,14 @@
                     const nuevaFecha = `${dia}/${mesNum}/${anioNum}`;
                     document.getElementById('fechaCarga').value = nuevaFecha;
                     document.getElementById('fechaCargaVisible').value = nuevaFecha;
-                    
+
                 } else {
                     throw new Error('Error en la respuesta del servidor');
                 }
-                
+
             } catch (error) {
                 mostrarMensaje('Error', '❌ Error al enviar los datos. Por favor, verifica tu conexión.');
-                
+
             } finally {
                 boton.disabled = false;
                 textoBoton.textContent = '📊 Enviar Datos Mensuales';
