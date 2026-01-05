@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sello Anual - pepi</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7f4;
+            color: #1d1d1d;
+        }
+        .contenedor {
+            max-width: 750px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 14px;
+            border: 4px solid #1F7A3E;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        .header {
+            position: relative;
+            height: 110px;
+        }
+        .logo {
+            height: 120px;
+            position: absolute;
+            left: 15px;
+            top: -5px;
+        }
+        .header-subtitulo {
+            position: absolute;
+            left: 50%;
+            top: 40px;
+            transform: translateX(-50%);
+            font-size: 24px;
+            font-weight: 700;
+            color: #287a48;
+            text-align: center;
+        }
+        .qr {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            text-align: center;
+        }
+        .qr img {
+            width: 120px;
+            height: 120px;
+        }
+        .bloque {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #D8EEDB;
+            background: #F9FFF9;
+        }
+        .bloque h2 {
+            margin: 0 0 15px 0;
+            color: #124d2d;
+            font-size: 22px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .fila {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 17px;
+        }
+        .etiqueta {
+            font-weight: 600;
+            color: #124d2d;
+        }
+        .equivalencia {
+            font-size: 17px;
+            color: #2e7d32;
+            margin: 15px 0;
+            font-weight: 500;
+            text-align: center;
+            background: #f8fff8;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #1F7A3E;
+        }
+        .ods-box {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #D8EEDB;
+            background: #F3FFF3;
+        }
+        .ods-box h3 {
+            margin-top: 0;
+            color: #0f5e30;
+            font-weight: 700;
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .ods-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .ods-container span {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #1F7A3E;
+            color: white;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: help;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .ods-container span:hover {
+            transform: scale(1.1);
+            background: #155b2a;
+        }
+        .btn-descargar {
+            margin: 25px auto 10px auto;
+            display: block;
+            background: #1F7A3E;
+            color: white;
+            border: none;
+            padding: 14px 26px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-descargar:hover {
+            background: #155b2a;
+        }
+        @media (max-width: 768px) {
+            .contenedor {
+                margin: 20px;
+                padding: 25px;
+            }
+            .header {
+                height: auto;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 25px;
+            }
+            .logo {
+                position: static;
+                height: 100px;
+                margin-bottom: 15px;
+            }
+            .header-subtitulo {
+                position: static;
+                transform: none;
+                font-size: 22px;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            .qr {
+                position: static;
+                margin: 15px auto;
+            }
+            .fila {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 10px;
+            }
+            .ods-container {
+                gap: 6px;
+            }
+            .ods-container span {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+    <div class="header">
+        <img class="logo"
+             src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png"
+             alt="Impacta Verde">
+        <div class="header-subtitulo">Sello Digital de Sostenibilidad</div>
+    </div>
+    <div class="qr">
+        <img src="data:image/png;base64,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" alt="Código QR">
+        <div style="font-size:14px; color:#444; margin-top:5px; font-weight:500;">Verificación</div>
+    </div>
+    <div class="bloque">
+        <h2>🌿 Inicial</h2>
+        
+        <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor" >pepi</span></div>
+        <div class="fila"><span class="etiqueta">Año:</span> <span class="valor" >2026</span></div>
+        <div class="fila"><span class="etiqueta">Tipo de medición:</span> <span class="valor" >Completa</span></div>
+        <div class="fila"><span class="etiqueta">Puntaje anual:</span> <span class="valor" style="font-weight: bold; color: #1F7A3E; font-size: 20px;">21.1</span></div>
+        <div class="fila"><span class="etiqueta">CO₂e evitado anual:</span> <span class="valor" >134.35 kg</span></div>
+        <div class="fila"><span class="etiqueta">N° de Sello:</span> <span class="valor" >SEL-2026-005</span></div>
+        <div class="fila"><span class="etiqueta">Emitido:</span> <span class="valor" >05/01/2026</span></div>
+        <div class="fila"><span class="etiqueta">Vence:</span> <span class="valor" >31/12/2027</span></div>
+
+        <div class="equivalencia">
+            <strong>Impacto anual equivalente a:</strong><br>
+            <span style="font-size: 24px; font-weight: bold;">🌳 (Iniciando)</span>
+        </div>
+    </div>
+    <div class="ods-box">
+        <h3>🌍 Contribuye a los Objetivos de Desarrollo Sostenible (ODS)</h3>
+        <div class="ods-container">
+            <span title="Fin de la pobreza">1</span><span title="Igualdad de género">5</span><span title="Energía asequible y no contaminante">7</span><span title="Trabajo decente y crecimiento económico">8</span><span title="Industria, innovación e infraestructura">9</span><span title="Reducción de las desigualdades">10</span><span title="Ciudades y comunidades sostenibles">11</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Alianzas para lograr los objetivos">17</span>
+        </div>
+        <p style="text-align:center; font-size:14px; color:#666; margin-top:12px; font-style:italic;">
+            Pasa el cursor sobre cada número para ver el objetivo completo
+        </p>
+    </div>
+</div>
+<button id="descargar" class="btn-descargar">Descargar PNG del Sello</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+document.getElementById("descargar").addEventListener("click", function() {
+    const contenedor = document.querySelector(".contenedor");
+    const boton = this;
+    const textoOriginal = boton.textContent;
+    boton.textContent = "Generando imagen...";
+    boton.disabled = true;
+    setTimeout(() => {
+        html2canvas(contenedor, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff"
+        }).then(canvas => {
+            const link = document.createElement("a");
+            link.download = "sello-pepi-2026.png";
+            link.href = canvas.toDataURL("image/png");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }).finally(() => {
+            boton.textContent = textoOriginal;
+            boton.disabled = false;
+        });
+    }, 100);
+});
+</script>
+</body>
+</html>
