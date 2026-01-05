@@ -165,13 +165,13 @@
 
                 <div class="grupo-formulario">
                     <label class="campo-obligatorio">Fecha de Alta</label>
-                    <input type="text" id="fechaAlta" name="Fecha alta" value="30/12/2025" readonly 
+                    <input type="text" id="fechaAlta" name="Fecha alta" value="05/01/2026" readonly
                            style="background-color: #e9ecef; font-weight: bold;">
                 </div>
 
                 <div class="grupo-formulario">
                     <label for="nombreEmpresa" class="campo-obligatorio">Nombre de la Empresa</label>
-                    <input type="text" id="nombreEmpresa" name="Empresa" required 
+                    <input type="text" id="nombreEmpresa" name="Empresa" required
                            placeholder="Ejemplo: Mi Empresa S.A.">
                 </div>
 
@@ -207,13 +207,13 @@
                 <div class="fila-doble">
                     <div class="grupo-formulario">
                         <label for="localidad" class="campo-obligatorio">Localidad</label>
-                        <input type="text" id="localidad" name="Localidad" required 
+                        <input type="text" id="localidad" name="Localidad" required
                                placeholder="Ejemplo: Buenos Aires">
                     </div>
 
                     <div class="grupo-formulario">
                         <label for="areaCargo" class="campo-obligatorio">Área a cargo</label>
-                        <input type="text" id="areaCargo" name="Area_a_cargo" required 
+                        <input type="text" id="areaCargo" name="Area_a_cargo" required
                                placeholder="Ejemplo: Sostenibilidad, Producción, etc.">
                     </div>
                 </div>
@@ -221,13 +221,13 @@
                 <div class="fila-doble">
                     <div class="grupo-formulario">
                         <label for="cuit" class="campo-obligatorio">CUIT</label>
-                        <input type="text" id="cuit" name="CUIT" required 
+                        <input type="text" id="cuit" name="CUIT" required
                                placeholder="00-12345678-9">
                     </div>
 
                     <div class="grupo-formulario">
                         <label for="responsable" class="campo-obligatorio">Responsable</label>
-                        <input type="text" id="responsable" name="Responsable" required 
+                        <input type="text" id="responsable" name="Responsable" required
                                placeholder="Nombre y apellido completo">
                     </div>
                 </div>
@@ -235,13 +235,13 @@
                 <div class="fila-doble">
                     <div class="grupo-formulario">
                         <label for="email" class="campo-obligatorio">Email</label>
-                        <input type="email" id="email" name="Email" required 
+                        <input type="email" id="email" name="Email" required
                                placeholder="ejemplo@empresa.com">
                     </div>
 
                     <div class="grupo-formulario">
                         <label for="telefono" class="campo-obligatorio">Teléfono</label>
-                        <input type="tel" id="telefono" name="Tel_contacto" required 
+                        <input type="tel" id="telefono" name="Tel_contacto" required
                                placeholder="+54 11 1234-5678">
                     </div>
                 </div>
@@ -249,7 +249,7 @@
                 <div class="fila-doble">
                     <div class="grupo-formulario">
                         <label for="whatsapp">WhatsApp</label>
-                        <input type="tel" id="whatsapp" name="WhatsApp" 
+                        <input type="tel" id="whatsapp" name="WhatsApp"
                                placeholder="+54 9 11 1234-5678">
                     </div>
 
@@ -265,7 +265,7 @@
 
                 <div class="grupo-formulario">
                     <label for="observaciones">Observaciones</label>
-                    <textarea id="observaciones" name="Observaciones" rows="4" 
+                    <textarea id="observaciones" name="Observaciones" rows="4"
                               placeholder="Comentarios adicionales, necesidades específicas, etc."></textarea>
                 </div>
 
@@ -277,7 +277,7 @@
 
             <div style="text-align: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid #eee;">
                 <p style="color: #666; font-size: 14px; margin-bottom: 10px;">
-                    📧 ¿Necesitas ayuda? 
+                    📧 ¿Necesitas ayuda?
                     <a href="mailto:info@impactaverde.com.ar" style="color: var(--verde-oscuro); font-weight: bold;">
                         Contacta con nuestro equipo
                     </a>
@@ -297,7 +297,7 @@
                 // Obtener todas las empresas registradas
                 const response = await fetch(URL_REGISTRO);
                 const empresas = await response.json();
-                
+
                 // Encontrar el ID más alto
                 let maxID = 0;
                 empresas.forEach(empresa => {
@@ -309,7 +309,7 @@
                         }
                     }
                 });
-                
+
                 // Devolver el siguiente ID (máximo + 1)
                 return (maxID + 1).toString();
             } catch (error) {
@@ -321,7 +321,7 @@
 
         document.addEventListener('DOMContentLoaded', async function() {
             document.getElementById('pais').value = 'Argentina';
-            
+
             // Actualizar fecha
             const ahora = new Date();
             const dia = String(ahora.getDate()).padStart(2, '0');
@@ -329,7 +329,7 @@
             const anio = ahora.getFullYear();
             const fechaFormateada = `${dia}/${mes}/${anio}`;
             document.getElementById('fechaAlta').value = fechaFormateada;
-            
+
             // Generar ID automáticamente
             const nuevoID = await generarIDNumerico();
             document.getElementById('idEmpresa').value = nuevoID;
@@ -338,11 +338,11 @@
         function mostrarMensaje(tipo, texto) {
             const mensajes = document.querySelectorAll('.mensaje');
             mensajes.forEach(msg => msg.style.display = 'none');
-            
+
             const mensaje = document.getElementById('mensaje' + tipo);
             mensaje.innerHTML = texto;
             mensaje.style.display = 'block';
-            
+
             if (tipo === 'Exito') {
                 setTimeout(() => {
                     mensaje.style.display = 'none';
@@ -352,17 +352,17 @@
 
         document.getElementById('formularioRegistro').addEventListener('submit', async function(evento) {
             evento.preventDefault();
-            
+
             mostrarMensaje('Carga', '⏳ Registrando empresa en el sistema...');
-            
+
             const boton = document.getElementById('botonEnviar');
             const textoBoton = document.getElementById('textoBoton');
             const iconoCarga = document.getElementById('iconoCarga');
-            
+
             boton.disabled = true;
             textoBoton.textContent = 'Registrando...';
             iconoCarga.style.display = 'inline';
-            
+
             const datosParaEnviar = {
                 'ID_Empresa': document.getElementById('idEmpresa').value,
                 'Empresa': document.getElementById('nombreEmpresa').value.trim(),
@@ -380,29 +380,29 @@
                 'Fecha alta': document.getElementById('fechaAlta').value,
                 'Estado': 'Activo'
             };
-            
+
             try {
                 const respuesta = await fetch(URL_REGISTRO, {
                     method: 'POST',
-                    headers: { 
+                    headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     },
                     body: JSON.stringify(datosParaEnviar)
                 });
-                
+
                 if (respuesta.ok) {
                     // ✅ SOLO ESTE MENSAJE - SIN MOSTRAR ID AL USUARIO
                     mostrarMensaje('Exito', '✅ ¡Empresa registrada exitosamente!');
-                    
+
                     // Resetear formulario
                     this.reset();
                     document.getElementById('pais').value = 'Argentina';
-                    
+
                     // Generar nuevo ID para próxima empresa
                     const nuevoID = await generarIDNumerico();
                     document.getElementById('idEmpresa').value = nuevoID;
-                    
+
                     // Actualizar fecha
                     const ahora = new Date();
                     const dia = String(ahora.getDate()).padStart(2, '0');
@@ -410,17 +410,17 @@
                     const anio = ahora.getFullYear();
                     const fechaFormateada = `${dia}/${mes}/${anio}`;
                     document.getElementById('fechaAlta').value = fechaFormateada;
-                    
+
                 } else {
                     const errorTexto = await respuesta.text();
                     console.error('Error respuesta:', errorTexto);
                     throw new Error(`Error del servidor: ${respuesta.status}`);
                 }
-                
+
             } catch (error) {
                 console.error('Error completo:', error);
                 mostrarMensaje('Error', '❌ Error al registrar. Por favor, intenta nuevamente.');
-                
+
             } finally {
                 boton.disabled = false;
                 textoBoton.textContent = '🌿 Registrar Empresa';
