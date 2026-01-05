@@ -430,7 +430,7 @@
             </div>
             <div class="stats-header">
                 <div class="update-time">
-                    ⏰ Actualizado automáticamente: 05/01/2026 16:53
+                    ⏰ Actualizado automáticamente: 05/01/2026 20:12
                 </div>
                 <div style="font-size: 18px; font-weight: 600; color: #1F7A3E;">
                     1 empresas activas
@@ -599,7 +599,7 @@
     </div>
 
     <script>
-        // Gráfico de niveles - CORREGIDO con colores diferentes
+        // Gráfico de niveles
         const ctx1 = document.getElementById('chartNiveles').getContext('2d');
         new Chart(ctx1, {
             type: 'doughnut',
@@ -702,7 +702,6 @@
 
         // Gráfico de barras para top empresas
         if (1 > 0) {
-            // Crear contenedor para gráfico de barras
             const barChartContainer = document.createElement('div');
             barChartContainer.className = 'chart-container';
             barChartContainer.innerHTML = '<h2>🏆 Top Empresas - CO₂ Evitado</h2><div class="chart-wrapper"><canvas id="chartTopEmpresas"></canvas></div>';
@@ -766,9 +765,8 @@
         setTimeout(function() {
             document.querySelector('.auto-refresh').innerHTML = '🔄 Actualizando...';
             setTimeout(() => location.reload(), 1000);
-        }, 600000); // 10 minutos
+        }, 600000);
 
-        // Mostrar notificación de actualización
         console.log('✅ Dashboard cargado correctamente');
         console.log('🔄 Se actualizará automáticamente en 10 minutos');
     </script>
