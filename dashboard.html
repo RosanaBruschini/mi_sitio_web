@@ -430,10 +430,10 @@
             </div>
             <div class="stats-header">
                 <div class="update-time">
-                    ⏰ Actualizado automáticamente: 05/01/2026 12:50
+                    ⏰ Actualizado automáticamente: 05/01/2026 16:53
                 </div>
                 <div style="font-size: 18px; font-weight: 600; color: #1F7A3E;">
-                    5 empresas activas
+                    1 empresas activas
                 </div>
             </div>
         </header>
@@ -443,12 +443,12 @@
             <div style="display: flex; align-items: center; justify-content: center;">
                 <span class="tree-icon">🌳</span>
                 <div>
-                    <div class="impact-number">4.4 ton</div>
+                    <div class="impact-number">1.5 ton</div>
                     <div class="impact-text">de CO₂ equivalente evitado (1 ton = 1000 kg)</div>
                 </div>
             </div>
             <div style="margin-top: 20px; font-size: 18px;">
-                Equivalente a <strong>201 árboles</strong> plantados por año
+                Equivalente a <strong>67 árboles</strong> plantados por año
             </div>
         </div>
 
@@ -456,14 +456,14 @@
             <div class="kpi-card">
                 <div class="kpi-icon">🏢</div>
                 <h3>Empresas Activas</h3>
-                <div class="kpi-value">5</div>
+                <div class="kpi-value">1</div>
                 <div class="kpi-unit">organizaciones sostenibles</div>
             </div>
 
             <div class="kpi-card">
                 <div class="kpi-icon">📈</div>
                 <h3>CO₂e Evitado</h3>
-                <div class="kpi-value">4.4</div>
+                <div class="kpi-value">1.5</div>
                 <div class="kpi-unit">toneladas de CO₂e</div>
                 <div class="kpi-change">+12% vs mes anterior</div>
             </div>
@@ -471,7 +471,7 @@
             <div class="kpi-card">
                 <div class="kpi-icon">♻️</div>
                 <h3>Material Recuperado</h3>
-                <div class="kpi-value">1.9</div>
+                <div class="kpi-value">1.2</div>
                 <div class="kpi-unit">toneladas</div>
                 <div class="kpi-change">+8% vs mes anterior</div>
             </div>
@@ -479,7 +479,7 @@
             <div class="kpi-card">
                 <div class="kpi-icon">⭐</div>
                 <h3>Impacto Promedio</h3>
-                <div class="kpi-value">20.6%</div>
+                <div class="kpi-value">37.0%</div>
                 <div class="kpi-unit">de sostenibilidad</div>
                 <div class="kpi-change">+5% vs mes anterior</div>
             </div>
@@ -513,24 +513,8 @@
                 <h3>🏆 Top 5 Empresas - CO₂ Evitado</h3>
                 
                 <div class="stat-item">
-                    <span class="stat-label">🏅 MARIA</span>
-                    <span class="stat-value">1.5 ton</span>
-                </div>
-                <div class="stat-item">
                     <span class="stat-label">🏅 ETIMO</span>
                     <span class="stat-value">1.5 ton</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">🏅 miro</span>
-                    <span class="stat-value">0.5 ton</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">🏅 ROBER</span>
-                    <span class="stat-value">0.4 ton</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">🏅 SOFI</span>
-                    <span class="stat-value">0.2 ton</span>
                 </div>
             </div>
 
@@ -564,7 +548,7 @@
                     <span class="stat-label">
                         <span class="badge badge-initial">🌿</span> Inicial
                     </span>
-                    <span class="stat-value">24</span>
+                    <span class="stat-value">12</span>
                 </div>
             </div>
 
@@ -622,7 +606,7 @@
             data: {
                 labels: ['Verde Plus', 'Oro', 'Plata', 'Bronce', 'Inicial'],
                 datasets: [{
-                    data: [0, 0, 0, 0, 24],
+                    data: [0, 0, 0, 0, 12],
                     backgroundColor: ['#1F7A3E', '#FFD700', '#8B4513', '#87CEEB', '#FF6B6B'],
                     borderWidth: 3,
                     borderColor: '#fff',
@@ -717,7 +701,7 @@
         });
 
         // Gráfico de barras para top empresas
-        if (5 > 0) {
+        if (1 > 0) {
             // Crear contenedor para gráfico de barras
             const barChartContainer = document.createElement('div');
             barChartContainer.className = 'chart-container';
@@ -728,10 +712,10 @@
             new Chart(ctx3, {
                 type: 'bar',
                 data: {
-                    labels: ["MARIA", "ETIMO", "miro", "ROBER", "SOFI"],
+                    labels: ["ETIMO"],
                     datasets: [{
                         label: 'CO₂e Evitado (kg)',
-                        data: [1494.34, 1467.87, 547.19, 352.95, 245.58],
+                        data: [1467.87],
                         backgroundColor: [
                             'rgba(31, 122, 62, 0.8)',
                             'rgba(46, 204, 113, 0.8)',
