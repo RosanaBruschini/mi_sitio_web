@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sello Anual - SOFI</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7f4;
+            color: #1d1d1d;
+        }
+        .contenedor {
+            max-width: 750px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 14px;
+            border: 4px solid #1F7A3E;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        .header {
+            position: relative;
+            height: 110px;
+        }
+        .logo {
+            height: 120px;
+            position: absolute;
+            left: 15px;
+            top: -5px;
+        }
+        .header-subtitulo {
+            position: absolute;
+            left: 50%;
+            top: 40px;
+            transform: translateX(-50%);
+            font-size: 24px;
+            font-weight: 700;
+            color: #287a48;
+            text-align: center;
+        }
+        .qr {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            text-align: center;
+        }
+        .qr img {
+            width: 120px;
+            height: 120px;
+        }
+        .bloque {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #D8EEDB;
+            background: #F9FFF9;
+        }
+        .bloque h2 {
+            margin: 0 0 15px 0;
+            color: #124d2d;
+            font-size: 22px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .fila {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 17px;
+        }
+        .etiqueta {
+            font-weight: 600;
+            color: #124d2d;
+        }
+        .equivalencia {
+            font-size: 17px;
+            color: #2e7d32;
+            margin: 15px 0;
+            font-weight: 500;
+            text-align: center;
+            background: #f8fff8;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #1F7A3E;
+        }
+        .ods-box {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #D8EEDB;
+            background: #F3FFF3;
+        }
+        .ods-box h3 {
+            margin-top: 0;
+            color: #0f5e30;
+            font-weight: 700;
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .ods-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .ods-container span {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #1F7A3E;
+            color: white;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: help;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .ods-container span:hover {
+            transform: scale(1.1);
+            background: #155b2a;
+        }
+        .btn-descargar {
+            margin: 25px auto 10px auto;
+            display: block;
+            background: #1F7A3E;
+            color: white;
+            border: none;
+            padding: 14px 26px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-descargar:hover {
+            background: #155b2a;
+        }
+        @media (max-width: 768px) {
+            .contenedor {
+                margin: 20px;
+                padding: 25px;
+            }
+            .header {
+                height: auto;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 25px;
+            }
+            .logo {
+                position: static;
+                height: 100px;
+                margin-bottom: 15px;
+            }
+            .header-subtitulo {
+                position: static;
+                transform: none;
+                font-size: 22px;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            .qr {
+                position: static;
+                margin: 15px auto;
+            }
+            .fila {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 10px;
+            }
+            .ods-container {
+                gap: 6px;
+            }
+            .ods-container span {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+    <div class="header">
+        <img class="logo"
+             src="https://raw.githubusercontent.com/RosanaBruschini/mi_sitio_web/main/public/logo%20institucional%20final%20tranp.%20impacta%20verde.png"
+             alt="Impacta Verde">
+        <div class="header-subtitulo">Sello Digital de Sostenibilidad</div>
+    </div>
+    <div class="qr">
+        <img src="data:image/png;base64,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" alt="Código QR">
+        <div style="font-size:14px; color:#444; margin-top:5px; font-weight:500;">Verificación</div>
+    </div>
+    <div class="bloque">
+        <h2>🌿 Inicial</h2>
+        
+        <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor" >SOFI</span></div>
+        <div class="fila"><span class="etiqueta">Año:</span> <span class="valor" >2026</span></div>
+        <div class="fila"><span class="etiqueta">Tipo de medición:</span> <span class="valor" >Completa</span></div>
+        <div class="fila"><span class="etiqueta">Puntaje anual:</span> <span class="valor" style="font-weight: bold; color: #1F7A3E; font-size: 20px;">0.0</span></div>
+        <div class="fila"><span class="etiqueta">CO₂e evitado anual:</span> <span class="valor" >0.23 kg</span></div>
+        <div class="fila"><span class="etiqueta">N° de Sello:</span> <span class="valor" >SEL-2026-002</span></div>
+        <div class="fila"><span class="etiqueta">Emitido:</span> <span class="valor" >05/01/2026</span></div>
+        <div class="fila"><span class="etiqueta">Vence:</span> <span class="valor" >31/12/2027</span></div>
+
+        <div class="equivalencia">
+            <strong>Impacto anual equivalente a:</strong><br>
+            <span style="font-size: 24px; font-weight: bold;">🌳 (Iniciando)</span>
+        </div>
+    </div>
+    <div class="ods-box">
+        <h3>🌍 Contribuye a los Objetivos de Desarrollo Sostenible (ODS)</h3>
+        <div class="ods-container">
+            <span title="Energía asequible y no contaminante">7</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Alianzas para lograr los objetivos">17</span>
+        </div>
+        <p style="text-align:center; font-size:14px; color:#666; margin-top:12px; font-style:italic;">
+            Pasa el cursor sobre cada número para ver el objetivo completo
+        </p>
+    </div>
+</div>
+<button id="descargar" class="btn-descargar">Descargar PNG del Sello</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+document.getElementById("descargar").addEventListener("click", function() {
+    const contenedor = document.querySelector(".contenedor");
+    const boton = this;
+    const textoOriginal = boton.textContent;
+    boton.textContent = "Generando imagen...";
+    boton.disabled = true;
+    setTimeout(() => {
+        html2canvas(contenedor, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff"
+        }).then(canvas => {
+            const link = document.createElement("a");
+            link.download = "sello-SOFI-2026.png";
+            link.href = canvas.toDataURL("image/png");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }).finally(() => {
+            boton.textContent = textoOriginal;
+            boton.disabled = false;
+        });
+    }, 100);
+});
+</script>
+</body>
+</html>
