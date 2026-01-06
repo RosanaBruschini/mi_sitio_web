@@ -388,8 +388,8 @@
                         <span class="valor-sello">37.0%</span>
                     </div>
                     <div class="sello-item">
-                        <strong>Comienzo:</strong>  <!-- CAMBIADO -->
-                        <span>01/2025</span>  <!-- Fecha automática calculada -->
+                        <strong>Comienzo:</strong>
+                        <span>01/2025</span>
                     </div>
                     <div class="sello-item">
                         <strong>Año del sello:</strong>
@@ -426,6 +426,7 @@
             </div>
         </div>
 
+        <!-- GRÁFICOS -->
         
         <div class="charts-grid">
             <div class="chart-container">
@@ -458,6 +459,11 @@
             <div class="insignias-grid">
                 
                 <div class="insignia-item">
+                    <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Ene 2025</div>
+                    <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
+                    <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">37.4%</div>
+                </div> 
+                <div class="insignia-item">
                     <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Feb 2025</div>
                     <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
                     <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">37.3%</div>
@@ -466,6 +472,11 @@
                     <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Mar 2025</div>
                     <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
                     <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">37.3%</div>
+                </div> 
+                <div class="insignia-item">
+                    <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Abr 2025</div>
+                    <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
+                    <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">37.2%</div>
                 </div> 
                 <div class="insignia-item">
                     <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">May 2025</div>
@@ -483,6 +494,11 @@
                     <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">36.9%</div>
                 </div> 
                 <div class="insignia-item">
+                    <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Ago 2025</div>
+                    <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
+                    <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">36.8%</div>
+                </div> 
+                <div class="insignia-item">
                     <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Sep 2025</div>
                     <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
                     <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">36.7%</div>
@@ -496,21 +512,6 @@
                     <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Nov 2025</div>
                     <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
                     <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">36.6%</div>
-                </div> 
-                <div class="insignia-item">
-                    <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Ene 2025</div>
-                    <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
-                    <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">37.4%</div>
-                </div> 
-                <div class="insignia-item">
-                    <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Abr 2025</div>
-                    <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
-                    <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">37.2%</div>
-                </div> 
-                <div class="insignia-item">
-                    <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Ago 2025</div>
-                    <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
-                    <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">36.8%</div>
                 </div> 
                 <div class="insignia-item">
                     <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Dic 2025</div>
@@ -536,10 +537,10 @@
         new Chart(ctx1, {
             type: 'line',
             data: {
-                labels: ["Feb 2025", "Mar 2025", "May 2025", "Jun 2025", "Jul 2025", "Sep 2025", "Oct 2025", "Nov 2025", "Ene 2025", "Abr 2025", "Ago 2025", "Dic 2025"],
+                labels: ["Ene 2025", "Feb 2025", "Mar 2025", "Abr 2025", "May 2025", "Jun 2025", "Jul 2025", "Ago 2025", "Sep 2025", "Oct 2025", "Nov 2025", "Dic 2025"],
                 datasets: [{
                     label: 'CO₂e Evitado (kg)',
-                    data: [139.69, 135.76, 128.06, 124.29, 120.36, 112.66, 108.88, 104.96, 143.46, 131.98, 116.58, 101.19],
+                    data: [143.46, 139.69, 135.76, 131.98, 128.06, 124.29, 120.36, 116.58, 112.66, 108.88, 104.96, 101.19],
                     borderColor: '#1F7A3E',
                     backgroundColor: 'rgba(31, 122, 62, 0.1)',
                     borderWidth: 3,
@@ -573,10 +574,10 @@
         new Chart(ctx2, {
             type: 'line',
             data: {
-                labels: ["Feb 2025", "Mar 2025", "May 2025", "Jun 2025", "Jul 2025", "Sep 2025", "Oct 2025", "Nov 2025", "Ene 2025", "Abr 2025", "Ago 2025", "Dic 2025"],
+                labels: ["Ene 2025", "Feb 2025", "Mar 2025", "Abr 2025", "May 2025", "Jun 2025", "Jul 2025", "Ago 2025", "Sep 2025", "Oct 2025", "Nov 2025", "Dic 2025"],
                 datasets: [{
                     label: 'Impacto de Sostenibilidad (%)',
-                    data: [37.3, 37.3, 37.1, 37.0, 36.9, 36.7, 36.6, 36.6, 37.4, 37.2, 36.8, 36.5],
+                    data: [37.4, 37.3, 37.3, 37.2, 37.1, 37.0, 36.9, 36.8, 36.7, 36.6, 36.6, 36.5],
                     borderColor: '#2ecc71',
                     backgroundColor: 'rgba(46, 204, 113, 0.1)',
                     borderWidth: 3,
