@@ -94,6 +94,13 @@
             font-weight: 600;
         }
 
+        .info-periodo {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
         .kpi-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -368,7 +375,7 @@
 
         
             <div class="sello-card">
-                <h3>🏅 Sello Actual</h3>
+                <h3>🏅 Sello Anual Obtenido</h3>
                 <div class="sello-info">
                     <div class="sello-item">
                         <strong>Nivel:</strong>
@@ -381,8 +388,12 @@
                         <span class="valor-sello">37.0%</span>
                     </div>
                     <div class="sello-item">
-                        <strong>Válido hasta:</strong>
-                        <span>31/12/2025</span>
+                        <strong>Comienzo:</strong>  <!-- CAMBIADO -->
+                        <span>01/2025</span>  <!-- Fecha automática calculada -->
+                    </div>
+                    <div class="sello-item">
+                        <strong>Año del sello:</strong>
+                        <span>2025</span>
                     </div>
                 </div>
             </div>
@@ -555,7 +566,7 @@
                     }
                 }
             }
-        });
+        };
 
         // Gráfico de puntaje
         const ctx2 = document.getElementById('chartPuntaje').getContext('2d');
@@ -593,7 +604,7 @@
                     }
                 }
             }
-        });
+        };
     </script>
     
 </body>
