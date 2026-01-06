@@ -101,6 +101,57 @@
             font-style: italic;
         }
 
+        /* BLOQUE DOS - NUEVO DISEÑO */
+        .bloque-dos {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e8f4e8;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .bloque-item {
+            padding: 20px;
+            border-radius: 12px;
+            background: #f8fff8;
+            border: 2px solid #d8eedb;
+            transition: all 0.3s ease;
+        }
+
+        .bloque-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .bloque-icon {
+            font-size: 28px;
+            margin-bottom: 15px;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 10px;
+            background: #1F7A3E;
+            color: white;
+        }
+
+        .bloque-item h3 {
+            color: #124d2d;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .bloque-valor {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1F7A3E;
+            margin-top: 5px;
+        }
+
+        /* KPI Cards */
         .kpi-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -149,6 +200,7 @@
             font-size: 14px;
         }
 
+        /* Gráficos */
         .charts-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
@@ -183,6 +235,7 @@
             width: 100%;
         }
 
+        /* ODS Section */
         .ods-section {
             background: white;
             padding: 30px;
@@ -226,78 +279,33 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .sello-card {
-            background: #f8fff8;
-            padding: 25px;
-            border-radius: 15px;
-            border: 2px solid #1F7A3E;
-            margin-bottom: 30px;
+        /* Insignias */
+        .insignias-section {
+            margin-top: 30px;
         }
 
-        .sello-card h3 {
-            color: #124d2d;
-            margin-bottom: 20px;
-            font-size: 22px;
-            font-weight: 700;
-        }
-
-        .sello-info {
+        .insignias-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            gap: 15px;
+            margin-top: 15px;
         }
 
-        .sello-item {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
+        .insignia-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #e8f4e8;
+            text-align: center;
+            transition: all 0.3s;
         }
 
-        .sello-item strong {
-            color: #555;
-            font-size: 14px;
+        .insignia-item:hover {
+            border-color: #1F7A3E;
+            transform: translateY(-3px);
         }
 
-        .valor-sello {
-            font-size: 28px;
-            font-weight: 800;
-            color: #1F7A3E;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .badge-verde-plus {
-            background: #d4edda;
-            color: #155724;
-        }
-
-        .badge-oro {
-            background: #fff3cd;
-            color: #856404;
-        }
-
-        .badge-plata {
-            background: #e2e3e5;
-            color: #383d41;
-        }
-
-        .badge-bronze {
-            background: #f8d7da;
-            color: #721c24;
-        }
-
-        .badge-inicial {
-            background: #d1ecf1;
-            color: #0c5460;
-        }
-
+        /* Footer */
         .footer {
             text-align: center;
             color: #888;
@@ -324,29 +332,18 @@
             transform: translateY(-3px);
         }
 
-        .insignias-section {
-            margin-top: 30px;
-        }
-
-        .insignias-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .insignia-item {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            border: 2px solid #e8f4e8;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .insignia-item:hover {
-            border-color: #1F7A3E;
-            transform: translateY(-3px);
+        /* Clases eliminadas (sello-card ya no se usa) */
+        .sello-card,
+        .sello-info,
+        .sello-item,
+        .valor-sello,
+        .badge,
+        .badge-verde-plus,
+        .badge-oro,
+        .badge-plata,
+        .badge-bronze,
+        .badge-inicial {
+            /* Estas clases ya no se usan, se mantienen por compatibilidad */
         }
     </style>
 </head>
@@ -374,25 +371,25 @@
         </header>
 
         
-            <div class="sello-card">
-                <h3>🏅 Sello Anual Obtenido</h3>
-                <div class="sello-info">
-                    <div class="sello-item">
-                        <strong>Nivel:</strong>
-                        <span class="badge badge-inicial">
-                            🌿 Inicial
-                        </span>
-                    </div>
-                    <div class="sello-item">
-                        <strong>Puntaje:</strong>
-                        <span class="valor-sello">37.0%</span>
-                    </div>
-                    <div class="sello-item">
-                        <strong>Válido hasta:</strong>
-                        <span>31/12/2026</span>
-                    </div>
-                </div>
+        <div class="bloque-dos">
+            <div class="bloque-item">
+                <div class="bloque-icon">📅</div>
+                <h3>Comienzo</h3>
+                <div class="bloque-valor">Ene 2025</div>
+                <p style="color: #666; font-size: 14px; margin-top: 5px;">
+                    Fecha del primer reporte mensual
+                </p>
             </div>
+            
+            <div class="bloque-item">
+                <div class="bloque-icon">📈</div>
+                <h3>Tendencia</h3>
+                <div class="bloque-valor">📊 Estable (-2.1%)</div>
+                <p style="color: #666; font-size: 14px; margin-top: 5px;">
+                    Evolución del impacto sostenible
+                </p>
+            </div>
+        </div>
 
         <div class="kpi-grid">
             
