@@ -23,7 +23,7 @@
             min-height: 100vh;
         }
         .contenedor-principal {
-            max-width: 800px;
+            max-width: 900px;
             margin: 40px auto;
             background: white;
             border-radius: 20px;
@@ -48,6 +48,10 @@
             margin-bottom: 40px;
             padding-bottom: 30px;
             border-bottom: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        .seccion-oculta {
+            display: none;
         }
         .seccion:last-child {
             border-bottom: none;
@@ -175,6 +179,19 @@
             height: 20px;
             cursor: pointer;
         }
+        .seleccion-sectores {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+        }
+        .seleccion-sectores .checkbox-container {
+            margin: 0;
+        }
         @media (max-width: 768px) {
             .contenedor-principal {
                 margin: 20px auto;
@@ -186,7 +203,7 @@
             .contenido-formulario {
                 padding: 25px;
             }
-            .fila-doble, .fila-triple, .fila-cuadruple {
+            .fila-doble, .fila-triple, .fila-cuadruple, .seleccion-sectores {
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
@@ -262,15 +279,43 @@
 
                     <div class="grupo-formulario">
                         <label>Fecha de carga automática</label>
-                        <input type="text" id="fechaCargaVisible" value="17/01/2026" readonly
+                        <input type="text" id="fechaCargaVisible" value="26/01/2026" readonly
                                style="background-color: #e9ecef; font-weight: bold;">
                     </div>
                 </div>
 
-                <!-- SECCIÓN 2: IMPACTO AMBIENTAL -->
+                <!-- SECCIÓN 2: SELECCIÓN DE SECTORES A COMPLETAR -->
+                <div class="seccion" id="seccionSeleccionSectores">
+                    <div class="seccion-titulo">
+                        <span>📋</span> Seleccionar Sectores a Completar
+                    </div>
+                    <div class="seleccion-sectores">
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="sectorHotel" name="sectorHotel">
+                            <label for="sectorHotel" style="margin: 0; font-weight: normal;">🏨 Hotel / Hospedaje</label>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="sectorRestaurante" name="sectorRestaurante">
+                            <label for="sectorRestaurante" style="margin: 0; font-weight: normal;">🍽️ Restaurante / Gastronomía</label>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="sectorLogistica" name="sectorLogistica">
+                            <label for="sectorLogistica" style="margin: 0; font-weight: normal;">🚚 Logística / Transporte</label>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="sectorRetail" name="sectorRetail">
+                            <label for="sectorRetail" style="margin: 0; font-weight: normal;">🛍️ Retail / Comercio</label>
+                        </div>
+                    </div>
+                    <small style="color: #666; font-size: 12px; display: block; margin-top: 10px;">
+                        Marca los sectores que apliquen a tu empresa. Puedes seleccionar varios si tu negocio incluye diferentes actividades.
+                    </small>
+                </div>
+
+                <!-- SECCIÓN 3: IMPACTO AMBIENTAL (GENERAL - SIEMPRE VISIBLE) -->
                 <div class="seccion">
                     <div class="seccion-titulo">
-                        <span>🌿</span> Impacto Ambiental
+                        <span>🌿</span> Impacto Ambiental - General
                     </div>
 
                     <div class="fila-cuadruple">
@@ -340,10 +385,10 @@
                     </div>
                 </div>
 
-                <!-- SECCIÓN 3: IMPACTO SOCIAL -->
+                <!-- SECCIÓN 4: IMPACTO SOCIAL (GENERAL - SIEMPRE VISIBLE) -->
                 <div class="seccion">
                     <div class="seccion-titulo">
-                        <span>👥</span> Impacto Social
+                        <span>👥</span> Impacto Social - General
                     </div>
 
                     <div class="fila-triple">
@@ -419,7 +464,128 @@
                     </div>
                 </div>
 
-                <!-- SECCIÓN 4: INFORMACIÓN ADICIONAL -->
+                <!-- SECCIÓN 5: HOTEL (OCULTA POR DEFECTO) -->
+                <div class="seccion seccion-oculta" id="seccionHotel">
+                    <div class="seccion-titulo">
+                        <span>🏨</span> Hotel / Hospedaje
+                    </div>
+
+                    <div class="fila-cuadruple">
+                        <div class="grupo-formulario">
+                            <label for="huespedes_totales">Huéspedes totales</label>
+                            <input type="number" id="huespedes_totales" name="Huespedes_Totales" min="0" value="0">
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="noches_vendidas">Noches vendidas</label>
+                            <input type="number" id="noches_vendidas" name="Noches_Vendidas" min="0" value="0">
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="habitaciones_ocupadas">Habitaciones ocupadas</label>
+                            <input type="number" id="habitaciones_ocupadas" name="Habitaciones_Ocupadas" min="0" value="0">
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="energia_fotovoltaica_kwh">Energía fotovoltaica <span class="unidad">(kWh)</span></label>
+                            <input type="number" id="energia_fotovoltaica_kwh" name="Energia_Fotovoltaica_kWh" step="0.01" min="0" value="0">
+                        </div>
+                    </div>
+
+                    <div class="fila-cuadruple">
+                        <div class="grupo-formulario">
+                            <label for="toallas_reutilizadas_kg">Toallas reutilizadas <span class="unidad">(kg)</span></label>
+                            <input type="number" id="toallas_reutilizadas_kg" name="Toallas_Reutilizadas_kg" step="0.01" min="0" value="0">
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="sabanas_reutilizadas_kg">Sábanas reutilizadas <span class="unidad">(kg)</span></label>
+                            <input type="number" id="sabanas_reutilizadas_kg" name="Sabanas_Reutilizadas_kg" step="0.01" min="0" value="0">
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="vidrio_reciclado_kg">Vidrio reciclado <span class="unidad">(kg)</span></label>
+                            <input type="number" id="vidrio_reciclado_kg" name="Vidrio_Reciclado_kg" step="0.01" min="0" value="0">
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="inversion_conservacion_usd">Inversión en conservación <span class="unidad">(USD)</span></label>
+                            <input type="number" id="inversion_conservacion_usd" name="Inversion_Conservacion_USD" step="0.01" min="0" value="0">
+                        </div>
+                    </div>
+
+                    <div class="fila-doble">
+                        <div class="grupo-formulario">
+                            <label for="satisfaccion_sostenibilidad">Satisfacción sostenibilidad <span class="unidad">(%)</span></label>
+                            <input type="number" id="satisfaccion_sostenibilidad" name="Satisfaccion_Sostenibilidad_%" min="0" max="100" value="0">
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="participacion_reuso">Participación en reúso <span class="unidad">(%)</span></label>
+                            <input type="number" id="participacion_reuso" name="Participacion_Reuso_%" min="0" max="100" value="0">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 6: RESTAURANTE (OCULTA POR DEFECTO) -->
+                <div class="seccion seccion-oculta" id="seccionRestaurante">
+                    <div class="seccion-titulo">
+                        <span>🍽️</span> Restaurante / Gastronomía
+                    </div>
+
+                    <div class="fila-cuadruple">
+                        <div class="grupo-formulario">
+                            <label for="platos_servidos">Platos servidos</label>
+                            <input type="number" id="platos_servidos" name="Platos_Servidos" min="0" value="0">
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="desperdicio_alimentos_kg">Desperdicio de alimentos <span class="unidad">(kg)</span></label>
+                            <input type="number" id="desperdicio_alimentos_kg" name="Desperdicio_Alimentos_kg" step="0.01" min="0" value="0">
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="aceite_usado_litros">Aceite usado <span class="unidad">(litros)</span></label>
+                            <input type="number" id="aceite_usado_litros" name="Aceite_Usado_Litros" step="0.01" min="0" value="0">
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="proveedores_locales_cantidad">Proveedores locales</label>
+                            <input type="number" id="proveedores_locales_cantidad" name="Proveedores_Locales_Cantidad" min="0" value="0">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 7: LOGÍSTICA (OCULTA POR DEFECTO) -->
+                <div class="seccion seccion-oculta" id="seccionLogistica">
+                    <div class="seccion-titulo">
+                        <span>🚚</span> Logística / Transporte
+                    </div>
+
+                    <div class="fila-cuadruple">
+                        <div class="grupo-formulario">
+                            <label for="envios_bicicleta_cantidad">Envíos en bicicleta</label>
+                            <input type="number" id="envios_bicicleta_cantidad" name="Envios_Bicicleta_Cantidad" min="0" value="0">
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="km_bicicleta_total">Kilómetros en bicicleta <span class="unidad">(km)</span></label>
+                            <input type="number" id="km_bicicleta_total" name="Km_Bicicleta_Total" step="0.1" min="0" value="0">
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="envios_vehiculo_cantidad">Envíos en vehículo</label>
+                            <input type="number" id="envios_vehiculo_cantidad" name="Envios_Vehiculo_Cantidad" min="0" value="0">
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="km_vehiculo_total">Kilómetros en vehículo <span class="unidad">(km)</span></label>
+                            <input type="number" id="km_vehiculo_total" name="Km_Vehiculo_Total" step="0.1" min="0" value="0">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 8: INFORMACIÓN ADICIONAL -->
                 <div class="seccion">
                     <div class="seccion-titulo">
                         <span>📝</span> Información Adicional
@@ -484,6 +650,9 @@
 
             // Cargar empresas desde el registro
             await cargarEmpresas();
+            
+            // Configurar listeners para checkboxes de sectores
+            configurarListenersSectores();
         });
 
         async function cargarEmpresas() {
@@ -497,26 +666,94 @@
                 empresas.forEach(empresa => {
                     if (empresa.Empresa && empresa.ID_Empresa) {
                         const option = document.createElement('option');
-                        option.value = empresa.ID_Empresa;  // ✅ ID como valor
-                        option.textContent = empresa.Empresa;  // ✅ Solo mostrar nombre
+                        option.value = empresa.ID_Empresa;
+                        option.textContent = empresa.Empresa;
                         option.dataset.nombre = empresa.Empresa;
                         option.dataset.id = empresa.ID_Empresa;
+                        option.dataset.rubro = empresa.Rubro || '';
                         selectEmpresa.appendChild(option);
                     }
                 });
 
-                // ✅ Cuando se selecciona una empresa, se asigna ID y Nombre automáticamente
+                // Cuando se selecciona una empresa, se asigna ID, Nombre y Rubro
                 selectEmpresa.addEventListener('change', function() {
                     const selectedOption = this.options[this.selectedIndex];
                     if (selectedOption.dataset.id) {
                         document.getElementById('idEmpresaHidden').value = selectedOption.dataset.id;
                         document.getElementById('nombreEmpresaHidden').value = selectedOption.dataset.nombre;
+                        
+                        // ✅ Detectar sector principal y preseleccionar checkbox correspondiente
+                        const rubro = selectedOption.dataset.rubro;
+                        detectarYPreseleccionarSector(rubro);
                     }
                 });
 
             } catch (error) {
                 console.error('Error cargando empresas:', error);
                 mostrarMensaje('Error', '⚠️ No se pudieron cargar las empresas. Verifica tu conexión.');
+            }
+        }
+
+        function configurarListenersSectores() {
+            // Configurar listeners para checkboxes de sectores
+            document.getElementById('sectorHotel').addEventListener('change', function() {
+                document.getElementById('seccionHotel').classList.toggle('seccion-oculta', !this.checked);
+            });
+            
+            document.getElementById('sectorRestaurante').addEventListener('change', function() {
+                document.getElementById('seccionRestaurante').classList.toggle('seccion-oculta', !this.checked);
+            });
+            
+            document.getElementById('sectorLogistica').addEventListener('change', function() {
+                document.getElementById('seccionLogistica').classList.toggle('seccion-oculta', !this.checked);
+            });
+            
+            document.getElementById('sectorRetail').addEventListener('change', function() {
+                // Por ahora no hay sección Retail, pero podemos agregarla después
+                if (this.checked) {
+                    mostrarMensaje('Exito', '📝 Nota: La sección Retail estará disponible próximamente');
+                    this.checked = false;
+                }
+            });
+        }
+
+        function detectarYPreseleccionarSector(rubro) {
+            // Limpiar todas las selecciones primero
+            document.getElementById('sectorHotel').checked = false;
+            document.getElementById('sectorRestaurante').checked = false;
+            document.getElementById('sectorLogistica').checked = false;
+            document.getElementById('sectorRetail').checked = false;
+            
+            // Ocultar todas las secciones
+            document.getElementById('seccionHotel').classList.add('seccion-oculta');
+            document.getElementById('seccionRestaurante').classList.add('seccion-oculta');
+            document.getElementById('seccionLogistica').classList.add('seccion-oculta');
+            
+            // Preseleccionar según el rubro
+            const rubroLower = rubro.toLowerCase();
+            
+            if (rubroLower.includes('hotel') || rubroLower.includes('hospedaje')) {
+                document.getElementById('sectorHotel').checked = true;
+                document.getElementById('seccionHotel').classList.remove('seccion-oculta');
+            }
+            
+            if (rubroLower.includes('restaurante') || rubroLower.includes('gastronomía') || rubroLower.includes('gastronomia')) {
+                document.getElementById('sectorRestaurante').checked = true;
+                document.getElementById('seccionRestaurante').classList.remove('seccion-oculta');
+            }
+            
+            if (rubroLower.includes('logística') || rubroLower.includes('logistica') || rubroLower.includes('transporte')) {
+                document.getElementById('sectorLogistica').checked = true;
+                document.getElementById('seccionLogistica').classList.remove('seccion-oculta');
+            }
+            
+            if (rubroLower.includes('retail') || rubroLower.includes('comercio')) {
+                document.getElementById('sectorRetail').checked = true;
+            }
+            
+            // Mostrar mensaje informativo
+            if (rubro) {
+                mostrarMensaje('Exito', `✅ Sector principal detectado: ${rubro}. Puedes agregar más sectores si aplican.`);
             }
         }
 
@@ -574,21 +811,30 @@
             textoBoton.textContent = 'Enviando...';
             iconoCarga.style.display = 'inline';
 
-            // ✅ DATOS CORREGIDOS - ENVIAR ID NUMÉRICO Y NOMBRE SEPARADOS
+            // ✅ DATOS COMPLETOS - Incluyendo todos los sectores
             const datosParaEnviar = {
+                // Datos generales y empresa
                 'ID_Empresa': document.getElementById('idEmpresaHidden').value,
                 'Empresa': document.getElementById('nombreEmpresaHidden').value,
                 'Mes': document.getElementById('mes').value,
                 'Año': document.getElementById('anio').value,
                 'Fecha_carga': document.getElementById('fechaCarga').value,
+                
+                // Impacto Ambiental General
                 'Energia_kWh': parseFloat(document.getElementById('energia_kwh').value) || 0,
                 'Combustible_L': parseFloat(document.getElementById('combustible_l').value) || 0,
                 'Papel_kg': parseFloat(document.getElementById('papel_kg').value) || 0,
+                'Agua_m3': parseFloat(document.getElementById('agua_m3').value) || 0,
                 'Borra_humeda_kg': parseFloat(document.getElementById('borra_humeda_kg').value) || 0,
                 'Borra_seca_kg': parseFloat(document.getElementById('borra_seca_kg').value) || 0,
                 'Tela_reutilizada_kg': parseFloat(document.getElementById('tela_reutilizada_kg').value) || 0,
                 'Tecnologia_recuperada_kg': parseFloat(document.getElementById('tecnologia_recuperada_kg').value) || 0,
                 'Plastico_reutilizado_kg': parseFloat(document.getElementById('plastico_reutilizado_kg').value) || 0,
+                'Residuo_Organico_kg': parseFloat(document.getElementById('residuo_organico_kg').value) || 0,
+                'Residuo_Reciclable_kg': parseFloat(document.getElementById('residuo_reciclable_kg').value) || 0,
+                'Residuo_No_Reciclable_kg': parseFloat(document.getElementById('residuo_no_reciclable_kg').value) || 0,
+                
+                // Impacto Social General
                 'Cantidad_Empleados_Total': parseInt(document.getElementById('cantidad_empleados_total').value) || 1,
                 'Cantidad_Empleados_Locales': parseInt(document.getElementById('cantidad_empleados_locales').value) || 0,
                 'Cantidad_Mujeres': parseInt(document.getElementById('cantidad_mujeres').value) || 0,
@@ -597,12 +843,34 @@
                 'Politica_inclusion': document.getElementById('politica_inclusion').checked ? 'Sí' : 'No',
                 'Procesos_optimizados_%': parseFloat(document.getElementById('procesos_optimizados').value) || 0,
                 'Digitalizacion_%': parseFloat(document.getElementById('digitalizacion').value) || 0,
-                'Residuo_Organico_kg': parseFloat(document.getElementById('residuo_organico_kg').value) || 0,
-                'Residuo_Reciclable_kg': parseFloat(document.getElementById('residuo_reciclable_kg').value) || 0,
-                'Residuo_No_Reciclable_kg': parseFloat(document.getElementById('residuo_no_reciclable_kg').value) || 0,
+                
+                // Hotel (solo si la sección está visible)
+                'Huespedes_Totales': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('huespedes_totales').value) || 0,
+                'Noches_Vendidas': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('noches_vendidas').value) || 0,
+                'Habitaciones_Ocupadas': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('habitaciones_ocupadas').value) || 0,
+                'Energia_Fotovoltaica_kWh': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('energia_fotovoltaica_kwh').value) || 0,
+                'Toallas_Reutilizadas_kg': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('toallas_reutilizadas_kg').value) || 0,
+                'Sabanas_Reutilizadas_kg': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('sabanas_reutilizadas_kg').value) || 0,
+                'Vidrio_Reciclado_kg': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('vidrio_reciclado_kg').value) || 0,
+                'Inversion_Conservacion_USD': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('inversion_conservacion_usd').value) || 0,
+                'Satisfaccion_Sostenibilidad_%': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('satisfaccion_sostenibilidad').value) || 0,
+                'Participacion_Reuso_%': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('participacion_reuso').value) || 0,
+                
+                // Restaurante (solo si la sección está visible)
+                'Platos_Servidos': document.getElementById('seccionRestaurante').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('platos_servidos').value) || 0,
+                'Desperdicio_Alimentos_kg': document.getElementById('seccionRestaurante').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('desperdicio_alimentos_kg').value) || 0,
+                'Aceite_Usado_Litros': document.getElementById('seccionRestaurante').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('aceite_usado_litros').value) || 0,
+                'Proveedores_Locales_Cantidad': document.getElementById('seccionRestaurante').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('proveedores_locales_cantidad').value) || 0,
+                
+                // Logística (solo si la sección está visible)
+                'Envios_Bicicleta_Cantidad': document.getElementById('seccionLogistica').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('envios_bicicleta_cantidad').value) || 0,
+                'Km_Bicicleta_Total': document.getElementById('seccionLogistica').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('km_bicicleta_total').value) || 0,
+                'Envios_Vehiculo_Cantidad': document.getElementById('seccionLogistica').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('envios_vehiculo_cantidad').value) || 0,
+                'Km_Vehiculo_Total': document.getElementById('seccionLogistica').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('km_vehiculo_total').value) || 0,
+                
+                // Información adicional
                 'Comentarios': document.getElementById('comentarios').value.trim() || '',
-                'Link_Evidencia': document.getElementById('link_evidencia').value.trim() || '',
-                'Agua_m3': parseFloat(document.getElementById('agua_m3').value) || 0
+                'Link_Evidencia': document.getElementById('link_evidencia').value.trim() || ''
             };
 
             try {
@@ -626,7 +894,15 @@
                                        'cantidad_personas_discapacitadas', 'capacitacion_horas',
                                        'procesos_optimizados', 'digitalizacion', 'residuo_organico_kg',
                                        'residuo_reciclable_kg', 'residuo_no_reciclable_kg',
-                                       'comentarios', 'link_evidencia', 'agua_m3', 'politica_inclusion'];
+                                       'comentarios', 'link_evidencia', 'agua_m3', 'politica_inclusion',
+                                       'huespedes_totales', 'noches_vendidas', 'habitaciones_ocupadas',
+                                       'energia_fotovoltaica_kwh', 'toallas_reutilizadas_kg',
+                                       'sabanas_reutilizadas_kg', 'vidrio_reciclado_kg',
+                                       'inversion_conservacion_usd', 'satisfaccion_sostenibilidad',
+                                       'participacion_reuso', 'platos_servidos', 'desperdicio_alimentos_kg',
+                                       'aceite_usado_litros', 'proveedores_locales_cantidad',
+                                       'envios_bicicleta_cantidad', 'km_bicicleta_total',
+                                       'envios_vehiculo_cantidad', 'km_vehiculo_total'];
 
                     camposReset.forEach(campoId => {
                         const elemento = document.getElementById(campoId);
@@ -634,13 +910,23 @@
                             if (elemento.type === 'checkbox') {
                                 elemento.checked = false;
                             } else if (elemento.tagName === 'SELECT') {
-                                // Para selects, volver a la primera opción (valor 0)
                                 elemento.selectedIndex = 0;
                             } else {
                                 elemento.value = campoId === 'cantidad_empleados_total' ? '1' : '0';
                             }
                         }
                     });
+
+                    // Desmarcar checkboxes de sectores
+                    document.getElementById('sectorHotel').checked = false;
+                    document.getElementById('sectorRestaurante').checked = false;
+                    document.getElementById('sectorLogistica').checked = false;
+                    document.getElementById('sectorRetail').checked = false;
+                    
+                    // Ocultar secciones específicas
+                    document.getElementById('seccionHotel').classList.add('seccion-oculta');
+                    document.getElementById('seccionRestaurante').classList.add('seccion-oculta');
+                    document.getElementById('seccionLogistica').classList.add('seccion-oculta');
 
                     // Actualizar fecha de carga
                     const ahora = new Date();
