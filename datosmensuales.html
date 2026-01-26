@@ -192,6 +192,26 @@
         .seleccion-sectores .checkbox-container {
             margin: 0;
         }
+        .nota-campo {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+            margin-top: 5px;
+            display: block;
+        }
+        .campo-calculado {
+            background-color: #e8f5e9 !important;
+            font-weight: bold !important;
+            color: #1b5e20 !important;
+        }
+        .opcion-doble {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .opcion-doble > div {
+            flex: 1;
+        }
         @media (max-width: 768px) {
             .contenedor-principal {
                 margin: 20px auto;
@@ -206,6 +226,9 @@
             .fila-doble, .fila-triple, .fila-cuadruple, .seleccion-sectores {
                 grid-template-columns: 1fr;
                 gap: 15px;
+            }
+            .opcion-doble {
+                flex-direction: column;
             }
         }
     </style>
@@ -271,8 +294,8 @@
                                 <option value="">Seleccionar año...</option>
                                 <option value="2023">2023</option>
                                 <option value="2024">2024</option>
-                                <option value="2025" selected>2025</option>
-                                <option value="2026">2026</option>
+                                <option value="2025">2025</option>
+                                <option value="2026" selected>2026</option>
                             </select>
                         </div>
                     </div>
@@ -320,13 +343,15 @@
 
                     <div class="fila-cuadruple">
                         <div class="grupo-formulario">
-                            <label for="energia_kwh">Energía <span class="unidad">(kWh)</span></label>
+                            <label for="energia_kwh">Energía total <span class="unidad">(kWh)</span></label>
                             <input type="number" id="energia_kwh" name="Energia_kWh" step="0.01" min="0" value="0">
+                            <span class="nota-campo">Incluye energía convencional + fotovoltaica</span>
                         </div>
 
                         <div class="grupo-formulario">
-                            <label for="combustible_l">Combustible <span class="unidad">(litros)</span></label>
+                            <label for="combustible_l">Combustible general <span class="unidad">(litros)</span></label>
                             <input type="number" id="combustible_l" name="Combustible_L" step="0.01" min="0" value="0">
+                            <span class="nota-campo">Uso general (generadores, calefacción, etc.)</span>
                         </div>
 
                         <div class="grupo-formulario">
@@ -335,8 +360,9 @@
                         </div>
 
                         <div class="grupo-formulario">
-                            <label for="agua_m3">Agua <span class="unidad">(m³)</span></label>
+                            <label for="agua_m3">Agua (Huella hídrica) <span class="unidad">(m³)</span></label>
                             <input type="number" id="agua_m3" name="Agua_m3" step="0.01" min="0" value="0">
+                            <span class="nota-campo">Consumo total de agua directo</span>
                         </div>
                     </div>
 
@@ -366,6 +392,12 @@
                         <div class="grupo-formulario">
                             <label for="plastico_reutilizado_kg">Plástico reutilizado <span class="unidad">(kg)</span></label>
                             <input type="number" id="plastico_reutilizado_kg" name="Plastico_reutilizado_kg" step="0.01" min="0" value="0">
+                            <span class="nota-campo">Botellas, envases operativos recuperados</span>
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="vidrio_reciclado_kg">Vidrio reciclado <span class="unidad">(kg)</span></label>
+                            <input type="number" id="vidrio_reciclado_kg" name="Vidrio_Reciclado_kg" step="0.01" min="0" value="0">
                         </div>
 
                         <div class="grupo-formulario">
@@ -377,10 +409,18 @@
                             <label for="residuo_reciclable_kg">Residuo reciclable <span class="unidad">(kg)</span></label>
                             <input type="number" id="residuo_reciclable_kg" name="Residuo_Reciclable_kg" step="0.01" min="0" value="0">
                         </div>
+                    </div>
 
+                    <div class="fila-doble">
                         <div class="grupo-formulario">
                             <label for="residuo_no_reciclable_kg">Residuo no reciclable <span class="unidad">(kg)</span></label>
                             <input type="number" id="residuo_no_reciclable_kg" name="Residuo_No_Reciclable_kg" step="0.01" min="0" value="0">
+                        </div>
+                        
+                        <div class="grupo-formulario">
+                            <label for="tasa_desviacion_residuos">Tasa de desviación de residuos <span class="unidad">(%)</span></label>
+                            <input type="text" id="tasa_desviacion_residuos" readonly class="campo-calculado" value="0%">
+                            <span class="nota-campo">Calculado: (Reciclable+Orgánico) / Total residuos × 100</span>
                         </div>
                     </div>
                 </div>
@@ -467,7 +507,7 @@
                 <!-- SECCIÓN 5: HOTEL (OCULTA POR DEFECTO) -->
                 <div class="seccion seccion-oculta" id="seccionHotel">
                     <div class="seccion-titulo">
-                        <span>🏨</span> Hotel / Hospedaje
+                        <span>🏨</span> Hotel / Hospedaje - Indicadores Específicos
                     </div>
 
                     <div class="fila-cuadruple">
@@ -494,35 +534,90 @@
 
                     <div class="fila-cuadruple">
                         <div class="grupo-formulario">
-                            <label for="toallas_reutilizadas_kg">Toallas reutilizadas <span class="unidad">(kg)</span></label>
-                            <input type="number" id="toallas_reutilizadas_kg" name="Toallas_Reutilizadas_kg" step="0.01" min="0" value="0">
+                            <label for="toallas_reutilizadas">Toallas reutilizadas <span class="unidad">(cantidad)</span></label>
+                            <input type="number" id="toallas_reutilizadas" name="Toallas_Reutilizadas" min="0" value="0">
+                            <span class="nota-campo">Número de toallas reutilizadas (no lavadas)</span>
                         </div>
 
                         <div class="grupo-formulario">
-                            <label for="sabanas_reutilizadas_kg">Sábanas reutilizadas <span class="unidad">(kg)</span></label>
-                            <input type="number" id="sabanas_reutilizadas_kg" name="Sabanas_Reutilizadas_kg" step="0.01" min="0" value="0">
+                            <label for="sabanas_reutilizadas">Sábanas reutilizadas <span class="unidad">(cantidad)</span></label>
+                            <input type="number" id="sabanas_reutilizadas" name="Sabanas_Reutilizadas" min="0" value="0">
+                            <span class="nota-campo">Número de sábanas reutilizadas (no lavadas)</span>
                         </div>
 
                         <div class="grupo-formulario">
-                            <label for="vidrio_reciclado_kg">Vidrio reciclado <span class="unidad">(kg)</span></label>
-                            <input type="number" id="vidrio_reciclado_kg" name="Vidrio_Reciclado_kg" step="0.01" min="0" value="0">
+                            <label for="uniforme_circular">% de uniformes circulares</label>
+                            <select id="uniforme_circular" name="Uniforme_circular_%">
+                                <option value="0">Seleccionar %...</option>
+                                <option value="10">0-20% (Muy bajo)</option>
+                                <option value="30">21-40% (Bajo)</option>
+                                <option value="50">41-60% (Moderado)</option>
+                                <option value="70">61-80% (Alto)</option>
+                                <option value="90">81-100% (Muy alto)</option>
+                            </select>
+                            <span class="nota-campo">Porcentaje de uniformes hechos con materiales reciclados</span>
                         </div>
 
                         <div class="grupo-formulario">
-                            <label for="inversion_conservacion_usd">Inversión en conservación <span class="unidad">(USD)</span></label>
-                            <input type="number" id="inversion_conservacion_usd" name="Inversion_Conservacion_USD" step="0.01" min="0" value="0">
+                            <label for="participacion_reuso_personas">Participación programa reúso <span class="unidad">(personas)</span></label>
+                            <input type="number" id="participacion_reuso_personas" name="Participacion_Reuso_Personas" min="0" value="0">
+                            <span class="nota-campo">N° de huéspedes que participan del programa</span>
+                        </div>
+                    </div>
+
+                    <div class="grupo-formulario">
+                        <div class="opcion-doble">
+                            <div>
+                                <label for="inversion_conservacion_usd">Inversión en conservación <span class="unidad">(USD)</span></label>
+                                <input type="number" id="inversion_conservacion_usd" name="Inversion_Conservacion_USD" step="0.01" min="0" value="0">
+                                <span class="nota-campo">Inversión monetaria en proyectos</span>
+                            </div>
+                            <div>
+                                <label for="horas_voluntariado">Horas de voluntariado <span class="unidad">(horas)</span></label>
+                                <input type="number" id="horas_voluntariado" name="Horas_Voluntariado" step="0.5" min="0" value="0">
+                                <span class="nota-campo">Horas dedicadas a voluntariado ambiental</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fila-triple">
+                        <div class="grupo-formulario">
+                            <label for="proveedores_locales_regenerativos">% Proveedores locales regenerativos</label>
+                            <select id="proveedores_locales_regenerativos" name="Proveedores_Locales_Regenerativos_%">
+                                <option value="0">Seleccionar %...</option>
+                                <option value="25">Menos del 50%</option>
+                                <option value="50">50% (Mitad)</option>
+                                <option value="75">Más del 50%</option>
+                                <option value="100">100% (Todos)</option>
+                            </select>
+                            <span class="nota-campo">Proveedores con prácticas regenerativas</span>
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="satisfaccion_sostenibilidad">Satisfacción huésped sostenibilidad</label>
+                            <select id="satisfaccion_sostenibilidad" name="Satisfaccion_Sostenibilidad">
+                                <option value="">Seleccionar nivel...</option>
+                                <option value="20">★☆☆☆☆ (Muy baja)</option>
+                                <option value="40">★★☆☆☆ (Baja)</option>
+                                <option value="60">★★★☆☆ (Media)</option>
+                                <option value="80">★★★★☆ (Alta)</option>
+                                <option value="100">★★★★★ (Muy alta)</option>
+                            </select>
+                            <span class="nota-campo">Encuesta de satisfacción sobre prácticas sostenibles</span>
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="energia_por_huesped">Energía por huésped/noche <span class="unidad">(kWh)</span></label>
+                            <input type="text" id="energia_por_huesped" readonly class="campo-calculado" value="0">
+                            <span class="nota-campo">Calculado: Energía total / (Huéspedes × Noches)</span>
                         </div>
                     </div>
 
                     <div class="fila-doble">
                         <div class="grupo-formulario">
-                            <label for="satisfaccion_sostenibilidad">Satisfacción sostenibilidad <span class="unidad">(%)</span></label>
-                            <input type="number" id="satisfaccion_sostenibilidad" name="Satisfaccion_Sostenibilidad_%" min="0" max="100" value="0">
-                        </div>
-
-                        <div class="grupo-formulario">
-                            <label for="participacion_reuso">Participación en reúso <span class="unidad">(%)</span></label>
-                            <input type="number" id="participacion_reuso" name="Participacion_Reuso_%" min="0" max="100" value="0">
+                            <label for="participacion_reuso_porcentaje">% Participación reúso</label>
+                            <input type="text" id="participacion_reuso_porcentaje" readonly class="campo-calculado" value="0%">
+                            <span class="nota-campo">Calculado: (Participantes / Huéspedes) × 100</span>
                         </div>
                     </div>
                 </div>
@@ -545,14 +640,21 @@
                         </div>
 
                         <div class="grupo-formulario">
-                            <label for="aceite_usado_litros">Aceite usado <span class="unidad">(litros)</span></label>
+                            <label for="aceite_usado_litros">Aceite usado reciclado <span class="unidad">(litros)</span></label>
                             <input type="number" id="aceite_usado_litros" name="Aceite_Usado_Litros" step="0.01" min="0" value="0">
+                            <span class="nota-campo">Cantidad de aceite reciclado/reutilizado</span>
                         </div>
 
                         <div class="grupo-formulario">
-                            <label for="proveedores_locales_cantidad">Proveedores locales</label>
+                            <label for="proveedores_locales_cantidad">Cantidad de proveedores locales</label>
                             <input type="number" id="proveedores_locales_cantidad" name="Proveedores_Locales_Cantidad" min="0" value="0">
                         </div>
+                    </div>
+
+                    <div class="grupo-formulario">
+                        <label for="desperdicio_por_plato">Desperdicio por plato servido <span class="unidad">(g/plato)</span></label>
+                        <input type="text" id="desperdicio_por_plato" readonly class="campo-calculado" value="0">
+                        <span class="nota-campo">Calculado: (Desperdicio kg × 1000) / Platos servidos</span>
                     </div>
                 </div>
 
@@ -563,6 +665,12 @@
                     </div>
 
                     <div class="fila-cuadruple">
+                        <div class="grupo-formulario">
+                            <label for="combustible_transporte_l">Combustible transporte <span class="unidad">(litros)</span></label>
+                            <input type="number" id="combustible_transporte_l" name="Combustible_Transporte_L" step="0.01" min="0" value="0">
+                            <span class="nota-campo">Combustible específico para vehículos de transporte</span>
+                        </div>
+
                         <div class="grupo-formulario">
                             <label for="envios_bicicleta_cantidad">Envíos en bicicleta</label>
                             <input type="number" id="envios_bicicleta_cantidad" name="Envios_Bicicleta_Cantidad" min="0" value="0">
@@ -577,10 +685,18 @@
                             <label for="envios_vehiculo_cantidad">Envíos en vehículo</label>
                             <input type="number" id="envios_vehiculo_cantidad" name="Envios_Vehiculo_Cantidad" min="0" value="0">
                         </div>
+                    </div>
 
+                    <div class="fila-doble">
                         <div class="grupo-formulario">
                             <label for="km_vehiculo_total">Kilómetros en vehículo <span class="unidad">(km)</span></label>
                             <input type="number" id="km_vehiculo_total" name="Km_Vehiculo_Total" step="0.1" min="0" value="0">
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="porcentaje_envios_sostenibles">% Envíos sostenibles</label>
+                            <input type="text" id="porcentaje_envios_sostenibles" readonly class="campo-calculado" value="0%">
+                            <span class="nota-campo">Calculado: Envíos bicicleta / Total envíos × 100</span>
                         </div>
                     </div>
                 </div>
@@ -613,12 +729,12 @@
             <div style="text-align: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid #eee;">
                 <p style="color: #666; font-size: 14px; margin-bottom: 10px;">
                     📧 ¿Necesitas ayuda?
-                    <a href="mailto:info@impactaverde.com.ar" style="color: var(--verde-oscuro); font-weight: bold;">
-                        Contacta con nuestro equipo
+                    <a href="mailto:hola@impactaverde.com.ar" style="color: var(--verde-oscuro); font-weight: bold;">
+                        Contacta con nuestro equipo: hola@impactaverde.com.ar
                     </a>
                 </p>
                 <p style="color: #888; font-size: 12px;">
-                    © 2024 Impacta Verde - Sistema de Medición de Impacto Ambiental
+                    © 2026 Impacta Verde - Sistema de Medición de Impacto Ambiental
                 </p>
             </div>
         </div>
@@ -653,6 +769,9 @@
             
             // Configurar listeners para checkboxes de sectores
             configurarListenersSectores();
+            
+            // Configurar cálculos automáticos
+            configurarCalculosAutomaticos();
         });
 
         async function cargarEmpresas() {
@@ -698,14 +817,17 @@
             // Configurar listeners para checkboxes de sectores
             document.getElementById('sectorHotel').addEventListener('change', function() {
                 document.getElementById('seccionHotel').classList.toggle('seccion-oculta', !this.checked);
+                if (this.checked) calcularIndicadoresHotel();
             });
             
             document.getElementById('sectorRestaurante').addEventListener('change', function() {
                 document.getElementById('seccionRestaurante').classList.toggle('seccion-oculta', !this.checked);
+                if (this.checked) calcularIndicadoresRestaurante();
             });
             
             document.getElementById('sectorLogistica').addEventListener('change', function() {
                 document.getElementById('seccionLogistica').classList.toggle('seccion-oculta', !this.checked);
+                if (this.checked) calcularIndicadoresLogistica();
             });
             
             document.getElementById('sectorRetail').addEventListener('change', function() {
@@ -715,6 +837,107 @@
                     this.checked = false;
                 }
             });
+        }
+
+        function configurarCalculosAutomaticos() {
+            // Cálculos para Hotel
+            const camposHotel = ['huespedes_totales', 'noches_vendidas', 'energia_kwh', 'participacion_reuso_personas'];
+            camposHotel.forEach(campoId => {
+                const campo = document.getElementById(campoId);
+                if (campo) {
+                    campo.addEventListener('input', calcularIndicadoresHotel);
+                }
+            });
+            
+            // Cálculos para Restaurante
+            const camposRestaurante = ['platos_servidos', 'desperdicio_alimentos_kg'];
+            camposRestaurante.forEach(campoId => {
+                const campo = document.getElementById(campoId);
+                if (campo) {
+                    campo.addEventListener('input', calcularIndicadoresRestaurante);
+                }
+            });
+            
+            // Cálculos para Logística
+            const camposLogistica = ['envios_bicicleta_cantidad', 'envios_vehiculo_cantidad'];
+            camposLogistica.forEach(campoId => {
+                const campo = document.getElementById(campoId);
+                if (campo) {
+                    campo.addEventListener('input', calcularIndicadoresLogistica);
+                }
+            });
+            
+            // Cálculos generales de residuos
+            const camposResiduos = ['residuo_reciclable_kg', 'residuo_organico_kg', 'residuo_no_reciclable_kg'];
+            camposResiduos.forEach(campoId => {
+                const campo = document.getElementById(campoId);
+                if (campo) {
+                    campo.addEventListener('input', calcularTasaDesviacion);
+                }
+            });
+        }
+
+        function calcularTasaDesviacion() {
+            const reciclable = parseFloat(document.getElementById('residuo_reciclable_kg').value) || 0;
+            const organico = parseFloat(document.getElementById('residuo_organico_kg').value) || 0;
+            const noReciclable = parseFloat(document.getElementById('residuo_no_reciclable_kg').value) || 0;
+            
+            const total = reciclable + organico + noReciclable;
+            let tasa = 0;
+            
+            if (total > 0) {
+                tasa = ((reciclable + organico) / total) * 100;
+            }
+            
+            document.getElementById('tasa_desviacion_residuos').value = tasa.toFixed(1) + '%';
+        }
+
+        function calcularIndicadoresHotel() {
+            const huespedes = parseInt(document.getElementById('huespedes_totales').value) || 0;
+            const noches = parseInt(document.getElementById('noches_vendidas').value) || 0;
+            const energiaTotal = parseFloat(document.getElementById('energia_kwh').value) || 0;
+            const participantes = parseInt(document.getElementById('participacion_reuso_personas').value) || 0;
+            
+            // Energía por huésped por noche
+            let energiaPorHuesped = 0;
+            if (huespedes > 0 && noches > 0) {
+                energiaPorHuesped = energiaTotal / (huespedes * noches);
+            }
+            document.getElementById('energia_por_huesped').value = energiaPorHuesped.toFixed(2);
+            
+            // % Participación reúso
+            let participacionPorcentaje = 0;
+            if (huespedes > 0) {
+                participacionPorcentaje = (participantes / huespedes) * 100;
+            }
+            document.getElementById('participacion_reuso_porcentaje').value = participacionPorcentaje.toFixed(1) + '%';
+        }
+
+        function calcularIndicadoresRestaurante() {
+            const platos = parseInt(document.getElementById('platos_servidos').value) || 0;
+            const desperdicio = parseFloat(document.getElementById('desperdicio_alimentos_kg').value) || 0;
+            
+            // Desperdicio por plato (en gramos)
+            let desperdicioPorPlato = 0;
+            if (platos > 0) {
+                desperdicioPorPlato = (desperdicio * 1000) / platos;
+            }
+            document.getElementById('desperdicio_por_plato').value = desperdicioPorPlato.toFixed(1);
+        }
+
+        function calcularIndicadoresLogistica() {
+            const enviosBici = parseInt(document.getElementById('envios_bicicleta_cantidad').value) || 0;
+            const enviosVehiculo = parseInt(document.getElementById('envios_vehiculo_cantidad').value) || 0;
+            
+            // % Envíos sostenibles
+            const totalEnvios = enviosBici + enviosVehiculo;
+            let porcentajeSostenible = 0;
+            
+            if (totalEnvios > 0) {
+                porcentajeSostenible = (enviosBici / totalEnvios) * 100;
+            }
+            
+            document.getElementById('porcentaje_envios_sostenibles').value = porcentajeSostenible.toFixed(1) + '%';
         }
 
         function detectarYPreseleccionarSector(rubro) {
@@ -830,6 +1053,7 @@
                 'Tela_reutilizada_kg': parseFloat(document.getElementById('tela_reutilizada_kg').value) || 0,
                 'Tecnologia_recuperada_kg': parseFloat(document.getElementById('tecnologia_recuperada_kg').value) || 0,
                 'Plastico_reutilizado_kg': parseFloat(document.getElementById('plastico_reutilizado_kg').value) || 0,
+                'Vidrio_Reciclado_kg': parseFloat(document.getElementById('vidrio_reciclado_kg').value) || 0,
                 'Residuo_Organico_kg': parseFloat(document.getElementById('residuo_organico_kg').value) || 0,
                 'Residuo_Reciclable_kg': parseFloat(document.getElementById('residuo_reciclable_kg').value) || 0,
                 'Residuo_No_Reciclable_kg': parseFloat(document.getElementById('residuo_no_reciclable_kg').value) || 0,
@@ -849,12 +1073,14 @@
                 'Noches_Vendidas': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('noches_vendidas').value) || 0,
                 'Habitaciones_Ocupadas': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('habitaciones_ocupadas').value) || 0,
                 'Energia_Fotovoltaica_kWh': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('energia_fotovoltaica_kwh').value) || 0,
-                'Toallas_Reutilizadas_kg': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('toallas_reutilizadas_kg').value) || 0,
-                'Sabanas_Reutilizadas_kg': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('sabanas_reutilizadas_kg').value) || 0,
-                'Vidrio_Reciclado_kg': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('vidrio_reciclado_kg').value) || 0,
+                'Toallas_Reutilizadas': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('toallas_reutilizadas').value) || 0,
+                'Sabanas_Reutilizadas': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('sabanas_reutilizadas').value) || 0,
+                'Uniforme_circular_%': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('uniforme_circular').value) || 0,
                 'Inversion_Conservacion_USD': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('inversion_conservacion_usd').value) || 0,
-                'Satisfaccion_Sostenibilidad_%': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('satisfaccion_sostenibilidad').value) || 0,
-                'Participacion_Reuso_%': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('participacion_reuso').value) || 0,
+                'Horas_Voluntariado': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('horas_voluntariado').value) || 0,
+                'Participacion_Reuso_Personas': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('participacion_reuso_personas').value) || 0,
+                'Proveedores_Locales_Regenerativos_%': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('proveedores_locales_regenerativos').value) || 0,
+                'Satisfaccion_Sostenibilidad': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? '' : document.getElementById('satisfaccion_sostenibilidad').value || '',
                 
                 // Restaurante (solo si la sección está visible)
                 'Platos_Servidos': document.getElementById('seccionRestaurante').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('platos_servidos').value) || 0,
@@ -863,6 +1089,7 @@
                 'Proveedores_Locales_Cantidad': document.getElementById('seccionRestaurante').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('proveedores_locales_cantidad').value) || 0,
                 
                 // Logística (solo si la sección está visible)
+                'Combustible_Transporte_L': document.getElementById('seccionLogistica').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('combustible_transporte_l').value) || 0,
                 'Envios_Bicicleta_Cantidad': document.getElementById('seccionLogistica').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('envios_bicicleta_cantidad').value) || 0,
                 'Km_Bicicleta_Total': document.getElementById('seccionLogistica').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('km_bicicleta_total').value) || 0,
                 'Envios_Vehiculo_Cantidad': document.getElementById('seccionLogistica').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('envios_vehiculo_cantidad').value) || 0,
@@ -895,12 +1122,13 @@
                                        'procesos_optimizados', 'digitalizacion', 'residuo_organico_kg',
                                        'residuo_reciclable_kg', 'residuo_no_reciclable_kg',
                                        'comentarios', 'link_evidencia', 'agua_m3', 'politica_inclusion',
-                                       'huespedes_totales', 'noches_vendidas', 'habitaciones_ocupadas',
-                                       'energia_fotovoltaica_kwh', 'toallas_reutilizadas_kg',
-                                       'sabanas_reutilizadas_kg', 'vidrio_reciclado_kg',
-                                       'inversion_conservacion_usd', 'satisfaccion_sostenibilidad',
-                                       'participacion_reuso', 'platos_servidos', 'desperdicio_alimentos_kg',
-                                       'aceite_usado_litros', 'proveedores_locales_cantidad',
+                                       'vidrio_reciclado_kg', 'huespedes_totales', 'noches_vendidas',
+                                       'habitaciones_ocupadas', 'energia_fotovoltaica_kwh',
+                                       'toallas_reutilizadas', 'sabanas_reutilizadas', 'uniforme_circular',
+                                       'inversion_conservacion_usd', 'horas_voluntariado', 'participacion_reuso_personas',
+                                       'proveedores_locales_regenerativos', 'satisfaccion_sostenibilidad',
+                                       'platos_servidos', 'desperdicio_alimentos_kg', 'aceite_usado_litros',
+                                       'proveedores_locales_cantidad', 'combustible_transporte_l',
                                        'envios_bicicleta_cantidad', 'km_bicicleta_total',
                                        'envios_vehiculo_cantidad', 'km_vehiculo_total'];
 
@@ -916,6 +1144,13 @@
                             }
                         }
                     });
+
+                    // Resetear campos calculados
+                    document.getElementById('tasa_desviacion_residuos').value = '0%';
+                    document.getElementById('energia_por_huesped').value = '0';
+                    document.getElementById('participacion_reuso_porcentaje').value = '0%';
+                    document.getElementById('desperdicio_por_plato').value = '0';
+                    document.getElementById('porcentaje_envios_sostenibles').value = '0%';
 
                     // Desmarcar checkboxes de sectores
                     document.getElementById('sectorHotel').checked = false;
