@@ -302,7 +302,7 @@
 
                     <div class="grupo-formulario">
                         <label>Fecha de carga automática</label>
-                        <input type="text" id="fechaCargaVisible" value="26/01/2026" readonly
+                        <input type="text" id="fechaCargaVisible" value="27/01/2026" readonly
                                style="background-color: #e9ecef; font-weight: bold;">
                     </div>
                 </div>
@@ -395,6 +395,13 @@
                             <span class="nota-campo">Botellas, envases operativos recuperados</span>
                         </div>
 
+                        <!-- ✅ NUEVO CAMPO: MATERIALES BIODEGRADABLES -->
+                        <div class="grupo-formulario">
+                            <label for="materiales_biodegradables_kg">Materiales biodegradables/compostables <span class="unidad">(kg)</span></label>
+                            <input type="number" id="materiales_biodegradables_kg" name="Materiales_biodegradables_kg" step="0.01" min="0" value="0">
+                            <span class="nota-campo">Incluye: almidón, PLA, PHA, celulosa y otros bioplásticos certificados compostables</span>
+                        </div>
+
                         <div class="grupo-formulario">
                             <label for="vidrio_reciclado_kg">Vidrio reciclado <span class="unidad">(kg)</span></label>
                             <input type="number" id="vidrio_reciclado_kg" name="Vidrio_Reciclado_kg" step="0.01" min="0" value="0">
@@ -404,16 +411,18 @@
                             <label for="residuo_organico_kg">Residuo orgánico <span class="unidad">(kg)</span></label>
                             <input type="number" id="residuo_organico_kg" name="Residuo_Organico_kg" step="0.01" min="0" value="0">
                         </div>
+                    </div>
 
+                    <div class="fila-doble">
                         <div class="grupo-formulario">
                             <label for="residuo_reciclable_kg">Residuo reciclable <span class="unidad">(kg)</span></label>
                             <input type="number" id="residuo_reciclable_kg" name="Residuo_Reciclable_kg" step="0.01" min="0" value="0">
                         </div>
-                    </div>
 
-                    <div class="grupo-formulario">
-                        <label for="residuo_no_reciclable_kg">Residuo no reciclable <span class="unidad">(kg)</span></label>
-                        <input type="number" id="residuo_no_reciclable_kg" name="Residuo_No_Reciclable_kg" step="0.01" min="0" value="0">
+                        <div class="grupo-formulario">
+                            <label for="residuo_no_reciclable_kg">Residuo no reciclable <span class="unidad">(kg)</span></label>
+                            <input type="number" id="residuo_no_reciclable_kg" name="Residuo_No_Reciclable_kg" step="0.01" min="0" value="0">
+                        </div>
                     </div>
                 </div>
 
@@ -979,7 +988,7 @@
             textoBoton.textContent = 'Enviando...';
             iconoCarga.style.display = 'inline';
 
-            // ✅ DATOS COMPLETOS - Incluyendo todos los sectores
+            // ✅ DATOS COMPLETOS - Incluyendo todos los sectores Y EL NUEVO CAMPO
             const datosParaEnviar = {
                 // Datos generales y empresa
                 'ID_Empresa': document.getElementById('idEmpresaHidden').value,
@@ -998,6 +1007,7 @@
                 'Tela_reutilizada_kg': parseFloat(document.getElementById('tela_reutilizada_kg').value) || 0,
                 'Tecnologia_recuperada_kg': parseFloat(document.getElementById('tecnologia_recuperada_kg').value) || 0,
                 'Plastico_reutilizado_kg': parseFloat(document.getElementById('plastico_reutilizado_kg').value) || 0,
+                'Materiales_biodegradables_kg': parseFloat(document.getElementById('materiales_biodegradables_kg').value) || 0, // ✅ NUEVO CAMPO
                 'Vidrio_Reciclado_kg': parseFloat(document.getElementById('vidrio_reciclado_kg').value) || 0,
                 'Residuo_Organico_kg': parseFloat(document.getElementById('residuo_organico_kg').value) || 0,
                 'Residuo_Reciclable_kg': parseFloat(document.getElementById('residuo_reciclable_kg').value) || 0,
@@ -1067,11 +1077,11 @@
                 if (respuesta.ok) {
                     mostrarMensaje('Exito', '✅ ¡Datos mensuales enviados correctamente!');
 
-                    // Resetear solo los campos de datos
+                    // Resetear solo los campos de datos (incluyendo el nuevo campo)
                     const camposReset = ['energia_kwh', 'combustible_estacionario_l', 'papel_kg', 'borra_humeda_kg',
                                        'borra_seca_kg', 'tela_reutilizada_kg', 'tecnologia_recuperada_kg',
-                                       'plastico_reutilizado_kg', 'cantidad_empleados_total',
-                                       'cantidad_empleados_locales', 'cantidad_mujeres',
+                                       'plastico_reutilizado_kg', 'materiales_biodegradables_kg', // ✅ NUEVO CAMPO
+                                       'cantidad_empleados_total', 'cantidad_empleados_locales', 'cantidad_mujeres',
                                        'cantidad_personas_discapacitadas', 'capacitacion_horas',
                                        'procesos_optimizados', 'digitalizacion', 'residuo_organico_kg',
                                        'residuo_reciclable_kg', 'residuo_no_reciclable_kg',
