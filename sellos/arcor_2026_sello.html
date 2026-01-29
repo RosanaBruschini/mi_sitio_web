@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sello Anual - arcor</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7f4;
+            color: #1d1d1d;
+        }
+        .contenedor {
+            max-width: 750px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 14px;
+            border: 4px solid #D4EDDA;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        .header {
+            position: relative;
+            height: 110px;
+        }
+        .logo {
+            height: 120px;
+            position: absolute;
+            left: 15px;
+            top: -5px;
+        }
+        .header-subtitulo {
+            position: absolute;
+            left: 50%;
+            top: 40px;
+            transform: translateX(-50%);
+            font-size: 24px;
+            font-weight: 700;
+            color: #287a48;
+            text-align: center;
+        }
+        .qr {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            text-align: center;
+        }
+        .qr img {
+            width: 120px;
+            height: 120px;
+        }
+        .bloque {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #D8EEDB;
+            background: #F9FFF9;
+        }
+        .bloque h2 {
+            margin: 0 0 15px 0;
+            color: #124d2d;
+            font-size: 22px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .fila {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 17px;
+        }
+        .etiqueta {
+            font-weight: 600;
+            color: #124d2d;
+        }
+        .equivalencia {
+            font-size: 17px;
+            color: #2e7d32;
+            margin: 15px 0;
+            font-weight: 500;
+            text-align: center;
+            background: #f8fff8;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #D4EDDA;
+        }
+        .ods-box {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #D8EEDB;
+            background: #F3FFF3;
+        }
+        .ods-box h3 {
+            margin-top: 0;
+            color: #0f5e30;
+            font-weight: 700;
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .ods-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .ods-container span {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #1F7A3E;
+            color: white;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: help;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .ods-container span:hover {
+            transform: scale(1.1);
+            background: #155b2a;
+        }
+        .btn-descargar {
+            margin: 25px auto 10px auto;
+            display: block;
+            background: #1F7A3E;
+            color: white;
+            border: none;
+            padding: 14px 26px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-descargar:hover {
+            background: #155b2a;
+        }
+        @media (max-width: 768px) {
+            .contenedor {
+                margin: 20px;
+                padding: 25px;
+            }
+            .header {
+                height: auto;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 25px;
+            }
+            .logo {
+                position: static;
+                height: 100px;
+                margin-bottom: 15px;
+            }
+            .header-subtitulo {
+                position: static;
+                transform: none;
+                font-size: 22px;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            .qr {
+                position: static;
+                margin: 15px auto;
+            }
+            .fila {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 10px;
+            }
+            .ods-container {
+                gap: 6px;
+            }
+            .ods-container span {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+    <div class="header">
+        <img class="logo"
+             src="https://res.cloudinary.com/ddubafael/image/upload/v1768315140/logo_institucional_final_tranp._impacta_verde_ec55yo.png"
+             alt="Impacta Verde">
+        <div class="header-subtitulo">Sello Digital de Sostenibilidad</div>
+    </div>
+    <div class="qr">
+        <img src="data:image/png;base64,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" alt="Código QR">
+        <div style="font-size:14px; color:#444; margin-top:5px; font-weight:500;">Verificación</div>
+    </div>
+    <div class="bloque">
+        <h2>🌿 Inicial</h2>
+        
+        <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor" >arcor</span></div>
+        <div class="fila"><span class="etiqueta">Año medido:</span> <span class="valor" >2026</span></div>
+        <div class="fila"><span class="etiqueta">Puntaje anual:</span> <span class="valor" style="font-weight: bold; color: #1F7A3E; font-size: 20px;">31.2%</span></div>
+        <div class="fila"><span class="etiqueta">CO₂e evitado anual:</span> <span class="valor" >1196.6 kg</span></div>
+        <div class="fila"><span class="etiqueta">N° de Sello:</span> <span class="valor" >IV-4-2026</span></div>
+        <div class="fila"><span class="etiqueta">Emitido:</span> <span class="valor" >29/01/2026</span></div>
+        <div class="fila"><span class="etiqueta">Válido hasta:</span> <span class="valor" >29/01/2027</span></div>
+
+        <div class="equivalencia">
+            <strong>Impacto anual equivalente a:</strong><br>
+            <span style="font-size: 24px; font-weight: bold;">🌳 (Iniciando)</span>
+        </div>
+    </div>
+    <div class="ods-box">
+        <h3>🌍 Contribuye a los Objetivos de Desarrollo Sostenible (ODS)</h3>
+        <div class="ods-container">
+            <span title="Fin de la pobreza">1</span><span title="Igualdad de género">5</span><span title="Energía asequible y no contaminante">7</span><span title="Trabajo decente y crecimiento económico">8</span><span title="Industria, innovación e infraestructura">9</span><span title="Reducción de las desigualdades">10</span><span title="Ciudades y comunidades sostenibles">11</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Vida de ecosistemas terrestres">15</span><span title="Alianzas para lograr los objetivos">17</span>
+        </div>
+        <p style="text-align:center; font-size:14px; color:#666; margin-top:12px; font-style:italic;">
+            Pasa el cursor sobre cada número para ver el objetivo completo
+        </p>
+    </div>
+</div>
+<button id="descargar" class="btn-descargar">Descargar PNG del Sello</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+document.getElementById("descargar").addEventListener("click", function() {
+    const contenedor = document.querySelector(".contenedor");
+    const boton = this;
+    const textoOriginal = boton.textContent;
+    boton.textContent = "Generando imagen...";
+    boton.disabled = true;
+    setTimeout(() => {
+        html2canvas(contenedor, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff"
+        }).then(canvas => {
+            const link = document.createElement("a");
+            link.download = "sello-arcor-2026.png";
+            link.href = canvas.toDataURL("image/png");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }).finally(() => {
+            boton.textContent = textoOriginal;
+            boton.disabled = false;
+        });
+    }, 100);
+});
+</script>
+</body>
+</html>
