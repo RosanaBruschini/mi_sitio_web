@@ -94,14 +94,7 @@
             font-weight: 600;
         }
 
-        .info-periodo {
-            font-size: 14px;
-            color: #666;
-            margin-top: 5px;
-            font-style: italic;
-        }
-
-        /* BLOQUE DOS - NUEVO DISEÑO */
+        /* BLOQUE DOS */
         .bloque-dos {
             background: white;
             border-radius: 18px;
@@ -331,20 +324,6 @@
             background: #155b2a;
             transform: translateY(-3px);
         }
-
-        /* Clases eliminadas (sello-card ya no se usa) */
-        .sello-card,
-        .sello-info,
-        .sello-item,
-        .valor-sello,
-        .badge,
-        .badge-verde-plus,
-        .badge-oro,
-        .badge-plata,
-        .badge-bronze,
-        .badge-inicial {
-            /* Estas clases ya no se usan, se mantienen por compatibilidad */
-        }
     </style>
 </head>
 <body>
@@ -394,7 +373,7 @@
                 <div class="bloque-icon">🏷️</div>
                 <h3>Sector Exacto</h3>
                 <div class="bloque-valor" style="color: #D4EDDA; font-weight: 700;">
-                    Sin especificar
+                    General
                 </div>
                 <p style="color: #666; font-size: 14px; margin-top: 5px;">
                     <span style="display: inline-block; width: 12px; height: 12px; background: #D4EDDA; border-radius: 50%; margin-right: 5px;"></span>
@@ -538,7 +517,7 @@
 
     
     <script>
-        // Gráfico de CO₂ - CON DATOS REALES
+        // Gráfico de CO₂
         if (document.getElementById('chartCO2')) {
             const ctx1 = document.getElementById('chartCO2').getContext('2d');
             new Chart(ctx1, {
@@ -587,7 +566,7 @@
             });
         }
 
-        // Gráfico de puntaje - CON DATOS REALES
+        // Gráfico de puntaje
         if (document.getElementById('chartPuntaje')) {
             const ctx2 = document.getElementById('chartPuntaje').getContext('2d');
             new Chart(ctx2, {
