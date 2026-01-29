@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - arcor</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f4f7f4 0%, #e8f4e8 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            padding: 30px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            border: 2px solid #D4EDDA;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .logo {
+            height: 100px;
+            width: auto;
+            background: white;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 3px solid #1F7A3E;
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #1F7A3E;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .empresa-info {
+            background: #f8fff8;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #D4EDDA;
+            text-align: right;
+        }
+
+        .empresa-nombre {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1F7A3E;
+            margin-bottom: 10px;
+        }
+
+        .nivel-actual {
+            font-size: 18px;
+            color: #2e7d32;
+            font-weight: 600;
+        }
+
+        .info-periodo {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* BLOQUE DOS - NUEVO DISEÑO */
+        .bloque-dos {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e8f4e8;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .bloque-item {
+            padding: 20px;
+            border-radius: 12px;
+            background: #f8fff8;
+            border: 2px solid #d8eedb;
+            transition: all 0.3s ease;
+        }
+
+        .bloque-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .bloque-icon {
+            font-size: 28px;
+            margin-bottom: 15px;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 10px;
+            background: #1F7A3E;
+            color: white;
+        }
+
+        .bloque-item h3 {
+            color: #124d2d;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .bloque-valor {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1F7A3E;
+            margin-top: 5px;
+        }
+
+        /* KPI Cards */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .kpi-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            border-top: 6px solid #1F7A3E;
+            transition: all 0.3s ease;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        .kpi-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .kpi-card h3 {
+            color: #124d2d;
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .kpi-value {
+            font-size: 40px;
+            font-weight: 800;
+            color: #1F7A3E;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+
+        .kpi-unit {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Gráficos */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .chart-container {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e8f4e8;
+        }
+
+        .chart-container h2 {
+            color: #124d2d;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+
+        /* ODS Section */
+        .ods-section {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            border: 1px solid #e8f4e8;
+        }
+
+        .ods-section h2 {
+            color: #124d2d;
+            margin-bottom: 25px;
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .ods-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .ods-container span {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #1F7A3E;
+            color: white;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: help;
+            transition: all 0.3s;
+        }
+
+        .ods-container span:hover {
+            transform: scale(1.1);
+            background: #155b2a;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Insignias */
+        .insignias-section {
+            margin-top: 30px;
+        }
+
+        .insignias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .insignia-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #e8f4e8;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .insignia-item:hover {
+            border-color: #1F7A3E;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #1F7A3E;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: #155b2a;
+            transform: translateY(-3px);
+        }
+
+        /* Clases eliminadas (sello-card ya no se usa) */
+        .sello-card,
+        .sello-info,
+        .sello-item,
+        .valor-sello,
+        .badge,
+        .badge-verde-plus,
+        .badge-oro,
+        .badge-plata,
+        .badge-bronze,
+        .badge-inicial {
+            /* Estas clases ya no se usan, se mantienen por compatibilidad */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img class="logo"
+                     src="https://res.cloudinary.com/ddubafael/image/upload/v1768315140/logo_institucional_final_tranp._impacta_verde_ec55yo.png"
+                     alt="Impacta Verde">
+                <div class="header-text">
+                    <h1>📊 Dashboard de Sostenibilidad</h1>
+                    <div class="subtitle">Seguimiento del impacto ambiental y social</div>
+                </div>
+            </div>
+            <div class="empresa-info">
+                <div class="empresa-nombre">arcor</div>
+                <div class="nivel-actual">
+                    🌿 Nivel Actual: Inicial
+                </div>
+                <div style="font-size: 14px; color: #888; margin-top: 10px;">
+                    Actualizado: 29/01/2026
+                </div>
+            </div>
+        </header>
+
+        
+        <div class="bloque-dos">
+            <div class="bloque-item">
+                <div class="bloque-icon">📅</div>
+                <h3>Comienzo</h3>
+                <div class="bloque-valor">Julio 2026</div>
+                <p style="color: #666; font-size: 14px; margin-top: 5px;">
+                    Fecha del primer reporte mensual
+                </p>
+            </div>
+
+            <div class="bloque-item">
+                <div class="bloque-icon">📈</div>
+                <h3>Tendencia</h3>
+                <div class="bloque-valor">📈 Mejorando (+3966.7%)</div>
+                <p style="color: #666; font-size: 14px; margin-top: 5px;">
+                    Evolución del impacto sostenible
+                </p>
+            </div>
+            
+            <div class="bloque-item">
+                <div class="bloque-icon">🏷️</div>
+                <h3>Sector Exacto</h3>
+                <div class="bloque-valor" style="color: #D4EDDA; font-weight: 700;">
+                    Sin especificar
+                </div>
+                <p style="color: #666; font-size: 14px; margin-top: 5px;">
+                    <span style="display: inline-block; width: 12px; height: 12px; background: #D4EDDA; border-radius: 50%; margin-right: 5px;"></span>
+                    Área de actividad registrada
+                </p>
+            </div>
+        </div>
+
+        <div class="kpi-grid">
+            
+            <div class="kpi-card">
+                <div class="kpi-icon">🌿</div>
+                <h3>Impacto Promedio</h3>
+                <div class="kpi-value">31.2</div>
+                <div class="kpi-unit">% de sostenibilidad</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">🌍</div>
+                <h3>CO₂e Evitado</h3>
+                <div class="kpi-value">1.2</div>
+                <div class="kpi-unit">toneladas totales</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">♻️</div>
+                <h3>Material Recuperado</h3>
+                <div class="kpi-value">0.3</div>
+                <div class="kpi-unit">toneladas totales</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">📅</div>
+                <h3>Meses Reportados</h3>
+                <div class="kpi-value">2</div>
+                <div class="kpi-unit">meses de medición</div>
+            </div>
+        </div>
+
+        <!-- GRÁFICOS -->
+        
+        <div class="charts-grid">
+            <div class="chart-container">
+                <h2>📈 Evolución de CO₂e Evitado</h2>
+                <div class="chart-wrapper">
+                    <canvas id="chartCO2"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h2>📊 Evolución del Impacto de Sostenibilidad</h2>
+                <div class="chart-wrapper">
+                    <canvas id="chartPuntaje"></canvas>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="ods-section">
+            <h2>🌍 Contribución a los Objetivos de Desarrollo Sostenible</h2>
+            <div class="ods-container">
+                <span title="Fin de la pobreza">1</span><span title="Igualdad de género">5</span><span title="Energía asequible y no contaminante">7</span><span title="Trabajo decente y crecimiento económico">8</span><span title="Industria, innovación e infraestructura">9</span><span title="Reducción de las desigualdades">10</span><span title="Ciudades y comunidades sostenibles">11</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Vida de ecosistemas terrestres">15</span><span title="Alianzas para lograr los objetivos">17</span>
+            </div>
+            <p style="text-align:center; font-size:14px; color:#666; margin-top:20px; font-style:italic;">
+                Pasa el cursor sobre cada número para ver el objetivo completo
+            </p>
+        </div>
+
+        <div class="insignias-section">
+            <h2>🎖️ Insignias Obtenidas</h2>
+            <div class="insignias-grid">
+                
+                <div class="insignia-item">
+                    <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Julio 2026</div>
+                    <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
+                    <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">1.5%</div>
+                </div> 
+                <div class="insignia-item">
+                    <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Noviembre 2026</div>
+                    <div style="font-size: 14px; color: #666; margin: 5px 0;">🍂 Bronce</div>
+                    <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">61.0%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>📊 Dashboard individual de arcor</p>
+            <p>🌿 Sistema Impacta Verde - Mediciones de sostenibilidad</p>
+            <a href="https://impactaverde.com.ar/dashboard.html" class="back-link">
+                ← Volver al Dashboard General
+            </a>
+        </div>
+    </div>
+
+    
+    <script>
+        // Gráfico de CO₂ - CON DATOS REALES
+        if (document.getElementById('chartCO2')) {
+            const ctx1 = document.getElementById('chartCO2').getContext('2d');
+            new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: ["Julio 2026", "Noviembre 2026"],
+                    datasets: [{
+                        label: 'CO₂e Evitado (kg)',
+                        data: [33.0, 1163.6],
+                        borderColor: '#1F7A3E',
+                        backgroundColor: 'rgba(31, 122, 62, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#1F7A3E',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Kilogramos de CO₂e'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Período'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Gráfico de puntaje - CON DATOS REALES
+        if (document.getElementById('chartPuntaje')) {
+            const ctx2 = document.getElementById('chartPuntaje').getContext('2d');
+            new Chart(ctx2, {
+                type: 'line',
+                data: {
+                    labels: ["Julio 2026", "Noviembre 2026"],
+                    datasets: [{
+                        label: 'Impacto de Sostenibilidad (%)',
+                        data: [1.5, 61.0],
+                        borderColor: '#2ecc71',
+                        backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#2ecc71',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Impacto (%)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Período'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        console.log('📊 Gráficos cargados correctamente para arcor');
+    </script>
+    
+</body>
+</html>
