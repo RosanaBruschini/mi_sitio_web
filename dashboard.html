@@ -430,25 +430,100 @@
             </div>
             <div class="stats-header">
                 <div class="update-time">
-                    ⏰ Actualizado automáticamente: 13/01/2026 16:41
+                    ⏰ Actualizado automáticamente: 29/01/2026 18:23
                 </div>
                 <div style="font-size: 18px; font-weight: 600; color: #1F7A3E;">
-                    1 empresas activas
+                    7 empresas activas
                 </div>
             </div>
         </header>
+
+        
+    <!-- 📅 FILTRO POR PERÍODO - DASHBOARD GENERAL -->
+    <div class="period-filter" style="margin: 20px 0; padding: 20px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+        <h3 style="color: #124d2d; margin-bottom: 15px; font-size: 18px; font-weight: 600;">
+            📅 Filtrar por Período
+        </h3>
+        
+        <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+            <div>
+                <label style="display: block; margin-bottom: 5px; color: #666; font-size: 14px;">Año:</label>
+                <select id="filtro-anio" style="padding: 10px; border: 2px solid #1F7A3E; border-radius: 8px; font-size: 14px;">
+                    <option value="todos">Todos los años</option>
+                    <option value="2025">2025</option><option value="2026">2026</option>
+                </select>
+            </div>
+            
+            <div>
+                <label style="display: block; margin-bottom: 5px; color: #666; font-size: 14px;">Mes:</label>
+                <select id="filtro-mes" style="padding: 10px; border: 2px solid #1F7A3E; border-radius: 8px; font-size: 14px;">
+                    <option value="todos">Todos los meses</option>
+                    <option value="Enero">Enero</option><option value="Febrero">Febrero</option><option value="Marzo">Marzo</option><option value="Abril">Abril</option><option value="Mayo">Mayo</option><option value="Junio">Junio</option><option value="Julio">Julio</option><option value="Agosto">Agosto</option><option value="Septiembre">Septiembre</option><option value="Octubre">Octubre</option><option value="Noviembre">Noviembre</option><option value="Diciembre">Diciembre</option>
+                </select>
+            </div>
+            
+            <button onclick="aplicarFiltroPeriodo()" 
+                    style="margin-top: 25px; padding: 10px 20px; background: #1F7A3E; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">
+                🔍 Aplicar Filtro
+            </button>
+            
+            <button onclick="resetearFiltroPeriodo()" 
+                    style="margin-top: 25px; padding: 10px 20px; background: #666; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">
+                🔄 Restablecer
+            </button>
+        </div>
+        
+        <div id="periodo-actual" style="margin-top: 15px; padding: 10px; background: #f8fff8; border-radius: 8px; border-left: 4px solid #1F7A3E;">
+            <span style="color: #1F7A3E; font-weight: 600;">Período actual:</span>
+            <span id="periodo-texto" style="margin-left: 10px;">Todos los períodos (acumulado)</span>
+        </div>
+    </div>
+    
+    <script>
+    function aplicarFiltroPeriodo() {
+        const año = document.getElementById('filtro-anio').value;
+        const mes = document.getElementById('filtro-mes').value;
+        
+        let periodoTexto = "";
+        if (año === 'todos' && mes === 'todos') {
+            periodoTexto = "Todos los períodos (acumulado)";
+        } else if (año !== 'todos' && mes === 'todos') {
+            periodoTexto = `Año ${año} (todos los meses)`;
+        } else if (año === 'todos' && mes !== 'todos') {
+            periodoTexto = `Mes ${mes} (todos los años)`;
+        } else {
+            periodoTexto = `${mes} ${año}`;
+        }
+        
+        document.getElementById('periodo-texto').textContent = periodoTexto;
+        
+        // Aquí iría la lógica para actualizar gráficos y métricas
+        console.log(`Filtrando por: Año=${año}, Mes=${mes}`);
+        
+        // Mostrar notificación
+        alert(`Filtro aplicado: ${periodoTexto}.\n\n🚀 Nota: En esta versión se muestra el filtro seleccionado.\nLa próxima versión actualizará gráficos en tiempo real.`);
+    }
+    
+    function resetearFiltroPeriodo() {
+        document.getElementById('filtro-anio').value = 'todos';
+        document.getElementById('filtro-mes').value = 'todos';
+        document.getElementById('periodo-texto').textContent = 'Todos los períodos (acumulado)';
+        console.log('Filtro restablecido');
+    }
+    </script>
+    
 
         <div class="impact-highlight">
             <h2>🌍 Impacto Ambiental Total</h2>
             <div style="display: flex; align-items: center; justify-content: center;">
                 <span class="tree-icon">🌳</span>
                 <div>
-                    <div class="impact-number">1.5 ton</div>
+                    <div class="impact-number">4.1 ton</div>
                     <div class="impact-text">de CO₂ equivalente evitado (1 ton = 1000 kg)</div>
                 </div>
             </div>
             <div style="margin-top: 20px; font-size: 18px;">
-                Equivalente a <strong>67 árboles</strong> plantados por año
+                Equivalente a <strong>186 árboles</strong> plantados por año
             </div>
         </div>
 
@@ -456,14 +531,14 @@
             <div class="kpi-card">
                 <div class="kpi-icon">🏢</div>
                 <h3>Empresas Activas</h3>
-                <div class="kpi-value">1</div>
+                <div class="kpi-value">7</div>
                 <div class="kpi-unit">organizaciones sostenibles</div>
             </div>
 
             <div class="kpi-card">
                 <div class="kpi-icon">📈</div>
                 <h3>CO₂e Evitado</h3>
-                <div class="kpi-value">1.5</div>
+                <div class="kpi-value">4.1</div>
                 <div class="kpi-unit">toneladas de CO₂e</div>
                 <div class="kpi-change">+12% vs mes anterior</div>
             </div>
@@ -471,7 +546,7 @@
             <div class="kpi-card">
                 <div class="kpi-icon">♻️</div>
                 <h3>Material Recuperado</h3>
-                <div class="kpi-value">1.2</div>
+                <div class="kpi-value">1.5</div>
                 <div class="kpi-unit">toneladas</div>
                 <div class="kpi-change">+8% vs mes anterior</div>
             </div>
@@ -479,11 +554,49 @@
             <div class="kpi-card">
                 <div class="kpi-icon">⭐</div>
                 <h3>Impacto Promedio</h3>
-                <div class="kpi-value">37.0%</div>
+                <div class="kpi-value">35.2%</div>
                 <div class="kpi-unit">de sostenibilidad</div>
                 <div class="kpi-change">+5% vs mes anterior</div>
             </div>
         </div>
+
+        
+            <div class="sector-performance" style="margin-top: 20px; padding: 30px; background: white; border-radius: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); border: 2px solid #e8f4e8;">
+                <h2 style="color: #124d2d; margin-bottom: 25px; font-size: 24px; font-weight: 700; text-align: center;">🏷️ DESEMPEÑO POR SECTORES EXACTOS</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            
+                <div style="border: 3px solid #D4EDDA; border-radius: 12px; padding: 20px; background: linear-gradient(135deg, #D4EDDA20, white);">
+                    <h3 style="color: #124d2d; margin-top: 0; font-size: 18px; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+                        <span style="display: inline-block; width: 12px; height: 12px; background: #D4EDDA; border-radius: 50%;"></span>
+                        INDUMENTARIA (7 empresas)
+                    </h3>
+                    <ul style="list-style-type: none; padding-left: 0; margin-top: 15px;">
+                        <li style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                            <span style="color: #1F7A3E; font-weight: bold;">•</span>
+                            <span style="flex: 1;">CO₂ evitado:</span>
+                            <span style="font-weight: 700; color: #1F7A3E;">4.09 ton</span>
+                            <span style="color: #666; font-size: 14px;">(100%)</span>
+                        </li>
+                        <li style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                            <span style="color: #1F7A3E; font-weight: bold;">•</span>
+                            <span style="flex: 1;">Material recuperado:</span>
+                            <span style="font-weight: 700; color: #1F7A3E;">1.53 ton</span>
+                        </li>
+                        <li style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                            <span style="color: #1F7A3E; font-weight: bold;">•</span>
+                            <span style="flex: 1;">Impacto promedio:</span>
+                            <span style="font-weight: 700; color: #1F7A3E;">35.2%</span>
+                            <span style="font-size: 18px;">🍂</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                </div>
+                <p style="text-align: center; margin-top: 20px; color: #666; font-size: 14px; font-style: italic;">
+                    📊 Los sectores formalizados (Hotelería, Restaurante, Logística) se muestran con colores distintivos
+                </p>
+            </div>
+            
 
         <div class="charts-grid">
             <div class="chart-container">
@@ -514,7 +627,11 @@
                 
                 <div class="stat-item">
                     <span class="stat-label">🏅 ETIMO</span>
-                    <span class="stat-value">1.5 ton</span>
+                    <span class="stat-value">2.9 ton</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">🏅 arcor</span>
+                    <span class="stat-value">1.2 ton</span>
                 </div>
             </div>
 
@@ -542,13 +659,13 @@
                     <span class="stat-label">
                         <span class="badge badge-bronze">🍂</span> Bronce
                     </span>
-                    <span class="stat-value">0</span>
+                    <span class="stat-value">1</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-label">
                         <span class="badge badge-initial">🌿</span> Inicial
                     </span>
-                    <span class="stat-value">12</span>
+                    <span class="stat-value">13</span>
                 </div>
             </div>
 
@@ -590,7 +707,7 @@
         <div class="footer">
             <p>🌿 Impacta Verde - Sistema de medición de impacto ambiental y social</p>
             <p>📍 Actualizado automáticamente cada vez que se ejecuta el sistema</p>
-            <p>📧 Contacto: info@impactaverde.com.ar | 📱 +54 9 11 1234-5678</p>
+            <p>📧 Contacto: hola@impactaverde.com.ar | 📱 +54 9 11 1234-5678</p>
         </div>
     </div>
 
@@ -606,7 +723,7 @@
             data: {
                 labels: ['Verde Plus', 'Oro', 'Plata', 'Bronce', 'Inicial'],
                 datasets: [{
-                    data: [0, 0, 0, 0, 12],
+                    data: [0, 0, 0, 1, 13],
                     backgroundColor: ['#1F7A3E', '#FFD700', '#8B4513', '#87CEEB', '#FF6B6B'],
                     borderWidth: 3,
                     borderColor: '#fff',
@@ -640,7 +757,7 @@
                 labels: ["Nov 2025", "Oct 2025", "Sep 2025", "Jul 2025", "Jun 2025", "May 2025"],
                 datasets: [{
                     label: 'CO₂e Evitado (kg)',
-                    data: [104.96, 108.88, 112.66, 120.36, 124.29, 128.06],
+                    data: [223.76, 227.69, 231.46, 239.16, 243.09, 246.86],
                     borderColor: '#1F7A3E',
                     backgroundColor: 'rgba(31, 122, 62, 0.1)',
                     borderWidth: 4,
@@ -701,7 +818,7 @@
         });
 
         // Gráfico de barras para top empresas
-        if (1 > 0) {
+        if (2 > 0) {
             const barChartContainer = document.createElement('div');
             barChartContainer.className = 'chart-container';
             barChartContainer.innerHTML = '<h2>🏆 Top Empresas - CO₂ Evitado</h2><div class="chart-wrapper"><canvas id="chartTopEmpresas"></canvas></div>';
@@ -711,10 +828,10 @@
             new Chart(ctx3, {
                 type: 'bar',
                 data: {
-                    labels: ["ETIMO"],
+                    labels: ["ETIMO", "arcor"],
                     datasets: [{
                         label: 'CO₂e Evitado (kg)',
-                        data: [1467.87],
+                        data: [2893.4900000000002, 1196.6],
                         backgroundColor: [
                             'rgba(31, 122, 62, 0.8)',
                             'rgba(46, 204, 113, 0.8)',
