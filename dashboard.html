@@ -430,7 +430,7 @@
             </div>
             <div class="stats-header">
                 <div class="update-time">
-                    ⏰ Actualizado automáticamente: 29/01/2026 21:52
+                    ⏰ Actualizado automáticamente: 30/01/2026 13:43
                 </div>
                 <div style="font-size: 18px; font-weight: 600; color: #1F7A3E;">
                     7 empresas activas
@@ -552,164 +552,12 @@
             <div class="kpi-card">
                 <div class="kpi-icon">⭐</div>
                 <h3>Impacto Promedio</h3>
-                <div class="kpi-value">35.2%</div>
+                <div class="kpi-value">38.2%</div>
                 <div class="kpi-unit">de sostenibilidad</div>
                 <div class="kpi-change">+5% vs mes anterior</div>
             </div>
         </div>
 
-        
-        <div class="sector-performance-dashboard" style="margin-top: 40px; padding: 30px; background: white; border-radius: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); border: 2px solid #e8f4e8;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
-                <h2 style="color: #124d2d; margin: 0; font-size: 24px; font-weight: 700; display: flex; align-items: center; gap: 10px;">
-                    🏷️ DESEMPEÑO POR SECTORES EXACTOS
-                </h2>
-                
-                <div style="display: flex; gap: 10px;">
-                    <button onclick="filtrarSectores('todos')" class="btn-filtro-sector" style="padding: 8px 16px; background: #1F7A3E; color: white; border: none; border-radius: 6px; font-size: 14px; cursor: pointer;">
-                        Todos
-                    </button>
-                    <button onclick="filtrarSectores('formalizados')" class="btn-filtro-sector" style="padding: 8px 16px; background: #FFD8B1; color: #333; border: none; border-radius: 6px; font-size: 14px; cursor: pointer;">
-                        🏨 Formalizados
-                    </button>
-                    <button onclick="filtrarSectores('generales')" class="btn-filtro-sector" style="padding: 8px 16px; background: #D4EDDA; color: #333; border: none; border-radius: 6px; font-size: 14px; cursor: pointer;">
-                        👕 Generales
-                    </button>
-                </div>
-            </div>
-            
-            <div style="margin-bottom: 20px; padding: 15px; background: #f8fff8; border-radius: 12px; border-left: 4px solid #1F7A3E;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <span style="color: #124d2d; font-weight: 600;">📊 Resumen total:</span>
-                        <span style="margin-left: 15px; color: #666;">1 sectores</span>
-                        <span style="margin-left: 15px; color: #666;">7 empresas</span>
-                        <span style="margin-left: 15px; color: #1F7A3E; font-weight: 700;">4.1 ton CO₂e</span>
-                    </div>
-                    <div style="font-size: 14px; color: #888;">
-                        💡 Haz clic en cada sector para ver detalles
-                    </div>
-                </div>
-            </div>
-            
-            <div id="contenedor-sectores" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
-        
-                <div class="sector-card general" 
-                     onclick="mostrarDetalleSector('General')"
-                     style="border: 3px solid #D4EDDA; border-radius: 15px; padding: 20px; background: linear-gradient(135deg, #D4EDDA20, white); transition: all 0.3s; cursor: pointer;"
-                     onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.1)';" 
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                    
-                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
-                        <div>
-                            <h3 style="color: #124d2d; margin: 0 0 5px 0; font-size: 18px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-                                🏢 GENERAL
-                            </h3>
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <span style="font-size: 14px; color: #666; display: flex; align-items: center; gap: 4px;">
-                                    👥 7 empresas
-                                    <span style="color: #888; font-size: 12px;">(100%)</span>
-                                </span>
-                                <span style="padding: 2px 8px; background: #D4EDDA; color: #333; border-radius: 12px; font-size: 11px; font-weight: 600;">
-                                    GENERAL
-                                </span>
-                            </div>
-                        </div>
-                        <div style="text-align: right;">
-                            <div style="font-size: 22px; font-weight: 700; color: #1F7A3E;">35.2%</div>
-                            <div style="font-size: 18px;">🍂</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Barra de progreso para CO₂ -->
-                    <div style="margin: 15px 0;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                            <span style="font-size: 14px; color: #666;">CO₂ evitado</span>
-                            <span style="font-weight: 700; color: #1F7A3E;">4.09 ton</span>
-                        </div>
-                        <div style="height: 8px; background: #f0f0f0; border-radius: 4px; overflow: hidden;">
-                            <div style="height: 100%; width: 100.0%; background: #D4EDDA; border-radius: 4px;"></div>
-                        </div>
-                        <div style="text-align: right; font-size: 12px; color: #888; margin-top: 3px;">
-                            100.0% del total
-                        </div>
-                    </div>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
-                        <div style="text-align: center; padding: 10px; background: rgba(255,255,255,0.7); border-radius: 8px;">
-                            <div style="font-size: 12px; color: #666;">Material recuperado</div>
-                            <div style="font-size: 16px; font-weight: 700; color: #1F7A3E;">1.53 ton</div>
-                        </div>
-                        <div style="text-align: center; padding: 10px; background: rgba(255,255,255,0.7); border-radius: 8px;">
-                            <div style="font-size: 12px; color: #666;">Impacto promedio</div>
-                            <div style="font-size: 16px; font-weight: 700; color: #1F7A3E;">35.2%</div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed #D4EDDA;">
-                        <small style="color: #666; font-size: 12px; font-style: italic;">
-                            💡 Haz clic para ver empresas de este sector
-                        </small>
-                    </div>
-                </div>
-            
-            </div>
-            
-            <!-- JavaScript para filtros -->
-            <script>
-            function filtrarSectores(tipo) {
-                const sectores = document.querySelectorAll('.sector-card');
-                sectores.forEach(sector => {
-                    if (tipo === 'todos') {
-                        sector.style.display = 'block';
-                    } else if (tipo === 'formalizados') {
-                        if (sector.classList.contains('formalizado')) {
-                            sector.style.display = 'block';
-                        } else {
-                            sector.style.display = 'none';
-                        }
-                    } else if (tipo === 'generales') {
-                        if (sector.classList.contains('general')) {
-                            sector.style.display = 'block';
-                        } else {
-                            sector.style.display = 'none';
-                        }
-                    }
-                });
-                
-                // Actualizar contador
-                const visible = document.querySelectorAll('.sector-card[style*="block"]').length;
-                const total = document.querySelectorAll('.sector-card').length;
-                alert(`Mostrando ${visible} de ${total} sectores (filtro: ${tipo})`);
-            }
-            
-            function mostrarDetalleSector(sector) {
-                alert(`🔍 Detalles del sector: ${sector}\n\nPróximamente: Verás aquí un listado completo de empresas de este sector con sus métricas específicas.\n\n📊 Esta función estará disponible en la próxima actualización.`);
-            }
-            </script>
-            
-            <div style="margin-top: 30px; padding: 20px; background: #f8fff8; border-radius: 12px; border: 2px dashed #e8f4e8;">
-                <h4 style="color: #124d2d; margin-top: 0; display: flex; align-items: center; gap: 10px;">🎨 Leyenda de colores</h4>
-                <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px;">
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <div style="width: 15px; height: 15px; background: #F5E6D3; border-radius: 3px; border: 1px solid #ccc;"></div>
-                        <span style="font-size: 14px; color: #666;">Hotelería (Beige pastel)</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <div style="width: 15px; height: 15px; background: #FFD8B1; border-radius: 3px; border: 1px solid #ccc;"></div>
-                        <span style="font-size: 14px; color: #666;">Restaurante (Naranja pastel)</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <div style="width: 15px; height: 15px; background: #D1ECF1; border-radius: 3px; border: 1px solid #ccc;"></div>
-                        <span style="font-size: 14px; color: #666;">Logística (Azul pastel)</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <div style="width: 15px; height: 15px; background: #D4EDDA; border-radius: 3px; border: 1px solid #ccc;"></div>
-                        <span style="font-size: 14px; color: #666;">Demás sectores (Verde)</span>
-                    </div>
-                </div>
-            </div>
-        </div>
         
 
         <div class="charts-grid">
