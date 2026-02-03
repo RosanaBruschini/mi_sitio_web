@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - arcor</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
     <style>
@@ -110,11 +109,10 @@
             text-align: center;
             border-top: 6px solid #1F7A3E;
             transition: all 0.3s ease;
-            cursor: pointer;
         }
 
         .kpi-card:hover {
-            transform: translateY(-5px) scale(1.02);
+            transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.12);
         }
 
@@ -142,21 +140,6 @@
         .kpi-unit {
             color: #666;
             font-size: 14px;
-        }
-
-        .tendencia-positiva {
-            color: #2ecc71;
-            font-weight: bold;
-        }
-
-        .tendencia-negativa {
-            color: #e74c3c;
-            font-weight: bold;
-        }
-
-        .tendencia-neutral {
-            color: #f39c12;
-            font-weight: bold;
         }
 
         .charts-grid {
@@ -193,101 +176,72 @@
             width: 100%;
         }
 
-        .metricas-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .metrica-card {
+        .ods-section {
             background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-left: 4px solid #8B7355;
-            transition: all 0.3s ease;
-        }
-
-        .metrica-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-        }
-
-        .metrica-card h3 {
-            color: #124d2d;
-            margin-bottom: 15px;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .metrica-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .metrica-value {
-            font-size: 28px;
-            font-weight: 700;
-            color: #8B7355;
-        }
-
-        .metrica-unit {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .metrica-icon {
-            font-size: 32px;
-            color: #8B735580;
-        }
-
-        .evolucion-section {
-            background: linear-gradient(135deg, #F5E6D3, white);
             padding: 30px;
             border-radius: 18px;
-            margin-bottom: 40px;
-            border: 2px solid #8B7355;
             box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            border: 1px solid #e8f4e8;
         }
 
-        .evolucion-section h2 {
-            color: #8B7355;
-            margin-bottom: 20px;
-            font-size: 22px;
+        .ods-section h2 {
+            color: #124d2d;
+            margin-bottom: 25px;
+            font-size: 24px;
             font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            text-align: center;
         }
 
-        .evolucion-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+        .ods-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
             margin-top: 20px;
         }
 
-        .evolucion-stat {
+        .ods-container span {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #1F7A3E;
+            color: white;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: help;
+            transition: all 0.3s;
+        }
+
+        .ods-container span:hover {
+            transform: scale(1.1);
+            background: #155b2a;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .insignias-section {
+            margin-top: 30px;
+        }
+
+        .insignias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .insignia-item {
             background: white;
-            padding: 20px;
-            border-radius: 12px;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #e8f4e8;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
         }
 
-        .evolucion-stat h4 {
-            color: #666;
-            margin-bottom: 10px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .evolucion-stat-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: #8B7355;
+        .insignia-item:hover {
+            border-color: #1F7A3E;
+            transform: translateY(-3px);
         }
 
         .footer {
@@ -297,46 +251,6 @@
             margin-top: 50px;
             padding-top: 30px;
             border-top: 1px solid #ddd;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-        }
-
-        .modal-content {
-            background-color: white;
-            margin: 10% auto;
-            padding: 30px;
-            border-radius: 15px;
-            width: 80%;
-            max-width: 600px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .close-modal {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close-modal:hover {
-            color: #000;
-        }
-
-        .modal-details {
-            margin-top: 20px;
-            padding: 20px;
-            background: #f8fff8;
-            border-radius: 10px;
         }
     </style>
 </head>
@@ -363,311 +277,197 @@
             </div>
         </header>
 
-        <!-- SECCIÓN DE EVOLUCIÓN -->
-        <div class="evolucion-section">
-            <h2>📈 Evolución de la Empresa</h2>
-            
-            <div class="evolucion-stats">
-                <div class="evolucion-stat">
-                    <h4>Periodos Medidos</h4>
-                    <div class="evolucion-stat-value">2</div>
-                </div>
-                <div class="evolucion-stat">
-                    <h4>Puntaje Inicial</h4>
-                    <div class="evolucion-stat-value">1.8%</div>
-                </div>
-                <div class="evolucion-stat">
-                    <h4>Puntaje Actual</h4>
-                    <div class="evolucion-stat-value">62.3%</div>
-                </div>
-                <div class="evolucion-stat">
-                    <h4>Crecimiento</h4>
-                    <div class="evolucion-stat-value tendencia-positiva">
-                        60.5%
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-
         <div class="kpi-grid">
-            <div class="kpi-card" onclick="mostrarDetalle('impacto')">
+            <div class="kpi-card">
                 <div class="kpi-icon">📈</div>
                 <h3>Impacto Promedio</h3>
                 <div class="kpi-value">32.0%</div>
                 <div class="kpi-unit">de sostenibilidad</div>
             </div>
 
-            <div class="kpi-card" onclick="mostrarDetalle('co2')">
+            <div class="kpi-card">
                 <div class="kpi-icon">🌍</div>
                 <h3>CO₂e Evitado</h3>
                 <div class="kpi-value">1.5</div>
                 <div class="kpi-unit">toneladas totales</div>
             </div>
 
-            <div class="kpi-card" onclick="mostrarDetalle('material')">
+            <div class="kpi-card">
                 <div class="kpi-icon">♻️</div>
                 <h3>Material Recuperado</h3>
                 <div class="kpi-value">0.4</div>
                 <div class="kpi-unit">toneladas totales</div>
             </div>
 
-            <div class="kpi-card" onclick="mostrarDetalle('evolucion')">
-                <div class="kpi-icon">🚀</div>
-                <h3>Tendencia</h3>
-                <div class="kpi-value tendencia-positiva">
-                    📈 Al alza
-                </div>
-                <div class="kpi-unit">de evolución</div>
+            <div class="kpi-card">
+                <div class="kpi-icon">📅</div>
+                <h3>Meses Reportados</h3>
+                <div class="kpi-value">2</div>
+                <div class="kpi-unit">meses de medición</div>
             </div>
         </div>
 
-        <!-- MÉTRICAS INDIVIDUALES -->
-        <div class="chart-container">
-            <h2>📋 Métricas Clave de Sostenibilidad</h2>
-            <div class="metricas-grid">
-                
-                <div class="metrica-card" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
-                    <h3>Métricas en Proceso</h3>
-                    <div class="metrica-content">
-                        <div>
-                            <div class="metrica-value">--</div>
-                            <div class="metrica-unit">Cargando datos...</div>
-                        </div>
-                        <div class="metrica-icon">⏳</div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
+        
 
-        <!-- GRÁFICOS INTERACTIVOS -->
+        <!-- GRÁFICOS -->
         
         <div class="charts-grid">
             <div class="chart-container">
                 <h2>📈 Evolución de CO₂e Evitado</h2>
-                <div id="grafico-co2" style="height: 300px;"></div>
+                <div class="chart-wrapper">
+                    <canvas id="chartCO2"></canvas>
+                </div>
             </div>
 
             <div class="chart-container">
-                <h2>📊 Evolución del Puntaje de Sostenibilidad</h2>
-                <div id="grafico-puntaje" style="height: 300px;"></div>
+                <h2>📊 Evolución del Impacto de Sostenibilidad</h2>
+                <div class="chart-wrapper">
+                    <canvas id="chartPuntaje"></canvas>
+                </div>
             </div>
         </div>
         
 
-        <!-- MÓDULOS DE SOSTENIBILIDAD -->
-        <div class="charts-grid">
-            <div class="chart-container">
-                <h2>🍽️ Módulo de Eficiencia Operativa</h2>
-                <div id="grafico-eficiencia" style="height: 250px;"></div>
+        <div class="ods-section">
+            <h2>🌍 Contribución a los Objetivos de Desarrollo Sostenible</h2>
+            <div class="ods-container">
+                <span title="Fin de la pobreza">1</span><span title="Igualdad de género">5</span><span title="Energía asequible y no contaminante">7</span><span title="Trabajo decente y crecimiento económico">8</span><span title="Industria, innovación e infraestructura">9</span><span title="Reducción de las desigualdades">10</span><span title="Ciudades y comunidades sostenibles">11</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Vida de ecosistemas terrestres">15</span><span title="Alianzas para lograr los objetivos">17</span>
             </div>
+            <p style="text-align:center; font-size:14px; color:#666; margin-top:20px; font-style:italic;">
+                Pasa el cursor sobre cada número para ver el objetivo completo
+            </p>
+        </div>
 
-            <div class="chart-container">
-                <h2>♻️ Módulo de Economía Circular</h2>
-                <div id="grafico-circular" style="height: 250px;"></div>
+        <div class="insignias-section">
+            <h2>🎖️ Insignias Obtenidas</h2>
+            <div class="insignias-grid">
+                
+                <div class="insignia-item">
+                    <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Julio 2026</div>
+                    <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
+                    <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">1.8%</div>
+                </div> 
+                <div class="insignia-item">
+                    <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Noviembre 2026</div>
+                    <div style="font-size: 14px; color: #666; margin: 5px 0;">🍂 Bronce</div>
+                    <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">62.3%</div>
+                </div>
             </div>
         </div>
 
+        
         <div class="footer">
             <p>📊 Dashboard individual de arcor</p>
             <p>🌿 Sistema Impacta Verde - Mediciones de sostenibilidad</p>
             <p style="font-size: 12px; color: #888; margin-top: 10px;">
-                Actualizado: 03/02/2026 14:49
+                Actualizado: 03/02/2026 14:51
             </p>
         </div>
-    </div>
-
-    <!-- MODAL PARA DETALLES -->
-    <div id="modalDetalle" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="cerrarModal()">&times;</span>
-            <div id="modalContenido"></div>
-        </div>
+        
     </div>
 
     
     <script>
         // Gráfico de CO₂
-        const traceCO2 = {
-            x: ["Julio 2026", "Noviembre 2026"],
-            y: [48.14, 1462.99],
-            type: 'scatter',
-            mode: 'lines+markers',
-            name: 'CO₂e Evitado (kg)',
-            line: {color: '#1F7A3E', width: 3},
-            marker: {size: 8, color: '#2ecc71'}
-        };
-        
-        const layoutCO2 = {
-            title: 'Evolución Mensual',
-            xaxis: {title: 'Período'},
-            yaxis: {title: 'kg de CO₂e'},
-            plot_bgcolor: '#f8fff8',
-            paper_bgcolor: 'white'
-        };
-        
-        Plotly.newPlot('grafico-co2', [traceCO2], layoutCO2);
-        
-        // Gráfico de Puntaje
-        const tracePuntaje = {
-            x: ["Julio 2026", "Noviembre 2026"],
-            y: [1.8, 62.3],
-            type: 'scatter',
-            mode: 'lines+markers',
-            name: 'Puntaje (%)',
-            line: {color: '#8B7355', width: 3},
-            marker: {size: 8, color: '#F5E6D3'},
-            fill: 'tozeroy',
-            fillcolor: '#F5E6D380'
-        };
-        
-        const layoutPuntaje = {
-            title: 'Tendencia de Sostenibilidad',
-            xaxis: {title: 'Período'},
-            yaxis: {title: 'Puntaje (%)', range: [0, 100]},
-            plot_bgcolor: '#f8fff8',
-            paper_bgcolor: 'white'
-        };
-        
-        Plotly.newPlot('grafico-puntaje', [tracePuntaje], layoutPuntaje);
-        
-        // Gráfico de Eficiencia
-        const eficienciaData = {
-            labels: ['Desperdicio por Plato', 'Huella Hídrica', 'Energía Solar'],
-            values: [
-                0,
-                0,
-                0
-            ],
-            type: 'pie',
-            marker: {colors: ['#FFD8B1', '#D1ECF1', '#D4EDDA']}
-        };
-        
-        Plotly.newPlot('grafico-eficiencia', [eficienciaData], {title: 'Distribución'});
-        
-        // Gráfico de Economía Circular
-        const circularData = {
-            x: ['Tasa Desviación', 'Tela Reutilizada', 'Plástico Recuperado'],
-            y: [
-                0,
-                0,
-                0
-            ],
-            type: 'bar',
-            marker: {color: '#8B7355'}
-        };
-        
-        Plotly.newPlot('grafico-circular', [circularData], {title: 'Métricas Circulares'});
-        
-        // Interactividad
-        function mostrarDetalle(tipo) {
-            const modal = document.getElementById('modalDetalle');
-            const contenido = document.getElementById('modalContenido');
-            
-            let titulo = '';
-            let detalles = '';
-            
-            switch(tipo) {
-                case 'impacto':
-                    titulo = '📈 Detalles del Impacto';
-                    detalles = 'El impacto promedio mide la sostenibilidad general de la empresa. Incluye métricas ambientales, sociales y digitales.';
-                    break;
-                case 'co2':
-                    titulo = '🌍 Detalles de CO₂e';
-                    detalles = 'CO₂ equivalente evitado a través de prácticas sostenibles como reciclaje, eficiencia energética y transporte limpio.';
-                    break;
-                case 'material':
-                    titulo = '♻️ Detalles de Material Recuperado';
-                    detalles = 'Material recuperado incluye plástico, papel, tela, tecnología y otros materiales que se han reutilizado o reciclado.';
-                    break;
-                case 'evolucion':
-                    titulo = '🚀 Detalles de Evolución';
-                    detalles = 'La tendencia muestra el crecimiento o decrecimiento del puntaje de sostenibilidad a lo largo del tiempo.';
-                    break;
-            }
-            
-            contenido.innerHTML = `
-                <h3 style="color: #8B7355; margin-bottom: 20px;">${titulo}</h3>
-                <div class="modal-details">
-                    <p>${detalles}</p>
-                    <p style="margin-top: 15px; font-size: 14px; color: #666;">
-                        <strong>Última actualización:</strong> 03/02/2026 14:49
-                    </p>
-                </div>
-            `;
-            
-            modal.style.display = 'block';
-        }
-        
-        function mostrarDetalleMetrica(metrica) {
-            const modal = document.getElementById('modalDetalle');
-            const contenido = document.getElementById('modalContenido');
-            
-            let valor = {};
-            let titulo = metrica.replace('_', ' ').title();
-            let descripcion = '';
-            
-            if(metrica.includes('Desperdicio')) {
-                descripcion = 'Mide la eficiencia en el manejo de alimentos. Un valor menor indica mayor eficiencia.';
-            } else if(metrica.includes('Tasa')) {
-                descripcion = 'Porcentaje de residuos que se desvían del relleno sanitario mediante reciclaje y compostaje.';
-            } else if(metrica.includes('Inversion')) {
-                descripcion = 'Inversión total en proyectos de conservación ambiental y social.';
-            } else if(metrica.includes('Proveedores')) {
-                descripcion = 'Porcentaje de proveedores que implementan prácticas regenerativas y sostenibles.';
-            } else if(metrica.includes('Participacion')) {
-                descripcion = 'Nivel de participación del personal en programas de reutilización y sostenibilidad.';
-            } else if(metrica.includes('Huella')) {
-                descripcion = 'Consumo total de agua en metros cúbicos. Incluye uso directo e indirecto.';
-            } else if(metrica.includes('Tela')) {
-                descripcion = 'Cantidad de tela reutilizada o reciclada, evitando la producción de nueva tela.';
-            } else if(metrica.includes('Plastico')) {
-                descripcion = 'Cantidad de plástico recuperado y reciclado, reduciendo la contaminación plástica.';
-            } else if(metrica.includes('Horas')) {
-                descripcion = 'Total de horas de voluntariado dedicadas a proyectos ambientales y sociales.';
-            }
-            
-            contenido.innerHTML = `
-                <h3 style="color: #8B7355; margin-bottom: 20px;">${titulo}</h3>
-                <div class="modal-details">
-                    <div style="text-align: center; margin-bottom: 20px;">
-                        <div style="font-size: 48px; color: #8B7355; font-weight: bold;">${valor[metrica]}</div>
-                        <div style="color: #666; margin-top: 10px;">${metrica.split('_')[-1]}</div>
-                    </div>
-                    <p>${descripcion}</p>
-                    <p style="margin-top: 15px; font-size: 14px; color: #666;">
-                        <strong>Impacto:</strong> Esta métrica contribuye directamente al puntaje de sostenibilidad.
-                    </p>
-                </div>
-            `;
-            
-            modal.style.display = 'block';
-        }
-        
-        function cerrarModal() {
-            document.getElementById('modalDetalle').style.display = 'none';
-        }
-        
-        // Cerrar modal al hacer clic fuera
-        window.onclick = function(event) {
-            const modal = document.getElementById('modalDetalle');
-            if(event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
-        
-        // Efectos de hover para métricas
-        document.querySelectorAll('.metrica-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-5px)';
+        if (document.getElementById('chartCO2')) {
+            const ctx1 = document.getElementById('chartCO2').getContext('2d');
+            new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: ["Julio 2026", "Noviembre 2026"],
+                    datasets: [{
+                        label: 'CO₂e Evitado (kg)',
+                        data: [48.14, 1462.99],
+                        borderColor: '#1F7A3E',
+                        backgroundColor: 'rgba(31, 122, 62, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#1F7A3E',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Kilogramos de CO₂e'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Período'
+                            }
+                        }
+                    }
+                }
             });
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
+        }
+
+        // Gráfico de puntaje
+        if (document.getElementById('chartPuntaje')) {
+            const ctx2 = document.getElementById('chartPuntaje').getContext('2d');
+            new Chart(ctx2, {
+                type: 'line',
+                data: {
+                    labels: ["Julio 2026", "Noviembre 2026"],
+                    datasets: [{
+                        label: 'Impacto de Sostenibilidad (%)',
+                        data: [1.8, 62.3],
+                        borderColor: '#2ecc71',
+                        backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#2ecc71',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Impacto (%)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Período'
+                            }
+                        }
+                    }
+                }
             });
-        });
-        
-        console.log('📊 Dashboard interactivo cargado para arcor');
+        }
+
+        console.log('📊 Gráficos cargados correctamente para arcor');
     </script>
     
 </body>
