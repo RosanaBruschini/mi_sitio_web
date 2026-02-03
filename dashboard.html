@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Impacta Verde - Comunicación a Clientes</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
     <style>
         * {
@@ -136,80 +135,46 @@
             font-weight: 500;
         }
 
-        .tendencia-positiva {
-            color: #2ecc71;
-            font-weight: bold;
-        }
-
-        .tendencia-negativa {
-            color: #e74c3c;
-            font-weight: bold;
-        }
-
-        .tendencia-neutral {
-            color: #f39c12;
-            font-weight: bold;
-        }
-
-        .sector-metrics {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
             margin-bottom: 40px;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
             border: 1px solid #e8f4e8;
         }
 
-        .sector-metrics h2 {
+        .stat-box h3 {
             color: #124d2d;
-            margin-bottom: 30px;
-            font-size: 24px;
-            font-weight: 700;
-            text-align: center;
-        }
-
-        .sector-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .sector-card {
-            background: #f8fff8;
-            padding: 25px;
-            border-radius: 15px;
-            border-left: 5px solid #1F7A3E;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .sector-card h3 {
-            color: #1F7A3E;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-size: 20px;
             font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
-        .metric-item {
+        .stat-item {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #e8f4e8;
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
             align-items: center;
         }
 
-        .metric-item:last-child {
+        .stat-item:last-child {
             border-bottom: none;
         }
 
-        .metric-label {
+        .stat-label {
             color: #555;
             font-size: 16px;
         }
 
-        .metric-value {
+        .stat-value {
             font-weight: 700;
             color: #1F7A3E;
             font-size: 18px;
@@ -255,21 +220,6 @@
             font-size: 48px;
             margin-right: 15px;
         }
-
-        .chart-container {
-            background: white;
-            padding: 25px;
-            border-radius: 18px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-            margin-bottom: 30px;
-        }
-
-        .chart-container h3 {
-            color: #124d2d;
-            margin-bottom: 20px;
-            font-size: 20px;
-            font-weight: 700;
-        }
     </style>
 </head>
 <body>
@@ -286,10 +236,10 @@
             </div>
             <div class="stats-header">
                 <div class="update-time">
-                    ⏰ Actualizado automáticamente: 03/02/2026 14:49
+                    ⏰ Actualizado automáticamente: 03/02/2026 14:51
                 </div>
                 <div style="font-size: 18px; font-weight: 600; color: #1F7A3E;">
-                    7 empresas en el sistema
+                    7 empresas activas
                 </div>
             </div>
         </header>
@@ -300,7 +250,7 @@
                 <span class="tree-icon">🌳</span>
                 <div>
                     <div class="impact-number">4.4 ton</div>
-                    <div class="impact-text">de CO₂ equivalente evitado</div>
+                    <div class="impact-text">de CO₂ equivalente evitado (1 ton = 1000 kg)</div>
                 </div>
             </div>
             <div style="margin-top: 20px; font-size: 18px;">
@@ -310,16 +260,14 @@
 
         <div class="kpi-grid">
             <div class="kpi-card">
-                <div class="kpi-icon">📈</div>
-                <h3>Tendencia Promedio</h3>
-                <div class="kpi-value tendencia-positiva">
-                    29.8%
-                </div>
-                <div class="kpi-unit">de mejora en sostenibilidad</div>
+                <div class="kpi-icon">🏢</div>
+                <h3>Empresas Activas</h3>
+                <div class="kpi-value">7</div>
+                <div class="kpi-unit">organizaciones sostenibles</div>
             </div>
 
             <div class="kpi-card">
-                <div class="kpi-icon">🌍</div>
+                <div class="kpi-icon">📈</div>
                 <h3>CO₂e Evitado</h3>
                 <div class="kpi-value">4.4</div>
                 <div class="kpi-unit">toneladas de CO₂e</div>
@@ -335,54 +283,143 @@
             <div class="kpi-card">
                 <div class="kpi-icon">⭐</div>
                 <h3>Impacto Promedio</h3>
-                <div class="kpi-value">38.3%</div>
+                <div class="kpi-value">35.6%</div>
                 <div class="kpi-unit">de sostenibilidad</div>
             </div>
         </div>
 
-        <!-- MÉTRICAS POR SECTOR -->
         
-        <div class="sector-metrics">
-            <h2>📊 Métricas Clave por Sector</h2>
-            <div style="text-align: center; padding: 40px; color: #666;">
-                <p style="font-size: 18px;">Cargando métricas por sector...</p>
-                <p style="font-size: 14px; margin-top: 10px;">Los datos se actualizarán en la próxima ejecución</p>
+    <div class="sector-performance-section" style="margin: 40px 0; padding: 30px; background: white; border-radius: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); border: 2px solid #e8f4e8;">
+        <h2 style="color: #124d2d; margin-bottom: 30px; font-size: 24px; font-weight: 700; text-align: center;">
+            🏷️ DESEMPEÑO POR SECTORES
+        </h2>
+    
+        <div style="margin-bottom: 30px;">
+            <h3 style="color: #124d2d; margin-bottom: 20px; font-size: 18px; font-weight: 600; text-align: center;">
+                📊 Sectores Especializados
+            </h3>
+        
+            <div style="border: 3px solid #8B7355; border-radius: 15px; padding: 20px; margin-bottom: 20px; background: linear-gradient(135deg, #F5E6D320, white);">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                    <div>
+                        <h3 style="color: #124d2d; margin: 0 0 5px 0; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                            🏨 HOTELERÍA (4 empresas) - 🎨 #F5E6D3
+                        </h3>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 20px; font-weight: 700; color: #1F7A3E;">32.0%</div>
+                        <div style="font-size: 16px;">🍂</div>
+                    </div>
+                </div>
+
+                <div style="margin: 15px 0;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span style="font-size: 14px; color: #666;">CO₂ evitado</span>
+                        <span style="font-weight: 700; color: #1F7A3E;">1.51 ton</span>
+                    </div>
+                    <div style="height: 8px; background: #f0f0f0; border-radius: 4px; overflow: hidden;">
+                        <div style="height: 100%; width: 100%; background: #8B7355; border-radius: 4px;"></div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+                    <div style="text-align: center; padding: 10px; background: rgba(255,255,255,0.7); border-radius: 8px;">
+                        <div style="font-size: 12px; color: #666;">Material recuperado</div>
+                        <div style="font-size: 16px; font-weight: 700; color: #1F7A3E;">0.36 ton</div>
+                    </div>
+                    <div style="text-align: center; padding: 10px; background: rgba(255,255,255,0.7); border-radius: 8px;">
+                        <div style="font-size: 12px; color: #666;">Impacto promedio</div>
+                        <div style="font-size: 16px; font-weight: 700; color: #1F7A3E;">32.0%</div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        <div style="margin-top: 30px;">
+            <h3 style="color: #124d2d; margin-bottom: 20px; font-size: 18px; font-weight: 600; text-align: center;">
+                🏢 Otros Sectores
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+        
+            <div style="border: 2px solid #2E8B57; border-radius: 10px; padding: 15px; background: linear-gradient(135deg, #D4EDDA20, white); text-align: center;">
+                <div style="font-size: 24px; margin-bottom: 10px;">♻️</div>
+                <div style="font-size: 14px; font-weight: 600; color: #124d2d; margin-bottom: 5px;">Reciclaje</div>
+                <div style="font-size: 12px; color: #666; margin-bottom: 10px;">3 empresas</div>
+                <div style="font-size: 16px; font-weight: 700; color: #1F7A3E;">39.3%</div>
+            </div>
+            
             </div>
         </div>
         
-
-        <!-- GRÁFICO INTERACTIVO -->
-        <div class="chart-container">
-            <h3>📈 Evolución del Impacto por Sector</h3>
-            <div id="grafico-sectores" style="height: 400px;"></div>
+    <div style="margin-top: 30px; padding: 20px; background: #f8fff8; border-radius: 12px; border: 2px dashed #e8f4e8;">
+        <h4 style="color: #124d2d; margin-top: 0; display: flex; align-items: center; gap: 10px;">🎨 Leyenda de colores por sector</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 15px; height: 15px; background: #F5E6D3; border-radius: 3px; border: 1px solid #ccc;"></div>
+                <span style="font-size: 14px; color: #666;">Hotelería (Beige pastel)</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 15px; height: 15px; background: #FFD8B1; border-radius: 3px; border: 1px solid #ccc;"></div>
+                <span style="font-size: 14px; color: #666;">Restaurante (Naranja pastel)</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 15px; height: 15px; background: #D1ECF1; border-radius: 3px; border: 1px solid #ccc;"></div>
+                <span style="font-size: 14px; color: #666;">Logística (Azul pastel)</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 15px; height: 15px; background: #E8DAEF; border-radius: 3px; border: 1px solid #ccc;"></div>
+                <span style="font-size: 14px; color: #666;">Textil/Indumentaria (Lila pastel)</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 15px; height: 15px; background: #D4EDDA; border-radius: 3px; border: 1px solid #ccc;"></div>
+                <span style="font-size: 14px; color: #666;">Demás sectores (Verde)</span>
+            </div>
         </div>
+    </div>
+    </div>
 
-        <div class="kpi-grid">
-            <div class="kpi-card" style="border-top-color: #FFD8B1;">
-                <div class="kpi-icon">🍽️</div>
-                <h3>Eficiencia Operativa</h3>
-                <div class="kpi-value">
-                    0
-                </div>
-                <div class="kpi-unit">g/plato desperdiciado</div>
-            </div>
+        <div class="stats-grid">
+            
+                <div class="stat-box">
+                    <h3>🏆 Top 5 Empresas - CO₂ Evitado</h3>
+                
+                    <div class="stat-item">
+                        <span class="stat-label">🏅 ETIMO</span>
+                        <span class="stat-value">2.9 ton</span>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <span class="stat-label">🏅 arcor</span>
+                        <span class="stat-value">1.5 ton</span>
+                    </div>
+                    </div>
 
-            <div class="kpi-card" style="border-top-color: #E8DAEF;">
-                <div class="kpi-icon">♻️</div>
-                <h3>Economía Circular</h3>
-                <div class="kpi-value">
-                    0%
-                </div>
-                <div class="kpi-unit">residuos desviados</div>
-            </div>
+            <div class="stat-box">
+                <h3>🔗 Acceso Rápido</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
+                    <a href="https://impactaverde.com.ar/registroempresa.html" target="_blank" style="display: block; background: #f8fff8; padding: 15px; border-radius: 10px; border: 1px solid #d8eedb; text-decoration: none; color: inherit; transition: all 0.3s;">
+                        <div style="font-size: 24px; color: #1F7A3E; margin-bottom: 10px;">📝</div>
+                        <div style="font-weight: 600; color: #124d2d;">Formulario Registro</div>
+                        <div style="font-size: 14px; color: #666; margin-top: 5px;">Nuevas empresas</div>
+                    </a>
 
-            <div class="kpi-card" style="border-top-color: #D1F2EB;">
-                <div class="kpi-icon">🌿</div>
-                <h3>Conservación</h3>
-                <div class="kpi-value">
-                    $0
+                    <a href="https://impactaverde.com.ar/datosmensuales.html" target="_blank" style="display: block; background: #f8fff8; padding: 15px; border-radius: 10px; border: 1px solid #d8eedb; text-decoration: none; color: inherit; transition: all 0.3s;">
+                        <div style="font-size: 24px; color: #1F7A3E; margin-bottom: 10px;">📊</div>
+                        <div style="font-weight: 600; color: #124d2d;">Formulario Datos</div>
+                        <div style="font-size: 14px; color: #666; margin-top: 5px;">Reporte mensual</div>
+                    </a>
+
+                    <a href="https://impactaverde.com.ar/insignias/" target="_blank" style="display: block; background: #f8fff8; padding: 15px; border-radius: 10px; border: 1px solid #d8eedb; text-decoration: none; color: inherit; transition: all 0.3s;">
+                        <div style="font-size: 24px; color: #1F7A3E; margin-bottom: 10px;">🎖️</div>
+                        <div style="font-weight: 600; color: #124d2d;">Insignias</div>
+                        <div style="font-size: 14px; color: #666; margin-top: 5px;">Reconocimientos mensuales</div>
+                    </a>
+
+                    <a href="https://impactaverde.com.ar/sellos/" target="_blank" style="display: block; background: #f8fff8; padding: 15px; border-radius: 10px; border: 1px solid #d8eedb; text-decoration: none; color: inherit; transition: all 0.3s;">
+                        <div style="font-size: 24px; color: #1F7A3E; margin-bottom: 10px;">🏅</div>
+                        <div style="font-weight: 600; color: #124d2d;">Sellos</div>
+                        <div style="font-size: 14px; color: #666; margin-top: 5px;">Certificaciones anuales</div>
+                    </a>
                 </div>
-                <div class="kpi-unit">inversión promedio</div>
             </div>
         </div>
 
@@ -392,57 +429,5 @@
             <p>📧 Contacto: hola@impactaverde.com.ar | 📱 +54 9 11 64522962</p>
         </div>
     </div>
-
-    <script>
-        // Datos para el gráfico
-        const sectores = [];
-        const metricasTasa = [];
-        const metricasInversion = [];
-        
-        if(sectores.length > 0) {
-            const trace1 = {
-                x: sectores,
-                y: metricasTasa,
-                name: 'Tasa Desviación Residuos (%)',
-                type: 'bar',
-                marker: {color: '#2E8B57'}
-            };
-            
-            const trace2 = {
-                x: sectores,
-                y: metricasInversion,
-                name: 'Inversión Conservación (USD)',
-                type: 'bar',
-                yaxis: 'y2',
-                marker: {color: '#1F7A3E'}
-            };
-            
-            const layout = {
-                title: 'Métricas por Sector',
-                xaxis: {title: 'Sectores'},
-                yaxis: {title: 'Tasa Desviación (%)'},
-                yaxis2: {
-                    title: 'Inversión Conservación (USD)',
-                    overlaying: 'y',
-                    side: 'right'
-                },
-                barmode: 'group',
-                plot_bgcolor: '#f8fff8',
-                paper_bgcolor: 'white'
-            };
-            
-            Plotly.newPlot('grafico-sectores', [trace1, trace2], layout);
-        }
-        
-        // Interactividad para las tarjetas KPI
-        document.querySelectorAll('.kpi-card').forEach(card => {
-            card.addEventListener('click', function() {
-                this.style.transform = 'scale(0.98)';
-                setTimeout(() => {
-                    this.style.transform = 'translateY(-10px)';
-                }, 150);
-            });
-        });
-    </script>
 </body>
 </html>
