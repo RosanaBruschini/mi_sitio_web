@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Impacta Verde - Comunicación a Clientes</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * {
             box-sizing: border-box;
@@ -220,6 +221,89 @@
             font-size: 48px;
             margin-right: 15px;
         }
+        
+        .charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .chart-box {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e8f4e8;
+        }
+        
+        .chart-box h3 {
+            color: #124d2d;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        
+        .chart-wrapper {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+        
+        .interactive-section {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            border: 1px solid #e8f4e8;
+        }
+        
+        .interactive-section h3 {
+            color: #124d2d;
+            margin-bottom: 20px;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        
+        .sector-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .sector-btn {
+            padding: 10px 20px;
+            border: 2px solid #1F7A3E;
+            background: white;
+            color: #1F7A3E;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .sector-btn:hover {
+            background: #f0f8f0;
+        }
+        
+        .sector-btn.active {
+            background: #1F7A3E;
+            color: white;
+        }
+        
+        .sector-info {
+            display: none;
+            padding: 20px;
+            background: #f8fff8;
+            border-radius: 12px;
+            border-left: 4px solid #1F7A3E;
+        }
+        
+        .sector-info.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -236,7 +320,7 @@
             </div>
             <div class="stats-header">
                 <div class="update-time">
-                    ⏰ Actualizado automáticamente: 03/02/2026 14:51
+                    ⏰ Actualizado automáticamente: 03/02/2026 15:38
                 </div>
                 <div style="font-size: 18px; font-weight: 600; color: #1F7A3E;">
                     7 empresas activas
@@ -260,6 +344,14 @@
 
         <div class="kpi-grid">
             <div class="kpi-card">
+                <div class="kpi-icon">📈</div>
+                <h3>Tendencia de Evolución</h3>
+                <div class="kpi-value">30.21</div>
+                <div class="kpi-unit">puntos/mes (promedio)</div>
+                <div style="font-size: 14px; color: #f8fff8; margin-top: 5px;">↗️ +30.21</div>
+            </div>
+
+            <div class="kpi-card">
                 <div class="kpi-icon">🏢</div>
                 <h3>Empresas Activas</h3>
                 <div class="kpi-value">7</div>
@@ -267,7 +359,7 @@
             </div>
 
             <div class="kpi-card">
-                <div class="kpi-icon">📈</div>
+                <div class="kpi-icon">🌍</div>
                 <h3>CO₂e Evitado</h3>
                 <div class="kpi-value">4.4</div>
                 <div class="kpi-unit">toneladas de CO₂e</div>
@@ -278,13 +370,6 @@
                 <h3>Material Recuperado</h3>
                 <div class="kpi-value">1.6</div>
                 <div class="kpi-unit">toneladas</div>
-            </div>
-
-            <div class="kpi-card">
-                <div class="kpi-icon">⭐</div>
-                <h3>Impacto Promedio</h3>
-                <div class="kpi-value">35.6%</div>
-                <div class="kpi-unit">de sostenibilidad</div>
             </div>
         </div>
 
@@ -303,8 +388,12 @@
                 <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
                     <div>
                         <h3 style="color: #124d2d; margin: 0 0 5px 0; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-                            🏨 HOTELERÍA (4 empresas) - 🎨 #F5E6D3
+                            🏨 HOTELERÍA (4 empresas)
                         </h3>
+                        <div style="font-size: 14px; color: #666; display: flex; align-items: center; gap: 5px;">
+                            <span style="background: #F5E6D3; padding: 2px 8px; border-radius: 4px; border: 1px solid #8B7355;">🎨 #F5E6D3</span>
+                            <span>Tendencia: ↗️ +60.5 pts/mes</span>
+                        </div>
                     </div>
                     <div style="text-align: right;">
                         <div style="font-size: 20px; font-weight: 700; color: #1F7A3E;">32.0%</div>
@@ -322,7 +411,7 @@
                     </div>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 15px;">
                     <div style="text-align: center; padding: 10px; background: rgba(255,255,255,0.7); border-radius: 8px;">
                         <div style="font-size: 12px; color: #666;">Material recuperado</div>
                         <div style="font-size: 16px; font-weight: 700; color: #1F7A3E;">0.36 ton</div>
@@ -331,6 +420,10 @@
                         <div style="font-size: 12px; color: #666;">Impacto promedio</div>
                         <div style="font-size: 16px; font-weight: 700; color: #1F7A3E;">32.0%</div>
                     </div>
+                    <div style="text-align: center; padding: 10px; background: rgba(255,255,255,0.7); border-radius: 8px;">
+                        <div style="font-size: 12px; color: #666;">Tendencia</div>
+                        <div style="font-size: 16px; font-weight: 700; color: #1F7A3E;">↗️ +60.5</div>
+                    </div>
                 </div>
             </div>
             </div>
@@ -338,13 +431,14 @@
             <h3 style="color: #124d2d; margin-bottom: 20px; font-size: 18px; font-weight: 600; text-align: center;">
                 🏢 Otros Sectores
             </h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
         
             <div style="border: 2px solid #2E8B57; border-radius: 10px; padding: 15px; background: linear-gradient(135deg, #D4EDDA20, white); text-align: center;">
                 <div style="font-size: 24px; margin-bottom: 10px;">♻️</div>
                 <div style="font-size: 14px; font-weight: 600; color: #124d2d; margin-bottom: 5px;">Reciclaje</div>
                 <div style="font-size: 12px; color: #666; margin-bottom: 10px;">3 empresas</div>
-                <div style="font-size: 16px; font-weight: 700; color: #1F7A3E;">39.3%</div>
+                <div style="font-size: 16px; font-weight: 700; color: #1F7A3E; margin-bottom: 5px;">39.3%</div>
+                <div style="font-size: 12px; color: #666;">↘️ -0.08</div>
             </div>
             
             </div>
@@ -377,6 +471,56 @@
     </div>
     </div>
 
+        <!-- SECCIÓN INTERACTIVA -->
+        <div class="interactive-section">
+            <h3>🔍 Explora por Sector</h3>
+            <div class="sector-selector" id="sectorSelector">
+                <button class="sector-btn active" data-sector="all">Todos los Sectores</button>
+                <button class="sector-btn" data-sector="hoteleria">🏨 Hotelería</button>
+                <button class="sector-btn" data-sector="restaurante">🍽️ Restaurante</button>
+                <button class="sector-btn" data-sector="logistica">🚚 Logística</button>
+                <button class="sector-btn" data-sector="textil">👕 Textil</button>
+                <button class="sector-btn" data-sector="reciclaje">♻️ Reciclaje</button>
+            </div>
+            
+            <div class="sector-info active" id="infoAll">
+                <h4>Todas las empresas (7)</h4>
+                <p>📊 <strong>Impacto total:</strong> 4.4 ton CO₂e evitadas</p>
+                <p>📈 <strong>Tendencia promedio:</strong> ↗️ +30.21 puntos/mes</p>
+                <p>⭐ <strong>Puntaje promedio:</strong> 35.6% de sostenibilidad</p>
+            </div>
+            
+            
+            <div class="sector-info" id="infoHoteleria">
+                <h4>🏨 Sector Hotelería</h4>
+                <p>🏢 <strong>Empresas:</strong> 4</p>
+                <p>🌍 <strong>CO₂ evitado:</strong> 1.5 ton</p>
+                <p>📈 <strong>Tendencia:</strong> 30.25 pts/mes</p>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+
+        <!-- GRÁFICOS -->
+        <div class="charts-container">
+            <div class="chart-box">
+                <h3>📊 Distribución por Sector</h3>
+                <div class="chart-wrapper">
+                    <canvas id="chartSectores"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-box">
+                <h3>📈 Evolución Mensual Promedio</h3>
+                <div class="chart-wrapper">
+                    <canvas id="chartEvolucion"></canvas>
+                </div>
+            </div>
+        </div>
+
         <div class="stats-grid">
             
                 <div class="stat-box">
@@ -392,6 +536,20 @@
                         <span class="stat-value">1.5 ton</span>
                     </div>
                     </div>
+            
+                <div class="stat-box">
+                    <h3>📈 Top 5 Empresas - Mejor Tendencia</h3>
+            
+                    <div class="stat-item">
+                        <span class="stat-label">↗️ arcor</span>
+                        <span class="stat-value">60.5 pts/mes</span>
+                    </div>
+                
+                    <div class="stat-item">
+                        <span class="stat-label">↘️ ETIMO</span>
+                        <span class="stat-value">-0.08 pts/mes</span>
+                    </div>
+                </div>
 
             <div class="stat-box">
                 <h3>🔗 Acceso Rápido</h3>
@@ -429,5 +587,110 @@
             <p>📧 Contacto: hola@impactaverde.com.ar | 📱 +54 9 11 64522962</p>
         </div>
     </div>
+    
+    <script>
+        // Datos para gráficos
+        const sectorLabels = ["Reciclaje", "Hoteler\u00eda"];
+        const sectorEmpresas = [3, 4];
+        const sectorColors = ["#2E8B57", "#8B7355"];
+        
+        // Gráfico de sectores
+        if (document.getElementById('chartSectores') && sectorLabels.length > 0) {
+            const ctx1 = document.getElementById('chartSectores').getContext('2d');
+            new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: sectorLabels,
+                    datasets: [{
+                        label: 'Empresas por Sector',
+                        data: sectorEmpresas,
+                        backgroundColor: sectorColors,
+                        borderColor: '#124d2d',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Número de Empresas'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Gráfico de evolución mensual (datos de ejemplo)
+        if (document.getElementById('chartEvolucion')) {
+            const ctx2 = document.getElementById('chartEvolucion').getContext('2d');
+            const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+            const datosEjemplo = [65, 68, 70, 72, 75, 78, 80, 82, 85, 87, 89, 90];
+            
+            new Chart(ctx2, {
+                type: 'line',
+                data: {
+                    labels: meses,
+                    datasets: [{
+                        label: 'Puntaje Promedio (%)',
+                        data: datosEjemplo,
+                        borderColor: '#1F7A3E',
+                        backgroundColor: 'rgba(31, 122, 62, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Puntaje (%)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Interactividad sector selector
+        document.querySelectorAll('.sector-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remover clase active de todos los botones
+                document.querySelectorAll('.sector-btn').forEach(b => b.classList.remove('active'));
+                // Remover clase active de todas las infos
+                document.querySelectorAll('.sector-info').forEach(info => info.classList.remove('active'));
+                
+                // Agregar clase active al botón clickeado
+                this.classList.add('active');
+                
+                // Mostrar la info correspondiente
+                const sector = this.getAttribute('data-sector');
+                document.getElementById('info' + sector.charAt(0).toUpperCase() + sector.slice(1)).classList.add('active');
+            });
+        });
+        
+        console.log('📊 Dashboard general cargado con éxito');
+    </script>
 </body>
 </html>
