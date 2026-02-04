@@ -246,7 +246,7 @@
                 <input type="hidden" id="idEmpresaHidden" name="ID_Empresa">
                 <input type="hidden" id="nombreEmpresaHidden" name="Empresa">
                 <input type="hidden" id="fechaCarga" name="Fecha_carga">
-                
+
                 <!-- ✅ CAMPOS OCULTOS PARA CÁLCULOS AUTOMÁTICOS (NO VISIBLES PARA CLIENTE) -->
                 <input type="hidden" id="participacion_reuso_porcentaje_hidden" name="Participacion_Reuso_%">
                 <input type="hidden" id="desperdicio_por_plato_hidden" name="Desperdicio_por_Plato_g">
@@ -302,7 +302,7 @@
 
                     <div class="grupo-formulario">
                         <label>Fecha de carga automática</label>
-                        <input type="text" id="fechaCargaVisible" value="27/01/2026" readonly
+                        <input type="text" id="fechaCargaVisible" value="04/02/2026" readonly
                                style="background-color: #e9ecef; font-weight: bold;">
                     </div>
                 </div>
@@ -345,7 +345,7 @@
                         <div class="grupo-formulario">
                             <label for="energia_kwh">Energía total <span class="unidad">(kWh)</span></label>
                             <input type="number" id="energia_kwh" name="Energia_kWh" step="0.01" min="0" value="0">
-                            <span class="nota-campo">Incluye energía convencional + fotovoltaica</span>
+                            
                         </div>
 
                         <div class="grupo-formulario">
@@ -750,10 +750,10 @@
 
             // Cargar empresas desde el registro
             await cargarEmpresas();
-            
+
             // Configurar listeners para checkboxes de sectores
             configurarListenersSectores();
-            
+
             // Configurar cálculos automáticos (ocultos para el cliente)
             configurarCalculosAutomaticos();
         });
@@ -784,7 +784,7 @@
                     if (selectedOption.dataset.id) {
                         document.getElementById('idEmpresaHidden').value = selectedOption.dataset.id;
                         document.getElementById('nombreEmpresaHidden').value = selectedOption.dataset.nombre;
-                        
+
                         // ✅ Detectar sector principal y preseleccionar checkbox correspondiente
                         const rubro = selectedOption.dataset.rubro;
                         detectarYPreseleccionarSector(rubro);
@@ -803,17 +803,17 @@
                 document.getElementById('seccionHotel').classList.toggle('seccion-oculta', !this.checked);
                 if (this.checked) calcularIndicadoresHotel();
             });
-            
+
             document.getElementById('sectorRestaurante').addEventListener('change', function() {
                 document.getElementById('seccionRestaurante').classList.toggle('seccion-oculta', !this.checked);
                 if (this.checked) calcularIndicadoresRestaurante();
             });
-            
+
             document.getElementById('sectorLogistica').addEventListener('change', function() {
                 document.getElementById('seccionLogistica').classList.toggle('seccion-oculta', !this.checked);
                 if (this.checked) calcularIndicadoresLogistica();
             });
-            
+
             document.getElementById('sectorRetail').addEventListener('change', function() {
                 // Por ahora no hay sección Retail, pero podemos agregarla después
                 if (this.checked) {
@@ -832,7 +832,7 @@
                     campo.addEventListener('input', calcularIndicadoresHotel);
                 }
             });
-            
+
             // Cálculos para Restaurante (ocultos para el cliente)
             const camposRestaurante = ['platos_servidos', 'desperdicio_alimentos_kg'];
             camposRestaurante.forEach(campoId => {
@@ -841,7 +841,7 @@
                     campo.addEventListener('input', calcularIndicadoresRestaurante);
                 }
             });
-            
+
             // Cálculos para Logística (ocultos para el cliente)
             const camposLogistica = ['envios_bicicleta_cantidad', 'envios_vehiculo_cantidad'];
             camposLogistica.forEach(campoId => {
@@ -855,7 +855,7 @@
         function calcularIndicadoresHotel() {
             const huespedes = parseInt(document.getElementById('huespedes_totales').value) || 0;
             const participantes = parseInt(document.getElementById('participacion_reuso_personas').value) || 0;
-            
+
             // % Participación reúso (CÁLCULO OCULTO - solo se guarda en Excel)
             let participacionPorcentaje = 0;
             if (huespedes > 0) {
@@ -868,7 +868,7 @@
         function calcularIndicadoresRestaurante() {
             const platos = parseInt(document.getElementById('platos_servidos').value) || 0;
             const desperdicio = parseFloat(document.getElementById('desperdicio_alimentos_kg').value) || 0;
-            
+
             // Desperdicio por plato (CÁLCULO OCULTO - solo se guarda en Excel)
             let desperdicioPorPlato = 0;
             if (platos > 0) {
@@ -881,15 +881,15 @@
         function calcularIndicadoresLogistica() {
             const enviosBici = parseInt(document.getElementById('envios_bicicleta_cantidad').value) || 0;
             const enviosVehiculo = parseInt(document.getElementById('envios_vehiculo_cantidad').value) || 0;
-            
+
             // % Envíos sostenibles (CÁLCULO OCULTO - solo se guarda en Excel)
             const totalEnvios = enviosBici + enviosVehiculo;
             let porcentajeSostenible = 0;
-            
+
             if (totalEnvios > 0) {
                 porcentajeSostenible = (enviosBici / totalEnvios) * 100;
             }
-            
+
             // Guardar en campo oculto para enviar al Excel
             document.getElementById('porcentaje_envios_sostenibles_hidden').value = porcentajeSostenible.toFixed(1);
         }
@@ -900,34 +900,34 @@
             document.getElementById('sectorRestaurante').checked = false;
             document.getElementById('sectorLogistica').checked = false;
             document.getElementById('sectorRetail').checked = false;
-            
+
             // Ocultar todas las secciones
             document.getElementById('seccionHotel').classList.add('seccion-oculta');
             document.getElementById('seccionRestaurante').classList.add('seccion-oculta');
             document.getElementById('seccionLogistica').classList.add('seccion-oculta');
-            
+
             // Preseleccionar según el rubro
             const rubroLower = rubro.toLowerCase();
-            
+
             if (rubroLower.includes('hotel') || rubroLower.includes('hospedaje')) {
                 document.getElementById('sectorHotel').checked = true;
                 document.getElementById('seccionHotel').classList.remove('seccion-oculta');
             }
-            
+
             if (rubroLower.includes('restaurante') || rubroLower.includes('gastronomía') || rubroLower.includes('gastronomia')) {
                 document.getElementById('sectorRestaurante').checked = true;
                 document.getElementById('seccionRestaurante').classList.remove('seccion-oculta');
             }
-            
+
             if (rubroLower.includes('logística') || rubroLower.includes('logistica') || rubroLower.includes('transporte')) {
                 document.getElementById('sectorLogistica').checked = true;
                 document.getElementById('seccionLogistica').classList.remove('seccion-oculta');
             }
-            
+
             if (rubroLower.includes('retail') || rubroLower.includes('comercio')) {
                 document.getElementById('sectorRetail').checked = true;
             }
-            
+
             // Mostrar mensaje informativo
             if (rubro) {
                 mostrarMensaje('Exito', `✅ Sector principal detectado: ${rubro}. Puedes agregar más sectores si aplican.`);
@@ -996,7 +996,7 @@
                 'Mes': document.getElementById('mes').value,
                 'Año': document.getElementById('anio').value,
                 'Fecha_carga': document.getElementById('fechaCarga').value,
-                
+
                 // Impacto Ambiental General
                 'Energia_kWh': parseFloat(document.getElementById('energia_kwh').value) || 0,
                 'Combustible_Estacionario_L': parseFloat(document.getElementById('combustible_estacionario_l').value) || 0,
@@ -1012,7 +1012,7 @@
                 'Residuo_Organico_kg': parseFloat(document.getElementById('residuo_organico_kg').value) || 0,
                 'Residuo_Reciclable_kg': parseFloat(document.getElementById('residuo_reciclable_kg').value) || 0,
                 'Residuo_No_Reciclable_kg': parseFloat(document.getElementById('residuo_no_reciclable_kg').value) || 0,
-                
+
                 // Impacto Social General
                 'Cantidad_Empleados_Total': parseInt(document.getElementById('cantidad_empleados_total').value) || 1,
                 'Cantidad_Empleados_Locales': parseInt(document.getElementById('cantidad_empleados_locales').value) || 0,
@@ -1022,7 +1022,7 @@
                 'Politica_inclusion': document.getElementById('politica_inclusion').checked ? 'Sí' : 'No',
                 'Procesos_optimizados_%': parseFloat(document.getElementById('procesos_optimizados').value) || 0,
                 'Digitalizacion_%': parseFloat(document.getElementById('digitalizacion').value) || 0,
-                
+
                 // Hotel (solo si la sección está visible)
                 'Total_Habitaciones': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('total_habitaciones').value) || 0,
                 'Huespedes_Totales': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('huespedes_totales').value) || 0,
@@ -1038,13 +1038,13 @@
                 'Participacion_Reuso_%': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('participacion_reuso_porcentaje_hidden').value) || 0,
                 'Proveedores_Locales_Regenerativos_%': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('proveedores_locales_regenerativos').value) || 0,
                 'Satisfaccion_Sostenibilidad': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? '' : document.getElementById('satisfaccion_sostenibilidad').value || '',
-                
+
                 // Restaurante (solo si la sección está visible)
                 'Platos_Servidos': document.getElementById('seccionRestaurante').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('platos_servidos').value) || 0,
                 'Desperdicio_Alimentos_kg': document.getElementById('seccionRestaurante').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('desperdicio_alimentos_kg').value) || 0,
                 'Desperdicio_por_Plato_g': document.getElementById('seccionRestaurante').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('desperdicio_por_plato_hidden').value) || 0,
                 'Aceite_Usado_Litros': document.getElementById('seccionRestaurante').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('aceite_usado_litros').value) || 0,
-                
+
                 // Logística (solo si la sección está visible)
                 'Combustible_Transporte_L': document.getElementById('seccionLogistica').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('combustible_transporte_l').value) || 0,
                 'Envios_Bicicleta_Cantidad': document.getElementById('seccionLogistica').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('envios_bicicleta_cantidad').value) || 0,
@@ -1052,14 +1052,14 @@
                 'Envios_Vehiculo_Cantidad': document.getElementById('seccionLogistica').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('envios_vehiculo_cantidad').value) || 0,
                 'Km_Vehiculo_Total': document.getElementById('seccionLogistica').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('km_vehiculo_total').value) || 0,
                 'Porcentaje_Envios_Sostenibles_%': document.getElementById('seccionLogistica').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('porcentaje_envios_sostenibles_hidden').value) || 0,
-                
+
                 // Información adicional
                 'Comentarios': document.getElementById('comentarios').value.trim() || '',
                 'Link_Evidencia': document.getElementById('link_evidencia').value.trim() || ''
             };
 
             // Si Restaurante está visible y Hotel no, usar el proveedor de restaurante
-            if (document.getElementById('seccionRestaurante').classList.contains('seccion-oculta') === false && 
+            if (document.getElementById('seccionRestaurante').classList.contains('seccion-oculta') === false &&
                 document.getElementById('seccionHotel').classList.contains('seccion-oculta') === true) {
                 datosParaEnviar['Proveedores_Locales_Regenerativos_%'] = parseInt(document.getElementById('proveedores_locales_regenerativos_rest').value) || 0;
             }
@@ -1118,7 +1118,7 @@
                     document.getElementById('sectorRestaurante').checked = false;
                     document.getElementById('sectorLogistica').checked = false;
                     document.getElementById('sectorRetail').checked = false;
-                    
+
                     // Ocultar secciones específicas
                     document.getElementById('seccionHotel').classList.add('seccion-oculta');
                     document.getElementById('seccionRestaurante').classList.add('seccion-oculta');
