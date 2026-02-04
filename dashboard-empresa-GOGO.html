@@ -252,6 +252,44 @@
             padding-top: 30px;
             border-top: 1px solid #ddd;
         }
+
+        .filter-section {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        select, input {
+            padding: 10px 15px;
+            border: 2px solid #e8f4e8;
+            border-radius: 8px;
+            font-size: 14px;
+            min-width: 150px;
+        }
+
+        .btn-filter {
+            background: #1F7A3E;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-filter:hover {
+            background: #155b2a;
+        }
     </style>
 </head>
 <body>
@@ -276,6 +314,27 @@
                 </div>
             </div>
         </header>
+
+        <!-- FILTROS INTERACTIVOS -->
+        <div class="filter-section">
+            <h3 style="color: #124d2d; margin-bottom: 15px;">📅 Filtros de Periodo</h3>
+            <div class="filter-controls">
+                <select id="selectAnio">
+                    <option value="todos">Todos los años</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026" selected>2026</option>
+                </select>
+                
+                <select id="selectMes">
+                    <option value="todos">Todos los meses</option>
+                    <option value="Enero">Enero</option> <option value="Febrero">Febrero</option> <option value="Marzo">Marzo</option> <option value="Abril">Abril</option> <option value="Mayo">Mayo</option> <option value="Junio">Junio</option> <option value="Julio">Julio</option> <option value="Agosto">Agosto</option> <option value="Septiembre">Septiembre</option> <option value="Octubre">Octubre</option> <option value="Noviembre">Noviembre</option> <option value="Diciembre">Diciembre</option>
+                </select>
+                
+                <button class="btn-filter" onclick="aplicarFiltros()">🔍 Aplicar Filtros</button>
+                <button class="btn-filter" onclick="resetFiltros()" style="background: #666;">🔄 Restablecer</button>
+            </div>
+        </div>
 
         <div class="kpi-grid">
             <div class="kpi-card">
@@ -309,7 +368,43 @@
         </div>
 
         
+                <div style="margin: 40px 0; padding: 30px; background: #FADBD830; border-radius: 15px; border: 3px solid #CB4335; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+                    <h3 style="color: #CB4335; margin-top: 0; margin-bottom: 25px; font-size: 22px; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #CB433550; padding-bottom: 15px;">
+                        🛠️ Métricas Específicas del Sector - Servicios
+                    </h3>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                        
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #CB433550; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                        <div style="font-size: 24px; margin-bottom: 10px;">🏭</div>
+                        <div style="font-size: 13px; color: #666; margin-bottom: 8px; font-weight: 600;">Proveedores Locales %</div>
+                        <div style="font-size: 20px; font-weight: bold; color: #CB4335;">50.64 %</div>
+                    </div>
+                    
+                    </div>
+                </div>
+                
         
+                <div style="margin: 40px 0; padding: 30px; background: linear-gradient(135deg, #f8fff8 0%, #e8f4e8 100%); border-radius: 15px; border: 3px solid #1F7A3E; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+                    <h3 style="color: #1F7A3E; margin-top: 0; margin-bottom: 25px; font-size: 22px; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #1F7A3E50; padding-bottom: 15px;">
+                        🌿 Métricas Generales Transversales
+                    </h3>
+                    <p style="color: #666; margin-bottom: 20px; font-size: 15px;">
+                        Estas métricas son comunes a todos los sectores y miden el impacto ambiental general de la empresa.
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                        
+                    <div style="background: white; padding: 20px; border-radius: 12px; border-left: 5px solid #1F7A3E; box-shadow: 0 3px 10px rgba(0,0,0,0.05); text-align: center;">
+                        <div style="font-size: 28px; margin-bottom: 10px;">📦</div>
+                        <div style="font-size: 14px; color: #666; margin-bottom: 8px; font-weight: 600;">Eficiencia en materiales</div>
+                        <div style="font-size: 32px; font-weight: 800; color: #1F7A3E; margin-bottom: 5px;">45.8</div>
+                        <div style="font-size: 14px; color: #888;">%</div>
+                    </div>
+                    
+                    </div>
+                </div>
+                
         
 
         <!-- GRÁFICOS PRINCIPALES -->
@@ -326,6 +421,25 @@
                 <h2>📊 Evolución del Impacto de Sostenibilidad</h2>
                 <div class="chart-wrapper">
                     <canvas id="chartPuntaje"></canvas>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- GRÁFICOS DE MÉTRICAS SOCIALES -->
+        
+        <div class="charts-grid">
+            <div class="chart-container">
+                <h2>👥 Evolución del Impacto Social</h2>
+                <div class="chart-wrapper">
+                    <canvas id="chartSocial"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h2>💻 Evolución de la Digitalización</h2>
+                <div class="chart-wrapper">
+                    <canvas id="chartDigital"></canvas>
                 </div>
             </div>
         </div>
@@ -357,7 +471,7 @@
             <p>📊 Dashboard individual de GOGO</p>
             <p>🌿 Sistema Impacta Verde - Mediciones de sostenibilidad</p>
             <p style="font-size: 12px; color: #888; margin-top: 10px;">
-                Actualizado: 04/02/2026 17:21
+                Actualizado: 04/02/2026 18:01
             </p>
         </div>
     </div>
@@ -462,8 +576,83 @@
                 }
             });
         }
+        
+        // Gráfico de impacto social
+        if (document.getElementById('chartSocial') && [44.4].length > 0) {
+            const ctx3 = document.getElementById('chartSocial').getContext('2d');
+            new Chart(ctx3, {
+                type: 'line',
+                data: {
+                    labels: ["Febrero 2026"],
+                    datasets: [{
+                        label: 'Impacto Social (%)',
+                        data: [44.4],
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Gráfico de digitalización
+        if (document.getElementById('chartDigital') && [72.0].length > 0) {
+            const ctx4 = document.getElementById('chartDigital').getContext('2d');
+            new Chart(ctx4, {
+                type: 'line',
+                data: {
+                    labels: ["Febrero 2026"],
+                    datasets: [{
+                        label: 'Digitalización (%)',
+                        data: [72.0],
+                        borderColor: '#9b59b6',
+                        backgroundColor: 'rgba(155, 89, 182, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
 
-        console.log('📊 Gráficos cargados correctamente para GOGO');
+        // Funciones para filtros interactivos
+        function aplicarFiltros() {
+            const anio = document.getElementById('selectAnio').value;
+            const mes = document.getElementById('selectMes').value;
+            
+            alert(`Filtros aplicados:\nAño: ${anio === 'todos' ? 'Todos' : anio}\nMes: ${mes === 'todos' ? 'Todos' : mes}`);
+            // Aquí iría la lógica para filtrar los datos y actualizar los gráficos
+        }
+        
+        function resetFiltros() {
+            document.getElementById('selectAnio').value = 'todos';
+            document.getElementById('selectMes').value = 'todos';
+            alert('Filtros restablecidos');
+        }
+
+        console.log('📊 Dashboard individual cargado correctamente para GOGO');
     </script>
     
 </body>
