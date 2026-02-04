@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insignia Mensual - GOGO</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7f4;
+            color: #1d1d1d;
+        }
+        .contenedor {
+            max-width: 700px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            border: 4px solid #CB4335;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+        }
+        .header {
+            position: relative;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .logo {
+            height: 100px;
+            position: absolute;
+            left: 10px;
+            top: 0;
+        }
+        .header-titulo {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 22px;
+            font-weight: 700;
+            color: #287a48;
+            text-align: center;
+            width: 100%;
+        }
+        .qr {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            text-align: center;
+        }
+        .qr img {
+            width: 100px;
+            height: 100px;
+        }
+        .bloque {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #D8EEDB;
+            background: #F9FFF9;
+        }
+        .bloque h2 {
+            margin: 0 0 12px 0;
+            color: #124d2d;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .fila {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 16px;
+        }
+        .etiqueta {
+            font-weight: 600;
+            color: #124d2d;
+        }
+        .valor {
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+        .equivalencia {
+            font-size: 16px;
+            color: #2e7d32;
+            margin: 12px 0;
+            font-weight: 500;
+            text-align: center;
+            background: #f8fff8;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #CB4335;
+        }
+        .btn-descargar {
+            margin: 20px auto 10px auto;
+            display: block;
+            background: #1F7A3E;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-descargar:hover {
+            background: #155b2a;
+        }
+        .metricas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .metrica {
+            background: #f0f8f0;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid #d0e8d0;
+        }
+        .ods-box {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #D8EEDB;
+            background: #F3FFF3;
+        }
+        .ods-box h3 {
+            color: #0f5e30;
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            text-align: center;
+        }
+        .ods-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .ods-container span {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #1F7A3E;
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: help;
+            transition: transform 0.2s;
+        }
+        .ods-container span:hover {
+            transform: scale(1.1);
+            background: #155b2a;
+        }
+        @media (max-width: 768px) {
+            .contenedor {
+                margin: 15px;
+                padding: 20px;
+            }
+            .header {
+                height: auto;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .logo {
+                position: static;
+                height: 80px;
+                margin-bottom: 10px;
+            }
+            .header-titulo {
+                position: static;
+                transform: none;
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .qr {
+                position: static;
+                margin: 10px auto;
+            }
+            .metricas {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+    <div class="header">
+        <img class="logo"
+             src="https://res.cloudinary.com/ddubafael/image/upload/v1768315140/logo_institucional_final_tranp._impacta_verde_ec55yo.png"
+             alt="Impacta Verde">
+        <div class="header-titulo">Insignia de Sostenibilidad Mensual</div>
+        <div class="qr">
+            <img src="data:image/png;base64,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" alt="Código QR">
+            <div style="font-size:12px; color:#444; margin-top:5px;">Verificación</div>
+        </div>
+    </div>
+    <div class="bloque">
+        <h2>🍁 Plata</h2>
+        <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor">GOGO</span></div>
+        <div class="fila"><span class="etiqueta">Período:</span> <span class="valor">Febrero 2026</span></div>
+        
+            <div class="fila" style="background:#FADBD8; padding: 10px; border-radius: 8px; margin: 10px 0; border-left: 5px solid #CB4335;">
+                <span class="etiqueta">🏷️ Sector:</span>
+                <span class="valor" style="font-weight: 700; color: #CB4335;">
+                    🛠️ Servicios
+                </span>
+            </div>
+        <div class="fila"><span class="etiqueta">Puntaje mensual:</span> <span class="valor" style="font-weight: bold; color: #1F7A3E; font-size: 18px;">70.5%</span></div>
+
+        <div class="equivalencia">
+            <strong>Impacto equivalente a:</strong><br>
+            <span style="font-size: 20px; font-weight: bold;">🌳🌳🌳 (Bueno)</span>
+        </div>
+
+        <div class="metricas">
+            
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">CO₂e evitado</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">1657.59 kg</div>
+            </div>
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">Material recuperado</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">458.0 kg</div>
+            </div>
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">Residuos evitados</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">101.2 kg</div>
+            </div>
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">Impacto social</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">44.4 %</div>
+            </div>
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">Impacto digital</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">72.0 %</div>
+            </div>
+        </div>
+
+        <div class="ods-box">
+            <h3>🌍 Contribuye a los Objetivos de Desarrollo Sostenible (ODS)</h3>
+            <div class="ods-container">
+                <span title="Fin de la pobreza">1</span><span title="Igualdad de género">5</span><span title="Energía asequible y no contaminante">7</span><span title="Trabajo decente y crecimiento económico">8</span><span title="Industria, innovación e infraestructura">9</span><span title="Reducción de las desigualdades">10</span><span title="Ciudades y comunidades sostenibles">11</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Vida de ecosistemas terrestres">15</span><span title="Alianzas para lograr los objetivos">17</span>
+            </div>
+            <p style="text-align:center; font-size:12px; color:#666; margin-top:8px; font-style:italic;">
+                Pasa el cursor sobre cada número para ver el ODS
+            </p>
+        </div>
+    </div>
+</div>
+<button id="descargar" class="btn-descargar">Descargar PNG de la Insignia</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+document.getElementById("descargar").addEventListener("click", function() {
+    const contenedor = document.querySelector(".contenedor");
+    const boton = this;
+    const textoOriginal = boton.textContent;
+    boton.textContent = "Generando imagen...";
+    boton.disabled = true;
+    setTimeout(() => {
+        html2canvas(contenedor, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff"
+        }).then(canvas => {
+            const link = document.createElement("a");
+            link.download = "insignia-GOGO-Febrero-2026.png";
+            link.href = canvas.toDataURL("image/png");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }).finally(() => {
+            boton.textContent = textoOriginal;
+            boton.disabled = false;
+        });
+    }, 100);
+});
+</script>
+</body>
+</html>
