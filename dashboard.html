@@ -221,14 +221,14 @@
             font-size: 48px;
             margin-right: 15px;
         }
-        
+
         .charts-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
             gap: 25px;
             margin-bottom: 40px;
         }
-        
+
         .chart-box {
             background: white;
             padding: 25px;
@@ -236,20 +236,20 @@
             box-shadow: 0 6px 20px rgba(0,0,0,0.08);
             border: 1px solid #e8f4e8;
         }
-        
+
         .chart-box h3 {
             color: #124d2d;
             margin-bottom: 20px;
             font-size: 20px;
             font-weight: 700;
         }
-        
+
         .chart-wrapper {
             position: relative;
             height: 300px;
             width: 100%;
         }
-        
+
         .interactive-section {
             background: white;
             padding: 30px;
@@ -258,21 +258,21 @@
             margin-bottom: 40px;
             border: 1px solid #e8f4e8;
         }
-        
+
         .interactive-section h3 {
             color: #124d2d;
             margin-bottom: 20px;
             font-size: 22px;
             font-weight: 700;
         }
-        
+
         .sector-selector {
             display: flex;
             gap: 10px;
             margin-bottom: 20px;
             flex-wrap: wrap;
         }
-        
+
         .sector-btn {
             padding: 10px 20px;
             border: 2px solid #1F7A3E;
@@ -283,16 +283,16 @@
             font-weight: 600;
             transition: all 0.3s;
         }
-        
+
         .sector-btn:hover {
             background: #f0f8f0;
         }
-        
+
         .sector-btn.active {
             background: #1F7A3E;
             color: white;
         }
-        
+
         .sector-info {
             display: none;
             padding: 20px;
@@ -300,7 +300,7 @@
             border-radius: 12px;
             border-left: 4px solid #1F7A3E;
         }
-        
+
         .sector-info.active {
             display: block;
         }
@@ -320,7 +320,7 @@
             </div>
             <div class="stats-header">
                 <div class="update-time">
-                    ⏰ Actualizado automáticamente: 05/02/2026 13:50
+                    ⏰ Actualizado automáticamente: 05/02/2026 17:36
                 </div>
                 <div style="font-size: 18px; font-weight: 600; color: #1F7A3E;">
                     9 empresas activas
@@ -373,6 +373,8 @@
             </div>
         </div>
 
+        
+        
         
     <div class="sector-performance-section" style="margin: 40px 0; padding: 30px; background: white; border-radius: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); border: 2px solid #e8f4e8;">
         <h2 style="color: #124d2d; margin-bottom: 30px; font-size: 24px; font-weight: 700; text-align: center;">
@@ -533,14 +535,14 @@
                 <button class="sector-btn" data-sector="textil">👕 Textil</button>
                 <button class="sector-btn" data-sector="reciclaje">♻️ Reciclaje</button>
             </div>
-            
+
             <div class="sector-info active" id="infoAll">
                 <h4>Todas las empresas (9)</h4>
                 <p>📊 <strong>Impacto total:</strong> 7.6 ton CO₂e evitadas</p>
                 <p>📈 <strong>Tendencia promedio:</strong> ↗️ +15.1 puntos/mes</p>
                 <p>⭐ <strong>Puntaje promedio:</strong> 50.5% de sostenibilidad</p>
             </div>
-            
+
             
             <div class="sector-info" id="infoHoteleria">
                 <h4>🏨 Sector Hotelería</h4>
@@ -549,9 +551,9 @@
                 <p>📈 <strong>Tendencia:</strong> 30.25 pts/mes</p>
             </div>
             
+
             
-            
-            
+
             
             <div class="sector-info" id="infoLogistica">
                 <h4>🚚 Sector Logística</h4>
@@ -570,7 +572,7 @@
                     <canvas id="chartSectores"></canvas>
                 </div>
             </div>
-            
+
             <div class="chart-box">
                 <h3>📈 Evolución Mensual Promedio</h3>
                 <div class="chart-wrapper">
@@ -665,13 +667,13 @@
             <p>📧 Contacto: hola@impactaverde.com.ar | 📱 +54 9 11 64522962</p>
         </div>
     </div>
-    
+
     <script>
         // Datos para gráficos
         const sectorLabels = ["Reciclaje", "Hoteler\u00eda", "Log\u00edstica", "Servicios"];
         const sectorEmpresas = [3, 4, 1, 1];
         const sectorColors = ["#2E8B57", "#8B7355", "#1E90FF", "#CB4335"];
-        
+
         // Gráfico de sectores
         if (document.getElementById('chartSectores') && sectorLabels.length > 0) {
             const ctx1 = document.getElementById('chartSectores').getContext('2d');
@@ -707,13 +709,13 @@
                 }
             });
         }
-        
+
         // Gráfico de evolución mensual (datos de ejemplo)
         if (document.getElementById('chartEvolucion')) {
             const ctx2 = document.getElementById('chartEvolucion').getContext('2d');
             const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
             const datosEjemplo = [65, 68, 70, 72, 75, 78, 80, 82, 85, 87, 89, 90];
-            
+
             new Chart(ctx2, {
                 type: 'line',
                 data: {
@@ -750,7 +752,7 @@
                 }
             });
         }
-        
+
         // Interactividad sector selector
         document.querySelectorAll('.sector-btn').forEach(btn => {
             btn.addEventListener('click', function() {
@@ -758,16 +760,16 @@
                 document.querySelectorAll('.sector-btn').forEach(b => b.classList.remove('active'));
                 // Remover clase active de todas las infos
                 document.querySelectorAll('.sector-info').forEach(info => info.classList.remove('active'));
-                
+
                 // Agregar clase active al botón clickeado
                 this.classList.add('active');
-                
+
                 // Mostrar la info correspondiente
                 const sector = this.getAttribute('data-sector');
                 document.getElementById('info' + sector.charAt(0).toUpperCase() + sector.slice(1)).classList.add('active');
             });
         });
-        
+
         console.log('📊 Dashboard general cargado con éxito');
     </script>
 </body>
