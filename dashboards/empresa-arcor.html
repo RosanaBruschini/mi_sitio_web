@@ -4,211 +4,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - arcor</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f4f7f4 0%, #e8f4e8 100%);
-            color: #333;
-            min-height: 100vh;
-            padding-bottom: 40px;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f7f6;
+            margin: 0;
+            padding: 30px;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
+        h1, h2 {
+            color: #124d2d;
+            margin-bottom: 15px;
         }
 
-        header {
+        .header-info {
             background: white;
-            border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-            padding: 30px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 30px;
-            border: 3px solid #8B7355;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .logo {
-            height: 100px;
-            width: auto;
-            background: white;
-            padding: 10px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border: 3px solid #1F7A3E;
-        }
-
-        .header-text {
-            flex: 1;
-        }
-
-        h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-            color: #1F7A3E;
-            font-weight: 800;
-        }
-
-        .subtitle {
-            font-size: 18px;
-            color: #666;
-            font-weight: 500;
-        }
-
-        .empresa-info {
-            background: #f8fff8;
             padding: 20px;
-            border-radius: 15px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
             border-left: 5px solid #8B7355;
-            text-align: right;
         }
 
-        .empresa-nombre {
+        .company-name {
             font-size: 24px;
-            font-weight: 700;
-            color: #1F7A3E;
+            font-weight: bold;
+            color: #1f7a3e;
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .nivel-actual {
-            font-size: 18px;
-            color: #2e7d32;
+        .section {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            margin-bottom: 35px;
+        }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dashed #e0e0e0;
+            font-size: 16px;
+            align-items: center;
+        }
+
+        .metric:last-child {
+            border-bottom: none;
+        }
+
+        .metric span.value {
             font-weight: 600;
+            color: #1f7a3e;
+            font-size: 16px;
+        }
+
+        .metric span.na {
+            font-style: italic;
+            color: #999;
+            font-size: 15px;
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+
+        select {
+            padding: 10px 14px;
+            font-size: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            background: white;
+        }
+
+        .sector {
+            display: none;
         }
 
         .kpi-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .kpi-card {
             background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
             text-align: center;
-            border-top: 6px solid #1F7A3E;
-            transition: all 0.3s ease;
-        }
-
-        .kpi-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-        }
-
-        .kpi-icon {
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
-
-        .kpi-card h3 {
-            color: #124d2d;
-            margin-bottom: 15px;
-            font-size: 16px;
-            font-weight: 600;
-            text-transform: uppercase;
+            border-top: 4px solid #8B7355;
         }
 
         .kpi-value {
-            font-size: 40px;
+            font-size: 32px;
             font-weight: 800;
-            color: #1F7A3E;
-            margin-bottom: 5px;
-            line-height: 1;
+            color: #1f7a3e;
+            margin: 10px 0;
         }
 
-        .kpi-unit {
-            color: #666;
+        .kpi-label {
             font-size: 14px;
-        }
-
-        .charts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        @media (max-width: 768px) {
-            .charts-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .chart-container {
-            background: white;
-            padding: 25px;
-            border-radius: 18px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-            border: 1px solid #e8f4e8;
-        }
-
-        .chart-container h2 {
-            color: #124d2d;
-            margin-bottom: 20px;
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        .chart-wrapper {
-            position: relative;
-            height: 300px;
-            width: 100%;
+            color: #666;
         }
 
         .ods-section {
             background: white;
-            padding: 30px;
-            border-radius: 18px;
+            padding: 20px;
+            border-radius: 16px;
             box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-            margin-bottom: 40px;
-            border: 1px solid #e8f4e8;
-        }
-
-        .ods-section h2 {
-            color: #124d2d;
-            margin-bottom: 25px;
-            font-size: 24px;
-            font-weight: 700;
-            text-align: center;
+            margin-top: 30px;
         }
 
         .ods-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 15px;
         }
 
         .ods-container span {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 8px 16px;
             background: #1F7A3E;
             color: white;
-            border-radius: 8px;
-            font-size: 18px;
+            border-radius: 6px;
+            font-size: 16px;
             font-weight: bold;
             cursor: help;
             transition: all 0.3s;
@@ -217,1038 +148,207 @@
         .ods-container span:hover {
             transform: scale(1.1);
             background: #155b2a;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .footer {
             text-align: center;
             color: #888;
             font-size: 14px;
-            margin-top: 50px;
-            padding-top: 30px;
+            margin-top: 40px;
+            padding-top: 20px;
             border-top: 1px solid #ddd;
-        }
-        
-        /* Nuevos estilos para filtros */
-        .filtro-activo {
-            background: #8B735520;
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 5px solid #8B7355;
-            margin-bottom: 25px;
-            font-size: 16px;
-        }
-        
-        .metrica-general:hover, .metrica-sector:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
-        }
-        
-        .btn-filtro {
-            padding: 12px 24px;
-            background: #8B7355;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .btn-filtro:hover {
-            background: #8B7355dd;
-            transform: translateY(-2px);
-        }
-        
-        .btn-reset {
-            padding: 12px 24px;
-            background: #f8f9fa;
-            color: #666;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .btn-reset:hover {
-            background: #e9ecef;
-            border-color: #ccc;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo-container">
-                <img class="logo"
-                     src="https://res.cloudinary.com/ddubafael/image/upload/v1768315140/logo_institucional_final_tranp._impacta_verde_ec55yo.png"
-                     alt="Impacta Verde">
-                <div class="header-text">
-                    <h1>📊 Dashboard de Sostenibilidad por Empresa</h1>
-                    <div class="subtitle">Seguimiento del impacto ambiental y social - Sistema Impacta Verde</div>
-                </div>
-            </div>
-            <div class="empresa-info">
-                <div class="empresa-nombre">arcor</div>
-                <div class="nivel-actual">
-                    🏨 Sector: Hotelería | 🌿 Nivel Actual: Inicial
-                </div>
-                <div style="font-size: 14px; color: #888; margin-top: 10px;">
-                    Actualizado: 06/02/2026
-                </div>
-            </div>
-        </header>
 
-        <!-- KPI PRINCIPALES -->
-        <div class="kpi-grid">
-            <div class="kpi-card">
-                <div class="kpi-icon">📈</div>
-                <h3>Tendencia de Evolución</h3>
-                <div class="kpi-value">60.5</div>
-                <div class="kpi-unit">puntos/mes</div>
-                <div style="font-size: 12px; color: #666; margin-top: 5px;">↗️ +60.5 puntos/mes</div>
-            </div>
-
-            <div class="kpi-card">
-                <div class="kpi-icon">🌍</div>
-                <h3>CO₂e Evitado</h3>
-                <div class="kpi-value">1.5</div>
-                <div class="kpi-unit">toneladas totales</div>
-            </div>
-
-            <div class="kpi-card">
-                <div class="kpi-icon">♻️</div>
-                <h3>Material Recuperado</h3>
-                <div class="kpi-value">0.4</div>
-                <div class="kpi-unit">toneladas totales</div>
-            </div>
-
-            <div class="kpi-card">
-                <div class="kpi-icon">⭐</div>
-                <h3>Impacto Promedio</h3>
-                <div class="kpi-value">32.0%</div>
-                <div class="kpi-unit">de sostenibilidad</div>
-            </div>
+    <div class="header-info">
+        <div class="company-name">
+            🏨 arcor - Hotelería
+            <span style="font-size: 16px; color: #666; margin-left: auto;">
+                🌿 Inicial
+            </span>
         </div>
-
-        <!-- FILTRO POR FECHAS -->
-        
-            <div style="margin: 20px 0; padding: 25px; background: #F5E6D330; border-radius: 15px; border: 3px solid #8B7355; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
-                <h3 style="color: #8B7355; margin-top: 0; margin-bottom: 20px; font-size: 20px; display: flex; align-items: center; gap: 10px;">
-                    📅 FILTRO POR FECHAS (APLICABLE A TODO EL DASHBOARD)
-                </h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                    <div>
-                        <label style="display: block; margin-bottom: 10px; font-weight: 600; color: #124d2d;">🗓️ Seleccionar Período:</label>
-                        <select id="periodoSelector" style="width: 100%; padding: 14px; border: 2px solid #8B7355; border-radius: 10px; font-size: 16px; background: white; color: #124d2d;">
-                            <option value="todos">📊 TODOS LOS MESES (Valores Acumulados)</option>
-                            <option value="0" >Julio 2026</option><option value="1" selected>Noviembre 2026</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 10px; font-weight: 600; color: #124d2d;">📈 Tipo de Visualización:</label>
-                        <select id="tipoVista" style="width: 100%; padding: 14px; border: 2px solid #8B7355; border-radius: 10px; font-size: 16px; background: white; color: #124d2d;">
-                            <option value="acumulado">📈 Valores Acumulados</option>
-                            <option value="mensual">📅 Valores Mensuales</option>
-                            <option value="porcentaje">📊 Porcentajes y Tendencias</option>
-                        </select>
-                    </div>
-                </div>
-                <div style="margin-top: 20px; display: flex; gap: 15px;">
-                    <button id="aplicarFiltro" style="padding: 14px 28px; background: #8B7355; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 8px;">
-                        🔄 APLICAR FILTRO
-                    </button>
-                    <button id="resetFiltro" style="padding: 14px 28px; background: #f8f9fa; color: #666; border: 2px solid #ddd; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s;">
-                        🗑️ RESTABLECER
-                    </button>
-                </div>
-                <p style="margin-top: 20px; color: #666; font-size: 14px; font-style: italic;">
-                    <strong>💡 Nota:</strong> Este filtro afecta todas las métricas y gráficos del dashboard.
-                    Selecciona un mes específico para ver los valores de ese período, 
-                    o elige "Todos los meses" para ver los valores acumulados totales.
-                </p>
-            </div>
-            
-        
-        <!-- INDICADOR DE FILTRO ACTIVO -->
-        
-        <div id="indicadorFiltro" style="display: none; margin: 15px 0; padding: 15px; background: #e8f5e9; border-radius: 10px; border-left: 5px solid #2e7d32;">
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <span style="font-size: 18px;">✅</span>
-                <div>
-                    <strong>Filtro activo:</strong> Mostrando datos para 
-                    <span id="periodoSeleccionado" style="font-weight: 700; color: #1F7A3E;"></span> | 
-                    Tipo de vista: <span id="tipoVistaSeleccionado" style="font-weight: 700; color: #1F7A3E;"></span>
-                </div>
-            </div>
+        <div style="color: #666; font-size: 15px;">
+            📅 Datos acumulados | 📈 Tendencia: ↗️ +60.5 puntos/mes
         </div>
-        
-
-        <!-- MÉTRICAS DEL SECTOR -->
-        
-                <div style="margin: 40px 0; padding: 30px; background: #F5E6D330; border-radius: 15px; border: 3px solid #8B7355; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
-                    <h3 style="color: #8B7355; margin-top: 0; margin-bottom: 25px; font-size: 22px; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #8B735550; padding-bottom: 15px;">
-                        🏨 MÉTRICAS ESPECÍFICAS DEL SECTOR - HOTELERÍA
-                    </h3>
-                    <p style="color: #666; margin-bottom: 20px; font-size: 15px;">
-                        Métricas específicas para el sector Hotelería. 
-                        <strong>Usa el filtro de fechas para ver valores por mes específico o acumulados.</strong>
-                    </p>
-
-                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 20px;" id="gridMetricasSector">
-                        
-                        <div class="metrica-sector" data-tipo="mensual">
-                            <div style="background: white; padding: 22px; border-radius: 12px; border-left: 5px solid #8B7355; box-shadow: 0 4px 12px rgba(0,0,0,0.06); height: 100%;">
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                                    <div style="font-size: 15px; color: #124d2d; font-weight: 700;">🍽️ Desperdicio por plato</div>
-                                    <div style="font-size: 12px; color: #8B7355; background: #F5E6D3; padding: 4px 10px; border-radius: 20px;">mensual</div>
-                                </div>
-                                <div style="font-size: 32px; font-weight: 800; color: #8B7355; margin-bottom: 8px;">0</div>
-                                <div style="font-size: 15px; color: #666;">g</div>
-                                <div style="font-size: 13px; color: #888; margin-top: 10px; font-style: italic; border-top: 1px solid #f0f0f0; padding-top: 8px;">Gramos de alimento desperdiciado por plato</div>
-                            </div>
-                        </div>
-                        
-                        <div class="metrica-sector" data-tipo="acumulado">
-                            <div style="background: white; padding: 22px; border-radius: 12px; border-left: 5px solid #8B7355; box-shadow: 0 4px 12px rgba(0,0,0,0.06); height: 100%;">
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                                    <div style="font-size: 15px; color: #124d2d; font-weight: 700;">💧 Huella hídrica total</div>
-                                    <div style="font-size: 12px; color: #8B7355; background: #F5E6D3; padding: 4px 10px; border-radius: 20px;">acumulado</div>
-                                </div>
-                                <div style="font-size: 32px; font-weight: 800; color: #8B7355; margin-bottom: 8px;">0</div>
-                                <div style="font-size: 15px; color: #666;">m³</div>
-                                <div style="font-size: 13px; color: #888; margin-top: 10px; font-style: italic; border-top: 1px solid #f0f0f0; padding-top: 8px;">Consumo total de agua</div>
-                            </div>
-                        </div>
-                        
-                        <div class="metrica-sector" data-tipo="porcentaje">
-                            <div style="background: white; padding: 22px; border-radius: 12px; border-left: 5px solid #8B7355; box-shadow: 0 4px 12px rgba(0,0,0,0.06); height: 100%;">
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                                    <div style="font-size: 15px; color: #124d2d; font-weight: 700;">🏭 % Proveedores locales</div>
-                                    <div style="font-size: 12px; color: #8B7355; background: #F5E6D3; padding: 4px 10px; border-radius: 20px;">porcentaje</div>
-                                </div>
-                                <div style="font-size: 32px; font-weight: 800; color: #8B7355; margin-bottom: 8px;">0</div>
-                                <div style="font-size: 15px; color: #666;">%</div>
-                                <div style="font-size: 13px; color: #888; margin-top: 10px; font-style: italic; border-top: 1px solid #f0f0f0; padding-top: 8px;">Porcentaje de proveedores locales regenerativos</div>
-                            </div>
-                        </div>
-                        
-                        <div class="metrica-sector" data-tipo="porcentaje">
-                            <div style="background: white; padding: 22px; border-radius: 12px; border-left: 5px solid #8B7355; box-shadow: 0 4px 12px rgba(0,0,0,0.06); height: 100%;">
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                                    <div style="font-size: 15px; color: #124d2d; font-weight: 700;">🔄 % Reuso toallas/sábanas</div>
-                                    <div style="font-size: 12px; color: #8B7355; background: #F5E6D3; padding: 4px 10px; border-radius: 20px;">porcentaje</div>
-                                </div>
-                                <div style="font-size: 32px; font-weight: 800; color: #8B7355; margin-bottom: 8px;">0</div>
-                                <div style="font-size: 15px; color: #666;">%</div>
-                                <div style="font-size: 13px; color: #888; margin-top: 10px; font-style: italic; border-top: 1px solid #f0f0f0; padding-top: 8px;">Participación en programas de reuso</div>
-                            </div>
-                        </div>
-                        
-                        <div class="metrica-sector" data-tipo="porcentaje">
-                            <div style="background: #f8f9fa; padding: 22px; border-radius: 12px; border-left: 5px solid #ccc; box-shadow: 0 4px 12px rgba(0,0,0,0.04); height: 100%;">
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                                    <div style="font-size: 15px; color: #888; font-weight: 700;">☀️ % Energía solar</div>
-                                    <div style="font-size: 12px; color: #bbb; background: #eee; padding: 4px 10px; border-radius: 20px;">porcentaje</div>
-                                </div>
-                                <div style="font-size: 18px; font-weight: 600; color: #999; margin-bottom: 8px;">Aún no implementado</div>
-                                <div style="font-size: 15px; color: #bbb;">%</div>
-                                <div style="font-size: 13px; color: #ccc; margin-top: 10px; font-style: italic; border-top: 1px solid #eee; padding-top: 8px;">Porcentaje de energía fotovoltaica</div>
-                            </div>
-                        </div>
-                        
-                        <div class="metrica-sector" data-tipo="porcentaje">
-                            <div style="background: white; padding: 22px; border-radius: 12px; border-left: 5px solid #8B7355; box-shadow: 0 4px 12px rgba(0,0,0,0.06); height: 100%;">
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                                    <div style="font-size: 15px; color: #124d2d; font-weight: 700;">📈 % Desviación residuos</div>
-                                    <div style="font-size: 12px; color: #8B7355; background: #F5E6D3; padding: 4px 10px; border-radius: 20px;">porcentaje</div>
-                                </div>
-                                <div style="font-size: 32px; font-weight: 800; color: #8B7355; margin-bottom: 8px;">0</div>
-                                <div style="font-size: 15px; color: #666;">%</div>
-                                <div style="font-size: 13px; color: #888; margin-top: 10px; font-style: italic; border-top: 1px solid #f0f0f0; padding-top: 8px;">Residuos que no van a relleno sanitario</div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-                
-        
-        <!-- MÉTRICAS GENERALES -->
-        
-        
-        <!-- MÉTRICAS SOCIALES -->
-        
-
-        <!-- GRÁFICOS PRINCIPALES -->
-        
-        <div class="charts-grid">
-            <div class="chart-container">
-                <h2>📈 Evolución de CO₂e Evitado (kg)</h2>
-                <div class="chart-wrapper">
-                    <canvas id="chartCO2"></canvas>
-                </div>
-            </div>
-
-            <div class="chart-container">
-                <h2>📊 Evolución del Impacto de Sostenibilidad (%)</h2>
-                <div class="chart-wrapper">
-                    <canvas id="chartPuntaje"></canvas>
-                </div>
-            </div>
-        </div>
-        
-
-        <!-- GRÁFICOS DE ENERGÍA -->
-        
-
-        <!-- GRÁFICOS DE HUELLA HÍDRICA Y COMBUSTIBLE -->
-        
-
-        <!-- GRÁFICOS SECTOR ESPECÍFICOS -->
-        
-
-        <!-- GRÁFICO DE DESPERDICIO POR PLATO (PARA SECTORES ALIMENTICIOS) -->
-        
-
-        <!-- GRÁFICO DE MATERIALES -->
-        
-
-        <!-- CONTRIBUCIÓN A LOS ODS -->
-        <div class="ods-section">
-            <h2>🌍 Contribución a los Objetivos de Desarrollo Sostenible</h2>
-            <div class="ods-container">
-                <span title="Fin de la pobreza">1</span><span title="Igualdad de género">5</span><span title="Energía asequible y no contaminante">7</span><span title="Trabajo decente y crecimiento económico">8</span><span title="Industria, innovación e infraestructura">9</span><span title="Reducción de las desigualdades">10</span><span title="Ciudades y comunidades sostenibles">11</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Vida de ecosistemas terrestres">15</span><span title="Alianzas para lograr los objetivos">17</span>
-            </div>
-            <p style="text-align:center; font-size:14px; color:#666; margin-top:20px; font-style:italic;">
-                Pasa el cursor sobre cada número para ver el objetivo completo
-            </p>
-        </div>
-
-        
-        <div class="footer">
-            <p>📊 Dashboard individual de arcor</p>
-            <p>🌿 Sistema Impacta Verde - Mediciones de sostenibilidad</p>
-            <p style="font-size: 12px; color: #888; margin-top: 10px;">
-                Actualizado: 06/02/2026 15:44
-            </p>
-        </div>
-        
     </div>
 
-    
-    <script>
-        // Datos para gráficos y filtro
-        const mesesLabels = ["Julio 2026", "Noviembre 2026"];
-        const co2Data = [48.14, 1462.99];
-        const puntajeData = [1.8, 62.3];
-        const energiaTotalData = [0.0, 0.0];
-        const porcentajeSolarData = [0, 0];
-        const huellaHidricaData = [0, 0];
-        const combustibleData = [0, 0];
-        const proveedoresData = [0, 0];
-        const reusoData = [0, 0];
-        const desperdicioPlatoData = [0, 0];
-        const materialesLabels = ["Papel", "Pl\u00e1stico", "Tela", "Tecnolog\u00eda", "Borra seca", "Borra h\u00fameda", "Vidrio", "Biodegradables"];
-        const materialesData = [0, 0, 0, 0, 0, 0, 0, 0];
-        const materialesAcumulados = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
-        
-        // Datos mensuales completos para filtrado
-        const datosMensuales = [{"mes": "Julio", "a\u00f1o": "2026", "energia_total": 0.0, "energia_solar": 0.0, "combustible": 0.0, "papel": 0.0, "huella_hidrica": 0.0, "borra_humeda": 0.0, "borra_seca": 0.0, "tela": 0.0, "tecnologia": 0.0, "plastico": 0.0, "biodegradables": 0.0, "vidrio": 0.0, "residuo_organico": 0.0, "residuo_reciclable": 0.0, "residuo_no_reciclable": 0.0}, {"mes": "Noviembre", "a\u00f1o": "2026", "energia_total": 0.0, "energia_solar": 0.0, "combustible": 0.0, "papel": 0.0, "huella_hidrica": 0.0, "borra_humeda": 0.0, "borra_seca": 0.0, "tela": 0.0, "tecnologia": 0.0, "plastico": 0.0, "biodegradables": 0.0, "vidrio": 0.0, "residuo_organico": 0.0, "residuo_reciclable": 0.0, "residuo_no_reciclable": 0.0}];
-        
-        // Variables para almacenar datos filtrados
-        let periodoSeleccionado = 'todos';
-        let tipoVistaSeleccionado = 'acumulado';
-        
-        // Función para formatear números
-        function formatearNumero(numero) {
-            if (typeof numero !== 'number') return numero;
-            if (numero >= 1000) {
-                return (numero / 1000).toFixed(2) + 'k';
-            }
-            return numero.toFixed(2);
-        }
-        
-        // Función para actualizar el indicador de filtro
-        function actualizarIndicadorFiltro() {
-            const indicador = document.getElementById('indicadorFiltro');
-            const periodoSpan = document.getElementById('periodoSeleccionado');
-            const tipoSpan = document.getElementById('tipoVistaSeleccionado');
-            
-            if (periodoSeleccionado === 'todos') {
-                periodoSpan.textContent = 'Todos los meses (Acumulado)';
-                indicador.style.display = 'none';
-            } else {
-                const periodoNombre = mesesLabels[parseInt(periodoSeleccionado)];
-                periodoSpan.textContent = periodoNombre;
-                
-                const tiposVista = {
-                    'acumulado': 'Valores Acumulados',
-                    'mensual': 'Valores Mensuales',
-                    'porcentaje': 'Porcentajes'
-                };
-                tipoSpan.textContent = tiposVista[tipoVistaSeleccionado];
-                indicador.style.display = 'block';
-            }
-        }
-        
-        // Función para calcular valores acumulados hasta un mes específico
-        function calcularAcumuladoHastaMes(indiceMes) {
-            const acumulados = {};
-            
-            // Inicializar acumulados
-            const metricas = ['energia_total', 'energia_solar', 'combustible', 'papel', 
-                            'huella_hidrica', 'borra_humeda', 'borra_seca', 'tela', 
-                            'tecnologia', 'plastico', 'biodegradables', 'vidrio',
-                            'residuo_organico', 'residuo_reciclable', 'residuo_no_reciclable'];
-            
-            metricas.forEach(metrica => {
-                acumulados[metrica] = 0;
-            });
-            
-            // Acumular hasta el mes seleccionado
-            for (let i = 0; i <= indiceMes; i++) {
-                metricas.forEach(metrica => {
-                    if (datosMensuales[i] && datosMensuales[i][metrica]) {
-                        acumulados[metrica] += datosMensuales[i][metrica];
-                    }
-                });
-            }
-            
-            // Calcular porcentajes
-            if (acumulados.energia_total > 0) {
-                acumulados.porcentaje_energia_solar = (acumulados.energia_solar / acumulados.energia_total) * 100;
-            } else {
-                acumulados.porcentaje_energia_solar = 0;
-            }
-            
-            const total_residuos = acumulados.residuo_organico + acumulados.residuo_reciclable + acumulados.residuo_no_reciclable;
-            if (total_residuos > 0) {
-                acumulados.tasa_reciclaje = (acumulados.residuo_reciclable / total_residuos) * 100;
-            } else {
-                acumulados.tasa_reciclaje = 0;
-            }
-            
-            return acumulados;
-        }
-        
-        // Función para actualizar las métricas en la página
-        function actualizarMetricas() {
-            let datosFiltrados;
-            
-            if (periodoSeleccionado === 'todos') {
-                // Calcular acumulados totales
-                datosFiltrados = calcularAcumuladoHastaMes(datosMensuales.length - 1);
-            } else {
-                const indiceMes = parseInt(periodoSeleccionado);
-                
-                if (tipoVistaSeleccionado === 'acumulado') {
-                    // Acumulado hasta el mes seleccionado
-                    datosFiltrados = calcularAcumuladoHastaMes(indiceMes);
-                } else {
-                    // Solo el mes seleccionado
-                    datosFiltrados = datosMensuales[indiceMes] || {};
-                    
-                    // Calcular porcentajes para el mes
-                    if (datosFiltrados.energia_total > 0) {
-                        datosFiltrados.porcentaje_energia_solar = (datosFiltrados.energia_solar / datosFiltrados.energia_total) * 100;
-                    } else {
-                        datosFiltrados.porcentaje_energia_solar = 0;
-                    }
-                    
-                    const total_residuos = (datosFiltrados.residuo_organico || 0) + 
-                                         (datosFiltrados.residuo_reciclable || 0) + 
-                                         (datosFiltrados.residuo_no_reciclable || 0);
-                    if (total_residuos > 0) {
-                        datosFiltrados.tasa_reciclaje = ((datosFiltrados.residuo_reciclable || 0) / total_residuos) * 100;
-                    } else {
-                        datosFiltrados.tasa_reciclaje = 0;
-                    }
-                }
-            }
-            
-            // Mapeo de claves de métricas
-            const mapeoMetricas = {
-                'energia_total_kwh': 'energia_total',
-                'energia_solar_kwh': 'energia_solar',
-                'porcentaje_energia_solar': 'porcentaje_energia_solar',
-                'combustible_estacionario_l': 'combustible',
-                'papel_kg': 'papel',
-                'huella_hidrica_m3': 'huella_hidrica',
-                'borra_humeda_kg': 'borra_humeda',
-                'borra_seca_kg': 'borra_seca',
-                'tela_reutilizada_kg': 'tela',
-                'tecnologia_recuperada_kg': 'tecnologia',
-                'plastico_reutilizado_kg': 'plastico',
-                'materiales_biodegradables_kg': 'biodegradables',
-                'vidrio_reciclado_kg': 'vidrio',
-                'residuo_organico_kg': 'residuo_organico',
-                'residuo_reciclable_kg': 'residuo_reciclable',
-                'residuo_no_reciclable_kg': 'residuo_no_reciclable',
-                'tasa_reciclaje_total': 'tasa_reciclaje'
-            };
-            
-            // Actualizar métricas generales
-            const metricasGenerales = document.querySelectorAll('#gridMetricasGenerales .metrica-general');
-            
-            metricasGenerales.forEach(metrica => {
-                const clave = metrica.getAttribute('data-clave');
-                const claveDatos = mapeoMetricas[clave];
-                const valorElement = metrica.querySelector('.valor-metrica');
-                
-                if (claveDatos && datosFiltrados[claveDatos] !== undefined) {
-                    let valor = datosFiltrados[claveDatos];
-                    
-                    // Formatear según el tipo de métrica
-                    if (clave.includes('porcentaje') || clave.includes('tasa')) {
-                        valorElement.textContent = valor.toFixed(2) + '%';
-                    } else if (valor >= 1000) {
-                        valorElement.textContent = (valor / 1000).toFixed(2) + 'k';
-                    } else {
-                        valorElement.textContent = valor.toFixed(2);
-                    }
-                    
-                    // Cambiar estilo si hay datos
-                    metrica.querySelector('div').style.borderLeftColor = '#1F7A3E';
-                    metrica.querySelector('div').style.background = 'white';
-                } else {
-                    // No hay datos para este período
-                    valorElement.textContent = 'Aún no implementado';
-                    metrica.querySelector('div').style.borderLeftColor = '#ccc';
-                    metrica.querySelector('div').style.background = '#f8f9fa';
-                }
-            });
-            
-            // Actualizar indicador de filtro
-            actualizarIndicadorFiltro();
-            
-            // Actualizar gráficos si es necesario
-            actualizarGraficos();
-        }
-        
-        // Función para actualizar gráficos según el filtro
-        function actualizarGraficos() {
-            // Esta función puede ser extendida para actualizar gráficos dinámicamente
-            console.log('Filtro aplicado: Período =', periodoSeleccionado, 'Tipo =', tipoVistaSeleccionado);
-        }
-        
-        // Inicializar gráficos
-        function inicializarGraficos() {
-            // Gráfico de CO₂
-            if (document.getElementById('chartCO2') && co2Data.length > 0) {
-                const ctx1 = document.getElementById('chartCO2').getContext('2d');
-                new Chart(ctx1, {
-                    type: 'line',
-                    data: {
-                        labels: mesesLabels,
-                        datasets: [{
-                            label: 'CO₂e Evitado (kg)',
-                            data: co2Data,
-                            borderColor: '#1F7A3E',
-                            backgroundColor: 'rgba(31, 122, 62, 0.1)',
-                            borderWidth: 3,
-                            fill: true,
-                            tension: 0.4,
-                            pointBackgroundColor: '#1F7A3E',
-                            pointBorderColor: '#fff',
-                            pointBorderWidth: 2,
-                            pointRadius: 6
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: true,
-                                position: 'top'
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Kilogramos de CO₂e'
-                                }
-                            },
-                            x: {
-                                title: {
-                                    display: true,
-                                    text: 'Período'
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-            
-            // Gráfico de puntaje
-            if (document.getElementById('chartPuntaje') && puntajeData.length > 0) {
-                const ctx2 = document.getElementById('chartPuntaje').getContext('2d');
-                new Chart(ctx2, {
-                    type: 'line',
-                    data: {
-                        labels: mesesLabels,
-                        datasets: [{
-                            label: 'Impacto de Sostenibilidad (%)',
-                            data: puntajeData,
-                            borderColor: '#2ecc71',
-                            backgroundColor: 'rgba(46, 204, 113, 0.1)',
-                            borderWidth: 3,
-                            fill: true,
-                            tension: 0.4,
-                            pointBackgroundColor: '#2ecc71',
-                            pointBorderColor: '#fff',
-                            pointBorderWidth: 2,
-                            pointRadius: 6
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: true,
-                                position: 'top'
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                max: 100,
-                                title: {
-                                    display: true,
-                                    text: 'Impacto (%)'
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-            
-            // Gráfico de energía total
-            if (document.getElementById('chartEnergiaTotal') && energiaTotalData.length > 0) {
-                const ctx3 = document.getElementById('chartEnergiaTotal').getContext('2d');
-                new Chart(ctx3, {
-                    type: 'bar',
-                    data: {
-                        labels: mesesLabels,
-                        datasets: [{
-                            label: 'Energía Total (kWh)',
-                            data: energiaTotalData,
-                            backgroundColor: 'rgba(52, 152, 219, 0.7)',
-                            borderColor: '#2980b9',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: true,
-                                position: 'top'
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Kilovatios-hora (kWh)'
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-            
-            // Gráfico de energía solar
-            if (document.getElementById('chartEnergiaSolar') && porcentajeSolarData.length > 0) {
-                const ctx4 = document.getElementById('chartEnergiaSolar').getContext('2d');
-                new Chart(ctx4, {
-                    type: 'line',
-                    data: {
-                        labels: mesesLabels,
-                        datasets: [{
-                            label: '% Energía Fotovoltaica',
-                            data: porcentajeSolarData,
-                            borderColor: '#f39c12',
-                            backgroundColor: 'rgba(243, 156, 18, 0.1)',
-                            borderWidth: 3,
-                            fill: true,
-                            tension: 0.4,
-                            pointBackgroundColor: '#f39c12',
-                            pointBorderColor: '#fff',
-                            pointBorderWidth: 2,
-                            pointRadius: 6
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: true,
-                                position: 'top'
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                max: 100,
-                                title: {
-                                    display: true,
-                                    text: 'Porcentaje (%)'
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-            
-            // Gráfico de huella hídrica
-            if (document.getElementById('chartHuellaHidrica') && huellaHidricaData.length > 0) {
-                const ctx5 = document.getElementById('chartHuellaHidrica').getContext('2d');
-                new Chart(ctx5, {
-                    type: 'bar',
-                    data: {
-                        labels: mesesLabels,
-                        datasets: [{
-                            label: 'Huella Hídrica (m³)',
-                            data: huellaHidricaData,
-                            backgroundColor: 'rgba(52, 152, 219, 0.7)',
-                            borderColor: '#2980b9',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: true,
-                                position: 'top'
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Metros cúbicos (m³)'
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-            
-            // Gráfico de combustible
-            if (document.getElementById('chartCombustible') && combustibleData.length > 0) {
-                const ctx6 = document.getElementById('chartCombustible').getContext('2d');
-                new Chart(ctx6, {
-                    type: 'bar',
-                    data: {
-                        labels: mesesLabels,
-                        datasets: [{
-                            label: 'Combustible Estacionario (L)',
-                            data: combustibleData,
-                            backgroundColor: 'rgba(231, 76, 60, 0.7)',
-                            borderColor: '#c0392b',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: true,
-                                position: 'top'
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Litros (L)'
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-            
-            // Gráfico de proveedores locales
-            if (document.getElementById('chartProveedores') && proveedoresData.length > 0) {
-                const ctx7 = document.getElementById('chartProveedores').getContext('2d');
-                new Chart(ctx7, {
-                    type: 'line',
-                    data: {
-                        labels: mesesLabels,
-                        datasets: [{
-                            label: '% Proveedores Locales',
-                            data: proveedoresData,
-                            borderColor: '#3498db',
-                            backgroundColor: 'rgba(52, 152, 219, 0.1)',
-                            borderWidth: 3,
-                            fill: true,
-                            tension: 0.4,
-                            pointBackgroundColor: '#3498db',
-                            pointBorderColor: '#fff',
-                            pointBorderWidth: 2,
-                            pointRadius: 6
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: true,
-                                position: 'top'
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                max: 100,
-                                title: {
-                                    display: true,
-                                    text: 'Porcentaje (%)'
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-            
-            // Gráfico de reuso
-            if (document.getElementById('chartReuso') && reusoData.length > 0) {
-                const ctx8 = document.getElementById('chartReuso').getContext('2d');
-                new Chart(ctx8, {
-                    type: 'line',
-                    data: {
-                        labels: mesesLabels,
-                        datasets: [{
-                            label: '% Participación en Reuso',
-                            data: reusoData,
-                            borderColor: '#9b59b6',
-                            backgroundColor: 'rgba(155, 89, 182, 0.1)',
-                            borderWidth: 3,
-                            fill: true,
-                            tension: 0.4,
-                            pointBackgroundColor: '#9b59b6',
-                            pointBorderColor: '#fff',
-                            pointBorderWidth: 2,
-                            pointRadius: 6
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: true,
-                                position: 'top'
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                max: 100,
-                                title: {
-                                    display: true,
-                                    text: 'Porcentaje (%)'
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-            
-            // Gráfico de desperdicio por plato
-            if (document.getElementById('chartDesperdicio') && desperdicioPlatoData.length > 0) {
-                const ctx9 = document.getElementById('chartDesperdicio').getContext('2d');
-                new Chart(ctx9, {
-                    type: 'line',
-                    data: {
-                        labels: mesesLabels,
-                        datasets: [{
-                            label: 'Desperdicio por Plato (g)',
-                            data: desperdicioPlatoData,
-                            borderColor: '#e74c3c',
-                            backgroundColor: 'rgba(231, 76, 60, 0.1)',
-                            borderWidth: 3,
-                            fill: true,
-                            tension: 0.4,
-                            pointBackgroundColor: '#e74c3c',
-                            pointBorderColor: '#fff',
-                            pointBorderWidth: 2,
-                            pointRadius: 6
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: true,
-                                position: 'top'
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Gramos (g)'
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-            
-            // Gráfico de materiales
-            if (document.getElementById('chartMateriales') && materialesData.length > 0) {
-                const ctx10 = document.getElementById('chartMateriales').getContext('2d');
-                new Chart(ctx10, {
-                    type: 'bar',
-                    data: {
-                        labels: materialesLabels,
-                        datasets: [{
-                            label: 'Materiales Recuperados (kg)',
-                            data: materialesData,
-                            backgroundColor: [
-                                '#1F7A3E',
-                                '#2ecc71',
-                                '#3498db',
-                                '#9b59b6',
-                                '#e74c3c',
-                                '#f39c12',
-                                '#1abc9c',
-                                '#16a085'
-                            ],
-                            borderColor: '#124d2d',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: false
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Kilogramos (kg)'
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        }
-        
-        // Configurar eventos del filtro
-        document.addEventListener('DOMContentLoaded', function() {
-            // Inicializar gráficos
-            inicializarGraficos();
-            
-            // Configurar botón de aplicar filtro
-            const aplicarFiltroBtn = document.getElementById('aplicarFiltro');
-            const resetFiltroBtn = document.getElementById('resetFiltro');
-            const periodoSelector = document.getElementById('periodoSelector');
-            const tipoVistaSelector = document.getElementById('tipoVista');
-            
-            if (aplicarFiltroBtn) {
-                aplicarFiltroBtn.addEventListener('click', function() {
-                    periodoSeleccionado = periodoSelector.value;
-                    tipoVistaSeleccionado = tipoVistaSelector.value;
-                    
-                    // Actualizar métricas con el filtro seleccionado
-                    actualizarMetricas();
-                    
-                    // Mostrar notificación
-                    mostrarNotificacion('Filtro aplicado correctamente');
-                });
-            }
-            
-            if (resetFiltroBtn) {
-                resetFiltroBtn.addEventListener('click', function() {
-                    periodoSelector.value = 'todos';
-                    tipoVistaSelector.value = 'acumulado';
-                    periodoSeleccionado = 'todos';
-                    tipoVistaSeleccionado = 'acumulado';
-                    
-                    // Actualizar métricas
-                    actualizarMetricas();
-                    
-                    // Mostrar notificación
-                    mostrarNotificacion('Filtro restablecido');
-                });
-            }
-            
-            // Función para mostrar notificaciones
-            function mostrarNotificacion(mensaje) {
-                // Crear elemento de notificación
-                const notificacion = document.createElement('div');
-                notificacion.style.cssText = `
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    background: #1F7A3E;
-                    color: white;
-                    padding: 15px 25px;
-                    border-radius: 10px;
-                    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                    z-index: 1000;
-                    font-weight: 600;
-                    animation: slideIn 0.3s ease;
-                `;
-                notificacion.textContent = mensaje;
-                document.body.appendChild(notificacion);
-                
-                // Remover después de 3 segundos
-                setTimeout(() => {
-                    notificacion.style.animation = 'slideOut 0.3s ease';
-                    setTimeout(() => {
-                        document.body.removeChild(notificacion);
-                    }, 300);
-                }, 3000);
-            }
-            
-            // Agregar estilos CSS para animaciones
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes slideIn {
-                    from { transform: translateX(100%); opacity: 0; }
-                    to { transform: translateX(0); opacity: 1; }
-                }
-                @keyframes slideOut {
-                    from { transform: translateX(0); opacity: 1; }
-                    to { transform: translateX(100%); opacity: 0; }
-                }
-            `;
-            document.head.appendChild(style);
-        });
+    <div class="kpi-grid">
+        <div class="kpi-card">
+            <div class="kpi-label">Impacto de Sostenibilidad</div>
+            <div class="kpi-value">32.0%</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">CO₂e Evitado</div>
+            <div class="kpi-value">1.5 ton</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Material Recuperado</div>
+            <div class="kpi-value">0.4 ton</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Meses Medidos</div>
+            <div class="kpi-value">2</div>
+        </div>
+    </div>
 
-        console.log('📊 Dashboard cargado con filtros para arcor');
-    </script>
+    <div class="filter-bar">
+        <label style="font-weight: 600; color: #124d2d;">Filtrar por sector:</label>
+        <select onchange="filtrarSector(this.value)">
+            <option value="todos">Todos</option>
+            <option value="restaurante">Restaurante</option>
+            <option value="hoteleria">Hotelería</option>
+            <option value="logistica">Logística</option>
+            <option value="reciclaje">Reciclaje / Economía Circular</option>
+            <option value="textil">Textil / Moda</option>
+        </select>
+    </div>
+
+    <!-- MÉTRICAS GENERALES -->
+    <div class="section">
+        <h2>🌿 Métricas GENERALES (todas las empresas)</h2>
+        <p style="color: #666; margin-bottom: 20px; font-size: 15px;">
+            Qué miden: uso de recursos y eficiencia ambiental básica.
+        </p>
+        
+            <div class="metric">
+                <span>Energía total consumida</span>
+                <span class="na">Aún no se ha comenzado a medir esta variable</span>
+            </div>
+            <div class="metric">
+                <span>Energía de origen fotovoltaico</span>
+                <span class="na">Aún no se ha comenzado a medir esta variable</span>
+            </div>
+            <div class="metric">
+                <span>% de energía renovable sobre el total</span>
+                <span class="na">Aún no se ha comenzado a medir esta variable</span>
+            </div>
+            <div class="metric">
+                <span>Consumo de agua / huella hídrica</span>
+                <span class="na">Aún no se ha comenzado a medir esta variable</span>
+            </div>
+            <div class="metric">
+                <span>Combustible estacionario</span>
+                <span class="na">Aún no se ha comenzado a medir esta variable</span>
+            </div>
+            <div class="metric">
+                <span>Consumo de papel</span>
+                <span class="na">Aún no se ha comenzado a medir esta variable</span>
+            </div>
+            <div class="metric">
+                <span>Gestión de residuos (kg totales gestionados)</span>
+                <span class="na">Aún no se ha comenzado a medir esta variable</span>
+            </div>
+            <div class="metric">
+                <span>Horas de voluntariado</span>
+                <span class="na">Aún no se ha comenzado a medir esta variable</span>
+            </div>
+    </div>
+
+    <!-- MÉTRICAS SOCIALES -->
+    <div class="section">
+        <h2>👥 Métricas SOCIALES (todas las empresas)</h2>
+        <p style="color: #666; margin-bottom: 20px; font-size: 15px;">
+            Qué miden: impacto en la cadena de valor y prácticas responsables.
+        </p>
+        
+            <div class="metric">
+                <span>% de proveedores locales</span>
+                <span class="na">Esta dimensión aún no ha sido abordada por la organización</span>
+            </div>
+            <div class="metric">
+                <span>% de participación en prácticas de reuso / circularidad</span>
+                <span class="na">Esta dimensión aún no ha sido abordada por la organización</span>
+            </div>
+            <div class="metric">
+                <span>Empleo responsable (indicador base)</span>
+                <span class="value">26.15</span>
+            </div>
+            <div class="metric">
+                <span>Nivel de digitalización (indicador base)</span>
+                <span class="na">Esta dimensión aún no ha sido abordada por la organización</span>
+            </div>
+            <div class="metric">
+                <span>Nivel de optimización de procesos (%)</span>
+                <span class="na">Esta dimensión aún no ha sido abordada por la organización</span>
+            </div>
+    </div>
+
+    <!-- MÉTRICAS SECTORIALES -->
+    
+            <div class="section sector hoteleria">
+                <h2>🏨 Sector Hotelería</h2>
+                <div class="metric">
+                    <span>% de toallas reutilizadas</span>
+                    <span class="na">Aún no se ha comenzado a medir esta variable</span>
+                </div>
+                <div class="metric">
+                    <span>% de sábanas reutilizadas</span>
+                    <span class="na">Aún no se ha comenzado a medir esta variable</span>
+                </div>
+                <div class="metric">
+                    <span>% de participación en programas de reuso</span>
+                    <span class="na">Aún no se ha comenzado a medir esta variable</span>
+                </div>
+                <div class="metric">
+                    <span>% uniformes reutilizados</span>
+                    <span class="na">Aún no se ha comenzado a medir esta variable</span>
+                </div>
+            </div>
+
+    <!-- CONTRIBUCIÓN A LOS ODS -->
+    <div class="ods-section">
+        <h2 style="text-align: center; color: #124d2d;">🌍 Contribución a los Objetivos de Desarrollo Sostenible</h2>
+        <div class="ods-container">
+            <span title="Fin de la pobreza">1</span><span title="Igualdad de género">5</span><span title="Energía asequible y no contaminante">7</span><span title="Trabajo decente y crecimiento económico">8</span><span title="Industria, innovación e infraestructura">9</span><span title="Reducción de las desigualdades">10</span><span title="Ciudades y comunidades sostenibles">11</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Vida de ecosistemas terrestres">15</span><span title="Alianzas para lograr los objetivos">17</span>
+        </div>
+        <p style="text-align:center; font-size:14px; color:#666; margin-top:15px; font-style:italic;">
+            Pasa el cursor sobre cada número para ver el objetivo completo
+        </p>
+    </div>
+
+    <div class="footer">
+        <p>📊 Dashboard individual de arcor</p>
+        <p>🌿 Sistema Impacta Verde - Mediciones de sostenibilidad</p>
+        <p style="font-size: 13px; color: #888; margin-top: 10px;">
+            Actualizado: 06/02/2026 17:33 | 
+            Sector: Hotelería | 
+            ID: 4
+        </p>
+    </div>
+
+    <script>
+        function filtrarSector(sector) {
+            const sectores = document.querySelectorAll('.sector');
             
+            sectores.forEach(s => {
+                if (sector === 'todos' || s.classList.contains(sector)) {
+                    s.style.display = 'block';
+                } else {
+                    s.style.display = 'none';
+                }
+            });
+        }
+        
+        // Mostrar solo el sector de la empresa por defecto
+        document.addEventListener('DOMContentLoaded', function() {
+            const sectorEmpresa = "Hotelería".toLowerCase();
+            if (sectorEmpresa) {
+                // Ocultar todos los sectores primero
+                const sectores = document.querySelectorAll('.sector');
+                sectores.forEach(s => {
+                    s.style.display = 'none';
+                });
+                
+                // Mostrar solo el sector de la empresa
+                const sectorElements = document.querySelectorAll(`.${sectorEmpresa}`);
+                sectorElements.forEach(el => {
+                    el.style.display = 'block';
+                });
+            }
+        });
+    </script>
+
 </body>
 </html>
