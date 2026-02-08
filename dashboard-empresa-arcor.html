@@ -256,6 +256,37 @@
         .seccion-metricas {
             margin-bottom: 40px;
         }
+        
+        .contador-energia {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8fff8, white);
+            border-radius: 15px;
+            border: 2px solid #F5E6D3;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .contador-valor {
+            font-size: 42px;
+            font-weight: 800;
+            color: #8B7355;
+            margin: 10px 0;
+        }
+        
+        .contador-subtitulo {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+        }
+        
+        .contador-porcentaje {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2e7d32;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -314,60 +345,33 @@
 
         <!-- MÉTRICAS GENERALES -->
         
-            <div style="margin: 40px 0; padding: 35px; background: linear-gradient(135deg, #F5E6D320, white); border-radius: 18px; border: 3px solid #8B7355; box-shadow: 0 6px 20px rgba(0,0,0,0.08);">
-                <h3 style="color: #8B7355; margin-top: 0; margin-bottom: 30px; font-size: 24px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #8B735550; padding-bottom: 15px;">
+            <div style="margin: 40px 0; padding: 35px; background: linear-gradient(135deg, #F5E6D315, white); border-radius: 20px; border: 3px solid #8B7355; box-shadow: 0 8px 25px rgba(0,0,0,0.08);">
+                <h3 style="color: #8B7355; margin-top: 0; margin-bottom: 30px; font-size: 26px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #8B735540; padding-bottom: 15px;">
                     📋 Métricas Generales - Uso de Recursos
                 </h3>
-                <p style="color: #666; margin-bottom: 25px; font-size: 15px; line-height: 1.5;">
+                <p style="color: #666; margin-bottom: 25px; font-size: 16px; line-height: 1.5;">
                     Estas métricas miden el uso de recursos y eficiencia ambiental básica de todas las empresas.
-                    Los valores son acumulados desde el inicio de las mediciones.
+                    <strong>Valores acumulados mes a mes</strong> desde el inicio de las mediciones.
                 </p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; margin-top: 20px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; margin-top: 20px;">
                     
-                <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #F5E6D3; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s;">
-                    <div style="font-size: 30px; margin-bottom: 15px;">🗑️</div>
-                    <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600;">Residuos gestionados</div>
-                    <div style="font-size: 14px; color: #999; font-style: italic;">Aún no se ha comenzado a medir esta variable</div>
-                </div>
-                
+                    <div style="background: #f9f9f9; padding: 25px; border-radius: 15px; border: 2px dashed #ddd; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+                        <div style="font-size: 40px; margin-bottom: 15px; color: #ccc;">🗑️</div>
+                        <div style="font-size: 15px; color: #999; margin-bottom: 10px; font-weight: 600; height: 40px; display: flex; align-items: center; justify-content: center;">Gestión de residuos</div>
+                        <div style="font-size: 14px; color: #bbb; font-style: italic; padding: 10px; background: #f0f0f0; border-radius: 8px;">Aún no se ha comenzado a medir esta variable</div>
+                    </div>
+                    
                 </div>
             </div>
             
-
-        <!-- GRÁFICOS DE MÉTRICAS GENERALES -->
-        
 
         <!-- MÉTRICAS SOCIALES -->
         
-            <div style="margin: 40px 0; padding: 35px; background: linear-gradient(135deg, #F5E6D320, white); border-radius: 18px; border: 3px solid #8B7355; box-shadow: 0 6px 20px rgba(0,0,0,0.08);">
-                <h3 style="color: #8B7355; margin-top: 0; margin-bottom: 30px; font-size: 24px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #8B735550; padding-bottom: 15px;">
-                    👥 Métricas Sociales - Impacto en Cadena de Valor
-                </h3>
-                <p style="color: #666; margin-bottom: 25px; font-size: 15px; line-height: 1.5;">
-                    Estas métricas miden el impacto en la cadena de valor y prácticas responsables de todas las empresas.
-                    Los valores son promedios de las mediciones realizadas.
-                </p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; margin-top: 20px;">
-                    
-                <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #F5E6D3; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s;">
-                    <div style="font-size: 30px; margin-bottom: 15px;">👥</div>
-                    <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600;">Empleo responsable</div>
-                    
-                        <div style="font-size: 22px; font-weight: bold; color: #8B7355; margin-bottom: 5px;">26.2%</div>
-                        <div style="height: 8px; background: #f0f0f0; border-radius: 4px; overflow: hidden; margin-top: 8px;">
-                            <div style="height: 100%; width: 26.2%; background: #e74c3c; border-radius: 4px;"></div>
-                        </div>
-                        
-                </div>
-                
-                </div>
-            </div>
-            
 
         <!-- MÉTRICAS SECTORIALES -->
         
-            <div style="margin: 40px 0; padding: 35px; background: linear-gradient(135deg, #F5E6D320, white); border-radius: 18px; border: 3px solid #8B7355; box-shadow: 0 6px 20px rgba(0,0,0,0.08);">
-                <h3 style="color: #8B7355; margin-top: 0; margin-bottom: 30px; font-size: 24px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #8B735550; padding-bottom: 15px;">
+            <div style="margin: 40px 0; padding: 35px; background: linear-gradient(135deg, #F5E6D315, white); border-radius: 20px; border: 3px solid #8B7355; box-shadow: 0 8px 25px rgba(0,0,0,0.08);">
+                <h3 style="color: #8B7355; margin-top: 0; margin-bottom: 30px; font-size: 26px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #8B735550; padding-bottom: 15px;">
                     🏨 Métricas Sectoriales - Hotelería
                 </h3>
                 <div style="text-align: center; padding: 40px 20px;">
@@ -381,7 +385,125 @@
             </div>
             
 
-        <!-- GRÁFICOS PRINCIPALES (CO2 y Puntaje) -->
+        <!-- GRÁFICOS DE ACUMULACIÓN -->
+        
+            <div class="charts-grid" style="margin-top: 30px;">
+                <div class="chart-container">
+                    <h2>📈 Evolución Acumulada de Energía</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="chartEnergiaAcumulada"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <h2>📊 Evolución Acumulada de Residuos</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="chartResiduosAcumulados"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+                // Gráfico de energía acumulada
+                if (document.getElementById('chartEnergiaAcumulada')) {
+                    const ctxEnergiaAcum = document.getElementById('chartEnergiaAcumulada').getContext('2d');
+                    new Chart(ctxEnergiaAcum, {
+                        type: 'line',
+                        data: {
+                            labels: ["Julio 2026", "Noviembre 2026"],
+                            datasets: [
+                                {
+                                    label: 'Energía Total Acumulada (kWh)',
+                                    data: [0, 0],
+                                    borderColor: '#FF6384',
+                                    backgroundColor: 'rgba(255, 99, 132, 0.1)',
+                                    borderWidth: 3,
+                                    fill: true,
+                                    tension: 0.3
+                                },
+                                {
+                                    label: 'Energía Solar Acumulada (kWh)',
+                                    data: [0, 0],
+                                    borderColor: '#FFCE56',
+                                    backgroundColor: 'rgba(255, 206, 86, 0.1)',
+                                    borderWidth: 3,
+                                    fill: true,
+                                    tension: 0.3
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: 'kWh acumulados'
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+                
+                // Gráfico de residuos acumulados
+                if (document.getElementById('chartResiduosAcumulados') && [].length > 0) {
+                    const ctxResiduosAcum = document.getElementById('chartResiduosAcumulados').getContext('2d');
+                    new Chart(ctxResiduosAcum, {
+                        type: 'line',
+                        data: {
+                            labels: ["Julio 2026", "Noviembre 2026"],
+                            datasets: [
+                                {
+                                    label: 'Orgánico Acumulado (kg)',
+                                    data: [],
+                                    borderColor: '#4BC0C0',
+                                    backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                                    borderWidth: 3,
+                                    fill: true,
+                                    tension: 0.3
+                                },
+                                {
+                                    label: 'Reciclable Acumulado (kg)',
+                                    data: [],
+                                    borderColor: '#9966FF',
+                                    backgroundColor: 'rgba(153, 102, 255, 0.1)',
+                                    borderWidth: 3,
+                                    fill: true,
+                                    tension: 0.3
+                                },
+                                {
+                                    label: 'No Reciclable Acumulado (kg)',
+                                    data: [],
+                                    borderColor: '#FF6384',
+                                    backgroundColor: 'rgba(255, 99, 132, 0.1)',
+                                    borderWidth: 3,
+                                    fill: true,
+                                    tension: 0.3
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: 'kg acumulados'
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+            </script>
+            
+
+        <!-- GRÁFICOS PRINCIPALES -->
         
         <div class="charts-grid">
             <div class="chart-container">
@@ -431,7 +553,7 @@
             <p>📊 Dashboard individual de arcor</p>
             <p>🌿 Sistema Impacta Verde - Mediciones de sostenibilidad</p>
             <p style="font-size: 12px; color: #888; margin-top: 10px;">
-                Actualizado: 08/02/2026 14:01
+                Actualizado: 08/02/2026 21:01
             </p>
         </div>
     </div>
