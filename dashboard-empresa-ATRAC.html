@@ -142,83 +142,6 @@
             font-size: 14px;
         }
 
-        .charts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        @media (max-width: 768px) {
-            .charts-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .chart-container {
-            background: white;
-            padding: 25px;
-            border-radius: 18px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-            border: 1px solid #e8f4e8;
-        }
-
-        .chart-container h2 {
-            color: #124d2d;
-            margin-bottom: 20px;
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        .chart-wrapper {
-            position: relative;
-            height: 300px;
-            width: 100%;
-        }
-
-        .ods-section {
-            background: white;
-            padding: 30px;
-            border-radius: 18px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-            margin-bottom: 40px;
-            border: 1px solid #e8f4e8;
-        }
-
-        .ods-section h2 {
-            color: #124d2d;
-            margin-bottom: 25px;
-            font-size: 24px;
-            font-weight: 700;
-            text-align: center;
-        }
-
-        .ods-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .ods-container span {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #1F7A3E;
-            color: white;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: help;
-            transition: all 0.3s;
-        }
-
-        .ods-container span:hover {
-            transform: scale(1.1);
-            background: #155b2a;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
         .insignias-section {
             margin-top: 30px;
             background: white;
@@ -312,6 +235,7 @@
             </div>
         </header>
 
+        
         <div class="kpi-grid">
             <div class="kpi-card">
                 <div class="kpi-icon">📈</div>
@@ -342,6 +266,7 @@
                 <div class="kpi-unit">de sostenibilidad</div>
             </div>
         </div>
+        
 
         
         <div style="margin: 40px 0; padding: 30px; background: #f8fff8; border-radius: 15px; border: 3px solid #1F7A3E; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
@@ -568,18 +493,6 @@
             </div>
             
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
-                <div style="font-size: 32px; margin-bottom: 15px; color: #888;">📍</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Km en bicicleta</div>
-                <div style="font-size: 24px; font-weight: bold; color: #888; margin-bottom: 5px;">
-                    0 <span style="font-size: 14px; color: #888;">km</span>
-                </div>
-                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
-                    Acumulado
-                </div>
-                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
-            </div>
-            
-            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
                 <div style="font-size: 32px; margin-bottom: 15px; color: #888;">🌿</div>
                 <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">% Envíos sostenibles</div>
                 <div style="font-size: 24px; font-weight: bold; color: #888; margin-bottom: 5px;">
@@ -595,176 +508,42 @@
         </div>
         
 
-        <!-- GRÁFICOS PRINCIPALES -->
         
-        <div class="charts-grid">
-            <div class="chart-container">
-                <h2>📈 Evolución de CO₂e Evitado</h2>
-                <div class="chart-wrapper">
-                    <canvas id="chartCO2"></canvas>
-                </div>
-            </div>
-
-            <div class="chart-container">
-                <h2>📊 Evolución del Impacto de Sostenibilidad</h2>
-                <div class="chart-wrapper">
-                    <canvas id="chartPuntaje"></canvas>
-                </div>
-            </div>
-        </div>
-        
-
-        <div class="ods-section">
-            <h2>🌍 Contribución a los Objetivos de Desarrollo Sostenible</h2>
-            <div class="ods-container">
-                <span title="Fin de la pobreza">1</span><span title="Igualdad de género">5</span><span title="Energía asequible y no contaminante">7</span><span title="Trabajo decente y crecimiento económico">8</span><span title="Industria, innovación e infraestructura">9</span><span title="Reducción de las desigualdades">10</span><span title="Ciudades y comunidades sostenibles">11</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Vida de ecosistemas terrestres">15</span><span title="Alianzas para lograr los objetivos">17</span>
-            </div>
-            <p style="text-align:center; font-size:14px; color:#666; margin-top:20px; font-style:italic;">
-                Pasa el cursor sobre cada número para ver el objetivo completo
-            </p>
-        </div>
-
-        <div class="insignias-section">
-            <h2>🎖️ Insignias Obtenidas</h2>
-            <div class="insignias-grid">
-                
+                <div class="insignias-section">
+                    <h2>🎖️ Insignias Obtenidas</h2>
+                    <div class="insignias-grid">
+                        
                 <div class="insignia-item">
                     <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Febrero 2026</div>
                     <div style="font-size: 14px; color: #666; margin: 5px 0;">🍂 Bronce</div>
                     <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">60.1%</div>
                 </div>
-            </div>
-        </div>
-
-        <div class="sellos-section">
-            <h2>🏅 Sellos Obtenidos</h2>
-            <div class="sellos-grid">
-                
-                <div class="sello-item">
-                    <div style="font-size: 20px; font-weight: bold; color: #1F7A3E;">Sello 2026</div>
-                    <div style="font-size: 36px; margin: 10px 0;">🍂</div>
-                    <div style="font-size: 16px; color: #666; margin: 5px 0;">Bronce</div>
-                    <div style="font-size: 24px; font-weight: 800; color: #2e7d32;">60.1%</div>
-                    <div style="font-size: 12px; color: #888; margin-top: 10px;">Válido hasta: 09/02/2027</div>
+                    </div>
                 </div>
                 
-            </div>
-        </div>
 
         
+            <div class="sellos-section">
+                <h2>🏅 Sellos Obtenidos</h2>
+                <div class="sellos-grid">
+                    <div class="sello-item">
+                        <div style="font-size: 20px; font-weight: bold; color: #1F7A3E;">Sello 2026</div>
+                        <div style="font-size: 36px; margin: 10px 0;">🍂</div>
+                        <div style="font-size: 16px; color: #666; margin: 5px 0;">Bronce</div>
+                        <div style="font-size: 24px; font-weight: 800; color: #2e7d32;">60.1%</div>
+                        <div style="font-size: 12px; color: #888; margin-top: 10px;">Válido hasta: 09/02/2027</div>
+                    </div>
+                </div>
+            </div>
+            
+
         <div class="footer">
             <p>📊 Dashboard individual de ATRAC</p>
             <p>🌿 Sistema Impacta Verde - Mediciones de sostenibilidad</p>
             <p style="font-size: 12px; color: #888; margin-top: 10px;">
-                Actualizado: 09/02/2026 00:28
+                Actualizado: 09/02/2026 01:41
             </p>
         </div>
-        
     </div>
-
-    
-    <script>
-        // Gráfico de CO₂
-        if (document.getElementById('chartCO2')) {
-            const ctx1 = document.getElementById('chartCO2').getContext('2d');
-            new Chart(ctx1, {
-                type: 'line',
-                data: {
-                    labels: ["Febrero 2026"],
-                    datasets: [{
-                        label: 'CO₂e Evitado (kg)',
-                        data: [1495.22],
-                        borderColor: '#1F7A3E',
-                        backgroundColor: 'rgba(31, 122, 62, 0.1)',
-                        borderWidth: 3,
-                        fill: true,
-                        tension: 0.4,
-                        pointBackgroundColor: '#1F7A3E',
-                        pointBorderColor: '#fff',
-                        pointBorderWidth: 2,
-                        pointRadius: 6
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top'
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Kilogramos de CO₂e'
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Período'
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Gráfico de puntaje
-        if (document.getElementById('chartPuntaje')) {
-            const ctx2 = document.getElementById('chartPuntaje').getContext('2d');
-            new Chart(ctx2, {
-                type: 'line',
-                data: {
-                    labels: ["Febrero 2026"],
-                    datasets: [{
-                        label: 'Impacto de Sostenibilidad (%)',
-                        data: [60.1],
-                        borderColor: '#2ecc71',
-                        backgroundColor: 'rgba(46, 204, 113, 0.1)',
-                        borderWidth: 3,
-                        fill: true,
-                        tension: 0.4,
-                        pointBackgroundColor: '#2ecc71',
-                        pointBorderColor: '#fff',
-                        pointBorderWidth: 2,
-                        pointRadius: 6
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top'
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100,
-                            title: {
-                                display: true,
-                                text: 'Impacto (%)'
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Período'
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        console.log('📊 Gráficos cargados correctamente para ATRAC');
-    </script>
-    
 </body>
 </html>
