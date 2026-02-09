@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - GOGO</title>
+    <title>Dashboard Completo - GOGO</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
     <style>
@@ -163,6 +163,14 @@
             gap: 20px;
         }
 
+        .charts-section {
+            margin: 40px 0;
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+
         .insignias-section, .sellos-section {
             margin-top: 30px;
             background: white;
@@ -191,6 +199,7 @@
         .insignia-item:hover, .sello-item:hover {
             border-color: #1F7A3E;
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .ods-section {
@@ -235,12 +244,29 @@
             border-top: 1px solid #ddd;
         }
 
-        .charts-section {
-            margin: 40px 0;
-            background: white;
-            padding: 30px;
-            border-radius: 18px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .empresa-info {
+                text-align: center;
+                margin-top: 20px;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -250,8 +276,8 @@
             <div class="logo-container">
                 <img class="logo" src="https://res.cloudinary.com/ddubafael/image/upload/v1768315140/logo_institucional_final_tranp._impacta_verde_ec55yo.png" alt="Impacta Verde">
                 <div class="header-text">
-                    <h1>📊 Dashboard de Sostenibilidad</h1>
-                    <div class="subtitle">Seguimiento completo del impacto ambiental y social</div>
+                    <h1>📊 Dashboard Completo de Sostenibilidad</h1>
+                    <div class="subtitle">Sistema de medición de impacto ambiental, social y económico</div>
                 </div>
             </div>
             <div class="empresa-info">
@@ -260,7 +286,7 @@
                     🛠️ Servicios | 🍁 Nivel Actual: Plata
                 </div>
                 <div style="font-size: 14px; color: #888; margin-top: 10px;">
-                    Actualizado: 09/02/2026
+                    ID: 9 | Actualizado: 09/02/2026 16:01
                 </div>
             </div>
         </header>
@@ -298,13 +324,13 @@
         </div>
         
 
-        <!-- MÉTRICAS GENERALES -->
+        <!-- SECCIÓN 1: MÉTRICAS GENERALES -->
         <div class="section" style="background: #f8fff8; border: 3px solid #1F7A3E;">
             <div class="section-title" style="border-bottom-color: #1F7A3E50;">
                 <div style="font-size: 24px; margin-right: 15px;">📊</div>
                 <div>
                     <h2 style="color: #124d2d; margin: 0; font-size: 22px; font-weight: 700;">Métricas Generales</h2>
-                    <p style="color: #666; margin: 5px 0 0 0; font-size: 14px;">Uso de recursos y eficiencia ambiental</p>
+                    <p style="color: #666; margin: 5px 0 0 0; font-size: 14px;">Consumo de recursos y eficiencia operativa</p>
                 </div>
             </div>
             <div class="metrics-grid">
@@ -330,7 +356,7 @@
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
                     Acumulado
                 </div>
-                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
+                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se reporta</div>
             </div>
             
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
@@ -342,7 +368,7 @@
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
                     Porcentaje
                 </div>
-                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
+                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se reporta</div>
             </div>
             
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
@@ -396,13 +422,13 @@
             </div>
         </div>
 
-        <!-- MÉTRICAS SOCIALES -->
+        <!-- SECCIÓN 2: MÉTRICAS SOCIALES -->
         <div class="section" style="background: #f0f8ff; border: 3px solid #3498db;">
             <div class="section-title" style="border-bottom-color: #3498db50;">
                 <div style="font-size: 24px; margin-right: 15px;">👥</div>
                 <div>
                     <h2 style="color: #1F4E7A; margin: 0; font-size: 22px; font-weight: 700;">Métricas Sociales</h2>
-                    <p style="color: #666; margin: 5px 0 0 0; font-size: 14px;">Impacto en personas y comunidad</p>
+                    <p style="color: #666; margin: 5px 0 0 0; font-size: 14px;">Impacto en personas, comunidad y cadena de valor</p>
                 </div>
             </div>
             <div class="metrics-grid">
@@ -444,6 +470,18 @@
             </div>
             
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
+                <div style="font-size: 32px; margin-bottom: 15px; color: #607D8B;">♿</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">% Personas con discapacidad</div>
+                <div style="font-size: 24px; font-weight: bold; color: #607D8B; margin-bottom: 5px;">
+                    7.7 <span style="font-size: 14px; color: #888;">%</span>
+                </div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
+                    Porcentaje
+                </div>
+                
+            </div>
+            
+            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
                 <div style="font-size: 32px; margin-bottom: 15px; color: #009688;">🎓</div>
                 <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Horas capacitación</div>
                 <div style="font-size: 24px; font-weight: bold; color: #009688; margin-bottom: 5px;">
@@ -464,7 +502,7 @@
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
                     Acumulado
                 </div>
-                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
+                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se reporta</div>
             </div>
             
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
@@ -476,7 +514,7 @@
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
                     Porcentaje
                 </div>
-                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
+                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se reporta</div>
             </div>
             
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
@@ -488,7 +526,7 @@
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
                     Porcentaje
                 </div>
-                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
+                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se reporta</div>
             </div>
             
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
@@ -518,14 +556,14 @@
             </div>
         </div>
 
-        <!-- MATERIALES RECUPERADOS -->
+        <!-- SECCIÓN 3: MATERIALES RECUPERADOS -->
         
         <div class="section" style="background: #fff8f0; border: 3px solid #FF9800;">
             <div class="section-title" style="border-bottom-color: #FF980050;">
                 <div style="font-size: 24px; margin-right: 15px;">♻️</div>
                 <div>
                     <h2 style="color: #E65100; margin: 0; font-size: 22px; font-weight: 700;">Materiales Recuperados</h2>
-                    <p style="color: #666; margin: 5px 0 0 0; font-size: 14px;">Economía circular y reutilización</p>
+                    <p style="color: #666; margin: 5px 0 0 0; font-size: 14px;">Economía circular y reutilización de recursos</p>
                 </div>
             </div>
             <div class="metrics-grid">
@@ -615,23 +653,40 @@
             </div>
             
             </div>
+            <div style="text-align: center; margin-top: 20px; padding: 15px; background: #FFF3E0; border-radius: 10px; border-left: 4px solid #FF9800;">
+                <div style="font-size: 16px; font-weight: 600; color: #E65100;">Total materiales recuperados: 436.0 kg</div>
+            </div>
         </div>
         
 
-        <!-- MÉTRICAS SECTORIALES -->
+        <!-- SECCIÓN 4: MÉTRICAS SECTORIALES -->
+        
+        <div class="section" style="background: #FADBD830; border: 3px solid #CB4335;">
+            <div class="section-title" style="border-bottom-color: #CB433550;">
+                <div style="font-size: 24px; margin-right: 15px;">🛠️</div>
+                <div>
+                    <h2 style="color: #CB4335; margin: 0; font-size: 22px; font-weight: 700;">Métricas Sectoriales - Servicios</h2>
+                    <p style="color: #666; margin: 5px 0 0 0; font-size: 14px;">Indicadores específicos del sector Servicios</p>
+                </div>
+            </div>
+            <div class="metrics-grid">
+                <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #888; font-size: 16px;">No hay métricas sectoriales específicas reportadas</div>
+            </div>
+        </div>
         
 
         
 
         
                 <div class="insignias-section">
-                    <h2>🎖️ Insignias Obtenidas</h2>
+                    <h2>🎖️ Insignias Mensuales Obtenidas</h2>
                     <div class="insignias-grid">
                         
                 <div class="insignia-item">
                     <a href="https://impactaverde.com.ar/insignias/insignia_GOGO_Febrero_2026.html" target="_blank" style="text-decoration: none; color: inherit;">
                         <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Febrero 2026</div>
-                        <div style="font-size: 14px; color: #666; margin: 5px 0;">🍁 Plata</div>
+                        <div style="font-size: 36px; margin: 10px 0;">🍁</div>
+                        <div style="font-size: 14px; color: #666; margin: 5px 0;">Plata</div>
                         <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">70.5%</div>
                     </a>
                 </div>
@@ -641,7 +696,7 @@
 
         
                 <div class="sellos-section">
-                    <h2>🏅 Sellos Obtenidos</h2>
+                    <h2>🏅 Sellos Anuales Obtenidos</h2>
                     <div class="sellos-grid">
                         
                 <div class="sello-item">
@@ -650,7 +705,8 @@
                         <div style="font-size: 36px; margin: 10px 0;">🍁</div>
                         <div style="font-size: 16px; color: #666; margin: 5px 0;">Plata</div>
                         <div style="font-size: 24px; font-weight: 800; color: #2e7d32;">70.5%</div>
-                        <div style="font-size: 12px; color: #888; margin-top: 10px;">Válido hasta: 09/02/2027</div>
+                        <div style="font-size: 12px; color: #888; margin-top: 10px;">Emitido: 09/02/2026</div>
+                        <div style="font-size: 12px; color: #888;">Válido hasta: 09/02/2027</div>
                     </a>
                 </div>
                     </div>
@@ -658,22 +714,23 @@
                 
 
         
-            <div class="ods-section">
-                <h2>🌍 Contribuye a los Objetivos de Desarrollo Sostenible (ODS)</h2>
-                <div class="ods-container">
-                    <span title="Fin de la pobreza">1</span><span title="Igualdad de género">5</span><span title="Energía asequible y no contaminante">7</span><span title="Trabajo decente y crecimiento económico">8</span><span title="Industria, innovación e infraestructura">9</span><span title="Reducción de las desigualdades">10</span><span title="Ciudades y comunidades sostenibles">11</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Vida de ecosistemas terrestres">15</span><span title="Alianzas para lograr los objetivos">17</span>
+                <div class="ods-section">
+                    <h2>🌍 Contribuye a los Objetivos de Desarrollo Sostenible (ODS)</h2>
+                    <div class="ods-container">
+                        <span title="Fin de la pobreza">1</span><span title="Igualdad de género">5</span><span title="Energía asequible y no contaminante">7</span><span title="Trabajo decente y crecimiento económico">8</span><span title="Industria, innovación e infraestructura">9</span><span title="Reducción de las desigualdades">10</span><span title="Ciudades y comunidades sostenibles">11</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Vida de ecosistemas terrestres">15</span><span title="Alianzas para lograr los objetivos">17</span>
+                    </div>
+                    <p style="text-align:center; font-size:14px; color:#666; margin-top:12px; font-style:italic;">
+                        Pasa el cursor sobre cada número para ver el objetivo completo
+                    </p>
                 </div>
-                <p style="text-align:center; font-size:14px; color:#666; margin-top:12px; font-style:italic;">
-                    Pasa el cursor sobre cada número para ver el objetivo completo
-                </p>
-            </div>
-            
+                
 
         <div class="footer">
-            <p>📊 Dashboard individual de GOGO</p>
-            <p>🌿 Sistema Impacta Verde - Mediciones de sostenibilidad completas</p>
+            <p>📊 Dashboard completo de GOGO | 🌿 Sistema Impacta Verde</p>
+            <p>📍 Mediciones de sostenibilidad ambiental, social y económica</p>
             <p style="font-size: 12px; color: #888; margin-top: 10px;">
-                Actualizado: 09/02/2026 13:52
+                Generado automáticamente el 09/02/2026 a las 16:01 | 
+                <a href="https://impactaverde.com.ar" style="color: #1F7A3E; text-decoration: none;">impactaverde.com.ar</a>
             </p>
         </div>
     </div>
