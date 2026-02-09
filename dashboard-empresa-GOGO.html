@@ -37,7 +37,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 30px;
-            border: 2px solid #CB4335;
+            border: 3px solid #CB4335;
         }
 
         .logo-container {
@@ -150,6 +150,20 @@
             padding-top: 30px;
             border-top: 1px solid #ddd;
         }
+        
+        .insignia-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #e8f4e8;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .insignia-item:hover {
+            border-color: #1F7A3E;
+            transform: translateY(-3px);
+        }
     </style>
 </head>
 <body>
@@ -161,7 +175,7 @@
                      alt="Impacta Verde">
                 <div class="header-text">
                     <h1>📊 Dashboard de Sostenibilidad</h1>
-                    <div class="subtitle">Seguimiento del impacto ambiental y social - Acumulado todos los meses</div>
+                    <div class="subtitle">Seguimiento del impacto ambiental y social</div>
                 </div>
             </div>
             <div class="empresa-info">
@@ -190,7 +204,6 @@
                 <h3>CO₂e Evitado</h3>
                 <div class="kpi-value">1.7</div>
                 <div class="kpi-unit">toneladas totales</div>
-                <div style="font-size: 12px; color: #666; margin-top: 5px;">Acumulado todos los meses</div>
             </div>
 
             <div class="kpi-card">
@@ -198,7 +211,6 @@
                 <h3>Material Recuperado</h3>
                 <div class="kpi-value">0.5</div>
                 <div class="kpi-unit">toneladas totales</div>
-                <div style="font-size: 12px; color: #666; margin-top: 5px;">Acumulado todos los meses</div>
             </div>
 
             <div class="kpi-card">
@@ -206,7 +218,6 @@
                 <h3>Impacto Promedio</h3>
                 <div class="kpi-value">70.5%</div>
                 <div class="kpi-unit">de sostenibilidad</div>
-                <div style="font-size: 12px; color: #666; margin-top: 5px;">Promedio mensual</div>
             </div>
         </div>
         
@@ -216,8 +227,8 @@
             <div style="display: flex; align-items: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid #1F7A3E50;">
                 <div style="font-size: 24px; margin-right: 15px;">📊</div>
                 <div>
-                    <h3 style="color: #124d2d; margin: 0 0 5px 0; font-size: 22px; font-weight: 700;">Métricas Generales - ACUMULADAS</h3>
-                    <p style="color: #666; margin: 0; font-size: 14px;">Suma de todos los meses registrados</p>
+                    <h3 style="color: #124d2d; margin: 0 0 5px 0; font-size: 22px; font-weight: 700;">Métricas Generales</h3>
+                    <p style="color: #666; margin: 0; font-size: 14px;">Uso de recursos y eficiencia ambiental</p>
                 </div>
             </div>
             
@@ -225,38 +236,26 @@
                 
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
                 <div style="font-size: 32px; margin-bottom: 15px; color: #1F7A3E;">⚡</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Energía total</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Energía (kWh)</div>
                 <div style="font-size: 24px; font-weight: bold; color: #1F7A3E; margin-bottom: 5px;">
                     33.0 <span style="font-size: 14px; color: #888;">kWh</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
-                    Acumulado (Todos Los Meses)
+                    Acumulado
                 </div>
                 
             </div>
             
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
                 <div style="font-size: 32px; margin-bottom: 15px; color: #888;">☀️</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Energía solar</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Energía Fotovoltaica</div>
                 <div style="font-size: 24px; font-weight: bold; color: #888; margin-bottom: 5px;">
                     0 <span style="font-size: 14px; color: #888;">kWh</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
-                    Acumulado (Todos Los Meses)
+                    Acumulado
                 </div>
-                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
-            </div>
-            
-            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
-                <div style="font-size: 32px; margin-bottom: 15px; color: #888;">🌿</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">% Energía renovable</div>
-                <div style="font-size: 24px; font-weight: bold; color: #888; margin-bottom: 5px;">
-                    0 <span style="font-size: 14px; color: #888;">%</span>
-                </div>
-                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
-                    Porcentaje Total
-                </div>
-                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
+                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Sin datos reportados</div>
             </div>
             
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
@@ -266,7 +265,7 @@
                     44.0 <span style="font-size: 14px; color: #888;">m³</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
-                    Acumulado (Todos Los Meses)
+                    Acumulado
                 </div>
                 
             </div>
@@ -278,7 +277,7 @@
                     77.0 <span style="font-size: 14px; color: #888;">L</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
-                    Acumulado (Todos Los Meses)
+                    Acumulado
                 </div>
                 
             </div>
@@ -290,21 +289,33 @@
                     22.0 <span style="font-size: 14px; color: #888;">kg</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
-                    Acumulado (Todos Los Meses)
+                    Acumulado
                 </div>
                 
             </div>
             
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
-                <div style="font-size: 32px; margin-bottom: 15px; color: #607D8B;">🗑️</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Gestión de residuos</div>
-                <div style="font-size: 24px; font-weight: bold; color: #607D8B; margin-bottom: 5px;">
-                    220.0 <span style="font-size: 14px; color: #888;">kg</span>
+                <div style="font-size: 32px; margin-bottom: 15px; color: #888;">🏭</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">% Proveedores locales</div>
+                <div style="font-size: 24px; font-weight: bold; color: #888; margin-bottom: 5px;">
+                    0 <span style="font-size: 14px; color: #888;">%</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
-                    Acumulado (Todos Los Meses)
+                    Porcentaje
                 </div>
-                
+                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Sin datos reportados</div>
+            </div>
+            
+            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
+                <div style="font-size: 32px; margin-bottom: 15px; color: #888;">♻️</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">% Participación en reuso</div>
+                <div style="font-size: 24px; font-weight: bold; color: #888; margin-bottom: 5px;">
+                    0 <span style="font-size: 14px; color: #888;">%</span>
+                </div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
+                    Porcentaje
+                </div>
+                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Sin datos reportados</div>
             </div>
             
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
@@ -314,9 +325,9 @@
                     0 <span style="font-size: 14px; color: #888;">horas</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
-                    Acumulado (Todos Los Meses)
+                    Acumulado
                 </div>
-                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
+                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Sin datos reportados</div>
             </div>
             
             </div>
@@ -328,57 +339,69 @@
             <div style="display: flex; align-items: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid #3498db50;">
                 <div style="font-size: 24px; margin-right: 15px;">👥</div>
                 <div>
-                    <h3 style="color: #1F4E7A; margin: 0 0 5px 0; font-size: 22px; font-weight: 700;">Métricas Sociales - PROMEDIOS</h3>
-                    <p style="color: #666; margin: 0; font-size: 14px;">Promedio mensual de indicadores sociales</p>
+                    <h3 style="color: #1F4E7A; margin: 0 0 5px 0; font-size: 22px; font-weight: 700;">Métricas Sociales</h3>
+                    <p style="color: #666; margin: 0; font-size: 14px;">Impacto social y prácticas responsables</p>
                 </div>
             </div>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
                 
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
-                <div style="font-size: 32px; margin-bottom: 15px; color: #888;">🏭</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">% Proveedores locales</div>
-                <div style="font-size: 24px; font-weight: bold; color: #888; margin-bottom: 5px;">
-                    0 <span style="font-size: 14px; color: #888;">%</span>
-                </div>
-                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
-                    Promedio Mensual
-                </div>
-                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
-            </div>
-            
-            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
-                <div style="font-size: 32px; margin-bottom: 15px; color: #888;">♻️</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">% Participación en reuso</div>
-                <div style="font-size: 24px; font-weight: bold; color: #888; margin-bottom: 5px;">
-                    0 <span style="font-size: 14px; color: #888;">%</span>
-                </div>
-                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
-                    Promedio Mensual
-                </div>
-                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
-            </div>
-            
-            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
                 <div style="font-size: 32px; margin-bottom: 15px; color: #2196F3;">👥</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Empleo responsable</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Total empleados</div>
                 <div style="font-size: 24px; font-weight: bold; color: #2196F3; margin-bottom: 5px;">
-                    13 <span style="font-size: 14px; color: #888;">empleados</span>
+                    13.0 <span style="font-size: 14px; color: #888;">empleados</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
-                    Promedio Mensual
+                    Promedio
                 </div>
                 
             </div>
             
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
-                <div style="font-size: 32px; margin-bottom: 15px; color: #9C27B0;">💻</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Nivel de Digitalización</div>
+                <div style="font-size: 32px; margin-bottom: 15px; color: #3498DB;">📍</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">% Empleados locales</div>
+                <div style="font-size: 24px; font-weight: bold; color: #3498DB; margin-bottom: 5px;">
+                    30.8 <span style="font-size: 14px; color: #888;">%</span>
+                </div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
+                    Porcentaje
+                </div>
+                
+            </div>
+            
+            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
+                <div style="font-size: 32px; margin-bottom: 15px; color: #E91E63;">👩</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">% Mujeres empleadas</div>
+                <div style="font-size: 24px; font-weight: bold; color: #E91E63; margin-bottom: 5px;">
+                    61.5 <span style="font-size: 14px; color: #888;">%</span>
+                </div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
+                    Porcentaje
+                </div>
+                
+            </div>
+            
+            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
+                <div style="font-size: 32px; margin-bottom: 15px; color: #9C27B0;">🎓</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Horas capacitación</div>
                 <div style="font-size: 24px; font-weight: bold; color: #9C27B0; margin-bottom: 5px;">
+                    3.0 <span style="font-size: 14px; color: #888;">horas</span>
+                </div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
+                    Acumulado
+                </div>
+                
+            </div>
+            
+            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
+                <div style="font-size: 32px; margin-bottom: 15px; color: #673AB7;">💻</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Nivel de Digitalización</div>
+                <div style="font-size: 24px; font-weight: bold; color: #673AB7; margin-bottom: 5px;">
                     60.0 <span style="font-size: 14px; color: #888;">%</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
-                    Promedio Mensual
+                    Porcentaje
                 </div>
                 
             </div>
@@ -390,7 +413,7 @@
                     80.0 <span style="font-size: 14px; color: #888;">%</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
-                    Promedio Mensual
+                    Porcentaje
                 </div>
                 
             </div>
@@ -411,24 +434,168 @@
             
             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
                 
-            <div style="grid-column: 1 / -1; text-align: center; padding: 40px 20px; background: white; border-radius: 12px; border: 2px dashed #ddd;">
-                <div style="font-size: 48px; color: #ccc; margin-bottom: 20px;">🏭</div>
-                <div style="color: #888; font-size: 16px; margin-bottom: 10px;">No hay métricas sectoriales específicas reportadas</div>
-                <div style="color: #aaa; font-size: 14px;">Reporta métricas específicas de tu sector en el formulario de datos</div>
+            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
+                <div style="font-size: 32px; margin-bottom: 15px; color: #8B4513;">☕</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Borra húmeda café</div>
+                <div style="font-size: 24px; font-weight: bold; color: #8B4513; margin-bottom: 5px;">
+                    33.0 <span style="font-size: 14px; color: #888;">kg</span>
+                </div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
+                    Acumulado
+                </div>
+                
+            </div>
+            
+            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
+                <div style="font-size: 32px; margin-bottom: 15px; color: #A0522D;">☕</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Borra seca café</div>
+                <div style="font-size: 24px; font-weight: bold; color: #A0522D; margin-bottom: 5px;">
+                    77.0 <span style="font-size: 14px; color: #888;">kg</span>
+                </div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
+                    Acumulado
+                </div>
+                
+            </div>
+            
+            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
+                <div style="font-size: 32px; margin-bottom: 15px; color: #9B59B6;">👕</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Tela reutilizada</div>
+                <div style="font-size: 24px; font-weight: bold; color: #9B59B6; margin-bottom: 5px;">
+                    55.0 <span style="font-size: 14px; color: #888;">kg</span>
+                </div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
+                    Acumulado
+                </div>
+                
+            </div>
+            
+            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
+                <div style="font-size: 32px; margin-bottom: 15px; color: #34495E;">💻</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Tecnología recuperada</div>
+                <div style="font-size: 24px; font-weight: bold; color: #34495E; margin-bottom: 5px;">
+                    99.0 <span style="font-size: 14px; color: #888;">kg</span>
+                </div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
+                    Acumulado
+                </div>
+                
+            </div>
+            
+            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
+                <div style="font-size: 32px; margin-bottom: 15px; color: #3498DB;">🧴</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Plástico reutilizado</div>
+                <div style="font-size: 24px; font-weight: bold; color: #3498DB; margin-bottom: 5px;">
+                    66.0 <span style="font-size: 14px; color: #888;">kg</span>
+                </div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
+                    Acumulado
+                </div>
+                
+            </div>
+            
+            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
+                <div style="font-size: 32px; margin-bottom: 15px; color: #27AE60;">🌱</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Materiales biodegradables</div>
+                <div style="font-size: 24px; font-weight: bold; color: #27AE60; margin-bottom: 5px;">
+                    77.0 <span style="font-size: 14px; color: #888;">kg</span>
+                </div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
+                    Acumulado
+                </div>
+                
+            </div>
+            
+            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
+                <div style="font-size: 32px; margin-bottom: 15px; color: #1ABC9C;">🥂</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Vidrio reciclado</div>
+                <div style="font-size: 24px; font-weight: bold; color: #1ABC9C; margin-bottom: 5px;">
+                    29.0 <span style="font-size: 14px; color: #888;">kg</span>
+                </div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
+                    Acumulado
+                </div>
+                
             </div>
             
             </div>
         </div>
         
 
+        
+
+        
+                <div style="margin: 40px 0; padding: 30px; background: white; border-radius: 18px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); border: 1px solid #e8f4e8;">
+                    <h2 style="color: #124d2d; margin-bottom: 25px; font-size: 22px; font-weight: 700; text-align: center;">🎖️ Insignias Mensuales Obtenidas</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px;">
+                        
+                <div class="insignia-item">
+                    <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Febrero 2026</div>
+                    <div style="font-size: 14px; color: #666; margin: 5px 0;">🍁 Plata</div>
+                    <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">70.5%</div>
+                </div>
+                    </div>
+                </div>
+                
+
+        
+            <div style="margin: 40px 0; padding: 30px; background: white; border-radius: 18px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); border: 1px solid #e8f4e8;">
+                <h2 style="color: #124d2d; margin-bottom: 25px; font-size: 22px; font-weight: 700; text-align: center;">🏅 Sellos Anuales Obtenidos</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; justify-content: center;">
+                    <div style="background: linear-gradient(135deg, #f8fff8 0%, #e8f4e8 100%); padding: 25px; border-radius: 12px; border: 3px solid #1F7A3E; text-align: center; transition: all 0.3s;">
+                        <div style="font-size: 22px; font-weight: bold; color: #1F7A3E;">Sello 2026</div>
+                        <div style="font-size: 42px; margin: 15px 0;">🍁</div>
+                        <div style="font-size: 18px; color: #666; margin: 10px 0;">Plata</div>
+                        <div style="font-size: 28px; font-weight: 800; color: #2e7d32; margin: 15px 0;">70.5%</div>
+                        <div style="font-size: 14px; color: #888; margin-top: 15px;">
+                            <div>Emitido: 09/02/2026</div>
+                            <div>Válido hasta: 09/02/2027</div>
+                            <div style="margin-top: 10px; font-size: 12px; color: #1F7A3E;">N°: IV-9-2026</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+        
+            <div style="margin: 40px 0; padding: 30px; background: linear-gradient(135deg, #f3fff3 0%, #e8f4e8 100%); border-radius: 15px; border: 2px solid #1F7A3E; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                <h3 style="color: #0f5e30; margin-bottom: 25px; font-size: 20px; font-weight: 700; text-align: center;">🌍 Contribución a los Objetivos de Desarrollo Sostenible (ODS)</h3>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 15px;">
+                    <span title="Fin de la pobreza" style="cursor: help;">1</span><span title="Salud y bienestar" style="cursor: help;">3</span><span title="Educación de calidad" style="cursor: help;">4</span><span title="Igualdad de género" style="cursor: help;">5</span><span title="Energía asequible y no contaminante" style="cursor: help;">7</span><span title="Trabajo decente y crecimiento económico" style="cursor: help;">8</span><span title="Industria, innovación e infraestructura" style="cursor: help;">9</span><span title="Reducción de las desigualdades" style="cursor: help;">10</span><span title="Ciudades y comunidades sostenibles" style="cursor: help;">11</span><span title="Producción y consumo responsables" style="cursor: help;">12</span><span title="Acción por el clima" style="cursor: help;">13</span><span title="Vida de ecosistemas terrestres" style="cursor: help;">15</span><span title="Paz, justicia e instituciones sólidas" style="cursor: help;">16</span><span title="Alianzas para lograr los objetivos" style="cursor: help;">17</span>
+                </div>
+                <p style="text-align: center; font-size: 14px; color: #666; margin-top: 20px; font-style: italic;">
+                    Pasa el cursor sobre cada número para ver el objetivo completo
+                </p>
+                <style>
+                    .ods-container span {
+                        display: inline-block;
+                        width: 40px;
+                        height: 40px;
+                        line-height: 40px;
+                        text-align: center;
+                        background: #1F7A3E;
+                        color: white;
+                        border-radius: 50%;
+                        font-weight: bold;
+                        font-size: 16px;
+                        margin: 5px;
+                        box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+                        transition: all 0.3s;
+                    }
+                    .ods-container span:hover {
+                        transform: scale(1.1);
+                        background: #155b2a;
+                        box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+                    }
+                </style>
+            </div>
+            
+
         <div class="footer">
             <p>📊 Dashboard individual de GOGO</p>
             <p>🌿 Sistema Impacta Verde - Mediciones de sostenibilidad</p>
             <p style="font-size: 12px; color: #888; margin-top: 10px;">
-                Actualizado: 09/02/2026 12:32
-            </p>
-            <p style="font-size: 12px; color: #888; margin-top: 5px;">
-                Nota: Los valores acumulados son la suma de todos los meses registrados
+                Actualizado: 09/02/2026 13:02
             </p>
         </div>
     </div>
