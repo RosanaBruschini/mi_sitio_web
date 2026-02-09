@@ -142,6 +142,90 @@
             font-size: 14px;
         }
 
+        .section {
+            margin: 40px 0;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .insignias-section, .sellos-section {
+            margin-top: 30px;
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e8f4e8;
+        }
+
+        .insignias-grid, .sellos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .insignia-item, .sello-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #e8f4e8;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .insignia-item:hover, .sello-item:hover {
+            border-color: #1F7A3E;
+            transform: translateY(-3px);
+        }
+
+        .ods-section {
+            margin-top: 30px;
+            background: linear-gradient(135deg, #f8fff8 0%, #e0f7e9 100%);
+            padding: 30px;
+            border-radius: 18px;
+            border: 2px solid #1F7A3E;
+        }
+
+        .ods-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .ods-container span {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #1F7A3E;
+            color: white;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: help;
+            transition: transform 0.2s;
+        }
+
+        .ods-container span:hover {
+            transform: scale(1.1);
+            background: #155b2a;
+        }
+
         .footer {
             text-align: center;
             color: #888;
@@ -150,18 +234,24 @@
             padding-top: 30px;
             border-top: 1px solid #ddd;
         }
+
+        .charts-section {
+            margin: 40px 0;
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <div class="logo-container">
-                <img class="logo"
-                     src="https://res.cloudinary.com/ddubafael/image/upload/v1768315140/logo_institucional_final_tranp._impacta_verde_ec55yo.png"
-                     alt="Impacta Verde">
+                <img class="logo" src="https://res.cloudinary.com/ddubafael/image/upload/v1768315140/logo_institucional_final_tranp._impacta_verde_ec55yo.png" alt="Impacta Verde">
                 <div class="header-text">
                     <h1>📊 Dashboard de Sostenibilidad</h1>
-                    <div class="subtitle">Seguimiento del impacto ambiental y social</div>
+                    <div class="subtitle">Seguimiento completo del impacto ambiental y social</div>
                 </div>
             </div>
             <div class="empresa-info">
@@ -208,17 +298,16 @@
         </div>
         
 
-        
-        <div style="margin: 40px 0; padding: 30px; background: #f8fff8; border-radius: 15px; border: 3px solid #1F7A3E; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
-            <div style="display: flex; align-items: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid #1F7A3E50;">
+        <!-- MÉTRICAS GENERALES -->
+        <div class="section" style="background: #f8fff8; border: 3px solid #1F7A3E;">
+            <div class="section-title" style="border-bottom-color: #1F7A3E50;">
                 <div style="font-size: 24px; margin-right: 15px;">📊</div>
                 <div>
-                    <h3 style="color: #124d2d; margin: 0 0 5px 0; font-size: 22px; font-weight: 700;">Métricas Generales</h3>
-                    <p style="color: #666; margin: 0; font-size: 14px;">Uso de recursos, eficiencia y transformación digital</p>
+                    <h2 style="color: #124d2d; margin: 0; font-size: 22px; font-weight: 700;">Métricas Generales</h2>
+                    <p style="color: #666; margin: 5px 0 0 0; font-size: 14px;">Uso de recursos y eficiencia ambiental</p>
                 </div>
             </div>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
+            <div class="metrics-grid">
                 
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
                 <div style="font-size: 32px; margin-bottom: 15px; color: #1F7A3E;">⚡</div>
@@ -293,48 +382,34 @@
             </div>
             
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
-                <div style="font-size: 32px; margin-bottom: 15px; color: #9C27B0;">💻</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Digitalización</div>
-                <div style="font-size: 24px; font-weight: bold; color: #9C27B0; margin-bottom: 5px;">
-                    75.0 <span style="font-size: 14px; color: #888;">%</span>
+                <div style="font-size: 32px; margin-bottom: 15px; color: #888;">🗑️</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Gestión de residuos</div>
+                <div style="font-size: 24px; font-weight: bold; color: #888; margin-bottom: 5px;">
+                    0 <span style="font-size: 14px; color: #888;">kg</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
-                    Porcentaje
+                    Acumulado
                 </div>
-                
-            </div>
-            
-            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
-                <div style="font-size: 32px; margin-bottom: 15px; color: #FF9800;">⚙️</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Optimización procesos</div>
-                <div style="font-size: 24px; font-weight: bold; color: #FF9800; margin-bottom: 5px;">
-                    75.0 <span style="font-size: 14px; color: #888;">%</span>
-                </div>
-                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
-                    Porcentaje
-                </div>
-                
+                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
             </div>
             
             </div>
         </div>
-        
 
-        
-        <div style="margin: 40px 0; padding: 30px; background: #f0f8ff; border-radius: 15px; border: 3px solid #3498db; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
-            <div style="display: flex; align-items: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid #3498db50;">
+        <!-- MÉTRICAS SOCIALES -->
+        <div class="section" style="background: #f0f8ff; border: 3px solid #3498db;">
+            <div class="section-title" style="border-bottom-color: #3498db50;">
                 <div style="font-size: 24px; margin-right: 15px;">👥</div>
                 <div>
-                    <h3 style="color: #1F4E7A; margin: 0 0 5px 0; font-size: 22px; font-weight: 700;">Métricas Sociales</h3>
-                    <p style="color: #666; margin: 0; font-size: 14px;">Impacto en personas, comunidades y cadena de valor</p>
+                    <h2 style="color: #1F4E7A; margin: 0; font-size: 22px; font-weight: 700;">Métricas Sociales</h2>
+                    <p style="color: #666; margin: 5px 0 0 0; font-size: 14px;">Impacto en personas y comunidad</p>
                 </div>
             </div>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
+            <div class="metrics-grid">
                 
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
                 <div style="font-size: 32px; margin-bottom: 15px; color: #2196F3;">👥</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Total empleados</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Empleados totales</div>
                 <div style="font-size: 24px; font-weight: bold; color: #2196F3; margin-bottom: 5px;">
                     4.0 <span style="font-size: 14px; color: #888;">empleados</span>
                 </div>
@@ -345,10 +420,22 @@
             </div>
             
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
-                <div style="font-size: 32px; margin-bottom: 15px; color: #4CAF50;">📍</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">% Empleados locales</div>
-                <div style="font-size: 24px; font-weight: bold; color: #4CAF50; margin-bottom: 5px;">
-                    75.0 <span style="font-size: 14px; color: #888;">%</span>
+                <div style="font-size: 32px; margin-bottom: 15px; color: #3F51B5;">🏘️</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Empleados locales</div>
+                <div style="font-size: 24px; font-weight: bold; color: #3F51B5; margin-bottom: 5px;">
+                    36.0 <span style="font-size: 14px; color: #888;">empleados</span>
+                </div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
+                    Acumulado
+                </div>
+                
+            </div>
+            
+            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
+                <div style="font-size: 32px; margin-bottom: 15px; color: #9C27B0;">👩</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">% Mujeres</div>
+                <div style="font-size: 24px; font-weight: bold; color: #9C27B0; margin-bottom: 5px;">
+                    900.0 <span style="font-size: 14px; color: #888;">%</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
                     Porcentaje
@@ -357,32 +444,20 @@
             </div>
             
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
-                <div style="font-size: 32px; margin-bottom: 15px; color: #E91E63;">👩</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">% Mujeres empleadas</div>
-                <div style="font-size: 24px; font-weight: bold; color: #E91E63; margin-bottom: 5px;">
-                    75.0 <span style="font-size: 14px; color: #888;">%</span>
+                <div style="font-size: 32px; margin-bottom: 15px; color: #009688;">🎓</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Horas capacitación</div>
+                <div style="font-size: 24px; font-weight: bold; color: #009688; margin-bottom: 5px;">
+                    48.0 <span style="font-size: 14px; color: #888;">horas</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
-                    Porcentaje
+                    Acumulado
                 </div>
                 
-            </div>
-            
-            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
-                <div style="font-size: 32px; margin-bottom: 15px; color: #888;">♿</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">% Personas con discapacidad</div>
-                <div style="font-size: 24px; font-weight: bold; color: #888; margin-bottom: 5px;">
-                    0 <span style="font-size: 14px; color: #888;">%</span>
-                </div>
-                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
-                    Porcentaje
-                </div>
-                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
             </div>
             
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
                 <div style="font-size: 32px; margin-bottom: 15px; color: #888;">🤝</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Horas de voluntariado</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Horas voluntariado</div>
                 <div style="font-size: 24px; font-weight: bold; color: #888; margin-bottom: 5px;">
                     0 <span style="font-size: 14px; color: #888;">horas</span>
                 </div>
@@ -404,27 +479,74 @@
                 <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
             </div>
             
-            </div>
-        </div>
-        
-
-        
-        <div style="margin: 40px 0; padding: 30px; background: #D4EDDA30; border-radius: 15px; border: 3px solid #2E8B57; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
-            <div style="display: flex; align-items: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid #2E8B5750;">
-                <div style="font-size: 24px; margin-right: 15px;">♻️</div>
-                <div>
-                    <h3 style="color: #2E8B57; margin: 0 0 5px 0; font-size: 22px; font-weight: 700;">Métricas Sectoriales - Reciclaje</h3>
-                    <p style="color: #666; margin: 0; font-size: 14px;">Métricas específicas para el sector Reciclaje</p>
+            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
+                <div style="font-size: 32px; margin-bottom: 15px; color: #888;">♻️</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">% Participación reuso</div>
+                <div style="font-size: 24px; font-weight: bold; color: #888; margin-bottom: 5px;">
+                    0 <span style="font-size: 14px; color: #888;">%</span>
                 </div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
+                    Porcentaje
+                </div>
+                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
             </div>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
+            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
+                <div style="font-size: 32px; margin-bottom: 15px; color: #9C27B0;">💻</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Nivel de Digitalización</div>
+                <div style="font-size: 24px; font-weight: bold; color: #9C27B0; margin-bottom: 5px;">
+                    75.0 <span style="font-size: 14px; color: #888;">%</span>
+                </div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
+                    Porcentaje
+                </div>
+                
+            </div>
+            
+            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
+                <div style="font-size: 32px; margin-bottom: 15px; color: #FF9800;">⚙️</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">% Optimización procesos</div>
+                <div style="font-size: 24px; font-weight: bold; color: #FF9800; margin-bottom: 5px;">
+                    75.0 <span style="font-size: 14px; color: #888;">%</span>
+                </div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
+                    Porcentaje
+                </div>
+                
+            </div>
+            
+            </div>
+        </div>
+
+        <!-- MATERIALES RECUPERADOS -->
+        
+        <div class="section" style="background: #fff8f0; border: 3px solid #FF9800;">
+            <div class="section-title" style="border-bottom-color: #FF980050;">
+                <div style="font-size: 24px; margin-right: 15px;">♻️</div>
+                <div>
+                    <h2 style="color: #E65100; margin: 0; font-size: 22px; font-weight: 700;">Materiales Recuperados</h2>
+                    <p style="color: #666; margin: 5px 0 0 0; font-size: 14px;">Economía circular y reutilización</p>
+                </div>
+            </div>
+            <div class="metrics-grid">
                 
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
-                <div style="font-size: 32px; margin-bottom: 15px; color: #2E8B57;">☕</div>
+                <div style="font-size: 32px; margin-bottom: 15px; color: #795548;">☕</div>
                 <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Borra de café seca</div>
-                <div style="font-size: 24px; font-weight: bold; color: #2E8B57; margin-bottom: 5px;">
+                <div style="font-size: 24px; font-weight: bold; color: #795548; margin-bottom: 5px;">
                     396.0 <span style="font-size: 14px; color: #888;">kg</span>
+                </div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
+                    Acumulado
+                </div>
+                
+            </div>
+            
+            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
+                <div style="font-size: 32px; margin-bottom: 15px; color: #795548;">💧</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px; display: flex; align-items: center; justify-content: center;">Borra de café húmeda</div>
+                <div style="font-size: 24px; font-weight: bold; color: #795548; margin-bottom: 5px;">
+                    792.0 <span style="font-size: 14px; color: #888;">kg</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">
                     Acumulado
@@ -436,11 +558,221 @@
         </div>
         
 
+        <!-- MÉTRICAS SECTORIALES -->
+        
+
+        
+            <div class="charts-section">
+                <h2>📈 Evolución Mensual</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; margin-top: 20px;">
+                    <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.08);">
+                        <h3 style="color: #124d2d; margin-bottom: 20px; font-size: 18px; font-weight: 600;">Evolución de CO₂e Evitado (kg)</h3>
+                        <div style="height: 300px; position: relative;">
+                            <canvas id="chartCO2"></canvas>
+                        </div>
+                    </div>
+                    <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.08);">
+                        <h3 style="color: #124d2d; margin-bottom: 20px; font-size: 18px; font-weight: 600;">Evolución del Impacto de Sostenibilidad (%)</h3>
+                        <div style="height: 300px; position: relative;">
+                            <canvas id="chartPuntaje"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+                // Gráfico de CO₂
+                const ctx1 = document.getElementById('chartCO2').getContext('2d');
+                new Chart(ctx1, {
+                    type: 'line',
+                    data: {
+                        labels: ["Ene 25", "Feb 25", "Mar 25", "Abr 25", "May 25", "Jun 25", "Jul 25", "Ago 25", "Sep 25", "Oct 25", "Nov 25", "Dic 25"],
+                        datasets: [{
+                            label: 'CO₂e Evitado (kg)',
+                            data: [262.26, 258.49, 254.56, 250.78, 246.86, 243.09, 239.16, 235.39, 231.46, 227.69, 223.76, 219.99],
+                            borderColor: '#1F7A3E',
+                            backgroundColor: 'rgba(31, 122, 62, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: true, position: 'top' }
+                        },
+                        scales: {
+                            y: { beginAtZero: true, title: { display: true, text: 'kg CO₂e' } },
+                            x: { title: { display: true, text: 'Mes' } }
+                        }
+                    }
+                });
+                
+                // Gráfico de Puntaje
+                const ctx2 = document.getElementById('chartPuntaje').getContext('2d');
+                new Chart(ctx2, {
+                    type: 'line',
+                    data: {
+                        labels: ["Ene 25", "Feb 25", "Mar 25", "Abr 25", "May 25", "Jun 25", "Jul 25", "Ago 25", "Sep 25", "Oct 25", "Nov 25", "Dic 25"],
+                        datasets: [{
+                            label: 'Impacto de Sostenibilidad (%)',
+                            data: [39.8, 39.7, 39.6, 39.5, 39.5, 39.4, 39.3, 39.2, 39.1, 39.0, 38.9, 38.9],
+                            borderColor: '#3498db',
+                            backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: true, position: 'top' }
+                        },
+                        scales: {
+                            y: { 
+                                beginAtZero: true, 
+                                max: 100,
+                                title: { display: true, text: '% Sostenibilidad' }
+                            },
+                            x: { title: { display: true, text: 'Mes' } }
+                        }
+                    }
+                });
+            </script>
+            
+
+        
+                <div class="insignias-section">
+                    <h2>🎖️ Insignias Obtenidas</h2>
+                    <div class="insignias-grid">
+                        
+                <div class="insignia-item">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Ene_2025.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Ene 2025</div>
+                        <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
+                        <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">39.8%</div>
+                    </a>
+                </div>
+                <div class="insignia-item">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Feb_2025.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Feb 2025</div>
+                        <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
+                        <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">39.7%</div>
+                    </a>
+                </div>
+                <div class="insignia-item">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Mar_2025.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Mar 2025</div>
+                        <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
+                        <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">39.6%</div>
+                    </a>
+                </div>
+                <div class="insignia-item">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Abr_2025.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Abr 2025</div>
+                        <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
+                        <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">39.5%</div>
+                    </a>
+                </div>
+                <div class="insignia-item">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_May_2025.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">May 2025</div>
+                        <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
+                        <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">39.5%</div>
+                    </a>
+                </div>
+                <div class="insignia-item">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Jun_2025.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Jun 2025</div>
+                        <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
+                        <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">39.4%</div>
+                    </a>
+                </div>
+                <div class="insignia-item">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Jul_2025.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Jul 2025</div>
+                        <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
+                        <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">39.3%</div>
+                    </a>
+                </div>
+                <div class="insignia-item">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Ago_2025.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Ago 2025</div>
+                        <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
+                        <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">39.2%</div>
+                    </a>
+                </div>
+                <div class="insignia-item">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Sep_2025.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Sep 2025</div>
+                        <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
+                        <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">39.1%</div>
+                    </a>
+                </div>
+                <div class="insignia-item">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Oct_2025.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Oct 2025</div>
+                        <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
+                        <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">39.0%</div>
+                    </a>
+                </div>
+                <div class="insignia-item">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Nov_2025.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Nov 2025</div>
+                        <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
+                        <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">38.9%</div>
+                    </a>
+                </div>
+                <div class="insignia-item">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Dic_2025.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div style="font-size: 16px; font-weight: bold; color: #1F7A3E;">Dic 2025</div>
+                        <div style="font-size: 14px; color: #666; margin: 5px 0;">🌿 Inicial</div>
+                        <div style="font-size: 18px; font-weight: 800; color: #2e7d32;">38.9%</div>
+                    </a>
+                </div>
+                    </div>
+                </div>
+                
+
+        
+                <div class="sellos-section">
+                    <h2>🏅 Sellos Obtenidos</h2>
+                    <div class="sellos-grid">
+                        
+                <div class="sello-item">
+                    <a href="https://impactaverde.com.ar/sellos/ETIMO_2025_sello.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div style="font-size: 20px; font-weight: bold; color: #1F7A3E;">Sello 2025</div>
+                        <div style="font-size: 36px; margin: 10px 0;">🌿</div>
+                        <div style="font-size: 16px; color: #666; margin: 5px 0;">Inicial</div>
+                        <div style="font-size: 24px; font-weight: 800; color: #2e7d32;">39.3%</div>
+                        <div style="font-size: 12px; color: #888; margin-top: 10px;">Válido hasta: 09/02/2027</div>
+                    </a>
+                </div>
+                    </div>
+                </div>
+                
+
+        
+            <div class="ods-section">
+                <h2>🌍 Contribuye a los Objetivos de Desarrollo Sostenible (ODS)</h2>
+                <div class="ods-container">
+                    <span title="Fin de la pobreza">1</span><span title="Igualdad de género">5</span><span title="Energía asequible y no contaminante">7</span><span title="Trabajo decente y crecimiento económico">8</span><span title="Industria, innovación e infraestructura">9</span><span title="Reducción de las desigualdades">10</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Vida de ecosistemas terrestres">15</span><span title="Alianzas para lograr los objetivos">17</span>
+                </div>
+                <p style="text-align:center; font-size:14px; color:#666; margin-top:12px; font-style:italic;">
+                    Pasa el cursor sobre cada número para ver el objetivo completo
+                </p>
+            </div>
+            
+
         <div class="footer">
             <p>📊 Dashboard individual de ETIMO</p>
-            <p>🌿 Sistema Impacta Verde - Mediciones de sostenibilidad</p>
+            <p>🌿 Sistema Impacta Verde - Mediciones de sostenibilidad completas</p>
             <p style="font-size: 12px; color: #888; margin-top: 10px;">
-                Actualizado: 09/02/2026 13:31
+                Actualizado: 09/02/2026 13:52
             </p>
         </div>
     </div>
