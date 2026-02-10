@@ -109,7 +109,7 @@
         }
         .fila-cuadruple {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 15px;
         }
         .boton-enviar {
@@ -302,7 +302,7 @@
 
                     <div class="grupo-formulario">
                         <label>Fecha de carga automática</label>
-                        <input type="text" id="fechaCargaVisible" value="05/02/2026" readonly
+                        <input type="text" id="fechaCargaVisible" value="10/02/2026" readonly
                                style="background-color: #e9ecef; font-weight: bold;">
                     </div>
                 </div>
@@ -341,11 +341,17 @@
                         <span>🌿</span> Impacto Ambiental - General
                     </div>
 
-                    <div class="fila-cuadruple">
+                    <div class="fila-triple">
                         <div class="grupo-formulario">
                             <label for="energia_kwh">Energía total <span class="unidad">(kWh)</span></label>
                             <input type="number" id="energia_kwh" name="Energia_kWh" step="0.01" min="0" value="0">
-                            
+                        </div>
+
+                        <!-- ✅ MOVIDO DESDE HOTEL: Energía Fotovoltaica -->
+                        <div class="grupo-formulario">
+                            <label for="energia_fotovoltaica_kwh">Energía fotovoltaica <span class="unidad">(kWh)</span></label>
+                            <input type="number" id="energia_fotovoltaica_kwh" name="Energia_Fotovoltaica_kWh" step="0.01" min="0" value="0">
+                            <span class="nota-campo">Energía generada por paneles solares</span>
                         </div>
 
                         <div class="grupo-formulario">
@@ -353,7 +359,9 @@
                             <input type="number" id="combustible_estacionario_l" name="Combustible_Estacionario_L" step="0.01" min="0" value="0">
                             <span class="nota-campo">Para uso estacionario (calderas, generadores, cocinas, vehículos operativos fijos, etc.)</span>
                         </div>
+                    </div>
 
+                    <div class="fila-cuadruple">
                         <div class="grupo-formulario">
                             <label for="papel_kg">Papel <span class="unidad">(kg)</span></label>
                             <input type="number" id="papel_kg" name="Papel_kg" step="0.01" min="0" value="0">
@@ -364,9 +372,7 @@
                             <input type="number" id="agua_m3" name="Agua_m3" step="0.01" min="0" value="0">
                             <span class="nota-campo">Consumo total de agua directo</span>
                         </div>
-                    </div>
 
-                    <div class="fila-cuadruple">
                         <div class="grupo-formulario">
                             <label for="borra_humeda_kg">Borra húmeda <span class="unidad">(kg)</span></label>
                             <input type="number" id="borra_humeda_kg" name="Borra_humeda_kg" step="0.01" min="0" value="0">
@@ -376,7 +382,9 @@
                             <label for="borra_seca_kg">Borra seca <span class="unidad">(kg)</span></label>
                             <input type="number" id="borra_seca_kg" name="Borra_seca_kg" step="0.01" min="0" value="0">
                         </div>
+                    </div>
 
+                    <div class="fila-cuadruple">
                         <div class="grupo-formulario">
                             <label for="tela_reutilizada_kg">Tela reutilizada <span class="unidad">(kg)</span></label>
                             <input type="number" id="tela_reutilizada_kg" name="Tela_reutilizada_kg" step="0.01" min="0" value="0">
@@ -386,9 +394,7 @@
                             <label for="tecnologia_recuperada_kg">Tecnología recuperada <span class="unidad">(kg)</span></label>
                             <input type="number" id="tecnologia_recuperada_kg" name="Tecnologia_recuperada_kg" step="0.01" min="0" value="0">
                         </div>
-                    </div>
 
-                    <div class="fila-cuadruple">
                         <div class="grupo-formulario">
                             <label for="plastico_reutilizado_kg">Plástico reutilizado <span class="unidad">(kg)</span></label>
                             <input type="number" id="plastico_reutilizado_kg" name="Plastico_reutilizado_kg" step="0.01" min="0" value="0">
@@ -401,7 +407,9 @@
                             <input type="number" id="materiales_biodegradables_kg" name="Materiales_biodegradables_kg" step="0.01" min="0" value="0">
                             <span class="nota-campo">Incluye: almidón, PLA, PHA, celulosa y otros bioplásticos certificados compostables</span>
                         </div>
+                    </div>
 
+                    <div class="fila-cuadruple">
                         <div class="grupo-formulario">
                             <label for="vidrio_reciclado_kg">Vidrio reciclado <span class="unidad">(kg)</span></label>
                             <input type="number" id="vidrio_reciclado_kg" name="Vidrio_Reciclado_kg" step="0.01" min="0" value="0">
@@ -411,9 +419,7 @@
                             <label for="residuo_organico_kg">Residuo orgánico <span class="unidad">(kg)</span></label>
                             <input type="number" id="residuo_organico_kg" name="Residuo_Organico_kg" step="0.01" min="0" value="0">
                         </div>
-                    </div>
 
-                    <div class="fila-doble">
                         <div class="grupo-formulario">
                             <label for="residuo_reciclable_kg">Residuo reciclable <span class="unidad">(kg)</span></label>
                             <input type="number" id="residuo_reciclable_kg" name="Residuo_Reciclable_kg" step="0.01" min="0" value="0">
@@ -432,7 +438,7 @@
                         <span>👥</span> Impacto Social - General
                     </div>
 
-                    <div class="fila-triple">
+                    <div class="fila-cuadruple">
                         <div class="grupo-formulario">
                             <label for="cantidad_empleados_total" class="campo-obligatorio">Total empleados</label>
                             <input type="number" id="cantidad_empleados_total" name="Cantidad_Empleados_Total"
@@ -449,9 +455,23 @@
                             <label for="cantidad_mujeres">Empleadas mujeres</label>
                             <input type="number" id="cantidad_mujeres" name="Cantidad_Mujeres" min="0" value="0">
                         </div>
+
+                        <!-- ✅ MOVIDO DESDE HOTEL: % de uniformes circulares -->
+                        <div class="grupo-formulario">
+                            <label for="uniforme_circular">% de uniformes circulares</label>
+                            <select id="uniforme_circular" name="Uniforme_circular_%">
+                                <option value="0">Seleccionar %...</option>
+                                <option value="10">0-20% (Muy bajo)</option>
+                                <option value="30">21-40% (Bajo)</option>
+                                <option value="50">41-60% (Moderado)</option>
+                                <option value="70">61-80% (Alto)</option>
+                                <option value="90">81-100% (Muy alto)</option>
+                            </select>
+                            <span class="nota-campo">Porcentaje de uniformes hechos con materiales reciclados</span>
+                        </div>
                     </div>
 
-                    <div class="fila-triple">
+                    <div class="fila-cuadruple">
                         <div class="grupo-formulario">
                             <label for="cantidad_personas_discapacitadas">Personas con discapacidad</label>
                             <input type="number" id="cantidad_personas_discapacitadas"
@@ -463,6 +483,7 @@
                             <input type="number" id="capacitacion_horas" name="Capacitacion_horas" step="0.1" min="0" value="0">
                         </div>
 
+                        <!-- ✅ Ya está en métricas generales: Nivel de optimización de procesos -->
                         <div class="grupo-formulario">
                             <label for="procesos_optimizados">Nivel de optimización de procesos</label>
                             <select id="procesos_optimizados" name="Procesos_optimizados_%">
@@ -477,9 +498,8 @@
                                 Evalúa el nivel de optimización de los procesos de tu empresa
                             </small>
                         </div>
-                    </div>
 
-                    <div class="fila-triple">
+                        <!-- ✅ Ya está en métricas generales: Nivel de digitalización -->
                         <div class="grupo-formulario">
                             <label for="digitalizacion">Nivel de digitalización</label>
                             <select id="digitalizacion" name="Digitalizacion_%">
@@ -494,7 +514,9 @@
                                 Evalúa el nivel de digitalización de tu empresa
                             </small>
                         </div>
+                    </div>
 
+                    <div class="fila-doble">
                         <div class="grupo-formulario">
                             <label>Política de inclusión</label>
                             <div class="checkbox-container">
@@ -535,11 +557,6 @@
 
                     <div class="fila-cuadruple">
                         <div class="grupo-formulario">
-                            <label for="energia_fotovoltaica_kwh">Energía fotovoltaica <span class="unidad">(kWh)</span></label>
-                            <input type="number" id="energia_fotovoltaica_kwh" name="Energia_Fotovoltaica_kWh" step="0.01" min="0" value="0">
-                        </div>
-
-                        <div class="grupo-formulario">
                             <label for="toallas_reutilizadas">Toallas reutilizadas <span class="unidad">(cantidad)</span></label>
                             <input type="number" id="toallas_reutilizadas" name="Toallas_Reutilizadas" min="0" value="0">
                             <span class="nota-campo">Número de toallas reutilizadas (no lavadas)</span>
@@ -552,21 +569,6 @@
                         </div>
 
                         <div class="grupo-formulario">
-                            <label for="uniforme_circular">% de uniformes circulares</label>
-                            <select id="uniforme_circular" name="Uniforme_circular_%">
-                                <option value="0">Seleccionar %...</option>
-                                <option value="10">0-20% (Muy bajo)</option>
-                                <option value="30">21-40% (Bajo)</option>
-                                <option value="50">41-60% (Moderado)</option>
-                                <option value="70">61-80% (Alto)</option>
-                                <option value="90">81-100% (Muy alto)</option>
-                            </select>
-                            <span class="nota-campo">Porcentaje de uniformes hechos con materiales reciclados</span>
-                        </div>
-                    </div>
-
-                    <div class="fila-cuadruple">
-                        <div class="grupo-formulario">
                             <label for="participacion_reuso_personas">Participación programa reúso <span class="unidad">(personas)</span></label>
                             <input type="number" id="participacion_reuso_personas" name="Participacion_Reuso_Personas" min="0" value="0">
                             <span class="nota-campo">N° de huéspedes que participan del programa</span>
@@ -577,7 +579,9 @@
                             <input type="number" id="inversion_conservacion_usd" name="Inversion_Conservacion_USD" step="0.01" min="0" value="0">
                             <span class="nota-campo">Inversión monetaria en proyectos</span>
                         </div>
+                    </div>
 
+                    <div class="fila-cuadruple">
                         <div class="grupo-formulario">
                             <label for="horas_voluntariado">Horas de voluntariado <span class="unidad">(horas)</span></label>
                             <input type="number" id="horas_voluntariado" name="Horas_Voluntariado" step="0.5" min="0" value="0">
@@ -595,9 +599,7 @@
                             </select>
                             <span class="nota-campo">Proveedores con prácticas regenerativas. <strong>Este dato solo debe completarse una vez (hotel o restaurante).</strong></span>
                         </div>
-                    </div>
 
-                    <div class="fila-doble">
                         <div class="grupo-formulario">
                             <label for="satisfaccion_sostenibilidad">Satisfacción huésped sostenibilidad</label>
                             <select id="satisfaccion_sostenibilidad" name="Satisfaccion_Sostenibilidad">
@@ -999,6 +1001,7 @@
 
                 // Impacto Ambiental General
                 'Energia_kWh': parseFloat(document.getElementById('energia_kwh').value) || 0,
+                'Energia_Fotovoltaica_kWh': parseFloat(document.getElementById('energia_fotovoltaica_kwh').value) || 0, // ✅ AHORA SIEMPRE VISIBLE
                 'Combustible_Estacionario_L': parseFloat(document.getElementById('combustible_estacionario_l').value) || 0,
                 'Papel_kg': parseFloat(document.getElementById('papel_kg').value) || 0,
                 'Agua_m3': parseFloat(document.getElementById('agua_m3').value) || 0,
@@ -1022,16 +1025,15 @@
                 'Politica_inclusion': document.getElementById('politica_inclusion').checked ? 'Sí' : 'No',
                 'Procesos_optimizados_%': parseFloat(document.getElementById('procesos_optimizados').value) || 0,
                 'Digitalizacion_%': parseFloat(document.getElementById('digitalizacion').value) || 0,
+                'Uniforme_circular_%': parseInt(document.getElementById('uniforme_circular').value) || 0, // ✅ AHORA SIEMPRE VISIBLE
 
                 // Hotel (solo si la sección está visible)
                 'Total_Habitaciones': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('total_habitaciones').value) || 0,
                 'Huespedes_Totales': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('huespedes_totales').value) || 0,
                 'Noches_Vendidas': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('noches_vendidas').value) || 0,
                 'Habitaciones_Ocupadas': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('habitaciones_ocupadas').value) || 0,
-                'Energia_Fotovoltaica_kWh': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('energia_fotovoltaica_kwh').value) || 0,
                 'Toallas_Reutilizadas': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('toallas_reutilizadas').value) || 0,
                 'Sabanas_Reutilizadas': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('sabanas_reutilizadas').value) || 0,
-                'Uniforme_circular_%': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('uniforme_circular').value) || 0,
                 'Inversion_Conservacion_USD': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('inversion_conservacion_usd').value) || 0,
                 'Horas_Voluntariado': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('horas_voluntariado').value) || 0,
                 'Participacion_Reuso_Personas': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('participacion_reuso_personas').value) || 0,
@@ -1087,8 +1089,8 @@
                                        'residuo_reciclable_kg', 'residuo_no_reciclable_kg',
                                        'comentarios', 'link_evidencia', 'agua_m3', 'politica_inclusion',
                                        'vidrio_reciclado_kg', 'total_habitaciones', 'huespedes_totales', 'noches_vendidas',
-                                       'habitaciones_ocupadas', 'energia_fotovoltaica_kwh',
-                                       'toallas_reutilizadas', 'sabanas_reutilizadas', 'uniforme_circular',
+                                       'habitaciones_ocupadas', 'energia_fotovoltaica_kwh', // ✅ AHORA EN GENERAL
+                                       'toallas_reutilizadas', 'sabanas_reutilizadas', 'uniforme_circular', // ✅ AHORA EN GENERAL
                                        'inversion_conservacion_usd', 'horas_voluntariado', 'participacion_reuso_personas',
                                        'proveedores_locales_regenerativos', 'proveedores_locales_regenerativos_rest', 'satisfaccion_sostenibilidad',
                                        'platos_servidos', 'desperdicio_alimentos_kg', 'aceite_usado_litros',
