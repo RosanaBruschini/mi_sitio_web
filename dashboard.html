@@ -320,7 +320,7 @@
             </div>
             <div class="stats-header">
                 <div class="update-time">
-                    ⏰ Actualizado automáticamente: 10/02/2026 00:10
+                    ⏰ Actualizado automáticamente: 10/02/2026 01:35
                 </div>
                 <div style="font-size: 18px; font-weight: 600; color: #1F7A3E;">
                     9 empresas activas
@@ -388,7 +388,7 @@
                 <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
                     <div>
                         <h3 style="color: #124d2d; margin: 0 0 5px 0; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-                            🏨 HOTELERÍA (4 empresas)
+                            🏨 HOTELERÍA (3 empresas)
                         </h3>
                         <div style="font-size: 14px; color: #666; display: flex; align-items: center; gap: 5px;">
                             <span style="background: #F5E6D3; padding: 2px 8px; border-radius: 4px; border: 1px solid #8B7355;">🎨 #F5E6D3</span>
@@ -462,6 +462,49 @@
                     <div style="text-align: center; padding: 10px; background: rgba(255,255,255,0.7); border-radius: 8px;">
                         <div style="font-size: 12px; color: #666;">Impacto promedio</div>
                         <div style="font-size: 16px; font-weight: 700; color: #1F7A3E;">60.1%</div>
+                    </div>
+                    <div style="text-align: center; padding: 10px; background: rgba(255,255,255,0.7); border-radius: 8px;">
+                        <div style="font-size: 12px; color: #666;">Tendencia</div>
+                        <div style="font-size: 16px; font-weight: 700; color: #1F7A3E;">➡️ 0.0</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="border: 3px solid #CC5500; border-radius: 15px; padding: 20px; margin-bottom: 20px; background: linear-gradient(135deg, #FFD8B120, white);">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                    <div>
+                        <h3 style="color: #124d2d; margin: 0 0 5px 0; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                            🍽️ RESTAURANTE (1 empresas)
+                        </h3>
+                        <div style="font-size: 14px; color: #666; display: flex; align-items: center; gap: 5px;">
+                            <span style="background: #FFD8B1; padding: 2px 8px; border-radius: 4px; border: 1px solid #CC5500;">🎨 #FFD8B1</span>
+                            <span>Tendencia: ➡️ 0.0 pts/mes</span>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 20px; font-weight: 700; color: #1F7A3E;">0%</div>
+                        <div style="font-size: 16px;">🍂</div>
+                    </div>
+                </div>
+
+                <div style="margin: 15px 0;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span style="font-size: 14px; color: #666;">CO₂ evitado</span>
+                        <span style="font-weight: 700; color: #1F7A3E;">0 ton</span>
+                    </div>
+                    <div style="height: 8px; background: #f0f0f0; border-radius: 4px; overflow: hidden;">
+                        <div style="height: 100%; width: 100%; background: #CC5500; border-radius: 4px;"></div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 15px;">
+                    <div style="text-align: center; padding: 10px; background: rgba(255,255,255,0.7); border-radius: 8px;">
+                        <div style="font-size: 12px; color: #666;">Material recuperado</div>
+                        <div style="font-size: 16px; font-weight: 700; color: #1F7A3E;">0 ton</div>
+                    </div>
+                    <div style="text-align: center; padding: 10px; background: rgba(255,255,255,0.7); border-radius: 8px;">
+                        <div style="font-size: 12px; color: #666;">Impacto promedio</div>
+                        <div style="font-size: 16px; font-weight: 700; color: #1F7A3E;">0%</div>
                     </div>
                     <div style="text-align: center; padding: 10px; background: rgba(255,255,255,0.7); border-radius: 8px;">
                         <div style="font-size: 12px; color: #666;">Tendencia</div>
@@ -544,12 +587,19 @@
             
             <div class="sector-info" id="infoHoteleria">
                 <h4>🏨 Sector Hotelería</h4>
-                <p>🏢 <strong>Empresas:</strong> 4</p>
+                <p>🏢 <strong>Empresas:</strong> 3</p>
                 <p>🌍 <strong>CO₂ evitado:</strong> 1.5 ton</p>
                 <p>📈 <strong>Tendencia:</strong> 30.25 pts/mes</p>
             </div>
             
 
+            
+            <div class="sector-info" id="infoRestaurante">
+                <h4>🍽️ Sector Restaurante</h4>
+                <p>🏢 <strong>Empresas:</strong> 1</p>
+                <p>🌍 <strong>CO₂ evitado:</strong> 0 ton</p>
+                <p>📈 <strong>Tendencia:</strong> 0 pts/mes</p>
+            </div>
             
 
             
@@ -668,9 +718,9 @@
 
     <script>
         // Datos para gráficos
-        const sectorLabels = ["Reciclaje", "Hoteler\u00eda", "Log\u00edstica", "Servicios"];
-        const sectorEmpresas = [3, 4, 1, 1];
-        const sectorColors = ["#2E8B57", "#8B7355", "#1E90FF", "#CB4335"];
+        const sectorLabels = ["Reciclaje", "Hoteler\u00eda", "Restaurante", "Log\u00edstica", "Servicios"];
+        const sectorEmpresas = [3, 3, 1, 1, 1];
+        const sectorColors = ["#2E8B57", "#8B7355", "#CC5500", "#1E90FF", "#CB4335"];
 
         // Gráfico de sectores
         if (document.getElementById('chartSectores') && sectorLabels.length > 0) {
