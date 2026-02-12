@@ -6,190 +6,188 @@
     <title>Insignia Mensual - ETIMO</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
     <style>
-
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f4f7f4;
-    color: #1d1d1d;
-}
-.contenedor {
-    max-width: 700px;
-    margin: 30px auto;
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    border: 4px solid #2E8B57;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
-}
-.header {
-    position: relative;
-    height: 100px;
-    margin-bottom: 20px;
-}
-.logo {
-    height: 100px;
-    position: absolute;
-    left: 10px;
-    top: 0;
-}
-.header-titulo {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 22px;
-    font-weight: 700;
-    color: #287a48;
-    text-align: center;
-    width: 100%;
-}
-.qr {
-    position: absolute;
-    top: 0;
-    right: 10px;
-    text-align: center;
-}
-.qr img {
-    width: 100px;
-    height: 100px;
-}
-.bloque {
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 8px;
-    border: 2px solid #D8EEDB;
-    background: #F9FFF9;
-}
-.bloque h2 {
-    margin: 0 0 12px 0;
-    color: #124d2d;
-    font-size: 20px;
-    text-transform: uppercase;
-    font-weight: 700;
-}
-.fila {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    font-size: 16px;
-}
-.etiqueta {
-    font-weight: 600;
-    color: #124d2d;
-}
-.valor {
-    font-weight: 500;
-    color: #1a1a1a;
-}
-.equivalencia {
-    font-size: 16px;
-    color: #2e7d32;
-    margin: 12px 0;
-    font-weight: 500;
-    text-align: center;
-    background: #f8fff8;
-    padding: 12px;
-    border-radius: 8px;
-    border-left: 4px solid #2E8B57;
-}
-.btn-descargar {
-    margin: 20px auto 10px auto;
-    display: block;
-    background: #1F7A3E;
-    color: white;
-    border: none;
-    padding: 12px 22px;
-    font-size: 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: 0.3s;
-}
-.btn-descargar:hover {
-    background: #155b2a;
-}
-.metricas {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-top: 15px;
-}
-.metrica {
-    background: #f0f8f0;
-    padding: 10px;
-    border-radius: 6px;
-    text-align: center;
-    border: 1px solid #d0e8d0;
-}
-.ods-box {
-    margin-top: 15px;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #D8EEDB;
-    background: #F3FFF3;
-}
-.ods-box h3 {
-    color: #0f5e30;
-    margin: 0 0 10px 0;
-    font-size: 16px;
-    text-align: center;
-}
-.ods-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 10px;
-}
-.ods-container span {
-    display: inline-block;
-    padding: 6px 12px;
-    background: #1F7A3E;
-    color: white;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: help;
-    transition: transform 0.2s;
-}
-.ods-container span:hover {
-    transform: scale(1.1);
-    background: #155b2a;
-}
-@media (max-width: 768px) {
-    .contenedor {
-        margin: 15px;
-        padding: 20px;
-    }
-    .header {
-        height: auto;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .logo {
-        position: static;
-        height: 80px;
-        margin-bottom: 10px;
-    }
-    .header-titulo {
-        position: static;
-        transform: none;
-        font-size: 18px;
-        margin-bottom: 10px;
-    }
-    .qr {
-        position: static;
-        margin: 10px auto;
-    }
-    .metricas {
-        grid-template-columns: 1fr;
-    }
-}
-
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7f4;
+            color: #1d1d1d;
+        }
+        .contenedor {
+            max-width: 700px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            border: 4px solid #2E8B57;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+        }
+        .header {
+            position: relative;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .logo {
+            height: 100px;
+            position: absolute;
+            left: 10px;
+            top: 0;
+        }
+        .header-titulo {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 22px;
+            font-weight: 700;
+            color: #287a48;
+            text-align: center;
+            width: 100%;
+        }
+        .qr {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            text-align: center;
+        }
+        .qr img {
+            width: 100px;
+            height: 100px;
+        }
+        .bloque {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #D8EEDB;
+            background: #F9FFF9;
+        }
+        .bloque h2 {
+            margin: 0 0 12px 0;
+            color: #124d2d;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .fila {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 16px;
+        }
+        .etiqueta {
+            font-weight: 600;
+            color: #124d2d;
+        }
+        .valor {
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+        .equivalencia {
+            font-size: 16px;
+            color: #2e7d32;
+            margin: 12px 0;
+            font-weight: 500;
+            text-align: center;
+            background: #f8fff8;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #2E8B57;
+        }
+        .btn-descargar {
+            margin: 20px auto 10px auto;
+            display: block;
+            background: #1F7A3E;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-descargar:hover {
+            background: #155b2a;
+        }
+        .metricas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .metrica {
+            background: #f0f8f0;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid #d0e8d0;
+        }
+        .ods-box {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #D8EEDB;
+            background: #F3FFF3;
+        }
+        .ods-box h3 {
+            color: #0f5e30;
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            text-align: center;
+        }
+        .ods-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .ods-container span {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #1F7A3E;
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: help;
+            transition: transform 0.2s;
+        }
+        .ods-container span:hover {
+            transform: scale(1.1);
+            background: #155b2a;
+        }
+        @media (max-width: 768px) {
+            .contenedor {
+                margin: 15px;
+                padding: 20px;
+            }
+            .header {
+                height: auto;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .logo {
+                position: static;
+                height: 80px;
+                margin-bottom: 10px;
+            }
+            .header-titulo {
+                position: static;
+                transform: none;
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .qr {
+                position: static;
+                margin: 10px auto;
+            }
+            .metricas {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -209,12 +207,12 @@ body {
         <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor">ETIMO</span></div>
         <div class="fila"><span class="etiqueta">Período:</span> <span class="valor">Feb 2025</span></div>
         
-<div class="fila" style="background:#D4EDDA; padding: 10px; border-radius: 8px; margin: 10px 0; border-left: 5px solid #2E8B57;">
-    <span class="etiqueta">Sector:</span>
-    <span class="valor" style="font-weight: 700; color: #2E8B57;">
-        Reciclaje
-    </span>
-</div>
+            <div class="fila" style="background:#D4EDDA; padding: 10px; border-radius: 8px; margin: 10px 0; border-left: 5px solid #2E8B57;">
+                <span class="etiqueta">🏷️ Sector:</span>
+                <span class="valor" style="font-weight: 700; color: #2E8B57;">
+                    ♻️ Reciclaje
+                </span>
+            </div>
         <div class="fila"><span class="etiqueta">Puntaje mensual:</span> <span class="valor" style="font-weight: bold; color: #1F7A3E; font-size: 18px;">39.7%</span></div>
 
         <div class="equivalencia">
@@ -224,22 +222,22 @@ body {
 
         <div class="metricas">
             
-<div class="metrica">
-    <div style="font-size:14px; color:#124d2d; font-weight:600;">CO₂e evitado</div>
-    <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">258.49 kg</div>
-</div>
-<div class="metrica">
-    <div style="font-size:14px; color:#124d2d; font-weight:600;">Material recuperado</div>
-    <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">101.8 kg</div>
-</div>
-<div class="metrica">
-    <div style="font-size:14px; color:#124d2d; font-weight:600;">Impacto social</div>
-    <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">38.7 %</div>
-</div>
-<div class="metrica">
-    <div style="font-size:14px; color:#124d2d; font-weight:600;">Impacto digital</div>
-    <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">75.0 %</div>
-</div>
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">CO₂e evitado</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">258.49 kg</div>
+            </div>
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">Material recuperado</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">101.8 kg</div>
+            </div>
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">Impacto social</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">38.7 %</div>
+            </div>
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">Impacto digital</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">75.0 %</div>
+            </div>
         </div>
 
         <div class="ods-box">
@@ -273,6 +271,7 @@ document.getElementById("descargar").addEventListener("click", function() {
             link.href = canvas.toDataURL("image/png");
             document.body.appendChild(link);
             link.click();
+            document.body.removeChild(link);
         }).finally(() => {
             boton.textContent = textoOriginal;
             boton.disabled = false;
