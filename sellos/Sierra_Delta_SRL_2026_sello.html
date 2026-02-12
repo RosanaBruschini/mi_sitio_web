@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sello Anual - Sierra Delta SRL</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7f4;
+            color: #1d1d1d;
+        }
+        .contenedor {
+            max-width: 750px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 14px;
+            border: 5px solid #CC5500;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        .header {
+            position: relative;
+            height: 110px;
+        }
+        .logo {
+            height: 120px;
+            position: absolute;
+            left: 15px;
+            top: -5px;
+        }
+        .header-subtitulo {
+            position: absolute;
+            left: 50%;
+            top: 40px;
+            transform: translateX(-50%);
+            font-size: 24px;
+            font-weight: 700;
+            color: #287a48;
+            text-align: center;
+        }
+        .qr {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            text-align: center;
+        }
+        .qr img {
+            width: 120px;
+            height: 120px;
+        }
+        .bloque {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #D8EEDB;
+            background: #F9FFF9;
+        }
+        .bloque h2 {
+            margin: 0 0 15px 0;
+            color: #124d2d;
+            font-size: 22px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .fila {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 17px;
+        }
+        .etiqueta {
+            font-weight: 600;
+            color: #124d2d;
+        }
+        .equivalencia {
+            font-size: 17px;
+            color: #2e7d32;
+            margin: 15px 0;
+            font-weight: 500;
+            text-align: center;
+            background: #f8fff8;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #CC5500;
+        }
+        .ods-box {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #D8EEDB;
+            background: #F3FFF3;
+        }
+        .ods-box h3 {
+            margin-top: 0;
+            color: #0f5e30;
+            font-weight: 700;
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .ods-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .ods-container span {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #1F7A3E;
+            color: white;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: help;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .ods-container span:hover {
+            transform: scale(1.1);
+            background: #155b2a;
+        }
+        .btn-descargar {
+            margin: 25px auto 10px auto;
+            display: block;
+            background: #1F7A3E;
+            color: white;
+            border: none;
+            padding: 14px 26px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-descargar:hover {
+            background: #155b2a;
+        }
+        @media (max-width: 768px) {
+            .contenedor {
+                margin: 20px;
+                padding: 25px;
+            }
+            .header {
+                height: auto;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 25px;
+            }
+            .logo {
+                position: static;
+                height: 100px;
+                margin-bottom: 15px;
+            }
+            .header-subtitulo {
+                position: static;
+                transform: none;
+                font-size: 22px;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            .qr {
+                position: static;
+                margin: 15px auto;
+            }
+            .fila {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 10px;
+            }
+            .ods-container {
+                gap: 6px;
+            }
+            .ods-container span {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+    <div class="header">
+        <img class="logo"
+             src="https://res.cloudinary.com/ddubafael/image/upload/v1768315140/logo_institucional_final_tranp._impacta_verde_ec55yo.png"
+             alt="Impacta Verde">
+        <div class="header-subtitulo">Sello Digital de Sostenibilidad</div>
+    </div>
+    <div class="qr">
+        <img src="data:image/png;base64,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" alt="Código QR">
+        <div style="font-size:14px; color:#444; margin-top:5px; font-weight:500;">Verificación</div>
+    </div>
+    <div class="bloque">
+        <h2>🌿 Inicial</h2>
+        
+        
+        <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor" >Sierra Delta SRL</span></div>
+        <div class="fila"><span class="etiqueta">Año medido:</span> <span class="valor" >2026</span></div>
+        <div class="fila"><span class="etiqueta">Puntaje anual:</span> <span class="valor" style="font-weight: bold; color: #1F7A3E; font-size: 20px;">54.7%</span></div>
+        <div class="fila"><span class="etiqueta">CO₂e evitado anual:</span> <span class="valor" >2305.2 kg</span></div>
+        <div class="fila"><span class="etiqueta">N° de Sello:</span> <span class="valor" >IV-3-2026</span></div>
+        <div class="fila"><span class="etiqueta">Emitido:</span> <span class="valor" >12/02/2026</span></div>
+        <div class="fila"><span class="etiqueta">Válido hasta:</span> <span class="valor" >12/02/2027</span></div>
+        <div class="fila" style="background: #FFD8B1; padding: 12px; border-radius: 10px; margin: 12px 0; border-left: 4px solid #CC5500;">
+            <span class="etiqueta">🏷️ Sector:</span>
+            <span class="valor" style="font-weight: 700; color: #CC5500;">
+                🍽️ Restaurante
+            </span>
+        </div>
+        
+
+        <div class="equivalencia">
+            <strong>Impacto anual equivalente a:</strong><br>
+            <span style="font-size: 24px; font-weight: bold;">🌳 (Iniciando)</span>
+        </div>
+    </div>
+    <div class="ods-box">
+        <h3>🌍 Contribuye a los Objetivos de Desarrollo Sostenible (ODS)</h3>
+        <div class="ods-container">
+            <span title="Fin de la pobreza">1</span><span title="Igualdad de género">5</span><span title="Energía asequible y no contaminante">7</span><span title="Trabajo decente y crecimiento económico">8</span><span title="Industria, innovación e infraestructura">9</span><span title="Reducción de las desigualdades">10</span><span title="Ciudades y comunidades sostenibles">11</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Vida de ecosistemas terrestres">15</span><span title="Alianzas para lograr los objetivos">17</span>
+        </div>
+        <p style="text-align:center; font-size:14px; color:#666; margin-top:12px; font-style:italic;">
+            Pasa el cursor sobre cada número para ver el objetivo completo
+        </p>
+    </div>
+</div>
+<button id="descargar" class="btn-descargar">Descargar PNG del Sello</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+document.getElementById("descargar").addEventListener("click", function() {
+    const contenedor = document.querySelector(".contenedor");
+    const boton = this;
+    const textoOriginal = boton.textContent;
+    boton.textContent = "Generando imagen...";
+    boton.disabled = true;
+    setTimeout(() => {
+        html2canvas(contenedor, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff"
+        }).then(canvas => {
+            const link = document.createElement("a");
+            link.download = "sello-Sierra_Delta_SRL-2026.png";
+            link.href = canvas.toDataURL("image/png");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }).finally(() => {
+            boton.textContent = textoOriginal;
+            boton.disabled = false;
+        });
+    }, 100);
+});
+</script>
+</body>
+</html>
