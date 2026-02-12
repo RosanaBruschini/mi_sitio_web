@@ -6,211 +6,94 @@
     <title>Dashboard - ETIMO</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #f4f7f4 0%, #e8f4e8 100%);
             color: #333;
             padding: 20px;
         }
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1400px; margin: 0 auto; }
         header {
-            background: white;
-            border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-            padding: 30px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 30px;
-            border: 2px solid #2E8B57;
+            background: white; border-radius: 20px; margin-bottom: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08); padding: 30px 40px;
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 30px; border: 2px solid #2E8B57;
         }
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-        .logo {
-            height: 100px;
-            width: auto;
-            background: white;
-            padding: 10px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border: 3px solid #1F7A3E;
-        }
-        .header-text {
-            flex: 1;
-        }
-        h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-            color: #1F7A3E;
-            font-weight: 800;
-        }
-        .subtitle {
-            font-size: 18px;
-            color: #666;
-            font-weight: 500;
-        }
+        .logo-container { display: flex; align-items: center; gap: 25px; }
+        .logo { height: 100px; background: white; padding: 10px; border-radius: 15px;
+                  box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 3px solid #1F7A3E; }
+        h1 { font-size: 36px; margin-bottom: 10px; color: #1F7A3E; font-weight: 800; }
+        .subtitle { font-size: 18px; color: #666; font-weight: 500; }
         .empresa-info {
-            background: #f8fff8;
-            padding: 20px;
-            border-radius: 15px;
-            border-left: 5px solid #2E8B57;
-            text-align: right;
+            background: #f8fff8; padding: 20px; border-radius: 15px;
+            border-left: 5px solid #2E8B57; text-align: right;
         }
-        .empresa-nombre {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1F7A3E;
-            margin-bottom: 10px;
-        }
-        .nivel-actual {
-            font-size: 18px;
-            color: #2e7d32;
-            font-weight: 600;
-        }
+        .empresa-nombre { font-size: 24px; font-weight: 700; color: #1F7A3E; margin-bottom: 10px; }
+        .nivel-actual { font-size: 18px; color: #2e7d32; font-weight: 600; }
         .kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px; margin-bottom: 40px;
         }
         .kpi-card {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-            text-align: center;
-            border-top: 6px solid #1F7A3E;
-            transition: all 0.3s ease;
+            background: white; padding: 25px; border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08); text-align: center;
+            border-top: 6px solid #1F7A3E; transition: all 0.3s;
         }
-        .kpi-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-        }
-        .kpi-icon {
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
-        .kpi-card h3 {
-            color: #124d2d;
-            margin-bottom: 15px;
-            font-size: 16px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        .kpi-value {
-            font-size: 40px;
-            font-weight: 800;
-            color: #1F7A3E;
-            margin-bottom: 5px;
-            line-height: 1;
-        }
-        .kpi-unit {
-            color: #666;
-            font-size: 14px;
-        }
+        .kpi-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.12); }
+        .kpi-icon { font-size: 35px; margin-bottom: 15px; }
+        .kpi-card h3 { color: #124d2d; margin-bottom: 15px; font-size: 16px; font-weight: 600; text-transform: uppercase; }
+        .kpi-value { font-size: 40px; font-weight: 800; color: #1F7A3E; margin-bottom: 5px; line-height: 1; }
+        .kpi-unit { color: #666; font-size: 14px; }
         .section {
-            margin: 40px 0;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            background: white;
-            border: 2px solid #e8f4e8;
+            margin: 40px 0; padding: 30px; border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); background: white; border: 2px solid #e8f4e8;
         }
         .section-title {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #1F7A3E;
+            display: flex; align-items: center; margin-bottom: 25px;
+            padding-bottom: 15px; border-bottom: 2px solid #1F7A3E;
         }
         .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 20px;
         }
         .metric-card {
-            background: #f8fff8;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #d0e8d0;
-            text-align: center;
-            transition: all 0.3s;
+            background: #f8fff8; padding: 20px; border-radius: 12px;
+            border: 1px solid #d0e8d0; text-align: center; transition: all 0.3s;
         }
-        .metric-card:hover {
-            border-color: #1F7A3E;
-            transform: translateY(-3px);
-        }
+        .metric-card:hover { border-color: #1F7A3E; transform: translateY(-3px); }
         .charts-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px; margin-bottom: 40px;
         }
         .chart-box {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-            border: 1px solid #e8f4e8;
+            background: white; padding: 25px; border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08); border: 1px solid #e8f4e8;
         }
         .ods-section {
-            margin-top: 30px;
-            background: linear-gradient(135deg, #f8fff8 0%, #e0f7e9 100%);
-            padding: 30px;
-            border-radius: 18px;
-            border: 2px solid #1F7A3E;
+            margin-top: 30px; background: linear-gradient(135deg, #f8fff8 0%, #e0f7e9 100%);
+            padding: 30px; border-radius: 18px; border: 2px solid #1F7A3E;
         }
         .ods-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px;
         }
         .ods-container span {
-            display: inline-block;
-            padding: 10px 15px;
-            background: #1F7A3E;
-            color: white;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: help;
-            transition: transform 0.2s;
+            display: inline-block; padding: 10px 15px; background: #1F7A3E;
+            color: white; border-radius: 6px; font-size: 16px; font-weight: bold;
+            cursor: help; transition: transform 0.2s;
         }
-        .ods-container span:hover {
-            transform: scale(1.1);
-            background: #155b2a;
+        .ods-container span:hover { transform: scale(1.1); background: #155b2a; }
+        .insignia-item, .sello-item {
+            background: white; padding: 15px; border-radius: 10px;
+            border: 2px solid #e8f4e8; text-align: center; transition: all 0.3s;
         }
+        .insignia-item:hover, .sello-item:hover { border-color: #1F7A3E; transform: translateY(-3px); }
         .footer {
-            text-align: center;
-            color: #888;
-            font-size: 14px;
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid #ddd;
+            text-align: center; color: #888; font-size: 14px;
+            margin-top: 50px; padding-top: 30px; border-top: 1px solid #ddd;
         }
-        a {
-            color: #1F7A3E;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
+        a { color: #1F7A3E; text-decoration: none; font-weight: 600; }
+        a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -228,104 +111,86 @@
             <div class="nivel-actual">
                 ♻️ Reciclaje | 🌿 Nivel Actual: Inicial
             </div>
-            <div style="font-size: 14px; color: #888; margin-top: 10px;">
+            <div style="font-size:14px; color:#888; margin-top:10px;">
                 Actualizado: 12/02/2026
             </div>
         </div>
     </header>
 
-    <!-- KPIs principales -->
     <div class="kpi-grid">
         <div class="kpi-card">
             <div class="kpi-icon">📈</div>
-            <h3>Tendencia de Evolución</h3>
+            <h3>Tendencia</h3>
             <div class="kpi-value">nan</div>
             <div class="kpi-unit">puntos/mes</div>
-            <div style="font-size: 12px; color: #666; margin-top: 5px;">➡️ Estable</div>
+            <div style="font-size:12px; color:#666;">➡️ 0.0</div>
         </div>
         <div class="kpi-card">
             <div class="kpi-icon">🌍</div>
             <h3>CO₂e Evitado</h3>
             <div class="kpi-value">0.0</div>
-            <div class="kpi-unit">toneladas totales</div>
+            <div class="kpi-unit">toneladas</div>
         </div>
         <div class="kpi-card">
             <div class="kpi-icon">♻️</div>
             <h3>Material Recuperado</h3>
             <div class="kpi-value">0.3</div>
-            <div class="kpi-unit">toneladas totales</div>
+            <div class="kpi-unit">toneladas</div>
         </div>
         <div class="kpi-card">
             <div class="kpi-icon">⭐</div>
             <h3>Impacto Promedio</h3>
             <div class="kpi-value">39.0%</div>
-            <div class="kpi-unit">de sostenibilidad</div>
+            <div class="kpi-unit">sostenibilidad</div>
         </div>
     </div>
 
-    <!-- Gráficos -->
     <div class="charts-section">
         <div class="chart-box">
-            <h3 style="color:#124d2d; margin-bottom:20px;">Evolución de CO₂e Evitado (kg)</h3>
-            <div style="height:300px;">
-                <canvas id="chartCO2"></canvas>
-            </div>
+            <h3 style="color:#124d2d;">Evolución CO₂e evitado (kg)</h3>
+            <div style="height:300px;"><canvas id="chartCO2"></canvas></div>
         </div>
         <div class="chart-box">
-            <h3 style="color:#124d2d; margin-bottom:20px;">Evolución del Impacto de Sostenibilidad (%)</h3>
-            <div style="height:300px;">
-                <canvas id="chartPuntaje"></canvas>
-            </div>
+            <h3 style="color:#124d2d;">Evolución Impacto (%)</h3>
+            <div style="height:300px;"><canvas id="chartPuntaje"></canvas></div>
         </div>
     </div>
 
-    <!-- Métricas Generales -->
     <div class="section">
         <div class="section-title">
-            <div style="font-size:24px; margin-right:15px;">📊</div>
-            <div>
-                <h2 style="color:#124d2d; margin:0; font-size:22px;">Métricas Generales</h2>
-                <p style="color:#666; margin:5px 0 0;">Uso de recursos y eficiencia ambiental</p>
-            </div>
+            <div style="font-size:24px;">📊</div>
+            <div><h2 style="color:#124d2d;">Métricas Generales</h2></div>
         </div>
         <div class="metrics-grid">
             <div class="metric-card"><strong>Energía total</strong><br>1,955 kWh</div>
             <div class="metric-card"><strong>Energía solar</strong><br>0 kWh</div>
-            <div class="metric-card"><strong>Consumo de agua</strong><br>0 m³</div>
+            <div class="metric-card"><strong>Agua</strong><br>0 m³</div>
             <div class="metric-card"><strong>Combustible</strong><br>79 L</div>
-            <div class="metric-card"><strong>Consumo de papel</strong><br>20 kg</div>
-            <div class="metric-card"><strong>Gestión de residuos</strong><br>0 kg</div>
+            <div class="metric-card"><strong>Papel</strong><br>20 kg</div>
+            <div class="metric-card"><strong>Residuos</strong><br>0 kg</div>
         </div>
     </div>
 
-    <!-- Métricas Sociales -->
     <div class="section" style="background:#f0f8ff; border-color:#3498db;">
         <div class="section-title" style="border-bottom-color:#3498db;">
-            <div style="font-size:24px; margin-right:15px;">👥</div>
-            <div>
-                <h2 style="color:#1F4E7A; margin:0; font-size:22px;">Métricas Sociales</h2>
-                <p style="color:#666; margin:5px 0 0;">Impacto en personas y comunidad</p>
-            </div>
+            <div style="font-size:24px;">👥</div>
+            <div><h2 style="color:#1F4E7A;">Métricas Sociales</h2></div>
         </div>
         <div class="metrics-grid">
-            <div class="metric-card"><strong>Empleados totales</strong><br>4</div>
-            <div class="metric-card"><strong>Cantidad de mujeres</strong><br>39</div>
-            <div class="metric-card"><strong>Horas capacitación</strong><br>52 h</div>
-            <div class="metric-card"><strong>Horas voluntariado</strong><br>0 h</div>
-            <div class="metric-card"><strong>% Proveedores locales</strong><br>0.0%</div>
-            <div class="metric-card"><strong>Nivel de Digitalización</strong><br>75.0%</div>
-            <div class="metric-card"><strong>% Optimización procesos</strong><br>75.0%</div>
+            <div class="metric-card"><strong>Empleados</strong><br>4</div>
+            <div class="metric-card"><strong>Mujeres</strong><br>39</div>
+            <div class="metric-card"><strong>Capacitación</strong><br>52 h</div>
+            <div class="metric-card"><strong>Voluntariado</strong><br>0 h</div>
+            <div class="metric-card"><strong>Proveedores locales</strong><br>0.0%</div>
+            <div class="metric-card"><strong>Digitalización</strong><br>75.0%</div>
+            <div class="metric-card"><strong>Optimización</strong><br>75.0%</div>
         </div>
     </div>
 
-    <!-- Materiales Recuperados -->
     <div class="section" style="background:#fff8f0; border-color:#FF9800;">
         <div class="section-title" style="border-bottom-color:#FF9800;">
-            <div style="font-size:24px; margin-right:15px;">♻️</div>
-            <div>
-                <h2 style="color:#E65100; margin:0; font-size:22px;">Materiales Recuperados</h2>
-                <p style="color:#666; margin:5px 0 0;">Economía circular y reutilización</p>
-            </div>
+            <div style="font-size:24px;">♻️</div>
+            <div><h2 style="color:#E65100;">Materiales Recuperados</h2></div>
         </div>
         <div class="metrics-grid">
             
@@ -333,52 +198,98 @@
             
             
             
+            <div class="metric-card"><strong>Borra de café</strong><br>429 kg</div>
         </div>
     </div>
 
-    <!-- ODS -->
     <div class="ods-section">
-        <h2 style="color:#124d2d; text-align:center; margin-bottom:20px;">🌍 Contribuye a los Objetivos de Desarrollo Sostenible (ODS)</h2>
+        <h2 style="color:#124d2d; text-align:center;">🌍 Contribución a los ODS</h2>
         <div class="ods-container">
             <span title="Energía asequible y no contaminante">7</span><span title="Industria, innovación e infraestructura">9</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Vida de ecosistemas terrestres">15</span><span title="Alianzas para lograr los objetivos">17</span>
         </div>
-        <p style="text-align:center; font-size:14px; color:#666; margin-top:12px; font-style:italic;">
-            Pasa el cursor sobre cada número para ver el objetivo completo
+        <p style="text-align:center; font-size:14px; color:#666; margin-top:12px;">
+            Pasa el cursor sobre cada número para ver el objetivo
         </p>
     </div>
 
-    <!-- Link permanente (AHORA SÍ ES CLICABLE) -->
+    
+<div class="section" style="margin-top:30px;">
+    <div class="section-title">
+        <div style="font-size:24px; margin-right:15px;">🎖️</div>
+        <div><h2 style="color:#124d2d;">Insignias Obtenidas</h2></div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:15px;">
+        
+<div class="insignia-item">
+    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Ene_2026.html" target="_blank" style="text-decoration:none; color:inherit;">
+        <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Ene 2026</div>
+        <div style="font-size:14px; color:#666;">🌿 Inicial</div>
+        <div style="font-size:18px; font-weight:800; color:#2e7d32;">nan%</div>
+    </a>
+</div>
+<div class="insignia-item">
+    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Sep_2025.html" target="_blank" style="text-decoration:none; color:inherit;">
+        <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Sep 2025</div>
+        <div style="font-size:14px; color:#666;">🌿 Inicial</div>
+        <div style="font-size:18px; font-weight:800; color:#2e7d32;">nan%</div>
+    </a>
+</div>
+<div class="insignia-item">
+    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Oct_2025.html" target="_blank" style="text-decoration:none; color:inherit;">
+        <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Oct 2025</div>
+        <div style="font-size:14px; color:#666;">🌿 Inicial</div>
+        <div style="font-size:18px; font-weight:800; color:#2e7d32;">39%</div>
+    </a>
+</div>
+<div class="insignia-item">
+    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Nov_2025.html" target="_blank" style="text-decoration:none; color:inherit;">
+        <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Nov 2025</div>
+        <div style="font-size:14px; color:#666;">🌿 Inicial</div>
+        <div style="font-size:18px; font-weight:800; color:#2e7d32;">nan%</div>
+    </a>
+</div>
+<div class="insignia-item">
+    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_May_2025.html" target="_blank" style="text-decoration:none; color:inherit;">
+        <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">May 2025</div>
+        <div style="font-size:14px; color:#666;">🌿 Inicial</div>
+        <div style="font-size:18px; font-weight:800; color:#2e7d32;">nan%</div>
+    </a>
+</div>
+<div class="insignia-item">
+    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Mar_2025.html" target="_blank" style="text-decoration:none; color:inherit;">
+        <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Mar 2025</div>
+        <div style="font-size:14px; color:#666;">🌿 Inicial</div>
+        <div style="font-size:18px; font-weight:800; color:#2e7d32;">nan%</div>
+    </a>
+</div>
+    </div>
+</div>
+    
+
     <div style="text-align:center; margin:30px 0; padding:20px; background:#f8fff8; border-radius:12px; border:1px solid #d0e8d0;">
         <p style="font-size:16px; color:#124d2d;">
-            <strong>🔗 URL permanente de este dashboard:</strong><br>
-            <a href="https://impactaverde.com.ar/dashboard-empresa-ETIMO.html" target="_blank" style="color:#1F7A3E; font-weight:bold; word-break:break-all;">https://impactaverde.com.ar/dashboard-empresa-ETIMO.html</a>
-        </p>
-        <p style="font-size:14px; color:#666; margin-top:10px;">
-            Guardá este link para acceder directamente al dashboard actualizado.
+            <strong>🔗 URL permanente:</strong><br>
+            <a href="https://impactaverde.com.ar/dashboard-empresa-ETIMO.html" target="_blank" style="color:#1F7A3E; word-break:break-all;">https://impactaverde.com.ar/dashboard-empresa-ETIMO.html</a>
         </p>
     </div>
 
     <div class="footer">
-        <p>📊 Dashboard individual de ETIMO</p>
-        <p>🌿 Sistema Impacta Verde - Mediciones de sostenibilidad completas</p>
-        <p style="font-size:12px; color:#888; margin-top:10px;">
-            Actualizado: 12/02/2026 13:42
-        </p>
+        <p>Dashboard de ETIMO | Actualizado: 12/02/2026 14:27</p>
+        <p>🌿 Sistema Impacta Verde</p>
     </div>
 </div>
 
 <script>
-    // Gráfico de CO₂
     const ctx1 = document.getElementById('chartCO2').getContext('2d');
     new Chart(ctx1, {
         type: 'line',
         data: {
             labels: ["Ene 25", "Feb 25", "Mar 25", "Abr 25", "May 25", "Jun 25", "Jul 25", "Ago 25", "Sep 25", "Oct 25", "Nov 25", "Dic 25", "Ene 26"],
             datasets: [{
-                label: 'CO₂e Evitado (kg)',
+                label: 'CO₂e evitado (kg)',
                 data: [NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN],
                 borderColor: '#1F7A3E',
-                backgroundColor: 'rgba(31, 122, 62, 0.1)',
+                backgroundColor: 'rgba(31,122,62,0.1)',
                 borderWidth: 3,
                 fill: true,
                 tension: 0.4
@@ -387,26 +298,19 @@
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: {
-                legend: { display: true, position: 'top' }
-            },
-            scales: {
-                y: { beginAtZero: true, title: { display: true, text: 'kg CO₂e' } }
-            }
+            scales: { y: { beginAtZero: true, title: { display: true, text: 'kg CO₂e' } } }
         }
     });
-
-    // Gráfico de Puntaje
     const ctx2 = document.getElementById('chartPuntaje').getContext('2d');
     new Chart(ctx2, {
         type: 'line',
         data: {
             labels: ["Ene 25", "Feb 25", "Mar 25", "Abr 25", "May 25", "Jun 25", "Jul 25", "Ago 25", "Sep 25", "Oct 25", "Nov 25", "Dic 25", "Ene 26"],
             datasets: [{
-                label: 'Impacto de Sostenibilidad (%)',
+                label: 'Impacto (%)',
                 data: [NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, 39.0, NaN, NaN, NaN],
                 borderColor: '#3498db',
-                backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                backgroundColor: 'rgba(52,152,219,0.1)',
                 borderWidth: 3,
                 fill: true,
                 tension: 0.4
@@ -415,16 +319,7 @@
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: {
-                legend: { display: true, position: 'top' }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    max: 100,
-                    title: { display: true, text: '% Sostenibilidad' }
-                }
-            }
+            scales: { y: { beginAtZero: true, max: 100, title: { display: true, text: '%' } } }
         }
     });
 </script>
