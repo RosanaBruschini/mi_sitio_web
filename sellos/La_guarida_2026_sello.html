@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sello Anual - La guarida</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7f4;
+            color: #1d1d1d;
+        }
+        .contenedor {
+            max-width: 750px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 14px;
+            border: 5px solid #2E8B57;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        .header {
+            position: relative;
+            height: 110px;
+        }
+        .logo {
+            height: 120px;
+            position: absolute;
+            left: 15px;
+            top: -5px;
+        }
+        .header-subtitulo {
+            position: absolute;
+            left: 50%;
+            top: 40px;
+            transform: translateX(-50%);
+            font-size: 24px;
+            font-weight: 700;
+            color: #287a48;
+            text-align: center;
+        }
+        .qr {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            text-align: center;
+        }
+        .qr img {
+            width: 120px;
+            height: 120px;
+        }
+        .bloque {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #D8EEDB;
+            background: #F9FFF9;
+        }
+        .bloque h2 {
+            margin: 0 0 15px 0;
+            color: #124d2d;
+            font-size: 22px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .fila {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 17px;
+        }
+        .etiqueta {
+            font-weight: 600;
+            color: #124d2d;
+        }
+        .equivalencia {
+            font-size: 17px;
+            color: #2e7d32;
+            margin: 15px 0;
+            font-weight: 500;
+            text-align: center;
+            background: #f8fff8;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #2E8B57;
+        }
+        .ods-box {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #D8EEDB;
+            background: #F3FFF3;
+        }
+        .ods-box h3 {
+            margin-top: 0;
+            color: #0f5e30;
+            font-weight: 700;
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .ods-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .ods-container span {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #1F7A3E;
+            color: white;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: help;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .ods-container span:hover {
+            transform: scale(1.1);
+            background: #155b2a;
+        }
+        .btn-descargar {
+            margin: 25px auto 10px auto;
+            display: block;
+            background: #1F7A3E;
+            color: white;
+            border: none;
+            padding: 14px 26px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-descargar:hover {
+            background: #155b2a;
+        }
+        @media (max-width: 768px) {
+            .contenedor {
+                margin: 20px;
+                padding: 25px;
+            }
+            .header {
+                height: auto;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 25px;
+            }
+            .logo {
+                position: static;
+                height: 100px;
+                margin-bottom: 15px;
+            }
+            .header-subtitulo {
+                position: static;
+                transform: none;
+                font-size: 22px;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            .qr {
+                position: static;
+                margin: 15px auto;
+            }
+            .fila {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 10px;
+            }
+            .ods-container {
+                gap: 6px;
+            }
+            .ods-container span {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+    <div class="header">
+        <img class="logo"
+             src="https://res.cloudinary.com/ddubafael/image/upload/v1768315140/logo_institucional_final_tranp._impacta_verde_ec55yo.png"
+             alt="Impacta Verde">
+        <div class="header-subtitulo">Sello Digital de Sostenibilidad</div>
+    </div>
+    <div class="qr">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaCAIAAAC5ZBI0AAAIc0lEQVR4nO3dwW0kNxBAUcvYQJyJA/PZgTkTZzLOgFiASxf59d51sZqeGemDh6rur8/n8xvA+36fvgCAX0POgAg5AyLkDIiQMyBCzoAIOQMi5AyIkDMgQs6ACDkDIuQMiJAzIELOgAg5AyLkDIiQMyBCzoAIOQMi5AyIkDMgQs6ACDkDIuQMiJAzIELOgAg5AyLkDIiQMyBCzoAIOQMi5AyIkDMgQs6ACDkDIuQMiJAzIELOgAg5AyJ+TL3wH3/9OfXSh/z79z+Lfz33fndet3fNa1OfxtTnPGXnO9rhdAZEyBkQIWdAhJwBEXIGRMgZECFnQIScARFyBkSMbQWsTU0Vr704vT01f7/ju+0MrPlb+HlOZ0CEnAERcgZEyBkQIWdAhJwBEXIGRMgZECFnQMSlWwFrvQnsnYnznVn2O++Ov3PNO3Z+8tRvTu9vYYfTGRAhZ0CEnAERcgZEyBkQIWdAhJwBEXIGRMgZEPHkVkDP1F3qp+74PrWNcO5JAmsvTti/yOkMiJAzIELOgAg5AyLkDIiQMyBCzoAIOQMi5AyIsBXwP3nxDvfn9g3uvCu/uf/XOZ0BEXIGRMgZECFnQIScARFyBkTIGRAhZ0CEnAERT24FvDiBfW5K/tz9/u/8nL/b+1178ZrPcToDIuQMiJAzIELOgAg5AyLkDIiQMyBCzoAIOQMiLt0KODf5/aKdjYIX/+/andf84tZHj9MZECFnQIScARFyBkTIGRAhZ0CEnAERcgZEyBkQ8fX5fKavgbGZ8t60+otz//wqTmdAhJwBEXIGRMgZECFnQIScARFyBkTIGRAhZ0DE2LMCdmbK75xlP3f/+7Vzk+47zk3Jn7vmO3cG7vx+16Z2JJzOgAg5AyLkDIiQMyBCzoAIOQMi5AyIkDMgQs6AiLFnBUzNo/funT91d/xz7rzv/tSzAu7cN7iT0xkQIWdAhJwBEXIGRMgZECFnQIScARFyBkTIGRAx9qyAF2fZp55vsLZzVXfO/U99+3dO9t+55XLnzoDTGRAhZ0CEnAERcgZEyBkQIWdAhJwBEXIGRMgZEDG2FXDnPPq5/7vj3KT7nfe/3zG1M/DiHsudk/07nM6ACDkDIuQMiJAzIELOgAg5AyLkDIiQMyBCzoCIJ58VsOPFbYSdn9ybOO/9bqzd+f2uTe0bOJ0BEXIGRMgZECFnQIScARFyBkTIGRAhZ0CEnAERX5/PZ+SF75wp33ndF+/LPnXP/il33tH/zuc5vMjpDIiQMyBCzoAIOQMi5AyIkDMgQs6ACDkDIuQMiBh7VsDauentc5PfU1e1Mxd+bgtiyp1XdU7v2Rc7nM6ACDkDIuQMiJAzIELOgAg5AyLkDIiQMyBCzoCIS58VsGNqwv7Oe7rfuY0w9ZPvNPV+75zs3+F0BkTIGRAhZ0CEnAERcgZEyBkQIWdAhJwBEXIGRFz6rIA79Sbsd2bK75zsP/d+d0xd1bm5/zt3YJzOgAg5AyLkDIiQMyBCzoAIOQMi5AyIkDMgQs6AiG/3rIC1O2edX9xGWPNJ/rwXr3mK0xkQIWdAhJwBEXIGRMgZECFnQIScARFyBkTIGRAxthWw9uKd9c/dD/7O+9+fc+euwotbEGu9d+R0BkTIGRAhZ0CEnAERcgZEyBkQIWdAhJwBEXIGRPyYeuE7Z9mn5v7PmdpzOPdZnfuce+9o7c7J/h1OZ0CEnAERcgZEyBkQIWdAhJwBEXIGRMgZECFnQMTYVsDU/f7X7rxbfG9XYe3Oa75zdv/c38La1OuuOZ0BEXIGRMgZECFnQIScARFyBkTIGRAhZ0CEnAERX5/PZ+SFezPWU/93x53fwjkvfr8v/l5NcToDIuQMiJAzIELOgAg5AyLkDIiQMyBCzoAIOQMixrYCdrw4Q3/nsxF2TH0aa+c+q3MbFC8+R+LOjQKnMyBCzoAIOQMi5AyIkDMgQs6ACDkDIuQMiJAzIOLbbQXYKPj5n3zumqeuau3OSffe7P45TmdAhJwBEXIGRMgZECFnQIScARFyBkTIGRAhZ0DEj6kXnpo4X5uaOD93zVMT9jum7vff+yR33PmEijWnMyBCzoAIOQMi5AyIkDMgQs6ACDkDIuQMiJAzIGJsK+DcVPGd88pTzzd4ccJ+53XXP7n3FILeNsIOpzMgQs6ACDkDIuQMiJAzIELOgAg5AyLkDIiQMyDiyWcF3GlnHn3nJ7/4bIS1O7cgznnxmu/kdAZEyBkQIWdAhJwBEXIGRMgZECFnQIScARFyBkSMbQWs3TkJPTV/P7VRMLWNcOf7PefO3/YXOZ0BEXIGRMgZECFnQIScARFyBkTIGRAhZ0CEnAERl24FrN15h/tzpmb3187N7q+9+JSJF6/5zr+FNaczIELOgAg5AyLkDIiQMyBCzoAIOQMi5AyIkDMg4smtgBdN3cN+53WnZtnX13znRsG5qzr3Db4497/mdAZEyBkQIWdAhJwBEXIGRMgZECFnQIScARFyBkTYCrjCnTsDa+eu6s73u3bn/H1v7n/N6QyIkDMgQs6ACDkDIuQMiJAzIELOgAg5AyLkDIh4civgxVnnqanxc/eh3/m/5+y87rl39OIn+SKnMyBCzoAIOQMi5AyIkDMgQs6ACDkDIuQMiJAzIOLSrQCT0D+vN3F+bkdiagti6lkQL/7kHU5nQIScARFyBkTIGRAhZ0CEnAERcgZEyBkQIWdAxNfn85m+BoBfwOkMiJAzIELOgAg5AyLkDIiQMyBCzoAIOQMi5AyIkDMgQs6ACDkDIuQMiJAzIELOgAg5AyLkDIiQMyBCzoAIOQMi5AyIkDMgQs6ACDkDIuQMiJAzIELOgAg5AyLkDIiQMyBCzoAIOQMi5AyIkDMgQs6ACDkDIuQMiJAzIELOgIj/AItPBti2y4c+AAAAAElFTkSuQmCC" alt="Código QR">
+        <div style="font-size:14px; color:#444; margin-top:5px; font-weight:500;">Verificación</div>
+    </div>
+    <div class="bloque">
+        <h2>🌿 Inicial</h2>
+        
+        
+        <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor" >La guarida</span></div>
+        <div class="fila"><span class="etiqueta">Año medido:</span> <span class="valor" >2026</span></div>
+        <div class="fila"><span class="etiqueta">Puntaje anual:</span> <span class="valor" style="font-weight: bold; color: #1F7A3E; font-size: 20px;">53.5%</span></div>
+        <div class="fila"><span class="etiqueta">CO₂e evitado anual:</span> <span class="valor" >729.99 kg</span></div>
+        <div class="fila"><span class="etiqueta">N° de Sello:</span> <span class="valor" >IV-2-2026</span></div>
+        <div class="fila"><span class="etiqueta">Emitido:</span> <span class="valor" >12/02/2026</span></div>
+        <div class="fila"><span class="etiqueta">Válido hasta:</span> <span class="valor" >12/02/2027</span></div>
+        <div class="fila" style="background: #D4EDDA; padding: 12px; border-radius: 10px; margin: 12px 0; border-left: 4px solid #2E8B57;">
+            <span class="etiqueta">🏷️ Sector:</span>
+            <span class="valor" style="font-weight: 700; color: #2E8B57;">
+                ♻️ Reciclaje
+            </span>
+        </div>
+        
+
+        <div class="equivalencia">
+            <strong>Impacto anual equivalente a:</strong><br>
+            <span style="font-size: 24px; font-weight: bold;">🌳 (Iniciando)</span>
+        </div>
+    </div>
+    <div class="ods-box">
+        <h3>🌍 Contribuye a los Objetivos de Desarrollo Sostenible (ODS)</h3>
+        <div class="ods-container">
+            <span title="Fin de la pobreza">1</span><span title="Igualdad de género">5</span><span title="Energía asequible y no contaminante">7</span><span title="Trabajo decente y crecimiento económico">8</span><span title="Industria, innovación e infraestructura">9</span><span title="Reducción de las desigualdades">10</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Vida de ecosistemas terrestres">15</span><span title="Alianzas para lograr los objetivos">17</span>
+        </div>
+        <p style="text-align:center; font-size:14px; color:#666; margin-top:12px; font-style:italic;">
+            Pasa el cursor sobre cada número para ver el objetivo completo
+        </p>
+    </div>
+</div>
+<button id="descargar" class="btn-descargar">Descargar PNG del Sello</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+document.getElementById("descargar").addEventListener("click", function() {
+    const contenedor = document.querySelector(".contenedor");
+    const boton = this;
+    const textoOriginal = boton.textContent;
+    boton.textContent = "Generando imagen...";
+    boton.disabled = true;
+    setTimeout(() => {
+        html2canvas(contenedor, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff"
+        }).then(canvas => {
+            const link = document.createElement("a");
+            link.download = "sello-La_guarida-2026.png";
+            link.href = canvas.toDataURL("image/png");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }).finally(() => {
+            boton.textContent = textoOriginal;
+            boton.disabled = false;
+        });
+    }, 100);
+});
+</script>
+</body>
+</html>
