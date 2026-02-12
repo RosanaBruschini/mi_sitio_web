@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insignia Mensual - La guarida</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+    <style>
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f7f4;
+    color: #1d1d1d;
+}
+.contenedor {
+    max-width: 700px;
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 4px solid #2E8B57;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+}
+.header {
+    position: relative;
+    height: 100px;
+    margin-bottom: 20px;
+}
+.logo {
+    height: 100px;
+    position: absolute;
+    left: 10px;
+    top: 0;
+}
+.header-titulo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 22px;
+    font-weight: 700;
+    color: #287a48;
+    text-align: center;
+    width: 100%;
+}
+.qr {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    text-align: center;
+}
+.qr img {
+    width: 100px;
+    height: 100px;
+}
+.bloque {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #D8EEDB;
+    background: #F9FFF9;
+}
+.bloque h2 {
+    margin: 0 0 12px 0;
+    color: #124d2d;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.fila {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 16px;
+}
+.etiqueta {
+    font-weight: 600;
+    color: #124d2d;
+}
+.valor {
+    font-weight: 500;
+    color: #1a1a1a;
+}
+.equivalencia {
+    font-size: 16px;
+    color: #2e7d32;
+    margin: 12px 0;
+    font-weight: 500;
+    text-align: center;
+    background: #f8fff8;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #2E8B57;
+}
+.btn-descargar {
+    margin: 20px auto 10px auto;
+    display: block;
+    background: #1F7A3E;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.btn-descargar:hover {
+    background: #155b2a;
+}
+.metricas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+.metrica {
+    background: #f0f8f0;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    border: 1px solid #d0e8d0;
+}
+.ods-box {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #D8EEDB;
+    background: #F3FFF3;
+}
+.ods-box h3 {
+    color: #0f5e30;
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    text-align: center;
+}
+.ods-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+.ods-container span {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #1F7A3E;
+    color: white;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: help;
+    transition: transform 0.2s;
+}
+.ods-container span:hover {
+    transform: scale(1.1);
+    background: #155b2a;
+}
+@media (max-width: 768px) {
+    .contenedor {
+        margin: 15px;
+        padding: 20px;
+    }
+    .header {
+        height: auto;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .logo {
+        position: static;
+        height: 80px;
+        margin-bottom: 10px;
+    }
+    .header-titulo {
+        position: static;
+        transform: none;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .qr {
+        position: static;
+        margin: 10px auto;
+    }
+    .metricas {
+        grid-template-columns: 1fr;
+    }
+}
+
+    </style>
+</head>
+<body>
+<div class="contenedor">
+    <div class="header">
+        <img class="logo"
+             src="https://res.cloudinary.com/ddubafael/image/upload/v1768315140/logo_institucional_final_tranp._impacta_verde_ec55yo.png"
+             alt="Impacta Verde">
+        <div class="header-titulo">Insignia de Sostenibilidad Mensual</div>
+        <div class="qr">
+            <img src="data:image/png;base64,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" alt="Código QR">
+            <div style="font-size:12px; color:#444; margin-top:5px;">Verificación</div>
+        </div>
+    </div>
+    <div class="bloque">
+        <h2>🌿 Inicial</h2>
+        <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor">La guarida</span></div>
+        <div class="fila"><span class="etiqueta">Período:</span> <span class="valor">Ene 2026</span></div>
+        
+<div class="fila" style="background:#D4EDDA; padding: 10px; border-radius: 8px; margin: 10px 0; border-left: 5px solid #2E8B57;">
+    <span class="etiqueta">Sector:</span>
+    <span class="valor" style="font-weight: 700; color: #2E8B57;">
+        Reciclaje
+    </span>
+</div>
+        <div class="fila"><span class="etiqueta">Puntaje mensual:</span> <span class="valor" style="font-weight: bold; color: #1F7A3E; font-size: 18px;">53.5%</span></div>
+
+        <div class="equivalencia">
+            <strong>Impacto equivalente a:</strong><br>
+            <span style="font-size: 20px; font-weight: bold;">🌳 (Iniciando)</span>
+        </div>
+
+        <div class="metricas">
+            
+<div class="metrica">
+    <div style="font-size:14px; color:#124d2d; font-weight:600;">CO₂e evitado</div>
+    <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">729.99 kg</div>
+</div>
+<div class="metrica">
+    <div style="font-size:14px; color:#124d2d; font-weight:600;">Material recuperado</div>
+    <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">209.3 kg</div>
+</div>
+<div class="metrica">
+    <div style="font-size:14px; color:#124d2d; font-weight:600;">Impacto social</div>
+    <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">38.7 %</div>
+</div>
+<div class="metrica">
+    <div style="font-size:14px; color:#124d2d; font-weight:600;">Impacto digital</div>
+    <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">75.0 %</div>
+</div>
+        </div>
+
+        <div class="ods-box">
+            <h3>🌍 Contribuye a los Objetivos de Desarrollo Sostenible (ODS)</h3>
+            <div class="ods-container">
+                <span title="Fin de la pobreza">1</span><span title="Igualdad de género">5</span><span title="Energía asequible y no contaminante">7</span><span title="Trabajo decente y crecimiento económico">8</span><span title="Industria, innovación e infraestructura">9</span><span title="Reducción de las desigualdades">10</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Vida de ecosistemas terrestres">15</span><span title="Alianzas para lograr los objetivos">17</span>
+            </div>
+            <p style="text-align:center; font-size:12px; color:#666; margin-top:8px; font-style:italic;">
+                Pasa el cursor sobre cada número para ver el ODS
+            </p>
+        </div>
+    </div>
+</div>
+<button id="descargar" class="btn-descargar">Descargar PNG de la Insignia</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+document.getElementById("descargar").addEventListener("click", function() {
+    const contenedor = document.querySelector(".contenedor");
+    const boton = this;
+    const textoOriginal = boton.textContent;
+    boton.textContent = "Generando imagen...";
+    boton.disabled = true;
+    setTimeout(() => {
+        html2canvas(contenedor, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff"
+        }).then(canvas => {
+            const link = document.createElement("a");
+            link.download = "insignia-La_guarida-Ene-2026.png";
+            link.href = canvas.toDataURL("image/png");
+            document.body.appendChild(link);
+            link.click();
+        }).finally(() => {
+            boton.textContent = textoOriginal;
+            boton.disabled = false;
+        });
+    }, 100);
+});
+</script>
+</body>
+</html>
