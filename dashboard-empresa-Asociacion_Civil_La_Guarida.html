@@ -1,7 +1,432 @@
 <!DOCTYPE html>
-<html>
-<head><meta charset="UTF-8"><title>Dashboard - Asociación Civil La Guarida</title>
-<style>body{font-family:Arial; background:#f4f7f4; padding:20px;}.container{max-width:1200px; margin:0 auto; background:white; padding:30px; border-radius:12px; border:2px solid #1F7A3E;} h1{color:#1F7A3E;}</style>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Asociación Civil La Guarida</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f4f7f4 0%, #e8f4e8 100%);
+            color: #333;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        header {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            padding: 30px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            border: 2px solid #2E8B57;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        .logo {
+            height: 100px;
+            width: auto;
+            background: white;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 3px solid #1F7A3E;
+        }
+        .header-text {
+            flex: 1;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #1F7A3E;
+            font-weight: 800;
+        }
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            font-weight: 500;
+        }
+        .empresa-info {
+            background: #f8fff8;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #2E8B57;
+            text-align: right;
+        }
+        .empresa-nombre {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1F7A3E;
+            margin-bottom: 10px;
+        }
+        .nivel-actual {
+            font-size: 18px;
+            color: #2e7d32;
+            font-weight: 600;
+        }
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .kpi-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            border-top: 6px solid #1F7A3E;
+            transition: all 0.3s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+        .kpi-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+        .kpi-card h3 {
+            color: #124d2d;
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .kpi-value {
+            font-size: 40px;
+            font-weight: 800;
+            color: #1F7A3E;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+        .kpi-unit {
+            color: #666;
+            font-size: 14px;
+        }
+        .section {
+            margin: 40px 0;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            background: white;
+            border: 2px solid #e8f4e8;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #1F7A3E;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .metric-card {
+            background: #f8fff8;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #d0e8d0;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .metric-card:hover {
+            border-color: #1F7A3E;
+            transform: translateY(-3px);
+        }
+        .charts-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .chart-box {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e8f4e8;
+        }
+        .ods-section {
+            margin-top: 30px;
+            background: linear-gradient(135deg, #f8fff8 0%, #e0f7e9 100%);
+            padding: 30px;
+            border-radius: 18px;
+            border: 2px solid #1F7A3E;
+        }
+        .ods-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .ods-container span {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #1F7A3E;
+            color: white;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: help;
+            transition: transform 0.2s;
+        }
+        .ods-container span:hover {
+            transform: scale(1.1);
+            background: #155b2a;
+        }
+        .footer {
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
+        a {
+            color: #1F7A3E;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
-<body><div class="container"><h1>Dashboard de Asociación Civil La Guarida</h1><p>Este dashboard se actualiza automáticamente con las métricas de sostenibilidad.</p><p><strong>URL permanente:</strong> <a href="https://impactaverde.com.ar/dashboard-empresa-Asociacion_Civil_La_Guarida.html">https://impactaverde.com.ar/dashboard-empresa-Asociacion_Civil_La_Guarida.html</a></p><p>Versión 2.0 - URL corregida</p></div></body>
+<body>
+<div class="container">
+    <header>
+        <div class="logo-container">
+            <img class="logo" src="https://res.cloudinary.com/ddubafael/image/upload/v1768315140/logo_institucional_final_tranp._impacta_verde_ec55yo.png" alt="Impacta Verde">
+            <div class="header-text">
+                <h1>📊 Dashboard de Sostenibilidad</h1>
+                <div class="subtitle">Seguimiento completo del impacto ambiental y social</div>
+            </div>
+        </div>
+        <div class="empresa-info">
+            <div class="empresa-nombre">Asociación Civil La Guarida</div>
+            <div class="nivel-actual">
+                ♻️ Reciclaje | 🌿 Nivel Actual: Inicial
+            </div>
+            <div style="font-size: 14px; color: #888; margin-top: 10px;">
+                Actualizado: 12/02/2026
+            </div>
+        </div>
+    </header>
+
+    <!-- KPIs principales -->
+    <div class="kpi-grid">
+        <div class="kpi-card">
+            <div class="kpi-icon">📈</div>
+            <h3>Tendencia de Evolución</h3>
+            <div class="kpi-value">0</div>
+            <div class="kpi-unit">puntos/mes</div>
+            <div style="font-size: 12px; color: #666; margin-top: 5px;">➡️ Estable</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-icon">🌍</div>
+            <h3>CO₂e Evitado</h3>
+            <div class="kpi-value">0.0</div>
+            <div class="kpi-unit">toneladas totales</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-icon">♻️</div>
+            <h3>Material Recuperado</h3>
+            <div class="kpi-value">0.0</div>
+            <div class="kpi-unit">toneladas totales</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-icon">⭐</div>
+            <h3>Impacto Promedio</h3>
+            <div class="kpi-value">0.0%</div>
+            <div class="kpi-unit">de sostenibilidad</div>
+        </div>
+    </div>
+
+    <!-- Gráficos -->
+    <div class="charts-section">
+        <div class="chart-box">
+            <h3 style="color:#124d2d; margin-bottom:20px;">Evolución de CO₂e Evitado (kg)</h3>
+            <div style="height:300px;">
+                <canvas id="chartCO2"></canvas>
+            </div>
+        </div>
+        <div class="chart-box">
+            <h3 style="color:#124d2d; margin-bottom:20px;">Evolución del Impacto de Sostenibilidad (%)</h3>
+            <div style="height:300px;">
+                <canvas id="chartPuntaje"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Métricas Generales -->
+    <div class="section">
+        <div class="section-title">
+            <div style="font-size:24px; margin-right:15px;">📊</div>
+            <div>
+                <h2 style="color:#124d2d; margin:0; font-size:22px;">Métricas Generales</h2>
+                <p style="color:#666; margin:5px 0 0;">Uso de recursos y eficiencia ambiental</p>
+            </div>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric-card"><strong>Energía total</strong><br>125 kWh</div>
+            <div class="metric-card"><strong>Energía solar</strong><br>0 kWh</div>
+            <div class="metric-card"><strong>Consumo de agua</strong><br>0 m³</div>
+            <div class="metric-card"><strong>Combustible</strong><br>1 L</div>
+            <div class="metric-card"><strong>Consumo de papel</strong><br>0 kg</div>
+            <div class="metric-card"><strong>Gestión de residuos</strong><br>0 kg</div>
+        </div>
+    </div>
+
+    <!-- Métricas Sociales -->
+    <div class="section" style="background:#f0f8ff; border-color:#3498db;">
+        <div class="section-title" style="border-bottom-color:#3498db;">
+            <div style="font-size:24px; margin-right:15px;">👥</div>
+            <div>
+                <h2 style="color:#1F4E7A; margin:0; font-size:22px;">Métricas Sociales</h2>
+                <p style="color:#666; margin:5px 0 0;">Impacto en personas y comunidad</p>
+            </div>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric-card"><strong>Empleados totales</strong><br>4</div>
+            <div class="metric-card"><strong>Cantidad de mujeres</strong><br>3</div>
+            <div class="metric-card"><strong>Horas capacitación</strong><br>4 h</div>
+            <div class="metric-card"><strong>Horas voluntariado</strong><br>0 h</div>
+            <div class="metric-card"><strong>% Proveedores locales</strong><br>0.0%</div>
+            <div class="metric-card"><strong>Nivel de Digitalización</strong><br>75.0%</div>
+            <div class="metric-card"><strong>% Optimización procesos</strong><br>75.0%</div>
+        </div>
+    </div>
+
+    <!-- Materiales Recuperados -->
+    <div class="section" style="background:#fff8f0; border-color:#FF9800;">
+        <div class="section-title" style="border-bottom-color:#FF9800;">
+            <div style="font-size:24px; margin-right:15px;">♻️</div>
+            <div>
+                <h2 style="color:#E65100; margin:0; font-size:22px;">Materiales Recuperados</h2>
+                <p style="color:#666; margin:5px 0 0;">Economía circular y reutilización</p>
+            </div>
+        </div>
+        <div class="metrics-grid">
+            
+            <div class="metric-card"><strong>Tecnología recuperada</strong><br>90 kg</div>
+            <div class="metric-card"><strong>Plástico reutilizado</strong><br>20 kg</div>
+            
+            
+        </div>
+    </div>
+
+    <!-- ODS -->
+    <div class="ods-section">
+        <h2 style="color:#124d2d; text-align:center; margin-bottom:20px;">🌍 Contribuye a los Objetivos de Desarrollo Sostenible (ODS)</h2>
+        <div class="ods-container">
+            
+        </div>
+        <p style="text-align:center; font-size:14px; color:#666; margin-top:12px; font-style:italic;">
+            Pasa el cursor sobre cada número para ver el objetivo completo
+        </p>
+    </div>
+
+    <!-- Link permanente (AHORA SÍ ES CLICABLE) -->
+    <div style="text-align:center; margin:30px 0; padding:20px; background:#f8fff8; border-radius:12px; border:1px solid #d0e8d0;">
+        <p style="font-size:16px; color:#124d2d;">
+            <strong>🔗 URL permanente de este dashboard:</strong><br>
+            <a href="https://impactaverde.com.ar/dashboard-empresa-Asociacion_Civil_La_Guarida.html" target="_blank" style="color:#1F7A3E; font-weight:bold; word-break:break-all;">https://impactaverde.com.ar/dashboard-empresa-Asociacion_Civil_La_Guarida.html</a>
+        </p>
+        <p style="font-size:14px; color:#666; margin-top:10px;">
+            Guardá este link para acceder directamente al dashboard actualizado.
+        </p>
+    </div>
+
+    <div class="footer">
+        <p>📊 Dashboard individual de Asociación Civil La Guarida</p>
+        <p>🌿 Sistema Impacta Verde - Mediciones de sostenibilidad completas</p>
+        <p style="font-size:12px; color:#888; margin-top:10px;">
+            Actualizado: 12/02/2026 13:34
+        </p>
+    </div>
+</div>
+
+<script>
+    // Gráfico de CO₂
+    const ctx1 = document.getElementById('chartCO2').getContext('2d');
+    new Chart(ctx1, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'CO₂e Evitado (kg)',
+                data: [],
+                borderColor: '#1F7A3E',
+                backgroundColor: 'rgba(31, 122, 62, 0.1)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: true, position: 'top' }
+            },
+            scales: {
+                y: { beginAtZero: true, title: { display: true, text: 'kg CO₂e' } }
+            }
+        }
+    });
+
+    // Gráfico de Puntaje
+    const ctx2 = document.getElementById('chartPuntaje').getContext('2d');
+    new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'Impacto de Sostenibilidad (%)',
+                data: [],
+                borderColor: '#3498db',
+                backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: true, position: 'top' }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    title: { display: true, text: '% Sostenibilidad' }
+                }
+            }
+        }
+    });
+</script>
+</body>
 </html>
