@@ -542,103 +542,70 @@
                         </div>
                     </div>
                 </div>
-                <div style="margin-top: 40px;">
-                    <h2>📊 Evolución de la Plantilla</h2>
-                    <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.08);">
-                        <canvas id="chartEmpleados"></canvas>
-                    </div>
-                </div>
             </div>
 
             <script>
                 // Gráfico de CO₂
-                if (document.getElementById('chartCO2')) {
-                    const ctx1 = document.getElementById('chartCO2').getContext('2d');
-                    new Chart(ctx1, {
-                        type: 'line',
-                        data: {
-                            labels: ["Ene 25", "Feb 25", "Mar 25", "Abr 25", "May 25", "Jun 25", "Jul 25", "Ago 25", "Sep 25", "Oct 25", "Nov 25", "Dic 25", "Ene 26"],
-                            datasets: [{
-                                label: 'CO₂e Evitado (kg)',
-                                data: [262.26, 258.49, 254.56, 250.78, 246.86, 243.09, 239.16, 235.39, 231.46, 227.69, 223.76, 219.99, 219.99],
-                                borderColor: '#1F7A3E',
-                                backgroundColor: 'rgba(31, 122, 62, 0.1)',
-                                borderWidth: 3,
-                                fill: true,
-                                tension: 0.4
-                            }]
+                const ctx1 = document.getElementById('chartCO2').getContext('2d');
+                new Chart(ctx1, {
+                    type: 'line',
+                    data: {
+                        labels: ["Ene 25", "Feb 25", "Mar 25", "Abr 25", "May 25", "Jun 25", "Jul 25", "Ago 25", "Sep 25", "Oct 25", "Nov 25", "Dic 25", "Ene 26"],
+                        datasets: [{
+                            label: 'CO₂e Evitado (kg)',
+                            data: [262.26, 258.49, 254.56, 250.78, 246.86, 243.09, 239.16, 235.39, 231.46, 227.69, 223.76, 219.99, 219.99],
+                            borderColor: '#1F7A3E',
+                            backgroundColor: 'rgba(31, 122, 62, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: true, position: 'top' }
                         },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: {
-                                legend: { display: true, position: 'top' }
-                            },
-                            scales: {
-                                y: { beginAtZero: true, title: { display: true, text: 'kg CO₂e' } },
-                                x: { title: { display: true, text: 'Mes' } }
-                            }
+                        scales: {
+                            y: { beginAtZero: true, title: { display: true, text: 'kg CO₂e' } },
+                            x: { title: { display: true, text: 'Mes' } }
                         }
-                    });
-                }
+                    }
+                });
 
                 // Gráfico de Puntaje
-                if (document.getElementById('chartPuntaje')) {
-                    const ctx2 = document.getElementById('chartPuntaje').getContext('2d');
-                    new Chart(ctx2, {
-                        type: 'line',
-                        data: {
-                            labels: ["Ene 25", "Feb 25", "Mar 25", "Abr 25", "May 25", "Jun 25", "Jul 25", "Ago 25", "Sep 25", "Oct 25", "Nov 25", "Dic 25", "Ene 26"],
-                            datasets: [{
-                                label: 'Impacto de Sostenibilidad (%)',
-                                data: [39.8, 39.7, 39.6, 39.5, 39.5, 39.4, 39.3, 39.2, 39.1, 39.0, 38.9, 38.9, 38.9],
-                                borderColor: '#3498db',
-                                backgroundColor: 'rgba(52, 152, 219, 0.1)',
-                                borderWidth: 3,
-                                fill: true,
-                                tension: 0.4
-                            }]
+                const ctx2 = document.getElementById('chartPuntaje').getContext('2d');
+                new Chart(ctx2, {
+                    type: 'line',
+                    data: {
+                        labels: ["Ene 25", "Feb 25", "Mar 25", "Abr 25", "May 25", "Jun 25", "Jul 25", "Ago 25", "Sep 25", "Oct 25", "Nov 25", "Dic 25", "Ene 26"],
+                        datasets: [{
+                            label: 'Impacto de Sostenibilidad (%)',
+                            data: [39.8, 39.7, 39.6, 39.5, 39.5, 39.4, 39.3, 39.2, 39.1, 39.0, 38.9, 38.9, 38.9],
+                            borderColor: '#3498db',
+                            backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: true, position: 'top' }
                         },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: {
-                                legend: { display: true, position: 'top' }
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                title: { display: true, text: '% Sostenibilidad' }
                             },
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                    max: 100,
-                                    title: { display: true, text: '% Sostenibilidad' }
-                                },
-                                x: { title: { display: true, text: 'Mes' } }
-                            }
+                            x: { title: { display: true, text: 'Mes' } }
                         }
-                    });
-                }
-
-                // Gráfico de evolución de empleados
-                if (document.getElementById('chartEmpleados')) {
-                    const ctxEmpleados = document.getElementById('chartEmpleados').getContext('2d');
-                    new Chart(ctxEmpleados, {
-                        type: 'line',
-                        data: {
-                            labels: ["Ene 25", "Feb 25", "Mar 25", "Abr 25", "May 25", "Jun 25", "Jul 25", "Ago 25", "Sep 25", "Oct 25", "Nov 25", "Dic 25", "Ene 26"],
-                            datasets: [
-                                { label: 'Empleados totales', data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: '#2196F3', backgroundColor: 'rgba(33,150,243,0.1)', tension: 0.3 },
-                                { label: 'Empleados locales', data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: '#3F51B5', backgroundColor: 'rgba(63,81,181,0.1)', tension: 0.3 },
-                                { label: 'Mujeres', data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: '#9C27B0', backgroundColor: 'rgba(156,39,176,0.1)', tension: 0.3 },
-                                { label: 'Personas con discapacidad', data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: '#FF9800', backgroundColor: 'rgba(255,152,0,0.1)', tension: 0.3 }
-                            ]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: { legend: { position: 'top' } },
-                            scales: { y: { beginAtZero: true, title: { display: true, text: 'Cantidad de personas' } } }
-                        }
-                    });
-                }
+                    }
+                });
             </script>
             
 
@@ -776,7 +743,7 @@
             <p>📊 Dashboard individual de ETIMO</p>
             <p>🌿 Sistema Impacta Verde - Mediciones de sostenibilidad completas</p>
             <p style="font-size: 12px; color: #888; margin-top: 10px;">
-                Actualizado: 14/02/2026 02:08
+                Actualizado: 14/02/2026 02:22
             </p>
         </div>
     </div>
