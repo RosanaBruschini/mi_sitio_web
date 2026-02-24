@@ -302,7 +302,7 @@
 
                     <div class="grupo-formulario">
                         <label>Fecha de carga automática</label>
-                        <input type="text" id="fechaCargaVisible" value="12/02/2026" readonly
+                        <input type="text" id="fechaCargaVisible" value="24/02/2026" readonly
                                style="background-color: #e9ecef; font-weight: bold;">
                     </div>
                 </div>
@@ -430,6 +430,55 @@
                             <input type="number" id="residuo_no_reciclable_kg" name="Residuo_No_Reciclable_kg" step="0.01" min="0" value="0">
                         </div>
                     </div>
+
+                    <!-- MODIFICADO: Nueva fila con los campos movidos desde Social y Hotel -->
+                    <div class="fila-cuadruple">
+                        <div class="grupo-formulario">
+                            <label for="uniforme_circular">% de uniformes circulares</label>
+                            <select id="uniforme_circular" name="Uniforme_circular_%">
+                                <option value="0">Seleccionar %...</option>
+                                <option value="10">0-20% (Muy bajo)</option>
+                                <option value="30">21-40% (Bajo)</option>
+                                <option value="50">41-60% (Moderado)</option>
+                                <option value="70">61-80% (Alto)</option>
+                                <option value="90">81-100% (Muy alto)</option>
+                            </select>
+                            <span class="nota-campo">Porcentaje de uniformes hechos con materiales reciclados</span>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label for="procesos_optimizados">Nivel de optimización de procesos</label>
+                            <select id="procesos_optimizados" name="Procesos_optimizados_%">
+                                <option value="0">Seleccionar nivel...</option>
+                                <option value="20">1 - Muy básicos (procesos manuales, sin documentar)</option>
+                                <option value="40">2 - Básicos (algunos procesos documentados)</option>
+                                <option value="60">3 - Intermedios (procesos definidos y seguimiento parcial)</option>
+                                <option value="80">4 - Avanzados (procesos optimizados con métricas)</option>
+                                <option value="100">5 - Excelentes (procesos automatizados, mejora continua)</option>
+                            </select>
+                            <small style="color: #666; font-size: 12px; display: block; margin-top: 5px;">
+                                Evalúa el nivel de optimización de los procesos de tu empresa
+                            </small>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label for="digitalizacion">Nivel de digitalización</label>
+                            <select id="digitalizacion" name="Digitalizacion_%">
+                                <option value="0">Seleccionar nivel...</option>
+                                <option value="20">1 - Muy baja (papel, comunicación básica)</option>
+                                <option value="40">2 - Baja (email, algunas herramientas digitales)</option>
+                                <option value="60">3 - Media (sistemas básicos, redes sociales)</option>
+                                <option value="80">4 - Alta (software especializado, automatización parcial)</option>
+                                <option value="100">5 - Muy alta (plataformas integradas, automatización total)</option>
+                            </select>
+                            <small style="color: #666; font-size: 12px; display: block; margin-top: 5px;">
+                                Evalúa el nivel de digitalización de tu empresa
+                            </small>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label for="horas_voluntariado">Horas de voluntariado <span class="unidad">(horas)</span></label>
+                            <input type="number" id="horas_voluntariado" name="Horas_Voluntariado" step="0.5" min="0" value="0">
+                            <span class="nota-campo">Horas dedicadas a voluntariado ambiental</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- SECCIÓN 4: IMPACTO SOCIAL (GENERAL - SIEMPRE VISIBLE) -->
@@ -456,18 +505,9 @@
                             <input type="number" id="cantidad_mujeres" name="Cantidad_Mujeres" min="0" value="0">
                         </div>
 
-                        <!-- ✅ MOVIDO DESDE HOTEL: % de uniformes circulares -->
+                        <!-- MODIFICADO: se eliminó el campo uniforme_circular de aquí (ahora está en ambiental) -->
                         <div class="grupo-formulario">
-                            <label for="uniforme_circular">% de uniformes circulares</label>
-                            <select id="uniforme_circular" name="Uniforme_circular_%">
-                                <option value="0">Seleccionar %...</option>
-                                <option value="10">0-20% (Muy bajo)</option>
-                                <option value="30">21-40% (Bajo)</option>
-                                <option value="50">41-60% (Moderado)</option>
-                                <option value="70">61-80% (Alto)</option>
-                                <option value="90">81-100% (Muy alto)</option>
-                            </select>
-                            <span class="nota-campo">Porcentaje de uniformes hechos con materiales reciclados</span>
+                            <!-- vacío a propósito para mantener estructura -->
                         </div>
                     </div>
 
@@ -483,36 +523,12 @@
                             <input type="number" id="capacitacion_horas" name="Capacitacion_horas" step="0.1" min="0" value="0">
                         </div>
 
-                        <!-- ✅ Ya está en métricas generales: Nivel de optimización de procesos -->
+                        <!-- MODIFICADO: se eliminaron procesos_optimizados y digitalizacion de aquí (ahora están en ambiental) -->
                         <div class="grupo-formulario">
-                            <label for="procesos_optimizados">Nivel de optimización de procesos</label>
-                            <select id="procesos_optimizados" name="Procesos_optimizados_%">
-                                <option value="0">Seleccionar nivel...</option>
-                                <option value="20">1 - Muy básicos (procesos manuales, sin documentar)</option>
-                                <option value="40">2 - Básicos (algunos procesos documentados)</option>
-                                <option value="60">3 - Intermedios (procesos definidos y seguimiento parcial)</option>
-                                <option value="80">4 - Avanzados (procesos optimizados con métricas)</option>
-                                <option value="100">5 - Excelentes (procesos automatizados, mejora continua)</option>
-                            </select>
-                            <small style="color: #666; font-size: 12px; display: block; margin-top: 5px;">
-                                Evalúa el nivel de optimización de los procesos de tu empresa
-                            </small>
+                            <!-- vacío -->
                         </div>
-
-                        <!-- ✅ Ya está en métricas generales: Nivel de digitalización -->
                         <div class="grupo-formulario">
-                            <label for="digitalizacion">Nivel de digitalización</label>
-                            <select id="digitalizacion" name="Digitalizacion_%">
-                                <option value="0">Seleccionar nivel...</option>
-                                <option value="20">1 - Muy baja (papel, comunicación básica)</option>
-                                <option value="40">2 - Baja (email, algunas herramientas digitales)</option>
-                                <option value="60">3 - Media (sistemas básicos, redes sociales)</option>
-                                <option value="80">4 - Alta (software especializado, automatización parcial)</option>
-                                <option value="100">5 - Muy alta (plataformas integradas, automatización total)</option>
-                            </select>
-                            <small style="color: #666; font-size: 12px; display: block; margin-top: 5px;">
-                                Evalúa el nivel de digitalización de tu empresa
-                            </small>
+                            <!-- vacío -->
                         </div>
                     </div>
 
@@ -582,12 +598,7 @@
                     </div>
 
                     <div class="fila-cuadruple">
-                        <div class="grupo-formulario">
-                            <label for="horas_voluntariado">Horas de voluntariado <span class="unidad">(horas)</span></label>
-                            <input type="number" id="horas_voluntariado" name="Horas_Voluntariado" step="0.5" min="0" value="0">
-                            <span class="nota-campo">Horas dedicadas a voluntariado ambiental</span>
-                        </div>
-
+                        <!-- MODIFICADO: se eliminó el campo horas_voluntariado de aquí (ahora está en ambiental) -->
                         <div class="grupo-formulario">
                             <label for="proveedores_locales_regenerativos">% Proveedores locales regenerativos</label>
                             <select id="proveedores_locales_regenerativos" name="Proveedores_Locales_Regenerativos_%">
@@ -612,6 +623,9 @@
                             </select>
                             <span class="nota-campo">Encuesta de satisfacción sobre prácticas sostenibles</span>
                         </div>
+                        <!-- Las dos últimas columnas quedan vacías (mantiene estructura) -->
+                        <div class="grupo-formulario"></div>
+                        <div class="grupo-formulario"></div>
                     </div>
                 </div>
 
@@ -1001,7 +1015,7 @@
 
                 // Impacto Ambiental General
                 'Energia_kWh': parseFloat(document.getElementById('energia_kwh').value) || 0,
-                'Energia_Fotovoltaica_kWh': parseFloat(document.getElementById('energia_fotovoltaica_kwh').value) || 0, // ✅ AHORA SIEMPRE VISIBLE
+                'Energia_Fotovoltaica_kWh': parseFloat(document.getElementById('energia_fotovoltaica_kwh').value) || 0,
                 'Combustible_Estacionario_L': parseFloat(document.getElementById('combustible_estacionario_l').value) || 0,
                 'Papel_kg': parseFloat(document.getElementById('papel_kg').value) || 0,
                 'Agua_m3': parseFloat(document.getElementById('agua_m3').value) || 0,
@@ -1010,7 +1024,7 @@
                 'Tela_reutilizada_kg': parseFloat(document.getElementById('tela_reutilizada_kg').value) || 0,
                 'Tecnologia_recuperada_kg': parseFloat(document.getElementById('tecnologia_recuperada_kg').value) || 0,
                 'Plastico_reutilizado_kg': parseFloat(document.getElementById('plastico_reutilizado_kg').value) || 0,
-                'Materiales_biodegradables_kg': parseFloat(document.getElementById('materiales_biodegradables_kg').value) || 0, // ✅ NUEVO CAMPO
+                'Materiales_biodegradables_kg': parseFloat(document.getElementById('materiales_biodegradables_kg').value) || 0,
                 'Vidrio_Reciclado_kg': parseFloat(document.getElementById('vidrio_reciclado_kg').value) || 0,
                 'Residuo_Organico_kg': parseFloat(document.getElementById('residuo_organico_kg').value) || 0,
                 'Residuo_Reciclable_kg': parseFloat(document.getElementById('residuo_reciclable_kg').value) || 0,
@@ -1025,7 +1039,9 @@
                 'Politica_inclusion': document.getElementById('politica_inclusion').checked ? 'Sí' : 'No',
                 'Procesos_optimizados_%': parseFloat(document.getElementById('procesos_optimizados').value) || 0,
                 'Digitalizacion_%': parseFloat(document.getElementById('digitalizacion').value) || 0,
-                'Uniforme_circular_%': parseInt(document.getElementById('uniforme_circular').value) || 0, // ✅ AHORA SIEMPRE VISIBLE
+                'Uniforme_circular_%': parseInt(document.getElementById('uniforme_circular').value) || 0,
+                // MODIFICADO: Horas_Voluntariado ahora se toma directamente (sin condición de hotel)
+                'Horas_Voluntariado': parseFloat(document.getElementById('horas_voluntariado').value) || 0,
 
                 // Hotel (solo si la sección está visible)
                 'Total_Habitaciones': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('total_habitaciones').value) || 0,
@@ -1035,7 +1051,7 @@
                 'Toallas_Reutilizadas': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('toallas_reutilizadas').value) || 0,
                 'Sabanas_Reutilizadas': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('sabanas_reutilizadas').value) || 0,
                 'Inversion_Conservacion_USD': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('inversion_conservacion_usd').value) || 0,
-                'Horas_Voluntariado': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('horas_voluntariado').value) || 0,
+                // Nota: Horas_Voluntariado ya no se envía desde aquí porque se movió a general
                 'Participacion_Reuso_Personas': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('participacion_reuso_personas').value) || 0,
                 'Participacion_Reuso_%': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('participacion_reuso_porcentaje_hidden').value) || 0,
                 'Proveedores_Locales_Regenerativos_%': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('proveedores_locales_regenerativos').value) || 0,
@@ -1082,15 +1098,15 @@
                     // Resetear solo los campos de datos (incluyendo el nuevo campo)
                     const camposReset = ['energia_kwh', 'combustible_estacionario_l', 'papel_kg', 'borra_humeda_kg',
                                        'borra_seca_kg', 'tela_reutilizada_kg', 'tecnologia_recuperada_kg',
-                                       'plastico_reutilizado_kg', 'materiales_biodegradables_kg', // ✅ NUEVO CAMPO
+                                       'plastico_reutilizado_kg', 'materiales_biodegradables_kg',
                                        'cantidad_empleados_total', 'cantidad_empleados_locales', 'cantidad_mujeres',
                                        'cantidad_personas_discapacitadas', 'capacitacion_horas',
                                        'procesos_optimizados', 'digitalizacion', 'residuo_organico_kg',
                                        'residuo_reciclable_kg', 'residuo_no_reciclable_kg',
                                        'comentarios', 'link_evidencia', 'agua_m3', 'politica_inclusion',
                                        'vidrio_reciclado_kg', 'total_habitaciones', 'huespedes_totales', 'noches_vendidas',
-                                       'habitaciones_ocupadas', 'energia_fotovoltaica_kwh', // ✅ AHORA EN GENERAL
-                                       'toallas_reutilizadas', 'sabanas_reutilizadas', 'uniforme_circular', // ✅ AHORA EN GENERAL
+                                       'habitaciones_ocupadas', 'energia_fotovoltaica_kwh',
+                                       'toallas_reutilizadas', 'sabanas_reutilizadas', 'uniforme_circular',
                                        'inversion_conservacion_usd', 'horas_voluntariado', 'participacion_reuso_personas',
                                        'proveedores_locales_regenerativos', 'proveedores_locales_regenerativos_rest', 'satisfaccion_sostenibilidad',
                                        'platos_servidos', 'desperdicio_alimentos_kg', 'aceite_usado_litros',
