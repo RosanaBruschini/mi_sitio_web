@@ -88,7 +88,54 @@
         .ods-container span { background: #1F7A3E; color: white; padding: 10px 15px; border-radius: 6px; font-weight: bold; cursor: help; transition: transform 0.2s; }
         .ods-container span:hover { transform: scale(1.1); background: #155b2a; }
         .footer { text-align: center; color: #888; margin-top: 50px; padding-top: 30px; border-top: 1px solid #ddd; }
-        .charts-section { margin: 40px 0; background: white; padding: 30px; border-radius: 18px; }
+                .charts-section {
+            margin: 40px 0;
+            background: white;
+            padding: 20px;
+            border-radius: 18px;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .charts-section > div {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .chart-box {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            border: 2px solid #e8f4e8;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .chart-box h3 {
+            color: #124d2d;
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .chart-wrapper canvas {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain;
+        }
     </style>
 </head>
 <body>
@@ -443,7 +490,7 @@
             </div>
             
     <div class="footer">
-        <p>Dashboard de ETIMO | Actualizado: 19/03/2026 15:02</p>
+        <p>Dashboard de ETIMO | Actualizado: 19/03/2026 15:30</p>
         <p>🌿 Impacta Verde</p>
     </div>
 </div>
