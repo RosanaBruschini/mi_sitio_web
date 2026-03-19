@@ -11,37 +11,66 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #f4f7f4, #e8f4e8); padding: 20px; }
         .container { max-width: 1400px; margin: 0 auto; }
+                /* HEADER REPARADO - VERSIÓN MÓVIL Y ESCRITORIO */
         header {
             background: white;
             border-radius: 20px;
-            padding: 30px;
+            padding: 20px;
             margin-bottom: 30px;
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            align-items: center;
-            gap: 20px;
             border: 2px solid #2E8B57;
-        }
-        .logo { height: 100px; }
-        .header-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
+            gap: 15px;
         }
+
+        .logo {
+            height: 80px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
         .header-center h1 {
             color: #1F7A3E;
+            font-size: clamp(1.2rem, 5vw, 2rem);
             margin: 0;
         }
+
         .header-right {
-            text-align: right;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
         }
+
         .empresa-nombre {
-            font-size: 20px;
+            font-size: clamp(1rem, 4vw, 1.2rem);
             font-weight: 600;
             color: #124d2d;
+            word-break: break-word;
         }
+
         .sector-nivel {
-            font-size: 16px;
+            font-size: clamp(0.8rem, 3vw, 0.9rem);
             color: #666;
-            margin-top: 5px;
+        }
+
+        /* Para pantallas más grandes, volvemos a la disposición horizontal */
+        @media (min-width: 769px) {
+            header {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+                padding: 20px 30px;
+            }
+            .logo {
+                height: 100px;
+            }
+            .header-right {
+                width: auto;
+                text-align: right;
+            }
         }
         .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px; margin-bottom: 40px; }
         .kpi-card { background: white; padding: 25px; border-radius: 15px; text-align: center; border-top: 6px solid #1F7A3E; transition: transform 0.3s ease, box-shadow 0.3s ease; }
@@ -414,7 +443,7 @@
             </div>
             
     <div class="footer">
-        <p>Dashboard de ETIMO | Actualizado: 04/03/2026 15:11</p>
+        <p>Dashboard de ETIMO | Actualizado: 19/03/2026 15:02</p>
         <p>🌿 Impacta Verde</p>
     </div>
 </div>
