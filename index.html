@@ -3694,22 +3694,22 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="contact-grid">
       <div class="contact-form">
         <h3 style="font-size: 1.4rem;">Solicitá tu diagnóstico</h3>
-        <form>
+        <form action="https://formspree.io/f/estudioimpactaverde@gmail.com" method="POST">
           <div class="form-group">
             <label for="name" style="font-size: 1rem;">Nombre y Apellido</label>
-            <input type="text" id="name" required placeholder="Ej. María López" style="font-size: 1rem;">
+            <input type="text" id="name" name="name" required placeholder="Ej. María López" style="font-size: 1rem;">
           </div>
           <div class="form-group">
             <label for="email" style="font-size: 1rem;">Correo Electrónico</label>
-            <input type="email" id="email" required placeholder="Ej. maria@empresa.com" style="font-size: 1rem;">
+            <input type="email" id="email" name="email" required placeholder="Ej. maria@empresa.com" style="font-size: 1rem;">
           </div>
           <div class="form-group">
             <label for="company" style="font-size: 1rem;">Empresa o Proyecto</label>
-            <input type="text" id="company" required placeholder="Nombre de tu empresa o proyecto" style="font-size: 1rem;">
+            <input type="text" id="company" name="company" required placeholder="Nombre de tu empresa o proyecto" style="font-size: 1rem;">
           </div>
           <div class="form-group">
             <label for="service" style="font-size: 1rem;">¿Qué servicio te interesa más?</label>
-            <select id="service" style="padding: 12px 15px; width: 100%; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
+            <select id="service" name="service" style="padding: 12px 15px; width: 100%; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
               <option value="">Seleccioná una opción</option>
               <option value="marca">Gestión de Marca Sustentable</option>
               <option value="rediseno">Optimización de Procesos</option>
@@ -3720,7 +3720,7 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
           <div class="form-group">
             <label for="message" style="font-size: 1rem;">Contanos brevemente sobre tu proyecto</label>
-            <textarea id="message" placeholder="¿En qué etapa estás? ¿Qué objetivos tenés?" required style="font-size: 1rem;"></textarea>
+            <textarea id="message" name="message" placeholder="¿En qué etapa estás? ¿Qué objetivos tenés?" required style="font-size: 1rem;"></textarea>
           </div>
           <div style="text-align: right;">
             <button type="submit" class="btn btn-secondary" style="font-size: 1rem;">Solicitar diagnóstico gratuito</button>
@@ -3731,61 +3731,61 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </section>
   <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-info">
-          <h3>Impacta Verde</h3>
-          <p>Estudio de Sustentabilidad e Innovación Empresarial</p>
-          <div class="contact-info">
-            <p><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</p>
-            <p><i class="fas fa-envelope"></i> hola@impactaverde.com.ar</p>
-          </div>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-tiktok"></i></a>
-          </div>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-info">
+        <h3>Impacta Verde</h3>
+        <p>Estudio de Sustentabilidad e Innovación Empresarial</p>
+        <div class="contact-info">
+          <p><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</p>
+          <p><i class="fas fa-envelope"></i> estudioimpactaverde@gmail.com</p>
         </div>
-        
-        <div class="footer-contact-info">
-          <h3>Contacto directo</h3>
-          <div class="contact-details">
-            <p><i class="fas fa-envelope"></i> </p>
-            <p><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</p>
-            <div class="business-hours">
-              <h4>Horarios de atención</h4>
-              <p>Lunes a Viernes: 9:00 - 18:00 hs</p>
-              <p>Respondemos consultas en menos de 24 horas</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="footer-links">
-          <h3>Enlaces Rápidos</h3>
-          <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#sello">Sello</a></li>
-            <li><a href="#impacto">Impacto</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h3>Servicios</h3>
-          <ul>
-            <li><a href="#servicios">Gestión de Marca Sustentable</a></li>
-            <li><a href="#servicios">Optimización de Procesos</a></li>
-            <li><a href="#servicios">Gestión Circular</a></li>
-            <li><a href="#servicios">Comunicación Integral</a></li>
-          </ul>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/company/impacta-verde/?viewAsMember=true" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/impactaverde.estudio/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
         </div>
       </div>
-      <div class="copyright">
-        <p>&copy; 2025 Impacta Verde. Todos los derechos reservados.</p>
+      
+      <div class="footer-contact-info">
+        <h3>Contacto directo</h3>
+        <div class="contact-details">
+          <p><i class="fas fa-envelope"></i> estudioimpactaverde@gmail.com</p>
+          <p><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</p>
+          <div class="business-hours">
+            <h4>Horarios de atención</h4>
+            <p>Lunes a Viernes: 9:00 - 18:00 hs</p>
+            <p>Respondemos consultas en menos de 24 horas</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Enlaces Rápidos</h3>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#sello">Sello</a></li>
+          <li><a href="#impacto">Impacto</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h3>Servicios</h3>
+        <ul>
+          <li><a href="#servicios">Gestión de Marca Sustentable</a></li>
+          <li><a href="#servicios">Optimización de Procesos</a></li>
+          <li><a href="#servicios">Gestión Circular</a></li>
+          <li><a href="#servicios">Comunicación Integral</a></li>
+        </ul>
       </div>
     </div>
-  </footer>
+    <div class="copyright">
+      <p>&copy; 2025 Impacta Verde. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
 
     <script>
     // Chatbot COMPLETO - Todo funciona
