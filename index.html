@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -171,7 +170,7 @@
       color: var(--dark);
     }
     
-/* ===== HERO SECTION - TIPOGRAFÍA ESTILO NODUS ===== */
+/* ===== HERO SECTION ===== */
 .hero {
   background: linear-gradient(135deg, #00c853 0%, #00e676 100%);
   padding: 100px 0;
@@ -179,7 +178,6 @@
   overflow: hidden;
 }
 
-/* Tipografía estilo Nodus */
 .hero-text h1 {
   font-size: 3.5rem;
   color: #ffffff;
@@ -189,7 +187,7 @@
 }
 
 .hero-text h1 strong {
-  font-weight: 800 !important; /* Extra bold para palabras clave */
+  font-weight: 800 !important;
   color: #ffffff !important;
 }
 
@@ -202,11 +200,10 @@
 }
 
 .hero-text p strong {
-  font-weight: 700 !important; /* Negrita para palabras clave */
+  font-weight: 700 !important;
   color: #ffffff !important;
 }
 
-/* Círculos de iconos estilo Nodus MEJORADOS */
 .icon-circle {
   width: 90px;
   height: 90px;
@@ -232,7 +229,6 @@
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
 
-/* Animación de órbita para economía circular */
 @keyframes orbit {
   0% {
     transform: rotate(0deg) translateX(var(--orbit-size)) rotate(0deg);
@@ -255,7 +251,6 @@
   animation-delay: var(--orbit-delay);
 }
 
-/* Efectos de flotación adicional */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-8px); }
@@ -410,7 +405,7 @@
       font-weight: 500;
     }
 
-/* ===== SERVICES SECTION - CSS CORREGIDO ===== */
+/* ===== SERVICES SECTION ===== */
 .services {
   padding: 80px 0;
   background: white;
@@ -423,7 +418,6 @@
   margin: 0 auto;
 }
 
-/* TARJETAS DE SERVICIOS - Estilos principales */
 .service-card {
   text-align: left;
   padding: 0 !important;
@@ -442,13 +436,11 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
-/* ESTADO ACTIVO - CRÍTICO */
 .service-card.active {
   border-color: var(--primary) !important;
   box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
 }
 
-/* HEADER DE LA TARJETA */
 .service-header {
   padding: 25px 20px;
   display: flex;
@@ -458,7 +450,6 @@
   background: white;
 }
 
-/* ICONOS estilo Nodus */
 .service-icon {
   font-size: 2.2rem;
   margin-bottom: 0;
@@ -488,7 +479,6 @@
   border-radius: 50%;
 }
 
-/* TÍTULO Y DESCRIPCIÓN */
 .service-title {
   flex-grow: 1;
   min-width: 0;
@@ -509,7 +499,6 @@
   margin: 0;
 }
 
-/* FLECHA INDICADORA */
 .service-arrow {
   color: var(--primary);
   font-size: 1rem;
@@ -523,7 +512,6 @@
   transform: rotate(180deg) !important;
 }
 
-/* ===== CONTENIDO DESPLEGABLE - ESTO ES LO MÁS IMPORTANTE ===== */
 .service-content {
   max-height: 0;
   overflow: hidden;
@@ -542,7 +530,6 @@
               visibility 0.3s ease 0.1s;
 }
 
-/* DETALLES DEL CONTENIDO */
 .service-details {
   padding: 0 20px 20px;
   opacity: 0;
@@ -555,7 +542,6 @@
   transform: translateY(0);
 }
 
-/* CARACTERÍSTICAS DEL SERVICIO - CORRECCIÓN DEFINITIVA */
 .service-features h4 {
   font-size: 1.1rem;
   color: #1a202c;
@@ -569,11 +555,10 @@
   margin: 0 0 20px 0 !important;
 }
 
-/* ITEMS CORREGIDOS - CHECK BIEN POSICIONADO */
 .service-features li {
   font-size: 0.9rem;
   margin-bottom: 10px;
-  padding-left: 32px; /* Mantenemos el padding */
+  padding-left: 32px;
   position: relative;
   color: #2d3748;
   line-height: 1.5;
@@ -583,12 +568,11 @@
 .service-features li i {
   color: var(--primary);
   position: absolute;
-  left: -16px; /* Reducido de -14px a -16px - 2 espacios más a la izquierda */
-  top: 7px;  /* Mantenemos la posición vertical */
+  left: -16px;
+  top: 7px;
   font-size: 0.8rem;
 }
 
-/* CAJAS DE RESULTADO Y CASE STUDY */
 .service-result,
 .service-case-study {
   padding: 12px;
@@ -636,15 +620,15 @@
   }
   
   .service-features li i {
-    left: -18px; /* Reducido de -16px a -18px - 2 espacios más a la izquierda */
-    top: 6px;  /* Mantenemos la posición vertical */
+    left: -18px;
+    top: 6px;
   }
   
   .service-card.active .service-content {
     max-height: 2000px !important;
   }
 }
-/* ===== ANIMACIONES ADICIONALES ===== */
+
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -794,21 +778,21 @@
 
     /* Sección Impacto Positivo */
     .impacto-section {
-  background: #f8fdf8;
-  padding: 80px 0;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  width: 100vw;
-}
+      background: #f8fdf8;
+      padding: 80px 0;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      width: 100vw;
+    }
 
-.impacto-section > .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
+    .impacto-section > .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
 
     .impacto-content {
       max-width: 1100px;
@@ -998,7 +982,7 @@
     .impacto-cta {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      padding: 40px 50px; /* Reducido de 60px a 40px en vertical */
+      padding: 40px 50px;
       border-radius: 25px;
       text-align: center;
       margin-top: 40px;
@@ -1083,21 +1067,21 @@
 
     /* Contact Section */
     .contact {
-  padding: 80px 0;
-  background: white;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  width: 100vw;
-}
+      padding: 80px 0;
+      background: white;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      width: 100vw;
+    }
 
-.contact > .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
+    .contact > .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
 
     .contact-grid {
       display: grid;
@@ -1155,7 +1139,6 @@
     }
 
     /* Footer */
-   /* ===== FOOTER ANCHO COMPLETO ===== */
 footer {
   background: #222;
   color: white;
@@ -1843,7 +1826,7 @@ footer > .container {
   <a href="#contacto" class="btn" style="font-size: 1.3rem; background: #ffd54f; color: #1b5e20; padding: 18px 45px; font-weight: 700; border-radius: 50px; text-decoration: none; display: inline-block;">Hablemos</a>
 </div>
     
-    <!-- Columna Gráficos - VERSIÓN MEJORADA -->
+    <!-- Columna Gráficos -->
     <div class="hero-graphics">
       <div class="graphic-container">
         
@@ -1853,50 +1836,44 @@ footer > .container {
         <!-- Onda expansiva -->
         <div class="pulse-wave"></div>
         
-        <!-- Logo central - SOLO LA FLECHA -->
+        <!-- Logo central -->
         <div class="logo-center">
           <div class="logo-arrow">
             <i class="fas fa-arrow-up" style="font-size: 2.5rem; color: #ffd54f;"></i>
           </div>
         </div>
         
-        <!-- Íconos SIN TEXTO y con rotación -->
-        <!-- Tecnología - TURQUESA -->
+        <!-- Íconos con rotación -->
         <div class="static-icon" style="--icon-position: 0deg; --icon-color: #26c6da;">
           <div class="icon-circle">
             <i class="fas fa-laptop-code"></i>
           </div>
         </div>
         
-        <!-- Comunicación - ROSA -->
         <div class="static-icon" style="--icon-position: 60deg; --icon-color: #f48fb1;">
           <div class="icon-circle">
             <i class="fas fa-bullhorn"></i>
           </div>
         </div>
         
-        <!-- Medición - AMARILLO -->
         <div class="static-icon" style="--icon-position: 120deg; --icon-color: #ffd54f;">
           <div class="icon-circle">
             <i class="fas fa-chart-line"></i>
           </div>
         </div>
         
-        <!-- Procesos - NARANJA -->
         <div class="static-icon" style="--icon-position: 180deg; --icon-color: #ff9800;">
           <div class="icon-circle">
             <i class="fas fa-cogs"></i>
           </div>
         </div>
         
-        <!-- Marca - TURQUESA OSCURO -->
         <div class="static-icon" style="--icon-position: 240deg; --icon-color: #00acc1;">
           <div class="icon-circle">
             <i class="fas fa-certificate"></i>
           </div>
         </div>
         
-        <!-- Sello - VERDE AGUA -->
         <div class="static-icon" style="--icon-position: 300deg; --icon-color: #4db6ac;">
           <div class="icon-circle">
             <i class="fas fa-leaf"></i>
@@ -1910,15 +1887,7 @@ footer > .container {
 </section>
 
 <style>
-/* ===== HERO SECTION ===== */
-.hero {
-  background: linear-gradient(135deg, #00c853 0%, #00e676 100%);
-  padding: 100px 0;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Contenedor del gráfico */
+/* ===== HERO SECTION ESTILOS ADICIONALES ===== */
 .graphic-container {
   position: relative;
   height: 500px;
@@ -1928,17 +1897,14 @@ footer > .container {
   transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Efecto de zoom cuando aparece el logo */
 .graphic-container.logo-visible {
   transform: scale(1.08);
 }
 
-/* Estado de rotación */
 .graphic-container.rotating .static-icon {
   animation: iconRotate 15s linear infinite !important;
 }
 
-/* Círculo de fondo sutil */
 .background-circle {
   position: absolute;
   top: 50%;
@@ -1950,7 +1916,6 @@ footer > .container {
   border-radius: 50%;
 }
 
-/* Onda expansiva */
 .pulse-wave {
   position: absolute;
   top: 50%;
@@ -1963,14 +1928,13 @@ footer > .container {
   opacity: 0;
 }
 
-/* Logo central - SOLO FLECHA */
 .logo-center {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 20;
-  opacity: 1; /* SIEMPRE VISIBLE */
+  opacity: 1;
   transition: all 0.4s ease;
 }
 
@@ -1986,7 +1950,6 @@ footer > .container {
   transform: rotate(45deg);
 }
 
-/* Íconos estáticos alrededor */
 .static-icon {
   position: absolute;
   top: 50%;
@@ -1994,10 +1957,9 @@ footer > .container {
   transform: translate(-50%, -50%) rotate(var(--icon-position)) translateX(200px) rotate(calc(-1 * var(--icon-position)));
   text-align: center;
   transition: all 0.4s ease;
-  opacity: 1 !important; /* SIEMPRE VISIBLES */
+  opacity: 1 !important;
 }
 
-/* Círculos de iconos con colores */
 .icon-circle {
   width: 80px;
   height: 80px;
@@ -2023,7 +1985,6 @@ footer > .container {
   filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
 }
 
-/* Animaciones */
 @keyframes wavePulse {
   0% {
     width: 120px;
@@ -2065,7 +2026,6 @@ footer > .container {
   }
 }
 
-/* Nueva animación de rotación de iconos */
 @keyframes iconRotate {
   0% {
     transform: translate(-50%, -50%) rotate(var(--icon-position)) translateX(200px) rotate(calc(-1 * var(--icon-position)));
@@ -2075,7 +2035,6 @@ footer > .container {
   }
 }
 
-/* Efecto de respiración para iconos */
 @keyframes iconBreathing {
   0%, 100% { 
     transform: translate(-50%, -50%) rotate(var(--icon-position)) translateX(200px) rotate(calc(-1 * var(--icon-position))) scale(1);
@@ -2085,7 +2044,6 @@ footer > .container {
   }
 }
 
-/* Estados de animación MEJORADOS */
 .logo-visible .logo-center {
   animation: logoPulse 2s ease-in-out;
 }
@@ -2094,7 +2052,6 @@ footer > .container {
   animation: wavePulse 2s ease-out;
 }
 
-/* Los iconos SIEMPRE tienen animación suave y son visibles */
 .static-icon {
   opacity: 1 !important;
   animation: iconBreathing 4s ease-in-out infinite, fadeInUp 0.6s ease forwards !important;
@@ -2119,7 +2076,6 @@ footer > .container {
   animation-delay: 1.5s, 0.6s !important; 
 }
 
-/* Cuando está rotando, los iconos rotan suavemente */
 .graphic-container.rotating .static-icon {
   animation: iconRotate 15s linear infinite, iconBreathing 4s ease-in-out infinite !important;
 }
@@ -2135,7 +2091,6 @@ footer > .container {
   }
 }
 
-/* Responsive */
 @media (max-width: 1200px) {
   .container[style*="grid-template-columns"] {
     gap: 40px !important;
@@ -2222,7 +2177,6 @@ footer > .container {
 }
 </style>
 
-<!-- JavaScript MEJORADO - Elementos SIEMPRE visibles -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const graphicContainer = document.querySelector('.graphic-container');
@@ -2230,22 +2184,17 @@ document.addEventListener('DOMContentLoaded', function() {
   const pulseWave = document.querySelector('.pulse-wave');
   const staticIcons = document.querySelectorAll('.static-icon');
   
-  // Logo SIEMPRE visible desde el inicio
   logoCenter.style.opacity = '1';
   
   function pulseLogo() {
-    // Efecto de pulso en el logo
     logoCenter.style.animation = 'logoPulse 2s ease-in-out';
     pulseWave.style.animation = 'wavePulse 2s ease-out';
-    
-    // Efecto sutil en los iconos
     staticIcons.forEach(icon => {
       icon.style.filter = 'brightness(1.2)';
       setTimeout(() => {
         icon.style.filter = 'brightness(1)';
       }, 1000);
     });
-    
     setTimeout(() => {
       logoCenter.style.animation = 'none';
     }, 2000);
@@ -2262,33 +2211,24 @@ document.addEventListener('DOMContentLoaded', function() {
   function toggleRotation() {
     if (graphicContainer.classList.contains('rotating')) {
       stopRotation();
-      // Pausa más corta - solo 5 segundos
       setTimeout(startRotation, 5000);
     } else {
       startRotation();
-      // Rotación por 10 segundos
       setTimeout(stopRotation, 10000);
     }
   }
   
-  // Pulso del logo cada 6 segundos
   setInterval(pulseLogo, 6000);
-  
-  // Rotación continua (15 segundos ciclo completo)
   setTimeout(() => {
     startRotation();
     setInterval(toggleRotation, 15000);
   }, 2000);
-  
-  // Pulso inicial después de 1 segundo
   setTimeout(pulseLogo, 1000);
   
-  // Efecto hover mejorado
   graphicContainer.addEventListener('mouseenter', function() {
     graphicContainer.style.transform = 'scale(1.05)';
-    pulseLogo(); // Pulso inmediato al hover
+    pulseLogo();
   });
-  
   graphicContainer.addEventListener('mouseleave', function() {
     graphicContainer.style.transform = 'scale(1)';
   });
@@ -2317,58 +2257,10 @@ document.addEventListener('DOMContentLoaded', function() {
 </section>
 
 <style>
-/* Misión y Resultados */
-<!-- Misión y Resultados -->
-<section class="mision-resultados">
-  <div class="container">
-    <div class="mision-content">
-      <h2>Acompañamos empresas y emprendimientos en la transición hacia la sustentabilidad real</h2>
-      <p>Integrando procesos, comunicación, innovación y mejora continua. Otorgamos el <span class="sello-destacado"><i class="fas fa-leaf"></i> Sello Digital de Sustentabilidad</span> como reconocimiento al compromiso tangible con el impacto ambiental positivo, midiendo huella de carbono y ofreciendo herramientas de transparencia para construir marcas más responsables.</p>
-      
-      <div class="resultados-grid">
-        <div class="resultado-item">
-          <div class="resultado-valor">+40%</div>
-          <div class="resultado-label">Eficiencia operativa</div>
-        </div>
-        <div class="resultado-item">
-          <div class="resultado-valor">-35%</div>
-          <div class="resultado-label">Huella de carbono</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<style>
-/* Misión y Resultados */
-.mision-resultados {
-  padding: 80px 0;
-  background: var(--light);
-  text-align: center;
-}
-
-.mision-content h2 {
-  color: var(--primary);
-  font-size: 2.2rem;
-  margin-bottom: 25px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.3;
-}
-
-.mision-content p {
-  font-size: 1.2rem;
-  color: var(--text-dark);
-  max-width: 900px;
-  margin: 0 auto 50px;
-  line-height: 1.7;
-}
-
-/* Estilo para el Sello Digital destacado - CON NEGRITA */
+/* Estilos adicionales para Misión */
 .sello-destacado {
   color: var(--primary);
-  font-weight: 800; /* NEGRITA MÁS FUERTE */
+  font-weight: 800;
   background: rgba(46, 125, 50, 0.1);
   padding: 2px 8px;
   border-radius: 4px;
@@ -2377,49 +2269,14 @@ document.addEventListener('DOMContentLoaded', function() {
   gap: 6px;
   border: 1px solid rgba(46, 125, 50, 0.3);
 }
-
 .sello-destacado i {
   font-size: 0.9em;
   color: var(--primary);
-  font-weight: 800; /* Icono también en negrita */
-}
-
-.resultados-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 30px;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.resultado-item {
-  background: white;
-  padding: 30px 25px;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-  border-top: 4px solid var(--primary);
-}
-
-.resultado-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-}
-
-.resultado-valor {
-  font-size: 2.8rem;
   font-weight: 800;
-  color: var(--primary);
-  margin-bottom: 8px;
-}
-
-.resultado-label {
-  font-size: 1.1rem;
-  color: var(--text-dark);
-  font-weight: 500;
 }
 </style>
-<!-- Services Section - VERSIÓN FUNCIONAL -->
+
+<!-- Services Section -->
 <section id="servicios" class="services">
   <div class="container">
     <div class="section-title" style="text-align: center;">
@@ -2557,38 +2414,38 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
 
       <!-- Servicio 5: Transformación Digital Sustentable -->
-<div class="service-card">
-  <div class="service-header">
-    <div class="service-icon">
-      <i class="fas fa-laptop-code"></i>
-    </div>
-    <div class="service-title">
-      <h3>Transformación Digital Sustentable</h3>
-      <p class="service-summary">Digitalizamos y conectamos la información clave de tu empresa para hacerla más eficiente, trazable y sustentable</p>
-    </div>
-    <div class="service-arrow">
-      <i class="fas fa-chevron-down"></i>
-    </div>
-  </div>
-  <div class="service-content">
-    <div class="service-details">
-      <div class="service-features">
-        <h4>¿Qué incluye?</h4>
-        <ul>
-          <li><i class="fas fa-check" style="color: var(--primary);"></i> Relevamiento y organización de datos de procesos internos</li>
-          <li><i class="fas fa-check" style="color: var(--primary);"></i> Creación de bases de datos e indicadores clave (KPIs)</li>
-          <li><i class="fas fa-check" style="color: var(--primary);"></i> Implementación de herramientas digitales colaborativas</li>
-          <li class="destacado"><i class="fas fa-check" style="color: var(--primary);"></i> <strong>Desarrollo de automatizaciones y tableros de control (Power BI / PowerApps)</strong></li>
-          <li><i class="fas fa-check" style="color: var(--primary);"></i> Integración de sistemas para trazabilidad ambiental y operativa</li>
-          <li><i class="fas fa-check" style="color: var(--primary);"></i> Capacitación del equipo en herramientas digitales y gestión del cambio</li>
-        </ul>
+      <div class="service-card">
+        <div class="service-header">
+          <div class="service-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <div class="service-title">
+            <h3>Transformación Digital Sustentable</h3>
+            <p class="service-summary">Digitalizamos y conectamos la información clave de tu empresa para hacerla más eficiente, trazable y sustentable</p>
+          </div>
+          <div class="service-arrow">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+        <div class="service-content">
+          <div class="service-details">
+            <div class="service-features">
+              <h4>¿Qué incluye?</h4>
+              <ul>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Relevamiento y organización de datos de procesos internos</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Creación de bases de datos e indicadores clave (KPIs)</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Implementación de herramientas digitales colaborativas</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> <strong>Desarrollo de automatizaciones y tableros de control (Power BI / PowerApps)</strong></li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Integración de sistemas para trazabilidad ambiental y operativa</li>
+                <li><i class="fas fa-check" style="color: var(--primary);"></i> Capacitación del equipo en herramientas digitales y gestión del cambio</li>
+              </ul>
+            </div>
+            <div class="service-case-study">
+              <strong>📊 Case study:</strong> "Cómo digitalizamos la gestión de una pyme, reduciendo errores operativos y generando reportes automáticos de impacto ambiental."
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="service-case-study">
-        <strong>📊 Case study:</strong> "Cómo digitalizamos la gestión de una pyme, reduciendo errores operativos y generando reportes automáticos de impacto ambiental."
-      </div>
-    </div>
-  </div>
-</div>
 
       <!-- Servicio 6: Asesoría Legal e Impositiva Sustentable -->
       <div class="service-card">
@@ -2633,118 +2490,11 @@ document.addEventListener('DOMContentLoaded', function() {
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
-
-.service-card {
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  background: white;
-  overflow: hidden;
-}
-
-.service-header {
-  padding: 1.5rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background: white;
-}
-
-.service-header:hover {
-  background-color: #f7fafc;
-}
-
-.service-icon {
-  color: #48bb78;
-  font-size: 1.5rem;
-}
-
-.service-title h3 {
-  margin: 0;
-  font-size: 1.25rem;
-  color: #2d3748;
-}
-
-.service-summary {
-  margin: 0.25rem 0 0 0;
-  color: #718096;
-  font-size: 0.9rem;
-}
-
-.service-arrow {
-  margin-left: auto;
-  transition: transform 0.3s ease;
-}
-
-.service-arrow i {
-  color: #718096;
-}
-
-.service-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  background: #f8fafc;
-}
-
-.service-details {
-  padding: 0 1.5rem;
-}
-
-.service-card.active .service-content {
-  max-height: 1000px;
-  padding: 1.5rem 0;
-}
-
-.service-card.active .service-details {
-  padding: 0 1.5rem;
-}
-
-.service-card.active .service-arrow {
-  transform: rotate(180deg);
-}
-
-.service-card.active .service-arrow i {
-  color: #48bb78;
-}
-
-.service-features h4 {
-  margin-bottom: 1rem;
-  color: #2d3748;
-}
-
-.service-features ul {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 1.5rem;
-}
-
-.service-features li {
-  padding: 0.5rem 0;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-
-.service-features li i {
-  margin-top: 0.25rem;
-}
-
-.service-result,
-.service-case-study {
-  background: white;
-  padding: 1rem;
-  border-radius: 6px;
-  border-left: 4px solid #48bb78;
-  font-style: italic;
-}
-
 @media (max-width: 1024px) {
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
 @media (max-width: 768px) {
   .services-grid {
     grid-template-columns: 1fr;
@@ -2755,24 +2505,21 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const serviceCards = document.querySelectorAll('.service-card');
-  
   serviceCards.forEach(card => {
     const header = card.querySelector('.service-header');
-    
     header.addEventListener('click', function() {
       serviceCards.forEach(otherCard => {
         if (otherCard !== card) {
           otherCard.classList.remove('active');
         }
       });
-      
       card.classList.toggle('active');
     });
   });
 });
 </script>
 
-<!-- Sección del Sello Digital - REDISEÑADA CON RESULTADOS CONCRETOS -->
+<!-- Sección del Sello Digital -->
 <section id="sello" class="sello-section">
   <div class="container">
     <div class="sello-grid">
@@ -2841,7 +2588,6 @@ document.addEventListener('DOMContentLoaded', function() {
             <span class="badge-title">Sello Verde</span>
           </div>
           
-          <!-- Resultados del proceso -->
           <div class="resultados-proceso">
             <div class="resultado-item">
               <span class="resultado-icon">🌱</span>
@@ -2869,7 +2615,6 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
         </div>
         
-        <!-- Información del certificado -->
         <div class="certificado-info">
           <div class="certificado-header">
             <h4>Sello Digital de Sustentabilidad</h4>
@@ -2881,7 +2626,6 @@ document.addEventListener('DOMContentLoaded', function() {
               <i class="fas fa-building"></i>
               <span>Emitido por Impacta Verde</span>
             </div>
-            
             <div class="certificado-item">
               <i class="fas fa-calendar-check"></i>
               <span>Válido hasta: 12/2026</span>
@@ -2915,7 +2659,6 @@ document.addEventListener('DOMContentLoaded', function() {
   padding: 80px 0;
   color: var(--text-dark);
 }
-
 .sello-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2924,29 +2667,24 @@ document.addEventListener('DOMContentLoaded', function() {
   max-width: 1200px;
   margin: 0 auto;
 }
-
-/* Columna de texto (se mantiene igual) */
 .sello-text h2 {
   font-size: 2.5rem;
   color: var(--primary);
   margin-bottom: 1rem;
   line-height: 1.2;
 }
-
 .sello-subtitle {
   font-size: 1.3rem;
   color: var(--text-dark);
   margin-bottom: 2.5rem;
   font-weight: 500;
 }
-
 .sello-features {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 2.5rem;
 }
-
 .sello-feature {
   display: flex;
   align-items: flex-start;
@@ -2957,12 +2695,10 @@ document.addEventListener('DOMContentLoaded', function() {
   box-shadow: 0 4px 15px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
 }
-
 .sello-feature:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(0,0,0,0.12);
 }
-
 .feature-icon {
   width: 50px;
   height: 50px;
@@ -2974,29 +2710,24 @@ document.addEventListener('DOMContentLoaded', function() {
   flex-shrink: 0;
   transition: all 0.3s ease;
 }
-
 .sello-feature:hover .feature-icon {
   background: var(--primary-dark);
   transform: scale(1.1);
 }
-
 .feature-icon i {
   color: white;
   font-size: 1.3rem;
 }
-
 .feature-text h4 {
   margin: 0 0 0.5rem 0;
   color: var(--text-dark);
   font-size: 1.1rem;
 }
-
 .feature-text p {
   margin: 0;
   color: var(--text-light);
   font-size: 0.95rem;
 }
-
 .sello-cta {
   background: white;
   padding: 1.5rem;
@@ -3004,22 +2735,18 @@ document.addEventListener('DOMContentLoaded', function() {
   border-left: 4px solid var(--secondary);
   box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
-
 .cta-text {
   font-weight: 500;
   margin-bottom: 1rem;
   color: var(--text-dark);
   font-size: 1.1rem;
 }
-
-/* Columna visual - MODIFICADA */
 .sello-visual {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   align-items: center;
 }
-
 .sello-badge {
   background: white;
   padding: 2.5rem 2rem;
@@ -3030,7 +2757,6 @@ document.addEventListener('DOMContentLoaded', function() {
   max-width: 380px;
   width: 100%;
 }
-
 .badge-circle {
   width: 120px;
   height: 120px;
@@ -3044,45 +2770,33 @@ document.addEventListener('DOMContentLoaded', function() {
   border: 3px solid var(--primary);
   box-shadow: 0 8px 25px rgba(46, 125, 50, 0.2);
 }
-
 .floating-leaf {
   animation: float 3s ease-in-out infinite;
 }
-
 .floating-leaf i {
   color: var(--primary);
   font-size: 3.5rem;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
-
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
-
 .badge-text {
   margin-bottom: 1.5rem;
 }
-
 .badge-title {
   display: block;
   font-size: 1.6rem;
   font-weight: bold;
   color: var(--text-dark);
 }
-
-/* Resultados del proceso */
 .resultados-proceso {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin-top: 1.5rem;
 }
-
 .resultado-item {
   display: flex;
   align-items: center;
@@ -3092,38 +2806,31 @@ document.addEventListener('DOMContentLoaded', function() {
   border-radius: 10px;
   transition: all 0.3s ease;
 }
-
 .resultado-item:hover {
   background: #e9ecef;
   transform: translateX(5px);
 }
-
 .resultado-icon {
   font-size: 1.3rem;
   width: 30px;
   text-align: center;
 }
-
 .resultado-text {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-
 .resultado-value {
   font-size: 1.1rem;
   font-weight: bold;
   color: var(--primary);
   line-height: 1;
 }
-
 .resultado-label {
   font-size: 0.85rem;
   color: var(--text-light);
   line-height: 1.2;
 }
-
-/* Información del certificado */
 .certificado-info {
   background: white;
   padding: 1.5rem;
@@ -3133,35 +2840,30 @@ document.addEventListener('DOMContentLoaded', function() {
   max-width: 380px;
   width: 100%;
 }
-
 .certificado-header {
   text-align: center;
   margin-bottom: 1.2rem;
   padding-bottom: 1rem;
   border-bottom: 2px solid #f0f7f0;
 }
-
 .certificado-header h4 {
   font-size: 1.2rem;
   color: var(--text-dark);
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
-
 .certificado-numero {
   font-size: 0.9rem;
   color: var(--primary);
   font-weight: 600;
   font-family: 'Courier New', monospace;
 }
-
 .certificado-details {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
   margin-bottom: 1.2rem;
 }
-
 .certificado-item {
   display: flex;
   align-items: center;
@@ -3169,19 +2871,16 @@ document.addEventListener('DOMContentLoaded', function() {
   font-size: 0.9rem;
   color: var(--text-dark);
 }
-
 .certificado-item i {
   color: var(--primary);
   width: 16px;
   text-align: center;
 }
-
 .ods-contribucion {
   text-align: center;
   padding-top: 1rem;
   border-top: 2px solid #f0f7f0;
 }
-
 .ods-label {
   display: block;
   font-size: 0.85rem;
@@ -3189,14 +2888,12 @@ document.addEventListener('DOMContentLoaded', function() {
   margin-bottom: 0.8rem;
   font-weight: 500;
 }
-
 .ods-icons {
   display: flex;
   justify-content: center;
   gap: 0.8rem;
   margin-bottom: 0.8rem;
 }
-
 .ods-icon {
   width: 32px;
   height: 32px;
@@ -3211,78 +2908,64 @@ document.addEventListener('DOMContentLoaded', function() {
   transition: all 0.3s ease;
   cursor: pointer;
 }
-
 .ods-icon:hover {
   background: var(--primary-dark);
   transform: scale(1.1);
 }
-
 .ods-agenda {
   font-size: 0.8rem;
   color: var(--text-light);
   font-style: italic;
 }
-
-/* Responsive */
 @media (max-width: 1024px) {
   .sello-grid {
     gap: 40px;
   }
-  
   .sello-text h2 {
     font-size: 2.2rem;
   }
 }
-
 @media (max-width: 768px) {
   .sello-grid {
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  
   .sello-text h2 {
     font-size: 2rem;
     text-align: center;
   }
-  
   .sello-subtitle {
     text-align: center;
     font-size: 1.1rem;
   }
-  
   .badge-circle {
     width: 100px;
     height: 100px;
   }
-  
   .floating-leaf i {
     font-size: 3rem;
   }
 }
-
 @media (max-width: 480px) {
   .sello-feature {
     flex-direction: column;
     text-align: center;
   }
-  
   .feature-icon {
     align-self: center;
   }
-  
   .resultado-item {
     flex-direction: column;
     text-align: center;
     gap: 0.5rem;
   }
-  
   .resultado-text {
     align-items: center;
   }
 }
 </style>
   
- <!-- Sección Impacto Positivo - REDISEÑADA EN DOS COLUMNAS -->
+ <!-- Sección Impacto Positivo -->
 <section id="impacto" class="impacto-section">
   <div class="container">
     <div class="impacto-grid">
@@ -3366,7 +3049,6 @@ document.addEventListener('DOMContentLoaded', function() {
   padding: 80px 0;
   color: var(--text-dark);
 }
-
 .impacto-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -3375,15 +3057,12 @@ document.addEventListener('DOMContentLoaded', function() {
   max-width: 1200px;
   margin: 0 auto;
 }
-
-/* Columna izquierda - Visual */
 .impacto-visual {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   align-items: center;
 }
-
 .impacto-principal {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -3391,7 +3070,6 @@ document.addEventListener('DOMContentLoaded', function() {
   width: 100%;
   max-width: 400px;
 }
-
 .impacto-card {
   background: white;
   padding: 2rem 1.5rem;
@@ -3401,37 +3079,31 @@ document.addEventListener('DOMContentLoaded', function() {
   transition: all 0.3s ease;
   border-top: 5px solid var(--primary);
 }
-
 .impacto-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
-
 .impacto-icon {
   font-size: 2.5rem;
   color: var(--primary);
   margin-bottom: 1rem;
 }
-
 .impacto-value {
   font-size: 2.5rem;
   font-weight: bold;
   color: var(--primary);
   margin-bottom: 0.5rem;
 }
-
 .impacto-unit {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--text-dark);
   margin-bottom: 0.5rem;
 }
-
 .impacto-desc {
   font-size: 0.9rem;
   color: var(--text-light);
 }
-
 .impacto-progreso {
   background: white;
   padding: 2rem;
@@ -3442,19 +3114,16 @@ document.addEventListener('DOMContentLoaded', function() {
   max-width: 400px;
   transition: all 0.3s ease;
 }
-
 .impacto-progreso:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
-
 .progreso-title {
   font-size: 1.3rem;
   color: var(--text-dark);
   margin-bottom: 1.5rem;
   font-weight: 600;
 }
-
 .progress-container {
   background: #e9ecef;
   height: 24px;
@@ -3463,7 +3132,6 @@ document.addEventListener('DOMContentLoaded', function() {
   margin: 1.5rem 0 1rem 0;
   position: relative;
 }
-
 .progress-bar {
   height: 100%;
   background: linear-gradient(90deg, #4caf50, #2e7d32);
@@ -3471,7 +3139,6 @@ document.addEventListener('DOMContentLoaded', function() {
   width: 77%;
   position: relative;
 }
-
 .progress-label {
   position: absolute;
   top: 50%;
@@ -3482,40 +3149,33 @@ document.addEventListener('DOMContentLoaded', function() {
   font-weight: 600;
   z-index: 2;
 }
-
 .progress-markers {
   display: flex;
   justify-content: space-between;
   margin-top: 0.5rem;
 }
-
 .marker-text {
   font-size: 1rem;
   color: var(--text-light);
 }
-
-/* Columna derecha - Texto */
 .impacto-texto h2 {
   font-size: 2.5rem;
   color: var(--primary);
   margin-bottom: 1rem;
   line-height: 1.2;
 }
-
 .impacto-subtitle {
   font-size: 1.3rem;
   color: var(--text-dark);
   margin-bottom: 2.5rem;
   font-weight: 500;
 }
-
 .impacto-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin-bottom: 2.5rem;
 }
-
 .stat-card {
   background: white;
   padding: 1.5rem 1rem;
@@ -3524,31 +3184,26 @@ document.addEventListener('DOMContentLoaded', function() {
   text-align: center;
   transition: all 0.3s ease;
 }
-
 .stat-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
-
 .stat-number {
   font-size: 2rem;
   font-weight: bold;
   color: var(--primary);
   margin-bottom: 0.5rem;
 }
-
 .stat-label {
   font-size: 1rem;
   font-weight: 600;
   color: var(--text-dark);
   margin-bottom: 0.25rem;
 }
-
 .stat-desc {
   font-size: 0.8rem;
   color: var(--text-light);
 }
-
 .impacto-cta {
   background: white;
   padding: 2rem;
@@ -3557,20 +3212,17 @@ document.addEventListener('DOMContentLoaded', function() {
   text-align: center;
   border-left: 4px solid var(--secondary);
 }
-
 .cta-title {
   font-size: 1.4rem;
   color: var(--text-dark);
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
-
 .cta-subtitle {
   font-size: 1rem;
   color: var(--text-light);
   margin-bottom: 1.5rem;
 }
-
 .btn-secondary {
   background: var(--secondary);
   color: white;
@@ -3581,61 +3233,53 @@ document.addEventListener('DOMContentLoaded', function() {
   transition: all 0.3s ease;
   display: inline-block;
 }
-
 .btn-secondary:hover {
   background: #e68a00;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-
-/* Responsive */
 @media (max-width: 1024px) {
   .impacto-grid {
     gap: 40px;
   }
-  
   .impacto-texto h2 {
     font-size: 2.2rem;
   }
 }
-
 @media (max-width: 768px) {
   .impacto-grid {
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  
   .impacto-texto h2 {
     font-size: 2rem;
     text-align: center;
   }
-  
   .impacto-subtitle {
     text-align: center;
     font-size: 1.1rem;
   }
-  
   .impacto-principal {
     grid-template-columns: 1fr;
     max-width: 300px;
   }
-  
   .impacto-stats {
     grid-template-columns: repeat(3, 1fr);
     gap: 0.8rem;
   }
 }
-
 @media (max-width: 480px) {
   .impacto-stats {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
   .stat-card {
     max-width: 200px;
     margin: 0 auto;
   }
+}
+</style>
+
 <!-- Sección: Nuestras Acciones Activas de RSE -->
 <section id="rse" class="testimonials" style="scroll-margin-top: 80px;">
   <div class="container">
@@ -3787,14 +3431,9 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </footer>
 
-</body>
-</html>
-
-    <script>
-    // Chatbot COMPLETO - Todo funciona
+<script>
+// Chatbot COMPLETO
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ Chatbot iniciado');
-    
     const chatbotBtn = document.getElementById('chatbotBtn');
     const chatbotContainer = document.getElementById('chatbotContainer');
     const closeChatbot = document.getElementById('closeChatbot');
@@ -3817,13 +3456,11 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 300);
     });
 
-    // FUNCIÓN CALENDLY
     function openCalendly() {
         window.open('https://calendly.com/estudioimpactaverde', '_blank');
         addMessage('¡Perfecto! He abierto Calendly. ¿Necesitas ayuda con algo más?', false);
     }
     
-    // Función para agregar mensajes al chat
     function addMessage(text, isUser) {
       const messageDiv = document.createElement('div');
       messageDiv.classList.add('message');
@@ -3833,18 +3470,15 @@ document.addEventListener('DOMContentLoaded', function() {
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
     
-    // Función para mostrar el indicador de "escribiendo"
     function showTypingIndicator() {
       typingIndicator.style.display = 'flex';
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
     
-    // Función para ocultar el indicador de "escribiendo"
     function hideTypingIndicator() {
       typingIndicator.style.display = 'none';
     }
     
-    // RESPUESTAS DEL BOT
     function botResponse(userMessage) {
       userMessage = userMessage.toLowerCase();
       
@@ -3864,12 +3498,11 @@ document.addEventListener('DOMContentLoaded', function() {
       
       if (userMessage.includes('contacto')) {
         return {
-          text: '📧 Email: impactaverde@gmail.com\n📍 Buenos Aires, Argentina',
+          text: '📧 Email: estudioimpactaverde@gmail.com\n📍 Buenos Aires, Argentina',
           quickReplies: ['Servicios', 'Agendar cita', 'Volver']
         };
       }
       
-      // SOLO PARA AGENDAR - BOTÓN ÚNICO
       if (userMessage.includes('agendar') || userMessage.includes('cita')) {
         return {
           text: '¡Perfecto! Haz clic en el botón para abrir Calendly:',
@@ -3883,7 +3516,6 @@ document.addEventListener('DOMContentLoaded', function() {
       };
     }
     
-    // MANEJAR MENSAJES - CORREGIDO
     function handleSendMessage() {
       const message = userInput.value.trim();
       if (message) {
@@ -3896,27 +3528,19 @@ document.addEventListener('DOMContentLoaded', function() {
           hideTypingIndicator();
           const response = botResponse(message);
           
-          // PARA CALENDLY: Solo el botón grande
           if (response.action === 'calendly') {
             addMessage(response.text, false);
-            
-            // SOLO UN BOTÓN GRANDE
             const calendlyButton = document.createElement('button');
             calendlyButton.classList.add('calendly-btn');
             calendlyButton.innerHTML = '<i class="fas fa-calendar-alt"></i> Abrir Calendly';
             calendlyButton.onclick = openCalendly;
-            
             const lastMessage = chatMessages.lastChild;
             lastMessage.appendChild(calendlyButton);
-            
           } else {
-            // RESPUESTA NORMAL con botones que funcionan
             addMessage(response.text, false);
-            
             if (response.quickReplies) {
               const quickRepliesContainer = document.createElement('div');
               quickRepliesContainer.classList.add('quick-replies');
-              
               response.quickReplies.forEach(reply => {
                 const button = document.createElement('button');
                 button.classList.add('quick-reply');
@@ -3924,7 +3548,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 button.dataset.reply = reply.toLowerCase();
                 quickRepliesContainer.appendChild(button);
               });
-              
               const lastMessage = chatMessages.lastChild;
               lastMessage.appendChild(quickRepliesContainer);
             }
@@ -3933,14 +3556,11 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
     
-    // ENVIAR MENSAJE
     sendMessage.addEventListener('click', handleSendMessage);
-    
     userInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') handleSendMessage();
     });
     
-    // MANEJAR BOTONES RÁPIDOS - ¡ESTO ES LO QUE FALTABA!
     document.addEventListener('click', function(e) {
       if (e.target.classList.contains('quick-reply')) {
         const reply = e.target.dataset.reply;
@@ -3951,13 +3571,13 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-    // Mobile menu
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const nav = document.querySelector('nav ul');
     if (mobileMenuBtn && nav) {
         mobileMenuBtn.addEventListener('click', () => nav.classList.toggle('active'));
     }
 });
-  </script>
+</script>
+
 </body>
 </html>
