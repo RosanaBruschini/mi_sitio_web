@@ -156,14 +156,14 @@
             <div class="kpi-card">
                 <div class="kpi-icon">📈</div>
                 <h3>Tendencia de Evolución</h3>
-                <div class="kpi-value">0</div>
+                <div class="kpi-value">-13.7</div>
                 <div class="kpi-unit">puntos/mes</div>
-                <div style="font-size: 12px; color: #666;">➡️ Estable</div>
+                <div style="font-size: 12px; color: #666;">↘️ -13.7</div>
             </div>
             <div class="kpi-card">
                 <div class="kpi-icon">🌍</div>
                 <h3>CO₂e Evitado</h3>
-                <div class="kpi-value">0.3</div>
+                <div class="kpi-value">0.5</div>
                 <div class="kpi-unit">toneladas</div>
             </div>
             <div class="kpi-card">
@@ -175,7 +175,7 @@
             <div class="kpi-card">
                 <div class="kpi-icon">⭐</div>
                 <h3>Impacto Promedio</h3>
-                <div class="kpi-value">20.0%</div>
+                <div class="kpi-value">13.2%</div>
                 <div class="kpi-unit">sostenibilidad</div>
             </div>
         </div>
@@ -232,7 +232,7 @@
                 <div style="font-size: 32px; margin-bottom: 15px; color: #607D8B;">🗑️</div>
                 <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px;">Gestión de residuos</div>
                 <div style="font-size: 24px; font-weight: bold; color: #607D8B; margin-bottom: 5px;">
-                    30.0 <span style="font-size: 14px; color: #888;">kg</span>
+                    45.0 <span style="font-size: 14px; color: #888;">kg</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">Acumulado</div>
                 
@@ -245,7 +245,7 @@
                 <div style="font-size: 32px; margin-bottom: 15px; color: #2196F3;">👥</div>
                 <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px;">Empleados totales</div>
                 <div style="font-size: 24px; font-weight: bold; color: #2196F3; margin-bottom: 5px;">
-                    2 <span style="font-size: 14px; color: #888;">empleados</span>
+                    1 <span style="font-size: 14px; color: #888;">empleados</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">Último Mes</div>
                 
@@ -272,7 +272,7 @@
                 <div style="font-size: 32px; margin-bottom: 15px; color: #9C27B0;">🤝</div>
                 <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px;">Horas voluntariado</div>
                 <div style="font-size: 24px; font-weight: bold; color: #9C27B0; margin-bottom: 5px;">
-                    120.0 <span style="font-size: 14px; color: #888;">horas</span>
+                    200.0 <span style="font-size: 14px; color: #888;">horas</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">Acumulado</div>
                 
@@ -310,7 +310,7 @@
                 <div style="font-size: 32px; margin-bottom: 15px; color: #3F51B5;">💻</div>
                 <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px;">Tecnología recuperada</div>
                 <div style="font-size: 24px; font-weight: bold; color: #3F51B5; margin-bottom: 5px;">
-                    52.0 <span style="font-size: 14px; color: #888;">kg</span>
+                    97.0 <span style="font-size: 14px; color: #888;">kg</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">Acumulado</div>
                 
@@ -326,6 +326,42 @@
             </div></div></div>
     
     
+            <div class="charts-section">
+                <h2>📈 Evolución Mensual</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px;">
+                    <div style="background: white; padding: 25px; border-radius: 15px;">
+                        <h3>Evolución de CO₂e Evitado (kg)</h3>
+                        <div style="height: 300px;"><canvas id="chartCO2"></canvas></div>
+                    </div>
+                    <div style="background: white; padding: 25px; border-radius: 15px;">
+                        <h3>Evolución del Impacto de Sostenibilidad (%)</h3>
+                        <div style="height: 300px;"><canvas id="chartPuntaje"></canvas></div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                if (document.getElementById('chartCO2')) {
+                    new Chart(document.getElementById('chartCO2'), {
+                        type: 'line',
+                        data: {
+                            labels: ["Mar 26", "Abr 26"],
+                            datasets: [{ label: 'CO₂e Evitado (kg)', data: [281.0, 225.0], borderColor: '#1F7A3E', backgroundColor: 'rgba(31,122,62,0.1)', tension: 0.4 }]
+                        },
+                        options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
+                    });
+                }
+                if (document.getElementById('chartPuntaje')) {
+                    new Chart(document.getElementById('chartPuntaje'), {
+                        type: 'line',
+                        data: {
+                            labels: ["Mar 26", "Abr 26"],
+                            datasets: [{ label: 'Impacto (%)', data: [20.0, 6.3], borderColor: '#3498db', backgroundColor: 'rgba(52,152,219,0.1)', tension: 0.4 }]
+                        },
+                        options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, max: 100 } } }
+                    });
+                }
+            </script>
+            
     
                 <div class="insignias-section">
                     <h2>🎖️ Insignias Obtenidas</h2>
@@ -335,6 +371,13 @@
                         <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Marzo 2026</div>
                         <div style="font-size:14px; color:#666;">🌿 Inicial</div>
                         <div style="font-size:18px; font-weight:800; color:#2e7d32;">20.0%</div>
+                    </a>
+                </div>
+                <div class="insignia-item">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_Asociacion_Civil_La_Guarida_Abril_2026.html" target="_blank" style="text-decoration:none; color:inherit;">
+                        <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Abril 2026</div>
+                        <div style="font-size:14px; color:#666;">🌿 Inicial</div>
+                        <div style="font-size:18px; font-weight:800; color:#2e7d32;">6.3%</div>
                     </a>
                 </div></div>
                 </div>
@@ -348,7 +391,7 @@
             </div>
             
     <div class="footer">
-        <p>Dashboard de Asociacion Civil La Guarida | Actualizado: 31/03/2026 23:21</p>
+        <p>Dashboard de Asociacion Civil La Guarida | Actualizado: 04/05/2026 18:32</p>
         <p>🌿 Impacta Verde</p>
     </div>
 </div>
