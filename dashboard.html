@@ -320,10 +320,10 @@
             </div>
             <div class="stats-header">
                 <div class="update-time">
-                    ⏰ Actualizado automáticamente: 14/08/2026 14:57
+                    ⏰ Actualizado automáticamente: 17/08/2026 16:54
                 </div>
                 <div style="font-size: 18px; font-weight: 600; color: #1F7A3E;">
-                    4 empresas activas
+                    34 empresas activas
                 </div>
             </div>
         </header>
@@ -354,7 +354,7 @@
             <div class="kpi-card">
                 <div class="kpi-icon">🏢</div>
                 <h3>Empresas Activas</h3>
-                <div class="kpi-value">4</div>
+                <div class="kpi-value">34</div>
                 <div class="kpi-unit">organizaciones sostenibles</div>
             </div>
 
@@ -441,6 +441,14 @@
                 <div style="font-size: 12px; color: #666;">↗️ +2.02</div>
             </div>
             
+            <div style="border: 2px solid #1F7A3E; border-radius: 10px; padding: 15px; background: linear-gradient(135deg, #D4EDDA20, white); text-align: center;">
+                <div style="font-size: 24px; margin-bottom: 10px;">🏢</div>
+                <div style="font-size: 14px; font-weight: 600; color: #124d2d; margin-bottom: 5px;">General</div>
+                <div style="font-size: 12px; color: #666; margin-bottom: 10px;">1 empresas</div>
+                <div style="font-size: 16px; font-weight: 700; color: #1F7A3E; margin-bottom: 5px;">0%</div>
+                <div style="font-size: 12px; color: #666;">➡️ 0.0</div>
+            </div>
+            
             </div>
         </div>
         
@@ -484,7 +492,7 @@
             </div>
 
             <div class="sector-info active" id="infoAll">
-                <h4>Todas las empresas (4)</h4>
+                <h4>Todas las empresas (34)</h4>
                 <p>📊 <strong>Impacto total:</strong> 4.5 ton CO₂e evitadas</p>
                 <p>📈 <strong>Tendencia promedio:</strong> ↗️ +2.02 puntos/mes</p>
                 <p>⭐ <strong>Puntaje promedio:</strong> 39.3% de sostenibilidad</p>
@@ -590,9 +598,9 @@
 
     <script>
         // Datos para gráficos
-        const sectorLabels = ["Reciclaje", "Restaurante"];
-        const sectorEmpresas = [2, 2];
-        const sectorColors = ["#2E8B57", "#CC5500"];
+        const sectorLabels = ["Reciclaje", "Restaurante", "General"];
+        const sectorEmpresas = [2, 2, 1];
+        const sectorColors = ["#2E8B57", "#CC5500", "#1F7A3E"];
 
         // Gráfico de sectores
         if (document.getElementById('chartSectores') && sectorLabels.length > 0) {
