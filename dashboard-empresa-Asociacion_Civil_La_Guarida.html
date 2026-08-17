@@ -351,7 +351,7 @@
     
             <div class="charts-section">
                 <h2>📈 Evolución Mensual</h2>
-                
+
                 <!-- PRIMERA FILA: CO₂ e IMPACTO (2 columnas, cada una ocupa el 50%) -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px;">
                     <!-- GRÁFICO CO₂ -->
@@ -373,11 +373,11 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- SEGUNDA FILA: AGUA (solo si hay datos) -->
                 
             </div>
-            
+
             <script>
                 function crearGrafico(id, label, data, color, maxY, tipo='line') {
                     const canvas = document.getElementById(id);
@@ -436,7 +436,7 @@
                     crearGrafico('chartCO2', 'CO₂e Evitado (kg)', [281.0, 225.0, 346.4, 850.5], '#1F7A3E', null, 'line');
                     crearGrafico('chartPuntaje', 'Impacto (%)', [20.0, 6.3, 10.0, 31.6], '#3498db', 100, 'line');
                     
-                    
+
                     // GRÁFICO DE ANILLO (DONA) - MATERIAL RECUPERADO
                     const canvasDona = document.getElementById('chartDonaMaterial');
                     if (canvasDona) {
@@ -464,7 +464,7 @@
                             }
                         });
                     }
-                    
+
                     // Scroll al final para mostrar los meses más recientes
                     setTimeout(() => {
                         document.querySelectorAll('[style*="overflow-x: auto"]').forEach(el => {
@@ -523,7 +523,7 @@
             </div>
             
     <div class="footer">
-        <p>Dashboard de Asociacion Civil La Guarida | Actualizado: 17/08/2026 22:19</p>
+        <p>Dashboard de Asociacion Civil La Guarida | Actualizado: 17/08/2026 22:30</p>
         <p>🌿 Impacta Verde</p>
     </div>
 </div>
