@@ -366,7 +366,7 @@
     
             <div class="charts-section">
                 <h2>📈 Evolución Mensual</h2>
-                
+
                 <!-- PRIMERA FILA: CO₂ e IMPACTO (2 columnas, cada una ocupa el 50%) -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px;">
                     <!-- GRÁFICO CO₂ -->
@@ -388,11 +388,11 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- SEGUNDA FILA: AGUA (solo si hay datos) -->
                 
             </div>
-            
+
             <script>
                 function crearGrafico(id, label, data, color, maxY, tipo='line') {
                     const canvas = document.getElementById(id);
@@ -451,7 +451,7 @@
                     crearGrafico('chartCO2', 'CO₂e Evitado (kg)', [143.46, 139.69, 135.76, 131.98, 128.06, 124.29, 120.36, 116.58, 112.66, 108.88, 104.96, 101.19, 0.0, 86.13, 107.21, 143.21, 149.14, 832.16], '#1F7A3E', null, 'line');
                     crearGrafico('chartPuntaje', 'Impacto (%)', [34.8, 34.7, 34.6, 34.5, 34.4, 34.4, 34.3, 34.2, 34.1, 34.0, 33.9, 33.8, 22.0, 32.4, 32.6, 35.1, 35.4, 51.9], '#3498db', 100, 'line');
                     
-                    
+
                     // GRÁFICO DE ANILLO (DONA) - MATERIAL RECUPERADO
                     const canvasDona = document.getElementById('chartDonaMaterial');
                     if (canvasDona) {
@@ -479,7 +479,7 @@
                             }
                         });
                     }
-                    
+
                     // Scroll al final para mostrar los meses más recientes
                     setTimeout(() => {
                         document.querySelectorAll('[style*="overflow-x: auto"]').forEach(el => {
@@ -649,7 +649,7 @@
             </div>
             
     <div class="footer">
-        <p>Dashboard de ETIMO | Actualizado: 17/08/2026 22:19</p>
+        <p>Dashboard de ETIMO | Actualizado: 17/08/2026 22:30</p>
         <p>🌿 Impacta Verde</p>
     </div>
 </div>
