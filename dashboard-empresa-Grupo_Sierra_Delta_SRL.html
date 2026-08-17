@@ -156,26 +156,26 @@
             <div class="kpi-card">
                 <div class="kpi-icon">📈</div>
                 <h3>Tendencia de Evolución</h3>
-                <div class="kpi-value">-0.1</div>
+                <div class="kpi-value">0.4</div>
                 <div class="kpi-unit">puntos/mes</div>
-                <div style="font-size: 12px; color: #666;">↘️ -0.1</div>
+                <div style="font-size: 12px; color: #666;">↗️ +0.4</div>
             </div>
             <div class="kpi-card">
                 <div class="kpi-icon">🌍</div>
                 <h3>CO₂e Evitado</h3>
-                <div class="kpi-value">0.0</div>
+                <div class="kpi-value">0.2</div>
                 <div class="kpi-unit">toneladas</div>
             </div>
             <div class="kpi-card">
                 <div class="kpi-icon">♻️</div>
                 <h3>Material Recuperado</h3>
-                <div class="kpi-value">0.0</div>
+                <div class="kpi-value">0.1</div>
                 <div class="kpi-unit">toneladas</div>
             </div>
             <div class="kpi-card">
                 <div class="kpi-icon">⭐</div>
                 <h3>Impacto Promedio</h3>
-                <div class="kpi-value">0.2%</div>
+                <div class="kpi-value">2.8%</div>
                 <div class="kpi-unit">sostenibilidad</div>
             </div>
         </div>
@@ -229,13 +229,13 @@
                 <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
             </div>
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
-                <div style="font-size: 32px; margin-bottom: 15px; color: #888;">🗑️</div>
+                <div style="font-size: 32px; margin-bottom: 15px; color: #607D8B;">🗑️</div>
                 <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px;">Gestión de residuos</div>
-                <div style="font-size: 24px; font-weight: bold; color: #888; margin-bottom: 5px;">
-                    0 <span style="font-size: 14px; color: #888;">kg</span>
+                <div style="font-size: 24px; font-weight: bold; color: #607D8B; margin-bottom: 5px;">
+                    341.0 <span style="font-size: 14px; color: #888;">kg</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">Acumulado</div>
-                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
+                
             </div></div>
     </div>
         <div class="section" style="border-color:#3498db;">
@@ -306,7 +306,71 @@
             </div></div>
     </div>
     
-    
+                <div class="section" style="border-color: #1F7A3E; border: 2px solid #1F7A3E; border-radius: 15px; padding: 25px; margin: 30px 0; background: white;">
+                    <h2 style="color: #124d2d; font-size: 22px; font-weight: 700; margin-bottom: 20px;">♻️ Material Recuperado</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center;">
+                        <!-- Columna 1: Dona -->
+                        <div style="text-align: center;">
+                            <div style="position: relative; height: 200px; width: 100%; max-width: 260px; margin: 0 auto;">
+                                <canvas id="chartDonaMaterial"></canvas>
+                            </div>
+                            <div style="margin-top: 10px; font-size: 14px; color: #666;">
+                                <span style="color: #1F7A3E;">●</span> Recuperado: 124.0 kg &nbsp;|&nbsp;
+                                <span style="color: #E74C3C;">●</span> Relleno: 341.0 kg
+                            </div>
+                        </div>
+                        <!-- Columna 2: Totales + Tendencia -->
+                        <div>
+                            <div style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">
+                                <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f0;">
+                                    <span>✅ Recuperado</span>
+                                    <span style="color: #1F7A3E;">124.0 kg</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f0;">
+                                    <span>❌ Relleno</span>
+                                    <span style="color: #E74C3C;">341.0 kg</span>
+                                </div>
+                            </div>
+                            <div style="margin-top: 15px; font-size: 18px;">
+                                <span style="color: #1F7A3E; font-weight: 700;">
+                                    ↗️ 64.7% vs mes anterior
+                                </span>
+                            </div>
+                            <div style="margin-top: 10px; font-size: 14px; color: #666;">
+                                Porcentaje recuperado: <strong>26.7%</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tarjetas pequeñas -->
+                    
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-top: 20px;">
+                
+                <div style="background: white; padding: 12px 16px; border-radius: 10px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                    <div style="font-size: 28px; margin-bottom: 6px;">☕</div>
+                    <div style="font-size: 13px; color: #666; font-weight: 600; min-height: 32px;">Borra de café húmeda</div>
+                    <div style="font-size: 18px; font-weight: bold; color: #1F7A3E;">124.0 kg</div>
+                </div>
+                
+                <div style="background: white; padding: 12px 16px; border-radius: 10px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                    <div style="font-size: 28px; margin-bottom: 6px;">🍽️</div>
+                    <div style="font-size: 13px; color: #666; font-weight: 600; min-height: 32px;">Desperdicios de alimentos</div>
+                    <div style="font-size: 18px; font-weight: bold; color: #1F7A3E;">166.0 kg</div>
+                </div>
+                
+            </div>
+            
+                </div>
+                
+    <div class="section" style="background:#FFD8B130; border-color:#CC5500;"><h2>🍽️ Métricas Sectoriales - Restaurante</h2><div class="metrics-grid">
+            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
+                <div style="font-size: 32px; margin-bottom: 15px; color: #CC5500;">🍽️</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px;">Desperdicio total</div>
+                <div style="font-size: 24px; font-weight: bold; color: #CC5500; margin-bottom: 5px;">
+                    166.0 <span style="font-size: 14px; color: #888;">kg</span>
+                </div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">Acumulado</div>
+                
+            </div></div></div>
     
             <div class="charts-section">
                 <h2>📈 Evolución Mensual</h2>
@@ -403,8 +467,8 @@
                 }
 
                                 function initCharts() {
-                    crearGrafico('chartCO2', 'CO₂e Evitado (kg)', [13.07, 9.29, 4.13], '#1F7A3E', null, 'line');
-                    crearGrafico('chartPuntaje', 'Impacto (%)', [0.3, 0.2, 0.1], '#3498db', 100, 'line');
+                    crearGrafico('chartCO2', 'CO₂e Evitado (kg)', [62.57, 48.79, 60.13], '#1F7A3E', null, 'line');
+                    crearGrafico('chartPuntaje', 'Impacto (%)', [2.6, 2.3, 3.4], '#3498db', 100, 'line');
                     crearGrafico('chartAgua', 'Consumo de agua (m³)', [38.0, 27.0, 12.0], '#2196F3', null, 'line');
                     
                     // GRÁFICO DE ANILLO (DONA) - MATERIAL RECUPERADO
@@ -415,7 +479,7 @@
                             data: {
                                 labels: ['Recuperado', 'Relleno'],
                                 datasets: [{
-                                    data: [0.0, 0],
+                                    data: [124.0, 341.0],
                                     backgroundColor: ['#1F7A3E', '#E74C3C'],
                                     borderWidth: 3,
                                     borderColor: '#fff'
@@ -458,21 +522,21 @@
                     <a href="https://impactaverde.com.ar/insignias/insignia_Grupo_Sierra_Delta_SRL_Julio_2026.html" target="_blank" style="text-decoration:none; color:inherit;">
                         <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Julio 2026</div>
                         <div style="font-size:14px; color:#666;">🌿 Inicial</div>
-                        <div style="font-size:18px; font-weight:800; color:#2e7d32;">0.3%</div>
+                        <div style="font-size:18px; font-weight:800; color:#2e7d32;">2.6%</div>
                     </a>
                 </div>
                 <div class="insignia-item">
                     <a href="https://impactaverde.com.ar/insignias/insignia_Grupo_Sierra_Delta_SRL_Agosto_2026.html" target="_blank" style="text-decoration:none; color:inherit;">
                         <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Agosto 2026</div>
                         <div style="font-size:14px; color:#666;">🌿 Inicial</div>
-                        <div style="font-size:18px; font-weight:800; color:#2e7d32;">0.2%</div>
+                        <div style="font-size:18px; font-weight:800; color:#2e7d32;">2.3%</div>
                     </a>
                 </div>
                 <div class="insignia-item">
                     <a href="https://impactaverde.com.ar/insignias/insignia_Grupo_Sierra_Delta_SRL_septiembre_2026.html" target="_blank" style="text-decoration:none; color:inherit;">
                         <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">septiembre 2026</div>
                         <div style="font-size:14px; color:#666;">🌿 Inicial</div>
-                        <div style="font-size:18px; font-weight:800; color:#2e7d32;">0.1%</div>
+                        <div style="font-size:18px; font-weight:800; color:#2e7d32;">3.4%</div>
                     </a>
                 </div></div>
                 </div>
@@ -481,12 +545,12 @@
     
             <div class="ods-section">
                 <h2>🌍 Contribución a los ODS</h2>
-                <div class="ods-container"><span title="Energía asequible y no contaminante">7</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Alianzas para lograr los objetivos">17</span></div>
+                <div class="ods-container"><span title="Energía asequible y no contaminante">7</span><span title="Ciudades y comunidades sostenibles">11</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Vida de ecosistemas terrestres">15</span><span title="Alianzas para lograr los objetivos">17</span></div>
                 <p style="text-align:center; font-size:14px; color:#666;">Pasa el cursor sobre cada número</p>
             </div>
             
     <div class="footer">
-        <p>Dashboard de Grupo Sierra Delta SRL | Actualizado: 17/08/2026 20:20</p>
+        <p>Dashboard de Grupo Sierra Delta SRL | Actualizado: 17/08/2026 21:58</p>
         <p>🌿 Impacta Verde</p>
     </div>
 </div>
