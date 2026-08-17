@@ -402,10 +402,38 @@
                     new Chart(ctx, config);
                 }
 
-                function initCharts() {
+                                function initCharts() {
                     crearGrafico('chartCO2', 'CO₂e Evitado (kg)', [13.07, 9.29, 4.13], '#1F7A3E', null, 'line');
                     crearGrafico('chartPuntaje', 'Impacto (%)', [0.3, 0.2, 0.1], '#3498db', 100, 'line');
                     crearGrafico('chartAgua', 'Consumo de agua (m³)', [38.0, 27.0, 12.0], '#2196F3', null, 'line');
+                    
+                    // GRÁFICO DE ANILLO (DONA) - MATERIAL RECUPERADO
+                    const canvasDona = document.getElementById('chartDonaMaterial');
+                    if (canvasDona) {
+                        new Chart(canvasDona, {
+                            type: 'doughnut',
+                            data: {
+                                labels: ['Recuperado', 'Relleno'],
+                                datasets: [{
+                                    data: [0.0, 0],
+                                    backgroundColor: ['#1F7A3E', '#E74C3C'],
+                                    borderWidth: 3,
+                                    borderColor: '#fff'
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: {
+                                        position: 'bottom',
+                                        labels: { font: { size: 13 }, padding: 20 }
+                                    }
+                                },
+                                cutout: '65%'
+                            }
+                        });
+                    }
                     
                     // Scroll al final para mostrar los meses más recientes
                     setTimeout(() => {
@@ -441,7 +469,7 @@
                     </a>
                 </div>
                 <div class="insignia-item">
-                    <a   style="text-decoration:none; color:inherit;">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_Grupo_Sierra_Delta_SRL_septiembre_2026.html" target="_blank" style="text-decoration:none; color:inherit;">
                         <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">septiembre 2026</div>
                         <div style="font-size:14px; color:#666;">🌿 Inicial</div>
                         <div style="font-size:18px; font-weight:800; color:#2e7d32;">0.1%</div>
@@ -458,7 +486,7 @@
             </div>
             
     <div class="footer">
-        <p>Dashboard de Grupo Sierra Delta SRL | Actualizado: 17/08/2026 18:40</p>
+        <p>Dashboard de Grupo Sierra Delta SRL | Actualizado: 17/08/2026 19:52</p>
         <p>🌿 Impacta Verde</p>
     </div>
 </div>
