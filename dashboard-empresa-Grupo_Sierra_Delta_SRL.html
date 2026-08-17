@@ -315,7 +315,7 @@
                                 <canvas id="chartDonaMaterial"></canvas>
                             </div>
                             <div style="margin-top: 10px; font-size: 14px; color: #666;">
-                                <span style="color: #1F7A3E;">●</span> Recuperado: 124.0 kg &nbsp;|&nbsp;
+                                <span style="color: #1F7A3E;">●</span> Recuperado: 290.0 kg &nbsp;|&nbsp;
                                 <span style="color: #E74C3C;">●</span> Relleno: 474.0 kg
                             </div>
                         </div>
@@ -324,7 +324,7 @@
                             <div style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">
                                 <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f0;">
                                     <span>✅ Recuperado</span>
-                                    <span style="color: #1F7A3E;">124.0 kg</span>
+                                    <span style="color: #1F7A3E;">290.0 kg</span>
                                 </div>
                                 <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f0;">
                                     <span>❌ Relleno</span>
@@ -337,7 +337,7 @@
                                 </span>
                             </div>
                             <div style="margin-top: 10px; font-size: 14px; color: #666;">
-                                Porcentaje recuperado: <strong>20.7%</strong>
+                                Porcentaje recuperado: <strong>38.0%</strong>
                             </div>
                         </div>
                     </div>
@@ -374,7 +374,7 @@
     
             <div class="charts-section">
                 <h2>📈 Evolución Mensual</h2>
-                
+
                 <!-- PRIMERA FILA: CO₂ e IMPACTO (2 columnas, cada una ocupa el 50%) -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px;">
                     <!-- GRÁFICO CO₂ -->
@@ -396,7 +396,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- SEGUNDA FILA: AGUA (solo si hay datos) -->
                 
                 <div style="display: grid; grid-template-columns: 1fr; gap: 25px;">
@@ -411,7 +411,7 @@
                 </div>
                 
             </div>
-            
+
             <script>
                 function crearGrafico(id, label, data, color, maxY, tipo='line') {
                     const canvas = document.getElementById(id);
@@ -470,7 +470,7 @@
                     crearGrafico('chartCO2', 'CO₂e Evitado (kg)', [62.57, 48.79, 60.13], '#1F7A3E', null, 'line');
                     crearGrafico('chartPuntaje', 'Impacto (%)', [2.6, 2.3, 3.4], '#3498db', 100, 'line');
                     crearGrafico('chartAgua', 'Consumo de agua (m³)', [38.0, 27.0, 12.0], '#2196F3', null, 'line');
-                    
+
                     // GRÁFICO DE ANILLO (DONA) - MATERIAL RECUPERADO
                     const canvasDona = document.getElementById('chartDonaMaterial');
                     if (canvasDona) {
@@ -479,7 +479,7 @@
                             data: {
                                 labels: ['Recuperado', 'Relleno'],
                                 datasets: [{
-                                    data: [124.0, 474.0],
+                                    data: [290.0, 474.0],
                                     backgroundColor: ['#1F7A3E', '#E74C3C'],
                                     borderWidth: 3,
                                     borderColor: '#fff'
@@ -498,7 +498,7 @@
                             }
                         });
                     }
-                    
+
                     // Scroll al final para mostrar los meses más recientes
                     setTimeout(() => {
                         document.querySelectorAll('[style*="overflow-x: auto"]').forEach(el => {
@@ -550,7 +550,7 @@
             </div>
             
     <div class="footer">
-        <p>Dashboard de Grupo Sierra Delta SRL | Actualizado: 17/08/2026 22:19</p>
+        <p>Dashboard de Grupo Sierra Delta SRL | Actualizado: 17/08/2026 22:30</p>
         <p>🌿 Impacta Verde</p>
     </div>
 </div>
