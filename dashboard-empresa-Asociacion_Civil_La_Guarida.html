@@ -305,34 +305,7 @@
                 <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
             </div></div>
     </div>
-    <div class="section" style="border-color:#FF9800;"><h2>♻️ Materiales Recuperados</h2><div class="metrics-grid">
-            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
-                <div style="font-size: 32px; margin-bottom: 15px; color: #3F51B5;">💻</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px;">Tecnología recuperada</div>
-                <div style="font-size: 24px; font-weight: bold; color: #3F51B5; margin-bottom: 5px;">
-                    277.0 <span style="font-size: 14px; color: #888;">kg</span>
-                </div>
-                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">Acumulado</div>
-                
-            </div>
-            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
-                <div style="font-size: 32px; margin-bottom: 15px; color: #2196F3;">🥤</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px;">Plástico reutilizado</div>
-                <div style="font-size: 24px; font-weight: bold; color: #2196F3; margin-bottom: 5px;">
-                    102.0 <span style="font-size: 14px; color: #888;">kg</span>
-                </div>
-                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">Acumulado</div>
-                
-            </div>
-            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
-                <div style="font-size: 32px; margin-bottom: 15px; color: #00BCD4;">🍶</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px;">Vidrio reciclado</div>
-                <div style="font-size: 24px; font-weight: bold; color: #00BCD4; margin-bottom: 5px;">
-                    17.0 <span style="font-size: 14px; color: #888;">kg</span>
-                </div>
-                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">Acumulado</div>
-                
-            </div></div></div>
+    
     
     
             <div class="charts-section">
@@ -418,10 +391,38 @@
                     new Chart(ctx, config);
                 }
 
-                function initCharts() {
+                                function initCharts() {
                     crearGrafico('chartCO2', 'CO₂e Evitado (kg)', [281.0, 225.0, 346.4, 850.5], '#1F7A3E', null, 'line');
                     crearGrafico('chartPuntaje', 'Impacto (%)', [20.0, 6.3, 10.0, 31.6], '#3498db', 100, 'line');
                     
+                    
+                    // GRÁFICO DE ANILLO (DONA) - MATERIAL RECUPERADO
+                    const canvasDona = document.getElementById('chartDonaMaterial');
+                    if (canvasDona) {
+                        new Chart(canvasDona, {
+                            type: 'doughnut',
+                            data: {
+                                labels: ['Recuperado', 'Relleno'],
+                                datasets: [{
+                                    data: [396.0, 395.0],
+                                    backgroundColor: ['#1F7A3E', '#E74C3C'],
+                                    borderWidth: 3,
+                                    borderColor: '#fff'
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: {
+                                        position: 'bottom',
+                                        labels: { font: { size: 13 }, padding: 20 }
+                                    }
+                                },
+                                cutout: '65%'
+                            }
+                        });
+                    }
                     
                     // Scroll al final para mostrar los meses más recientes
                     setTimeout(() => {
@@ -481,7 +482,7 @@
             </div>
             
     <div class="footer">
-        <p>Dashboard de Asociacion Civil La Guarida | Actualizado: 17/08/2026 18:40</p>
+        <p>Dashboard de Asociacion Civil La Guarida | Actualizado: 17/08/2026 19:51</p>
         <p>🌿 Impacta Verde</p>
     </div>
 </div>
