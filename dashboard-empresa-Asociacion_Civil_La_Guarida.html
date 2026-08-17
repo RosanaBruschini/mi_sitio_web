@@ -337,9 +337,11 @@
     
             <div class="charts-section">
                 <h2>📈 Evolución Mensual</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px;">
+                
+                <!-- PRIMERA FILA: CO₂ e IMPACTO (2 columnas, cada una ocupa el 50%) -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px;">
                     <!-- GRÁFICO CO₂ -->
-                    <div style="background: white; padding: 25px; border-radius: 15px; overflow: hidden;">
+                    <div style="background: white; padding: 25px 15px; border-radius: 15px; overflow: hidden;">
                         <h3>Evolución de CO₂e Evitado (kg)</h3>
                         <div style="width: 100%; overflow-x: auto; overflow-y: hidden; padding-bottom: 10px;">
                             <div style="width: 600px; height: 300px;">
@@ -348,7 +350,7 @@
                         </div>
                     </div>
                     <!-- GRÁFICO IMPACTO -->
-                    <div style="background: white; padding: 25px; border-radius: 15px; overflow: hidden;">
+                    <div style="background: white; padding: 25px 15px; border-radius: 15px; overflow: hidden;">
                         <h3>Evolución del Impacto de Sostenibilidad (%)</h3>
                         <div style="width: 100%; overflow-x: auto; overflow-y: hidden; padding-bottom: 10px;">
                             <div style="width: 600px; height: 300px;">
@@ -356,24 +358,19 @@
                             </div>
                         </div>
                     </div>
-                    <!-- GRÁFICO AGUA (NUEVO) -->
-                    <div style="background: white; padding: 25px; border-radius: 15px; overflow: hidden; grid-column: 1 / -1;">
-                        <h3>Evolución del Consumo de Agua (m³)</h3>
-                        <div style="width: 100%; overflow-x: auto; overflow-y: hidden; padding-bottom: 10px;">
-                            <div style="width: 600px; height: 300px;">
-                                <canvas id="chartAgua"></canvas>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+                
+                <!-- SEGUNDA FILA: AGUA (solo si hay datos) -->
+                
             </div>
+            
             <script>
-                function crearGrafico(id, label, data, color, maxY) {
+                function crearGrafico(id, label, data, color, maxY, tipo='line') {
                     const canvas = document.getElementById(id);
                     if (!canvas) return;
                     const ctx = canvas.getContext('2d');
-                    new Chart(ctx, {
-                        type: 'line',
+                    const config = {
+                        type: tipo,
                         data: {
                             labels: ["Mar 26", "Abr 26", "Jun 26", "Jul 26"],
                             datasets: [{
@@ -383,7 +380,8 @@
                                 backgroundColor: color + '20',
                                 borderWidth: 2,
                                 pointRadius: 3,
-                                tension: 0.4
+                                tension: 0.4,
+                                fill: true
                             }]
                         },
                         options: {
@@ -416,15 +414,16 @@
                                 mode: 'index'
                             }
                         }
-                    });
+                    };
+                    new Chart(ctx, config);
                 }
 
-                // Esperar a que el DOM cargue
                 function initCharts() {
-                    crearGrafico('chartCO2', 'CO₂e Evitado (kg)', [281.0, 225.0, 346.4, 850.5], '#1F7A3E', null);
-                    crearGrafico('chartPuntaje', 'Impacto (%)', [20.0, 6.3, 10.0, 31.6], '#3498db', 100);
-                    crearGrafico('chartAgua', 'Consumo de agua (m³)', [0, 0, 0, 0], '#2196F3', null);
-                    // Hacer scroll al final (mostrar últimos meses)
+                    crearGrafico('chartCO2', 'CO₂e Evitado (kg)', [281.0, 225.0, 346.4, 850.5], '#1F7A3E', null, 'line');
+                    crearGrafico('chartPuntaje', 'Impacto (%)', [20.0, 6.3, 10.0, 31.6], '#3498db', 100, 'line');
+                    
+                    
+                    // Scroll al final para mostrar los meses más recientes
                     setTimeout(() => {
                         document.querySelectorAll('[style*="overflow-x: auto"]').forEach(el => {
                             el.scrollLeft = el.scrollWidth;
@@ -458,7 +457,7 @@
                     </a>
                 </div>
                 <div class="insignia-item">
-                    <a href="https://impactaverde.com.ar/insignias/insignia_Asociacion_Civil_La_Guarida_Junio_2026.html" target="_blank" style="text-decoration:none; color:inherit;">
+                    <a   style="text-decoration:none; color:inherit;">
                         <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Junio 2026</div>
                         <div style="font-size:14px; color:#666;">🌿 Inicial</div>
                         <div style="font-size:18px; font-weight:800; color:#2e7d32;">10.0%</div>
@@ -482,7 +481,7 @@
             </div>
             
     <div class="footer">
-        <p>Dashboard de Asociacion Civil La Guarida | Actualizado: 17/08/2026 17:12</p>
+        <p>Dashboard de Asociacion Civil La Guarida | Actualizado: 17/08/2026 17:55</p>
         <p>🌿 Impacta Verde</p>
     </div>
 </div>
