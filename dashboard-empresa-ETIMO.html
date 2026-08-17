@@ -332,16 +332,7 @@
                 
             </div></div>
     </div>
-    <div class="section" style="border-color:#FF9800;"><h2>♻️ Materiales Recuperados</h2><div class="metrics-grid">
-            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
-                <div style="font-size: 32px; margin-bottom: 15px; color: #795548;">☕</div>
-                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px;">Borra de café seca</div>
-                <div style="font-size: 24px; font-weight: bold; color: #795548; margin-bottom: 5px;">
-                    575.0 <span style="font-size: 14px; color: #888;">kg</span>
-                </div>
-                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">Acumulado</div>
-                
-            </div></div></div>
+    
     
     
             <div class="charts-section">
@@ -427,10 +418,38 @@
                     new Chart(ctx, config);
                 }
 
-                function initCharts() {
+                                function initCharts() {
                     crearGrafico('chartCO2', 'CO₂e Evitado (kg)', [143.46, 139.69, 135.76, 131.98, 128.06, 124.29, 120.36, 116.58, 112.66, 108.88, 104.96, 101.19, 0.0, 86.13, 107.21, 143.21, 149.14, 832.16], '#1F7A3E', null, 'line');
                     crearGrafico('chartPuntaje', 'Impacto (%)', [34.8, 34.7, 34.6, 34.5, 34.4, 34.4, 34.3, 34.2, 34.1, 34.0, 33.9, 33.8, 22.0, 32.4, 32.6, 35.1, 35.4, 51.9], '#3498db', 100, 'line');
                     
+                    
+                    // GRÁFICO DE ANILLO (DONA) - MATERIAL RECUPERADO
+                    const canvasDona = document.getElementById('chartDonaMaterial');
+                    if (canvasDona) {
+                        new Chart(canvasDona, {
+                            type: 'doughnut',
+                            data: {
+                                labels: ['Recuperado', 'Relleno'],
+                                datasets: [{
+                                    data: [594.8, 0],
+                                    backgroundColor: ['#1F7A3E', '#E74C3C'],
+                                    borderWidth: 3,
+                                    borderColor: '#fff'
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: {
+                                        position: 'bottom',
+                                        labels: { font: { size: 13 }, padding: 20 }
+                                    }
+                                },
+                                cutout: '65%'
+                            }
+                        });
+                    }
                     
                     // Scroll al final para mostrar los meses más recientes
                     setTimeout(() => {
@@ -459,7 +478,7 @@
                     </a>
                 </div>
                 <div class="insignia-item">
-                    <a   style="text-decoration:none; color:inherit;">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Feb_2025.html" target="_blank" style="text-decoration:none; color:inherit;">
                         <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Feb 2025</div>
                         <div style="font-size:14px; color:#666;">🌿 Inicial</div>
                         <div style="font-size:18px; font-weight:800; color:#2e7d32;">34.7%</div>
@@ -487,14 +506,14 @@
                     </a>
                 </div>
                 <div class="insignia-item">
-                    <a   style="text-decoration:none; color:inherit;">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Jun_2025.html" target="_blank" style="text-decoration:none; color:inherit;">
                         <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Jun 2025</div>
                         <div style="font-size:14px; color:#666;">🌿 Inicial</div>
                         <div style="font-size:18px; font-weight:800; color:#2e7d32;">34.4%</div>
                     </a>
                 </div>
                 <div class="insignia-item">
-                    <a   style="text-decoration:none; color:inherit;">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Jul_2025.html" target="_blank" style="text-decoration:none; color:inherit;">
                         <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Jul 2025</div>
                         <div style="font-size:14px; color:#666;">🌿 Inicial</div>
                         <div style="font-size:18px; font-weight:800; color:#2e7d32;">34.3%</div>
@@ -508,7 +527,7 @@
                     </a>
                 </div>
                 <div class="insignia-item">
-                    <a   style="text-decoration:none; color:inherit;">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Sep_2025.html" target="_blank" style="text-decoration:none; color:inherit;">
                         <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Sep 2025</div>
                         <div style="font-size:14px; color:#666;">🌿 Inicial</div>
                         <div style="font-size:18px; font-weight:800; color:#2e7d32;">34.1%</div>
@@ -529,14 +548,14 @@
                     </a>
                 </div>
                 <div class="insignia-item">
-                    <a   style="text-decoration:none; color:inherit;">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Dic_2025.html" target="_blank" style="text-decoration:none; color:inherit;">
                         <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Dic 2025</div>
                         <div style="font-size:14px; color:#666;">🌿 Inicial</div>
                         <div style="font-size:18px; font-weight:800; color:#2e7d32;">33.8%</div>
                     </a>
                 </div>
                 <div class="insignia-item">
-                    <a   style="text-decoration:none; color:inherit;">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Febrero_2026.html" target="_blank" style="text-decoration:none; color:inherit;">
                         <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Febrero 2026</div>
                         <div style="font-size:14px; color:#666;">🌿 Inicial</div>
                         <div style="font-size:18px; font-weight:800; color:#2e7d32;">22.0%</div>
@@ -557,14 +576,14 @@
                     </a>
                 </div>
                 <div class="insignia-item">
-                    <a   style="text-decoration:none; color:inherit;">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Mayo_2026.html" target="_blank" style="text-decoration:none; color:inherit;">
                         <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Mayo 2026</div>
                         <div style="font-size:14px; color:#666;">🌿 Inicial</div>
                         <div style="font-size:18px; font-weight:800; color:#2e7d32;">35.1%</div>
                     </a>
                 </div>
                 <div class="insignia-item">
-                    <a   style="text-decoration:none; color:inherit;">
+                    <a href="https://impactaverde.com.ar/insignias/insignia_ETIMO_Junio_2026.html" target="_blank" style="text-decoration:none; color:inherit;">
                         <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Junio 2026</div>
                         <div style="font-size:14px; color:#666;">🌿 Inicial</div>
                         <div style="font-size:18px; font-weight:800; color:#2e7d32;">35.4%</div>
@@ -601,7 +620,7 @@
             </div>
             
     <div class="footer">
-        <p>Dashboard de ETIMO | Actualizado: 17/08/2026 17:55</p>
+        <p>Dashboard de ETIMO | Actualizado: 17/08/2026 19:51</p>
         <p>🌿 Impacta Verde</p>
     </div>
 </div>
