@@ -156,14 +156,14 @@
             <div class="kpi-card">
                 <div class="kpi-icon">📈</div>
                 <h3>Tendencia de Evolución</h3>
-                <div class="kpi-value">0.4</div>
+                <div class="kpi-value">1.05</div>
                 <div class="kpi-unit">puntos/mes</div>
-                <div style="font-size: 12px; color: #666;">↗️ +0.4</div>
+                <div style="font-size: 12px; color: #666;">↗️ +1.05</div>
             </div>
             <div class="kpi-card">
                 <div class="kpi-icon">🌍</div>
                 <h3>CO₂e Evitado</h3>
-                <div class="kpi-value">0.2</div>
+                <div class="kpi-value">0.9</div>
                 <div class="kpi-unit">toneladas</div>
             </div>
             <div class="kpi-card">
@@ -175,7 +175,7 @@
             <div class="kpi-card">
                 <div class="kpi-icon">⭐</div>
                 <h3>Impacto Promedio</h3>
-                <div class="kpi-value">2.8%</div>
+                <div class="kpi-value">7.5%</div>
                 <div class="kpi-unit">sostenibilidad</div>
             </div>
         </div>
@@ -184,13 +184,13 @@
         <h2>📊 Métricas Generales</h2>
         <div class="metrics-grid">
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
-                <div style="font-size: 32px; margin-bottom: 15px; color: #888;">⚡</div>
+                <div style="font-size: 32px; margin-bottom: 15px; color: #1F7A3E;">⚡</div>
                 <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px;">Energía total</div>
-                <div style="font-size: 24px; font-weight: bold; color: #888; margin-bottom: 5px;">
-                    0 <span style="font-size: 14px; color: #888;">kWh</span>
+                <div style="font-size: 24px; font-weight: bold; color: #1F7A3E; margin-bottom: 5px;">
+                    828.0 <span style="font-size: 14px; color: #888;">kWh</span>
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">Acumulado</div>
-                <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
+                
             </div>
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
                 <div style="font-size: 32px; margin-bottom: 15px; color: #888;">☀️</div>
@@ -218,6 +218,15 @@
                 </div>
                 <div style="font-size: 12px; color: #aaa; margin-top: 5px;">Acumulado</div>
                 <div style='font-size: 11px; color: #aaa; margin-top: 5px;'>Aún no se está trabajando sobre esta medida</div>
+            </div>
+            <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
+                <div style="font-size: 32px; margin-bottom: 15px; color: #FF5722;">🚚</div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px; font-weight: 600; min-height: 40px;">Combustible transporte</div>
+                <div style="font-size: 24px; font-weight: bold; color: #FF5722; margin-bottom: 5px;">
+                    190.0 <span style="font-size: 14px; color: #888;">L</span>
+                </div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 5px;">Acumulado</div>
+                
             </div>
             <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: all 0.3s; height: 100%;">
                 <div style="font-size: 32px; margin-bottom: 15px; color: #888;">📄</div>
@@ -467,8 +476,8 @@
                 }
 
                                 function initCharts() {
-                    crearGrafico('chartCO2', 'CO₂e Evitado (kg)', [62.57, 48.79, 60.13], '#1F7A3E', null, 'line');
-                    crearGrafico('chartPuntaje', 'Impacto (%)', [2.6, 2.3, 3.4], '#3498db', 100, 'line');
+                    crearGrafico('chartCO2', 'CO₂e Evitado (kg)', [266.47, 276.69, 330.45], '#1F7A3E', null, 'line');
+                    crearGrafico('chartPuntaje', 'Impacto (%)', [6.7, 6.9, 8.8], '#3498db', 100, 'line');
                     crearGrafico('chartAgua', 'Consumo de agua (m³)', [38.0, 27.0, 12.0], '#2196F3', null, 'line');
 
                     // GRÁFICO DE ANILLO (DONA) - MATERIAL RECUPERADO
@@ -522,21 +531,21 @@
                     <a href="https://impactaverde.com.ar/insignias/insignia_Grupo_Sierra_Delta_SRL_Julio_2026.html" target="_blank" style="text-decoration:none; color:inherit;">
                         <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Julio 2026</div>
                         <div style="font-size:14px; color:#666;">🌿 Inicial</div>
-                        <div style="font-size:18px; font-weight:800; color:#2e7d32;">2.6%</div>
+                        <div style="font-size:18px; font-weight:800; color:#2e7d32;">6.7%</div>
                     </a>
                 </div>
                 <div class="insignia-item">
                     <a href="https://impactaverde.com.ar/insignias/insignia_Grupo_Sierra_Delta_SRL_Agosto_2026.html" target="_blank" style="text-decoration:none; color:inherit;">
                         <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">Agosto 2026</div>
                         <div style="font-size:14px; color:#666;">🌿 Inicial</div>
-                        <div style="font-size:18px; font-weight:800; color:#2e7d32;">2.3%</div>
+                        <div style="font-size:18px; font-weight:800; color:#2e7d32;">6.9%</div>
                     </a>
                 </div>
                 <div class="insignia-item">
                     <a href="https://impactaverde.com.ar/insignias/insignia_Grupo_Sierra_Delta_SRL_septiembre_2026.html" target="_blank" style="text-decoration:none; color:inherit;">
                         <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">septiembre 2026</div>
                         <div style="font-size:14px; color:#666;">🌿 Inicial</div>
-                        <div style="font-size:18px; font-weight:800; color:#2e7d32;">3.4%</div>
+                        <div style="font-size:18px; font-weight:800; color:#2e7d32;">8.8%</div>
                     </a>
                 </div></div>
                 </div>
@@ -550,7 +559,7 @@
             </div>
             
     <div class="footer">
-        <p>Dashboard de Grupo Sierra Delta SRL | Actualizado: 21/08/2026 16:12</p>
+        <p>Dashboard de Grupo Sierra Delta SRL | Actualizado: 21/08/2026 16:37</p>
         <p>🌿 Impacta Verde</p>
     </div>
 </div>
