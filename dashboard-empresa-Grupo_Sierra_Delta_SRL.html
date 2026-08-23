@@ -496,11 +496,13 @@
                         </div>
                     </div>
                     
-                    <!-- Gráfico de líneas (evolución) -->
+                    <!-- Gráfico de líneas (evolución) con scroll -->
                     <div style="background: #fafafa; padding: 20px; border-radius: 12px;">
                         <h3 style="color: #124d2d; font-size: 16px; font-weight: 600; margin-top: 0; margin-bottom: 15px;">📈 Evolución de la Valorización (ARS)</h3>
-                        <div style="width: 100%; height: 250px;">
-                            <canvas id="chartValorizacion"></canvas>
+                        <div style="width: 100%; overflow-x: auto; overflow-y: hidden; padding-bottom: 10px;">
+                            <div style="width: 600px; height: 250px;">
+                                <canvas id="chartValorizacion"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -662,7 +664,7 @@
                             labels: ["\ud83d\udc55 Textil", "\ud83e\udd64 Pl\u00e1stico", "\ud83c\udf76 Vidrio", "\ud83d\udcc4 Papel", "\u2615 Borra seca", "\u2615 Borra h\u00fameda", "\ud83d\udee2\ufe0f Aceite"],
                             datasets: [{
                                 data: [203500.0, 5670.0, 8236.0, 3800.0, 600.0, 6200.0, 92400.0],
-                                backgroundColor: ["#E91E63", "#2196F3", "#00BCD4", "#795548", "#795548", "#8D6E63", "#FF9800"],
+                                backgroundColor: ["#E91E63", "#4CAF50", "#00BCD4", "#9C27B0", "#795548", "#9E9E9E", "#FF9800"],
                                 borderWidth: 2,
                                 borderColor: '#fff'
                             }]
@@ -792,7 +794,7 @@
             </div>
             
     <div class="footer">
-        <p>Dashboard de Grupo Sierra Delta SRL | Actualizado: 23/08/2026 17:26</p>
+        <p>Dashboard de Grupo Sierra Delta SRL | Actualizado: 23/08/2026 17:44</p>
         <p>🌿 Impacta Verde</p>
     </div>
 </div>
