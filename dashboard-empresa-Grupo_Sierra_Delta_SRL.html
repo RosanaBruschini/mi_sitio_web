@@ -437,6 +437,8 @@
             <div class="section" style="border-color: #D35400; border: 2px solid #D35400; border-radius: 15px; padding: 25px; margin: 30px 0; background: white;">
                 <h2 style="color: #124d2d; font-size: 22px; font-weight: 700; margin-bottom: 20px;">🔄 Valorización de Residuos</h2>
                 
+                <!-- Tarjetas individuales -->
+                
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-top: 20px;">
                 
                     <div style="background: white; padding: 12px 16px; border-radius: 10px; border: 3px solid #2e7d32; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); background: #f8fff8;">
@@ -483,6 +485,25 @@
                     
             </div>
             
+                
+                <!-- Gráficos -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+                    <!-- Gráfico de dona (composición) -->
+                    <div style="background: #fafafa; padding: 20px; border-radius: 12px; text-align: center;">
+                        <h3 style="color: #124d2d; font-size: 16px; font-weight: 600; margin-top: 0; margin-bottom: 15px;">📊 Composición de la Valorización</h3>
+                        <div style="position: relative; height: 250px; width: 100%; max-width: 300px; margin: 0 auto;">
+                            <canvas id="chartDonaValorizacion"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Gráfico de líneas (evolución) -->
+                    <div style="background: #fafafa; padding: 20px; border-radius: 12px;">
+                        <h3 style="color: #124d2d; font-size: 16px; font-weight: 600; margin-top: 0; margin-bottom: 15px;">📈 Evolución de la Valorización (ARS)</h3>
+                        <div style="width: 100%; height: 250px;">
+                            <canvas id="chartValorizacion"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
             
     <div class="section" style="background:#FFD8B130; border-color:#CC5500;"><h2>🍽️ Métricas Sectoriales - Restaurante</h2><div class="metrics-grid">
@@ -604,49 +625,137 @@
                     crearGrafico('chartPuntaje', 'Impacto (%)', [11.0, 14.1, 23.2], '#3498db', 100, 'line');
                     crearGrafico('chartAgua', 'Consumo de agua (m³)', [38.0, 27.0, 12.0], '#2196F3', null, 'line');
 
-                    // GRÁFICO DE ANILLO (DONA) - MATERIAL RECUPERADO
-                    const canvasDona = document.getElementById('chartDonaMaterial');
-                    if (canvasDona) {
-                        new Chart(canvasDona, {
-                            type: 'doughnut',
-                            data: {
-                                labels: ['Recuperado', 'Relleno'],
-                                datasets: [{
-                                    data: [600.0, 341.0],
-                                    backgroundColor: ['#1F7A3E', '#E74C3C'],
-                                    borderWidth: 3,
-                                    borderColor: '#fff'
-                                }]
+                                    // GRÁFICO DE ANILLO (DONA) - MATERIAL RECUPERADO
+                const canvasDona = document.getElementById('chartDonaMaterial');
+                if (canvasDona) {
+                    new Chart(canvasDona, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Recuperado', 'Relleno'],
+                            datasets: [{
+                                data: [600.0, 341.0],
+                                backgroundColor: ['#1F7A3E', '#E74C3C'],
+                                borderWidth: 3,
+                                borderColor: '#fff'
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    position: 'bottom',
+                                    labels: { font: { size: 13 }, padding: 20 }
+                                }
                             },
-                            options: {
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                plugins: {
-                                    legend: {
-                                        position: 'bottom',
-                                        labels: { font: { size: 13 }, padding: 20 }
+                            cutout: '65%'
+                        }
+                    });
+                }
+
+                // GRÁFICO DE DONA - Composición de valorización
+                const canvasDonaVal = document.getElementById('chartDonaValorizacion');
+                if (canvasDonaVal) {
+                    new Chart(canvasDonaVal, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ["\ud83d\udc55 Textil", "\ud83e\udd64 Pl\u00e1stico", "\ud83c\udf76 Vidrio", "\ud83d\udcc4 Papel", "\u2615 Borra seca", "\u2615 Borra h\u00fameda", "\ud83d\udee2\ufe0f Aceite"],
+                            datasets: [{
+                                data: [203500.0, 5670.0, 8236.0, 3800.0, 600.0, 6200.0, 92400.0],
+                                backgroundColor: ["#E91E63", "#2196F3", "#00BCD4", "#795548", "#795548", "#8D6E63", "#FF9800"],
+                                borderWidth: 2,
+                                borderColor: '#fff'
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    position: 'bottom',
+                                    labels: {
+                                        font: { size: 11 },
+                                        padding: 10
                                     }
+                                }
+                            },
+                            cutout: '60%'
+                        }
+                    });
+                }
+
+                // GRÁFICO DE LÍNEAS - Evolución de la valorización
+                const canvasVal = document.getElementById('chartValorizacion');
+                if (canvasVal) {
+                    new Chart(canvasVal, {
+                        type: 'line',
+                        data: {
+                            labels: ["Jul 26", "Ago 26", "sep 26"],
+                            datasets: [{
+                                label: 'Valorización de residuos',
+                                data: [57325.0, 83048.0, 180032.0],
+                                borderColor: '#D35400',
+                                backgroundColor: 'rgba(211, 84, 0, 0.1)',
+                                borderWidth: 2,
+                                pointRadius: 3,
+                                tension: 0.4,
+                                fill: true
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    labels: {
+                                        font: { size: 11 }
+                                    }
+                                }
+                            },
+                            scales: {
+                                x: {
+                                    ticks: {
+                                        maxRotation: 45,
+                                        minRotation: 30,
+                                        autoSkip: true,
+                                        maxTicksLimit: 20,
+                                        font: { size: 10 }
+                                    },
+                                    grid: { display: false }
                                 },
-                                cutout: '65%'
+                                y: {
+                                    beginAtZero: true,
+                                    ticks: {
+                                        callback: function(value) {
+                                            return 'ARS ' + value.toLocaleString('es-AR');
+                                        }
+                                    },
+                                    grid: { color: 'rgba(0,0,0,0.05)' }
+                                }
+                            },
+                            interaction: {
+                                intersect: false,
+                                mode: 'index'
                             }
-                        });
-                    }
-
-                    // Scroll al final para mostrar los meses más recientes
-                    setTimeout(() => {
-                        document.querySelectorAll('[style*="overflow-x: auto"]').forEach(el => {
-                            el.scrollLeft = el.scrollWidth;
-                        });
-                    }, 200);
+                        }
+                    });
                 }
 
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', initCharts);
-                } else {
-                    initCharts();
-                }
-            </script>
-            
+                // Scroll al final para mostrar los meses más recientes
+                setTimeout(() => {
+                    document.querySelectorAll('[style*="overflow-x: auto"]').forEach(el => {
+                        el.scrollLeft = el.scrollWidth;
+                    });
+                }, 200);
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initCharts);
+            } else {
+                initCharts();
+            }
+        </script>
+        
     
                 <div class="insignias-section">
                     <h2>🎖️ Insignias Obtenidas</h2>
@@ -683,7 +792,7 @@
             </div>
             
     <div class="footer">
-        <p>Dashboard de Grupo Sierra Delta SRL | Actualizado: 23/08/2026 16:49</p>
+        <p>Dashboard de Grupo Sierra Delta SRL | Actualizado: 23/08/2026 17:26</p>
         <p>🌿 Impacta Verde</p>
     </div>
 </div>
