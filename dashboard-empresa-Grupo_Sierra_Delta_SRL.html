@@ -136,6 +136,54 @@
             height: 100% !important;
             object-fit: contain;
         }
+
+        /* ========================================================= */
+        /* 📱 RESPONSIVE PARA DISPOSITIVOS MÓVILES (pantallas < 768px) */
+        /* ========================================================= */
+        @media (max-width: 768px) {
+            /* SECCIÓN MATERIAL RECUPERADO: forzar una columna */
+            .section[style*="border-color: #1F7A3E"] > div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            
+            /* SECCIÓN VALORIZACIÓN: que el gráfico de líneas se vea */
+            .section[style*="border-color: #D35400"] > div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            
+            /* GRÁFICOS DE EVOLUCIÓN MENSUAL (CO₂ e Impacto) */
+            .charts-section > div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            
+            /* Asegurar que los contenedores con scroll horizontal funcionen */
+            [style*="overflow-x: auto"] {
+                -webkit-overflow-scrolling: touch !important;
+                overflow-x: auto !important;
+            }
+            
+            /* Ajustar las tarjetas de materiales para que no se corten */
+            .metrics-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
+            }
+            
+            /* Ajustar el tamaño de fuente de los KPIs en móvil */
+            .kpi-value {
+                font-size: 28px !important;
+            }
+            .kpi-card {
+                padding: 15px !important;
+            }
+
+            /* Mejorar espaciado en secciones */
+            .section {
+                padding: 15px !important;
+                margin: 20px 0 !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -356,7 +404,7 @@
     
                 <div class="section" style="border-color: #1F7A3E; border: 2px solid #1F7A3E; border-radius: 15px; padding: 25px; margin: 30px 0; background: white;">
                     <h2 style="color: #124d2d; font-size: 22px; font-weight: 700; margin-bottom: 20px;">♻️ Material Recuperado</h2>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center;" class="grid-2-col">
                         <!-- Columna 1: Dona -->
                         <div style="text-align: center;">
                             <div style="position: relative; height: 200px; width: 100%; max-width: 260px; margin: 0 auto;">
@@ -389,49 +437,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Tarjetas pequeñas -->
-                    
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-top: 20px;">
-                
-                <div style="background: white; padding: 12px 16px; border-radius: 10px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-                    <div style="font-size: 28px; margin-bottom: 6px;">☕</div>
-                    <div style="font-size: 13px; color: #666; font-weight: 600; min-height: 32px;">Borra de café seca</div>
-                    <div style="font-size: 18px; font-weight: bold; color: #1F7A3E;">4.0 kg</div>
-                </div>
-                
-                <div style="background: white; padding: 12px 16px; border-radius: 10px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-                    <div style="font-size: 28px; margin-bottom: 6px;">☕</div>
-                    <div style="font-size: 13px; color: #666; font-weight: 600; min-height: 32px;">Borra de café húmeda</div>
-                    <div style="font-size: 18px; font-weight: bold; color: #1F7A3E;">124.0 kg</div>
-                </div>
-                
-                <div style="background: white; padding: 12px 16px; border-radius: 10px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-                    <div style="font-size: 28px; margin-bottom: 6px;">🥤</div>
-                    <div style="font-size: 13px; color: #666; font-weight: 600; min-height: 32px;">Plástico reutilizado</div>
-                    <div style="font-size: 18px; font-weight: bold; color: #1F7A3E;">14.0 kg</div>
-                </div>
-                
-                <div style="background: white; padding: 12px 16px; border-radius: 10px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-                    <div style="font-size: 28px; margin-bottom: 6px;">🍶</div>
-                    <div style="font-size: 13px; color: #666; font-weight: 600; min-height: 32px;">Vidrio reciclado</div>
-                    <div style="font-size: 18px; font-weight: bold; color: #1F7A3E;">122.0 kg</div>
-                </div>
-                
-                <div style="background: white; padding: 12px 16px; border-radius: 10px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-                    <div style="font-size: 28px; margin-bottom: 6px;">👕</div>
-                    <div style="font-size: 13px; color: #666; font-weight: 600; min-height: 32px;">Tela reutilizada</div>
-                    <div style="font-size: 18px; font-weight: bold; color: #1F7A3E;">37.0 kg</div>
-                </div>
-                
-                <div style="background: white; padding: 12px 16px; border-radius: 10px; border: 2px solid #e8f4e8; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-                    <div style="font-size: 28px; margin-bottom: 6px;">🍽️</div>
-                    <div style="font-size: 13px; color: #666; font-weight: 600; min-height: 32px;">Alimentos valorizados (compost/donación)</div>
-                    <div style="font-size: 18px; font-weight: bold; color: #1F7A3E;">166.0 kg</div>
-                </div>
-                
-            </div>
-            
-                </div>
                 
     
             <div class="section" style="border-color: #D35400; border: 2px solid #D35400; border-radius: 15px; padding: 25px; margin: 30px 0; background: white;">
@@ -487,7 +492,7 @@
             
                 
                 <!-- Gráficos -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;" class="grid-2-col">
                     <!-- Gráfico de dona (composición) -->
                     <div style="background: #fafafa; padding: 20px; border-radius: 12px; text-align: center;">
                         <h3 style="color: #124d2d; font-size: 16px; font-weight: 600; margin-top: 0; margin-bottom: 15px;">📊 Composición de la Valorización</h3>
@@ -532,7 +537,7 @@
                 <h2>📈 Evolución Mensual</h2>
 
                 <!-- PRIMERA FILA: CO₂ e IMPACTO (2 columnas, cada una ocupa el 50%) -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px;" class="grid-2-col">
                     <!-- GRÁFICO CO₂ -->
                     <div style="background: white; padding: 25px 15px; border-radius: 15px; overflow: hidden;">
                         <h3>Evolución de CO₂e Evitado (kg)</h3>
@@ -794,7 +799,7 @@
             </div>
             
     <div class="footer">
-        <p>Dashboard de Grupo Sierra Delta SRL | Actualizado: 24/08/2026 12:14</p>
+        <p>Dashboard de Grupo Sierra Delta SRL | Actualizado: 24/08/2026 13:00</p>
         <p>🌿 Impacta Verde</p>
     </div>
 </div>
