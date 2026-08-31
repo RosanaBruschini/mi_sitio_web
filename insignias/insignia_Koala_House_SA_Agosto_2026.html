@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insignia Mensual - Koala House SA</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7f4;
+            color: #1d1d1d;
+        }
+        .contenedor {
+            max-width: 700px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            border: 4px solid #CC5500;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+        }
+        .header {
+            position: relative;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .logo {
+            height: 100px;
+            position: absolute;
+            left: 10px;
+            top: 0;
+        }
+        .header-titulo {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 22px;
+            font-weight: 700;
+            color: #287a48;
+            text-align: center;
+            width: 100%;
+        }
+        .qr {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            text-align: center;
+        }
+        .qr img {
+            width: 100px;
+            height: 100px;
+        }
+        .bloque {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #D8EEDB;
+            background: #F9FFF9;
+        }
+        .bloque h2 {
+            margin: 0 0 12px 0;
+            color: #124d2d;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .fila {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 16px;
+        }
+        .etiqueta {
+            font-weight: 600;
+            color: #124d2d;
+        }
+        .valor {
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+        .equivalencia {
+            font-size: 16px;
+            color: #2e7d32;
+            margin: 12px 0;
+            font-weight: 500;
+            text-align: center;
+            background: #f8fff8;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #CC5500;
+        }
+        .btn-descargar {
+            margin: 20px auto 10px auto;
+            display: block;
+            background: #1F7A3E;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-descargar:hover {
+            background: #155b2a;
+        }
+        .metricas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .metrica {
+            background: #f0f8f0;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid #d0e8d0;
+        }
+        .ods-box {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #D8EEDB;
+            background: #F3FFF3;
+        }
+        .ods-box h3 {
+            color: #0f5e30;
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            text-align: center;
+        }
+        .ods-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .ods-container span {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #1F7A3E;
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: help;
+            transition: transform 0.2s;
+        }
+        .ods-container span:hover {
+            transform: scale(1.1);
+            background: #155b2a;
+        }
+        @media (max-width: 768px) {
+            .contenedor {
+                margin: 15px;
+                padding: 20px;
+            }
+            .header {
+                height: auto;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .logo {
+                position: static;
+                height: 80px;
+                margin-bottom: 10px;
+            }
+            .header-titulo {
+                position: static;
+                transform: none;
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .qr {
+                position: static;
+                margin: 10px auto;
+            }
+            .metricas {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+    <div class="header">
+        <img class="logo"
+             src="https://res.cloudinary.com/ddubafael/image/upload/v1768315140/logo_institucional_final_tranp._impacta_verde_ec55yo.png"
+             alt="Impacta Verde">
+        <div class="header-titulo">Insignia de Sostenibilidad Mensual</div>
+        <div class="qr">
+            <img src="data:image/png;base64,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" alt="Código QR">
+            <div style="font-size:12px; color:#444; margin-top:5px;">Verificación</div>
+        </div>
+    </div>
+    <div class="bloque">
+        <h2>🌿 Inicial</h2>
+        <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor">Koala House SA</span></div>
+        <div class="fila"><span class="etiqueta">Período:</span> <span class="valor">Agosto 2026</span></div>
+        
+            <div class="fila" style="background:#FFD8B1; padding: 10px; border-radius: 8px; margin: 10px 0; border-left: 5px solid #CC5500;">
+                <span class="etiqueta">🏷️ Sector:</span>
+                <span class="valor" style="font-weight: 700; color: #CC5500;">
+                    🍽️ Restaurante
+                </span>
+            </div>
+        <div class="fila"><span class="etiqueta">Puntaje mensual:</span> <span class="valor" style="font-weight: bold; color: #1F7A3E; font-size: 18px;">0.6%</span></div>
+
+        <div class="equivalencia">
+            <strong>Impacto equivalente a:</strong><br>
+            <span style="font-size: 20px; font-weight: bold;">🌳 (Iniciando)</span>
+        </div>
+
+        <div class="metricas">
+            
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">CO₂e evitado</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">27.52 kg</div>
+            </div>
+        </div>
+
+        <div class="ods-box">
+            <h3>🌍 Contribuye a los Objetivos de Desarrollo Sostenible (ODS)</h3>
+            <div class="ods-container">
+                <span title="Energía asequible y no contaminante">7</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Alianzas para lograr los objetivos">17</span>
+            </div>
+            <p style="text-align:center; font-size:12px; color:#666; margin-top:8px; font-style:italic;">
+                Pasa el cursor sobre cada número para ver el ODS
+            </p>
+        </div>
+    </div>
+</div>
+<button id="descargar" class="btn-descargar">Descargar PNG de la Insignia</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+document.getElementById("descargar").addEventListener("click", function() {
+    const contenedor = document.querySelector(".contenedor");
+    const boton = this;
+    const textoOriginal = boton.textContent;
+    boton.textContent = "Generando imagen...";
+    boton.disabled = true;
+    setTimeout(() => {
+        html2canvas(contenedor, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff"
+        }).then(canvas => {
+            const link = document.createElement("a");
+            link.download = "insignia-Koala_House_SA-Agosto-2026.png";
+            link.href = canvas.toDataURL("image/png");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }).finally(() => {
+            boton.textContent = textoOriginal;
+            boton.disabled = false;
+        });
+    }, 100);
+});
+</script>
+</body>
+</html>
