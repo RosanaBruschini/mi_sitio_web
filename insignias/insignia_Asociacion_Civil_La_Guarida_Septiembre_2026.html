@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insignia Mensual - Asociacion Civil La Guarida</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,5 C60,20 80,30 85,50 C90,70 75,85 50,95 C25,85 10,70 15,50 C20,30 40,20 50,5Z' fill='%232e7d32'/></svg>">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7f4;
+            color: #1d1d1d;
+        }
+        .contenedor {
+            max-width: 700px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            border: 4px solid #2E8B57;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+        }
+        .header {
+            position: relative;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .logo {
+            height: 100px;
+            position: absolute;
+            left: 10px;
+            top: 0;
+        }
+        .header-titulo {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 22px;
+            font-weight: 700;
+            color: #287a48;
+            text-align: center;
+            width: 100%;
+        }
+        .qr {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            text-align: center;
+        }
+        .qr img {
+            width: 100px;
+            height: 100px;
+        }
+        .bloque {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #D8EEDB;
+            background: #F9FFF9;
+        }
+        .bloque h2 {
+            margin: 0 0 12px 0;
+            color: #124d2d;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .fila {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 16px;
+        }
+        .etiqueta {
+            font-weight: 600;
+            color: #124d2d;
+        }
+        .valor {
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+        .equivalencia {
+            font-size: 16px;
+            color: #2e7d32;
+            margin: 12px 0;
+            font-weight: 500;
+            text-align: center;
+            background: #f8fff8;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #2E8B57;
+        }
+        .btn-descargar {
+            margin: 20px auto 10px auto;
+            display: block;
+            background: #1F7A3E;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-descargar:hover {
+            background: #155b2a;
+        }
+        .metricas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .metrica {
+            background: #f0f8f0;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid #d0e8d0;
+        }
+        .ods-box {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #D8EEDB;
+            background: #F3FFF3;
+        }
+        .ods-box h3 {
+            color: #0f5e30;
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            text-align: center;
+        }
+        .ods-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .ods-container span {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #1F7A3E;
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: help;
+            transition: transform 0.2s;
+        }
+        .ods-container span:hover {
+            transform: scale(1.1);
+            background: #155b2a;
+        }
+        @media (max-width: 768px) {
+            .contenedor {
+                margin: 15px;
+                padding: 20px;
+            }
+            .header {
+                height: auto;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .logo {
+                position: static;
+                height: 80px;
+                margin-bottom: 10px;
+            }
+            .header-titulo {
+                position: static;
+                transform: none;
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .qr {
+                position: static;
+                margin: 10px auto;
+            }
+            .metricas {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+    <div class="header">
+        <img class="logo"
+             src="https://res.cloudinary.com/ddubafael/image/upload/v1768315140/logo_institucional_final_tranp._impacta_verde_ec55yo.png"
+             alt="Impacta Verde">
+        <div class="header-titulo">Insignia de Sostenibilidad Mensual</div>
+        <div class="qr">
+            <img src="data:image/png;base64,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" alt="Código QR">
+            <div style="font-size:12px; color:#444; margin-top:5px;">Verificación</div>
+        </div>
+    </div>
+    <div class="bloque">
+        <h2>🌿 Inicial</h2>
+        <div class="fila"><span class="etiqueta">Empresa:</span> <span class="valor">Asociacion Civil La Guarida</span></div>
+        <div class="fila"><span class="etiqueta">Período:</span> <span class="valor">Septiembre 2026</span></div>
+        
+            <div class="fila" style="background:#D4EDDA; padding: 10px; border-radius: 8px; margin: 10px 0; border-left: 5px solid #2E8B57;">
+                <span class="etiqueta">🏷️ Sector:</span>
+                <span class="valor" style="font-weight: 700; color: #2E8B57;">
+                    ♻️ Reciclaje
+                </span>
+            </div>
+        <div class="fila"><span class="etiqueta">Puntaje mensual:</span> <span class="valor" style="font-weight: bold; color: #1F7A3E; font-size: 18px;">28.8%</span></div>
+
+        <div class="equivalencia">
+            <strong>Impacto equivalente a:</strong><br>
+            <span style="font-size: 20px; font-weight: bold;">🌳 (Iniciando)</span>
+        </div>
+
+        <div class="metricas">
+            
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">CO₂e evitado</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">997.0 kg</div>
+            </div>
+            <div class="metrica">
+                <div style="font-size:14px; color:#124d2d; font-weight:600;">Material recuperado</div>
+                <div style="font-size:16px; font-weight:bold; color:#1F7A3E;">221.0 kg</div>
+            </div>
+            <div class="metrica" style="background: #fdf6ec; border: 2px solid #D35400; border-radius: 8px; padding: 12px;">
+                <div style="font-size:14px; color:#D35400; font-weight:700;">Valorización de residuos</div>
+                <div style="font-size:18px; font-weight:bold; color:#D35400;">21.870 ARS</div>
+            </div>
+        </div>
+
+        <div class="ods-box">
+            <h3>🌍 Contribuye a los Objetivos de Desarrollo Sostenible (ODS)</h3>
+            <div class="ods-container">
+                <span title="Energía asequible y no contaminante">7</span><span title="Producción y consumo responsables">12</span><span title="Acción por el clima">13</span><span title="Vida de ecosistemas terrestres">15</span><span title="Alianzas para lograr los objetivos">17</span>
+            </div>
+            <p style="text-align:center; font-size:12px; color:#666; margin-top:8px; font-style:italic;">
+                Pasa el cursor sobre cada número para ver el ODS
+            </p>
+        </div>
+    </div>
+</div>
+<button id="descargar" class="btn-descargar">Descargar PNG de la Insignia</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+document.getElementById("descargar").addEventListener("click", function() {
+    const contenedor = document.querySelector(".contenedor");
+    const boton = this;
+    const textoOriginal = boton.textContent;
+    boton.textContent = "Generando imagen...";
+    boton.disabled = true;
+    setTimeout(() => {
+        html2canvas(contenedor, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff"
+        }).then(canvas => {
+            const link = document.createElement("a");
+            link.download = "insignia-Asociacion_Civil_La_Guarida-Septiembre-2026.png";
+            link.href = canvas.toDataURL("image/png");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }).finally(() => {
+            boton.textContent = textoOriginal;
+            boton.disabled = false;
+        });
+    }, 100);
+});
+</script>
+</body>
+</html>
