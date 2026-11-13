@@ -329,6 +329,11 @@
                             <input type="checkbox" id="sectorRetail" name="sectorRetail">
                             <label for="sectorRetail" style="margin: 0; font-weight: normal;">🛍️ Retail / Comercio</label>
                         </div>
+                        <!-- 🔥 NUEVO: Checkbox de Bodega -->
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="sectorBodega" name="sectorBodega">
+                            <label for="sectorBodega" style="margin: 0; font-weight: normal;">🍷 Bodega / Viñedo</label>
+                        </div>
                     </div>
                     <small style="color: #666; font-size: 12px; display: block; margin-top: 10px;">
                         Marca los sectores que apliquen a tu empresa. Puedes seleccionar varios si tu negocio incluye diferentes actividades.
@@ -347,7 +352,6 @@
                             <input type="number" id="energia_kwh" name="Energia_kWh" step="0.01" min="0" value="0">
                         </div>
 
-                        <!-- ✅ MOVIDO DESDE HOTEL: Energía Fotovoltaica -->
                         <div class="grupo-formulario">
                             <label for="energia_fotovoltaica_kwh">Energía fotovoltaica <span class="unidad">(kWh)</span></label>
                             <input type="number" id="energia_fotovoltaica_kwh" name="Energia_Fotovoltaica_kWh" step="0.01" min="0" value="0">
@@ -401,7 +405,6 @@
                             <span class="nota-campo">Botellas, envases operativos recuperados</span>
                         </div>
 
-                        <!-- ✅ NUEVO CAMPO: MATERIALES BIODEGRADABLES -->
                         <div class="grupo-formulario">
                             <label for="materiales_biodegradables_kg">Materiales biodegradables/compostables <span class="unidad">(kg)</span></label>
                             <input type="number" id="materiales_biodegradables_kg" name="Materiales_biodegradables_kg" step="0.01" min="0" value="0">
@@ -431,7 +434,6 @@
                         </div>
                     </div>
 
-                    <!-- MODIFICADO: Nueva fila con los campos movidos desde Social y Hotel -->
                     <div class="fila-cuadruple">
                         <div class="grupo-formulario">
                             <label for="uniforme_circular">% de uniformes circulares</label>
@@ -455,9 +457,6 @@
                                 <option value="80">4 - Avanzados (procesos optimizados con métricas)</option>
                                 <option value="100">5 - Excelentes (procesos automatizados, mejora continua)</option>
                             </select>
-                            <small style="color: #666; font-size: 12px; display: block; margin-top: 5px;">
-                                Evalúa el nivel de optimización de los procesos de tu empresa
-                            </small>
                         </div>
                         <div class="grupo-formulario">
                             <label for="digitalizacion">Nivel de digitalización</label>
@@ -469,9 +468,6 @@
                                 <option value="80">4 - Alta (software especializado, automatización parcial)</option>
                                 <option value="100">5 - Muy alta (plataformas integradas, automatización total)</option>
                             </select>
-                            <small style="color: #666; font-size: 12px; display: block; margin-top: 5px;">
-                                Evalúa el nivel de digitalización de tu empresa
-                            </small>
                         </div>
                         <div class="grupo-formulario">
                             <label for="horas_voluntariado">Horas de voluntariado <span class="unidad">(horas)</span></label>
@@ -504,31 +500,35 @@
                             <label for="cantidad_mujeres">Empleadas mujeres</label>
                             <input type="number" id="cantidad_mujeres" name="Cantidad_Mujeres" min="0" value="0">
                         </div>
-
-                        <!-- MODIFICADO: se eliminó el campo uniforme_circular de aquí (ahora está en ambiental) -->
-                        <div class="grupo-formulario">
-                            <!-- vacío a propósito para mantener estructura -->
-                        </div>
-                    </div>
-
-                    <div class="fila-cuadruple">
+                        
                         <div class="grupo-formulario">
                             <label for="cantidad_personas_discapacitadas">Personas con discapacidad</label>
                             <input type="number" id="cantidad_personas_discapacitadas"
                                    name="Cantidad_Personas_Discapacitadas" min="0" value="0">
                         </div>
+                    </div>
 
+                    <div class="fila-cuadruple">
                         <div class="grupo-formulario">
-                            <label for="capacitacion_horas">Capacitación <span class="unidad">(horas)</span></label>
+                            <label for="capacitacion_horas">Capacitación general <span class="unidad">(horas)</span></label>
                             <input type="number" id="capacitacion_horas" name="Capacitacion_horas" step="0.1" min="0" value="0">
                         </div>
 
-                        <!-- MODIFICADO: se eliminaron procesos_optimizados y digitalizacion de aquí (ahora están en ambiental) -->
+                        <!-- 🔥 NUEVO GRI 403: Capacitación en Seguridad -->
                         <div class="grupo-formulario">
-                            <!-- vacío -->
+                            <label for="capacitacion_seguridad_horas">Capacitación en Seguridad <span class="unidad">(horas)</span></label>
+                            <input type="number" id="capacitacion_seguridad_horas" name="Capacitacion_Seguridad_horas" step="0.1" min="0" value="0">
                         </div>
+
+                        <!-- 🔥 NUEVO GRI 405: Diversidad etaria -->
                         <div class="grupo-formulario">
-                            <!-- vacío -->
+                            <label for="empleados_jovenes">Empleados menores de 30 años</label>
+                            <input type="number" id="empleados_jovenes" name="Empleados_Menores_30" min="0" value="0">
+                        </div>
+                        
+                        <div class="grupo-formulario">
+                            <label for="empleados_mayores">Empleados mayores de 50 años</label>
+                            <input type="number" id="empleados_mayores" name="Empleados_Mayores_50" min="0" value="0">
                         </div>
                     </div>
 
@@ -598,7 +598,6 @@
                     </div>
 
                     <div class="fila-cuadruple">
-                        <!-- MODIFICADO: se eliminó el campo horas_voluntariado de aquí (ahora está en ambiental) -->
                         <div class="grupo-formulario">
                             <label for="proveedores_locales_regenerativos">% Proveedores locales regenerativos</label>
                             <select id="proveedores_locales_regenerativos" name="Proveedores_Locales_Regenerativos_%">
@@ -623,7 +622,6 @@
                             </select>
                             <span class="nota-campo">Encuesta de satisfacción sobre prácticas sostenibles</span>
                         </div>
-                        <!-- Las dos últimas columnas quedan vacías (mantiene estructura) -->
                         <div class="grupo-formulario"></div>
                         <div class="grupo-formulario"></div>
                     </div>
@@ -701,6 +699,33 @@
                     </div>
                 </div>
 
+                <!-- 🔥 SECCIÓN NUEVA: BODEGA / VIÑEDO (OCULTA POR DEFECTO) -->
+                <div class="seccion seccion-oculta" id="seccionBodega">
+                    <div class="seccion-titulo">
+                        <span>🍷</span> Bodega / Viñedo - Indicadores Específicos
+                    </div>
+
+                    <div class="fila-triple">
+                        <div class="grupo-formulario">
+                            <label for="orujo_kg">Orujo y Borras <span class="unidad">(kg)</span></label>
+                            <input type="number" id="orujo_kg" name="Orujo_kg" step="0.01" min="0" value="0">
+                            <span class="nota-campo">Restos de uva prensada, pieles y semillas</span>
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="sarmientos_kg">Sarmientos <span class="unidad">(kg)</span></label>
+                            <input type="number" id="sarmientos_kg" name="Sarmientos_kg" step="0.01" min="0" value="0">
+                            <span class="nota-campo">Restos de poda del viñedo</span>
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="agroquimicos_kg">Agroquímicos <span class="unidad">(kg / L)</span></label>
+                            <input type="number" id="agroquimicos_kg" name="Agroquimicos_kg" step="0.01" min="0" value="0">
+                            <span class="nota-campo">Fertilizantes o pesticidas utilizados</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- SECCIÓN 8: INFORMACIÓN ADICIONAL -->
                 <div class="seccion">
                     <div class="seccion-titulo">
@@ -745,7 +770,6 @@
         const URL_REGISTRO = "https://api.sheetbest.com/sheets/c7fec5f9-d83f-4d32-b31e-6ee06ea50d00";
 
         document.addEventListener('DOMContentLoaded', async function() {
-            // ✅ Actualizar fecha de carga automáticamente - FORMATO dd/mm/yyyy SIN HORA
             const ahora = new Date();
             const dia = String(ahora.getDate()).padStart(2, '0');
             const mes = String(ahora.getMonth() + 1).padStart(2, '0');
@@ -755,7 +779,6 @@
             document.getElementById('fechaCarga').value = fechaFormateada;
             document.getElementById('fechaCargaVisible').value = fechaFormateada;
 
-            // Establecer mes y año actual
             const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
                           'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
             const mesActual = meses[ahora.getMonth()];
@@ -764,13 +787,8 @@
             document.getElementById('mes').value = mesActual;
             document.getElementById('anio').value = anioActual;
 
-            // Cargar empresas desde el registro
             await cargarEmpresas();
-
-            // Configurar listeners para checkboxes de sectores
             configurarListenersSectores();
-
-            // Configurar cálculos automáticos (ocultos para el cliente)
             configurarCalculosAutomaticos();
         });
 
@@ -794,14 +812,11 @@
                     }
                 });
 
-                // Cuando se selecciona una empresa, se asigna ID, Nombre y Rubro
                 selectEmpresa.addEventListener('change', function() {
                     const selectedOption = this.options[this.selectedIndex];
                     if (selectedOption.dataset.id) {
                         document.getElementById('idEmpresaHidden').value = selectedOption.dataset.id;
                         document.getElementById('nombreEmpresaHidden').value = selectedOption.dataset.nombre;
-
-                        // ✅ Detectar sector principal y preseleccionar checkbox correspondiente
                         const rubro = selectedOption.dataset.rubro;
                         detectarYPreseleccionarSector(rubro);
                     }
@@ -814,7 +829,6 @@
         }
 
         function configurarListenersSectores() {
-            // Configurar listeners para checkboxes de sectores
             document.getElementById('sectorHotel').addEventListener('change', function() {
                 document.getElementById('seccionHotel').classList.toggle('seccion-oculta', !this.checked);
                 if (this.checked) calcularIndicadoresHotel();
@@ -831,98 +845,75 @@
             });
 
             document.getElementById('sectorRetail').addEventListener('change', function() {
-                // Por ahora no hay sección Retail, pero podemos agregarla después
                 if (this.checked) {
                     mostrarMensaje('Exito', '📝 Nota: La sección Retail estará disponible próximamente');
                     this.checked = false;
                 }
             });
+
+            // 🔥 NUEVO: Listener de Bodega
+            document.getElementById('sectorBodega').addEventListener('change', function() {
+                document.getElementById('seccionBodega').classList.toggle('seccion-oculta', !this.checked);
+            });
         }
 
         function configurarCalculosAutomaticos() {
-            // Cálculos para Hotel (ocultos para el cliente)
             const camposHotel = ['huespedes_totales', 'participacion_reuso_personas'];
             camposHotel.forEach(campoId => {
                 const campo = document.getElementById(campoId);
-                if (campo) {
-                    campo.addEventListener('input', calcularIndicadoresHotel);
-                }
+                if (campo) campo.addEventListener('input', calcularIndicadoresHotel);
             });
 
-            // Cálculos para Restaurante (ocultos para el cliente)
             const camposRestaurante = ['platos_servidos', 'desperdicio_alimentos_kg'];
             camposRestaurante.forEach(campoId => {
                 const campo = document.getElementById(campoId);
-                if (campo) {
-                    campo.addEventListener('input', calcularIndicadoresRestaurante);
-                }
+                if (campo) campo.addEventListener('input', calcularIndicadoresRestaurante);
             });
 
-            // Cálculos para Logística (ocultos para el cliente)
             const camposLogistica = ['envios_bicicleta_cantidad', 'envios_vehiculo_cantidad'];
             camposLogistica.forEach(campoId => {
                 const campo = document.getElementById(campoId);
-                if (campo) {
-                    campo.addEventListener('input', calcularIndicadoresLogistica);
-                }
+                if (campo) campo.addEventListener('input', calcularIndicadoresLogistica);
             });
         }
 
         function calcularIndicadoresHotel() {
             const huespedes = parseInt(document.getElementById('huespedes_totales').value) || 0;
             const participantes = parseInt(document.getElementById('participacion_reuso_personas').value) || 0;
-
-            // % Participación reúso (CÁLCULO OCULTO - solo se guarda en Excel)
             let participacionPorcentaje = 0;
-            if (huespedes > 0) {
-                participacionPorcentaje = (participantes / huespedes) * 100;
-            }
-            // Guardar en campo oculto para enviar al Excel
+            if (huespedes > 0) participacionPorcentaje = (participantes / huespedes) * 100;
             document.getElementById('participacion_reuso_porcentaje_hidden').value = participacionPorcentaje.toFixed(1);
         }
 
         function calcularIndicadoresRestaurante() {
             const platos = parseInt(document.getElementById('platos_servidos').value) || 0;
             const desperdicio = parseFloat(document.getElementById('desperdicio_alimentos_kg').value) || 0;
-
-            // Desperdicio por plato (CÁLCULO OCULTO - solo se guarda en Excel)
             let desperdicioPorPlato = 0;
-            if (platos > 0) {
-                desperdicioPorPlato = (desperdicio * 1000) / platos;
-            }
-            // Guardar en campo oculto para enviar al Excel
+            if (platos > 0) desperdicioPorPlato = (desperdicio * 1000) / platos;
             document.getElementById('desperdicio_por_plato_hidden').value = desperdicioPorPlato.toFixed(1);
         }
 
         function calcularIndicadoresLogistica() {
             const enviosBici = parseInt(document.getElementById('envios_bicicleta_cantidad').value) || 0;
             const enviosVehiculo = parseInt(document.getElementById('envios_vehiculo_cantidad').value) || 0;
-
-            // % Envíos sostenibles (CÁLCULO OCULTO - solo se guarda en Excel)
             const totalEnvios = enviosBici + enviosVehiculo;
             let porcentajeSostenible = 0;
-
-            if (totalEnvios > 0) {
-                porcentajeSostenible = (enviosBici / totalEnvios) * 100;
-            }
-
-            // Guardar en campo oculto para enviar al Excel
+            if (totalEnvios > 0) porcentajeSostenible = (enviosBici / totalEnvios) * 100;
             document.getElementById('porcentaje_envios_sostenibles_hidden').value = porcentajeSostenible.toFixed(1);
         }
 
         function detectarYPreseleccionarSector(rubro) {
-            // Limpiar todas las selecciones primero
             document.getElementById('sectorHotel').checked = false;
             document.getElementById('sectorRestaurante').checked = false;
             document.getElementById('sectorLogistica').checked = false;
             document.getElementById('sectorRetail').checked = false;
+            document.getElementById('sectorBodega').checked = false;
 
-            // Ocultar todas las secciones
             document.getElementById('seccionHotel').classList.add('seccion-oculta');
             document.getElementById('seccionRestaurante').classList.add('seccion-oculta');
             document.getElementById('seccionLogistica').classList.add('seccion-oculta');
+            document.getElementById('seccionBodega').classList.add('seccion-oculta');
 
-            // Preseleccionar según el rubro
             const rubroLower = rubro.toLowerCase();
 
             if (rubroLower.includes('hotel') || rubroLower.includes('hospedaje')) {
@@ -944,25 +935,24 @@
                 document.getElementById('sectorRetail').checked = true;
             }
 
-            // Mostrar mensaje informativo
-            if (rubro) {
-                mostrarMensaje('Exito', `✅ Sector principal detectado: ${rubro}. Puedes agregar más sectores si aplican.`);
+            // 🔥 NUEVO: Detección de Bodega
+            if (rubroLower.includes('bodega') || rubroLower.includes('vitivinicola') || rubroLower.includes('vitivinícola') || rubroLower.includes('vino')) {
+                document.getElementById('sectorBodega').checked = true;
+                document.getElementById('seccionBodega').classList.remove('seccion-oculta');
             }
+
+            if (rubro) mostrarMensaje('Exito', `✅ Sector principal detectado: ${rubro}. Puedes agregar más sectores si aplican.`);
         }
 
         function mostrarMensaje(tipo, texto) {
             const mensajes = document.querySelectorAll('.mensaje');
             mensajes.forEach(msg => msg.style.display = 'none');
-
             const mensaje = document.getElementById('mensaje' + tipo);
             mensaje.innerHTML = texto;
             mensaje.style.display = 'block';
-
-            if (tipo === 'Exito') {
-                setTimeout(() => {
-                    mensaje.style.display = 'none';
-                }, 5000);
-            }
+            if (tipo === 'Exito') setTimeout(() => {
+                mensaje.style.display = 'none';
+            }, 5000);
         }
 
         function validarFormulario() {
@@ -975,27 +965,22 @@
                 mostrarMensaje('Error', '❌ Debe seleccionar una empresa');
                 return false;
             }
-
             if (!mes || !anio || !cantidadEmpleados) {
                 mostrarMensaje('Error', '❌ Completa todos los campos obligatorios (*)');
                 return false;
             }
-
             if (parseInt(cantidadEmpleados) < 1) {
                 mostrarMensaje('Error', '❌ El total de empleados debe ser al menos 1');
                 return false;
             }
-
             return true;
         }
 
         document.getElementById('formularioDatos').addEventListener('submit', async function(evento) {
             evento.preventDefault();
-
             if (!validarFormulario()) return;
 
             mostrarMensaje('Carga', '⏳ Enviando datos mensuales...');
-
             const boton = document.getElementById('botonEnviar');
             const textoBoton = document.getElementById('textoBoton');
             const iconoCarga = document.getElementById('iconoCarga');
@@ -1004,9 +989,7 @@
             textoBoton.textContent = 'Enviando...';
             iconoCarga.style.display = 'inline';
 
-            // ✅ DATOS COMPLETOS - Incluyendo todos los sectores Y EL NUEVO CAMPO
             const datosParaEnviar = {
-                // Datos generales y empresa
                 'ID_Empresa': document.getElementById('idEmpresaHidden').value,
                 'Empresa': document.getElementById('nombreEmpresaHidden').value,
                 'Mes': document.getElementById('mes').value,
@@ -1036,11 +1019,16 @@
                 'Cantidad_Mujeres': parseInt(document.getElementById('cantidad_mujeres').value) || 0,
                 'Cantidad_Personas_Discapacitadas': parseInt(document.getElementById('cantidad_personas_discapacitadas').value) || 0,
                 'Capacitacion_horas': parseFloat(document.getElementById('capacitacion_horas').value) || 0,
+                
+                // 🔥 NUEVOS CAMPOS GRI SOCIALES
+                'Capacitacion_Seguridad_horas': parseFloat(document.getElementById('capacitacion_seguridad_horas').value) || 0,
+                'Empleados_Menores_30': parseInt(document.getElementById('empleados_jovenes').value) || 0,
+                'Empleados_Mayores_50': parseInt(document.getElementById('empleados_mayores').value) || 0,
+
                 'Politica_inclusion': document.getElementById('politica_inclusion').checked ? 'Sí' : 'No',
                 'Procesos_optimizados_%': parseFloat(document.getElementById('procesos_optimizados').value) || 0,
                 'Digitalizacion_%': parseFloat(document.getElementById('digitalizacion').value) || 0,
                 'Uniforme_circular_%': parseInt(document.getElementById('uniforme_circular').value) || 0,
-                // MODIFICADO: Horas_Voluntariado ahora se toma directamente (sin condición de hotel)
                 'Horas_Voluntariado': parseFloat(document.getElementById('horas_voluntariado').value) || 0,
 
                 // Hotel (solo si la sección está visible)
@@ -1051,7 +1039,6 @@
                 'Toallas_Reutilizadas': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('toallas_reutilizadas').value) || 0,
                 'Sabanas_Reutilizadas': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('sabanas_reutilizadas').value) || 0,
                 'Inversion_Conservacion_USD': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('inversion_conservacion_usd').value) || 0,
-                // Nota: Horas_Voluntariado ya no se envía desde aquí porque se movió a general
                 'Participacion_Reuso_Personas': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('participacion_reuso_personas').value) || 0,
                 'Participacion_Reuso_%': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('participacion_reuso_porcentaje_hidden').value) || 0,
                 'Proveedores_Locales_Regenerativos_%': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('proveedores_locales_regenerativos').value) || 0,
@@ -1071,12 +1058,16 @@
                 'Km_Vehiculo_Total': document.getElementById('seccionLogistica').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('km_vehiculo_total').value) || 0,
                 'Porcentaje_Envios_Sostenibles_%': document.getElementById('seccionLogistica').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('porcentaje_envios_sostenibles_hidden').value) || 0,
 
+                // 🔥 NUEVO: Bodega / Viñedo
+                'Orujo_kg': document.getElementById('seccionBodega').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('orujo_kg').value) || 0,
+                'Sarmientos_kg': document.getElementById('seccionBodega').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('sarmientos_kg').value) || 0,
+                'Agroquimicos_kg': document.getElementById('seccionBodega').classList.contains('seccion-oculta') ? 0 : parseFloat(document.getElementById('agroquimicos_kg').value) || 0,
+
                 // Información adicional
                 'Comentarios': document.getElementById('comentarios').value.trim() || '',
                 'Link_Evidencia': document.getElementById('link_evidencia').value.trim() || ''
             };
 
-            // Si Restaurante está visible y Hotel no, usar el proveedor de restaurante
             if (document.getElementById('seccionRestaurante').classList.contains('seccion-oculta') === false &&
                 document.getElementById('seccionHotel').classList.contains('seccion-oculta') === true) {
                 datosParaEnviar['Proveedores_Locales_Regenerativos_%'] = parseInt(document.getElementById('proveedores_locales_regenerativos_rest').value) || 0;
@@ -1085,22 +1076,19 @@
             try {
                 const respuesta = await fetch(URL_DATOS, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                     body: JSON.stringify(datosParaEnviar)
                 });
 
                 if (respuesta.ok) {
                     mostrarMensaje('Exito', '✅ ¡Datos mensuales enviados correctamente!');
 
-                    // Resetear solo los campos de datos (incluyendo el nuevo campo)
                     const camposReset = ['energia_kwh', 'combustible_estacionario_l', 'papel_kg', 'borra_humeda_kg',
                                        'borra_seca_kg', 'tela_reutilizada_kg', 'tecnologia_recuperada_kg',
                                        'plastico_reutilizado_kg', 'materiales_biodegradables_kg',
                                        'cantidad_empleados_total', 'cantidad_empleados_locales', 'cantidad_mujeres',
                                        'cantidad_personas_discapacitadas', 'capacitacion_horas',
+                                       'capacitacion_seguridad_horas', 'empleados_jovenes', 'empleados_mayores',
                                        'procesos_optimizados', 'digitalizacion', 'residuo_organico_kg',
                                        'residuo_reciclable_kg', 'residuo_no_reciclable_kg',
                                        'comentarios', 'link_evidencia', 'agua_m3', 'politica_inclusion',
@@ -1111,38 +1099,33 @@
                                        'proveedores_locales_regenerativos', 'proveedores_locales_regenerativos_rest', 'satisfaccion_sostenibilidad',
                                        'platos_servidos', 'desperdicio_alimentos_kg', 'aceite_usado_litros',
                                        'combustible_transporte_l', 'envios_bicicleta_cantidad', 'km_bicicleta_total',
-                                       'envios_vehiculo_cantidad', 'km_vehiculo_total'];
+                                       'envios_vehiculo_cantidad', 'km_vehiculo_total',
+                                       'orujo_kg', 'sarmientos_kg', 'agroquimicos_kg'];
 
                     camposReset.forEach(campoId => {
                         const elemento = document.getElementById(campoId);
                         if (elemento) {
-                            if (elemento.type === 'checkbox') {
-                                elemento.checked = false;
-                            } else if (elemento.tagName === 'SELECT') {
-                                elemento.selectedIndex = 0;
-                            } else {
-                                elemento.value = campoId === 'cantidad_empleados_total' ? '1' : '0';
-                            }
+                            if (elemento.type === 'checkbox') elemento.checked = false;
+                            else if (elemento.tagName === 'SELECT') elemento.selectedIndex = 0;
+                            else elemento.value = campoId === 'cantidad_empleados_total' ? '1' : '0';
                         }
                     });
 
-                    // Resetear campos ocultos de cálculo
                     document.getElementById('participacion_reuso_porcentaje_hidden').value = '0';
                     document.getElementById('desperdicio_por_plato_hidden').value = '0';
                     document.getElementById('porcentaje_envios_sostenibles_hidden').value = '0';
 
-                    // Desmarcar checkboxes de sectores
                     document.getElementById('sectorHotel').checked = false;
                     document.getElementById('sectorRestaurante').checked = false;
                     document.getElementById('sectorLogistica').checked = false;
                     document.getElementById('sectorRetail').checked = false;
+                    document.getElementById('sectorBodega').checked = false;
 
-                    // Ocultar secciones específicas
                     document.getElementById('seccionHotel').classList.add('seccion-oculta');
                     document.getElementById('seccionRestaurante').classList.add('seccion-oculta');
                     document.getElementById('seccionLogistica').classList.add('seccion-oculta');
+                    document.getElementById('seccionBodega').classList.add('seccion-oculta');
 
-                    // Actualizar fecha de carga
                     const ahora = new Date();
                     const dia = String(ahora.getDate()).padStart(2, '0');
                     const mesNum = String(ahora.getMonth() + 1).padStart(2, '0');
@@ -1154,10 +1137,8 @@
                 } else {
                     throw new Error('Error en la respuesta del servidor');
                 }
-
             } catch (error) {
                 mostrarMensaje('Error', '❌ Error al enviar los datos. Por favor, verifica tu conexión.');
-
             } finally {
                 boton.disabled = false;
                 textoBoton.textContent = '📊 Enviar Datos Mensuales';
