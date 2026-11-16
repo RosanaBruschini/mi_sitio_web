@@ -1012,7 +1012,8 @@
             textoBoton.textContent = 'Enviando...';
             iconoCarga.style.display = 'inline';
 
-            const datosParaEnviar = {
+                        const datosParaEnviar = {
+                // Datos generales y empresa
                 'ID_Empresa': document.getElementById('idEmpresaHidden').value,
                 'Empresa': document.getElementById('nombreEmpresaHidden').value,
                 'Mes': document.getElementById('mes').value,
@@ -1035,6 +1036,13 @@
                 'Residuo_Organico_kg': parseFloat(document.getElementById('residuo_organico_kg').value) || 0,
                 'Residuo_Reciclable_kg': parseFloat(document.getElementById('residuo_reciclable_kg').value) || 0,
                 'Residuo_No_Reciclable_kg': parseFloat(document.getElementById('residuo_no_reciclable_kg').value) || 0,
+                'Uniforme_circular_%': parseInt(document.getElementById('uniforme_circular').value) || 0,
+                'Procesos_optimizados_%': parseFloat(document.getElementById('procesos_optimizados').value) || 0,
+                'Digitalizacion_%': parseFloat(document.getElementById('digitalizacion').value) || 0,
+                
+                // 🔥 NUEVO: ADOPCIÓN Y ÉTICA DE IA
+                'Nivel_IA': parseInt(document.getElementById('nivel_ia').value) || 0,
+                'Politica_IA': document.getElementById('politica_ia').checked ? 'Sí' : 'No',
 
                 // Impacto Social General
                 'Cantidad_Empleados_Total': parseInt(document.getElementById('cantidad_empleados_total').value) || 1,
@@ -1042,17 +1050,13 @@
                 'Cantidad_Mujeres': parseInt(document.getElementById('cantidad_mujeres').value) || 0,
                 'Cantidad_Personas_Discapacitadas': parseInt(document.getElementById('cantidad_personas_discapacitadas').value) || 0,
                 'Capacitacion_horas': parseFloat(document.getElementById('capacitacion_horas').value) || 0,
-                
+                'Horas_Voluntariado': parseFloat(document.getElementById('horas_voluntariado').value) || 0,
+                'Politica_inclusion': document.getElementById('politica_inclusion').checked ? 'Sí' : 'No',
+
                 // 🔥 NUEVOS CAMPOS GRI SOCIALES
                 'Capacitacion_Seguridad_horas': parseFloat(document.getElementById('capacitacion_seguridad_horas').value) || 0,
                 'Empleados_Menores_30': parseInt(document.getElementById('empleados_jovenes').value) || 0,
                 'Empleados_Mayores_50': parseInt(document.getElementById('empleados_mayores').value) || 0,
-
-                'Politica_inclusion': document.getElementById('politica_inclusion').checked ? 'Sí' : 'No',
-                'Procesos_optimizados_%': parseFloat(document.getElementById('procesos_optimizados').value) || 0,
-                'Digitalizacion_%': parseFloat(document.getElementById('digitalizacion').value) || 0,
-                'Uniforme_circular_%': parseInt(document.getElementById('uniforme_circular').value) || 0,
-                'Horas_Voluntariado': parseFloat(document.getElementById('horas_voluntariado').value) || 0,
 
                 // Hotel (solo si la sección está visible)
                 'Total_Habitaciones': document.getElementById('seccionHotel').classList.contains('seccion-oculta') ? 0 : parseInt(document.getElementById('total_habitaciones').value) || 0,
@@ -1106,6 +1110,7 @@
                 if (respuesta.ok) {
                     mostrarMensaje('Exito', '✅ ¡Datos mensuales enviados correctamente!');
 
+                    // 🔥 LISTA DE LIMPIEZA CORREGIDA (con IA, Bodega y GRI)
                     const camposReset = ['energia_kwh', 'combustible_estacionario_l', 'papel_kg', 'borra_humeda_kg',
                                        'borra_seca_kg', 'tela_reutilizada_kg', 'tecnologia_recuperada_kg',
                                        'plastico_reutilizado_kg', 'materiales_biodegradables_kg',
@@ -1123,6 +1128,7 @@
                                        'platos_servidos', 'desperdicio_alimentos_kg', 'aceite_usado_litros',
                                        'combustible_transporte_l', 'envios_bicicleta_cantidad', 'km_bicicleta_total',
                                        'envios_vehiculo_cantidad', 'km_vehiculo_total',
+                                       'nivel_ia', 'politica_ia', 
                                        'orujo_kg', 'sarmientos_kg', 'agroquimicos_kg'];
 
                     camposReset.forEach(campoId => {
