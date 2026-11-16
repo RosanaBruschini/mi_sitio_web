@@ -302,7 +302,7 @@
 
                     <div class="grupo-formulario">
                         <label>Fecha de carga automática</label>
-                        <input type="text" id="fechaCargaVisible" value="13/11/2026" readonly
+                        <input type="text" id="fechaCargaVisible" value="16/11/2026" readonly
                                style="background-color: #e9ecef; font-weight: bold;">
                     </div>
                 </div>
@@ -469,13 +469,36 @@
                                 <option value="100">5 - Muy alta (plataformas integradas, automatización total)</option>
                             </select>
                         </div>
-                        <div class="grupo-formulario">
+                                                <div class="grupo-formulario">
                             <label for="horas_voluntariado">Horas de voluntariado <span class="unidad">(horas)</span></label>
                             <input type="number" id="horas_voluntariado" name="Horas_Voluntariado" step="0.5" min="0" value="0">
                             <span class="nota-campo">Horas dedicadas a voluntariado ambiental</span>
                         </div>
                     </div>
+
+                    <!-- 🔥 NUEVA FILA PARA IA -->
+                    <div class="fila-doble">
+                        <div class="grupo-formulario">
+                            <label for="nivel_ia">Nivel de Adopción de IA</label>
+                            <select id="nivel_ia" name="Nivel_IA">
+                                <option value="0">0 - Sin uso de IA</option>
+                                <option value="25">1 - Básico (Chatbots, generar textos/imágenes)</option>
+                                <option value="50">2 - Operativo (Análisis de datos, predicción)</option>
+                                <option value="75">3 - Avanzado (Automatización, mantenimiento predictivo)</option>
+                                <option value="100">4 - Estratégico (IA integrada en el negocio)</option>
+                            </select>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label>Gobernanza y Ética de IA</label>
+                            <div class="checkbox-container">
+                                <input type="checkbox" id="politica_ia" name="Politica_IA">
+                                <label for="politica_ia" style="margin: 0; font-weight: normal;">Sí, contamos con política de uso ético de IA</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- SECCIÓN 4: IMPACTO SOCIAL (GENERAL - SIEMPRE VISIBLE) -->
 
                 <!-- SECCIÓN 4: IMPACTO SOCIAL (GENERAL - SIEMPRE VISIBLE) -->
                 <div class="seccion">
